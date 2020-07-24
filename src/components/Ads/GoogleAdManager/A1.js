@@ -36,7 +36,7 @@ const A1 = ({ }) => {
                     {viewport: [750, 0], slot: [728, 90]},
                     {viewport: [980, 0], slot: [750, 300]},
                     {viewport: [1050, 0], slot: [750, 200]},
-                    {viewport: [1800, 0], slot: [750, 100]}
+                    {viewport: [1800, 0], slot: [750, 200]}
                   ]}
                   
               />

@@ -3,12 +3,12 @@ steps:
 # Restore cache
   - name: gcr.io/cloud-builders/gsutil
     id: Restoring ./public...
-    args: ["-m", "rsync", "-r", "-d", "-J", "gs://cache.gis-netzwerk.com/public", "/"]
+    args: ["-m", "rsync", "-r", "-d", "-J", "gs://cache.gis-netzwerk.com/public", "public"]
     waitFor: ['-'] # Begin immediately
     
   - name: gcr.io/cloud-builders/gsutil
     id: Restoring ./.cache...
-    args: ["-m", "rsync", "-r", "-d", "-J", "gs://cache.gis-netzwerk.com/.cache", "/"]
+    args: ["-m", "rsync", "-r", "-d", "-J", "gs://cache.gis-netzwerk.com/.cache", ".cache"]
     waitFor: ['-'] # Begin immediately
 
 # Install dependencies

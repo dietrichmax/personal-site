@@ -1,0 +1,66 @@
+@import "./variables.scss";
+
+
+/* hide visually from eyes, but not aurally from screen readers */
+
+
+   .gatsby-highlight {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    background-color: black !important;
+  }
+  .gatsby-highlight pre[class*="language-"] {
+    -webkit-overflow-scrolling: touch;
+  }
+  .gatsby-highlight pre[class*="language-"]::before {
+    border-radius: 0 0 0.25rem 0.25rem;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.025rem;
+    padding: 0.1rem 0.5rem;
+    position: absolute;
+    right: 1rem;
+    text-align: right;
+    text-transform: uppercase;
+    top: 0;
+  }
+  .gatsby-highlight pre[class="language-js"]::before {
+    content: "js";
+    background: #f7df1e;
+    color: black;
+  }
+  .gatsby-highlight pre[class="language-py"]::before {
+    content: "py";
+    background: #306998;
+    color: black;
+  }
+  .gatsby-highlight pre[class="language-shell"]::before {
+    content: "shell";
+    background: #808080;
+    color: black;
+  }
+  .gatsby-highlight pre[class="language-md"]::before {
+    content: "md";
+    background: grey;
+    color: black;
+  }
+  .gatsby-highlight pre[class="language-html"]::before {
+    content: "html";
+    background: grey;
+    color: black;
+  }  
+  .gatsby-highlight pre[class="language-css"]::before {
+    content: "css";
+    background: grey;
+    color: black;
+  }
+  .gatsby-highlight pre[class="language-graphql"]::before {
+    content: "graphql";
+    background: rgb(225, 0, 152);
+    color: white;
+  }
+  .gatsby-highlight pre[class="language-json"]::before {
+    content: "json";
+    background: grey;
+    color: black;
+  }

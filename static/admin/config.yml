@@ -1,0 +1,139 @@
+backend:
+    name: github
+    repo: DaTurboD/GIS-Netzwerk
+    branch: master
+    site_domain: https://gis-netzwerk.com/
+
+publish_mode: editorial_workflow
+media_folder: 'static/assets/img'
+public_folder: 'assets/img'
+show_preview_links: true
+
+collections:
+    #Posts (English)
+    - name: 'posts-en' # Used in routes, e.g., /admin/collections/blog
+      label: 'Posts (English)' # Used in the UI
+    - {
+                label: 'Folder',
+                name: 'folder',
+                widget: 'select',
+                options:
+                    [
+                        '/content/posts/en/gis',
+                        '/content/posts/en/web-development',
+                        '/content/posts/en/diy',
+                    ],
+      } # The path to the folder where the documents are stored
+      create: true # Allow users to create new documents in this collection
+      slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+      extension: 'en.md'
+      format: frontmatter
+      fields: # The fields for each document, usually in front matter
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - {
+                label: 'Date',
+                name: 'date',
+                widget: 'datetime',
+                format: 'YYYY-MM-DD hh:mm:ss',
+            }
+          - { label: 'image', name: 'image', widget: 'image' }
+          - {
+                label: 'Category',
+                name: 'category',
+                widget: 'select',
+                options:
+                    [
+                        'GIS',
+                        'Web-Development',
+                        'DIY',
+                    ],
+            }
+          - { label: 'tags', name: 'tags', widget: 'string' }
+          - { label: 'layout', name: 'layout', widget: 'string', default: "post" }
+          - { label: 'author', name: 'author', widget: 'string' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+    #Posts (German)
+    - name: 'posts-de' # Used in routes, e.g., /admin/collections/blog
+      label: 'Posts (German)' # Used in the UI
+    - {
+                label: 'Folder',
+                name: 'folder',
+                widget: 'select',
+                options:
+                    [
+                        '/content/posts/de/gis',
+                        '/content/posts/de/web-development',
+                        '/content/posts/de/diy',
+                    ],
+      } # The path to the folder where the documents are stored # The path to the folder where the documents are stored
+      create: true # Allow users to create new documents in this collection
+      slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+      extension: 'de.md'
+      format: frontmatter
+      fields: # The fields for each document, usually in front matter
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - {
+                label: 'Date',
+                name: 'date',
+                widget: 'datetime',
+                format: 'YYYY-MM-DD hh:mm:ss',
+            }
+          - { label: 'image', name: 'image', widget: 'image' }
+          - {
+                label: 'Category',
+                name: 'category',
+                widget: 'select',
+                options:
+                    [
+                        'GIS',
+                        'Web-Development',
+                        'DIY',
+                    ],
+            }
+          - { label: 'tags', name: 'tags', widget: 'string' }
+          - { label: 'layout', name: 'layout', widget: 'string', default: "post" }
+          - { label: 'author', name: 'author', widget: 'string' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+    #Pages (English)
+    - name: 'pages-en' # Used in routes, e.g., /admin/collections/blog
+      label: 'Pages (English)' # Used in the UI
+      folder: 'content/pages/en' # The path to the folder where the documents are stored
+      create: true # Allow users to create new documents in this collection
+      slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+      extension: 'en.md'
+      format: frontmatter
+      fields: # The fields for each document, usually in front matter
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - {
+                label: 'Date',
+                name: 'date',
+                widget: 'datetime',
+                format: 'YYYY-MM-DD hh:mm:ss',
+            }
+          - { label: 'isPage', name: 'page', widget: 'hidden', default: true }
+          - { label: 'layout', name: 'layout', widget: 'string', default: "page" }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+    #Pages (Portuguese)
+    - name: 'pages-de' # Used in routes, e.g., /admin/collections/blog
+      label: 'Pages (German)' # Used in the UI
+      folder: 'content/pages/de' # The path to the folder where the documents are stored
+      create: true # Allow users to create new documents in this collection
+      slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+      extension: 'de.md'
+      format: frontmatter
+      fields: # The fields for each document, usually in front matter
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - {
+                label: 'Date',
+                name: 'date',
+                widget: 'datetime',
+                format: 'YYYY-MM-DD hh:mm:ss',
+            }
+          - { label: 'isPage', name: 'page', widget: 'hidden', default: true }
+          - { label: 'layout', name: 'layout', widget: 'string', default: "page" }
+          - { label: 'Body', name: 'body', widget: 'markdown' }

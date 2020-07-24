@@ -1,0 +1,44 @@
+{ 
+  "home": "Home",
+
+  "hello": "GIS-Netzwerk",
+  "subline": "GIS and Web-Development.",
+  "latestPosts": "Latest posts",
+  "category": "Category", 
+  "allPosts": "All Posts",
+  "toRead": "to read",
+
+  "views": "views",
+  "WrittenBy": "Written by ",
+
+  "TableofContents": "Table of contents:",
+
+  "next": "Next",
+  "prev": "Prev",
+  "of": "of",
+
+  "button": "Button",
+  "sharePost": "Share this post: ",
+
+  "aboutProject": "GIS-Netzwerk is an information platform for GIS and web-development",
+  "imageSource": "Image source:",
+  "german": "German",
+  "english": "English",
+
+  "privacypolicy": "Privacy Policy",
+  "cookiedescription": "This website uses Cookies to analyze and improve the website and to display personalized ads. You can find further information and options for deactivating cookies in the ",
+  "accept": "OK",
+  "ad": "Ad",
+
+  "adNotice": "Get in touch to rent this ad-slot.",
+
+  "formEmail": "Your e-mail address",
+  "formSubscribe": "Subscribe",
+  "formDesc1": "Do you want to know when I post something new?",
+  "formDesc2": "Then subscribe to the GIS-Netzwerk newsletter.",
+  "formSuccess": "Great, you're signed in!",
+  "formThankYou": "Thank you for your interest in my content.",
+
+  "copyrightNotice": "Unless otherwise noted, "
+  
+}

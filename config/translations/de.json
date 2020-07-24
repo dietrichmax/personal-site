@@ -1,0 +1,44 @@
+{ 
+  "home": "Startseite",
+
+  "hello": "GIS-Netzwerk",
+  "subline": "Geoinformatik, GIS und Web-Development.",
+  "latestPosts": "Neueste Beiträge",
+  "category": "Kategorie", 
+  "allPosts": "Alle Beiträge",
+  "toRead": "Lesezeit",
+
+  "TableofContents": "Inhaltsverzeichnis:",
+
+  "next": "Nächste Seite",
+  "prev": "Vorherige Seite",
+  "of": "von",
+
+  "views": "Aufrufe",
+  "WrittenBy": "Von ",
+
+  "button": "Button",
+  "sharePost": "Teile den Beitrag: ",
+
+  "aboutProject": "GIS-Netzwerk ist eine Informationsplattform für GIS und Web-Development.",
+  "imageSource": "Bildquelle:",
+  "german": "Deutsch",
+  "english": "Englisch",
+
+  "privacypolicy": "Datenschutzerklärung",
+  "cookiedescription": "Diese Webseite verwendet Cookies zur Analyse und Verbesserung der Webseite und zum Ausspielen personalisierter Anzeigen. Weitere Informationen und Möglichkeiten Cookies auszuschalten findest Du in der ",
+  "accept": "OK",
+  "ad": "Werbung",
+
+  "adNotice": "Kontaktieren Sie mich um diesen Ad-Slot zu mieten.",
+
+  "formEmail": "Deine E-Mail-Adresse",
+  "formSubscribe": "Abonnieren",
+  "formDesc1": "Möchtest Du wissen, wann ich etwas Neues poste?",
+  "formDesc2": "Dann abonniere den GIS-Netzwerk Newsletter.",
+  "formSuccess": "Super, Du bist angemeldet!",
+  "formThankYou": "Vielen Dank für Dein Interesse an meinem Content.",
+
+  "copyrightNotice": "Sofern nicht anders angegeben, "
+
+}

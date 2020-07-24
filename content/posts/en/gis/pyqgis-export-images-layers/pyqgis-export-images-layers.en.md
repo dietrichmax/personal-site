@@ -1,0 +1,78 @@
+---
+layout: "post"
+title: "Export QGIS layers as images with PyQGIS"
+date: "2020-01-29"
+description: "With the help of PyQGIS processes such as the export of images for all layers from a map can be automated."
+category: "GIS"
+tags: ["PyQGIS", "QGIS", "Python", "API"]
+image: "./pyqgis-export-images-layers.jpg"
+caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
+author: "Max Dietrich"
+---
+
+With the help of [PyQGIS](https://docs.qgis.org/2.18/de/docs/pyqgis_developer_cookbook/index.html "PyQGIS") processes such as the export of images for all layers from a map can be automated.
+
+First of all, of course, you need one or more layers with raster and/or vector data.
+
+## Add layers with PyQGIS
+
+If all files are in the same folder, they can be read in with a ["for .. in loop](https://www.w3schools.com/python/python_for_loops.asp" Python For Loops "). You can also use`. endswith (". gpkg") `, for example, only files with the extension" .gpkg "are searched, and when the layers are added, each layer name is packed into an array that will be needed later.
+
+```py
+    import os, sys
+    from PyQt5.QtCore import QTimer
+
+    # path to look for files
+    path = "ordner/nocheinordner/"
+    # set path
+    dirs = os.listdir( path )
+    # array for storing layer_names
+    layer_list = []
+    # variable for further processing
+    count = 0
+    #look for files inpath
+    for file in dirs:
+    	# search for ".gpkg" files 
+        if file.endswith(".gpkg"):
+    		#add vectorlayers
+            vlayer = iface.addVectorLayer(path + file, "Layername", "ogr")
+            layer_list.append(vlayer.name())
+```
+
+The new vector layers then appear in the QGIS layer tree.
+
+## Image export for each layer
+
+If you are satisfied with the display, two small functions can be used to export a georeferenced image for each layer.
+
+```py
+    def prepareMap():
+        # make all layers invisible
+    	iface.actionHideAllLayers().trigger()
+        # get layer by layer_name
+    	layer_name = QgsProject.instance().mapLayersByName(layer_list[count])[0]
+        # select layer
+    	iface.layerTreeView().setCurrentLayer(layer_name)
+        # set selected layer visible
+    	iface.actionShowSelectedLayers().trigger()
+        # Wait a second and export the map
+    	QTimer.singleShot(1000, exportMap) 
+```
+
+The "prepareMap ()" function first deactivates all layers. A layer is then selected from the "layer_list" array using its layer name and then displayed again. The QTimer class is particularly important here. Before an image is created, there must always be a short wait before the selected layer is really visible. Without QTimer, the script would run so quickly that the result would be loud images with the same content. After waiting a second, the "exportMap" function is called.
+
+```py
+    def exportMap(): 
+        global count
+    	# save current view as image
+        iface.mapCanvas().saveAsImage( path + layer_list[count] + ".png" )
+    	# feedback for printed map
+        print('{}.png exported sucessfully'.format(layer_list[count]))
+    	# get map for every layer in layer_list
+        if count < len(layer_list)-1:
+    		# Wait a second and prepare next map (timer is needed because otherwise all images have the samec content 
+    		# the script excecutes faster then the mapCanvas can be reloaded
+            QTimer.singleShot(1000, prepareMap) 
+        count += 1
+```
+Now the current map, in which only one level is shown, is saved as a PNG image in the source directory. Ultimately, you "land" in a loop that goes through all the layers that are in the "layer_list" array and calls the "prepareMap" function for each layer again.

@@ -1,0 +1,16 @@
+- id: GIS
+  description: "(Web-)GIS, Fernerkundung, Python."
+  color: '#3f51b' 
+  
+- id: Web-Development
+  description: "Javascript, Static Sites, APIs."
+  color: 'rgba(152,70,242,1)'
+
+- id: Serien
+  description: "Die besten Serien auf Netflix, Amazon Prime und co."
+  color: '#ab2524'
+
+- id: Filme
+  description: "."
+  color: ''
+

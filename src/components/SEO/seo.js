@@ -43,7 +43,7 @@ import { useStaticQuery, graphql } from 'gatsby';
       image = config.siteLogo;
       const data = useStaticQuery(graphql`
           {
-            imageSharp(fluid: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
+            imageSharp(fixed: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
               fixed(width: 1920) {
                 src
                 ...GatsbyImageSharpFixed_withWebp_noBase64
@@ -51,7 +51,7 @@ import { useStaticQuery, graphql } from 'gatsby';
             }
           }
       `)
-      image = "https://gis-netzwerk.com" + data.imageSharp.fluid.src;
+      image = "https://gis-netzwerk.com" + data.imageSharp.fixed.src;
     }
 
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);

@@ -11,7 +11,7 @@ const AuthorBox = ({
   return (
     <S.AuthorWrapper>
         <S.AuthorImg 
-            fluid={authorMeta.profilepicture.childImageSharp.fluid}
+            fixed={authorMeta.profilepicture.childImageSharp.fixed}
             alt={authorMeta.id}
             title={authorMeta.id}
             fadeIn={false} 

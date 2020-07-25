@@ -13,7 +13,7 @@ for file in glob.iglob('V:/Websites/GIS-Netzwerk/images/_in-use/posts/*.jpg'):
     width, height = im.size
     wpercent = (basewidth / float(im.size[0]))
     hsize = int((float(im.size[1]) * float(wpercent)))
-    imThumbnail = im.resize((basewidth, hsize), Image.LANCZOS)
-    newThumbnail = 'static/assets/img/postImg/{}.jpg'.format(image_list[count].replace(".jpg", ""))
-    imThumbnail.save(newThumbnail,optimize=True,quality=90)
+    newImage = im.resize((basewidth, hsize), Image.LANCZOS)
+    newPath = 'static/assets/img/postImg/{}.jpg'.format(image_list[count].replace(".jpg", ""))
+    newImage.save(newPath,optimize=True,quality=90)
     count +=1 

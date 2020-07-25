@@ -19,7 +19,7 @@ import { useStaticQuery, graphql } from 'gatsby';
     let slug;
     let date;
     
-    slug = urljoin(config.siteUrl, config.pathPrefix, postPath);
+    slug = postPath ? slug :  urljoin(config.siteUrl, config.pathPrefix);
 
     if (postSEO) {
       const postMeta = postNode.frontmatter;

@@ -41,7 +41,7 @@ steps:
     args: ["install", "firebase-tools"]
     waitFor:
       - Installing dependencies...
-/workspace
+
 # Gatsby build
   - name: node:10.16.0
     id: Building Gatsby site...

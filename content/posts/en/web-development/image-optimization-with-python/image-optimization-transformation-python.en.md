@@ -13,9 +13,9 @@ author: "Max Dietrich"
 
 At the beginning i used super large images from [ESA](https://www.esa.int/ "European Space Agency") which had a file size up to 53mb with 8926x5663 resultion.
 
-Overall the website took about 1 GB of storage in Github and on my hosting which isn't really optimized but i didn't care because of free plans and due to the fact that i hadn't that much posts so the build time for Gatsby was also still fine for me.
+Overall the website took about 1 GB of storage in Github and on my hosting which isn't really optimized but i didn't really care because of free plans and due to the fact that i hadn't that much posts so the build time for Gatsby was also still fine for me.
 
-From time to time i got more posts and images coming with them and at some point a local build for Gatsby took suddenly about 30 minutes. 😴
+From time to time i got more posts and images coming with them and at some point a local build for Gatsby took suddenly about 36 minutes. 😴
 
 So i looked for a way to optimize all my existing images automatically and found Pillow.
 
@@ -109,3 +109,4 @@ Now you can also add a new script **img-optimize** or put it before your build c
     "build": "py ./src/utils/resize_images.py && gatsby build"
 ```
 
+After optimization my build time went from 36 min to 9 min. 🎉

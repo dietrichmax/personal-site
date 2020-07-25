@@ -21,9 +21,11 @@ steps:
     args: ["run", "create-env"]
     env:
     - "CLIENT_EMAIL=${_CLIENT_EMAIL}"
+    - "PRIVATE_KEY=${_PRIVATE_KEY}"
     - "GA_ID=${_GA_ID}"
     - "GA_VIEW_ID=${_GA_VIEW_ID}"
     - "IG_TOKEN=${_IG_TOKEN}"
+    - "MAIL_CHIMP=${_MAIL_CHIMP}"
     - "FIREBASE_API_KEY=${_FIREBASE_API_KEY}"
     - "FIREBASE_APP_ID=${_FIREBASE_APP_ID}"
     - "FIREBASE_AUTH_DOMAIN=${_FIREBASE_AUTH_DOMAIN}"

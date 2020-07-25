@@ -79,7 +79,6 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: `slug`, value: slug });
     createNodeField({ node, name: `locale`, value: lang });
     createNodeField({ node, name: `isDefault`, value: isDefault });
-    createNodeField({ node, name: `category`, value: category });
   }
 };
 
@@ -88,10 +87,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // Templates for Posts List and Single post
-  const postTemplate = path.resolve(`./src/templates/post.js`);
-  const postsListTags = path.resolve(`./src/templates/posts-list-tags.js`);
-  const postsListCategories = path.resolve(`./src/templates/posts-list-categories.js`);
-  const pageTemplate = path.resolve(`./src/templates/page.js`);
+  const MDXPost = path.resolve(`./src/templates/post.js`);
+  const PostTag = path.resolve(`./src/templates/posts-list-tags.js`);
+  const PostCategory = path.resolve(`./src/templates/posts-list-categories.js`);
+  const Page = path.resolve(`./src/templates/page.js`);
 
   const result = await graphql(`
     {
@@ -147,7 +146,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const isPage = file.frontmatter.page;
 
     // Setting a template for page or post depending on the content
-    const template = isPage ? pageTemplate : postTemplate;
+    const template = isPage ? Page : MDXPost;
 
     // Count posts
 
@@ -205,7 +204,7 @@ exports.createPages = async ({ graphql, actions }) => {
           index === 0
             ? `${localizedPath}tags/${tag_slug}/`
             : `${localizedPath}tags/${tag_slug}/${index + 1}`,
-        component: postsListTags,
+        component: PostTag,
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,
@@ -227,7 +226,7 @@ exports.createPages = async ({ graphql, actions }) => {
           index === 0
             ? `${localizedPath}${category_slug}/`
             : `${localizedPath}${category_slug}/${index + 1}`,
-        component: postsListCategories,
+        component: PostCategory,
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,

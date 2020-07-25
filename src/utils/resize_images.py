@@ -3,8 +3,8 @@ import glob, os
 
 count = 0
 image_list = []
-size = (1920,1080)
 basewidth = 1920
+
 types = ('*.jpg', '*.png', '*.web')
 
 for file in glob.iglob('V:/Websites/GIS-Netzwerk/images/_in-use/posts/*.jpg'):
@@ -16,4 +16,5 @@ for file in glob.iglob('V:/Websites/GIS-Netzwerk/images/_in-use/posts/*.jpg'):
     newImage = im.resize((basewidth, hsize), Image.LANCZOS)
     newPath = 'static/assets/img/postImg/{}.jpg'.format(image_list[count].replace(".jpg", ""))
     newImage.save(newPath,optimize=True,quality=90)
+    print('Optimized "{}"'.format(image_list[count]))
     count +=1 

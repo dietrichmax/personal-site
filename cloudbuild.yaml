@@ -3,7 +3,7 @@ steps:
 # Restore cache
   - name: gcr.io/cloud-builders/gsutil
     id: Restoring cache...
-    args: ["-m", "cp", "-r", "gs://cache.gis-netzwerk.com/*", "/"]
+    args: ["-m", "cp", "-r", "gs://cache.gis-netzwerk.com/*", "/workspace/"]
     waitFor: ['-'] # Begin immediately
 
 # Install dependencies

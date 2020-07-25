@@ -42,9 +42,9 @@ Anschließend werde ich mich bei Dir so schnell wie möglich melden.
 ## Technische Details
 
 Die Webseite wurde mit dem React-Framework [GatsbyJS](https://www.gatsbyjs.org/ "GatsbyJS lernen") erstellt.
-Momentan wird die Webseite auf Amazon S3 gehostet und über Cloudflare CDN bereitgestellt.
-Außerdem wird für ein paar Components, wie zum Beispiel dem [View-Counter](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/viewcounter "ViewCounter") oder den [Post-Reactions](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/postreactions "Post-Reactions") [Google Firebase](https://console.firebase.google.com/ "Google Firebase") bzw. Cloud Firestore genutzt.
+Momentan wird die Webseite auf Firebase gehostet und über Cloudflare CDN bereitgestellt.
+Außerdem wird für ein paar Components, wie zum Beispiel dem [View-Counter](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/viewcounter "ViewCounter") oder den [Post-Reactions](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/postreactions "Post-Reactions") Firestore genutzt.
 
-Bei momentan ca. 10.000 Seitenaufrufen im Monat belaufen sich die Kosten für das S3-Hosting auf ca. 0,10€ (hauptsächlich durch häufige Änderungen an der Webseite) im Monat. Da die Limits für das kostenlose Kontigent bei Google Firebase nicht erreicht werden, fallen hierfür keine Kosten an und Cloudflare wird auch kostenlos angeboten. Deployed wird die Seite über [GatsbyCloud](https://www.gatsbyjs.com/ "GatsbyCloud") 🎉.
+Bei momentan ca. 10.000 Seitenaufrufen im Monat belaufen sich die Kosten für das Hosting auf ca. 0,00€ im Monat. Da die Limits für das kostenlose Kontigent bei Google Firebase nicht erreicht werden, fallen hierfür keine Kosten an und Cloudflare wird auch kostenlos angeboten. Deployed wird die Seite täglich mit Cloud Scheduler und Cloud Build. 🎉
 
 > Wenn Sie an Kooperationen oder Werbemöglichkeiten interessiert sind, setzen Sie sich einfach mit mir in Verbindung unter kontakt@gis-netzwerk.com.

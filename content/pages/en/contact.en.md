@@ -7,5 +7,5 @@ author: "Max Dietrich"
 ---
 
 Do you have any questions about the website or cooperations?
-[kontakt@gis-netzwerk.com](mailto: kontakt@gis-netzwerk.com)
+[kontakt@gis-netzwerk.com](kontakt@gis-netzwerk.com)
 

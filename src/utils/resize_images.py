@@ -5,7 +5,7 @@ count = 0
 image_list = []
 size = (1920,1080)
 basewidth = 1920
- 
+types = ('*.jpg', '*.png', '*.web')
 
 for file in glob.iglob('V:/Websites/GIS-Netzwerk/images/_in-use/posts/*.jpg'):
     im=Image.open(file)

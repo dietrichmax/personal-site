@@ -1,17 +1,19 @@
 steps: 
 
 # Restore cache
-  - name: gcr.io/cloud-builders/gsutil
+  - name: "gcr.io/$PROJECT_ID/restore_cache"
     id: Restoring cache...
-    args: ["-m", "cp", "-r", "gs://cache.gis-netzwerk.com/*", "/"]
-    waitFor: ['-'] # Begin immediately
+    args:
+    - "--bucket=gs://cache.gis-netzwerk.com/"
+    - "--key=resources-$( checksum cloudbuild.yaml )"
 
 # Install dependencies
   - name: node:10.16.0
     id: Installing dependencies...
     entrypoint: npm
     args: ["install"] 
-    waitFor: ['-'] # Begin immediately
+    waitFor:
+      - Restoring cache...
 
 # Create file with env-variables
   - name: node:10.16.0
@@ -64,15 +66,14 @@ steps:
       - Building Gatsby site...
 
 # Save cache/public folder
-  - name: gcr.io/cloud-builders/gsutil
-    id: Saving ./.cache...
-    args: ["-m", "rsync", "-r", "-d", "-J", ".cache", "gs://cache.gis-netzwerk.com/.cache"]
-    waitFor:
-      - Building Gatsby site...
-      
-  - name: gcr.io/cloud-builders/gsutil
-    id: Saving ./public...
-    args: ["-m", "rsync", "-r", "-d", "-J", "public", "gs://cache.gis-netzwerk.com/public"]
+  - name: "gcr.io/$PROJECT_ID/save_cache"
+    id: Restoring cache...
+    args:
+    - "--bucket=gs://cache.gis-netzwerk.com/"
+    - "--key=resources-$( checksum cloudbuild.yaml )"
+    - "--path=node_modules/**/*"
+    - "--path=public/**/*"
+    - "--path=.cache/**/*"
     waitFor:
       - Building Gatsby site...
     

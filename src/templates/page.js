@@ -16,23 +16,19 @@ export const PageWrapper = styled.div`
 const Page = props => {
   const { pageContext } = props;
   const { slug, locale } = pageContext;
-  const post = props.data.mdx;
+  const page = props.data.mdx;
 
   const target = React.createRef()
 
 
   return (
     <>
-        <SEO postNode={post} postPath={slug} lang={locale} />
-        <Helmet>
-          <title>{`${post.frontmatter.title} | ${config.siteTitle}`}</title>
-          <link rel="canonical" href={`${config.siteUrl}${slug}`} />
-        </Helmet>
+        <SEO postNode={page} postPath={slug} lang={locale} />
         <PageWrapper ref={target}>
           <ReadingProgress target={target}/>
-          <TitlePage text={post.frontmatter.title} />
+          <TitlePage text={page.frontmatter.title} />
           <S.Content >
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <MDXRenderer>{page.body}</MDXRenderer>
           </S.Content>
         </PageWrapper>
     </>

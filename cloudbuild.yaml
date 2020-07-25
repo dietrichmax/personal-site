@@ -35,7 +35,8 @@ steps:
     id: Installing Firebase...
     entrypoint: npm 
     args: ["install", "firebase-tools"]
-    waitFor: ['-'] # Begin immediately
+    waitFor:
+      - Installing dependencies...
 
 # Gatsby build
   - name: node:10.16.0

@@ -36,7 +36,7 @@ if (
         email: process.env.CLIENT_EMAIL,
         key: process.env.PRIVATE_KEY.replace(/\\n/g, "\n"),
         viewId: process.env.GA_VIEW_ID,
-        startDate: `2018-04-01`,
+        startDate: `2020-03-01`,
       }
     }
   )

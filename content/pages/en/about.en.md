@@ -46,8 +46,8 @@ The website is currently hosted on Amazon S3 and provided via Cloudflare CDN.
 
 In addition, for a few components, such as the [View-Counter](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/viewcounter "ViewCounter") or the [Post-Reactions](https://github.com/DaTurboD/GIS-Netzwerk/tree/master/src/components/articles/postreactions "Post-Reactions") [Google Firebase](https://console.firebase.google.com  "Google FIrebase") or Cloud Firestore are used.
 
-With around 10,000 page views per month, the cost of S3 hosting is around €0.10 (mainly due to frequent changes to the website) per month. 
+With around 10,000 page views per month, the cost of Firebase hosting is around €0.00 per month. 
 Since the limits for the free content on Google Firebase are not reached, there are no costs and Cloudflare is also offered free of charge.
-The page is deployed via [GatsbyCloud](https://www.gatsbyjs.com/ "GatsbyCloud") 🎉.
+The page is deployed via Cloud Scheduler and Cloud Build. 🎉
 
 > If you are interested in any cooperations or advertising oportunites just get in touch with me kontakt@gis-netzwerk.com.

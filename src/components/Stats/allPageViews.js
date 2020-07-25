@@ -1,63 +1,94 @@
-/*import React from "react"
-import { graphql, Link } from "gatsby"
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
+import useTranslations from '../useTranslations';
+import styled from 'styled-components';
+import { Home3 } from "styled-icons/icomoon";
 
-const RecentPageViews = ({ data, count }) => {
+export const StatsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+export const StatsTitle = styled.div`
+  display: flex;
+  flex-basis: 100%;
+  max-width: 100%;
+`;
+
+export const StatsPage = styled.div`
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 80%;
+  max-width: 80%;
+`;
+export const StatsViews = styled.div`
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 20%;
+  max-width: 20%;
+`;
+export const StatsPageLink = styled.div`
+  margin: 0 !important;
+  outline: none;
+`;
+
+
+
+
+
+const RecentPageViews = () => {
+
+  const { mostPopularPages } = useTranslations();
+
+  const data = useStaticQuery(graphql`
+    {
+      allPageViews {
+        edges {
+          node {
+            totalCount
+            path
+          }
+        }
+      }
+    }
+  `)
 
   return (
-  <div>
-    <div className="row container pad-10-tb pad-3-lr">
-      <div className="col-xs-12 flex margin-3-b">
-        <h4 className="margin-0-b">POPULAR PAGES - LAST 30 DAYS</h4>
-      </div>
+    <StatsWrapper>
+      <StatsTitle>
+        <h3>
+        <strong>{mostPopularPages}</strong>
+        </h3>
+      </StatsTitle>
 
-      <div className="col-xs-4 col-md-6 is-grey">
-        <h3 className="margin-0 margin-2-b">
+      <StatsPage>
+        <h4>
           <strong>Page</strong>
-        </h3>
-      </div>
-      <div className="col-xs-4 col-md-3 text-align-center is-grey">
-        <h3 className="margin-0 margin-2-b">
+        </h4>
+      </StatsPage>
+      <StatsViews>
+        <h4 >
           <strong>Views</strong>
-        </h3>
-      </div>
-      <div className="col-xs-4 col-md-3 text-align-center is-grey">
-        <h3 className="margin-0 margin-2-b">
-          <strong>Sessions</strong>
-        </h3>
-      </div>
+        </h4>
+      </StatsViews>
 
       {data.allPageViews.edges.slice(0, 5).map((item) => (
         <>
-          <div className="col-xs-4 col-md-6 is-grey">
-            <Link to={item.node.path} className="is-special-blue">
-              <p className="margin-0">{item.node.path}</p>
-            </Link>
-          </div>
-          <div className="col-xs-4 col-md-3 text-align-center is-grey">
-            <p className="margin-0 margin-1-b">{item.node.totalCount}</p>
-          </div>
-          <div className="col-xs-4 col-md-3 text-align-center is-grey">
-            <p className="margin-0 margin-1-b">{item.node.sessions}</p>
-          </div>
+            <StatsPage>
+              <Link to={item.node.path}>
+                {item.node.path}
+              </Link>
+            </StatsPage>
+            <StatsViews>
+              {item.node.totalCount}
+            </StatsViews>
         </>
       ))}
-    </div>
-  </div>
+    </StatsWrapper>
   )
 }
 
 export default RecentPageViews
 
-export const query = graphql`
-  {
-    allPageViews {
-      edges {
-        node {
-          totalCount
-          path
-          sessions
-        }
-      }
-    }
-  }
-`*/

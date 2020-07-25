@@ -64,6 +64,8 @@ const query = graphql`
             accept
             ad
             
+            mostPopularPages
+            
             adNotice
             
             formEmail

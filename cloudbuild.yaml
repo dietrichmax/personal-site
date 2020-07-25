@@ -11,6 +11,7 @@ steps:
     id: Installing dependencies...
     entrypoint: npm
     args: ["install"] 
+    waitFor:
       - Restoring cache...
 
 # Create file with env-variables

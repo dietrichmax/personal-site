@@ -180,9 +180,9 @@ export const query = graphql`
           bio
           profilepicture {
             childImageSharp {
-              fluid(maxWidth: 60, maxHeight: 60) {
+              fixed(width: 60, height: 60) {
                     src
-                    ...GatsbyImageSharpFluid_withWebp_noBase64
+                    ...GatsbyImageSharpFixed_withWebp_noBase64
               }
             }
           }

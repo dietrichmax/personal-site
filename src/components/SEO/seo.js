@@ -44,9 +44,9 @@ import { useStaticQuery, graphql } from 'gatsby';
       const data = useStaticQuery(graphql`
           {
             imageSharp(fluid: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
-              fluid(maxWidth: 1920, maxHeight: 1080) {
+              fixed(width: 1920) {
                 src
-                ...GatsbyImageSharpFluid_withWebp_noBase64
+                ...GatsbyImageSharpFixed_withWebp_noBase64
               }
             }
           }

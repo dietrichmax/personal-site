@@ -1,5 +1,11 @@
 steps: 
 
+# Restore cache
+# - name: gcr.io/cloud-builders/gsutil
+#   id: Restoring cache...
+#   args: ["-m", "cp", "-r", "gs://cache.gis-netzwerk.com/*", "/"]
+#   waitFor: ['-'] # Begin immediately
+
 # Install dependencies
   - name: node:10.16.0
     id: Installing dependencies...
@@ -13,12 +19,13 @@ steps:
     entrypoint: npm
     args: ["run", "create-env"]
     env:
+    - "TOKEN=${_TOKEN}"
     - "CLIENT_EMAIL=${_CLIENT_EMAIL}"
     - "PRIVATE_KEY=${_PRIVATE_KEY}"
+    - "MAIL_CHIMP=${_MAIL_CHIMP}"
     - "GA_ID=${_GA_ID}"
     - "GA_VIEW_ID=${_GA_VIEW_ID}"
     - "IG_TOKEN=${_IG_TOKEN}"
-    - "MAIL_CHIMP=${_MAIL_CHIMP}"
     - "FIREBASE_API_KEY=${_FIREBASE_API_KEY}"
     - "FIREBASE_APP_ID=${_FIREBASE_APP_ID}"
     - "FIREBASE_AUTH_DOMAIN=${_FIREBASE_AUTH_DOMAIN}"
@@ -56,4 +63,17 @@ steps:
       - Installing Firebase...
       - Building Gatsby site...
 
+# Save cache/public folder
+# - name: gcr.io/cloud-builders/gsutil
+#   id: Saving ./.cache...
+#   args: ["-m", "rsync", "-r", "-d", "-J", ".cache", "gs://cache.gis-netzwerk.com/.cache"]
+#   waitFor:
+#     - Building Gatsby site...
+      
+# - name: gcr.io/cloud-builders/gsutil
+#   id: Saving ./public...
+#   args: ["-m", "rsync", "-r", "-d", "-J", "public", "gs://cache.gis-netzwerk.com/public"]
+#   waitFor:
+#     - Building Gatsby site...
+    
 timeout: 60m0s

@@ -5,7 +5,7 @@ date: "2019-03-02"
 description: "Basically, a WMS - short for Web Map Service - is an interface for accessing digital maps over the Internet."
 category: "GIS"
 tags: ["WMS", "Web-GIS"]
-image: "./wms-wmts.jpg"
+image: "../../../../../static/assets/img/postImg/wms-wmts.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

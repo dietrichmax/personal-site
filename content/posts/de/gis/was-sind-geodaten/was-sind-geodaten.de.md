@@ -5,7 +5,7 @@ date: "2018-04-12"
 description: "Geodaten sind Informationen mit einem räumlichen Bezug, die unter anderem in einem GIS genutzt werden können."
 category: "GIS"
 tags: ["Geodaten"]
-image: "./was-sind-geodaten.jpg"
+image: "../../../../../static/assets/img/postImg/was-sind-geodaten.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

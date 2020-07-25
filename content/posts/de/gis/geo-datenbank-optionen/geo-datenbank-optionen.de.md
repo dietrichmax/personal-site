@@ -5,7 +5,7 @@ date: "2019-04-14"
 description: "Mit den immer weiter wachsenden Datenmengen stellt sich irgendwann die Frage, wie diese effektiv verwaltet werden können. Hier kommen GIS-Datenbanken zum Einsatz."
 category: "GIS"
 tags: ["SQL"]
-image: "./gis-und-geo-datenbanken.jpg"
+image: "../../../../../static/assets/img/postImg/gis-und-geo-datenbanken.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

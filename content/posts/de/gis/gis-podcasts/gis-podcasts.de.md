@@ -5,7 +5,7 @@ date: "2019-04-20"
 description: "Podcasts sind eine großartige Möglichkeit, um bei aktuellen Entwicklungen auf dem aktuellsten Stand zu bleiben. Das Beste von allem ist, dass man Podcasts praktisch überall nebenbei hören kann."
 category: "GIS"
 tags: ["Podcasts"]
-image: "./geo-und-gis-podcasts.jpg"
+image: "../../../../../static/assets/img/postImg/gis-podcasts.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

@@ -5,7 +5,7 @@ date: "2019-03-15"
 description: "Du fragst dich welche GIS Jobs es überhaupt gibt, was man macht und wieviel man verdient? Dann bist du hier richtig."
 category: "GIS"
 tags: ["Gehalt"]
-image: "./gehalt-und-jobs-in-der-gis-branche.jpg"
+image: "../../../../../static/assets/img/postImg/gehalt-und-jobs-in-der-gis-branche.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

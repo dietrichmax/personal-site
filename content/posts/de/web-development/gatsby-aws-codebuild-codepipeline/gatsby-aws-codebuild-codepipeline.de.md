@@ -5,7 +5,7 @@ date: "2020-02-23"
 description: "Mit dem kostenlosen Kontingent für AWS bekommt man immer eine aktive AWS Codepipeline pro Monat und 100 Minuten AWS Codebuild pro Monat, mit denen man eine CI/CD Pipeline für eine GatsbyJS Seite erstellen kann."
 category: "Web-Development"
 tags: ["AWS", "CodeBuild", "CodePipeline"]
-image: "./statische-website-mit-codebuild-cicd-pipeline.jpg"
+image: "../../../../../static/assets/img/postImg/statische-website-mit-codebuild-cicd-pipeline.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

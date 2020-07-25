@@ -5,7 +5,7 @@ date: "2020-07-21"
 description: "Managing your own newsletter is crucial for creating a sustainable online-business. With E-Mails you can build a relationsship with your audience and engage with them so they will drive some nice traffic to your new post or whatever you just have published and want to promote."
 category: "Web-Development"
 tags: ["Gatsby", "Mailchimp", "React","Newsletter"]
-image: "./mailchimp_signup_gatsbyjs.jpg"
+image: "../../../../../static/assets/img/postImg/mailchimp_signup_gatsbyjs.jpg"
 caption: "by USGS on Unsplash"
 author: "Max Dietrich"
 ---

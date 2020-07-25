@@ -5,7 +5,7 @@ date: "2019-06-03"
 description: "Hier findest du das Geoportal Deutschland und alle Geoportale der sechzehn Bundesländer mit Links kompakt und alphabetisch geordnet."
 category: "GIS"
 tags: ["Web-GIS", "Geodaten"]
-image: "./geoportal-deutschland-und-bundeslaender.jpg"
+image: "../../../../../static/assets/img/postImg/geoportal-deutschland-und-bundeslaender.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

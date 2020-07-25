@@ -5,7 +5,7 @@ date: "2018-04-23"
 description: "In this post you will find a list of several free, open-source and proprietary GIS-software options."
 category: "GIS"
 tags: []
-image: "./open-source-proprietary-software-options.jpg"
+image: "../../../../../static/assets/img/postImg/gis-software-optionen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

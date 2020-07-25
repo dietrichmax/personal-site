@@ -5,7 +5,7 @@ date: "2018-05-06"
 description: "Die Universität bietet attraktive Weiterbildungsmöglichkeiten für Geoinformatik"
 category: "GIS"
 tags: ["Geoinformatik", "Weiterbildung"]
-image: "./unigis-weiterbildung-geoinformatik.jpg"
+image: "../../../../../static/assets/img/postImg/unigis-weiterbildung-geoinformatik.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

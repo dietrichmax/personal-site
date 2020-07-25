@@ -5,7 +5,7 @@ date: "2020-02-20"
 description: "In general there are two possibilies to use Google Adsense on your GatsbyJS website Auto Ads and custom display blocks.Depending on whether you choose to include Adsense ads on certain spots or whether you will leave this job to the Google AI, you can choose one/and or the other."
 category: "Web-Development"
 tags: ["GatsbyJS", "Adsense", "React"]
-image: "./gatsby-js-google-adsense.jpg"
+image: "../../../../../static/assets/img/postImg/gatsby-js-google-adsense.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"

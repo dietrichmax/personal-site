@@ -5,7 +5,7 @@ date: "2019-04-28"
 description: "ArcGIS, Google Maps, MySQL, FME, AutoCAD Map3D und Softwarebibliotheken fallen alle in die Kategorie GIS-Software, auch wenn mit jeder Software unterschiedliche Prozesse gehandhabt werden."
 category: "GIS"
 tags: []
-image: "./gis-software-kategorien.jpg"
+image: "../../../../../static/assets/img/postImg/gis-software-kategorien.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"

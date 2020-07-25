@@ -5,7 +5,7 @@ date: "2019-04-11"
 description: "The current location is determined via satellite navigation, real-time localization and via the connection to a spatial database, geodata is displayed at the current location. This can create significant added value in many scenarios."
 category: "GIS"
 tags: ["AR"]
-image: "./gis-and-ar.jpg"
+image: "../../../../../static/assets/img/postImg/gis-und-ar.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

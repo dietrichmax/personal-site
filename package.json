@@ -18,7 +18,8 @@
     "lint:md": "remark content/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
-    "create-env": "printenv > .env.production"
+    "create-env": "printenv > .env.production",
+    "img-optimize": "py ./src/utils/resize_images.py"
   },
   "dependencies": {
     "@enzsft/react-cookie-consents": "^1.0.0",

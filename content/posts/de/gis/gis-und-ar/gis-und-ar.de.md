@@ -5,7 +5,7 @@ date: "2019-04-11"
 description: "Über Satellitennavigation und Echtzeit-Lokalisierung wird der aktuelle Standort ermittelt und über die Verbindung zu einer räumlichen Datenbank, werden Geodaten am momentanen Standort eingeblendet"
 category: "GIS"
 tags: ["AR"]
-image: "./gis-und-ar.jpg"
+image: "../../../../../static/assets/img/postImg/gis-und-ar.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

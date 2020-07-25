@@ -5,7 +5,7 @@ date: "2018-04-23"
 description: "Liste mit Open Source, kostenloser und kostenpflichtiger GIS Software Optionen"
 category: "GIS"
 tags: ["Software"]
-image: "./gis-software-optionen.jpg"
+image: "../../../../../static/assets/img/postImg/gis-software-optionen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

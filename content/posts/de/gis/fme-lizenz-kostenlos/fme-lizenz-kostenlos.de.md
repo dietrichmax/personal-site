@@ -5,7 +5,7 @@ date: "2019-04-22"
 description: "FME (Feature Manipulation Engine) ist ein mächtiges und das meistgenutzte Spatial ETL-Tool zur Migration und Bearbeitung von Geodaten."
 category: "GIS"
 tags: ["FME", "Geodaten"]
-image: "./fme-lizenz-kostenlos.jpg"
+image: "../../../../../static/assets/img/postImg/fme-lizenz-kostenlos.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

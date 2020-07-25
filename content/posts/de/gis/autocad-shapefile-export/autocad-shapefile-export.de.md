@@ -5,7 +5,7 @@ date: "2018-05-07"
 description: "Die Universität bietet attraktive Weiterbildungsmöglichkeiten für Geoinformatik"
 category: "GIS"
 tags: ["CAD", "AutoCAD", "Shapefile"]
-image: './autocad-map-3d-shapefile-export.jpg'
+image: '../../../../../static/assets/img/postImg/autocad-map-3d-shapefile-export.jpg'
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

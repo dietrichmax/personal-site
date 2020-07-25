@@ -5,7 +5,7 @@ date: "2019-05-19"
 description: "Navigation devices, smartphones and weather forecasts are dependent on satellites and without these we have to rely on some services that make our everyday life easier."
 category: "GIS"
 tags: ["Remote Sensing"]
-image: "./remote-sensing-image-classification.jpg"
+image: "../../../../../static/assets/img/postImg/fernerkundung-und-bildklassifikation.webp"
 caption: "by USGS on Unsplash"
 author: "Max Dietrich"
 ---

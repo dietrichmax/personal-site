@@ -5,7 +5,7 @@ date: "2018-04-12"
 description: "Geodata is data with a spatial reference that can be used, among other things, in a Geographic Information System ."
 category: "GIS"
 tags: ["Geodata"]
-image: "./what-are-geodata.jpg"
+image: "../../../../../static/assets/img/postImg/was-sind-geodaten.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

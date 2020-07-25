@@ -5,7 +5,7 @@ date: "2019-05-20"
 description: "Für alle die noch nicht die entsprechenden Anlaufstellen für aktuelle Satellitenbilder kennen, gibt es hier ein paar weiterführende Links bei denen man weltweite Satellitenbilder größtenteils kostenlos downloaden kann."
 category: "GIS"
 tags: ["Fernerkundung", "Geodaten"]
-image: "./hochaufloesende-satellitenbilder-downloaden.jpg"
+image: "../../../../../static/assets/img/postImg/hochaufloesende-satellitenbilder-downloaden.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

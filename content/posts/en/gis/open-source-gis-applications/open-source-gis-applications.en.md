@@ -5,7 +5,7 @@ date: "2019-04-24"
 description: ""
 category: "GIS"
 tags: ["Web-GIS"]
-image: "./open-source-gis-applications.jpg"
+image: "../../../../../static/assets/img/postImg/open-source-web-gis-anwendungen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

@@ -5,7 +5,7 @@ date: "2019-10-01"
 description: "Der Migrationsprozess von Wordpress nach Gatsby mit vielen hilfreichen Tipps und Tricks."
 category: "Web-Development"
 tags: ["React", "GatsbyJS", "Javascript","Wordpress"]
-image: "./gatsby-wordpress-migration.jpg"
+image: "../../../../../static/assets/img/postImg/gatsby-wordpress-migration.jpg"
 caption: "Gatsby"
 published: "yes"
 author: "Max Dietrich"

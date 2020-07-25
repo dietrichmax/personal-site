@@ -5,7 +5,7 @@ date: "2019-02-25"
 description: ""
 category: "GIS"
 tags: ["Jobs"]
-image: "./gis-jobboersen.jpg"
+image: "../../../../../static/assets/img/postImg/gis-jobboersen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

@@ -5,7 +5,7 @@ date: "2020-01-15"
 description: "A geographic information system or GIS is a system for displaying and processing geodata, i.e. data to which a spatial position has been assigned."
 category: "GIS"
 tags: ["Geodata"]
-image: "./what-is-gis.jpg"
+image: "../../../../../static/assets/img/postImg/was-ist-gis.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

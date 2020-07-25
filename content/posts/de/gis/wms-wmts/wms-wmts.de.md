@@ -5,7 +5,7 @@ date: "2019-03-02"
 description: "Grundsätzlich ist ein WMS - Abkürzung für Web Map Service - eine Schnittstelle zum Abrufen von digitalen Karten über das Internet."
 category: "GIS"
 tags: ["WMS", "Web-GIS"]
-image: "./wms-wmts.jpg"
+image: "../../../../../static/assets/img/postImg/wms-wmts.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

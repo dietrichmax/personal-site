@@ -5,7 +5,7 @@ date: "2019-04-24"
 description: "Du möchtest wissen mit welchen Open-Source Web-GIS-Anwendungen Geodaten über das Internet geteilt werden? Dann erfährst du hier mehr"
 category: "GIS"
 tags: ["Web-GIS",]
-image: "./open-source-web-gis-anwendungen.jpg"
+image: "../../../../../static/assets/img/postImg/open-source-web-gis-anwendungen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

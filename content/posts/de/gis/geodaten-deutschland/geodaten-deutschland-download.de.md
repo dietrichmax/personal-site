@@ -5,7 +5,7 @@ date: "2018-04-23"
 description: "Hier findest du kostenlose online Geodaten für alle Bundesländer in Deutschland, Satellitenbilder, DEM und mehr."
 category: "GIS"
 tags: ["Geodaten", "Open-Data"]
-image: "./geodaten-deutschland-download.jpg"
+image: "../../../../../static/assets/img/postImg/geodaten-deutschland-download.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

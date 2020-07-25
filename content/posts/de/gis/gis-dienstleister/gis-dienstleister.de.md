@@ -5,7 +5,7 @@ date: "2018-05-07"
 description: "Hier findest du ein Verzeichnis für Firmen die irgendwie was mit GIS am Hut haben."
 category: "GIS"
 tags: []
-image: "./gis-firmen-und-dienstleister.jpg"
+image: "../../../../../static/assets/img/postImg/gis-firmen-und-dienstleister.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

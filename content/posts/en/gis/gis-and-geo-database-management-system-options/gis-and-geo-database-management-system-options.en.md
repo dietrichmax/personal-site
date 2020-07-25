@@ -5,7 +5,7 @@ date: "2019-04-14"
 description: "With the ever increasing amount of data, the question arises at some point how it can be managed effectively. GIS databases are used here."
 category: "GIS"
 tags: ["SQL", "Database"]
-image: "./gis-database-options.jpg"
+image: "../../../../../static/assets/img/postImg/gis-und-geo-datenbanken.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

@@ -5,7 +5,7 @@ date: "2019-04-20"
 description: "Das Shapefile-Format ist ein allgemeines Format zum Speichern von Vektor-Daten"
 category: "GIS"
 tags: ["Geodaten", "Shapefile"]
-image: "./was-ist-ein-shapefile.jpg"
+image: "../../../../../static/assets/img/postImg/was-ist-ein-shapefile.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

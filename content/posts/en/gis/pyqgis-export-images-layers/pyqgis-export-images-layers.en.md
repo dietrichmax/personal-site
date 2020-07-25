@@ -5,7 +5,7 @@ date: "2020-01-29"
 description: "With the help of PyQGIS processes such as the export of images for all layers from a map can be automated."
 category: "GIS"
 tags: ["PyQGIS", "QGIS", "Python", "API"]
-image: "./pyqgis-export-images-layers.jpg"
+image: "../../../../../static/assets/img/postImg/pyqgis-layer-als-bilder-exportieren.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

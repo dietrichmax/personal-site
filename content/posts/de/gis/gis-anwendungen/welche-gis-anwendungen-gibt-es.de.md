@@ -5,7 +5,7 @@ date: "2019-02-28"
 description: "Um mit digitalen Karten bzw. Informationen (Geodaten) arbeiten zu können, wird ein Geoinformationssystem ( GIS ) eingesetzt. Mit diesem GIS können Geodaten erfasst, bearbeitet, analysiert und ansprechend dargestellt werden."
 category: "GIS"
 tags: []
-image: "./gis-anwendungen.jpg"
+image: "../../../../../static/assets/img/postImg/gis-anwendungen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

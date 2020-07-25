@@ -5,7 +5,7 @@ date: "2019-10-24"
 description: "OpenLayers is a JavaScript library that makes it relatively easy to visualize geodata in web applications (Web GIS)."
 category: "GIS"
 tags: ["Web-GIS", "Open-Layers", "API","Javascript"]
-image: "./openlayers-javascript-web-map.jpg"
+image: "../../../../../static/assets/img/postImg/openlayers-javascript-web-map.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

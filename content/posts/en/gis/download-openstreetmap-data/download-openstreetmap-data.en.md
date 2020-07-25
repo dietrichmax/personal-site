@@ -5,7 +5,7 @@ date: "2019-04-29"
 description: "OpenStreetMap is the largest international project that aims to create a free world map."
 category: "GIS"
 tags: ["OpenStreetMap", "Geodata"]
-image: "./download-openstreetmap-data.jpg"
+image: "../../../../../static/assets/img/postImg/openstreetmap-daten-downloaden.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

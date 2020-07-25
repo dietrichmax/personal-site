@@ -5,7 +5,7 @@ date: "2019-04-29"
 description: "QGIS is the most commonly used free and open source GIS software. QGIS is constantly being developed by volunteers and fundraising and is a very good alternative to priority GIS software."
 category: "GIS"
 tags: ["QGIS", "Python", "API"]
-image: "./free-ways-learn-qgis.jpg"
+image: "../../../../../static/assets/img/postImg/qgis-lernen.jpg"
 caption: "Photo by USGS on Unsplash"
 author: "Max Dietrich"
 ---

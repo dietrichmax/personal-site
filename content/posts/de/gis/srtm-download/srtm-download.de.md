@@ -5,7 +5,7 @@ date: "2019-04-20"
 description: "Derek Watkins hat eine einfache und benutzerfreundliche Oberfläche zum Herunterladen von 30-Meter-SRTM-Daten entwickelt. Um 30-Meter-SRTM Tiles herunterzuladen, muss man nur auf den gewünschten Bereich Zoomen und die gewünschte Kachel anklicken"
 category: "GIS"
 tags: ["Fernerkundung"]
-image: "./srtm-download.jpg"
+image: "../../../../../static/assets/img/postImg/srtm-download.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

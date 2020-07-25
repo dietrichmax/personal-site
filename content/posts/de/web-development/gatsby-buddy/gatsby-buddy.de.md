@@ -5,7 +5,7 @@ date: "2020-02-09"
 description: "Der Build und Deploy Prozess für eine Gatsby Website kann mit jedem Push an ein GitHub Repository mit einer Buddy CI /CD pipeline automatisiert werden."
 category: "Web-Development"
 tags: ["GatsbyJS", "Javascript", "GitHub", "CI/CD"]
-image: "./gatsby-cli-automatisierung-mit-buddy.jpg"
+image: "../../../../../static/assets/img/postImg/gatsby-cli-automatisierung-mit-buddy.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"

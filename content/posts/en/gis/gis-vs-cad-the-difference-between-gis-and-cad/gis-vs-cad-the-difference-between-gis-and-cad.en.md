@@ -5,7 +5,7 @@ date: "2019-02-15"
 description: ""
 category: "GIS"
 tags: ["CAD", "Geodata"]
-image: "./gis-vs-cad.jpg"
+image: "../../../../../static/assets/img/postImg/gis-vs-cad.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

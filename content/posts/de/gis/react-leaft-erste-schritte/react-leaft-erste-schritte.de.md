@@ -5,7 +5,7 @@ date: "2020-01-18"
 description: "Leaflet ist eine freie JavaScript-Bibliothek mit der Web-GIS-Anwendungen erstellt werden können. Leaflet verwendet dafür HTML5, CSS3 und ist mit allen geläufigen Browsern kompatibel."
 category: "GIS"
 tags: ["Web-GIS", "React", "Leaflet", "Javascript", "API"]
-image: "./react-leaflet-erste-schritte.jpg"
+image: "../../../../../static/assets/img/postImg/react-leaflet-erste-schritte.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

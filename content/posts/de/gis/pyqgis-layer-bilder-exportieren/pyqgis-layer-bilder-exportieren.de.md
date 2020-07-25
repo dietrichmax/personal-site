@@ -5,7 +5,7 @@ date: "2020-01-29"
 description: "Mithilfe von PyQGIS können Prozesse, wie zum Beispiel das Exportieren von Bildern für alle Ebene aus einer Karte automatisiert werden."
 category: "GIS"
 tags: ["PyQGIS", "QGIS", "Python", "API"]
-image: "./pyqgis-layer-als-bilder-exportieren.jpg"
+image: "../../../../../static/assets/img/postImg/pyqgis-layer-als-bilder-exportieren.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

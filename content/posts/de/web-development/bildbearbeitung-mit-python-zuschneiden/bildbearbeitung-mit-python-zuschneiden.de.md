@@ -5,7 +5,7 @@ date: "2020-02-05"
 description: "So bearbeitest du deine Bilder mit einem kleinen Python-Skript."
 category: "Web-Development"
 tags: ["Python", "Bildbearbeitung"]
-image: "./bildbearbeitung-mit-python.jpg"
+image: "../../../../../static/assets/img/postImg/bildbearbeitung-mit-python.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"
@@ -107,9 +107,7 @@ for file in glob.iglob('path/to/images/*.jpg'):
 
 Um das Skript nicht jedes mal manuell ausführen zu müssen kann man in "package.json" noch folgendes ergänzen.
 ```json
-    "develop": "py ./src/utils/scripts/resize_images.py && gatsby develop",
-    "build": "py ./src/utils/scripts/resize_images.py && gatsby build",
+    "img-optimize": "py ./src/utils/resize_images.py"
 ```
 
-Somit kann man mit ```npm run develop``` alle Bilder optimieren und den Development-Server starten.
-Mit ```npm run build``` werden automatisch die Bilder optimiert und ein Build ausgeführt.
+Somit kann man mit ```npm run img-optimize``` alle Bilder automatisch optimieren.

@@ -5,7 +5,7 @@ date: "2019-04-20"
 description: "Podcasts are a great way to keep up to date with current developments. Best of all, you can listen to podcasts practically anywhere."
 category: "GIS"
 tags: ["Podcasts"]
-image: "./gis-podcasts.jpg"
+image: "../../../../../static/assets/img/postImg/gis-podcasts.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

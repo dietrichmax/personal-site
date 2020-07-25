@@ -5,7 +5,7 @@ date: "2019-04-20"
 description: "The shapefile format is a general format for storing vector GIS-data. Shapefiles can store non-topological vector data together with the associated attribute data."
 category: "GIS"
 tags: ["Geodata", "Shapefile"]
-image: "./what-is-shapefile.jpg"
+image: "../../../../../static/assets/img/postImg/was-ist-ein-shapefile.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

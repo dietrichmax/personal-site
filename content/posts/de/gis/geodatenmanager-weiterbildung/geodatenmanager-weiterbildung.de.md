@@ -5,7 +5,7 @@ date: "2018-04-15"
 description: "Als Geodatenmanager/in sind Sie verantwortlich für den Aufbau und die Verwaltung einer GDI und erstellen Karten aus räumlichen Basisinformationen"
 category: "GIS"
 tags: ["Geodatenmanager", "Geoinformatik", "Weiterbildung"]
-image: "./geodatenmanager-weiterbildung-uni-tuebingen.jpg"
+image: "../../../../../static/assets/img/postImg/geodatenmanager-weiterbildung-uni-tuebingen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

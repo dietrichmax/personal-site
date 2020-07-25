@@ -5,7 +5,7 @@ date: "2019-03-12"
 description: "Hier findest du eine Anleitung, wie du auf Windows PostgreSQL installieren kannst, die Datenbank mit PostGIS erweiterst und die PostgreSQL Datenbank mit QGIS verbindest."
 category: "GIS"
 tags: ["PostgreSQL", "PostGIS", "QGIS"]
-image: "./postgres-postgis.jpg"
+image: "../../../../../static/assets/img/postImg/postgres-postgis.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

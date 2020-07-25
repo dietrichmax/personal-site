@@ -5,7 +5,7 @@ date: "2020-01-16"
 description: ""
 category: "GIS"
 tags: ["Fernerkundung", "Geodaten"]
-image: "./extraktion-von-hohl-und-vollformen-aus-einem-raster-dgm.jpg"
+image: "../../../../../static/assets/img/postImg/extraktion-von-hohl-und-vollformen-aus-einem-raster-dgm.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

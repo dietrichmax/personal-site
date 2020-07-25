@@ -5,7 +5,7 @@ date: "2019-03-09"
 description: "In diesem Beitrag findest du Open Source Web Feature Service Server mit denen du deinen eigenen Web Feature Service ( WFS ) einrichten kannst und Geodaten, die du in deinem GIS über WFS kostenlos einbinden kannst."
 category: "GIS"
 tags: ["WFS", "Web-GIS"]
-image: "./web-feature-service.jpg"
+image: "../../../../../static/assets/img/postImg/web-feature-service.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

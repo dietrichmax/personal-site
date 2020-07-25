@@ -5,7 +5,7 @@ date: "2020-02-16"
 description: "Mit AWS (und insbesondere dem kostenlosen AWS-Kontigent) hat man die Möglichkeit eine statische Webseite mit einer Custom Domain für ein paar Cent im Monat auf S3 inkl. CludFront CDN zu hosten."
 category: "Web-Development"
 tags: ["AWS", "S3", "CloudFront", "Route 53"]
-image: "./statische-website-auf-s3-mit-cloudfront-hosten.jpg"
+image: "../../../../../static/assets/img/postImg/static-website-aws-cloudfront.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"

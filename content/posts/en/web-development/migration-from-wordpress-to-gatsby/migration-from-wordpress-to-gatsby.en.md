@@ -5,7 +5,7 @@ date: "2019-10-01"
 description: "After I encountered technical difficulties with Wordpress time and again, for example when it came to implementing individual layouts, designs or the like, I decided to look for another CMS"
 category: "Web-Development"
 tags: ["React", "GatsbyJS", "Javascript","Wordpress"]
-image: "./gatsby-wordpress-migration.jpg"
+image: "../../../../../static/assets/img/postImg/gatsby-wordpress-migration.jpg"
 caption: "Gatsby"
 author: "Max Dietrich"
 ---

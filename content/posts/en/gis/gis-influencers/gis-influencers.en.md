@@ -5,7 +5,7 @@ date: "2019-03-14"
 description: "Here you will find a list of the most famous GIS influencers with links to their web profiles, so that you always stay up to date."
 category: "GIS"
 tags: []
-image: "./gis-influencers.jpg"
+image: "../../../../../static/assets/img/postImg/gis-influencers.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

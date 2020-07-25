@@ -5,7 +5,7 @@ date: "2020-01-15"
 description: "GIS bezeichnet ein System zur Darstellung und Bearbeitung von Geodaten, also Daten, denen eine räumliche Lage zugewiesen wurde."
 category: "GIS"
 tags: ["Geodaten"]
-image: "./was-ist-gis.jpg"
+image: "../../../../../static/assets/img/postImg/was-ist-gis.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

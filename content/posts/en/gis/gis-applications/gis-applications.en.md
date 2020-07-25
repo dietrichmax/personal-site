@@ -5,7 +5,7 @@ date: "2019-02-28"
 description: "In order to be able to work with digital maps or information geodata, a geographic information system is used. With GIS, geodata can be recorded, edited, analyzed and displayed appropriately. ."
 category: "GIS"
 tags: []
-image: "./gis-applications.jpg"
+image: "../../../../../static/assets/img/postImg/gis-anwendungen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

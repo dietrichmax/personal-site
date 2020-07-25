@@ -5,7 +5,7 @@ date: "2020-07-21"
 description: "Der Aufbau deines eigenen Newsletters ist entscheidend für ein nachhaltiges Online-Business. Mit E-Mails kannst Du eine Beziehung zu Deinem Publikum aufbauen und Traffic gezielt auf bestimmten Content lenken."
 category: "Web-Development"
 tags: ["Gatsby", "Mailchimp", "React","Newsletter"]
-image: "./mailchimp_signup_gatsbyjs.jpg"
+image: "../../../../../static/assets/img/postImg/mailchimp_signup_gatsbyjs.jpg"
 caption: "by USGS on Unsplash"
 author: "Max Dietrich"
 ---

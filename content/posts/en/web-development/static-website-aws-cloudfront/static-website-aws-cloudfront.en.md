@@ -5,7 +5,7 @@ date: "2020-02-16"
 description: "With AWS (and in particular the free AWS contingent) you have the option of a static website with a custom domain for a few Hosting cents a month including CDN via CloudFront and CI/CD integration."
 category: "Web-Development"
 tags: ["AWS", "S3", "CloudFront", "Route 53"]
-image: "./static-website-aws-cloudfront.jpg"
+image: "../../../../../static/assets/img/postImg/static-website-aws-cloudfront.jpg"
 caption: "by USGS on Unsplash"
 author: "Max Dietrich"
 ---

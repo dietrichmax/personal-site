@@ -5,7 +5,7 @@ date: "2019-04-05"
 description: "Volunteering offers a good opportunity to develop personally and professionally. You can also get involved in a good cause. You can later pack the projects into a pretty portfolio and thus stand out from the competition with extra points when applying."
 category: "GIS"
 tags: ["Jobs"]
-image: "./gis-voluntary-work.jpg"
+image: "../../../../../static/assets/img/postImg/gis-freiwilligenarbeit.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 author: "Max Dietrich"
 ---

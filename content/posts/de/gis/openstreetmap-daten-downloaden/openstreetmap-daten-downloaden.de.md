@@ -5,7 +5,7 @@ date: "2019-04-29"
 description: "OpenStreetMap ist das größte internationale Projekt, dass sich mit dem Ziel beschäftigt eine freie Weltkarte zu erschaffen."
 category: "GIS"
 tags: ["OpenStreetMap","Geodaten"]
-image: "./openstreetmap-daten-downloaden.jpg"
+image: "../../../../../static/assets/img/postImg/openstreetmap-daten-downloaden.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"

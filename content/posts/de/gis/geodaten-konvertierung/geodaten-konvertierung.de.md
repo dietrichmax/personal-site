@@ -5,7 +5,7 @@ date: "2019-05-26"
 description: "Oft steht man vor der Aufgabe Geodaten zu transformieren, konvertieren oder in ein anderes Format umzuwandeln. Hierzu gibt es im Internet zahlreiche Anwendungen, mit denen man das erledigen kann."
 category: "GIS"
 tags: ["Koordinatentransformation", "Geodaten"]
-image: "./gk-utm-koordinaten-umrechnen.jpg"
+image: "../../../../../static/assets/img/postImg/gk-utm-koordinaten-umrechnen.jpg"
 caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"
@@ -38,7 +38,7 @@ Um Dateien korrekt transformieren zu können muss zuerst die passende Gitterdate
 
 Mit diesem Tool kann man nun Geodaten in unterschiedliche Koordinatensysteme transformieren bzw. konvertieren oder einfach nur Formate umwandeln.
 
-## [](#unterst%C3%BCtzte-dateiformate)Unterstützte Dateiformate
+## Unterstützte Dateiformate
 
 Mit GeoTKF können
 
@@ -62,7 +62,7 @@ Das passende Dateiformat kann man über ein Dropdown Menü bei "Quelle: Dateifor
 
 ![Unterstütze Dateiformate](./GeoTKF-Formate.png "Unterstütze Dateiformate")
 
-## [](#auswahl-der-epsg-kennung-und-des-koordinaten--bzw-bezugssystems)Auswahl der EPSG Kennung und des Koordinaten- bzw. Bezugssystems
+## Auswahl der EPSG Kennung und des Koordinaten- bzw. Bezugssystems
 
 Anschließend kann ein eine einzelne Datei oder ein ganzer Ordner selektiert werden, in dem alle passenden Dateiformate dann transformiert bzw. konvertiert werden.
 

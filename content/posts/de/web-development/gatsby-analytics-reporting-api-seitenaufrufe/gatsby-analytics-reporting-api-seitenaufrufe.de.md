@@ -5,7 +5,7 @@ date: "2020-01-19"
 description: "Bei fast allen Content-Management-Systemen gibt es eine relativ einfache Möglichkeit die Seitenaufrufe einer bestimmten Seite anzuzeigen, da diese im Hintergrund protokolliert werden. Bei Gatsby ist das leider nicht der Fall, weshalb man hier eine andere Lösung braucht"
 category: "Web-Development"
 tags: ["GatsbyJS", "Javascript", "Google Analytics", "API"]
-image: "./seitenaufrufe-mit-gatsby-und-google-analytics-reporting-api-anzeigen.jpg"
+image: "../../../../../static/assets/img/postImg/seitenaufrufe-mit-gatsby-und-google-analytics-reporting-api-anzeigen.jpg"
 caption: "by Campaign Creators on Unsplash"
 published: "yes"
 author: "Max Dietrich"

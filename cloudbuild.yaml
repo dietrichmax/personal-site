@@ -11,8 +11,7 @@ steps:
     id: Installing dependencies...
     entrypoint: npm
     args: ["install"] 
-    waitFor:
-      - Restoring cache...
+    waitFor: ['-'] # Begin immediately
 
 # Create file with env-variables
   - name: node:10.16.0

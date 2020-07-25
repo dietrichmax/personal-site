@@ -34,7 +34,7 @@ if (
       resolve: `gatsby-source-google-analytics-reporting-api`,
       options: {
         email: process.env.CLIENT_EMAIL,
-        key: process.env.PRIVATE_KEY,
+        key: process.env.PRIVATE_KEY.replace(/\\n/g, "\n"),
         viewId: process.env.GA_VIEW_ID,
         startDate: `2020-03-01`,
       }
@@ -73,7 +73,8 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-preact`,
+    "gatsby-plugin-preact",
+    "netlify-plugin-gatsby-cache",
     {
       resolve: `gatsby-plugin-sass`,
       options: {

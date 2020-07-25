@@ -65,9 +65,9 @@ steps:
   - name: gcr.io/cloud-builders/gsutil
     id: Saving ./.cache...
     args: [
-            "-m", "rsync", "-r", "-d", "-J", ".cache/**/*", "gs://cache.gis-netzwerk.com/.cache",
-            "-m", "rsync", "-r", "-d", "-J", "public/**/*", "gs://cache.gis-netzwerk.com/public",
-            "-m", "rsync", "-r", "-d", "-J", "node_modules/**/*", "gs://cache.gis-netzwerk.com/node_modules"
+            "-m", "rsync", "-r", "-d", "-J", ".cache/", "gs://cache.gis-netzwerk.com/.cache",
+            "-m", "rsync", "-r", "-d", "-J", "public/", "gs://cache.gis-netzwerk.com/public",
+            "-m", "rsync", "-r", "-d", "-J", "node_modules/", "gs://cache.gis-netzwerk.com/node_modules"
           ]
     waitFor:
       - Building Gatsby site...

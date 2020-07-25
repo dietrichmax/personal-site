@@ -1,7 +1,10 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json", 
+      "**/.*", 
+      "**/node_modules/**"],
     "headers": [
       {
         "source": "**/*",
@@ -48,6 +51,109 @@
           }
         ]
       }
+    ],
+    "redirects": [ 
+      {
+        "source": "/statische-website-mit-codebuild-ci-cd-pipeline",
+        "destination": "/web-development/gatsby-aws-codebuild-codepipeline/",
+        "type": 301
+      },
+      {
+        "source": "/google-adsense-auf-einer-gatsby-js-seite-integrieren",
+        "destination": "/web-development/gatsby-js-google-adsense/",
+        "type": 301
+      },
+      {
+        "source": "/statische-webseite-mit-eigener-domain-aws-s-3-und-cloud-front-hosten",
+        "destination": "/web-development/statische-website-aws-cloudfront/",
+        "type": 301
+      },
+      {
+        "source": "/gatsby-cli-automatisierung-mit-git-hub-und-buddy",
+        "destination": "/web-development/gatsby-buddy/",
+        "type": 301
+      },
+      {
+        "source": "/skalieren-und-zuschneiden-von-bildern-mit-python",
+        "destination": "/web-development/bildbearbeitung-mit-python-zuschneiden",
+        "type": 301
+      },
+      {
+        "source": "/py-qgis-layer-als-bilder-exportieren",
+        "destination": "/gis/pyqgis-layer-bilder-exportieren/",
+        "type": 301
+      },
+      {
+        "source": "/erste-schritte-mit-react-und-leaflet",
+        "destination": "/gis/react-leaft-erste-schritte/",
+        "type": 301
+      },
+      {
+        "source": "/was-ist-gis",
+        "destination": "/gis/was-ist-gis/",
+        "type": 301
+      },
+      {
+        "source": "/gis-was-ist-gis",
+        "destination": "/gis/was-ist-gis/",
+        "type": 301
+      },
+      {
+        "source": "/geoinformationssystem-was-ist-gis",
+        "destination": "/gis/was-ist-gis/",
+        "type": 301
+      },
+      {
+        "source": "/geoportal-deutschland-und-geoportale-der-deutschen-bundeslander",
+        "destination": "/gis/geoportal-deutschland-und-geoportale-der-deutschen-bundeslander/",
+        "type": 301
+      },
+      {
+        "source": "/geodaten-transformation-konvertierung-und-formatumwandlung",
+        "destination": "/gis/geodaten-transformation-konvertierung-und-formatumwandlung/",
+        "type": 301
+      },
+      {
+        "source": "/open-street-map-daten-als-shapefiles-downloaden",
+        "destination": "/gis/open-street-map-daten-als-shapefiles-downloaden/",
+        "type": 301
+      },
+      {
+        "source": "/qgis-kostenlos-lernen",
+        "destination": "/gis/qgis-kostenlos-lernen/",
+        "type": 301
+      },
+      {
+        "source": "/8-open-source-web-gis-anwendungen",
+        "destination": "/gis/8-open-source-web-gis-anwendungen/",
+        "type": 301
+      },
+      {
+        "source": "/fme-lizenz-kostenlos-fur-den-privaten-gebrauch",
+        "destination": "/gis/fme-lizenz-kostenlos-fur-den-privaten-gebrauch/",
+        "type": 301
+      },
+      {
+        "source": "/was-ist-ein-shapefile-shp-dbf-und-shx",
+        "destination": "gis/was-ist-ein-shapefile-shp-dbf-shx",
+        "type": 301
+      },
+      {
+        "source": "/hochaufloesende-satellitenbilder-downloaden-fernerkundung",
+        "destination": "/gis/hochaufloesende-satellitenbilder-downloaden/",
+        "type": 301
+      },
+      {
+        "source": "/fernerkundung-satellitenbilder-downloaden/",
+        "destination": "/gis/hochaufloesende-satellitenbilder-downloaden/",
+        "type": 301
+      },
+      {
+        "source": "/nuetzliche-links/liste-gis-software/",
+        "destination": "/gis/gis-software-optionen/",
+        "type": 301
+      }
     ]
   }
+  
 }

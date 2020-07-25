@@ -16,11 +16,11 @@ import { useStaticQuery, graphql } from 'gatsby';
     let title;
     let description;
     let image
-    let postURL;
+    let slug;
     let date;
     
-    const language = lang;
-    
+    slug = urljoin(config.siteUrl, config.pathPrefix, postPath);
+
     if (postSEO) {
       const postMeta = postNode.frontmatter;
       ({ title } = postMeta);
@@ -28,18 +28,18 @@ import { useStaticQuery, graphql } from 'gatsby';
         ? postMeta.description
         : postNode.excerpt;
 
-      image = "https://gis-netzwerk.com" + postMeta.image.childImageSharp.fluid.src;
+      image = "https://gis-netzwerk.com" + data.imageSharp.fluid.src;
 
-      postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
+      
     } else {
-      title = config.siteTitle;
-      description = config.siteDescription;
-      image = config.siteLogo;
-      // image = "https://gis-netzwerk.com" + props.data.imageSharp.fluid.src;
-    }
-    
 
+      const pageMeta = postNode.frontmatter ? postNode.frontmatter : null;
+      title = pageMeta.title ? pageMeta.title : config.siteTitle;
+      description = pageMeta.description ? pageMeta.description : config.siteDescription;
+      image = "https://gis-netzwerk.com" + props.data.imageSharp.fluid.src;
+    }
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
+
     const schemaOrgJSONLD = [
       {
         "@context": "http://schema.org",
@@ -59,7 +59,7 @@ import { useStaticQuery, graphql } from 'gatsby';
               "@type": "ListItem",
               position: 1,
               item: {
-                "@id": postURL,
+                "@id": slug,
                 name: title,
                 image: image,
               }
@@ -69,13 +69,13 @@ import { useStaticQuery, graphql } from 'gatsby';
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          url: postURL,
+          url: slug,
           name: title,
           alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
           headline: title,
           datePublished: date,
           dateModifed: date,
-          mainEntityOfPage: postURL,
+          mainEntityOfPage: slug,
           image: {
             "@type": "ImageObject",
             url: image,
@@ -92,7 +92,10 @@ import { useStaticQuery, graphql } from 'gatsby';
     return (
       
       <Helmet>
-        <html lang={language}/>
+          <title>{`${title} | ${config.siteTitle}`}</title>
+          <link rel="canonical" href={`${config.siteUrl}${slug}`} />
+
+        <html lang={lang}/>
         
         {/* General tags */}
         <meta name="title" content={title} />
@@ -106,7 +109,7 @@ import { useStaticQuery, graphql } from 'gatsby';
         </script>
 
         {/* OpenGraph tags */}
-        <meta property="og:url" content={postSEO ? postURL : blogURL} />
+        <meta property="og:url" content={slug} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />

@@ -28,16 +28,32 @@ import { useStaticQuery, graphql } from 'gatsby';
         ? postMeta.description
         : postNode.excerpt;
 
-      image = "https://gis-netzwerk.com" + data.imageSharp.fluid.src;
+      image = "https://gis-netzwerk.com" + postMeta.image.childImageSharp.fluid.src;
 
       
     } else {
-
-      const pageMeta = postNode.frontmatter ? postNode.frontmatter : null;
-      title = pageMeta.title ? pageMeta.title : config.siteTitle;
-      description = pageMeta.description ? pageMeta.description : config.siteDescription;
-      image = "https://gis-netzwerk.com" + props.data.imageSharp.fluid.src;
+      if (postNode) {
+        const pageMeta = postNode.frontmatter
+        title = pageMeta.title
+        description = pageMeta.description
+      } else {
+        title = config.siteTitle;
+        description = config.siteDescription;
+      }
+      image = config.siteLogo;
+      const data = useStaticQuery(graphql`
+          {
+            imageSharp(fluid: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
+              fluid(maxWidth: 1920, maxHeight: 1080) {
+                src
+                ...GatsbyImageSharpFluid_withWebp_noBase64
+              }
+            }
+          }
+      `)
+      image = "https://gis-netzwerk.com" + data.imageSharp.fluid.src;
     }
+
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
 
     const schemaOrgJSONLD = [
@@ -131,16 +147,4 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 export default SEO;
 
-
-
-export const query = graphql`
-  {
-    imageSharp(fluid: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
-      fluid(maxWidth: 1920, maxHeight: 1080) {
-        src
-        ...GatsbyImageSharpFluid_withWebp_noBase64
-      }
-    }
-  }
-`
 

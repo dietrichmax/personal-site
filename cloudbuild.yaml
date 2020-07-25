@@ -11,8 +11,7 @@ steps:
     id: Installing dependencies...
     entrypoint: npm
     args: ["install"] 
-    waitFor: 
-    - Restoring cache...
+    waitFor: ['-'] # Begin immediately
 
 # Create file with env-variables
   - name: node:10.16.0
@@ -33,8 +32,7 @@ steps:
     - "FIREBASE_PROJECT_ID=${_FIREBASE_PROJECT_ID}"
     - "FIREBASE_STORAGE_BUCKET=${_FIREBASE_STORAGE_BUCKET}"
     - "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true"
-    waitFor: 
-    - Restoring cache...
+    waitFor: ['-'] # Begin immediately
 
  # Install Firebase   
   - name: node:10.16.0 
@@ -43,7 +41,7 @@ steps:
     args: ["install", "firebase-tools"]
     waitFor:
       - Installing dependencies...
-
+/workspace
 # Gatsby build
   - name: node:10.16.0
     id: Building Gatsby site...

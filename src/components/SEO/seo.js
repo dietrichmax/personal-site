@@ -43,7 +43,7 @@ import { useStaticQuery, graphql } from 'gatsby';
       image = config.siteLogo;
       const data = useStaticQuery(graphql`
           {
-            imageSharp(fixed: {originalName: {eq: "GIS-Netzwerk-Logo_1080.png"}}) {
+            imageSharp(fixed: {originalName: {eq: "GIS-Netzwerk-Logo.png"}}) {
               fixed(width: 1920) {
                 src
                 ...GatsbyImageSharpFixed_withWebp_noBase64

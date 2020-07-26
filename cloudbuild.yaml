@@ -6,7 +6,6 @@ steps:
     waitFor: ["-"]
     args:
     - "--bucket=gs://staging.$PROJECT_ID.appspot.com"
-    - "--key=resources-$( checksum cloudbuild.yaml )"
     waitFor: ["-"] # Begin immediately
 
 # Install dependencies
@@ -72,7 +71,6 @@ steps:
     id: Saving cache...
     args:
     - '--bucket=gs://staging.$PROJECT_ID.appspot.com'
-    - '--key=resources-$( checksum cloudbuild.yaml )'
     - '--path=.cache'
     - '--path=public'
     - '--path=node_modules'

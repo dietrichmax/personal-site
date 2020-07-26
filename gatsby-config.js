@@ -75,6 +75,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     "gatsby-plugin-preact",
     "netlify-plugin-gatsby-cache",
+    "gatsby-remark-unwrap-images",
     {
       resolve: `gatsby-plugin-sass`,
       options: {

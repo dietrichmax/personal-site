@@ -5,7 +5,8 @@ steps:
     id: Restoring cache...
     waitFor: ["-"]
     args:
-    - "--bucket=gs://cache.gis-netzwerk.com"
+    - "--bucket=gs://staging.$PROJECT_ID.appspot.com"
+    - "--key=resources-$( checksum cloudbuild.yaml )"
     waitFor: ["-"] # Begin immediately
 
 # Install dependencies
@@ -70,7 +71,8 @@ steps:
   - name: 'gcr.io/$PROJECT_ID/save_cache'
     id: Saving cache...
     args:
-    - '--bucket=gs://cache.gis-netzwerk.com'
+    - '--bucket=gs://staging.$PROJECT_ID.appspot.com'
+    - '--key=resources-$( checksum cloudbuild.yaml )'
     - '--path=.cache'
     - '--path=public'
     - '--path=node_modules'

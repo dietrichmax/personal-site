@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet'
 import Pagination from '../components/Pagination';
 import config from "../../data/SiteConfig";
 import * as S from '../components/ListWrapper/styled';
+import LocalizedLink from '../components/LocalizedLink';
 
 const Blog = props => {
   const postList = props.data.allMdx.edges;
@@ -17,7 +18,7 @@ const Blog = props => {
   const isLast = currentPage === numPages;
   const categoryslug = category.toLowerCase()
   const prevPage =
-    currentPage - 1 === 1 ? `/${categoryslug}/` : `${categoryslug}/${currentPage - 1}`;
+    currentPage - 1 === 1 ? `/${categoryslug}` : `/${categoryslug}/${currentPage - 1}`;
   const nextPage = `/${categoryslug}/${currentPage + 1}`;
 
 

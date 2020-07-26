@@ -11,7 +11,7 @@ published: "yes"
 author: "Max Dietrich"
 ---
 
-At the beginning i used super large images from [ESA](https://www.esa.int/ "European Space Agency") which had a file size up to 53mb with 8926x5663 resultion.
+At the beginning i used super large images from [ESA](https://www.esa.int/ "European Space Agency") which had a file size up to 53mb with 8926x5663 resolution.
 
 Overall the website took about 1 GB of storage in Github and on my hosting which isn't really optimized but i didn't really care because of free plans and due to the fact that i hadn't that much posts so the build time for Gatsby was also still fine for me.
 
@@ -75,8 +75,6 @@ Only thing left to do is to save the new image.
 From the folder 'static/assets/img/postImg/' i am using the images for my posts. With **optimize=True** you can save some more kilobytes.
 
 Overall the Pyton script now optimizes all jpg-images in your specified folder, which means they will be resized to a width of 1920 px while the ratio will be kept and saved to a new destination folder.
-
-With **if width > basewidth:** you can check if the original width of the image is greater than your desired width and only resize it if thats true.
 
 The whole script looks like this:
 ```py

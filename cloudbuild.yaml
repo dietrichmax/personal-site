@@ -73,9 +73,9 @@ steps:
     args:
     - '--bucket=gs://cache.gis-netzwerk.com'
     - '--key=resources-$( checksum cloudbuild.yaml )'
-    - '--path=.cache'
-    - '--path=public'
-    - '--path=node_modules'
+    - '--path=.cache/.cache'
+    - '--path=.cache/public'
+    - '--path=.cache/node_modules'
     waitFor:
       - Building Gatsby site...
     

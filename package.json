@@ -64,7 +64,6 @@
     "gatsby-remark-lazy-load": "^1.0.2",
     "gatsby-remark-prismjs": "^3.5.10",
     "gatsby-remark-relative-images": "^0.3.0",
-    "gatsby-remark-unwrap-images": "^1.0.2",
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-source-google-analytics-reporting-api": "^1.0.2",
     "gatsby-source-instagram-all": "^2.0.5",

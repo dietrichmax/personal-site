@@ -170,7 +170,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Creating Posts List for categories and its Pagination  
   const tagSet = new Set();
   const categorySet = new Set();
-  const postsPerPage = 10;
+  const postsPerPage = 15;
   const langs = Object.keys(locales).length;
   const numPages = Math.ceil(postsTotal / langs / postsPerPage);
 

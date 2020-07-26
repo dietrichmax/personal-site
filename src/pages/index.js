@@ -109,7 +109,7 @@ export const query = graphql`
       }
       sort: { fields: [frontmatter___date], order: DESC }
       skip: 1
-      limit: 10
+      limit: 15
     ) {
       edges {
         node {

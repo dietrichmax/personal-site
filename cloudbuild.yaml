@@ -5,7 +5,7 @@ steps:
     id: Restoring cache...
     waitFor: ["-"]
     args:
-    - "--bucket=gs://cache.gis-netzwerk.com/"
+    - "--bucket=gs://cache.gis-netzwerk.com"
     waitFor: ["-"] # Begin immediately
 
 # Install dependencies

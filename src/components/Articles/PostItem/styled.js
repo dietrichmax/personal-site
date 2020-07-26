@@ -26,7 +26,6 @@ export const PostItemWrapper = styled.section`
   :hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,.5);
     -webkit-transform: translateY(-10px) scale(1);
-    transform: translateY(-10px) scale(1);
   }
   border-radius: 0.75rem;
   ${media.greaterThan('small')` 

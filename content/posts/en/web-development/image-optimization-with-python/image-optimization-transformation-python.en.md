@@ -2,7 +2,7 @@
 layout: "post"
 title: "Image optimization and transformation with Python"
 date: "2020-07-25"
-description: "With proper optimized images you can save ton of bandwidth, hosting storage and build time"
+description: "How to use Python to automatically optimize and transform your images to save bandwidth, storage and build time."
 category: "Web-Development"
 tags: ["Python", "GatsbyJS", "Javascript"]
 image: "../../../../../static/assets/img/postImg/bildbearbeitung-mit-python.jpg"

@@ -1,8 +1,9 @@
 { 
   "home": "Home",
 
-  "hello": "GIS-Netzwerk",
-  "subline": "GIS and Web-Development.",
+  "defaultTitle": "GIS-Netzwerk",
+  "defaultDescription": "GIS-Netzwerk is an information platform for geoinformatics, GIS, geodata and web development.",
+  
   "latestPosts": "Latest posts",
   "category": "Category", 
   "allPosts": "All Posts",

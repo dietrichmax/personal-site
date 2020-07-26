@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import { useStaticQuery, graphql } from 'gatsby';
+import useTranslations from '../useTranslations';
 
 
   const SEO = ({
@@ -19,6 +20,7 @@ import { useStaticQuery, graphql } from 'gatsby';
     let slug;
     let date;
     
+    const { defaultDescription } = useTranslations();
     slug = postPath ? slug :  urljoin(config.siteUrl, config.pathPrefix);
 
     if (postSEO) {
@@ -38,7 +40,7 @@ import { useStaticQuery, graphql } from 'gatsby';
         description = pageMeta.description
       } else {
         title = config.siteTitle;
-        description = config.siteDescription;
+        description = defaultDescription;
       }
       image = config.siteLogo;
       const data = useStaticQuery(graphql`

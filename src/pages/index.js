@@ -14,18 +14,19 @@ import { Helmet } from 'react-helmet'
 export const Subline = styled.div`
   text-align: center !important;
 `
-const Index = ({ data: { allMdx, HeroImg} }) => {
-  // useTranslations is aware of the global context (and therefore also "locale")
-  // so it'll automatically give back the right translations
-  const {
-    home,
-  } = useTranslations();
+const Index = ({ data: { allMdx, HeroImg}, locale }) => {
+
+  
+  
+  
+  const { home } = useTranslations();
+
   const postList = allMdx.edges;
   const heroimg = HeroImg.edges;
   
   return (
     <div className="homepage" >
-      <SEO />
+      <SEO lang={locale} />
       <Helmet>
         <title>{`${home} | ${config.siteTitle}`}</title>
         <link rel="canonical" href={`${config.siteUrl}`} />

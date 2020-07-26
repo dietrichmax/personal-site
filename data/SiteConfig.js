@@ -6,7 +6,7 @@ const config = {
   siteLogo: "static/logos/GIS-Netzwerk-Logo.png", // Logo used for SEO and manifest.
   siteUrl: "https://gis-netzwerk.com/", // Domain of your website without pathPrefix.
   pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "GIS-Netzwerk ist eine Informationsplattform für GIS, Geodaten und Web-Development.", // Website description used for RSS feeds/meta description tag.
+  siteDescription: "GIS-Netzwerk ist eine Informationsplattform für Geoinformatik, GIS, Geodaten und Web-Development.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD.MM.YYYY", // Date format for display.

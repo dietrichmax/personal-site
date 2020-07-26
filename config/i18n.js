@@ -7,17 +7,13 @@ module.exports = {
     locale: `de-GER`,
     dateFormat: `DD-MM-YYYY`,
     siteLanguage: `de`,
-    ogLanguage: `de-GER`,
-    defaultTitle: `Gatsby Starter with multi-language and CMS`,
-    defaultDescription: `Gatsby example site using Markdown, i18n and CMS`,
+    ogLanguage: `de-GER`
   },
   en: {
     path: `en`,
     locale: `en-US`,
     dateFormat: `DD/MM/YYYY`,
     siteLanguage: `en`,
-    ogLanguage: `en_US`,
-    defaultTitle: `Gatsby Starter with multi-language and CMS`,
-    defaultDescription: `Gatsby example site using Markdown, i18n and CMS`,
+    ogLanguage: `en_US`
   },
 }

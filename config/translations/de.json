@@ -1,8 +1,10 @@
 { 
   "home": "Startseite",
 
-  "hello": "GIS-Netzwerk",
-  "subline": "Geoinformatik, GIS und Web-Development.",
+  
+  "defaultTitle": "GIS-Netzwerk",
+  "defaultDescription": "GIS-Netzwerk ist eine Informationsplattform für Geoinformatik, GIS, Geodaten und Web-Development.",
+
   "latestPosts": "Neueste Beiträge",
   "category": "Kategorie", 
   "allPosts": "Alle Beiträge",

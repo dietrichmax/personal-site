@@ -44,11 +44,7 @@
     background: grey;
     color: black;
   }
-  .gatsby-highlight pre[class="language-yaml"]::before {
-    content: "yaml";
-    background: grey;
-    color: black;
-  }
+
   .gatsby-highlight pre[class="language-html"]::before {
     content: "html";
     background: grey;

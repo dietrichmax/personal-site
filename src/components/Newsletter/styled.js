@@ -68,7 +68,8 @@ export const Button = styled.button`
         props.background ? props.background : 'hsla(0,0%,90.2%,.95)'};
     :hover {
         box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
-        transform: translateY(0) scale(1);
+    }
+        
 `
 
 export const Emoji = styled(Emojione)`

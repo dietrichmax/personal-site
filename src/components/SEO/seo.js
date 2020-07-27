@@ -19,6 +19,7 @@ import useTranslations from '../useTranslations';
     let slug;
     let date;
     
+    const language = lang ? lang : "DE"
     const { defaultDescription } = useTranslations();
     slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
 
@@ -109,10 +110,10 @@ import useTranslations from '../useTranslations';
     return (
       
       <Helmet>
-          <title>{`${title} | ${config.siteTitle}`}</title>
-          <link rel="canonical" href={`${config.siteUrl}${slug}`} />
+        <title>{`${title} | ${config.siteTitle}`}</title>
+        <link rel="canonical" href={`${config.siteUrl}${slug}`} />
 
-        <html lang={lang}/>
+        <html lang={language}/>
         
         {/* General tags */}
         <meta name="title" content={title} />

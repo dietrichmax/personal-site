@@ -15,10 +15,9 @@ import Subscribe from "../components/Newsletter/Subscribe.js"
 export const Subline = styled.div`
   text-align: center !important;
 `
-const Index = ({ data: { allMdx, HeroImg}, props }) => {
+const Index = ({ data: { allMdx, HeroImg}, locale }) => {
 
-  const { pageContext } = props;
-  const { slug, locale } = pageContext;
+
   
   
   const { home } = useTranslations();

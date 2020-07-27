@@ -11,7 +11,6 @@ import useTranslations from '../useTranslations';
     postPath,
     postSEO,
     lang,
-    props,
     
   }) => {
     let title;
@@ -19,11 +18,10 @@ import useTranslations from '../useTranslations';
     let image
     let slug;
     let date;
-    let language;
     
     const { defaultDescription } = useTranslations();
     slug = postPath ? slug :  urljoin(config.siteUrl, config.pathPrefix);
-
+    lang = lang ? lang : "DE"
     if (postSEO) {
       const postMeta = postNode.frontmatter;
       ({ title } = postMeta);
@@ -58,6 +56,7 @@ import useTranslations from '../useTranslations';
     }
 
     const blogURL = urljoin(config.siteUrl, config.pathPrefix);
+
 
     const schemaOrgJSONLD = [
       {

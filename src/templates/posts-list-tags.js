@@ -27,7 +27,6 @@ const Blog = props => {
       <SEO lang={locale} />
       <Helmet>
         <title>{`${tag} | ${config.siteTitle}`}</title>
-        <link rel="canonical" href={`${config.siteUrl}/${tagslug}/`} />
       </Helmet>
       <S.TagListing >
         <S.ListWrapper>

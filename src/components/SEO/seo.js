@@ -19,6 +19,7 @@ import useTranslations from '../useTranslations';
     let image
     let slug;
     let date;
+    let language;
     
     const { defaultDescription } = useTranslations();
     slug = postPath ? slug :  urljoin(config.siteUrl, config.pathPrefix);

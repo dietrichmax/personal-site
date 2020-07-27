@@ -1,6 +1,5 @@
 {
   "menuHeaderItems": [
-    { "name": "GIS", "link": "/gis" },
-    { "name": "Web-Development", "link": "/web-development" }
+    { "name": "", "link": "" }
   ]
 }

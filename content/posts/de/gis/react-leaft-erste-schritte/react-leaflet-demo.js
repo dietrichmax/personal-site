@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import hash from 'object-hash';
 import "./leafletmap.css"
-//import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 
 class OnlineKoordinaten extends React.Component {    
     constructor() {

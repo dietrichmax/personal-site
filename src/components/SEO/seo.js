@@ -107,8 +107,7 @@ import useTranslations from '../useTranslations';
     return (
       
       <Helmet>
-          <title>{`${title} | ${config.siteTitle}`}</title>
-          <link rel="canonical" href={`${config.siteUrl}${slug}`} />
+        <title>{`${title} | ${config.siteTitle}`}</title>
 
         <html lang={lang}/>
         

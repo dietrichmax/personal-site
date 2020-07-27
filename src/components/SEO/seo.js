@@ -20,7 +20,7 @@ import useTranslations from '../useTranslations';
     let date;
     
     const { defaultDescription } = useTranslations();
-    slug = postPath ? slug :  urljoin(config.siteUrl, config.pathPrefix);
+    slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
     lang = lang ? lang : "DE"
     
     if (postSEO) {

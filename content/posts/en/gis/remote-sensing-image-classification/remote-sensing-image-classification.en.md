@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Remote sensing and image classification"
 date: "2019-05-19"
 description: "Navigation devices, smartphones and weather forecasts are dependent on satellites and without these we have to rely on some services that make our everyday life easier."

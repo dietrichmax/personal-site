@@ -71,9 +71,9 @@ steps:
     id: Saving cache...
     args:
     - '--bucket=gs://staging.$PROJECT_ID.appspot.com'
-    - '--path=/.cache'
-    - '--path=/public'
-    - '--path=/node_modules'
+    - '--path=.cache/'
+    - '--path=public/'
+    - '--path=node_modules/'
     waitFor:
       - Building Gatsby site...
     

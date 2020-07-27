@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "WMS - Web Map Service und WMTS"
 date: "2019-03-02"
 description: "Grundsätzlich ist ein WMS - Abkürzung für Web Map Service - eine Schnittstelle zum Abrufen von digitalen Karten über das Internet."

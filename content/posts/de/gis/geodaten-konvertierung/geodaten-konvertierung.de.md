@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geodaten - Transformation, Konvertierung und Formatumwandlung"
 date: "2019-05-26"
 description: "Oft steht man vor der Aufgabe Geodaten zu transformieren, konvertieren oder in ein anderes Format umzuwandeln. Hierzu gibt es im Internet zahlreiche Anwendungen, mit denen man das erledigen kann."

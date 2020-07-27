@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Geodata - What are geodata?"
 date: "2018-04-12"
 description: "Geodata is data with a spatial reference that can be used, among other things, in a Geographic Information System ."

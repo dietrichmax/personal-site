@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Google Adsense auf einer GatsbyJS Seite integrieren"
 date: "2020-02-20"
 description: "Grundsätzlich gibt es zwei Möglichkeiten Google Adsense auf einer Website zu nutzen und zwar mit Auto ads und einzelnen Anzeigenblöcken. Jenachdem ob man Adsense-Anzeigen an bestimmten Stellen einbinden möchte oder diesen Job die Google KI erledigen lassen will, kann man sich das eine und/oder das andere aussuchen."

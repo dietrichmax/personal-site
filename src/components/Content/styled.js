@@ -6,6 +6,7 @@ export const Content = styled.section`
   
 
   
+
   
   
   margin: auto auto 4rem auto;

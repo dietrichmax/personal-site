@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "PostgreSQL mit PostGIS installieren und in QGIS einrichten"
 date: "2019-03-12"
 description: "Hier findest du eine Anleitung, wie du auf Windows PostgreSQL installieren kannst, die Datenbank mit PostGIS erweiterst und die PostgreSQL Datenbank mit QGIS verbindest."

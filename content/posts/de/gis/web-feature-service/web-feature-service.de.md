@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Web Feature Service - Open Source WFS"
 date: "2019-03-09"
 description: "In diesem Beitrag findest du Open Source Web Feature Service Server mit denen du deinen eigenen Web Feature Service ( WFS ) einrichten kannst und Geodaten, die du in deinem GIS über WFS kostenlos einbinden kannst."

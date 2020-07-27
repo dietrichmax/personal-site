@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS-Software Kategorien - Welche Arten von GIS-Software gibt es?"
 date: "2019-04-28"
 description: "ArcGIS, Google Maps, MySQL, FME, AutoCAD Map3D und Softwarebibliotheken fallen alle in die Kategorie GIS-Software, auch wenn mit jeder Software unterschiedliche Prozesse gehandhabt werden."

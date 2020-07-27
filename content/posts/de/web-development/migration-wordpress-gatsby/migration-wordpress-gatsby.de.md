@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Migration von WordPress nach Gatsby"
 date: "2019-10-01"
 description: "Der Migrationsprozess von Wordpress nach Gatsby mit vielen hilfreichen Tipps und Tricks."

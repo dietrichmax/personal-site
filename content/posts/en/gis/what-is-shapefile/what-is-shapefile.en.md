@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "What is a shapefile? .shp, .dbf and .shx"
 date: "2019-04-20"
 description: "The shapefile format is a general format for storing vector GIS-data. Shapefiles can store non-topological vector data together with the associated attribute data."

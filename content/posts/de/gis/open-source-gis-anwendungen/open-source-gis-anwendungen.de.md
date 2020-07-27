@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "8 Open-Source Web-GIS Anwendungen"
 date: "2019-04-24"
 description: "Du möchtest wissen mit welchen Open-Source Web-GIS-Anwendungen Geodaten über das Internet geteilt werden? Dann erfährst du hier mehr"

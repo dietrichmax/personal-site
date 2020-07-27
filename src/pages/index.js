@@ -10,6 +10,7 @@ import * as S from '../components/ListWrapper/styled';
 import HeroItem from '../components/HeroItem';
 import config from "../../data/SiteConfig";
 import { Helmet } from 'react-helmet' 
+import Subscribe from "../components/Newsletter/Subscribe.js"
 
 export const Subline = styled.div`
   text-align: center !important;
@@ -94,6 +95,7 @@ const Index = ({ data: { allMdx, HeroImg}, locale }) => {
 
         <br />
       </S.IndexListing>
+     {/*} <Subscribe style={{margin:'auto'}} color="var(--text-dark)" />*/}
     </div>
   );
 };
@@ -109,7 +111,7 @@ export const query = graphql`
       }
       sort: { fields: [frontmatter___date], order: DESC }
       skip: 1
-      limit: 15
+      limit: 12
     ) {
       edges {
         node {

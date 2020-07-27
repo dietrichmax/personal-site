@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS Freiwilligenarbeit - Mit GIS Von Zuhause die Welt verbessern"
 date: "2019-04-05"
 description: "GIS Freiwilligenarbeit bietet eine gute Möglichkeit sich persönlich und beruflich weiterzuentwickeln."

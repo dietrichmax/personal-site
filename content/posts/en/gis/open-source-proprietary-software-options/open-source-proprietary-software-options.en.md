@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS software options - free, open-source and proprietary"
 date: "2018-04-23"
 description: "In this post you will find a list of several free, open-source and proprietary GIS-software options."

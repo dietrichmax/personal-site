@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geodaten Deutschland online - Download kostenlos"
 date: "2018-04-23"
 description: "Hier findest du kostenlose online Geodaten für alle Bundesländer in Deutschland, Satellitenbilder, DEM und mehr."

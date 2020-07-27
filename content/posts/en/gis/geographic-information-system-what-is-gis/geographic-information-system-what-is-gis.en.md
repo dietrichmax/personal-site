@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Geographic information system - What is GIS?"
 date: "2020-01-15"
 description: "A geographic information system or GIS is a system for displaying and processing geodata, i.e. data to which a spatial position has been assigned."

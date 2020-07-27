@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GK - UTM Koordinaten umrechnen - Transformationstool"
 date: "2019-04-14"
 description: "Das Gauß-Krüger-System (GK) wird damit nun auch in Bayern abgelöst und durch UTM ersetzt. Wie du Geodaten von GK nach UTM transfomieren kannst erfährst du hier"

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Download OpenStreetMap data as shapefiles"
 date: "2019-04-29"
 description: "OpenStreetMap is the largest international project that aims to create a free world map."

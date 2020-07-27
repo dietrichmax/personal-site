@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Satellite imagery download - Remote sensing"
 date: "2019-05-20"
 description: "For those who do not yet know the corresponding contact points for current satellite images, there are a few further links from which you can download global satellite images for the most part free of charge."

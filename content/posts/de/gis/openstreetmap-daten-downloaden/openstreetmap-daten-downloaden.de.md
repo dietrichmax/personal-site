@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "OpenStreetMap Daten als Shapefiles downloaden"
 date: "2019-04-29"
 description: "OpenStreetMap ist das größte internationale Projekt, dass sich mit dem Ziel beschäftigt eine freie Weltkarte zu erschaffen."

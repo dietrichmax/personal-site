@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS Software Optionen - Open Source, kostenlos und kostenpflichtig"
 date: "2018-04-23"
 description: "Liste mit Open Source, kostenloser und kostenpflichtiger GIS Software Optionen"

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "AutoCAD Map 3D Shapefile Export"
 date: "2018-05-07"
 description: "Die Universität bietet attraktive Weiterbildungsmöglichkeiten für Geoinformatik"

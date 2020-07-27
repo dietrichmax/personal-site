@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Free FME-licence for private use"
 date: "2019-04-22"
 description: "FME (Feature Manipulation Engine) is a powerful and the most used spatial ETL tool for the migration and processing of spatial data and non-spatial data"

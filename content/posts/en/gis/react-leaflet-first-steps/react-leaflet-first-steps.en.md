@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "First steps with Leaflet and ReactJS"
 date: "2020-01-18"
 description: "Leaflet is a free JavaScript library that can be used to create web GIS applications. Leaflet uses HTML5, CSS3 and is compatible with all common browsers."

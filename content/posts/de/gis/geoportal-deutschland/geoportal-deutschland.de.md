@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geoportal Deutschland und Geoportale der deutschen Bundesländer"
 date: "2019-06-03"
 description: "Hier findest du das Geoportal Deutschland und alle Geoportale der sechzehn Bundesländer mit Links kompakt und alphabetisch geordnet."

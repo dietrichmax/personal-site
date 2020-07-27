@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geodatenmanager Weiterbildung - Universität Tübingen"
 date: "2018-04-15"
 description: "Als Geodatenmanager/in sind Sie verantwortlich für den Aufbau und die Verwaltung einer GDI und erstellen Karten aus räumlichen Basisinformationen"

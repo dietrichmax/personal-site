@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geographie und GIS Blogs"
 date: "2019-03-01"
 description: ""

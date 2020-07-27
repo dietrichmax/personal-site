@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Seitenaufrufe mit Gatsby und Google Analytics Reporting API anzeigen"
 date: "2020-01-19"
 description: "Bei fast allen Content-Management-Systemen gibt es eine relativ einfache Möglichkeit die Seitenaufrufe einer bestimmten Seite anzuzeigen, da diese im Hintergrund protokolliert werden. Bei Gatsby ist das leider nicht der Fall, weshalb man hier eine andere Lösung braucht"

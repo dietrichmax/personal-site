@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Using Google Adsense with GatsbyJS "
 date: "2020-02-20"
 description: "In general there are two possibilies to use Google Adsense on your GatsbyJS website Auto Ads and custom display blocks.Depending on whether you choose to include Adsense ads on certain spots or whether you will leave this job to the Google AI, you can choose one/and or the other."

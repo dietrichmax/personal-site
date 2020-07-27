@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: Statische Webseite mit eigener Domain, AWS S3 und CloudFront hosten
 date: "2020-02-16"
 description: "Mit AWS (und insbesondere dem kostenlosen AWS-Kontigent) hat man die Möglichkeit eine statische Webseite mit einer Custom Domain für ein paar Cent im Monat auf S3 inkl. CludFront CDN zu hosten."

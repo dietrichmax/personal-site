@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Export QGIS layers as images with PyQGIS"
 date: "2020-01-29"
 description: "With the help of PyQGIS processes such as the export of images for all layers from a map can be automated."

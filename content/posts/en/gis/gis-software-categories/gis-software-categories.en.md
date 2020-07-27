@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS Software Categories - What Types of GIS Software Are There?"
 date: "2019-04-28"
 description: "ArcGIS, Google Maps, MySQL, FME, AutoCAD Map3D and software libraries all fall into the GIS software category, even if different processes are handled with each software."

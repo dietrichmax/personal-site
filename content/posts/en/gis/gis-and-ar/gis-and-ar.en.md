@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS and Augmented Reality (AR)"
 date: "2019-04-11"
 description: "The current location is determined via satellite navigation, real-time localization and via the connection to a spatial database, geodata is displayed at the current location. This can create significant added value in many scenarios."

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "The most famous geospatial and GIS influencers"
 date: "2019-03-14"
 description: "Here you will find a list of the most famous GIS influencers with links to their web profiles, so that you always stay up to date."

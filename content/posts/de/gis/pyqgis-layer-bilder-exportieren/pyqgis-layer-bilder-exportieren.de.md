@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "PyQGIS - Layer als Bilder exportieren"
 date: "2020-01-29"
 description: "Mithilfe von PyQGIS können Prozesse, wie zum Beispiel das Exportieren von Bildern für alle Ebene aus einer Karte automatisiert werden."

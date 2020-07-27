@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geodaten - Was sind Geodaten?"
 date: "2018-04-12"
 description: "Geodaten sind Informationen mit einem räumlichen Bezug, die unter anderem in einem GIS genutzt werden können."

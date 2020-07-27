@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS Firmen und GIS Dienstleister Verzeichnis"
 date: "2018-05-07"
 description: "Hier findest du ein Verzeichnis für Firmen die irgendwie was mit GIS am Hut haben."

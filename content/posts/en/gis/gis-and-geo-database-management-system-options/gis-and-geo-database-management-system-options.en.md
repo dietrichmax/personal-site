@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS- und Geo-database management system options"
 date: "2019-04-14"
 description: "With the ever increasing amount of data, the question arises at some point how it can be managed effectively. GIS databases are used here."

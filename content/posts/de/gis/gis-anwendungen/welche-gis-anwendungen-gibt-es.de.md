@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS Anwendungen - Welche GIS-Anwendungen gibt es?"
 date: "2019-02-28"
 description: "Um mit digitalen Karten bzw. Informationen (Geodaten) arbeiten zu können, wird ein Geoinformationssystem ( GIS ) eingesetzt. Mit diesem GIS können Geodaten erfasst, bearbeitet, analysiert und ansprechend dargestellt werden."

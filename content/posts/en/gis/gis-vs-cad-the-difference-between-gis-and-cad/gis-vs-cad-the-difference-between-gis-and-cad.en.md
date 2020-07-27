@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS vs CAD - The difference between GIS and CAD"
 date: "2019-02-15"
 description: ""

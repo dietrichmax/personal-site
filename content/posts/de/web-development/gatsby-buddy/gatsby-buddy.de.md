@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Gatsby CLI Automatisierung mit GitHub und Buddy"
 date: "2020-02-09"
 description: "Der Build und Deploy Prozess für eine Gatsby Website kann mit jedem Push an ein GitHub Repository mit einer Buddy CI /CD pipeline automatisiert werden."

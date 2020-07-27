@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Geo und GIS Podcasts um auf dem aktuellen Stand zu bleiben"
 date: "2019-04-20"
 description: "Podcasts sind eine großartige Möglichkeit, um bei aktuellen Entwicklungen auf dem aktuellsten Stand zu bleiben. Das Beste von allem ist, dass man Podcasts praktisch überall nebenbei hören kann."

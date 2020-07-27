@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Migration from WordPress to Gatsby"
 date: "2019-10-01"
 description: "After I encountered technical difficulties with Wordpress time and again, for example when it came to implementing individual layouts, designs or the like, I decided to look for another CMS"

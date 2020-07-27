@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "FME-Lizenz kostenlos für den privaten Gebrauch"
 date: "2019-04-22"
 description: "FME (Feature Manipulation Engine) ist ein mächtiges und das meistgenutzte Spatial ETL-Tool zur Migration und Bearbeitung von Geodaten."

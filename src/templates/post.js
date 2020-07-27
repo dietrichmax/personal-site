@@ -60,7 +60,6 @@ export const DateElement = styled.div`
   color: rgb(108, 117, 125);
   font-size: 1.2rem;
   margin-top: 8px;
-
 `
 export const ViewCounterWrapper = styled.div`    
 color: rgb(108, 117, 125);

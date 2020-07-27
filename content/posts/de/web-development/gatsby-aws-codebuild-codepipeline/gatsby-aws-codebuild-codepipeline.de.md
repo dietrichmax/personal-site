@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: Statische Website mit Codebuild CI/CD Pipeline
 date: "2020-02-23"
 description: "Mit dem kostenlosen Kontingent für AWS bekommt man immer eine aktive AWS Codepipeline pro Monat und 100 Minuten AWS Codebuild pro Monat, mit denen man eine CI/CD Pipeline für eine GatsbyJS Seite erstellen kann."

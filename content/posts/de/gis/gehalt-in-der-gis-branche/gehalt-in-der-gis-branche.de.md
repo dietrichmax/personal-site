@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Gehalt und Jobs in der GIS Branche"
 date: "2019-03-15"
 description: "Du fragst dich welche GIS Jobs es überhaupt gibt, was man macht und wieviel man verdient? Dann bist du hier richtig."

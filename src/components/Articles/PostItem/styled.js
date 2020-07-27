@@ -13,7 +13,6 @@ export const PostItemLink = styled(LocalizedLink)`
 `;
 
 export const PostItemWrapper = styled.section`
-  border: 1px solid #d9d9d9!important;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
   display: flex;
   flex-direction: column;

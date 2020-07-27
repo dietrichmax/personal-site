@@ -75,12 +75,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     "gatsby-plugin-preact",
     "netlify-plugin-gatsby-cache",
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        precision: 6,
-      },
-    },
+    `gatsby-plugin-sass`,  
+    {  
+      resolve: "gatsby-plugin-use-dark-mode",  
+      options: {  
+        classNameDark: "dark-mode",  
+        classNameLight: "light-mode",  
+        storageKey: "darkMode",  
+        minify: true,  
+      },  
+    },  
     /*{ 
       resolve: `gatsby-plugin-purgecss`,
       options: {

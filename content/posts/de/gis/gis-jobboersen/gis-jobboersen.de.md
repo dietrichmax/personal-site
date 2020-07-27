@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS Jobbörsen - Auf der Suche nach einem neuen GIS Job?"
 date: "2019-02-25"
 description: ""

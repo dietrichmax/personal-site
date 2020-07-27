@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Extraktion von Hohl- und Vollformen aus einem Raster-DGM"
 date: "2020-01-16"
 description: ""

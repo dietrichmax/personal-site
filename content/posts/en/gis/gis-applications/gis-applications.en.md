@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "GIS applications - Which GIS applications are there?"
 date: "2019-02-28"
 description: "In order to be able to work with digital maps or information geodata, a geographic information system is used. With GIS, geodata can be recorded, edited, analyzed and displayed appropriately. ."

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Einfacher Download für 30-Meter SRTM Tiles"
 date: "2019-04-20"
 description: "Derek Watkins hat eine einfache und benutzerfreundliche Oberfläche zum Herunterladen von 30-Meter-SRTM-Daten entwickelt. Um 30-Meter-SRTM Tiles herunterzuladen, muss man nur auf den gewünschten Bereich Zoomen und die gewünschte Kachel anklicken"

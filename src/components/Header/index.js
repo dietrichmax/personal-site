@@ -3,7 +3,6 @@ import useTranslations from '../useTranslations';
 import Navigation from '../HeaderNavigation';
 import ButtonMenu from '../ButtonMenu';
 import Logo from '../Logo';
-
 import * as S from './styled';
 
 const Header = ({ locale, categoryColor }) => {

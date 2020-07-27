@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS- und Geo-Datenbank Managementsystem Optionen"
 date: "2019-04-14"
 description: "Mit den immer weiter wachsenden Datenmengen stellt sich irgendwann die Frage, wie diese effektiv verwaltet werden können. Hier kommen GIS-Datenbanken zum Einsatz."

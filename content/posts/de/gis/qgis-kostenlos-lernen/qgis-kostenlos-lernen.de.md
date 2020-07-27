@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "QGIS kostenlos lernen"
 date: "2019-04-29"
 description: "QGIS ist die am häufigsten verwendete freie und Open Source-GIS-Software. QGIS wird ständig von Freiwilligen und durch Fundraising weiterentwickelt und stellt eine sehr gute Alternative zu prioritärer GIS-Software dar."

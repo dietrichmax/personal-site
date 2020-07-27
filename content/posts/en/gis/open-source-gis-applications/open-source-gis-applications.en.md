@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Open-source Web-GIS applications"
 date: "2019-04-24"
 description: ""

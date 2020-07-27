@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Geo and GIS podcasts to stay up to date"
 date: "2019-04-20"
 description: "Podcasts are a great way to keep up to date with current developments. Best of all, you can listen to podcasts practically anywhere."

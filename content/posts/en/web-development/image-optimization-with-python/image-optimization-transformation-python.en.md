@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "Image optimization and transformation with Python"
 date: "2020-07-25"
 description: "How to use Python to automatically optimize and transform your images to save bandwidth, storage and build time."

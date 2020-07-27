@@ -1,8 +1,8 @@
 - id: GIS
   description: (Web-)GIS, Geodaten, Fernerkundung, Python.
-  color: '#3f51ba' 
+  color: "#3f51ba" 
   
 - id: Web-Development
   description: Javascript, Frameworks, APIs.
-  color: rgba(152,70,242,1)
+  color: "#3f90ba"
 

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: Skalieren und Zuschneiden von Bildern mit Python
 date: "2020-02-05"
 description: "So bearbeitest du deine Bilder mit einem kleinen Python-Skript."

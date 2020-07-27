@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Javascript Web-Map mit OpenLayers erstellen"
 date: "2019-10-24"
 description: "OpenLayers ist eine JavaScript-Bibliothek, die es ermöglicht relativ einfach Geodaten in Webanwendungen (=Web GIS)zu visualisiern."

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "So erstellst Du ein Mailchimp-Newsletter-Anmeldeformular für deine GatsbyJS-Site"
 date: "2020-07-21"
 description: "Der Aufbau deines eigenen Newsletters ist entscheidend für ein nachhaltiges Online-Business. Mit E-Mails kannst Du eine Beziehung zu Deinem Publikum aufbauen und Traffic gezielt auf bestimmten Content lenken."

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "How to create a Mailchimp newsletter sign-up-form for your GatsbyJS Site"
 date: "2020-07-21"
 description: "Managing your own newsletter is crucial for creating a sustainable online-business. With E-Mails you can build a relationsship with your audience and engage with them so they will drive some nice traffic to your new post or whatever you just have published and want to promote."

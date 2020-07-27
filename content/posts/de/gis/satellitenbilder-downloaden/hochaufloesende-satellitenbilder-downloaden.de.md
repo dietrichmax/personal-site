@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Hochaufloesende Satellitenbilder downloaden - Fernerkundung"
 date: "2019-05-20"
 description: "Für alle die noch nicht die entsprechenden Anlaufstellen für aktuelle Satellitenbilder kennen, gibt es hier ein paar weiterführende Links bei denen man weltweite Satellitenbilder größtenteils kostenlos downloaden kann."

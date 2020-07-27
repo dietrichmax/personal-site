@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "UNIGIS Weiterbildung - Geoinformatik"
 date: "2018-05-06"
 description: "Die Universität bietet attraktive Weiterbildungsmöglichkeiten für Geoinformatik"

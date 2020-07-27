@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "GIS und Augmented Reality (AR)"
 date: "2019-04-11"
 description: "Über Satellitennavigation und Echtzeit-Lokalisierung wird der aktuelle Standort ermittelt und über die Verbindung zu einer räumlichen Datenbank, werden Geodaten am momentanen Standort eingeblendet"

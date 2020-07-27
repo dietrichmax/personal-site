@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: "WMS - Web Map Service and WMTS"
 date: "2019-03-02"
 description: "Basically, a WMS - short for Web Map Service - is an interface for accessing digital maps over the Internet."

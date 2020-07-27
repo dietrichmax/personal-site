@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Artikel"
 title: "Was ist ein Shapefile? .shp, .dbf und .shx"
 date: "2019-04-20"
 description: "Das Shapefile-Format ist ein allgemeines Format zum Speichern von Vektor-Daten"

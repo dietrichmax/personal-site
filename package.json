@@ -59,6 +59,7 @@
     "gatsby-plugin-sharp": "^2.6.19",
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-remark-images": "^3.3.19",
     "gatsby-remark-lazy-load": "^1.0.2",
@@ -98,7 +99,8 @@
     "string-similarity": "^4.0.1",
     "styled-components": "^5.1.1",
     "styled-icons": "^10.9.0",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

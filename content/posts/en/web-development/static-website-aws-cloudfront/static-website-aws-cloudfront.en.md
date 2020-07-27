@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "Article"
 title: Host a static website with your own domain, AWS S3 and CloudFront
 date: "2020-02-16"
 description: "With AWS (and in particular the free AWS contingent) you have the option of a static website with a custom domain for a few Hosting cents a month including CDN via CloudFront and CI/CD integration."

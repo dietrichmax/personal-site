@@ -16,12 +16,12 @@ import useTranslations from '../useTranslations';
     let title;
     let description;
     let image
-    let slug;
+    //let slug;
     let date;
     
     const language = lang ? lang : "DE"
     const { defaultDescription } = useTranslations();
-    slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
+    //slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
 
     if (postSEO) {
       const postMeta = postNode.frontmatter;
@@ -111,7 +111,7 @@ import useTranslations from '../useTranslations';
       
       <Helmet>
         <title>{`${title} | ${config.siteTitle}`}</title>
-        <link rel="canonical" href={`${config.siteUrl}${slug}`} />
+        {/*<link rel="canonical" href={`${config.siteUrl}${slug}`} />*/}
 
         <html lang={language}/>
         

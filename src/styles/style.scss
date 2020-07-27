@@ -6,7 +6,6 @@
    .gatsby-highlight {
     position: relative;
     -webkit-overflow-scrolling: touch;
-    background-color: black !important;
   }
   .gatsby-highlight pre[class*="language-"] {
     -webkit-overflow-scrolling: touch;
@@ -43,7 +42,11 @@
     background: grey;
     color: black;
   }
-
+  .gatsby-highlight pre[class="language-yaml"]::before {
+    content: "md";
+    background: grey;
+    color: black;
+  }
   .gatsby-highlight pre[class="language-html"]::before {
     content: "html";
     background: grey;

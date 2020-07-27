@@ -5,11 +5,11 @@ import firebase from 'gatsby-plugin-firebase';
 require('prismjs/themes/prism-tomorrow.css');
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp();
 
 // Initialize Performance Monitoring and get a reference to the service
 const perf = firebase.performance();
-const perf = firebase.database();
+//const perf = firebase.database();
 
 
 

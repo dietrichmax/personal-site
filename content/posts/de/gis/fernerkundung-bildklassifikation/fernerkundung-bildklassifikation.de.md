@@ -5,7 +5,7 @@ date: "2019-05-19"
 description: "Navigationsgeräte, Smartphones und Wettervorhersagen sind abhängig von Satelliten und ohne diese müssten mir auf einige Dienste, die unseren Alltag erleichtern, verzichten."
 category: "GIS"
 tags: ["Fernerkundung"]
-image: "../../../../../static/assets/img/postImg/fernerkundung-und-bildklassifikation.webp"
+image: "../../../../../static/assets/img/postImg/fernerkundung-und-bildklassifikation.jpg"
 caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"

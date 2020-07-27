@@ -153,7 +153,7 @@ const Post = props => {
 export const query = graphql`
   query Post($locale: String!, $title: String!) {
     mdx(
-      frontmatter: { title: { eq: $title }, layout: {eq: "post"} }
+      frontmatter: { title: { eq: $title } }
       fields: { locale: { eq: $locale } }
     ) {
       frontmatter {

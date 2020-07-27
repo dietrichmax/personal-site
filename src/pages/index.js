@@ -17,7 +17,7 @@ export const Subline = styled.div`
 `
 const Index = ({ data: { allMdx, HeroImg}, locale }) => {
 
-
+  
   
   
   const { home } = useTranslations();

@@ -1,15 +1,14 @@
 import 'lazysizes';
 import CustomLayout from './wrapPageElement';
+import 'firebase/database';
+import "firebase/performance";
 import firebase from 'gatsby-plugin-firebase';
-
 require('prismjs/themes/prism-tomorrow.css');
 
-// Initialize Firebase
-firebase.initializeApp();
 
-// Initialize Performance Monitoring and get a reference to the service
-const perf = firebase.performance();
-const db = firebase.database();
+firebase.performance()
+
+
 
 
 

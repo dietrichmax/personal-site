@@ -15,26 +15,26 @@ export const ListWrapper = styled.section`
 export const IndexListing = styled.div`
   background-color: white;
   margin: 20px auto;
-  max-width: 61.8%;
   ${media.greaterThan('medium')`  
     padding: 20px 20px 0 20px;  
+    max-width: 61.8%;
     `}
 `
 
 export const CategoryListing = styled.div`
   background-color: white;
   margin: 80px auto;
-  max-width: 61.8%;
   ${media.greaterThan('medium')`   
     padding: 20px 20px 0 20px;  
+    max-width: 61.8%;
   `}
 `
 
 export const TagListing = styled.div`
 background-color: white;
 margin: 80px auto;
-max-width: 61.8%;
 ${media.greaterThan('medium')`   
+  max-width: 61.8%;
   padding: 20px 20px 0 20px;  
 `}
 `

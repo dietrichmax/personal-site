@@ -23,7 +23,7 @@ const Page = props => {
 
   return (
     <>
-        <SEO postNode={page} postPath={slug} lang={locale} />
+        <SEO postNode={page} lang={locale} />
         <PageWrapper ref={target}>
           <ReadingProgress target={target}/>
           <TitlePage text={page.frontmatter.title} />

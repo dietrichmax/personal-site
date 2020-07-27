@@ -184,6 +184,12 @@ module.exports = {
         plugins: [`gatsby-remark-images`,`gatsby-transformer-yaml`],
       },
     },
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://gis-netzwerk.com`,
+      },
+    },
     `gatsby-transformer-yaml`,
     {
       resolve: 'gatsby-plugin-react-leaflet',

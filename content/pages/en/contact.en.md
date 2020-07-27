@@ -6,6 +6,5 @@ date: "2019-09-30"
 author: "Max Dietrich"
 ---
 
-Do you have any questions about the website or cooperations?
-[kontakt@gis-netzwerk.com](kontakt@gis-netzwerk.com)
+Do you have any questions about the website or cooperation? kontakt@gis-netzwerk.com
 

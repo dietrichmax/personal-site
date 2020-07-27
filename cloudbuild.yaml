@@ -1,20 +1,19 @@
 steps: 
 
 # Restore cache
-  - name: "gcr.io/$PROJECT_ID/restore_cache"
-    id: Restoring cache...
-    waitFor: ["-"]
-    args:
-    - "--bucket=gs://staging.$PROJECT_ID.appspot.com"
-    waitFor: ["-"] # Begin immediately
+# - name: "gcr.io/$PROJECT_ID/restore_cache"
+#   id: Restoring cache...
+#   waitFor: ["-"]
+#   args:
+#   - "--bucket=gs://staging.$PROJECT_ID.appspot.com"
+#   waitFor: ["-"] # Begin immediately
 
 # Install dependencies
   - name: node:10.16.0
     id: Installing dependencies...
     entrypoint: npm
     args: ["install"] 
-    waitFor:
-      - Restoring cache...
+    waitFor: ["-"] # Begin immediately
 
 # Create file with env-variables
   - name: node:10.16.0
@@ -67,14 +66,14 @@ steps:
       - Building Gatsby site...
 
 # Save cache
-  - name: 'gcr.io/$PROJECT_ID/save_cache'
-    id: Saving cache...
-    args:
-    - '--bucket=gs://staging.$PROJECT_ID.appspot.com'
-    - '--path=.cache/'
-    - '--path=public/'
-    - '--path=node_modules/'
-    waitFor:
-      - Building Gatsby site...
+# - name: 'gcr.io/$PROJECT_ID/save_cache'
+#   id: Saving cache...
+#   args:
+#   - '--bucket=gs://staging.$PROJECT_ID.appspot.com'
+#   - '--path=.cache/'
+#   - '--path=public/'
+#   - '--path=node_modules/'
+#  waitFor:
+#     - Building Gatsby site...
     
 timeout: 60m0s

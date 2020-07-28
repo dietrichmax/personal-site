@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const TitleElement = styled.h1`
-max-width: 800px;
-margin: 2rem auto 2rem;
+max-width: 1000px;;
+margin: 2rem auto 0;
 text-align: center;
 font-weight: 600;
 padding: .5rem;

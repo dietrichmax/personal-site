@@ -21,7 +21,7 @@ import useTranslations from '../useTranslations';
     
     const language = lang ? lang : "DE"
     const { defaultDescription } = useTranslations();
-    //slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
+    slug = postPath ? urljoin(config.siteUrl, config.pathPrefix, slug) :  urljoin(config.siteUrl, config.pathPrefix);
 
     if (postSEO) {
       const postMeta = postNode.frontmatter;

@@ -16,7 +16,7 @@ import useTranslations from '../useTranslations';
     let title;
     let description;
     let image
-    //let slug;
+    let slug;
     let date;
     
     const language = lang ? lang : "DE"

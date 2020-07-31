@@ -3,14 +3,9 @@ import media from 'styled-media-query';
 
 export const Content = styled.section`
 
-  
-
-  
-
-  
-  
-  margin: auto auto 4rem auto;
-  max-width: 750px;
+  margin: 2rem auto 4rem;
+  background-color: white;
+  padding: 2rem;
 
   ${media.lessThan('medium')`
       margin: auto 20px 4rem 20px;

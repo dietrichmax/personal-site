@@ -16,6 +16,7 @@ export const DescriptionWrapper = styled.div`
     flex-shrink: 0;
     flex-basis: 100%;    
     max-width: 100%;
+    margin-bottom: 1rem;
 `
 
 export const InputWrapper = styled.div`
@@ -67,6 +68,7 @@ export const Button = styled.button`
     background: ${props =>
         props.background ? props.background : 'hsla(0,0%,90.2%,.95)'};
     :hover {
+        cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
     }
         

@@ -10,7 +10,8 @@ export const Subline = styled.p`
     margin: 0 !important;
 `
 export const Ad1 = styled.div`
-    margin: auto;
+    margin: 2rem auto 2rem auto;
+    max-width: 728px;
 `
 
 GPT.enableSingleRequest();
@@ -34,9 +35,9 @@ const A1 = ({ }) => {
                     {viewport: [490, 0], slot: [480, 320]},
                     {viewport: [650, 0], slot: [640, 90]},
                     {viewport: [750, 0], slot: [728, 90]},
-                    {viewport: [980, 0], slot: [750, 300]},
-                    {viewport: [1050, 0], slot: [750, 200]},
-                    {viewport: [1800, 0], slot: [750, 100]}
+                    {viewport: [980, 0], slot: [728, 300]},
+                    {viewport: [1050, 0], slot: [728, 200]},
+                    {viewport: [1800, 0], slot: [728, 90]}
                   ]}
                   
               />

@@ -71,13 +71,60 @@ module.exports = {
     `gatsby-plugin-lodash`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     "gatsby-plugin-preact",
     "netlify-plugin-gatsby-cache",
     `gatsby-plugin-sass`,  
-    `gatsby-remark-images`,
     `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-remark-images`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 710,
+              withWebp: true,
+              quality: 75,
+              backgroundColor: 'transparent',
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            }
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false,
+              removeAccents: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`],
+            },
+          },
+        ],
+      },
+    },
     {  
       resolve: "gatsby-plugin-use-dark-mode",  
       options: {  
@@ -153,44 +200,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 750,
-              withWebp: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            }
-          },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              icon: false,
-              removeAccents: true,
-            },
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
         siteUrl: `https://gis-netzwerk.com`,
       },
     },
-    `gatsby-transformer-yaml`,
     {
       resolve: 'gatsby-plugin-react-leaflet',
       options: {

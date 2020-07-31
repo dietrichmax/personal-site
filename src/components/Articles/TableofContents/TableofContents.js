@@ -7,12 +7,14 @@ import media from 'styled-media-query';
 import useTranslations from '../../useTranslations';
 
 export const ArticleToc = styled.div`    
-  padding: 10px 15px 10px;
   border-bottom: solid 2px rgba(10, 10, 10, 0.1);
-  margin: auto auto 3rem;
+  margin: auto;
   max-width: 750px;
+  padding: 2rem 2rem 1rem 2rem;
   
   ${media.lessThan('medium')`
+    margin: auto 2rem 3rem 2rem;
+    padding: 2rem 0 1rem 0;
     float: none;
     border-left: none;
     max-width: 100%;
@@ -25,6 +27,9 @@ export const ToCHeader = styled.div`
   margin-top: 0px !important;
 `
 export const ToCItem = styled.a`
+  :hover {
+    color: var(--text-light);
+  }
 `
 export const ToCContent = styled.li`
   font-size: 14px;

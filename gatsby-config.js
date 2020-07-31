@@ -76,6 +76,8 @@ module.exports = {
     "gatsby-plugin-preact",
     "netlify-plugin-gatsby-cache",
     `gatsby-plugin-sass`,  
+    `gatsby-remark-images`,
+    `gatsby-transformer-yaml`,
     {  
       resolve: "gatsby-plugin-use-dark-mode",  
       options: {  
@@ -179,7 +181,6 @@ module.exports = {
               removeAccents: true,
             },
           },
-          `gatsby-transformer-yaml`,
         ],
       },
     },

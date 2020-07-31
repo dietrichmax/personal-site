@@ -9,7 +9,7 @@ export const Content = styled.section`
   padding: 2rem;
 
   ${media.lessThan('medium')`
-      margin: auto 20px 4rem 20px;
+      margin: auto 0 4rem 0;
   `}
 
   & > *:first-child {

@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const Content = styled.section`
-
-  margin: 2rem auto 4rem;
+  
+  margin: 2rem auto 4rem auto;
+  max-width: 750px;
   background-color: white;
   padding: 2rem;
 

@@ -118,6 +118,10 @@ Hier findest du ein Verzeichnis für Firmen die irgendwie was mit [GIS](/gis/was
 
 + **[geOps GeoInformatics](http://www.geops.de)**
 
++ **[geo-ref](http://geo-ref.net)**
+    
+    Group of international consultants, working usually for international organisations in project contracts in different countries.
+
 + **[geoSYS](http://www.geosysnet.de)**
 
 + **[Geoventis GmbH](http://www.geoventis.de)**

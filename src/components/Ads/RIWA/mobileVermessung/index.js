@@ -3,6 +3,11 @@ import styled from 'styled-components'
 import Poster from "./RiwaVideoPoster.webp"
 import { OutboundLink, trackCustomEvent } from "gatsby-plugin-google-analytics"
 
+
+export const Wrapper = styled.div`
+    margin: 2rem auto 2rem auto;
+    max-width: 728px;
+`
 export const Subline = styled.p`
     text-decoration: none;
     font-weight: 400;
@@ -19,6 +24,7 @@ export const VideoWrapper = styled.video`
   outline: none;
 `
 
+
 class RIWAAd extends React.Component {
 
     
@@ -26,7 +32,7 @@ class RIWAAd extends React.Component {
     render () {
 
         return (
-            <>
+            <Wrapper>
                 <Subline>Mit der der Vermessungslösung aus der RIWA-GIS-Software, der Leica GG04 plus Smart-Antenne und dem GNSS Commander von ppm können Kommunen ihre Bestandskataster pflegen und erweitern. Erfassen Sie Objekte schneller und einfacher als jemals zuvor – bei jedem Wetter und unter schwierigen Bedingungen. Weitere Informationen unter:  
                     <OutboundLink href="http://www.riwa-gis.de/"> www.riwa-gis.de</OutboundLink>
                 </Subline>
@@ -47,7 +53,7 @@ class RIWAAd extends React.Component {
                     <source src="https://media.gis-netzwerk.com/videos/RIWA.ogg" type="video/ogg" />
                 </VideoWrapper>
 
-            </>
+            </Wrapper>
         );
     }
 }

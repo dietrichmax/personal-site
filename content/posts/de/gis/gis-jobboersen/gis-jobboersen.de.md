@@ -16,23 +16,23 @@ lang: "de"
 
 ### D-A-CH
 
-Du bist bereits beruflich im Bereich [GIS](/gis/was-ist-gis "Was ist GIS?"), Geographie, Vermessung oder Geoinformatik tätig oder würdest dort gerne arbeiten? Dann findest du hier eine Liste mit ausgewählten GIS Jobbörsen, die interessante GIS Jobs anbieten.
+Du bist bereits beruflich im Bereich [GIS](/gis/was-ist-gis "Was ist GIS?"), Geographie, Vermessung oder Geoinformatik tätig oder würdest dort gerne arbeiten? Dann findest du hier eine Liste mit ausgewählten GIS Jobbörsen, die stets interessante GIS Jobs anbieten.
 
-*   [**Z_GIS Jobbörse**](https://groups.google.com/forum/#!forum/geospatial-job-offer)
+*   [**Z_GIS Jobbörse**](https://groups.google.com/forum/#!forum/geospatial-job-offer "Z_GIS Jobbörse")
 
-Eine kleine Jobbörse der Universität Salzburg via Google Groups mit sehr interessanten Stellenangeboten
+Eine kleine Jobbörse der Universität Salzburg via Google Groups mit sehr interessanten Stellenangeboten.
 
-*   [**Geojobs**](https://www.geojobs.de/)
+*   [**Geojobs**](https://www.geojobs.de/ "Geojobs")
 
-Jobbörse der Website GEObranchen.de mit guten GIS-Verzeichnissen
+Jobbörse der Website GEObranchen.de mit guten GIS-Verzeichnissen.
 
-*   [**Runder Tisch GIS**](https://rundertischgis.de/jobboerse.html)
+*   [**Runder Tisch GIS**](https://rundertischgis.de/jobboerse.html "Runder Tisch GIS")
 
-Jobbörse des größten ehrenamtlich organisierten Netzwerks zum Thema Geoinformation in Deutschland und
+Jobbörse des größten ehrenamtlich organisierten Netzwerks zum Thema Geoinformation in Deutschland.
 
-*   [**MyGeo**](http://www.mygeo.info/geojobs.html)
+*   [**MyGeo**](http://www.mygeo.info/geojobs.html "MyGeo")
 
-Jobs und Stellen in den Geowissenschaften von MyGeo
+[Jobs](/gis/gehalt-in-der-gis-branche/ "Gehalt und Jobs in der GIS Branche") und Stellen in den Geowissenschaften von MyGeo.
 
 ### International
 

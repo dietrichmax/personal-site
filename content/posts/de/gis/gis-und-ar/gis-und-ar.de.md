@@ -14,9 +14,9 @@ lang: "de"
 
 Augmented Reality ergänzt die Realität um virtuelle Objekte und Informationen.
 
-Über Satellitennavigation und Echtzeit-Lokalisierung wird der aktuelle Standort ermittelt und über die Verbindung zu einer räumlichen Datenbank, werden [Geodaten](/gis/was-sind-geodaten "Was sind Geodaten") am momentanen Standort eingeblendet. Dadurch kann in vielen Szenarien ein erheblicher Mehrwert geschaffen werden.
+Über Satellitennavigation und Echtzeit-Lokalisierung wird der aktuelle Standort ermittelt und über die Verbindung zu einer [räumlichen Datenbank](/gis/geo-datenbank-optionen/ "GIS- und Geo-Datenbank Managementsystem Optionen"), werden [Geodaten](/gis/was-sind-geodaten "Was sind Geodaten") am momentanen Standort eingeblendet. Dadurch kann in vielen Szenarien ein erheblicher Mehrwert geschaffen werden.
 
-## [](#gis-und-ar)GIS und AR
+## GIS und AR
 
 Viele kennen AR bereits aus dem Smartphone Spiel [Pokémon GO](https://de.wikipedia.org/wiki/Pok%C3%A9mon_Go), das übrigens auf [OpenStreetMap](https://www.openstreetmap.org/) Daten basiert. Aktuelle Smartphones können mittlerweile auch in das Livebild der Kamera Objekte platzieren.
 

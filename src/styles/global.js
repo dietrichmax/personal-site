@@ -28,7 +28,6 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-dark)
   }
   a {
-    font-weight: 500;
   }
   ::selection {
     background: rgba(0, 0, 0, 0.82);

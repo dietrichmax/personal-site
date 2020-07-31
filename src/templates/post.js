@@ -136,7 +136,7 @@ const Post = props => {
         
         {consentGiven ? <A1/> : categoryMeta.id === "GIS" && locale != "en" ? <RIWAAd/> : null }
 
-        <S.Content>
+        <S.Content color={categoryMeta.color}>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Like id={slug}/>
           <AuthorBox authorMeta={post.frontmatter.author}/>

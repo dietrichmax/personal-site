@@ -11,13 +11,13 @@ author: "Max Dietrich"
 ---
 
 
-## [](#postgresql-datenbank-installieren-auf-windows)PostgreSQL Datenbank installieren auf Windows
+## PostgreSQL Datenbank installieren auf Windows
 
-Hier findest du eine Anleitung, wie du auf Windows PostgreSQL installieren kannst, die Datenbank mit PostGIS erweiterst und die PostgreSQL Datenbank mit Q[GIS](/gis/was-ist-gis "Was ist GIS?") verbindest.
+Hier findest du eine Anleitung, wie du auf Windows PostgreSQL installieren kannst, die [Datenbank](/gis/geo-datenbank-optionen/ "GIS- und Geo-Datenbanken") mit PostGIS erweiterst und die PostgreSQL Datenbank mit Q[GIS](/gis/was-ist-gis "Was ist GIS?") verbindest.
 
 Auf [PostgreSQL Database Download](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads "PostgreSQL Database Download") findest du den passenden Installer für dein Betriebssystem. Der Installer führt dich anschließend bequem durch den Installationsprozess.
 
-### [](#installation-von-postgresql)Installation von PostgreSQL
+### Installation von PostgreSQL
 
 Als Installationsverzeichnis kannst du das Standardverzeichniss lassen, sofern PostgreSQL nicht auf einem anderen bestimmten Verzeichniss installieren willst.
 
@@ -43,7 +43,7 @@ Das wars auch schon. Eine PostgreSQL Datenbank zu installieren ist also gar nich
 
 Da diese Datenbank aber noch nicht mit geografischen Objekten umgehen kann, benötigst du nun die Erweiterung PostGIS für PostgreSQL.
 
-## [](#postgis-auf-windows-installieren)PostGIS auf Windows installieren
+## PostGIS auf Windows installieren
 
 Unter deinen installierten Programmen findest du auch den Application Stack Builder.
 
@@ -61,7 +61,7 @@ Nachdem die Installation "Completed" anzeigt, kann das Fenster geschlossen und d
 
 Kommen wir zum Finale.
 
-## [](#postgresql-datenbank-in-qgis-einrichten)PostgreSQL Datenbank in QGIS einrichten
+## PostgreSQL Datenbank in QGIS einrichten
 
 Jetzt wird QGIS geöffnet. In QGIS wählst du nun "Datenquellenverwaltung öffnen".
 

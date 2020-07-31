@@ -24,7 +24,7 @@ Zuerst aber noch eine Twitter Liste von CARTO, bei der du mit einem Klick 50 bek
 
 ### 1\. Anita Graser
 
-![GIS Influencers Anita Graser](https://underdark.files.wordpress.com/2007/03/img_20161121_003528.jpg?w=150&h=150)
+![GIS Influencers Anita Graser](https://underdark.files.wordpress.com/2007/03/img_20161121_003528.jpg?w=150&h=150 "Anita Graser")
 
 _Bildquelle: [https://anitagraser.com/about/](https://anitagraser.com/about/); [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US)_
 
@@ -34,25 +34,25 @@ Anita Graser ist in Österreich tätig als Autorin, Data Scientist und Open-Sour
 
 Sie ist Teil des QGIS Teams und seit 2013 QGIS PSC Member. Insgesamt hat sie bereits 13 Jahre GIS Erfahrung gesammelt.
 
-Anita Graser hat zahlreiche sehr bekannte QGIS Tutorials - wie [QGIS Map Design*](https://amzn.to/2HwGN6A) oder [Learning QGIS*](https://amzn.to/2F7J2KS) in Form von Büchern veröffentlicht. (Die komplette Liste findest du [hier*](https://amzn.to/2O3KC4h).) Außerdem unterrichtet sie an der Universität Salzburg für die berufsbegleitenden Geoinformatik Fernstudiengänge, die im Rahmen von [UNIGIS](/gis/unigis-professional-weiterbildung) angeboten werden. Hier kannst du ihr folgen:
+Anita Graser hat zahlreiche sehr bekannte QGIS Tutorials - wie [QGIS Map Design*](https://amzn.to/2HwGN6A "QGIS Map Design") oder [Learning QGIS*](https://amzn.to/2F7J2KS "Learning QGIS") in Form von Büchern veröffentlicht. (Die komplette Liste findest du [hier*](https://amzn.to/2O3KC4h).) Außerdem unterrichtet sie an der Universität Salzburg für die berufsbegleitenden Geoinformatik Fernstudiengänge, die im Rahmen von [UNIGIS](/gis/unigis-professional-weiterbildung) angeboten werden. Hier kannst du ihr folgen:
 
-*   [Twitter](https://twitter.com/underdarkgis?lang=de)
-*   [GitHub](https://github.com/anitagraser/)
-*   [StackExchange](https://gis.stackexchange.com/users/187/underdark)
-*   [Linkedin](https://www.linkedin.com/in/anita-graser-95102530/)
-*   [Youtube](https://www.youtube.com/anitagraser/)
-*   [Xing](https://www.xing.com/profile/Anita_Graser2/cv)
-*   [anitagraser.com](https://anitagraser.com/)
+*   [Twitter](https://twitter.com/underdarkgis?lang=de "Twitter")
+*   [GitHub](https://github.com/anitagraser/ "GitHub")
+*   [StackExchange](https://gis.stackexchange.com/users/187/underdark "StackExchange")
+*   [Linkedin](https://www.linkedin.com/in/anita-graser-95102530/ "Linkedin")
+*   [Youtube](https://www.youtube.com/anitagraser/ "Youtube")
+*   [Xing](https://www.xing.com/profile/Anita_Graser2/cv "Xing")
+*   [anitagraser.com](https://anitagraser.com/ "anitagraser.com")
 
 ### 2\. Ted MacKinnon
 
-![GIS Influencers Ted MacKinnon](https://gogeomatics.ca/wp-content/uploads/MacKinnon2.jpg)
+![GIS Influencers Ted MacKinnon](https://gogeomatics.ca/wp-content/uploads/MacKinnon2.jpg "Ted MacKinnon")
 
 _Bildquelle: [https://gogeomatics.ca/author/tmackinnon/](https://gogeomatics.ca/author/tmackinnon/)_
 
 **Certified Geomatics Specialist**
 
-Ted MacKinnon ist aus Kanada und ein Profi mit mehr als 20 jahren Erfahrung im Bereich [GIS](/gis/was-ist-gis "Was ist GIS?"), Fernerkundung, Kartografie, LIDAR und GPS-Vermessung in der privaten Wirtschaft, im akademischen Bereich, in non-profit Organisationen, sowie im öffentlichen Sektor. Er inspiriert die jüngere [Geodaten](/gis/was-sind-geodaten)-Community, mehr über kanadische geographische Informationen zu erfahren.
+Ted MacKinnon ist aus Kanada und ein Profi mit mehr als 20 jahren Erfahrung im Bereich [GIS](/gis/was-ist-gis "Was ist GIS?"), [Fernerkundung](/gis/fernerkundung-bildklassifikation/ "Fernerkundung und Bildklassifikation"), Kartografie, LIDAR und GPS-Vermessung in der privaten Wirtschaft, im akademischen Bereich, in non-profit Organisationen, sowie im öffentlichen Sektor. Er inspiriert die jüngere [Geodaten](/gis/was-sind-geodaten)-Community, mehr über kanadische geographische Informationen zu erfahren.
 
 *   [Twitter](https://twitter.com/tedmackinnon?lang=de)
 *   [Instagram](https://www.instagram.com/t_mackinnon/)

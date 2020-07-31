@@ -13,13 +13,13 @@ lang: "de"
 ---
 import LeafletDemo from "./react-leaflet-demo.js"
 
-## [](#was-ist-leaflet)Was ist Leaflet?
+## Was ist Leaflet?
 
 [Leaflet](/gis/react-leaft-erste-schritte "Leaflet") ist eine freie JavaScript-Bibliothek mit der Web-[GIS](/gis/was-ist-gis "Was ist GIS?")-Anwendungen erstellt werden können. Leaflet verwendet dafür HTML5, CSS3 und ist mit allen geläufigen Browsern kompatibel.
 
 Ebenso wie bei <a href="">OpenLayers</a> können [Raster, sowie Vektordaten](/gis/raster-und-vektordaten) aus den verschiedensten Datenquellen eingebunden werden.
 
-## [](#react-und-leaflet)React und Leaflet
+## React und Leaflet
 
 In diesem Artikel werde ich auf den Umgang mit [react-leaflet](https://github.com/PaulLeCam/react-leaflet) Components genauer eingehen und wie man eine Web-Map mit
 
@@ -86,7 +86,7 @@ Mit dem Style-Objekt wird auch schonmal ein Style definiert, der festlegt wie di
 
 als "state objects" Variablen bzw. Arrays festgelegt.
 
-## [](#basiskarte)Basiskarte
+## Basiskarte
 
 Nun kommt als Erstes das Map-Component mit einer OpenStreetMap als Basiskarte.
 
@@ -101,7 +101,7 @@ Nun kommt als Erstes das Map-Component mit einer OpenStreetMap als Basiskarte.
 
 `<TileLayer>` erstellt einen neuen Tile-Layer in der Karte in der mit `url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'` die OpenStreetMap Daten und mit `attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'` wird die Quelle dieser Daten angegeben. Dadurch wird "rechts-unten" dann der übliche Hinweis gerendert.
 
-## [](#daten-im-geojson-format)Daten im GeoJSON Format
+## Daten im GeoJSON Format
 
 Das Hinzufügen von Geodaten im GeoJSON ist relativ simpel. Diese fügt man am Besten gleich in eine Funktion ein. Diese wird dann in der Karte aufgerufen.
 
@@ -123,7 +123,7 @@ Im Map-Component werden die Daten dann mit dem GeoJSON-Component eingefügt.
 
 Damit die Daten immer gererendert werden muss man einen "unique-key" vergeben. Dieser "unique-key" wird mit der Funktion `hash(getGeoJSON())` generiert. Als Daten werden einfach die Daten im GeoJSO-Format mit dem zuvor definierten Style übergeben.
 
-## [](#marker-mit-popup)Marker mit Popup
+## Marker mit Popup
 
 Mit dem Marker-Component können Marker eingefügt werden.
 

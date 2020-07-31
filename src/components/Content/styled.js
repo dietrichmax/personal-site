@@ -28,9 +28,8 @@ export const Content = styled.section`
   }
 
   a {
-    color: var(--link-color);
-    text-decoration: none !important;
     transition: 0.3s;
+    font-weight: bold;
 
     &:hover {
       color: var(--link-color-hover);
@@ -239,7 +238,7 @@ export const Content = styled.section`
 
   blockquote {
     border-left: 4px solid ${props =>
-      props.categoryColor ? props.categoryColor : '#3f51b5'};
+      props.color ? props.color : 'var(--text-light)'};
     padding: 0 15px;
 
     &:first-child {

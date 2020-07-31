@@ -16,7 +16,7 @@ lang: "de"
 
 Vorallem aus kostengründen ist QGIS der ideale Einstieg für Neulinge in die "[GIS-Welt](/gis/was-ist-gis "Was ist GIS?")". Falls du nach Wegen suchst, wie du dich mit QGIS vertraut machen oder allgemein in die Thematik GIS einsteigen kannst, bist du hier richtig.
 
-## [](#qgis-lernen)QGIS lernen
+## QGIS lernen
 
 Auf der offiziellen **QGIS-Website** wird natürlich ein [QGIS-Handbuch](https://docs.qgis.org/3.4/de/docs/user_manual/ "[QGIS-Handbuch") angeboten. In dem Handbuch ist eigentlich von der Installation, Benutzeroberfläche, Bearbeitung von Daten bis zu Analysewerkzeugen alles grundlegend beschrieben und das offizielle QGIS-Handbuch bietet somit einen guten Einstieg. Dieses Handbuch gibt es in deutsch und englisch.
 
@@ -28,7 +28,7 @@ Auch auf Youtube findest du klasse [Video-Tutorials](https://www.youtube.com/cha
 
 Wer also eher visuell lernen möchte, hat hier ein super Angebot an Videos, die auf Englisch angeboten werden.
 
-## [](#python-scripting-in-qgis)Python-Scripting in QGIS
+## Python-Scripting in QGIS
 
 Wenn du dich für Python-Scripting oder allgemein QGIS interessierst, lohnt es sich einen Blick auf [Anita Grasers](https://anitagraser.com/) Tutorial-Reihe zu werfen. Dort wird "Nicht-Programmierern" [Scripting mit PyQGIS](https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/ "Scripting mit PyQGIS") näher gebracht.
 

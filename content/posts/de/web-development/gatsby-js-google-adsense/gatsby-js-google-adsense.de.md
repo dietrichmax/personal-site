@@ -141,7 +141,7 @@ und der Ad Slot
 ```js
 slot='7806394673'
 ```
-**müssen immer** angegeben werden.
+müssen immer angegeben werden.
 
 Der Rest ist optional.
 ```

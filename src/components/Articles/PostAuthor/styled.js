@@ -15,6 +15,7 @@ export const AuthorMeta = styled.p`
     display: block;
     text-align:center;
 `;
+
 export const AuthorBio = styled.p`
     font-size: 0.9em;
     font-style: italic;

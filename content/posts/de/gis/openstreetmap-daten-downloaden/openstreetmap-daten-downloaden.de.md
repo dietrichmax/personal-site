@@ -12,25 +12,25 @@ author: "Max Dietrich"
 lang: "de"
 ---
 
-## [](#was-ist-openstreetmap)Was ist OpenStreetMap?
+## Was ist OpenStreetMap?
 
 [OpenStreetMap](https://www.openstreetmap.de/ "OpenStreetMap") ist das größte internationale Projekt, dass sich mit dem Ziel beschäftigt eine freie Weltkarte zu erschaffen. Freiwillige "Mapper" sammeln Daten über Straßen, Eisenbahnen, Flüsse, Wälder und Häuser und stellen diese online zur Verfügung.
 
-Falls du dich auch im OpenStreetMap Projekt engagieren willst, findest du hier weiter Informationen: [https://www.openstreetmap.de/faq.html#wie_mitmachen.](https://www.openstreetmap.de/faq.html#wie_mitmachen)
+Falls du dich auch im OpenStreetMap Projekt engagieren willst, findest du hier weiter Informationen: [https://www.openstreetmap.de/faq.html#wie_mitmachen.](https://www.openstreetmap.de/faq.html#wie_mitmachen "openstreetmap.de")
 
-Die Daten stehen allen Menschen zur freien Verfügung. Du kannst OpenStreetMap Daten auch kommerziell nutzen, da diese unter der [Open Data Commons Open Database Lizenz](https://opendatacommons.org/licenses/odbl/) veröffentlich werden.
+Die Daten stehen allen Menschen zur freien Verfügung. Du kannst OpenStreetMap Daten auch kommerziell nutzen, da diese unter der [Open Data Commons Open Database Lizenz](https://opendatacommons.org/licenses/odbl/ "Open Data Commons Open Database Lizenz") veröffentlich werden.
 
-## [](#datenformate-von-osm-daten)Datenformate von OSM-Daten
+## Datenformate von OSM-Daten
 
 Angeboten werden die Daten von OSM als XML oder PBF, was ein "kompaktes" Datenformat für die Rohdaten von OpenStreetMap ist. Die Datei Planet.osm enthält den gesamten Planeten, der bisher erfasst wurde und in der Full History Planet Version sind sogar noch alle Versionsgeschichten sämtlicher Objekte enthalten. Diese Datei wird normalerweise einmal wöchentlich aktualisiert.
 
-Mit Tools wie [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) oder [Osm2pgsql](https://wiki.openstreetmap.org/wiki/Osm2pgsql) können diese Geodaten dann in zum Beispiel einer Postgis Datenbank importiert werden (Dazu aber mehr in einem separaten Beitrag). Da diese Datei aber sehr groß ist (76GB) werden die meisten damit wahrscheinlich weniger anfangen können.
+Mit Tools wie [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis "Osmosis") oder [Osm2pgsql](https://wiki.openstreetmap.org/wiki/Osm2pgsql "Osm2pgsql") können diese Geodaten dann in zum Beispiel einer Postgis Datenbank importiert werden (Dazu aber mehr in einem separaten Beitrag). Da diese Datei aber sehr groß ist (76GB) werden die meisten damit wahrscheinlich weniger anfangen können.
 
-## [](#download-via-geofabrik)Download via Geofabrik
+## Download via Geofabrik
 
-Glücklicherweise gibt es [Geofabrik](https://www.geofabrik.de), die OSM-Dateien verarbeiten und teilweise auch kostenlos zur Verfügung stellen.
+Glücklicherweise gibt es [Geofabrik](https://www.geofabrik.de "Geofabrik"), die OSM-Dateien verarbeiten und teilweise auch kostenlos zur Verfügung stellen.
 
-Unter [https://download.geofabrik.de/](https://download.geofabrik.de/) findet man Downloadlinks für spezifische Regionen, wo man letztendlich OpenStreetMap Daten als Shapefiles downloaden kann. Rechts oben auf der Website gibt es außerdem eine kleine Karte, die das betreffende Gebiet der ausgewählten Daten anzeigt.
+Unter [https://download.geofabrik.de/](https://download.geofabrik.de/ "download.geofabrik.de") findet man Downloadlinks für spezifische Regionen, wo man letztendlich OpenStreetMap Daten als Shapefiles downloaden kann. Rechts oben auf der Website gibt es außerdem eine kleine Karte, die das betreffende Gebiet der ausgewählten Daten anzeigt.
 
 Die Daten können außerdem als .pbf- oder bz2-Dateien gedownloadet werden.
 
@@ -40,7 +40,7 @@ Für Deutschland gibt es leider nur die Möglichkeit Shapefiles der einzelnen Bu
 
 Es können außerdem Polygone der Außmaße der einzelnen Bundesländer heruntergeladen werden.
 
-## [](#struktur-osm-rohdaten)Struktur OSM-Rohdaten
+## Struktur OSM-Rohdaten
 
 Es gibt natürlich eine eindeutige ID für jedes Objekt. Wenn man Straßenobjekte betrachtet, gibt es neben dem Namen und der Art der Straße (residential, tertiary, secondary, unclassified, usw.) auch sogenannte "other_tags".
 
@@ -50,4 +50,4 @@ Mit speziellen Abfragen kann man auf diese "other_tags" zugreifen und sich zum B
 
 Bei der üblichen "OSM Basemap" werden alle diese Objekte gerendert und im OpenStreetMap üblichen Design dargestellt.
 
-[OpenStreetMap](https://www.openstreetmap.org/)
+[OpenStreetMap](https://www.openstreetmap.org/ "OpenStreetMap")

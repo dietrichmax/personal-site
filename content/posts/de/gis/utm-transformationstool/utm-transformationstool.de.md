@@ -16,34 +16,34 @@ Zum Jahreswechsel 2018/2019 hat die Bayrische Vermessungsverwaltung das Koordina
 
 Das Gauß-Krüger-System (GK) wird damit nun auch in Bayern abgelöst und durch UTM ersetzt.
 
-Weiterführende Informationen dazu findest du auf der Seite der [Bayrischen Vermessungsverwaltung](https://www.ldbv.bayern.de/vermessung/utm_umstellung.html).
+Weiterführende Informationen dazu findest du auf der Seite der [Bayrischen Vermessungsverwaltung](https://www.ldbv.bayern.de/vermessung/utm_umstellung.html "Bayrischen Vermessungsverwaltung").
 
 Viele Datensätze sind nun allerdings noch in Gauß-Krüger vorhanden und müssen dementsprechend von Gauß-Krüger nach UTM umgerechnet bzw. transformiert werden.
 
-## [](#ntv2-dateien)NTv2-Dateien
+## NTv2-Dateien
 
 Dafür stellt das Vermessungsamt sogenannte Gitterdateien (NTv2-Dateien) kostenlos zur Verfügung, mit denen Datensätze lagegenau auf Basis des Liegenschaftskatasters transformiert werden können.
 
 Es werden Gitterdateien für jeden Regierungsbezirk und eine Gesamtdatei für Bayern angeboten ([NTv2-Datei BY-KanU](https://www.ldbv.bayern.de/vermessung/utm_umstellung/trans_geofach.htm)).
 
-*   [Gitterdatei 1'' Bayern (zip, 1.089,7 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/ntv2_bayern.zip)
-*   [Gitterdatei 1'' Schwaben (zip, 214,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_schwaben.zip)
-*   [Gitterdatei 1'' Oberfranken (zip, 116,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberfranken.zip)
-*   [Gitterdatei 1'' Mittelfranken (zip, 100,3 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_mittelfranken.zip)
-*   [Gitterdatei 1'' Unterfranken (zip, 139,9 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_unterfranken.zip)
-*   [Gitterdatei 1'' Oberpfalz (zip, 178,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberpfalz.zip)
-*   [Gitterdatei 1'' Oberbayern (zip, 288 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberbayern.zip)
-*   [Gitterdatei 1'' Niederbayern (zip, 150,6 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_niederbayern.zip)
+*   [Gitterdatei 1'' Bayern (zip, 1.089,7 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/ntv2_bayern.zip "Gitterdatei Bayern")
+*   [Gitterdatei 1'' Schwaben (zip, 214,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_schwaben.zip "Gitterdatei Schwaben")
+*   [Gitterdatei 1'' Oberfranken (zip, 116,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberfranken.zip "Gitterdatei Oberfranken")
+*   [Gitterdatei 1'' Mittelfranken (zip, 100,3 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_mittelfranken.zip "Gitterdatei Mittelfranken")
+*   [Gitterdatei 1'' Unterfranken (zip, 139,9 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_unterfranken.zip "Gitterdatei Unterfranken")
+*   [Gitterdatei 1'' Oberpfalz (zip, 178,4 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberpfalz.zip "Gitterdatei Oberpfalz")
+*   [Gitterdatei 1'' Oberbayern (zip, 288 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_oberbayern.zip "Gitterdatei Oberbayern")
+*   [Gitterdatei 1'' Niederbayern (zip, 150,6 MB)](http://geodaten.bayern.de/oadownload/bvv_internet/kanu/kanu_ntv2_niederbayern.zip "Gitterdatei Niederbayern")
 
-## [](#utm-transformationstools)UTM Transformationstools
+## UTM Transformationstools
 
-Mit diesen Gitterdateien ist es aber noch nicht ganz erledigt. Für eine einfache und schnelle Transformation empfiehlt es sich Transformationstools zu verwenden. Unter [gis.makobo.de](http://gis.makobo.de/) werden kostenlose Konverter bereitgestellt.
+Mit diesen Gitterdateien ist es aber noch nicht ganz erledigt. Für eine einfache und schnelle Transformation empfiehlt es sich Transformationstools zu verwenden. Unter [gis.makobo.de](http://gis.makobo.de/ "gis.makobo.de") werden kostenlose Konverter bereitgestellt.
 
-In der Unterseite [KooTransBY](http://gis.makobo.de/kootransby/) findet man einen Konverter(KooTransBYV0_7R0) für die Koordinaten Transformationen zwischen DHDN/GK und ETRS89/UTM in Bayern. Dieser funktioniert von Gauß-Krüger nach UTM, sowie andersherum.
+In der Unterseite [KooTransBY](http://gis.makobo.de/kootransby/ "KooTransBY") findet man einen Konverter(KooTransBYV0_7R0) für die Koordinaten Transformationen zwischen DHDN/GK und ETRS89/UTM in Bayern. Dieser funktioniert von Gauß-Krüger nach UTM, sowie andersherum.
 
 Diesen muss man nur als ZIP-Datei herunterladen, an einem beliebigen Ort speichern und ausführen.
 
-## [](#transformationen-bayern-zwischen-dhdngk-und-etrs89utm)Transformationen Bayern zwischen DHDN/GK und ETRS89/UTM
+## Transformationen Bayern zwischen DHDN/GK und ETRS89/UTM
 
 Wenn man das Programm ausführt werden zuerst alle im Internet verfügbaren NTv2-Dateien für Bayern angezeigt. Hier kann man einfach die passende auswählen und über "Download" herunterladen oder sofern man dies bereits beim Vermessungsamt gemacht hab den Speicherort der Datei auswählen.
 
@@ -74,6 +74,4 @@ transformiert werden.
 
 ![Koordinaten Transformationstool](/static/f553793a3dc009c91ff0f6ac583a5715/398b7/2019-04-18.png "Koordinaten Transformationstool")
 
-Bei Fragen zu Programm gibt es sogar ein [Hilfe bzw. Kontaktforum](http://forum.makobo.de/index.php), das bereitgestellt wird.
-
-Viel Erfolg beim Transformieren!
+Bei Fragen zu Programm gibt es sogar ein [Hilfe bzw. Kontaktforum](http://forum.makobo.de/index.php "Hilfe bzw. Kontaktforum"), das bereitgestellt wird.

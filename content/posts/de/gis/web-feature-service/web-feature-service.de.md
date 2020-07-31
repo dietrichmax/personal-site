@@ -12,13 +12,13 @@ author: "Max Dietrich"
 lang: "de"
 ---
 
-## [](#web-feature-service)Web Feature Service
+## Web Feature Service
 
 Ein Web Feature Service ermöglicht den Austausch von [Geodaten](/gis/was-sind-geodaten "Was sind Geodaten?") in einem [Geoinformationssystem](/gis/was-ist-gis "Was ist GIS?") ( GIS ) über das Internet.
 
 In diesem Beitrag findest du Open Source Web Feature Service Server mit denen du deinen eigenen Web Feature Service ( WFS ) einrichten kannst und Geodaten, die du in deinem GIS über WFS kostenlos einbinden kannst.
 
-## [](#open-source-web-feature-service-server--wfs-)Open Source Web Feature Service Server ( WFS )
+## Open Source Web Feature Service Server ( WFS )
 
 *   [**GeoServer**](http://geoserver.org/ "GeoServer")
 
@@ -34,16 +34,16 @@ Es bietet den OGC [Web Map Service](/wms-web-map-service-und-wmts "Web Map Servi
 
 FeatureServer bietet - wie der Name schon andeutet - einen Feature Service Server. FeatureServer erlaubt es Anwendern Geodaten zu sehen, zu verändern oder neu hinzuzufügen.
 
-## [](#wfs-geodaten-service)WFS Geodaten Service
+## WFS Geodaten Service
 
-### [](#deutschland)**Deutschland**
+### **Deutschland**
 
-#### [](#bund)**Bund**
+#### **Bund**
 
 *   [Gewässerkundliches Informationssystem der Wasserstraßen- und Schifffahrtsverwaltung des Bundes](https://www.pegelonline.wsv.de/webservice/wfsAktuell "Gewässerkundliches Informationssystem der Wasserstraßen- und Schifffahrtsverwaltung des Bundes")
 *   [Bundesamt für Kartographie und Geodäsie](http://www.geodatenzentrum.de/geodaten/gdz_rahmen.gdz_div?gdz_spr=deu&gdz_akt_zeile=2&gdz_anz_zeile=5&gdz_unt_zeile=0&gdz_user_id=0 "Bundesamt für Kartographie und Geodäsie")
 
-#### [](#regionale-geodaten)**Regionale Geodaten**
+#### [**Regionale Geodaten**
 
 *   **Baden-Württemberg:** [Landesamt für Geoinformation und Landentwicklung Baden-Württemberg](https://www.lgl-bw.de/lgl-internet/opencms/de/07_Produkte_und_Dienstleistungen/Open_Data_Initiative/)
 *   **Bayern:** [Bayerisches Staatsministerium für Wohnen, Bau und Verkehr](https://www.baysis.bayern.de/web/content/geodaten/wfs.aspx)

@@ -128,7 +128,6 @@ const Post = props => {
         </Link> 
       </MetaElement>
 
-      <S.Content>
         <TableOfContents
           color={categoryMeta.color}
           tableOfContents={post.tableOfContents}
@@ -136,14 +135,16 @@ const Post = props => {
         />
         
         {consentGiven ? <A1/> : categoryMeta.id === "GIS" && locale != "en" ? <RIWAAd/> : null }
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <Like id={slug}/>
-        <AuthorBox authorMeta={post.frontmatter.author}/>
-        <Subscribe color={categoryMeta.color} />
 
-        {/*<JoinAudience />
-        <SocialShare postPath={slug} postNode={post}/>
-        <SimilarArticles category={categoryMeta.id} tags={tagsMeta} currentArticleSlug={slug} />*/}
+        <S.Content>
+          <MDXRenderer>{post.body}</MDXRenderer>
+          <Like id={slug}/>
+          <AuthorBox authorMeta={post.frontmatter.author}/>
+          <Subscribe color={categoryMeta.color} />
+
+          {/*<JoinAudience />
+          <SocialShare postPath={slug} postNode={post}/>
+          <SimilarArticles category={categoryMeta.id} tags={tagsMeta} currentArticleSlug={slug} />*/}
       </S.Content>
       </div>
     </>

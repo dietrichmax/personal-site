@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Emojione } from "react-emoji-render"
 
-export const NewsletterWrapper = styled.form`
+export const NewsletterWrapper = styled.label`
     display: flex;
     flex: 0 1 auto;
     flex-direction: row;

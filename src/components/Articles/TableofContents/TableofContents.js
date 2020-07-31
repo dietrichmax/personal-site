@@ -10,6 +10,7 @@ export const ArticleToc = styled.div`
   padding: 10px 15px 10px;
   border-bottom: solid 2px rgba(10, 10, 10, 0.1);
   margin: auto auto 3rem;
+  max-width: 750px;
   
   ${media.lessThan('medium')`
     float: none;

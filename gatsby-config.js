@@ -159,7 +159,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 750,
-              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
           {
@@ -181,7 +181,6 @@ module.exports = {
           },
           `gatsby-transformer-yaml`,
         ],
-        plugins: [`gatsby-remark-images`,`gatsby-transformer-yaml`],
       },
     },
     {
@@ -248,14 +247,6 @@ module.exports = {
         color: config.themeColor
       }
     },
-    {
-      resolve: `gatsby-remark-autolink-headers`,
-      options: {
-        icon: false,
-
-        removeAccents: true,
-      },
-    },
     "gatsby-plugin-catch-links",
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -305,16 +296,19 @@ module.exports = {
             src: `/logos/logo_square_48.png`,
             sizes: `48x48`,
             type: `image/png`,
+            purpose: "any maskable"
           },
           {
             src: `/logos/logo_square_192.png`,
             sizes: `192x192`,
             type: `image/png`,
+            purpose: "any maskable"
           },
           {
             src: `/logos/logo_square_512.png`,
             sizes: `512x512`,
             type: `image/png`,
+            purpose: "any maskable"
           }
         ], // Add or remove icon sizes as desired   
       }

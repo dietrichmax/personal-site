@@ -61,9 +61,7 @@ export default ({ noLabel, cb, color }) => {
       ) : (
         <S.NewsletterWrapper>
             <S.DescriptionWrapper>
-              <p>
                 {formDesc1} <br/> {formDesc2} <S.Emoji text={"🚀"} /> 
-              </p>
             </S.DescriptionWrapper>
 
           <S.InputWrapper>

@@ -22,7 +22,7 @@ Je nachdem ob das Repository öffentlich oder nicht ist wählt man dann "Öffent
 
 Unter **Umgebung** muss nun ein Umgebungs Image ausgewählt werden. Für GatsbyJS wäre das ein "Verwaltetes Image" und das Betriebssystem "Amazon Linux 2". Als Laufzeiten(en) wird "Standard" ausgewählt und "aws/codebuild/amazonlinux2-x86_64-standard:2.0" als Image.
 
-![AWS CodeBuild Umgebung](codebuild_umgebung.png "AWS CodeBuild Umgebung")
+![AWS CodeBuild Umgebung](../../../../../content/posts/de/web-development/gatsby-aws-codebuild-codepipeline/codebuild_umgebung.png "AWS CodeBuild Umgebung")
 
 Nun kann auch gleich automatisch eine neue Servicerolle erstellt werden (die benötigt wird), damit CodeBuild die benötigten Rechte für das AWS-Konto hat.
 > Dieser Servicerolle kann auch gleich Rechte für CodePipeline zugewiesen werden,sodass diese Servicerolle für CodeBuild und CodePipeline genutzt werden kann.

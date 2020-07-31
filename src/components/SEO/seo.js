@@ -46,7 +46,7 @@ import useTranslations from '../useTranslations';
       const data = useStaticQuery(graphql`
           {
             imageSharp(fixed: {originalName: {eq: "GIS-Netzwerk-Logo.png"}}) {
-              fixed(width: 1920) {
+              fixed(width: 1200) {
                 src
                 ...GatsbyImageSharpFixed_withWebp_noBase64
               }

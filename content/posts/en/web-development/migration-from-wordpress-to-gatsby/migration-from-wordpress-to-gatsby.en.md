@@ -6,7 +6,7 @@ description: "After I encountered technical difficulties with Wordpress time and
 category: "Web-Development"
 tags: ["React", "GatsbyJS", "Javascript","Wordpress"]
 image: "../../../../../static/assets/img/postImg/gatsby-wordpress-migration.jpg"
-caption: "Gatsby"
+caption: "by USGS on Unsplash"
 author: "Max Dietrich"
 ---
 

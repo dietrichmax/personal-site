@@ -6,7 +6,7 @@ description: "With React GPT you can easily implement Ad Manager and Adsense via
 category: "Web-Development"
 tags: ["GatsbyJS", "Ad Manager", "Adsense"]
 image: "../../../../../static/assets/img/postImg/gatsby-google-ad-manager-adsense.jpg"
-caption: "by USGS on Unsplash"
+caption: "ESA/DLR/FU Berlin; CC BY-SA 3.0 IGO"
 published: "yes"
 author: "Max Dietrich"
 ---

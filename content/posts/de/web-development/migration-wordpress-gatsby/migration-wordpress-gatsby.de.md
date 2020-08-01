@@ -6,7 +6,7 @@ description: "Der Migrationsprozess von Wordpress nach Gatsby mit vielen hilfrei
 category: "Web-Development"
 tags: ["React", "GatsbyJS", "Javascript","Wordpress"]
 image: "../../../../../static/assets/img/postImg/gatsby-wordpress-migration.jpg"
-caption: "Gatsby"
+caption: "by USGS on Unsplash"
 published: "yes"
 author: "Max Dietrich"
 lang: "de"

@@ -13,12 +13,40 @@ author: "Max Dietrich"
 
 With [React GPT](https://github.com/nfl/react-gpt "React GPT") you can easily implement Ad Manager and Adsense via Ad Manager on your Gatsby site.
 React GPT is a React component for [Google Publisher Tags](https://developers.google.com/doubleclick-gpt/guides/get-started "Google Publisher Tags").
-  
-  ```
+
+It supports
++ all rendering modes (single request mode, async rendering node and *sync rendering mode),
++ responsive ads,
++ interstitial ads and
++ lazy render.
+
+You can install it with
+```
+yarn react-gpt
+```
+and import it into your ad-components like
+```
+import {Bling as GPT} from "react-gpt";
+
+class Application extends React.Component {
+    render() {
+        return (
+            <GPT
+                adUnitPath="/4595/nfl.test.open"
+                slotSize={[728, 90]}
+            />
+        );
+    }
+} 
+```
+
+To be able to deliver an ad you will need an active ad slot in [Google Ad Manager](https://admanager.google.com/ "Google Ad Manager").
+We are gonna create now a component which will render that ad slot and add a small ad label to it. It's gonna be styled with [Styled Components](https://styled-components.com/ "Styled Components").
+
+```js
 import React from "react"
 import {Bling as GPT} from "react-gpt";
 import styled from 'styled-components'
-import useTranslations from '../../useTranslations';
 import media from 'styled-media-query';
 
 export const Subline = styled.p`
@@ -36,9 +64,6 @@ export const Ad1 = styled.div`
 `
 
 const A1 = ({ }) => {
-
-      // translation for ad label
-      const { ad, adNotice } = useTranslations();
 
         return (
           
@@ -58,11 +83,33 @@ const A1 = ({ }) => {
                   ]}
                   
               />
-              <Subline title={adNotice}>{ad}</Subline>
+              <Subline title="Ad">Ad</Subline>
             </Ad1>
         );
     }
 
 
 export default A1
+```
+Most important part is ```adUnitPath="iu=[123]".
+You will get your ```adUnitPath``` through the Ad Manager console.
+When you are creating new Tags for an ad slot it will show you an individual tag based on the settings you chose.
+
+Somewhere in the tag you can find ```iu=``` and everything after that until ```&```will be your adUnitPath.
+
+With ```sizeMapping={[...]}``` you can display different sizes depending on the screen size of the viewer (I played here a bit with the sizes).
+
+After you created your component you can import it like any other component.
+
+For a simple consent solution i implement a conditional rendering so that the ad is only shown after a user accepted cookies.
+
+```js
+
+import A1 from "../components/Ads/GoogleAdManager/A1.js"
+import Cookies from 'js-cookie'
+
+// get value of Cookie "consent"
+  const consentGiven = Cookies.get('consent')
+
+  {consentGiven ? <A1/> : null }
 ```

@@ -29,7 +29,7 @@ export const LogoLink = styled(LocalizedLink)`
 `;
 
 export const NavMenu = styled.div`
-  width: auto;
+  margin-right: auto;
   ${media.greaterThan('medium')`
     margin: 0 10px 0 auto;
     width: auto;

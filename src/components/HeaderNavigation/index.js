@@ -1,7 +1,8 @@
 import React from 'react';
 import useMenu from './useMenu';
 import useTranslations from '../useTranslations';
-
+import SocialLinks from '../SocialLinks/SocialLinks.js';
+import PageLinks from '../FooterNavigation';
 import * as S from './styled';
 
 const Navigation = ({ isActive, handleToggleMenu }) => {
@@ -20,10 +21,10 @@ const Navigation = ({ isActive, handleToggleMenu }) => {
               {menu.name}
             </S.NavigationLink>
         ))}
-
-        {/*<S.NavigationButton to="" aria-label="Login">
+        <S.NavigationButton to="" aria-label="Login">
           {button}
-        </S.NavigationButton>*/}
+        </S.NavigationButton>
+        {/*<PageLinks />*/}
       </S.Navigation>
     </>
   );

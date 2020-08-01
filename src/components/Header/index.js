@@ -19,6 +19,11 @@ const Header = ({ locale, categoryColor }) => {
         <S.LogoLink to={`/`} title={home} aria-label={home}>
           <Logo />
         </S.LogoLink>
+
+        <ButtonMenu
+          handleClick={handleToggleMenu}
+          isActive={toggleMenu}
+        />
         <S.NavMenu>
           <Navigation isActive={toggleMenu} handleToggleMenu={handleToggleMenu} />
         </S.NavMenu>

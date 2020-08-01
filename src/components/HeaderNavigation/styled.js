@@ -7,10 +7,12 @@ export const Navigation = styled.nav`
   display: none;
   height: 100vh;
   flex-direction: column;
+  margin-top: 2rem;
   &.active {
     display: flex;
   }
   ${media.greaterThan('medium')`
+    margin-top: 0;
     display: flex;
     height: auto;
     flex-direction: row;

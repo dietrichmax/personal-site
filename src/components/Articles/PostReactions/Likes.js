@@ -6,7 +6,6 @@ import { useWindowSize, useLocalStorage } from "../../../utils/customHooks"
 import { useEffect } from "react"
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
-import ConfettiAnimation from "../../Animations/ConfettiAnimation"
 
 const LikesContainer = styled.div`
     display: flex;
@@ -22,7 +21,7 @@ const LikesWrapper = styled.div`
     padding-top: 1rem;
 `
 
-const ButtonWrapper = styled.h1`
+const ButtonWrapper = styled.div`
     margin: 0 !important;
     font-size: 3em !important;
     :active {

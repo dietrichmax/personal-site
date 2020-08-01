@@ -114,4 +114,4 @@ import Cookies from 'js-cookie'
   {consentGiven ? <A1/> : null }
 ```
 
-If you have enabled in your Ad Manager settings to fill up your ad slots with Adsense ads you can also display this way `normal` adsense ads.
+If you have enabled in your Ad Manager settings to fill up your ad slots with Adsense ads you can also display this way "normal" Adsense ads.

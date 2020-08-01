@@ -2,6 +2,7 @@ import React from "react"
 import {Bling as GPT} from "react-gpt";
 import styled from 'styled-components'
 import useTranslations from '../../useTranslations';
+import media from 'styled-media-query';
 
 export const Subline = styled.p`
     text-decoration: none;
@@ -12,9 +13,11 @@ export const Subline = styled.p`
 export const Ad1 = styled.div`
     margin: 2rem auto 2rem auto;
     max-width: 728px;
+    ${media.lessThan('large')`
+      padding: 0 1rem 0 1rem;
+    `}
 `
 
-GPT.enableSingleRequest();
 
 
 

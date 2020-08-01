@@ -54,7 +54,7 @@ export const ToCContent = styled.li`
     font-weight: 700;
     transition: color 0.2s ease 0s;
     ${media.lessThan('medium')`
-      margin: 2px 0 2px 0;
+      margin: 5px 0 5px 0;
   `}
   }
 `

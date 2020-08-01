@@ -134,8 +134,8 @@ const Post = props => {
           currentHeading={currentHeading}
         />
         
-        {consentGiven ? <A1/> : categoryMeta.id === "GIS" && locale != "en" ? <RIWAAd/> : null }
-
+        {/*{consentGiven ? <A1/> : categoryMeta.id === "GIS" && locale != "en" ? <RIWAAd/> : null }*/}
+        <A1/>
         <S.Content color={categoryMeta.color}>
           <MDXRenderer>{post.body}</MDXRenderer>
           <S.SocialContainer>

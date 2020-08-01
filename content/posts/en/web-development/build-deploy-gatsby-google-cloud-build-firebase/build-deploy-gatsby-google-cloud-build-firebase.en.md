@@ -293,7 +293,7 @@ import MyComponent from "../Mycomponent"
 ```
 and the actual folder name is ```MyComponent``` your build will fail.
 
-### Speeding up your builds
+## Speeding up your builds
 
 + **Image optimization**
 
@@ -302,7 +302,7 @@ If you aren't using preoptimized images yet you should consider to crop, resize 
 Before i optimized my images a build on Google Cloud took about ~ 1800 sec.
 After i optimized all my images for posts with Python ([Image optimization with Python](/en/web-development/image-optimization-transformation-python/ "Image optimization with Python")) the build time went down to ~ 620 sec. So actually just a third.
 
-### Set Cloud Scheduler (optional)
+## Set Cloud Scheduler (optional)
 
 With Cloud Scheduler you can trigger a build automatically after a specific time.
 The first 3 jobs a month a free and after that you have to pay $0.10 for every job after that.

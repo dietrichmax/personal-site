@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   FacebookShareButton,
   EmailShareButton,
-  LinkedinShareButton,
   TwitterShareButton,
   RedditShareButton,
   FacebookShareCount,
@@ -10,7 +9,6 @@ import {
   FacebookIcon,
   EmailIcon,
   TwitterIcon,
-  LinkedinIcon,
   RedditIcon
 } from "react-share";
 import urljoin from "url-join";
@@ -58,13 +56,6 @@ const renderShareCount = count => (
                 {count => renderShareCount(count)}
               </FacebookShareCount>
             </FacebookShareButton>
-          </S.SocialShareButttonWrapper>
-          <S.SocialShareButttonWrapper>
-            <LinkedinShareButton url={url} title={post.title} description={postNode.excerpt} alt="Linkedin" >
-              <LinkedinIcon 
-                size={iconSize} 
-              />
-            </LinkedinShareButton>
           </S.SocialShareButttonWrapper>
           <S.SocialShareButttonWrapper>
             <EmailShareButton 

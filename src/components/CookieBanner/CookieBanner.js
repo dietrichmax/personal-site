@@ -21,7 +21,7 @@ const  CookieBanner = ({
             action: "Click",
             label: `Accept`,
         })
-        window.location.reload()
+        //window.location.reload()
     }
     const { privacypolicy, cookiedescription, accept } = useTranslations();
 

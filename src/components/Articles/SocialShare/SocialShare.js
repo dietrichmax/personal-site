@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import {
   FacebookShareButton,
+  EmailShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  TelegramShareButton,
   RedditShareButton,
   FacebookShareCount,
   RedditShareCount,
   FacebookIcon,
+  EmailIcon,
   TwitterIcon,
-  TelegramIcon,
   LinkedinIcon,
   RedditIcon
 } from "react-share";
 import urljoin from "url-join";
-import config from "../../../data/SiteConfig";
-import useTranslations from '../useTranslations';
+import config from "../../../../data/SiteConfig";
+import useTranslations from '../../useTranslations';
 import * as S from './styled';
 
 const SocialShare = ({
@@ -36,30 +36,48 @@ const renderShareCount = count => (
 
     return (
       <S.SocialShareWrapper>
-        <S.SocialShareShare>{sharePost}</S.SocialShareShare>
         <S.SocialShareLinks>
-          <RedditShareButton url={url} title={post.title}>
-            <RedditIcon round size={iconSize} />
-            <RedditShareCount url={url}>
-              {count => renderShareCount(count)}
-            </RedditShareCount>
-          </RedditShareButton>
-          <TwitterShareButton url={url} title={post.title}>
-            <TwitterIcon round size={iconSize} />
-          </TwitterShareButton>
-          <FacebookShareButton url={url} quote={postNode.excerpt}>
-            <FacebookIcon round size={iconSize} />
-            <FacebookShareCount url={url}>
-              {count => renderShareCount(count)}
-            </FacebookShareCount>
-          </FacebookShareButton>
-          <LinkedinShareButton
-            url={url}
-            title={post.title}
-            description={postNode.excerpt}
-          >
-            <LinkedinIcon round size={iconSize} />
-          </LinkedinShareButton>
+          <S.SocialShareButttonWrapper>
+            <RedditShareButton url={url} title={post.title} alt="Reddit">
+              <RedditIcon size={iconSize} />
+              <RedditShareCount url={url}>
+                {count => renderShareCount(count)}
+              </RedditShareCount>
+            </RedditShareButton>
+          </S.SocialShareButttonWrapper>
+          
+          <S.SocialShareButttonWrapper>
+            <TwitterShareButton url={url} title={post.title} alt="Twitter">
+              <TwitterIcon size={iconSize} />
+            </TwitterShareButton>
+          </S.SocialShareButttonWrapper>
+          <S.SocialShareButttonWrapper>
+            <FacebookShareButton url={url} quote={postNode.excerpt} alt="Facebook">
+              <FacebookIcon size={iconSize} />
+              <FacebookShareCount url={url}>
+                {count => renderShareCount(count)}
+              </FacebookShareCount>
+            </FacebookShareButton>
+          </S.SocialShareButttonWrapper>
+          <S.SocialShareButttonWrapper>
+            <LinkedinShareButton url={url} title={post.title} description={postNode.excerpt} alt="Linkedin" >
+              <LinkedinIcon 
+                size={iconSize} 
+              />
+            </LinkedinShareButton>
+          </S.SocialShareButttonWrapper>
+          <S.SocialShareButttonWrapper>
+            <EmailShareButton 
+              url={url} 
+              title={post.title}
+              alt="Email"
+            >
+              <EmailIcon 
+                size={iconSize}
+                alt="Email"
+              />
+            </EmailShareButton>
+          </S.SocialShareButttonWrapper>
         </S.SocialShareLinks>
       </S.SocialShareWrapper>
     );

@@ -37,10 +37,6 @@ Dadurch, dass die einzelnen Seiten aber nicht erst dynamisch erstellt werden, so
 ![Credit: https://www.gatsbyjs.org/; How Gatsby works](./how-gatsby-works.png "Credit: https://www.gatsbyjs.org/; How Gatsby works")
 Mit Gatsby kann man Daten aus verschiedenen Quellen (CMS, Markdown,APis, JSON, CSV, usw.) abrufen und diese über GraphQL in HTML Dateien rendern/darstellen. Diese Dateien müssen dann wie gesagt nurnoch auf einen Webserver (z.B. [Netlify](https://www.netlify.com/) oder [ZEIT](https://zeit.co/), welche übrigens auch kostenlos sind) hochgeladen werden.
 
-Fertig ist die Website...
-
-_Klingt einfach, ist es eigentlich auch_
-
 ### Bestehenden Content in Markdown konvertieren
 
 Als erstes stellt sich die Frage wie man seinen Content organisieren möchte. Ich habe lange überlegt ob ich Wordpress als [Headless CMS](https://www.diemax.de/rss.xml) nutzen soll, habe mich aber der einfachheit halber dazu entschieden, jeglichen Content in [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) zu erstellen.
@@ -92,10 +88,6 @@ Nachdem du du Node.js und npm installiert hast (wird beides mit dem gleichen Ins
 
 prüfen ob überhaupt und welche Versionen installiert wurden.
 
-![npm/Node Version](https://www.gatsbyjs.org/static/9b2d2f490c2b7a1b7e0d84da65674648/7e8ce/01-node-npm-versions.png) _Bildquelle: [Gatsby](https://www.gatsbyjs.org/tutorial/part-zero/)_
-
-So eine Meldung mit deiner installierten Version solltest du bekommen. Wenn das so ist kannst du nun mit
-
 ```shell
     npm install -g gatsby-cli
 ```
@@ -116,7 +108,7 @@ gatsby build
 ``` 
 "Baut" ein Gatsby Projekt zusammen, welches dann auf einem Webspace hochgeladen werden kann.
 
-## 3\. Gatsby Projekt erstellen
+## Gatsby Projekt erstellen
 
 Gatsby Starters bieten die Möglichkeit bereits vorkonfigurierte Gatsby Projekte zu verwenden und so sich eine Menge Zeit zu sparen. Es gibt allerdings bereits knapp 250 Starters und die Auswahl fällt dabei nicht ganz einfach. Nach unzähligem hin und her hab ich beschlossen [gatsby-advanced-starter](https://github.com/Vagr9K/gatsby-advanced-starter) von [Vagr9K](https://github.com/Vagr9K) zu verwenden, da dieses Starter Theme vorab schon mit ein paar wichtigen Components wie zum Beispiel für SEO kommt.
 

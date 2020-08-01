@@ -4,6 +4,7 @@ import Navigation from '../HeaderNavigation';
 import ButtonMenu from '../ButtonMenu';
 import Logo from '../Logo';
 import * as S from './styled';
+//import Login from "../Authentication/Login/Login.js"
 
 const Header = ({ locale, categoryColor }) => {
   const { home } = useTranslations();

@@ -88,10 +88,6 @@ After you have installed Node.js and npm (both are installed with the same insta
 
 to check whether and which versions have been installed.
 
-![npm/Node Version](https://www.gatsbyjs.org/static/9b2d2f490c2b7a1b7e0d84da65674648/7e8ce/01-node-npm-versions.png) _Image Source: [Gatsby](https://www.gatsbyjs.org/tutorial/part-zero/)_
-
-You should get such a message with your installed version. If so, you can now go on with
-
 ```shell
     npm install -g gatsby-cli
 ```
@@ -99,19 +95,20 @@ You should get such a message with your installed version. If so, you can now go
 This will install the GatsbyJS ClI. 
 For the Gatsby CLI there are basically three important commands.
 
-* ```shell
+```shell
 shell gatsby new [projectname/folder] [ggfs. Gatsby-Starter]
 ``` 
 Creates a new Gatsby project with a starter. [Gatsby Starters](https://www.gatsbyjs.org/starters/?v=2) are basically themes with pre-configured functions.
 
-*   ```shell 
+```shell 
 gatsby develop
 ``` 
 Starts the development server so that you can see the existing project as a website.
 
-*   ```shell 
+```shell 
 gatsby build
-```Builds a Gatsby project, which can then be uploaded to a web space.
+```
+Builds a Gatsby project, which can then be uploaded to a web space.
 
 ## Create a Gatsby project
 

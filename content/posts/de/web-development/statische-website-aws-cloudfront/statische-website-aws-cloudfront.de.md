@@ -128,9 +128,9 @@ Die CDN-Url kannst du hier ausnahmsweise aus der Dropdownliste auswählen.
 Bei "Routing-Richtlinie" und "Zustand des Ziels bewerten" kannst du die default-Einstellungen belassen,sofern du nicht experimentieren möchtest.
 
 Wenn du nun etwas wartest solltest du wenn du
-+ http://wwww.gis-netzwerk.com,
-+ https://wwww.gis-netzwerk.com,
-+ wwww.gis-netzwerk.com,
++ http://www.gis-netzwerk.com,
++ https://www.gis-netzwerk.com,
++ www.gis-netzwerk.com,
 + http://gis-netzwerk.com oder
 + gis-netzwerk.com
 eingibst immer unter **https://gis-netzwerk.com** landen.

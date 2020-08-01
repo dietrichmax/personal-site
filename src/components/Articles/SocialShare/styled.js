@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import LocalizedLink from '../LocalizedLink';
 
 
 export const SocialShareWrapper = styled.div`
@@ -11,7 +10,7 @@ export const SocialShareWrapper = styled.div`
     align-content: center;
     align-items: center;
     margin-top: 2rem;
-    padding-top: 2rem;
+    padding: 1.5rem 0 1rem 0;
     border-top: 1px solid  var(--gray-extra-light);
 `
 export const ShareCount = styled.div`
@@ -20,6 +19,11 @@ export const ShareCount = styled.div`
 
 export const SocialShareShare = styled.div`
     margin-right: 20px;
+`
+
+export const SocialShareButttonWrapper = styled.div`
+    display: inline-block;
+    margin: 1rem;
 `
 
 export const SocialShareLinks = styled.div`

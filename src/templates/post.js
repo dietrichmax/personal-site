@@ -20,7 +20,7 @@ import RIWAAd from "../components/Ads/RIWA/mobileVermessung/index.js"
 import TableOfContents from "../components/Articles/TableofContents/TableofContents.js"
 import AuthorBox from "../components/Articles/PostAuthor/"
 //import SimilarArticles from '../components/Articles/RelatedPosts/SimilarArticles.js'
-//import SocialShare from "../components/SocialShare/SocialShare.js";
+import SocialShare from "../components/Articles/SocialShare/SocialShare.js";
 import Subscribe from "../components/Newsletter/Subscribe.js"
 import Cookies from 'js-cookie'
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
@@ -139,11 +139,12 @@ const Post = props => {
         <S.Content color={categoryMeta.color}>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Like id={slug}/>
+
+          
+          <SocialShare postPath={slug} postNode={post}/>
           <AuthorBox authorMeta={post.frontmatter.author}/>
           <Subscribe color={categoryMeta.color} />
-
           {/*<JoinAudience />
-          <SocialShare postPath={slug} postNode={post}/>
           <SimilarArticles category={categoryMeta.id} tags={tagsMeta} currentArticleSlug={slug} />*/}
       </S.Content>
       </div>

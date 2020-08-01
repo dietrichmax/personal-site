@@ -132,9 +132,9 @@ Exceptionally, you can select the CDN url from the dropdown list.
 With "Routing Guideline" and "Assess the state of the target" you can leave the default settings, unless you want to experiment.
 
 Now if you wait a little you should be redirect from
-+ http://wwww.gis-netzwerk.com,
-+ https://wwww.gis-netzwerk.com,
-+ wwww.gis-netzwerk.com,
++ http://www.gis-netzwerk.com,
++ https://www.gis-netzwerk.com,
++ www.gis-netzwerk.com,
 + http://gis-netzwerk.com and
 + gis-netzwerk.com
 to **https://gis-netzwerk.com** .

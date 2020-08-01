@@ -1,7 +1,7 @@
 ---
 layout: "Article"
 title: "Build and deploy your Gatsby site with Google Cloud Build to Firebase"
-date: "2020-07-26"
+date: "2020-08-21"
 description: "Ultimate guide to automate your Gatsby builds with Google Cloud Build, deploying to Firebase and optional Cloud Scheduler."
 category: "Web-Development"
 tags: ["GatsbyJS", "Firebase", "Google Cloud", "CI/CD"]

@@ -2,7 +2,7 @@
 layout: "Article"
 title: "Integrate Google Ad Manager with Adsense in your Gatsby site"
 date: "2020-08-02"
-description: ""
+description: "With React GPT you can easily implement Ad Manager and Adsense via Ad Manager on your Gatsby site. React GPT is a React component for Google Publisher Tags."
 category: "Web-Development"
 tags: ["GatsbyJS", "Ad Manager", "Adsense"]
 image: "../../../../../static/assets/img/postImg/gatsby-google-ad-manager-adsense.jpg"
@@ -113,3 +113,5 @@ import Cookies from 'js-cookie'
 
   {consentGiven ? <A1/> : null }
 ```
+
+If you have enabled in your Ad Manager settings to fill up your ad slots with Adsense ads you can also display this way `normal` adsense ads.

@@ -25,7 +25,7 @@ const { sharePost } = useTranslations();
 const post = postNode.frontmatter;
 
 const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
-const iconSize = 48;
+const iconSize = 40;
 
 const filter = count => (count > 0 ? count : "");
 const renderShareCount = count => (
@@ -36,8 +36,8 @@ const renderShareCount = count => (
       <S.SocialShareWrapper>
         <S.SocialShareLinks>
           <S.SocialShareButttonWrapper>
-            <RedditShareButton url={url} title={post.title} alt="Reddit">
-              <RedditIcon size={iconSize} />
+            <RedditShareButton url={url} title={post.title}>
+              <RedditIcon round size={iconSize} />
               <RedditShareCount url={url}>
                 {count => renderShareCount(count)}
               </RedditShareCount>
@@ -45,13 +45,13 @@ const renderShareCount = count => (
           </S.SocialShareButttonWrapper>
           
           <S.SocialShareButttonWrapper>
-            <TwitterShareButton url={url} title={post.title} alt="Twitter">
-              <TwitterIcon size={iconSize} />
+            <TwitterShareButton url={url} title={post.title}>
+              <TwitterIcon round size={iconSize} />
             </TwitterShareButton>
           </S.SocialShareButttonWrapper>
           <S.SocialShareButttonWrapper>
-            <FacebookShareButton url={url} quote={postNode.excerpt} alt="Facebook">
-              <FacebookIcon size={iconSize} />
+            <FacebookShareButton url={url} quote={postNode.excerpt}>
+              <FacebookIcon round size={iconSize} />
               <FacebookShareCount url={url}>
                 {count => renderShareCount(count)}
               </FacebookShareCount>
@@ -64,6 +64,7 @@ const renderShareCount = count => (
               alt="Email"
             >
               <EmailIcon 
+                round
                 size={iconSize}
                 alt="Email"
               />

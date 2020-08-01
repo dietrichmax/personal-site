@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
+export const SocialContainer = styled.div`
+  display: flex;
+  border-top: 1px solid  var(--gray-extra-light);
+  ${media.lessThan('medium')`
+      display: block;
+  `}
+`
+
 export const Content = styled.section`
   
   margin: 1rem auto 4rem auto;

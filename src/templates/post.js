@@ -138,10 +138,10 @@ const Post = props => {
 
         <S.Content color={categoryMeta.color}>
           <MDXRenderer>{post.body}</MDXRenderer>
-          <Like id={slug}/>
-
-          
-          <SocialShare postPath={slug} postNode={post}/>
+          <S.SocialContainer>
+            <Like id={slug}/>
+            <SocialShare postPath={slug} postNode={post}/>
+          </S.SocialContainer>
           <AuthorBox authorMeta={post.frontmatter.author}/>
           <Subscribe color={categoryMeta.color} />
           {/*<JoinAudience />

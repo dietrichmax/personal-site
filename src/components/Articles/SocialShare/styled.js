@@ -4,14 +4,9 @@ import media from 'styled-media-query';
 
 export const SocialShareWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    margin-top: 2rem;
+    flex-grow: 1;
+    justify-content: flex-end;
     padding: 1.5rem 0 1rem 0;
-    border-top: 1px solid  var(--gray-extra-light);
 `
 export const ShareCount = styled.div`
     text-align: center;
@@ -27,6 +22,7 @@ export const SocialShareButttonWrapper = styled.div`
 `
 
 export const SocialShareLinks = styled.div`
+    margin-top: 1.5rem;
     ${media.lessThan('medium')`
         text-align: center;
         width: 100%;

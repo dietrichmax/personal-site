@@ -210,7 +210,7 @@ export default () => {
         style={{
           textAlign: "center",
           justifyContent: "center",
-          margin: "5rem auto 2rem auto",
+          padding: "1.5rem 0 1rem 0",
           display: "flex",
         }}
       >

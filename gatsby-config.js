@@ -16,6 +16,7 @@ if (
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - 3)
   dynamicPlugins.push(
+    {
       resolve: `gatsby-plugin-guess-js`,
       options: {
         GAViewID: process.env.GA_VIEW_ID,

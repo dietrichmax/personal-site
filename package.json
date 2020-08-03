@@ -10,7 +10,7 @@
     "deploy": "firebase deploy",
     "dev": "npm run develop",
     "serve": "gatsby serve",
-    "build": "env-cmd -f .env.production gatsby build --log-pages",
+    "build": "env-cmd -f .env.production gatsby build",
     "build-incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",

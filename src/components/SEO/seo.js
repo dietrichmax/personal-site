@@ -111,7 +111,6 @@ import useTranslations from '../useTranslations';
       
       <Helmet>
         <title>{`${title} | ${config.siteTitle}`}</title>
-        {/*<link rel="canonical" href={`${config.siteUrl}${slug}`} />*/}
 
         <html lang={language}/>
         
@@ -142,6 +141,7 @@ import useTranslations from '../useTranslations';
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        
       </Helmet>
     );
 };

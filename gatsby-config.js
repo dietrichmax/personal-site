@@ -328,7 +328,6 @@ module.exports = {
         ], // Add or remove icon sizes as desired   
       }
     },
-    "gatsby-plugin-offline", 
     {
       resolve: "gatsby-plugin-feed-mdx",
       options: {

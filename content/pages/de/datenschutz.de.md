@@ -6,8 +6,6 @@ date: "2019-09-30"
 author: "Max Dietrich"
 ---
 
-# Datenschutzerklärung
-
 Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
 
 Max Dietrich  

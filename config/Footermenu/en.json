@@ -2,7 +2,7 @@
   "menuFooterItems": [
     { "name": "About GIS-Netzwerk", "link": "/about" },
     { "name": "Contact", "link": "/contact" },
-    { "name": "Stats", "link": "/stats" },
+    { "name": "Advertise", "link": "/advertise" },
     { "name": "Privacy Policy", "link": "/privacy-policy" },
     { "name": "Legal Disclosure", "link": "/legal-disclosure" }
   ]

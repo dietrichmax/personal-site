@@ -24,7 +24,7 @@ const Blog = props => {
 
   return (
     <>
-      <SEO lang={locale} postNode={categoryMeta}/>
+      <SEO lang={locale} />
       <Helmet >
         <title>{`${category} | ${config.siteTitle}`}</title>
       </Helmet >

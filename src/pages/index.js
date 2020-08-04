@@ -19,7 +19,6 @@ const Index = ({ data: { allMdx, HeroImg}, locale }) => {
 
   
   
-  
   const { home } = useTranslations();
 
   const postList = allMdx.edges;

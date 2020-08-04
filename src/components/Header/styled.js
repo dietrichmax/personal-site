@@ -17,21 +17,16 @@ export const Container = styled.div`
   align-items: center;
   padding: calc(var(--space) * 0.3) var(--space);
   position: relative;
-  ${media.greaterThan('medium')`
-    flex-direction: row;
-  `}
 `;
 
 export const LogoLink = styled(LocalizedLink)`
   display: inline-block;
-  margin-right: auto;
-  width: 170px;
+  margin-left: auto;
+  width: auto;
+  margin-right: 40px;
 `;
 
 export const NavMenu = styled.div`
   margin-right: auto;
-  ${media.greaterThan('medium')`
-    margin: 0 10px 0 auto;
-    width: auto;
-  `}
+  margin-left: 24px;
 `;

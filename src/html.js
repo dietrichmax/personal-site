@@ -13,8 +13,7 @@ export default function HTML(props) {
         />
         {props.headComponents}
         
-        <meta name="purpleads-verification" content="b18117cb1237a6a6b333dda5"></meta>
-      </head>
+        </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
         <div

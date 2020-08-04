@@ -102,11 +102,11 @@ export const onRenderBody = ({ setHeadComponents }) => {
         rel="dns-prefetch"
         key="dns-prefetch-js"
         href="https://www.googletagservices.com"
-      ></link>,
+      ></link>
     ])
   }
 
 
-
+ 
 
 export const wrapPageElement = CustomLayout;

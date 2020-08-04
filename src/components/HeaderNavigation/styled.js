@@ -5,19 +5,12 @@ import { Link } from 'gatsby';
 
 export const Navigation = styled.nav`
   display: none;
-  height: 100vh;
+  height: auto;
   flex-direction: column;
   margin-top: 2rem;
   &.active {
     display: flex;
   }
-  ${media.greaterThan('medium')`
-    margin-top: 0;
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    align-items: center;
-  `}
 `;
 
 export const NavigationLink = styled(LocalizedLink)`
@@ -27,10 +20,6 @@ export const NavigationLink = styled(LocalizedLink)`
   padding: 0 var(--space-sm);
   margin-bottom: var(--space-sm);
   font-weight: 500;
-  ${media.greaterThan('medium')`
-    margin-left: var(--space-sm);
-    margin-bottom: 0;
-  `}
   
   :hover {
     color: var(--text-light);
@@ -47,7 +36,4 @@ export const NavigationButton = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  ${media.greaterThan('medium')`
-    margin-left: var(--space-lg);
-  `}
 `;

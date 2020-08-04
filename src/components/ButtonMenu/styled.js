@@ -10,12 +10,8 @@ export const ButtonHamburger = styled.button`
   position: absolute;
   border-radius: 3px;
   top: var(--space-sm);
-  right: var(--space-sm);
+  left: 40px;
   outline: none;
-  ${media.greaterThan('medium')`
-    display: none;
-  `}
-
   &.active {
     span {
       background: transparent;
@@ -32,18 +28,16 @@ export const ButtonHamburger = styled.button`
       }
     }
   }
-
   span {
     background: var(--text-dark);
     border-radius: 10px;
     display: inline-block;
     height: 2px;
-    width: 70%;
+    width: 60%;
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     &:before,
     &:after {
       content: '';
@@ -56,11 +50,9 @@ export const ButtonHamburger = styled.button`
       left: 0;
       transition: 0.3s;
     }
-
     &:before {
       top: -8px;
     }
-
     &:after {
       bottom: -8px;
     }

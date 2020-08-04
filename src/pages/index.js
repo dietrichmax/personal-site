@@ -7,7 +7,7 @@ import LocalizedLink from '../components/LocalizedLink';
 import useTranslations from '../components/useTranslations';
 import styled from 'styled-components';
 import * as S from '../components/ListWrapper/styled';
-import HeroItem from '../components/HeroItem';
+import HeroItem from '../components/Hero/IndexHero';
 import config from "../../data/SiteConfig";
 import { Helmet } from 'react-helmet' 
 import Subscribe from "../components/Newsletter/Subscribe.js"

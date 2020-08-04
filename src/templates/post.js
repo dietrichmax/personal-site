@@ -117,8 +117,8 @@ const Post = props => {
     <div ref={target}>
       <SEO postPath={slug} postNode={post} postSEO lang={locale}/>
       <ReadingProgress target={target} color={categoryMeta.color}/>
-      <PostCover image={post.frontmatter.image} title={post.frontmatter.title} color={categoryMeta.color}/>
-      <PostCoverCaption color={categoryMeta.color}>{imageSource} {newCaption} <a href={licenceLink}>{licenceName}</a></PostCoverCaption>
+      <PostCover image={post.frontmatter.image} title={post.frontmatter.title} />
+      <PostCoverCaption >{imageSource} {newCaption} <a href={licenceLink}>{licenceName}</a></PostCoverCaption>
       <TitlePage text={post.frontmatter.title} />
 
       <MetaElement>   
@@ -129,7 +129,6 @@ const Post = props => {
       </MetaElement>
 
         <TableOfContents
-          color={categoryMeta.color}
           tableOfContents={post.tableOfContents}
           currentHeading={currentHeading}
         />

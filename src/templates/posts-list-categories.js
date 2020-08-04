@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import PostItem from '../components/Articles/PostItem';
 import TitlePage from '../components/TitlePage';
 import SEO from '../components/SEO/seo';
-import HeroItem from '../components/HeroItem';
+import CategoryHero from '../components/Hero/CategoryHero';
 import { Helmet } from 'react-helmet' 
 import Pagination from '../components/Pagination';
 import config from "../../data/SiteConfig";
@@ -12,6 +12,7 @@ import LocalizedLink from '../components/LocalizedLink';
 
 const Blog = props => {
   const postList = props.data.allMdx.edges;
+  const categoryMeta = props.data.categoryYaml
   // Logic for Pagination Component
   const { currentPage, numPages, category, locale} = props.pageContext;
   const isFirst = currentPage === 1;
@@ -21,13 +22,13 @@ const Blog = props => {
     currentPage - 1 === 1 ? `/${categoryslug}` : `/${categoryslug}/${currentPage - 1}`;
   const nextPage = `/${categoryslug}/${currentPage + 1}`;
 
-
   return (
     <>
-      <SEO lang={locale} />
+      <SEO lang={locale} postNode={categoryMeta}/>
       <Helmet >
         <title>{`${category} | ${config.siteTitle}`}</title>
       </Helmet >
+      <CategoryHero category={categoryMeta}/>
         <S.CategoryListing >
           <S.ListWrapper>
             {postList.map(
@@ -113,6 +114,11 @@ export const query = graphql`
           }
         }
       }
+    }
+    categoryYaml(id: {eq: $category}) {
+      id
+      description
+      color
     }
   }
 `;

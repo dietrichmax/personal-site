@@ -20,7 +20,6 @@ const PostCover = ({
           fadeIn={false} 
           loading="eager"
           style={{objectFit:'cover'}}
-          categoryColor={color}
           />
     </div>
   );

@@ -30,6 +30,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@mdx-js/mdx": "^1.6.7",
     "@mdx-js/react": "^1.6.7",
+    "child_process": "^1.0.2",
     "classnames": "^2.2.6",
     "date-fns": "^2.15.0",
     "dotenv": "^8.2.0",

@@ -6,7 +6,6 @@ date: "2020-02-16"
 author: "Max Dietrich"
 ---
 
-
 Über GIS Netzwerk
 ...
 
@@ -15,6 +14,7 @@ author: "Max Dietrich"
 
 User
 Sessions
+PageViews
 Bounce rate
 Average time on site
 

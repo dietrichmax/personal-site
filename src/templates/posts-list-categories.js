@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import PostItem from '../components/Articles/PostItem';
 import TitlePage from '../components/TitlePage';
 import SEO from '../components/SEO/seo';
-import CategoryHero from '../components/Hero/CategoryHero';
 import { Helmet } from 'react-helmet' 
 import Pagination from '../components/Pagination';
 import config from "../../data/SiteConfig";
@@ -28,7 +27,6 @@ const Blog = props => {
       <Helmet >
         <title>{`${category} | ${config.siteTitle}`}</title>
       </Helmet >
-      <CategoryHero category={categoryMeta}/>
         <S.CategoryListing >
           <S.ListWrapper>
             {postList.map(

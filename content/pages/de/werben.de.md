@@ -9,6 +9,7 @@ author: "Max Dietrich"
 Über GIS Netzwerk
 ...
 
+<iframe width="600" height="800" src="https://datastudio.google.com/embed/reporting/ba5e4971-7e43-4a43-bc1b-9b7c1ad8a5e8/page/1M" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 ## Reichweite
 

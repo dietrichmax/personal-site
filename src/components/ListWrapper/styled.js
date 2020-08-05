@@ -23,7 +23,7 @@ export const IndexListing = styled.div`
 
 export const CategoryListing = styled.div`
   background-color: white;
-  margin: 20px auto;
+  margin: 80px auto;
   ${media.greaterThan('medium')`   
     padding: 20px 20px 0 20px;  
     max-width: 61.8%;
@@ -32,14 +32,9 @@ export const CategoryListing = styled.div`
 
 export const TagListing = styled.div`
 background-color: white;
-margin: 20px auto;
+margin: 80px auto;
 ${media.greaterThan('medium')`   
   max-width: 61.8%;
   padding: 20px 20px 0 20px;  
 `}
-`
-
-export const CategoryHero = styled.div`
-  width: 100%;
-  height: 350px;
 `

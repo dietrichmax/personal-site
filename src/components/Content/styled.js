@@ -13,7 +13,6 @@ export const Content = styled.section`
   
   margin: 1rem auto 4rem auto;
   max-width: 750px;
-  background-color: white;
   padding: 2rem;
 
   ${media.lessThan('medium')`

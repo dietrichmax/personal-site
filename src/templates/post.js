@@ -15,8 +15,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import ViewCounter from "../components/Articles/ViewCounter/ViewCounter.js"
 import Like from "../components/Articles/PostReactions/Likes.js"
 import ReadingProgress from "../components/Articles/ReadingProgress/ReadingProgress.js"
-import A1 from "../components/Ads/GoogleAdManager/A1.js"
-import RIWAAd from "../components/Ads/RIWA/mobileVermessung/index.js"
+//import A1 from "../components/Ads/GoogleAdManager/A1.js"
+//import RIWAAd from "../components/Ads/RIWA/mobileVermessung/index.js"
 import TableOfContents from "../components/Articles/TableofContents/TableofContents.js"
 import AuthorBox from "../components/Articles/PostAuthor/"
 //import SimilarArticles from '../components/Articles/RelatedPosts/SimilarArticles.js'
@@ -132,9 +132,7 @@ const Post = props => {
           tableOfContents={post.tableOfContents}
           currentHeading={currentHeading}
         />
-        
-        {/*{consentGiven ? <A1/> : categoryMeta.id === "GIS" && locale != "en" ? <RIWAAd/> : null }*/}
-        <A1/>
+
         <S.Content color={categoryMeta.color}>
           <MDXRenderer>{post.body}</MDXRenderer>
           <S.SocialContainer>

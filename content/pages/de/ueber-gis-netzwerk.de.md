@@ -8,7 +8,7 @@ author: "Max Dietrich"
 
 GIS-Netzwerk ist eine Informationsplattform für (Web-)[GIS](/gis/was-ist-gis "Was ist GIS"), [Geodaten](/gis/was-sind-geodaten "Was sind Geodaten?") und [Web-Development](/web-development "Web-Development").
 
-Thematische Schwerpunkte sind die Verbindung dieser Themen, also insbesondere 
+Thematische Schwerpunkte sind insbesonders 
 + [Web-GIS](/tags/web-gis/ "Web-GIS"), 
 + die Datenerhebung, Verarbeitung, Analyse und Visualisierung von [Geodaten](/tags/geodaten/ "Geodaten") via 
 + [FME](/tags/fme/ "FME"), 

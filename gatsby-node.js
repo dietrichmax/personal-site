@@ -1,11 +1,56 @@
 const path = require(`path`);
 const locales = require(`./config/i18n`);
 const _ = require("lodash");
+const crypto = require('crypto')
+const {google} = require('googleapis')
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 const {
   localizedSlug,
   findKey,
   removeTrailingSlash,
 } = require(`./src/utils/gatsby-node-helpers`);
+
+// query Analytics data / page views per date
+if (
+  process.env.CLIENT_EMAIL &&
+  process.env.PRIVATE_KEY &&
+  process.env.GA_VIEW_ID
+) {
+    exports.sourceNodes = async ({actions}) => {
+      const {createNode} = actions
+
+      const startDate = new Date()
+      startDate.setMonth(startDate.getMonth() - 12)
+      const scopes = 'https://www.googleapis.com/auth/analytics.readonly'
+
+      const jwt = new google.auth.JWT(process.env.CLIENT_EMAIL, null, process.env.PRIVATE_KEY, scopes)
+      await jwt.authorize()
+      const viewsPerDate = await google.analytics('v3').data.ga.get({
+        'auth': jwt,
+        'ids': 'ga:' + process.env.GA_VIEW_ID,
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday',
+        'dimensions': 'ga:date',
+        'metrics': 'ga:pageviews',
+      })
+
+      for (let [date, views] of viewsPerDate.data.rows) {
+        createNode({
+          date,
+          views: Number(views),
+          id: date,
+          internal: {
+            type: `ViewsPerDate`,
+            contentDigest: crypto.createHash(`md5`).update(JSON.stringify({date, views})).digest(`hex`),
+            mediaType: `text/plain`,
+            description: `Page views per date`,
+          }
+        })
+      }
+    }
+  }
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;

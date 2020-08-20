@@ -3,7 +3,7 @@ import media from 'styled-media-query';
 
 export const TitleElement = styled.h1`
 max-width: 1000px;;
-margin: 2rem auto 0;
+margin: 2rem auto 2rem;
 text-align: center;
 font-weight: 600;
 padding: .5rem;

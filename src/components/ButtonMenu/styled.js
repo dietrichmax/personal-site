@@ -10,7 +10,7 @@ export const ButtonHamburger = styled.button`
   position: absolute;
   border-radius: 3px;
   top: var(--space-sm);
-  left: 40px;
+  right: var(--space-sm);
   outline: none;
   &.active {
     span {

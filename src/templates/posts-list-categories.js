@@ -103,7 +103,6 @@ export const query = graphql`
             }
             tags
             date(formatString: $dateFormat)
-
           }
           timeToRead
           fields {

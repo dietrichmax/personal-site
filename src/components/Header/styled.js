@@ -21,9 +21,8 @@ export const Container = styled.div`
 
 export const LogoLink = styled(LocalizedLink)`
   display: inline-block;
-  margin-left: auto;
+  margin-right: auto;
   width: auto;
-  margin-right: 40px;
 `;
 
 export const NavMenu = styled.div`

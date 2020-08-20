@@ -30,15 +30,6 @@ if (
         },
       }
     },
-    {
-      resolve: `gatsby-source-google-analytics-reporting-api`,
-      options: {
-        email: process.env.CLIENT_EMAIL,
-        key: process.env.PRIVATE_KEY.replace(/\\n/g, "\n"),
-        viewId: process.env.GA_VIEW_ID,
-        startDate: `2009-01-01`,
-      }
-    }
   )
 }
 

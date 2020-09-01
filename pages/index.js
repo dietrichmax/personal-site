@@ -1,8 +1,6 @@
-import Container from '@/components/container'
-import MoreStories from '@/components/more-stories'
-import HeroPost from '@/components/hero-post'
-import Intro from '@/components/intro'
-import Layout from '@/components/layout'
+import MoreStories from '@/components/postPreview/more-stories'
+import HeroPost from '@/components/hero/hero-post'
+import Layout from '@/components/layout/layout'
 import { getAllPostsForHome } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
@@ -16,8 +14,6 @@ export default function Index({ allPosts, preview }) {
         <Head>
           <title>{config.siteTitle}</title>
         </Head>
-        <Container>
-          <Intro />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -29,7 +25,6 @@ export default function Index({ allPosts, preview }) {
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
       </Layout>
     </>
   )

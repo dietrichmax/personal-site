@@ -11,12 +11,12 @@ export default function CoverImage({ title, url, slug, caption }) {
       {slug ? (
         <Link as={`/blog/${slug}`} href="/blog/[slug]">
             <a aria-label={title}>
-              <img src={imageUrl} alt={title} title={title} />
+              <img src={imageUrl} alt={title} title={title} style={{width:'1920px',height:'400px',objectFit:'cover'}} />
             </a>
         </Link>
       ) : (
         <div>
-          <img src={imageUrl} alt={title} title={title} style={{width:'1920px',height:'400px'}}/>
+          <img src={imageUrl} alt={title} title={title} style={{width:'1920px',height:'400px',objectFit:'cover'}}/>
           Bildquelle: {caption}
         </div>
       )}

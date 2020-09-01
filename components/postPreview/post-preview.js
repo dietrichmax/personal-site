@@ -1,5 +1,5 @@
-import Date from './date'
-import CoverImage from './cover-image'
+import Date from '../date/date'
+import CoverImage from '../image/cover-image'
 import Link from 'next/link'
 
 export default function PostPreview({

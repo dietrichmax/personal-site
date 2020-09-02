@@ -10,7 +10,7 @@ const HeaderItem = styled(Link)`
 
 `
 
-export default function Alert({ preview }) {
+export default function HeaderNav() {
 
   const headerItems = [
       { "name": config.siteTitle, "link":  config.homePath },

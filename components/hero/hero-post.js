@@ -1,5 +1,5 @@
 import Date from '../date/date'
-import CoverImage from '../image/cover-image'
+import CoverImage from '../post/post-image/cover-image'
 import Link from 'next/link'
 
 export default function HeroPost({

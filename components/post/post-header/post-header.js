@@ -1,10 +1,14 @@
-import Avatar from '../author/avatar'
-import Date from '../date/date'
-import CoverImage from '../image/cover-image'
-import PostTitle from '../title/content-title'
+import Author from '../post-author/post-author'
+import CoverImage from '../post-image/cover-image'
+import PostTitle from '../../title/content-title'
 import styled from 'styled-components';
 import Link from 'next/link'
 const _ = require("lodash");
+
+const TagsWrapper = styled.a`
+  display: block;
+  margin-top: 1rem;
+`
 
 const Tags = styled.a`
   background-color: ${props =>
@@ -13,12 +17,12 @@ const Tags = styled.a`
   border-radius: 5px;
   font-size: 13px;
   text-transform: uppercase;
-  margin: 5px 5px 5px 0;
+  margin: 15px 10px 5px 0;
   color: #fff;
 `
 
 const PostHeaderWrapper = styled.div`
-  max-width: 1140px;
+  max-width: 640px;
   margin: auto;
 `
 
@@ -28,15 +32,17 @@ export default function PostHeader({ title, coverImage, date, author, tags }) {
     <>
       <CoverImage title={title} url={coverImage.coverImage.url} caption={coverImage.caption}/>
       <PostHeaderWrapper>
-        {tags.map((tag) => (
-          <Tags color={tag.color} title={tag.name} ><Link href={`/themen/${_.kebabCase(tag.name)}`} >{tag.name}</Link></Tags>
-        ))}
-  
-        <PostTitle>{title}</PostTitle>
-        
-        <Avatar name={author.name} picture={author.picture} bio={author.bio} socials={author.socials}/>
 
-        <Date dateString={date} />
+        <TagsWrapper>
+          {tags.map((tag) => (
+            <Tags color={tag.color} title={tag.name} ><Link href={`/themen/${_.kebabCase(tag.name)}`}>{tag.name}</Link></Tags>
+          ))}
+        </TagsWrapper>
+
+        <PostTitle>{title}</PostTitle>
+          
+        <Author name={author.name} picture={author.picture} bio={author.bio} socials={author.socials} date={date} />
+
       </PostHeaderWrapper>
     </>
   )

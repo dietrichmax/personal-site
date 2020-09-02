@@ -1,9 +1,15 @@
-import MoreStories from '@/components/postPreview/more-stories'
+import MoreStories from '@/components/post/post-preview/more-stories'
 import HeroPost from '@/components/hero/hero-post'
 import Layout from '@/components/layout/layout'
 import { getAllPostsForHome } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
+import styled from 'styled-components';
+
+const IndexPageContainer = styled.div`
+  max-width: 1140px !important;
+  margin: auto;
+`
 
 export default function Index({ allPosts, preview }) {
   const heroPost = allPosts[0]
@@ -14,6 +20,7 @@ export default function Index({ allPosts, preview }) {
         <Head>
           <title>{config.siteTitle}</title>
         </Head>
+        <IndexPageContainer >
           {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -25,6 +32,7 @@ export default function Index({ allPosts, preview }) {
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        </IndexPageContainer>
       </Layout>
     </>
   )

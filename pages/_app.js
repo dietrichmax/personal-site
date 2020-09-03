@@ -2,6 +2,8 @@ import '@/styles/index.css'
 import { useEffect } from 'react'
 import Router from 'next/router'
 import * as gtag from '../lib/gtag'
+import GlobalStyles from '../../styles/global';
+
 
 function isDev() {
   return process.env.NODE_ENV !== "production";
@@ -30,3 +32,5 @@ const App = ({ Component, pageProps }) => {
 }
 
 export default App
+
+/*<GlobalStyles />*/

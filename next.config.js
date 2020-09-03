@@ -12,10 +12,18 @@ module.exports = withPlugins([
     pageExtensions: ['js', 'mdx', 'md'],
   }],
   [withOptimizedImages, {
-  /* config for next-optimized-images */
-  handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif', 'ico'],
-  limit: 8192,
-  optimize: true,
+    /* config for next-optimized-images */
+    handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif', 'ico'],
+    limit: 8192,
+    optimize: true,
+  }],
+  [withPWA, {
+    /* config for withPWA */
+    pwa: {
+      dest: 'public',
+      register: true,
+      sw: 'service-worker.js',
+    },
   }],
   
   // your config for other plugins or the general next.js here...

@@ -1,8 +1,8 @@
 import '@/styles/index.css'
+import GlobalStyles from '@/styles/global'
 import { useEffect } from 'react'
 import Router from 'next/router'
 import * as gtag from '../lib/gtag'
-import GlobalStyles from '../../styles/global';
 
 
 function isDev() {

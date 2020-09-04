@@ -6,9 +6,6 @@ const HeaderWrapper = styled.div`
   width: 100%
 
 `
-const HeaderItem = styled(Link)`
-
-`
 
 export default function HeaderNav() {
 
@@ -21,10 +18,10 @@ export default function HeaderNav() {
   return (
     <HeaderWrapper>
       
-      {headerItems.map((item) => (
-        <HeaderItem href={item.link}>
+      {headerItems.map((item, i) => (
+        <Link key={i} href={item.link}>
           <a>{item.name}</a>
-        </HeaderItem>
+        </Link>
       ))}
     </HeaderWrapper>
   )

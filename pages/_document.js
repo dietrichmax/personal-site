@@ -1,11 +1,12 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+
 export default class MyDocument extends Document {
   
-  const GA_TRACKING_ID = process.env.production.GA_ID
-
   render() {
-    
+
+    const GA_TRACKING_ID = process.env.GA_ID
+
     return (
       <Html lang="de">
         <Head>

@@ -1,18 +1,47 @@
-.markdown {
-  @apply text-lg leading-relaxed;
+
+.markdown  {
+  background-color: #fff;
 }
 
-.markdown p,
-.markdown ul,
-.markdown ol,
-.markdown blockquote {
-  @apply my-6;
+.markdown a {
+  color: var(--gray-dark);
+  border-bottom: 1px solid var(--border-light);
+}
+.markdown a:hover {
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.markdown p {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  font-size: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.markdown img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown pre  {
+  background: #2d2d2d;
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+  color: #ccc;
+  font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
 }

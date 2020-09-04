@@ -7,7 +7,7 @@ const Caption = styled.a`
   right: 0px;
   padding-right: 12px;
   text-transform: uppercase;
-  color: rgb(43, 43, 43);
+  color: var(--gray);
   font-size: 10px;
   background-color: white;
 `

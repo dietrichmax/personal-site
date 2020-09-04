@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const isProd = process.env.NODE_ENV === "production";
+const withPWA = require('next-pwa')
 const withOptimizedImages = require('next-optimized-images');
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
@@ -24,7 +25,7 @@ module.exports = withPlugins([
       dest: "public"
     },
   }],
-  /* Redirects */
+  /* Redirects
   async redirects() {
     return [
       {
@@ -263,6 +264,7 @@ module.exports = withPlugins([
         permanent: true
       },
     ]
-  },
+  }, */
+  
   // your config for other plugins or the general next.js here...
 ]);

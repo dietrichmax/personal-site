@@ -1,36 +1,9 @@
-import '@/styles/index.css'
-import GlobalStyles from '@/styles/global'
-import { useEffect } from 'react'
-import Router from 'next/router'
-import * as gtag from '../lib/gtag'
+import Router from "next/router";
+import withGA from "next-ga";
+import '@/styles/global.css'
 
-
-function isDev() {
-  return process.env.NODE_ENV !== "production";
-}
-
-const App = ({ Component, pageProps }) => {
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    
-    const isDevelopment = isDev();
-    
-    if (isDevelopment) {
-      console.log("Tracking is disabled in development mode")
-    } else {
-      Router.events.on('routeChangeComplete', handleRouteChange)
-      return () => {
-        Router.events.off('routeChangeComplete', handleRouteChange)
-      }
-    }
-    
-  }, [])
-
+function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-export default App
-
-/*<GlobalStyles />*/
+export default withGA(process.env.GA_ID, Router)(MyApp);

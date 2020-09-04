@@ -10,7 +10,7 @@ const TagsWrapper = styled.a`
   margin-top: 1rem;
 `
 
-const Tags = styled.a`
+const TagItem = styled.a`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: 5px;
@@ -19,6 +19,13 @@ const Tags = styled.a`
   text-transform: uppercase;
   margin: 15px 10px 5px 0;
   color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+  :hover {
+    background-color: white;
+    color: ${props =>
+      props.color ? props.color : '#798ad0'};
+  }
 `
 
 const PostHeaderWrapper = styled.div`
@@ -34,8 +41,10 @@ export default function PostHeader({ title, coverImage, date, author, tags }) {
       <PostHeaderWrapper>
 
         <TagsWrapper>
-          {tags.map((tag) => (
-            <Tags color={tag.color} title={tag.name} ><Link href={`/themen/${_.kebabCase(tag.name)}`}>{tag.name}</Link></Tags>
+          {tags.map((tag, i) => (
+              <Link key={i} href={`/blog/themen/${_.kebabCase(tag.slug)}`}>
+                <TagItem color={tag.color} >{tag.name}</TagItem>
+              </Link>
           ))}
         </TagsWrapper>
 

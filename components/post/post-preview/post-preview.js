@@ -13,22 +13,22 @@ export default function PostPreview({
 }) {
   return (
     <div>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <div className="w-full">
+      <div>
+        <div >
           <CoverImage slug={slug} title={title} url={coverImage.coverImage.url} caption={coverImage.caption}/>
         </div>
-        <div class="px-6 py-4">
+        <div>
             <Link as={`/blog/${slug}`} href="/blog/[slug]">
-              <a class="font-bold text-xl mb-2 hover:underline">{title}</a>
+              <a>{title}</a>
             </Link>
-          <div className="text-lg mb-4">
+          <div>
             <Date dateString={date} />
           </div>
-          <p class="text-gray-700 text-base">{excerpt}</p>
+          <p>{excerpt}</p>
         </div>
-        <div class="px-6 pt-4 pb-2">
-          {tags.map((tag) => (
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{tag.name}</span>
+        <div>
+          {tags.map((tag, i) => (
+                <span key={i}>{tag.name}</span>
               ))}
         </div>
       </div>

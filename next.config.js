@@ -1,6 +1,6 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-
+const isProd = process.env.NODE_ENV === "production";
 const withOptimizedImages = require('next-optimized-images');
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
@@ -20,9 +20,8 @@ module.exports = withPlugins([
   [withPWA, {
     /* config for withPWA */
     pwa: {
-      dest: 'public',
-      register: true,
-      sw: 'service-worker.js',
+      disable: !isProd,
+      dest: "public"
     },
   }],
   

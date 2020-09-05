@@ -67,8 +67,8 @@
             "permanent": true
         },
         {
-            "source": "/gis/open-"source"-gis-anwendungen/",
-            "destination": "/open-"source"-web-gis-anwendungen",
+            "source": "/gis/open-source-gis-anwendungen/",
+            "destination": "/open-source-web-gis-anwendungen",
             "permanent": true
         },
         {
@@ -128,7 +128,7 @@
         },
         {
             "source": "/gis/web-feature-service/",
-            "destination": "/web-feature-service-open-"source"-wfs",
+            "destination": "/web-feature-service-open-source-wfs",
             "permanent": true
         },
         {
@@ -178,7 +178,7 @@
         },
         {
             "source": "/gis/gis-software-optionen/",
-            "destination": "/gis-software-optionen-open-"source"-kostenlos-kostenpflichtig",
+            "destination": "/gis-software-optionen-open-source-kostenlos-kostenpflichtig",
             "permanent": true
         },
         {

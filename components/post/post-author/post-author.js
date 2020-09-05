@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import Date from '../../date/date'        
+import { SocialIcon } from 'react-social-icons';
+
 const AuthorWrapper = styled.div`
   display: flex;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray-light);
 `
 const AuthorMeta = styled.a`
   display: block;
   margin-left: 12px;
-  width: 70%;
+  width: 100%;
 `
 
 const AuthorName = styled.a`
@@ -21,13 +23,13 @@ const AuthorImg = styled.img`
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  margin-bottom: auto;
 `
 
-const AuthorSocials = styled.div`
-width: 30%;
+const AuthorSocials = styled.p`
 `
 
-export default function Author({ name, picture, bio, socials, date }) {
+export default function Author({ name, picture, bio, socials }) {
   const url = picture.url ?? picture[0].url
 
   console
@@ -39,15 +41,14 @@ export default function Author({ name, picture, bio, socials, date }) {
         title={name}
       />
       <AuthorMeta>
-        Von{' '}<AuthorName>{name}{' '}</AuthorName>| {bio}
-        <p>Veröffentlicht am <Date dateString={date} />.</p>
-      </AuthorMeta>
-      {/*<AuthorSocials>
+        <p>Von{' '}<AuthorName>{name}{' '}</AuthorName>| {bio}</p>
         
+        <AuthorSocials>
           {socials.map((social) => (
-            <p>{social.plattform}: {social.link}</p>
+            <SocialIcon url={social.link} bgColor="var(--gray)" fgColor="var(--gray-light)" title={social.plattform} style={{ height: 20, width: 20, marginRight: '5px' }}/>
           ))}
-          </AuthorSocials>*/}
+        </AuthorSocials>
+      </AuthorMeta>
     </AuthorWrapper>
   )
 }

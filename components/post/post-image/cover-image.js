@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Img from 'react-optimized-image';
 import styled from 'styled-components';
 
-const Caption = styled.a`
+const Caption = styled.p`
   position: absolute;
   right: 0px;
   padding-right: 12px;
@@ -12,10 +12,26 @@ const Caption = styled.a`
   background-color: white;
 `
 
-const CoverImageWrapper = styled.div`
+const PostCoverImageWrapper = styled.div`
   display: block;
 `
 
+const PreviewCoverImageWrapper = styled.div`
+  display: block;
+`
+const PreviewCoverImage = styled.img`
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  width: 1920px;
+  height: 300px;
+  object-fit: cover;
+`
+
+const PostCoverImage = styled.img`
+  width: 1920px;
+  height: 300px;
+  object-fit: cover;
+`
 
 export default function CoverImage({ title, url, slug, caption }) {
   const imageUrl = `${
@@ -25,22 +41,20 @@ export default function CoverImage({ title, url, slug, caption }) {
   return (
     <div className="">
       {slug ? (
-        <CoverImageWrapper>
+        <PreviewCoverImageWrapper>
           <Link as={`/blog/${slug}`} href="/blog/[slug]">
               <a aria-label={title}>
-                <img src={imageUrl} alt={title} title={title} style={{width:'1920px',height:'400px',objectFit:'cover'}} />
+                <PreviewCoverImage src={imageUrl} alt={title} title={title} />
               </a>
           </Link>
-        </CoverImageWrapper>
+        </PreviewCoverImageWrapper>
 
       ) : (
 
-        <CoverImageWrapper>
-          <div>
-            <img src={imageUrl} alt={title} title={title} style={{width:'1920px',height:'400px',objectFit:'cover'}}/>
+        <PostCoverImageWrapper>
+            <PostCoverImage src={imageUrl} alt={title} title={title} />
             <Caption>Bildquelle: {caption}</Caption>
-          </div>
-        </CoverImageWrapper>
+        </PostCoverImageWrapper>
         
       )}
     </div>

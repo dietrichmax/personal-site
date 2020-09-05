@@ -1,12 +1,24 @@
 import PostPreview from './post-preview'
+import styled from 'styled-components';
+import media from 'styled-media-query';
+
+const ListWrapper = styled.section`
+  margin-top: var(--space);
+  ${media.greaterThan('small')`
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    `}
+  ${media.greaterThan('medium')`
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    `}
+`;
+
 
 export default function MoreStories({ posts }) {
   return (
     <section>
-      <h2>
-        More Stories
-      </h2>
-      <div>
+      <ListWrapper>
         {posts.map((post) => (
           <PostPreview
             key={post.slug}
@@ -19,7 +31,7 @@ export default function MoreStories({ posts }) {
             tags={post.tags}
           />
         ))}
-      </div>
+      </ListWrapper>
     </section>
   )
 }

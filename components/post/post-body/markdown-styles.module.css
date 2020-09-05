@@ -35,13 +35,6 @@
 }
 
 .markdown pre  {
-  background: #2d2d2d;
-  border: 1px solid rgb(204, 204, 204);
-  font-size: 13px;
-  line-height: 19px;
   overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
-  color: #ccc;
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
 }

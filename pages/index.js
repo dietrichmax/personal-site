@@ -1,5 +1,5 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
-import HeroPost from '@/components/hero/hero-post'
+import HeroPost from '@/components/post/post-hero/hero-post'
 import Layout from '@/components/layout/layout'
 import { getAllPostsForHome } from '@/lib/api'
 import Head from 'next/head'
@@ -29,6 +29,7 @@ export default function Index({ allPosts, preview }) {
               author={heroPost.author}
               slug={heroPost.slug}
               excerpt={heroPost.excerpt}
+              tags={heroPost.tags}
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}

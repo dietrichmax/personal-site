@@ -5,11 +5,21 @@ import MoreStories from '../../components/post/post-preview/more-stories'
 import PostHeader from '@/components/post/post-header/post-header'
 import SectionSeparator from '@/components/layout/section-separator'
 import Layout from '@/components/layout/layout'
+import Newsletter from '@/components/newsletter/subscribe'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api'
 import PostTitle from '@/components/title/content-title'
 import Head from 'next/head'
 import markdownToHtml from '@/lib/markdownToHtml'
 import config from "../../data/SiteConfig";
+import styled from 'styled-components';
+
+const MorePostsWrapper = styled.div`
+  max-width: 1140px;
+  margin: auto;
+`
+
+const MorePostsTitle = styled.h3`
+`
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
@@ -39,7 +49,11 @@ export default function Post({ post, morePosts, preview }) {
               <PostBody content={post.content} />
             </article>
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            <Newsletter />
+            <MorePostsWrapper>
+              <MorePostsTitle>Mehr Artikel:</MorePostsTitle>
+              {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            </MorePostsWrapper>
           </>
         )}
     </Layout>

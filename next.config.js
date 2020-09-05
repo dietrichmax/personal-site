@@ -25,7 +25,7 @@ module.exports = withPlugins([
       dest: "public"
     },
   }],
-  /* Redirects
+  /* Redirects 
   async redirects() {
     return [
       {
@@ -204,7 +204,7 @@ module.exports = withPlugins([
         permanent: true
       },
       {
-        source: /gis/geodatenmanager-weiterbildung/',
+        source: '/gis/geodatenmanager-weiterbildung/',
         destination: '/geodatenmanager-weiterbildung-universitaet-tuebingen',
         permanent: true
       },

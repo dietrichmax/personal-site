@@ -71,7 +71,8 @@ export default function Footer() {
       <FooterContainer>
         <Logo />
         
-        <FooterNav>      
+        <FooterNav>     
+          Nav 
         </FooterNav>
           
         <FooterDivider>

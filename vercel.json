@@ -1,6 +1,6 @@
 {
-    "name": "example-app",
-    "alias": ["my-domain.com", "my-alias"],
+    "name": "GIS-Netzwerk",
+    "alias": ["gis-netzwerk.com", "www.gis-netzwerk.com"],
     "version": 2,
 
     "trailingSlash": false,

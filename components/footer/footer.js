@@ -1,6 +1,6 @@
 import config from "../../data/SiteConfig";
 import styled from 'styled-components';
-import Logo from '../Logo';
+import Logo from '../logo';
 import Link from 'next/link'
 import React, { useState } from 'react';
 

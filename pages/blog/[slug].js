@@ -1,7 +1,8 @@
+import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
-import MoreStories from '../../components/post/post-preview/more-stories'
+import MoreStories from '@/components/post/post-preview/more-stories'
 import PostHeader from '@/components/post/post-header/post-header'
 import SectionSeparator from '@/components/layout/section-separator'
 import Layout from '@/components/layout/layout'
@@ -12,6 +13,7 @@ import Head from 'next/head'
 import markdownToHtml from '@/lib/markdownToHtml'
 import config from "../../data/SiteConfig";
 import styled from 'styled-components';
+import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 
 const MorePostsWrapper = styled.div`
   max-width: 1140px;
@@ -21,18 +23,21 @@ const MorePostsWrapper = styled.div`
 const MorePostsTitle = styled.h3`
 `
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post, morePosts }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
+  const target = React.createRef()
+
   return (
-    <Layout preview={preview}>
+    <Layout>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <article ref={target} >
               <Head>
                 <title>
                   {post.title} | {config.siteTitle}
@@ -47,6 +52,7 @@ export default function Post({ post, morePosts, preview }) {
                 tags={post.tags}
               />
               <PostBody content={post.content} />
+              <ReadingProgress target={target} />
             </article>
             <SectionSeparator />
             <Newsletter />
@@ -60,13 +66,12 @@ export default function Post({ post, morePosts, preview }) {
   )
 }
 
-export async function getStaticProps({ params, preview = null }) {
-  const data = await getPostAndMorePosts(params.slug, preview)
+export async function getStaticProps({ params }) {
+  const data = await getPostAndMorePosts(params.slug)
   const content = await markdownToHtml(data?.posts[0]?.content || '')
 
   return {
     props: {
-      preview,
       post: {
         ...data?.posts[0],
         content,

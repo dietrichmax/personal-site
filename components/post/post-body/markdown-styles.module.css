@@ -34,7 +34,24 @@
   margin-bottom: 1rem;
 }
 
+.markdown blockquote  {
+  background: var(--gray-extra-light);
+  border-left: 5px solid var(--primary-color);
+  margin: var(--space) calc(var(--space)*0.5);
+  padding: var(--space-sm) var(--space-sm);
+  font-style:italic;
+  font-size: 1.5rem;
+}
+
+
+.markdown blockquote p {
+  display: inline;
+}
+
+
 .markdown pre  {
   overflow: auto;
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
 }
+
+

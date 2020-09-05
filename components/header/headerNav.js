@@ -10,9 +10,7 @@ const HeaderWrapper = styled.div`
 export default function HeaderNav() {
 
   const headerItems = [
-      { "name": config.siteTitle, "link":  config.homePath },
-      { "name": "Blog", "link":"/blog" },
-      { "name": "Jobbörse", "link":"/jobs" }
+      { "name": config.siteTitle, "link":  config.homePath }
     ]
 
   return (

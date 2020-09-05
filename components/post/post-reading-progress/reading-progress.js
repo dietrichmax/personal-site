@@ -2,12 +2,12 @@ import React, { useEffect, useState, Fragment } from "react"
 import styled from 'styled-components';
 
 export const ReadingProgressBar = styled.div`
-  top: 60px;
+  top: 0;
   position: fixed;
   height: 3px
 `
 
-export default ({ target, color }) => {
+export default function ReadingProgress({ target, color }) {
   const [readingProgress, setReadingProgress] = useState(0)
   const [show, setShow] = useState(false)
   const scrollListener = () => {
@@ -21,10 +21,10 @@ export default ({ target, color }) => {
     const windowScrollTop =
       window.pageYOffset ||
       document.documentElement.scrollTop ||
-      document.body.scrollTop ||
+      document.body.scrollTop || 
       0
 
-    const toShow = windowScrollTop >= 0
+    const toShow = windowScrollTop >= 324
     if (toShow != show) {
       setShow(toShow)
     }
@@ -50,7 +50,7 @@ export default ({ target, color }) => {
     <ReadingProgressBar
       style={{
         width: `${readingProgress}%`,
-        backgroundColor: color ? color : `hsla(0,0%,90.2%,.95)`,
+        backgroundColor: color ? color : `var(--primary-color)`,
         zIndex: "20000",
       }}
     />

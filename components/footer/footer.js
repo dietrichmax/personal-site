@@ -6,9 +6,9 @@ import React, { useState } from 'react';
 
 // styled components
 export const FooterWrapper = styled.div`    
-  background-color: hsla(0,0%,90.2%,.95);
-  box-sizing: border-box;
-  order: 100;
+  background-color: #fff;
+  border-top: 1px solid var(--gray-light);
+  height: 300px;
   }
 `;
 
@@ -30,24 +30,24 @@ export const FooterRow = styled.div`
   margin: 20px auto 20px auto;    
 `
 export const FooterDivider = styled.div`
-width 100%;
-display: block;
-content: '';
-height: 1px;
-background-color: #d2cece;
+  width 100%;
+  display: block;
+  content: '';
+  height: 1px;
+  background-color: var(--gray-light);
 `
 export const FooterSocials = styled.div`    
-text-align: center;
-flex: 1 0 auto;
-margin-top: 25px;
+  text-align: center;
+  flex: 1 0 auto;
+  margin-top: 25px;
 `
 
 export const FooterNav = styled.div`     
-flex: 0 1 auto;
-width: 200px;
-margin-bottom: 25px;
-color: #80868B;
-font-size: 1.5rem;
+  flex: 0 1 auto;
+  width: 200px;
+  margin-bottom: 25px;
+  color: #80868B;
+  font-size: 1.5rem;
 `
 
 
@@ -71,8 +71,8 @@ export default function Footer() {
       <FooterContainer>
         <Logo />
         
-        <FooterNav>     
-          Nav 
+        <FooterNav>
+
         </FooterNav>
           
         <FooterDivider>

@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {
     "@zeit/next-mdx": "^1.2.0",

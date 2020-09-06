@@ -2,8 +2,12 @@ import PostPreview from './post-preview'
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-const ListWrapper = styled.section`
-  margin-top: var(--space);
+const ListWrapper = styled.div`
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space);
+  padding-left: var(--space);
   ${media.greaterThan('small')`
         display: grid;
         grid-gap: 20px;
@@ -15,7 +19,7 @@ const ListWrapper = styled.section`
 `;
 
 
-export default function MoreStories({ posts }) {
+export default function MoreStories({ posts, afterPost }) {
   return (
     <section>
       <ListWrapper>
@@ -29,6 +33,7 @@ export default function MoreStories({ posts }) {
             slug={post.slug}
             excerpt={post.excerpt}
             tags={post.tags}
+            afterPost={afterPost}
           />
         ))}
       </ListWrapper>

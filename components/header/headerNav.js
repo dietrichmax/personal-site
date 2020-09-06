@@ -4,6 +4,7 @@ import config from "../../data/SiteConfig";
 
 const HeaderWrapper = styled.div`
   width: 100%
+  background-color: #fff;
 
 `
 

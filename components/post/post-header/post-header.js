@@ -1,5 +1,4 @@
 import Author from '../post-author/post-author'
-import CoverImage from '../post-image/cover-image'
 import PostTitle from '../../title/content-title'
 import media from 'styled-media-query';
 import styled from 'styled-components';
@@ -33,10 +32,6 @@ const TagItem = styled.a`
 const PostHeaderWrapper = styled.div`
   max-width: 640px;
   margin: auto;
-  ${media.lessThan('large')`
-    padding-left: 1rem;
-    padding-right: 1rem;
-  `}
 `
 
 const DateWrapper = styled.div`
@@ -48,11 +43,10 @@ const DateWrapper = styled.div`
   `}
 `
 
-export default function PostHeader({ title, coverImage, date, author, tags }) {
+export default function PostHeader({ title, date, author, tags }) {
   
   return (
     <>
-      <CoverImage title={title} url={coverImage.coverImage.url} caption={coverImage.caption}/>
       <PostHeaderWrapper>
 
         <TagsWrapper>

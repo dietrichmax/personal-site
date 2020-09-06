@@ -6,11 +6,12 @@ import media from 'styled-media-query';
 
 const Card = styled.div`
   margin-bottom: var(--space);
+  border: 1px solid var(--gray-light);
+  border-radius: 0.75rem;
+  background-color: #fff;
 `
 
 const CardItemWrapper = styled.section`
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-  border-radius: 0.75rem;
   height: 100%;
 `;
 
@@ -18,12 +19,14 @@ const CardItemImg = styled.div`
 `;
 
 const CardItemInfo = styled.div`
-  padding: var(--space-sm) var(--space);
   position: relative;
+  padding: var(--space);
 `;
 
 const CardItemTitle = styled.h2`
-  font-size: 2rem;
+  color: rgb(62, 69, 76);
+  font-size: 1.2em;
+  line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
   :hover {
     color: var(--primary-color);
@@ -36,6 +39,7 @@ const CardItemDate = styled.p`
 `;
 
 const CardItemDescription = styled.p`
+color: rgb(62, 69, 76);
   margin-bottom: var(--space-sm);
 `;
 
@@ -70,6 +74,7 @@ export default function PostPreview({
   author,
   slug,
   tags,
+  afterPost,
 }) {
   return (
     <Card>
@@ -80,13 +85,13 @@ export default function PostPreview({
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/blog/${slug}`} href="/blog/[slug]">
-              <a>{title}</a>
+              <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
           <CardItemDate>
             <Date dateString={date} />
           </CardItemDate>
-          <CardItemDescription>{excerpt}</CardItemDescription>
+          {afterPost ? null : <CardItemDescription>{excerpt}</CardItemDescription> }
           <TagsWrapper>
             {tags.map((tag, i) => (
                 <Link key={i} href={`/blog/themen/${tag.slug}`}>

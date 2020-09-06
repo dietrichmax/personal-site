@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const PostDate = styled.time`
   font-style: italic;
+  color: var(--gray);
 `
 
 export default function Date({ dateString }) {

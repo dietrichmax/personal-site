@@ -44,8 +44,8 @@ export default function Author({ name, picture, bio, socials }) {
         <p>Von{' '}<AuthorName>{name}{' '}</AuthorName>| {bio}</p>
         
         <AuthorSocials>
-          {socials.map((social) => (
-            <SocialIcon url={social.link} bgColor="var(--gray)" fgColor="var(--gray-light)" title={social.plattform} style={{ height: 20, width: 20, marginRight: '5px' }}/>
+          {socials.map((social, i) => (
+            <SocialIcon key={i} url={social.link} bgColor="var(--gray-light)" fgColor="var(--gray)" title={social.plattform} style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
           ))}
         </AuthorSocials>
       </AuthorMeta>

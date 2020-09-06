@@ -7,39 +7,19 @@ import PostHeader from '@/components/post/post-header/post-header'
 import SectionSeparator from '@/components/layout/section-separator'
 import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
-import SEO from '@/components/seo/seo'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api'
 import PostTitle from '@/components/title/content-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
-import media from 'styled-media-query';
-import CoverImage from '@/components/post/post-image/cover-image'
-
-const PostWrapper = styled.div`
-  max-width: 720px;
-  padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-  margin: auto;
-  background-color: #fff;
-  border: 1px solid var(--gray-light);;
-  ${media.lessThan('large')`
-    padding-left: var(--space);
-    padding-right: var(--space);
-  `}
-`
+import SEO from '@/components/seo/seo'
 
 const MorePostsWrapper = styled.div`
-  max-width: 1140px;
-  margin: var(--space) auto;
-  padding: calc(var(--space-sm)*0.5) calc(var(--space-lg)*1.5);
-  background-color: #fff;
-  border: 1px solid var(--gray-light);;
+  max-width: 1200px;
+  margin: auto;
 `
 
-const MorePostsTitle = styled.h4`
-  font-size: 1.5rem;
-  padding: var(--space);
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+const MorePostsTitle = styled.h3`
 `
 
 export default function Post({ post, morePosts }) {
@@ -50,7 +30,6 @@ export default function Post({ post, morePosts }) {
 
   const target = React.createRef()
 
-
   return (
     <Layout>
         {router.isFallback ? (
@@ -58,23 +37,21 @@ export default function Post({ post, morePosts }) {
         ) : (
           <>
             <article ref={target} >
-              <SEO meta={post} postSEO/>
-              <ReadingProgress target={target} />
-              <CoverImage title={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
-              <PostWrapper>
               <PostHeader
                 title={post.title}
+                coverImage={post.coverImage}
                 date={post.date}
                 author={post.author}
                 tags={post.tags}
               />
-                <PostBody content={post.content} />
-              </PostWrapper>
+              <PostBody content={post.content} />
+              <ReadingProgress target={target} />
             </article>
-            <Newsletter />
+            <SectionSeparator />
             <MorePostsWrapper>
               <MorePostsTitle>Mehr Artikel:</MorePostsTitle>
-              {morePosts.length > 0 && <MoreStories posts={morePosts} afterPost/>}
+              {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+              <Newsletter />
             </MorePostsWrapper>
           </>
         )}

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin: var(--space-sm) auto var(--space) auto;
   font-size: 3.5rem;
   font-weight: bold;
+  font-family: var(--secondary-font);
 
 `
 export default function PostTitle({ children }) {

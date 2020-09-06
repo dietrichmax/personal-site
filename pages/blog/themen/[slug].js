@@ -12,7 +12,7 @@ import Head from 'next/head'
 import markdownToHtml from '@/lib/markdownToHtml'
 import config from "../../../data/SiteConfig";
 import styled from 'styled-components';
-
+import SEO from '@/components/seo/seo'
 
 const TagPostsContainer = styled.div`
   max-width: 1140px;
@@ -21,15 +21,22 @@ const TagPostsContainer = styled.div`
 
 const TagMeta = styled.div`
   max-width: 1140px;
-  margin: auto;
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
+  margin: var(--space) auto var(--space) auto;
 `
 
 const TagTitle = styled.h1`
-  max-width: 1140px;
-  margin: auto;
+  max-width: auto;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+  color: var(--gray);
 
+`
+const TagSeparator = styled.div`
+  border-bottom: 2px solid  ${props =>
+    props.color ? props.color : '#798ad0'};
+  width: 10%;
+  margin: auto;
 `
 
 export default function Tags({ tag }) {
@@ -45,16 +52,9 @@ export default function Tags({ tag }) {
         ) : (
           <>
             <article>
-              <Head>
-                <title>
-                  {tag.name} | {config.siteTitle}
-                </title>
-              </Head>
-              <TagMeta color={tag.color}>
-              <TagTitle>
-                {tag.name}
-              </TagTitle>
-                {tag.description}
+              <TagMeta>
+              <TagTitle>{tag.name}</TagTitle>
+              <TagSeparator color={tag.color}/>
               </TagMeta>
               <TagPostsContainer>
                 {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}

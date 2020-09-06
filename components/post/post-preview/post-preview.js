@@ -51,7 +51,7 @@ const TagsWrapper = styled.a`
 const TagItem = styled.a`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
-  padding: 5px;
+  padding: calc(var(--space-sm)*0.5);
   border-radius: 5px;
   font-size: 13px;
   text-transform: uppercase;

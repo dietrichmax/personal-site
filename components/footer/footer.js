@@ -74,10 +74,10 @@ export default function Footer() {
         </FooterNav>
       </FooterContainer>
       <FooterSocials>
-        <SocialIcon url={config.socials.twitter} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Twitter" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.github} bgColor="var(--gray-light)" fgColor="var(--gray)" title="GitHub" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.linkedin} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Linkedin" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.instagram} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Instagram" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+        <SocialIcon url={config.socials.twitter} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Twitter" style={{ height: 27, width: 27, marginRight: 'var(--space)' }}/>
+        <SocialIcon url={config.socials.github} bgColor="var(--gray-light)" fgColor="var(--gray)" title="GitHub" style={{ height: 27, width: 27, marginRight: 'var(--space)' }}/>
+        <SocialIcon url={config.socials.linkedin} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Linkedin" style={{ height: 27, width: 27, marginRight: 'var(--space)' }}/>
+        <SocialIcon url={config.socials.instagram} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Instagram" style={{ height: 27, width: 27, marginRight: 'var(--space)' }}/>
       </FooterSocials>
     </FooterWrapper>
   )

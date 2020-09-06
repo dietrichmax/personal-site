@@ -13,7 +13,7 @@ export default function Animation() {
   }
 
   return (
-    <span title="Home">
+    <div title="newsletter-animation">
       <Lottie
         style={{
           position: 'fixed',
@@ -26,6 +26,6 @@ export default function Animation() {
         isClickToPauseDisabled={true}
         options={defaultOptions}
       />
-    </span>
+    </div>
   )
 }

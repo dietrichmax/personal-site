@@ -10,7 +10,7 @@ const NewsletterWrapper = styled.label`
     flex-wrap: wrap;
     box-sizing: border-box;
     max-width: 720px;
-    padding: var(--space) calc(var(--space-lg)*1.5);
+    padding: var(--space);
     justify-content: center;
     margin: auto;
     background-color: #fff;

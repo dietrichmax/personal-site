@@ -1,6 +1,6 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
-import Title from '@/components/title/content-title'
+import PageTitle from '@/components/title/page-title'
 import { getAllPostsForBlog } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
@@ -11,10 +11,6 @@ const IndexPageContainer = styled.div`
   max-width: 1200px;
 `
 
-const IndexPageHeader = styled.div`
-  margin: 0 0 var(--space-lg);
-`
-
 export default function Index({ allPosts, preview }) {
   return (
     <>
@@ -23,9 +19,7 @@ export default function Index({ allPosts, preview }) {
           <title>{config.siteTitle}</title>
         </Head>
         <IndexPageContainer >
-          <IndexPageHeader>
-            <Title>Blog</Title>
-          </IndexPageHeader>
+            <PageTitle title="Blog"/>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </IndexPageContainer>
       </Layout>

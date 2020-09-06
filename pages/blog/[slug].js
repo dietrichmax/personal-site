@@ -4,7 +4,6 @@ import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
 import MoreStories from '@/components/post/post-preview/more-stories'
 import PostHeader from '@/components/post/post-header/post-header'
-import SectionSeparator from '@/components/layout/section-separator'
 import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
 import SEO from '@/components/seo/seo'
@@ -19,7 +18,7 @@ import CoverImage from '@/components/post/post-image/cover-image'
 const PostWrapper = styled.div`
   max-width: 720px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-  margin: auto;
+  margin: var(--space) auto var(--space) auto;
   background-color: #fff;
   border: 1px solid var(--gray-light);;
   ${media.lessThan('large')`
@@ -31,7 +30,6 @@ const PostWrapper = styled.div`
 const MorePostsWrapper = styled.div`
   max-width: 1140px;
   margin: var(--space) auto;
-  padding: calc(var(--space-sm)*0.5) calc(var(--space-lg)*1.5);
   background-color: #fff;
   border: 1px solid var(--gray-light);;
 `

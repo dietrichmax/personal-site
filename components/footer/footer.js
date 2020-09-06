@@ -2,86 +2,82 @@ import config from "../../data/SiteConfig";
 import styled from 'styled-components';
 import Logo from '../logo';
 import Link from 'next/link'
-import React, { useState } from 'react';
+import { SocialIcon } from 'react-social-icons';
 
 // styled components
-export const FooterWrapper = styled.div`    
+const FooterWrapper = styled.div`    
   background-color: #fff;
   border-top: 1px solid var(--gray-light);
-  height: 300px;
   }
 `;
 
-export const FooterContainer = styled.div`
-  padding: 40px 40px;
+const FooterContainer = styled.div`
+  padding: var(--space-lg);
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
   display: flex;
+  border-bottom: 1px solid var(--gray-light);
 `;
 
-export const FooterLogo = styled.div`
+const FooterLogo = styled.div`
   flex: 1 0 60%;
   color: #80868B;
 `
 
-export const FooterRow = styled.div`
-  width: 750px;
-  margin: 20px auto 20px auto;    
-`
-export const FooterDivider = styled.div`
-  width 100%;
-  display: block;
-  content: '';
-  height: 1px;
-  background-color: var(--gray-light);
-`
-export const FooterSocials = styled.div`    
+
+const FooterSocials = styled.div`    
   text-align: center;
   flex: 1 0 auto;
-  margin-top: 25px;
+  padding-top: var(--space);
+  padding-bottom: var(--space-lg);
 `
 
-export const FooterNav = styled.div`     
+const FooterNav = styled.div`     
   flex: 0 1 auto;
-  width: 200px;
-  margin-bottom: 25px;
-  color: #80868B;
-  font-size: 1.5rem;
+  }
 `
 
-
-export const Copyright = styled.div`
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7); 
+const FooterNavItem = styled.p`     
+  color: var(--gray);
+  font-size: 1.5rem;
+  padding-right: var(--space);
+  :hover {
+    color: var(--primary-color);
+  }
 `
 
 
 export default function Footer() {
 
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  function handleToggleMenu() {
-    setToggleMenu(!toggleMenu);
-  }
+  const footerItems = [
+    { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" },
+    { "name": "Datenschutz", "link":  "/datenschutz" },
+    { "name": "Impressum", "link":  "/impressum" },
+    { "name": "Kontakt", "link":  "mailto:kontakt@gis-netzwerk.com" }
+  ]
 
   return (
     <FooterWrapper>
       <FooterContainer>
-        <Logo />
+        <FooterLogo >
+          <Logo />
+        </FooterLogo>
         
         <FooterNav>
-
+          {footerItems.map((item, i) => (
+            <Link key={i} href={item.link}>
+              <a><FooterNavItem>{item.name}</FooterNavItem></a>
+            </Link>
+          ))}
         </FooterNav>
-          
-        <FooterDivider>
-        </FooterDivider>
-
-        <FooterSocials>
-        </FooterSocials>
-
-        </FooterContainer>
-      </FooterWrapper>
+      </FooterContainer>
+      <FooterSocials>
+        <SocialIcon url={config.socials.twitter} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Twitter" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+        <SocialIcon url={config.socials.github} bgColor="var(--gray-light)" fgColor="var(--gray)" title="GitHub" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+        <SocialIcon url={config.socials.linkedin} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Linkedin" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+        <SocialIcon url={config.socials.instagram} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Instagram" style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+      </FooterSocials>
+    </FooterWrapper>
   )
 }

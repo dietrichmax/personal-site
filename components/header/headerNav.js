@@ -24,52 +24,30 @@ const NavTitle = styled.div`
 
 export const HeaderLogo = styled.div`
   padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
-`
-
-const Links = styled.a`
-  max-width: 66.66667%;
-  float: right;
-  margin: auto var(--space-lg) auto auto;
-  font-size: 1.8rem;
-  :hover {
-    color: var(--primary-color);
-  }
+  ${media.lessThan('large')`
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+  `}
 `
 
 
 
 
-export default class App extends Component {
-  state = {
-    toggle:false
-  }
-
-  Toggle = () => {
-    this.setState({toggle:!this.state.toggle})
-  }
+export default function HeaderNav() {
 
 
-  render() {
+
     
-    const headerItems = [
-      { "name": "Blog", "link":  "/" }
-    ]
+  const headerItems = [
+    { "name": "Blog", "link":  "/" }
+  ]
 
-    return (
-      <HeaderWrapper>
+  return (
+    <HeaderWrapper>
 
-          <HeaderLogo >
-            <Logo />
-          </HeaderLogo>
-          <NavTitle><Link href="/"><a>GIS-Netzwerk</a></Link></NavTitle>
-          {headerItems.map((item, i) => (
-            <Links>
-              <Link key={i} href={item.link}>
-                <a>{item.name}</a>
-              </Link>
-            </Links>
-          ))}
-      </HeaderWrapper>
-    )
-  }
+      <HeaderLogo >
+        <Logo />
+      </HeaderLogo>
+      <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk</a></Link></NavTitle>
+    </HeaderWrapper>
+  )
 }

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
-import { getAllPagesWithSlug, getPage } from '@/lib/api'
+import { getAllJobsWithSlug, getJob } from '@/lib/api'
 import PostTitle from '@/components/title/content-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
@@ -25,9 +25,9 @@ ${media.lessThan('large')`
 `
 
 
-export default function Post({ page }) {
+export default function Job({ job }) {
   const router = useRouter()
-  if (!router.isFallback && !page?.slug) {
+  if (!router.isFallback && !job?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -37,11 +37,11 @@ export default function Post({ page }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <SEO meta={page}/>
-            <PageTitle>{page.title}</PageTitle>
+            <SEO/>
+            <PageTitle>{job.title}</PageTitle>
             <PageWrapper>
-              <Date dateString={page.date} />
-              <PageBody content={page.content} />
+              <Date dateString={job.date} />
+              <PageBody content={job.jobDescription} />
             </PageWrapper>
           </>
         )}
@@ -50,13 +50,13 @@ export default function Post({ page }) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getPage(params.slug)
-  const content = await markdownToHtml(data?.pages[0]?.content || '')
+  const data = await getJob(params.slug)
+  const content = await markdownToHtml(data?.jobs[0]?.jobDescription || '')
 
   return {
     props: {
-      page: {
-        ...data?.pages[0],
+      job: {
+        ...data?.jobs[0],
         content,
       },
     },
@@ -64,9 +64,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allPages = await getAllPagesWithSlug()
+  const allJobs = await getAllJobsWithSlug()
   return {
-    paths: allPages?.map((page) => `/${page.slug}`) || [],
+    paths: allJobs?.map((job) => `/${job.slug}`) || [],
     fallback: true,
   }
 }

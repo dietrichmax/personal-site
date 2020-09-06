@@ -1,35 +1,35 @@
-import MoreStories from '@/components/post/post-preview/more-stories'
+import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
 import PageTitle from '@/components/title/page-title'
-import { getAllPostsForBlog } from '@/lib/api'
+import { getAllJobsForJobboard } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
 
-const IndexPageContainer = styled.div`
+const JobsPageContainer = styled.div`
   margin: auto;
   max-width: 1200px;
 `
 
-export default function Index({ allPosts }) {
+export default function Index({ allJobs }) {
   return (
     <>
       <Layout>
         <Head>
           <title>{config.siteTitle}</title>
         </Head>
-        <IndexPageContainer >
-            <PageTitle>Blog</PageTitle>
-          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
-        </IndexPageContainer>
+        <JobsPageContainer >
+            <PageTitle>Jobbörse</PageTitle>
+            <MoreJobs jobs={allJobs} />
+        </JobsPageContainer>
       </Layout>
     </>
   )
 }
 
 export async function getStaticProps() {
-  const allPosts = (await getAllPostsForBlog()) || []
+  const allJobs = (await getAllJobsForJobboard()) || []
   return {
-    props: { allPosts },
+    props: { allJobs },
   }
 }

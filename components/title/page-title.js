@@ -18,10 +18,10 @@ const Separator = styled.div`
   width: 10%;
   margin: auto;
 `
-export default function PageTitle({ title, color }) {
+export default function PageTitle({ children, color }) {
   return (
     <TitleWrapper>
-        <Title>{title}</Title>
+        <Title>{children}</Title>
         <Separator color={color}/>
     </TitleWrapper>
   )

@@ -1,16 +1,10 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import PostBody from '@/components/post/post-body/post-body'
 import MoreStories from '@/components/post/post-preview/more-stories'
-import PostHeader from '@/components/post/post-header/post-header'
-import SectionSeparator from '@/components/layout/section-separator'
 import Layout from '@/components/layout/layout'
-import Newsletter from '@/components/newsletter/subscribe'
 import { getTag, getAllTagsWithSlug } from '@/lib/api'
-import PostTitle from '@/components/title/content-title'
 import PageTitle from '@/components/title/page-title'
 import Head from 'next/head'
-import markdownToHtml from '@/lib/markdownToHtml'
 import config from "../../../data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
@@ -35,11 +29,11 @@ export default function Tags({ tag }) {
   return (
     <Layout>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
             <TagContainer>
-              <PageTitle title={tag.name} color={tag.color}/>
+              <PageTitle color={tag.color}>{tag.name}</PageTitle>
               <TagPostsContainer>
                 {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}
               </TagPostsContainer>

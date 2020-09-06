@@ -59,7 +59,7 @@ export default function PostHeader({ title, date, author, tags }) {
 
         <PostTitle>{title}</PostTitle>
           
-        <Author name={author.name} picture={author.picture} bio={author.bio} socials={author.socials} date={date} />
+        <Author name={author.username} picture={author.picture} bio={author.bio} socials={author.socials} date={date} />
 
         <Date dateString={date} />
       </PostHeaderWrapper>

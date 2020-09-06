@@ -8,12 +8,13 @@ import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
 import SEO from '@/components/seo/seo'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api'
-import PostTitle from '@/components/title/content-title'
+import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 import CoverImage from '@/components/post/post-image/cover-image'
+import config from "../../data/SiteConfig";
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -52,7 +53,7 @@ export default function Post({ post, morePosts }) {
   return (
     <Layout>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
             <article ref={target} >
@@ -63,7 +64,7 @@ export default function Post({ post, morePosts }) {
               <PostHeader
                 title={post.title}
                 date={post.date}
-                author={post.author}
+                author={post.user}
                 tags={post.tags}
               />
                 <PostBody content={post.content} />

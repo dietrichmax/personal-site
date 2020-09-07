@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SocialIcon } from 'react-social-icons';
+import Link from 'next/link'
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ const AuthorMeta = styled.a`
 `
 
 const AuthorName = styled.a`
-  font-weight: bold;
 `
 
 const AuthorImg = styled.img`
@@ -29,19 +28,22 @@ const AuthorImg = styled.img`
 const AuthorSocials = styled.p`
 `
 
-export default function Company({ username, picture, email }) {
+export default function Company({ name, logo, url }) {
 
   console
   return (
     <AuthorWrapper>
       <AuthorImg
-        src={`${picture.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture}`}
-        alt={username}
-        title={username}
+        src={`${logo.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logo}`}
+        alt={name}
+        title={name}
       />
       <AuthorMeta>
-        <AuthorName>{username}{' '}</AuthorName>
-        {email}
+        <AuthorName>
+          <Link href={url}>
+            <a title={name}>{name}</a>
+          </Link>
+        </AuthorName>
       </AuthorMeta>
     </AuthorWrapper>
   )

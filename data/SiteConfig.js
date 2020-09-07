@@ -13,7 +13,7 @@ const config = {
   copyright: "Creative Commons Attribution-ShareAlike 3.0", // Copyright string for the footer of the website and RSS feed.
   themeColor: "#f2f2f2", // Used for setting manifest and progress theme colors.
   backgroundColor: "#f2f2f2", // Used for setting manifest background color.
-  loading: "Lädt...",
+  loading: "Lade Daten...",
   socials: { // socials
     twitter: "https://twitter.com/GISNetzwerk",
     github: "https://github.com/DaTurboD/GIS-Netzwerk",

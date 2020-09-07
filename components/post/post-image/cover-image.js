@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Img from 'react-optimized-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-const Jimp = require('jimp');
 
 const Caption = styled.p`
   position: absolute;
@@ -45,11 +44,6 @@ export default function CoverImage({ title, url, slug, caption }) {
   
   const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
 
-  const image = await Jimp.read(imageUrl);
-  
-  await image.resize(150, 150);
-  
-  await image.writeAsync(`test/${Date.now()}_150x150.png`);
 
   return (
     <div className="">

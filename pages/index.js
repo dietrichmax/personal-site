@@ -5,6 +5,8 @@ import { getAllPostsForBlog } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
+import Header from '@/components/header/headerNav'
+import Footer from '@/components/footer/footer'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -15,6 +17,7 @@ export default function Index({ allPosts }) {
   return (
     <>
       <Layout>
+        <Header section="Blog" />
         <Head>
           <title>{config.siteTitle}</title>
         </Head>
@@ -22,6 +25,8 @@ export default function Index({ allPosts }) {
             <PageTitle>Blog</PageTitle>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </IndexPageContainer>
+        
+        <Footer />
       </Layout>
     </>
   )

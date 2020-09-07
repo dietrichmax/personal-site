@@ -9,6 +9,7 @@ const HeaderWrapper = styled.div`
   background-color: #fff;
   display: flex;
   font-family:  open sans,sans-serif;
+  border-bottom: 1px solid var(--gray-light);
 `
 
 const NavTitle = styled.div`
@@ -32,7 +33,7 @@ export const HeaderLogo = styled.div`
 
 
 
-export default function HeaderNav() {
+export default function HeaderNav( { section } ) {
 
 
 
@@ -47,7 +48,10 @@ export default function HeaderNav() {
       <HeaderLogo >
         <Logo />
       </HeaderLogo>
-      <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk</a></Link></NavTitle>
+        {section? 
+          <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk | {section}</a></Link></NavTitle> :
+          <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk</a></Link></NavTitle>
+        }
     </HeaderWrapper>
   )
 }

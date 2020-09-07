@@ -15,6 +15,8 @@ import ReadingProgress from "@/components/post/post-reading-progress/reading-pro
 import media from 'styled-media-query';
 import CoverImage from '@/components/post/post-image/cover-image'
 import config from "../../data/SiteConfig";
+import Header from '@/components/header/headerNav'
+import Footer from '@/components/footer/footer'
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -52,6 +54,7 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
+      <Header section="Blog" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -76,7 +79,8 @@ export default function Post({ post, morePosts }) {
               {morePosts.length > 0 && <MoreStories posts={morePosts} afterPost/>}
             </MorePostsWrapper>
           </>
-        )}
+        )}     
+      <Footer />
     </Layout>
   )
 }

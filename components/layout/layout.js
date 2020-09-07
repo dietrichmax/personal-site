@@ -17,9 +17,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Meta />
-        <Header />
         <Container>{children}</Container>
-      <Footer />
     </>
   )
 }

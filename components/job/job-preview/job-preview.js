@@ -2,7 +2,7 @@ import Date from '../../date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import JobUser from '@/components/job/job-company/job-company'
+import JobCompany from '@/components/job/job-company/job-company'
 
 const Card = styled.div`
   margin-bottom: var(--space);
@@ -25,9 +25,9 @@ const JobItemTitle = styled.h2`
   }
 `;
 
-const CardItemDate = styled.p`
+const JobMeta = styled.p`
   font-size: 1.4rem;
-  margin-bottom: calc(var(--space-sm) *0.5);
+  color: var(--gray);
 `;
 
 
@@ -37,7 +37,7 @@ export default function JobPreview({
   location,
   slug,
   date,
-  user,
+  company,
   workingTime,
   contractType
 }) {
@@ -50,11 +50,9 @@ export default function JobPreview({
               <a title={title}>{title}</a>
           </Link>
           </JobItemTitle>
-          <JobUser username={user.username} email={user.email} picture={user.picture.url}/>
-          <p>{location} • {workingTime} • {contractType}</p>
-          <CardItemDate>
-           <Date dateString={date} ago />
-          </CardItemDate>
+          <JobCompany name={company.name} logo={company.logo.url} url={company.websiteUrl}/>
+          <JobMeta>{location} • {workingTime} • {contractType}</JobMeta>
+          <Date dateString={date} ago />
         </JobItemWrapper>
       </Card>
     </div>

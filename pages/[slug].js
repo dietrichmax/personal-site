@@ -4,13 +4,15 @@ import ErrorPage from 'next/error'
 import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
 import { getAllPagesWithSlug, getPage } from '@/lib/api'
-import PostTitle from '@/components/title/content-title'
+import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
-import PageTitle from '@/components/title/page-title'
 import media from 'styled-media-query';
 import Date from '@/components/date/date'    
+import Header from '@/components/header/headerNav'
+import Footer from '@/components/footer/footer'
+import config from "../data/SiteConfig";
 
 const PageWrapper = styled.div`
 max-width: 720px;
@@ -33,8 +35,9 @@ export default function Post({ page }) {
 
   return (
     <Layout>
+      <Header />
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
             <SEO meta={page}/>
@@ -45,6 +48,7 @@ export default function Post({ page }) {
             </PageWrapper>
           </>
         )}
+      <Footer />
     </Layout>
   )
 }

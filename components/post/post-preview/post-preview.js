@@ -52,10 +52,10 @@ const TagItem = styled.a`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: calc(var(--space-sm)*0.5);
-  border-radius: 5px;
+  border-radius: calc(var(--space-sm)*0.5);
   font-size: 13px;
   text-transform: uppercase;
-  margin: 15px 10px 5px 0;
+  margin: calc(var(--space-sm)*0.5) var(--space-sm) calc(var(--space-sm)*0.5) 0;
   color: #fff;
   transition: 0.3s;
   cursor: pointer;

@@ -42,6 +42,7 @@ const FooterNavItem = styled.p`
   color: var(--gray);
   font-size: 1.5rem;
   padding-right: var(--space);
+  margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
     color: var(--primary-color);
   }

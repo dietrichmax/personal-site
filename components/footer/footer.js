@@ -21,10 +21,20 @@ const FooterContainer = styled.div`
 `;
 
 const FooterLogo = styled.div`
-  flex: 1 0 60%;
+  flex: 1 0 auto;
   color: #80868B;
 `
 
+
+const NavTitle = styled.div`
+display: flex;
+  padding: var(--space-sm);
+  margin-top: auto;
+  margin-bottom: auto;
+  color: var(--gray);
+  font-size: 2rem;
+  font-weight: 500;
+`
 
 const FooterSocials = styled.div`    
   text-align: center;
@@ -67,7 +77,6 @@ export default function Footer() {
         <FooterLogo >
           <Logo />
         </FooterLogo>
-        
         <FooterNav>
           {footerItems.map((item, i) => (
             <Link key={i} href={item.link}>

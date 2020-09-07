@@ -49,8 +49,8 @@ export default function HeaderNav( { section } ) {
         <Logo />
       </HeaderLogo>
         {section? 
-          <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk | {section}</a></Link></NavTitle> :
-          <NavTitle title={config.siteTitle} ><Link href="/"><a>GIS-Netzwerk</a></Link></NavTitle>
+          <NavTitle title={config.siteTitle} ><Link href="/"><a>{config.siteTitle} | {section}</a></Link></NavTitle> :
+          <NavTitle title={config.siteTitle} ><Link href="/"><a>{config.siteTitle}</a></Link></NavTitle>
         }
     </HeaderWrapper>
   )

@@ -51,6 +51,8 @@ const FooterNavItem = styled.p`
 export default function Footer() {
 
   const footerItems = [
+    { "name": "Startseite", "link":  config.homePath },
+    { "name": "Blog", "link":  "/blog" },
     { "name": "Jobbörse", "link":  "/jobs" },
     { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" },
     { "name": "Datenschutz", "link":  "/datenschutz" },

@@ -14,6 +14,7 @@ import Date from '@/components/date/date'
 import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
 import config from "../../data/SiteConfig";
+import Link from 'next/link'
 
 const PageWrapper = styled.div`
 max-width: 720px;
@@ -64,7 +65,8 @@ export default function Job({ job }) {
 
   return (
     <Layout>
-      <Header section="Jobbörse"/>
+      <SEO meta={job}/>
+      <Header section="Jobbörse" link="/jobs"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (

@@ -1,18 +1,46 @@
 import Head from 'next/head'
-import config from "../../data/SiteConfig";
+import config, { dateFormat } from "../../data/SiteConfig";
 
-export default function SEO(meta, postSEO) {
+const SEO = ({ 
+  meta,
+  postSEO
 
-  const { title, description, slug, author, coverImage ,lang, date} = meta
+}) => {
   
 
+  let title;
+  let description;
+  let image
+  let slug;
+  let date;
+  let ogType;
+  let lang;
+
+  if (meta == null) {
+    title = config.siteTitle
+    description  = config.siteDescription
+    slug =  config.siteUrl
+    lang =  config.defaultLang
+    image =  config.siteLogo
+    ogType = "website"
+  } else {
+    title = meta.title
+    description  = meta.description
+    slug = meta.slug ? `https:gis-netzwerk.com/blog/${meta.slug}` : config.siteUrl
+    lang = meta.lang ? meta.lang : config.defaultLang
+    image = meta.coverImage ? meta.coverImage.coverImage.url : config.siteLogo
+    ogType = postSEO ? "article" : "website"
+    date = meta.date
+  } 
+
+  
   const schemaOrgJSONLD = [
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
       url: config.siteUrl,
-      name: title,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
+      name: config.siteTitle,
+      alternateName: config.siteTitleAlt
     }
   ];
   if (postSEO) {
@@ -25,9 +53,9 @@ export default function SEO(meta, postSEO) {
             "@type": "ListItem",
             position: 1,
             item: {
-              "@id": `https://gis-netzwerk.com${slug}`,
+              "@id": slug,
               name: title,
-              image: coverImage,
+              image: image,
             }
           }
         ]
@@ -37,14 +65,14 @@ export default function SEO(meta, postSEO) {
         "@type": "BlogPosting",
         url: slug,
         name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
+        alternateName: config.siteTitleAlt,
         headline: title,
         datePublished: date,
         dateModifed: date,
-        mainEntityOfPage: `https://gis-netzwerk.com${slug}`,
+        mainEntityOfPage: slug,
         image: {
           "@type": "ImageObject",
-          url: coverImage,
+          url: image,
         },
         description,
         author: config.userName,
@@ -58,14 +86,10 @@ export default function SEO(meta, postSEO) {
 
   return (
     <Head>
-
       {/* General tags */}
-      <title>{`${title} | ${config.siteTitle}`}</title>
-      <meta name="title" content={title} />
+      <title>{title} | {config.siteTitle}</title>
       <meta name="description" content={description} />
-      <meta name="image" content={coverImage} />
-      <html lang={lang}/>
-      <link rel="canonical" href={`https://gis-netzwerk.com${slug}`} />
+      <meta name="image" content={image} />
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
@@ -73,51 +97,27 @@ export default function SEO(meta, postSEO) {
       </script>
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={slug} />
-      {postSEO ? <meta property="og:type" content="article" /> : null}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={coverImage} />
+      <meta property="og:url" content={slug} /> 
+      <meta property="og:type" content={ogType} />
+      <meta name="og:title" property="og:title" content={title} />
+      <meta name="og:description" property="og:description" content={description} />
+      <meta property="og:site_name" content="Proper Noun" />
+      <meta property="og:image" content={`${image}`} /> 
+      <meta property="og:locale" content={lang} /> 
 
       {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      {/*<meta
-        name="twitter:creator"
-        content={config.userTwitter ? config.userTwitter : config.userName}
-      />*/}
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={coverImage} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={config.socials.twitter} />
+      <meta name="twitter:creator" content={config.socials.twitter} />
 
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
-      <link
-        rel="mask-icon"
-        href="/favicon/safari-pinned-tab.svg"
-        color="#000000"
-      />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="theme-color" content={config.themeColor} />
-      
-    </Head>
-  )
+
+      </Head>
+      )
 }
+
+
+export default SEO
+

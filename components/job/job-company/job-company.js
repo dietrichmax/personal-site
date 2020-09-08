@@ -25,7 +25,7 @@ const AuthorImg = styled.img`
   margin-bottom: auto;
 `
 
-const AuthorSocials = styled.p`
+const AuthorLink = styled.a`
 `
 
 export default function Company({ name, logo, url }) {
@@ -41,7 +41,7 @@ export default function Company({ name, logo, url }) {
       <AuthorMeta>
         <AuthorName>
           <Link href={url}>
-            <a title={name}>{name}</a>
+          <a><AuthorLink title={name}>{name}</AuthorLink></a>
           </Link>
         </AuthorName>
       </AuthorMeta>

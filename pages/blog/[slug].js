@@ -17,6 +17,7 @@ import CoverImage from '@/components/post/post-image/cover-image'
 import config from "../../data/SiteConfig";
 import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
+import Link from 'next/link'
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -54,13 +55,13 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
-      <Header section="Blog" />
+      <SEO meta={post} postSEO/>
+      <Header section="Blog" link="/blog" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
             <article ref={target} >
-              <SEO meta={post} postSEO/>
               <ReadingProgress target={target} />
               <CoverImage title={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
               <PostWrapper>
@@ -75,7 +76,7 @@ export default function Post({ post, morePosts }) {
             </article>
             <Newsletter />
             <MorePostsWrapper>
-              <MorePostsTitle>Mehr Artikel:</MorePostsTitle>
+              <MorePostsTitle><Link href="/blog"><a>Mehr Artikel:</a></Link></MorePostsTitle>
               {morePosts.length > 0 && <MoreStories posts={morePosts} afterPost/>}
             </MorePostsWrapper>
           </>

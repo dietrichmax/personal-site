@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Link from 'next/link'
 const _ = require("lodash");
 
-const TagsWrapper = styled.a`
+export const TagsWrapper = styled.a`
   display: block;
-  margin-top: 2rem;
+  margin-top: var(--space);
 `
 
-const TagItem = styled.a`
+export const TagItem = styled.a`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: 5px;

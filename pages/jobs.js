@@ -7,6 +7,7 @@ import config from "../data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
+import SEO from '@/components/seo/seo'
 
 const JobsPageContainer = styled.div`
   margin: auto;
@@ -17,7 +18,8 @@ export default function Index({ allJobs }) {
   return (
     <>
       <Layout>
-        <Header section="Jobbörse" />
+        <SEO/>
+        <Header section="Jobbörse" link="/jobs"/>
         <Head>
           <title>{config.siteTitle}</title>
         </Head>

@@ -35,7 +35,8 @@ export default function Post({ page }) {
 
   return (
     <Layout>
-      <Header />
+      <SEO meta={page}/>
+      <Header link="/" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (

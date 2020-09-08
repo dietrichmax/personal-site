@@ -41,7 +41,7 @@ export default function JobHeader({ company, date, workingTime, contractType, va
             <JobCompany name={company.name} logo={company.logo.url} url={company.websiteUrl}/>
         </CompanyWrapper>
         <JobMeta>
-          <JobMetaItem>🗺️ Arbeitsort: {location}</JobMetaItem>
+          <JobMetaItem>📍 Arbeitsort: {location}</JobMetaItem>
           <JobMetaItem>📅 Anstellungsart: {workingTime}</JobMetaItem>
           <JobMetaItem>📝 Vertragsart: {contractType}</JobMetaItem>
           <JobMetaItem>⛱️ Urlaub: {vacationDays} Tage</JobMetaItem>

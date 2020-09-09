@@ -46,9 +46,9 @@ export default function Tags({ tag }) {
                 {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}
               </TagPostsContainer>
             </TagContainer>
+            <Footer />
           </>
         )}
-      <Footer />
     </Layout>
   )
 }

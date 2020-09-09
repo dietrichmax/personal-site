@@ -9,6 +9,7 @@ import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
+import { useRouter } from 'next/router'
 
 const BlogPageContainer = styled.div`
   margin: auto;
@@ -40,30 +41,39 @@ const TagItem = styled.button`
   }
 `
 export default function Blog({ allPosts, allTags }) {
+  const router = useRouter()
+  
   return (
     <>
       <Layout>
-        <Header section="Blog" link="/"/>
-        <SEO   
-          title="Blog"
-          slug="https://gis-netzwerk.com/blog"
-        />
-        <BlogPageContainer >
-          <PageTitle>Blog</PageTitle>
+      {router.isFallback ? (
+          <PageTitle>{config.loading}</PageTitle>
+        ) : (
+          
+        <>
+          <Header section="Blog" link="/"/>
+          <SEO   
+            title="Blog"
+            slug="https://gis-netzwerk.com/blog"
+          />
+          <BlogPageContainer >
+            <PageTitle>Blog</PageTitle>
 
-          <TagWrapper>
-            {allTags.map((tag, i) => (
-                <Link key={i} href={`/blog/themen/${tag.slug}`}>
-                  <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
-                </Link>
-            ))}
-          </TagWrapper>
+            <TagWrapper>
+              {allTags.map((tag, i) => (
+                  <Link key={i} href={`/blog/themen/${tag.slug}`}>
+                    <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
+                  </Link>
+              ))}
+            </TagWrapper>
 
-          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+            {allPosts.length > 0 && <MoreStories posts={allPosts} />}
 
-        </BlogPageContainer>
-        
-        <Footer />
+          </BlogPageContainer>
+          
+          <Footer />
+        </>
+        )}
       </Layout>
     </>
   )

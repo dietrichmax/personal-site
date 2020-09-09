@@ -64,7 +64,10 @@ export default function Index({ allPosts, allJobs, allTags }) {
   return (
     <>
       <Layout>
-        <SEO />
+        <SEO   
+          title="GIS-Netzwerk Startseite"
+          slug="https://gis-netzwerk.com"
+        />
         <Header link="/"/>
         <Head>
           <title>{config.siteTitle}</title>

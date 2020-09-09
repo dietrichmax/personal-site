@@ -28,12 +28,11 @@ const SEO = ({
     description  = meta.description
     slug = meta.slug ? `https:gis-netzwerk.com/blog/${meta.slug}` : config.siteUrl
     lang = meta.lang ? meta.lang : config.defaultLang
-    image = meta.coverImage ? {`${config.apiUrl}${meta.coverImage.coverImage.url}`} : config.siteLogo
+    image = meta.coverImage ? {config.apiUrl + meta.coverImage.coverImage.url} : config.siteLogo
     ogType = postSEO ? "article" : "website"
     date = meta.date
   } 
 
-  
   const schemaOrgJSONLD = [
     {
       "@context": "http://schema.org",

@@ -2,36 +2,25 @@ import Head from 'next/head'
 import config, { dateFormat } from "../../data/SiteConfig";
 
 const SEO = ({ 
-  meta,
+  title,
+  description,
+  image,
+  slug,
+  date,
+  ogType,
+  lang,
   postSEO
 
 }) => {
-  
 
-  let title;
-  let description;
-  let image
-  let slug;
-  let date;
-  let ogType;
-  let lang;
+  title = title ? title : config.siteTitle
+  description  = description ? description : config.siteDescription
+  slug = slug ? slug : config.siteUrl
+  lang = lang ? lang : config.defaultLang
+  image = image ? `${config.apiUrl}${image}` : config.siteLogo
+  ogType = ogType ? "article" : "website"
+  date = date ? date : new Date()
 
-  if (meta == null) {
-    title = config.siteTitle
-    description  = config.siteDescription
-    slug =  config.siteUrl
-    lang =  config.defaultLang
-    image =  config.siteLogo
-    ogType = "website"
-  } else {
-    title = meta.title
-    description  = meta.description
-    slug = meta.slug ? `${config.siteUrl}/blog/${meta.slug}` : config.siteUrl
-    lang = meta.lang ? meta.lang : config.defaultLang
-    image = meta.coverImage ? `${config.apiUrl}${meta.coverImage.coverImage.url}` : config.siteLogo
-    ogType = postSEO ? "article" : "website"
-    date = meta.date
-  } 
 
   const schemaOrgJSONLD = [
     {

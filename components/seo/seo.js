@@ -7,7 +7,6 @@ const SEO = ({
   image,
   slug,
   date,
-  ogType,
   lang,
   postSEO
 
@@ -18,7 +17,6 @@ const SEO = ({
   slug = slug ? slug : config.siteUrl
   lang = lang ? lang : config.defaultLang
   image = image ? `${config.apiUrl}${image}` : config.siteLogo
-  ogType = ogType ? ogType : "website"
   date = date ? date : new Date()
 
 
@@ -32,6 +30,7 @@ const SEO = ({
     }
   ];
   if (postSEO) {
+    const ogType = "article"
     schemaOrgJSONLD.push(
       {
         "@context": "http://schema.org",
@@ -70,6 +69,8 @@ const SEO = ({
 
       }
     );
+  } else {
+    const ogType = "website"
   }
 
   return (

@@ -89,7 +89,7 @@ const SEO = ({
       <meta property="og:type" content={ogType} />
       <meta name="og:title" property="og:title" content={title} />
       <meta name="og:description" property="og:description" content={description} />
-      <meta property="og:site_name" content="Proper Noun" />
+      <meta property="og:site_name" content={title} />
       <meta property="og:image" content={`${image}`} /> 
       <meta property="og:locale" content={lang} /> 
 

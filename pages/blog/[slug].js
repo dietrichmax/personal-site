@@ -60,7 +60,7 @@ export default function Post({ post, morePosts }) {
           <>
             <SEO   
               title={post.title}
-              description={post.description}
+              description={post.excerpt}
               image={post.coverImage.coverImage.url}
               slug={`https://gis-netzwerk.com/blog/${post.slug}`}
               date={post.date}

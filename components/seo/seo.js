@@ -26,7 +26,7 @@ const SEO = ({
   } else {
     title = meta.title
     description  = meta.description
-    slug = meta.slug ? `https:gis-netzwerk.com/blog/${meta.slug}` : config.siteUrl
+    slug = meta.slug ? `${config.siteUrl}/blog/${meta.slug}` : config.siteUrl
     lang = meta.lang ? meta.lang : config.defaultLang
     image = meta.coverImage ? `${config.apiUrl}${meta.coverImage.coverImage.url}` : config.siteLogo
     ogType = postSEO ? "article" : "website"

@@ -18,7 +18,11 @@ export default function Index({ allJobs }) {
   return (
     <>
       <Layout>
-        <SEO/>
+        <SEO   
+          title="GIS-Netzwerk | Jobbörse"
+          description="Jobbörse für Geoinformatik und GIS-Jobs"
+          slug="https://gis-netzwerk.com/jobs"
+        />
         <Header section="Jobbörse" link="/jobs"/>
         <Head>
           <title>{config.siteTitle}</title>

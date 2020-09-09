@@ -52,23 +52,23 @@ export default function Post({ post, morePosts }) {
 
   const target = React.createRef()
 
-
   return (
     <Layout>
-      <SEO   
-        title={post.title}
-        description={post.description}
-        image={post.coverImage.coverImage.url}
-        slug={`https://gis-netzwerk.com/blog/${post.slug}`}
-        date={post.date}
-        lang={post.lang}
-        postSEO
-      />
-      <Header section="Blog" link="/blog" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
+            <SEO   
+              title={post.title}
+              description={post.description}
+              image={post.coverImage.coverImage.url}
+              slug={`https://gis-netzwerk.com/blog/${post.slug}`}
+              date={post.date}
+              lang={post.lang}
+              ogType="article"
+              postSEO
+            />
+            <Header section="Blog" link="/blog" />
             <article ref={target} >
               <ReadingProgress target={target} />
               <CoverImage title={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>

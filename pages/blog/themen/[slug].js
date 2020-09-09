@@ -30,16 +30,16 @@ export default function Tags({ tag }) {
   
   return (
     <Layout>
-      <SEO   
-        title={`GIS-Netzwerk| ${tag.name}`}
-        description={tag.description}
-        slug={`https://gis-netzwerk.com/blog/themen(${tag.slug}`}
-      />
-      <Header section="Blog" link="/blog"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
+            <SEO   
+              title={tag.name}
+              description={tag.description}
+              slug={`https://gis-netzwerk.com/blog/themen(${tag.slug}`}
+            />
+            <Header section="Blog" link="/blog"/>
             <TagContainer>
               <PageTitle color={tag.color}>{tag.name}</PageTitle>
               <TagPostsContainer>

@@ -40,7 +40,7 @@ const TagWrapper = styled.div`
   border: 1px solid var(--gray-light);
 `
 
-const TagItem = styled.a`
+const TagItem = styled.button`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: calc(var(--space-sm)*0.5);
@@ -51,6 +51,8 @@ const TagItem = styled.a`
   color: #fff;
   transition: 0.3s;
   cursor: pointer;
+  border: none;
+  outline: none;
   :hover {
     background-color: white;
     color: ${props =>
@@ -65,13 +67,10 @@ export default function Index({ allPosts, allJobs, allTags }) {
     <>
       <Layout>
         <SEO   
-          title="GIS-Netzwerk Startseite"
+          title="Startseite"
           slug="https://gis-netzwerk.com"
         />
         <Header link="/"/>
-        <Head>
-          <title>{config.siteTitle}</title>
-        </Head>
         <IndexPageContainer >
 
           <TitleWrapper>

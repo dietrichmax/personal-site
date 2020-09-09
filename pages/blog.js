@@ -20,7 +20,7 @@ const TagWrapper = styled.div`
   text-align: center;
 `
 
-const TagItem = styled.a`
+const TagItem = styled.button`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: calc(var(--space-sm)*0.5);
@@ -31,6 +31,8 @@ const TagItem = styled.a`
   color: #fff;
   transition: 0.3s;
   cursor: pointer;
+  border: none;
+  outline: none;
   :hover {
     background-color: white;
     color: ${props =>
@@ -41,14 +43,11 @@ export default function Blog({ allPosts, allTags }) {
   return (
     <>
       <Layout>
+        <Header section="Blog" link="/"/>
         <SEO   
           title="Blog"
           slug="https://gis-netzwerk.com/blog"
         />
-        <Header section="Blog" link="/"/>
-        <Head>
-          <title>{config.siteTitle}</title>
-        </Head>
         <BlogPageContainer >
           <PageTitle>Blog</PageTitle>
 

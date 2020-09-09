@@ -14,7 +14,8 @@ const AuthorMeta = styled.a`
   width: 100%;
 `
 
-const AuthorName = styled.a`
+const AuthorName = styled.div`
+  margin-left: var(--space-sm);
 `
 
 const AuthorImg = styled.img`
@@ -38,13 +39,9 @@ export default function Company({ name, logo, url }) {
         alt={name}
         title={name}
       />
-      <AuthorMeta>
-        <AuthorName>
-          <Link href={url}>
-          <a><AuthorLink title={name}>{name}</AuthorLink></a>
-          </Link>
-        </AuthorName>
-      </AuthorMeta>
+      <AuthorName href={url} >
+        <AuthorLink title={name}>{name}</AuthorLink>
+      </AuthorName>
     </AuthorWrapper>
   )
 }

@@ -4,7 +4,7 @@ const config = {
   siteTitleShort: "GIS-Netzwerk", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "GIS-Netzwerk", // Alternative site title for SEO.
   siteDescription: "GIS-Netzwerk ist eine Informationsplattform für Geoinformatik, GIS, Geodaten und Web-Development.", // Website description used for RSS feeds/meta description tag.
-  siteLogo: "static/logos/GIS-Netzwerk-Logo.png", // Logo used for SEO and manifest.
+  siteLogo: "/favicon/android-chrome-512x512.png", // Logo used for SEO and manifest.
   siteUrl: "https://gis-netzwerk.com", // Domain of your website.
   apiUrl: "https://api.gis-netzwerk.com", // Domain of api for website.
   homePath: "/", // Domain of your website without pathPrefix.

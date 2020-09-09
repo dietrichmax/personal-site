@@ -43,7 +43,7 @@ color: rgb(62, 69, 76);
   margin-bottom: var(--space-sm);
 `;
 
-const TagsWrapper = styled.a`
+const TagsWrapper = styled.div`
   display: block;
   margin-bottom: var(--space-sm);
 `

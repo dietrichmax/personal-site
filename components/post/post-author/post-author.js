@@ -8,7 +8,7 @@ const AuthorWrapper = styled.div`
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--gray-light);
 `
-const AuthorMeta = styled.a`
+const AuthorMeta = styled.div`
   display: block;
   margin-left: 12px;
   width: 100%;
@@ -26,7 +26,7 @@ const AuthorImg = styled.img`
   margin-bottom: auto;
 `
 
-const AuthorSocials = styled.p`
+const AuthorSocials = styled.div`
 `
 
 export default function Author({ name, picture, bio, socials }) {

@@ -48,7 +48,7 @@ const FooterNav = styled.div`
   }
 `
 
-const FooterNavItem = styled.p`     
+const FooterNavItem = styled.p`   
   color: var(--gray);
   font-size: 1.5rem;
   padding-right: var(--space);

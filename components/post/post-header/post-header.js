@@ -6,12 +6,12 @@ import Link from 'next/link'
 import Date from '../../date/date'      
 const _ = require("lodash");
 
-const TagsWrapper = styled.a`
+const TagsWrapper = styled.div`
   display: block;
   margin-top: var(--space);
 `
 
-const TagItem = styled.a`
+const TagItem = styled.button`
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   padding: calc(var(--space-sm)*0.5);
@@ -22,6 +22,8 @@ const TagItem = styled.a`
   color: #fff;
   transition: 0.3s;
   cursor: pointer;
+  border: none;
+  outline: none;
   :hover {
     background-color: white;
     color: ${props =>

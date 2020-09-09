@@ -8,6 +8,7 @@ const SEO = ({
   slug,
   date,
   lang,
+  ogType,
   postSEO
 
 }) => {
@@ -18,6 +19,7 @@ const SEO = ({
   lang = lang ? lang : config.defaultLang
   image = image ? `${config.apiUrl}${image}` : config.siteLogo
   date = date ? date : new Date()
+  ogType = ogType ? ogType : "website"
 
 
   const schemaOrgJSONLD = [
@@ -30,7 +32,6 @@ const SEO = ({
     }
   ];
   if (postSEO) {
-    const ogType = "article"
     schemaOrgJSONLD.push(
       {
         "@context": "http://schema.org",
@@ -69,17 +70,15 @@ const SEO = ({
 
       }
     );
-  } else {
-    const ogType = "website"
-  }
+  } 
 
   return (
     <Head>
       {/* General tags */}
-      <title>{title} | {config.siteTitle}</title>
+      <title>{title} - {config.siteTitle}</title>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}

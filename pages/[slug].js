@@ -35,18 +35,17 @@ export default function Post({ page }) {
 
   return (
     <Layout>
-      <SEO   
-        title={page.title}
-        description={page.description}
-        slug={`https://gis-netzwerk.com/${page.slug}`}
-        date={page.date}
-      />
-      <Header link="/" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
-            <SEO meta={page}/>
+            <SEO   
+              title={page.title}
+              description={page.description}
+              slug={`https://gis-netzwerk.com/${page.slug}`}
+              date={page.date}
+            />
+            <Header link="/" />
             <PageTitle>{page.title}</PageTitle>
             <PageWrapper>
               <Date dateString={page.date} />

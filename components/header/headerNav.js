@@ -8,7 +8,7 @@ import Logo from '../logo';
 const HeaderWrapper = styled.div`
   background-color: #fff;
   display: flex;
-  font-family:  open sans,sans-serif;
+  font-family: var(--secondary-font);
   border-bottom: 1px solid var(--gray-light);
 `
 
@@ -27,7 +27,6 @@ const NavSection = styled.a`
   padding-left: calc(var(--space-sm)*0.5);
   color: var(--gray);
   font-size: 2rem;
-  font-weight: 400;
 `
 
 

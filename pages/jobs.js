@@ -19,14 +19,11 @@ export default function Index({ allJobs }) {
     <>
       <Layout>
         <SEO   
-          title="GIS-Netzwerk | Jobbörse"
+          title="Jobbörse"
           description="Jobbörse für Geoinformatik und GIS-Jobs"
           slug="https://gis-netzwerk.com/jobs"
         />
         <Header section="Jobbörse" link="/jobs"/>
-        <Head>
-          <title>{config.siteTitle}</title>
-        </Head>
         <JobsPageContainer >
             <PageTitle>Jobbörse</PageTitle>
             <MoreJobs jobs={allJobs} />

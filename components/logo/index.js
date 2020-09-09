@@ -6,7 +6,7 @@ import Img from 'react-optimized-image';
 import Link from 'next/link'
 
 // styled components
-export const LogoWrapper = styled(Img)`
+export const LogoWrapper = styled.img`
   height: 40px;
   width: 40px;
   cursor: pointer

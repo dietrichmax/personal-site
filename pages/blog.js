@@ -41,7 +41,10 @@ export default function Blog({ allPosts, allTags }) {
   return (
     <>
       <Layout>
-        <SEO />
+        <SEO   
+          title="Blog"
+          slug="https://gis-netzwerk.com/blog"
+        />
         <Header section="Blog" link="/"/>
         <Head>
           <title>{config.siteTitle}</title>

@@ -55,7 +55,15 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
-      <SEO meta={post} postSEO/>
+      <SEO   
+        title={post.title}
+        description={post.description}
+        image={post.coverImage.coverImage.url}
+        slug={`https://gis-netzwerk.com/blog/${post.slug}`}
+        date={post.date}
+        lang={post.lang}
+        postSEO
+      />
       <Header section="Blog" link="/blog" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>

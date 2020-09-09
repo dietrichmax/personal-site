@@ -65,7 +65,12 @@ export default function Job({ job }) {
 
   return (
     <Layout>
-      <SEO meta={job}/>
+      <SEO   
+        title={job.title}
+        description={job.jobDescription}
+        slug={`https://gis-netzwerk.com/jobs/${job.slug}`}
+        date={job.date}
+      />
       <Header section="Jobbörse" link="/jobs"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>

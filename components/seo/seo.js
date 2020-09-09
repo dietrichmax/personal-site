@@ -18,7 +18,7 @@ const SEO = ({
   slug = slug ? slug : config.siteUrl
   lang = lang ? lang : config.defaultLang
   image = image ? `${config.apiUrl}${image}` : config.siteLogo
-  ogType = ogType ? "article" : "website"
+  ogType = ogType ? ogType : "website"
   date = date ? date : new Date()
 
 

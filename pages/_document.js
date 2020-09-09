@@ -4,10 +4,8 @@ export default class MyDocument extends Document {
   
   render() {
 
-    const GA_TRACKING_ID = process.env.GA_ID
-
     return (
-      <Html lang="de">
+      <Html>
         <Head>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script

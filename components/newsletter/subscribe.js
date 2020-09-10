@@ -104,25 +104,17 @@ export default function Subscribe ({ noLabel, cb }) {
 
 
   const handleSubmit = () => {
-      fetch('https://api.gis-netzwerk.com/subscribers', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-        })
+    fetch('https://api.gis-netzwerk.com/subscribers', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
       })
-      .then(response => {
-        // Handle success.
-        console.log('Newsletter erfolgreich abboniert.');
-        setSubmitted(true)
-      })
-      .catch(error => {
-        // Handle error.
-        console.error('Ein Fehler ist aufgetreten!', error.response);
-      });
+    })
+    setSubmitted(true)
   }
 
 

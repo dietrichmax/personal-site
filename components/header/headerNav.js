@@ -58,7 +58,7 @@ export default function HeaderNav( { section, link } ) {
         {section? 
           <NavTitle title={config.siteTitle}>
             <Link href={link} passHref>
-              <a title={`{section} | {config.siteTitle}`}>
+              <a title={`${section} | ${config.siteTitle}`}>
                 {section}
                 <NavSection>| {config.siteTitle}</NavSection>
               </a>

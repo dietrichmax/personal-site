@@ -72,6 +72,7 @@ const FooterSubNavItem = styled.a`
   padding: var(--space);
   margin: var(--space-sm);
   font-weight: 200;
+  letter-spacing: 0.1px;
   :hover {
     color: var(--primary-color);
   }

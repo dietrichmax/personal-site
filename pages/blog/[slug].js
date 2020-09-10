@@ -18,6 +18,7 @@ import config from "../../data/SiteConfig";
 import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
+import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -79,6 +80,7 @@ export default function Post({ post, morePosts }) {
                 author={post.user}
                 tags={post.tags}
               />
+                <RIWAAD allTags={post.tags} />
                 <PostBody content={post.content} />
               </PostWrapper>
             </article>

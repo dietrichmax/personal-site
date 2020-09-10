@@ -42,6 +42,7 @@
   padding: var(--space-sm) var(--space-sm);
   font-size: 1.5rem;
   font-family: var(--secondary-font);
+  font-style: italic;
 }
 
 

@@ -76,6 +76,7 @@ const SEO = ({
     <Head>
       {/* General tags */}
       <title>{title} - {config.siteTitle}</title>
+      <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

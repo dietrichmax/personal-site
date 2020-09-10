@@ -56,8 +56,18 @@ export default function HeaderNav( { section, link } ) {
         <Logo />
       </HeaderLogo>
         {section? 
-          <NavTitle title={config.siteTitle} ><Link href={link} passHref><a>{config.siteTitle}<NavSection>| {section}</NavSection></a></Link></NavTitle> :
-          <NavTitle title={config.siteTitle} ><Link href={config.homePath} passHref><a>{config.siteTitle}</a></Link></NavTitle>
+          <NavTitle title={config.siteTitle}>
+            <Link href={link} passHref>
+              <a>{section}
+                <NavSection>| {config.siteTitle}</NavSection>
+              </a>
+            </Link>
+          </NavTitle> :
+          <NavTitle title={config.siteTitle}>
+            <Link href={config.homePath}>
+              <a>{config.siteTitle}</a>
+            </Link>
+          </NavTitle>
         }
     </HeaderWrapper>
   )

@@ -35,6 +35,7 @@ export default function Post({ page }) {
 
   return (
     <Layout>
+      <Header link="/" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -45,7 +46,6 @@ export default function Post({ page }) {
               slug={`https://gis-netzwerk.com/${page.slug}`}
               date={page.date}
             />
-            <Header link="/" />
             <PageTitle>{page.title}</PageTitle>
             <PageWrapper>
               <Date dateString={page.date} />

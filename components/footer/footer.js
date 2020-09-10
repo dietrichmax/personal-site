@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Logo from '../logo';
 import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
+import React, { useState, useEffect } from "react"
 
 // styled components
 const FooterWrapper = styled.div`    
@@ -48,7 +49,8 @@ const FooterNav = styled.div`
   }
 `
 
-const FooterNavItem = styled.p`   
+const FooterNavItem = styled.a`  
+  display: block; 
   color: var(--gray);
   font-size: 1.5rem;
   padding-right: var(--space);
@@ -58,16 +60,18 @@ const FooterNavItem = styled.p`
   }
 `
 
-const FooterSubNav = styled.div`
+const FooterSubNav = styled.div`  
   margin: var(--space) auto 0 auto; 
   text-align: center;
+  letter-spacing: -1px;
 `
 
-const FooterSubNavItem = styled.a`     
+const FooterSubNavItem = styled.a`  
   color: var(--gray);
   font-size: 1.5rem;
   padding: var(--space);
   margin: var(--space-sm);
+  font-weight: 200;
   :hover {
     color: var(--primary-color);
   }
@@ -75,12 +79,20 @@ const FooterSubNavItem = styled.a`
 
 export default function Footer() {
 
-  const footerItems = [
+  const footerNavItems = [
     { "name": "Startseite", "link":  config.homePath },
     { "name": "Blog", "link":  "/blog" },
     { "name": "Jobbörse", "link":  "/jobs" },
+    { "name": "Werben", "link":  "/werben" },
     { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" }
   ]
+
+  const footerSubNavItems = [
+    { "name": "Datenschutz", "link":  "/datenschutz" },
+    { "name": "Impressum", "link":  "/impressum" },
+    { "name": "Kontakt", "link":  "mailto:kontakt@gis-netzwerk.com" }
+  ]
+
 
   return (
     <FooterWrapper>
@@ -89,9 +101,9 @@ export default function Footer() {
           <Logo />
         </FooterLogo>
         <FooterNav>
-          {footerItems.map((item, i) => (
-            <Link key={i} href={item.link}>
-              <a><FooterNavItem>{item.name}</FooterNavItem></a>
+          {footerNavItems.map((item, i) => (
+            <Link key={i} href={item.link} passHref>
+              <FooterNavItem title={item.name}>{item.name}</FooterNavItem>
             </Link>
           ))}
         </FooterNav>
@@ -99,9 +111,11 @@ export default function Footer() {
       </FooterContainer>
 
       <FooterSubNav>
-        <FooterSubNavItem><Link href="/datenschutz"><a>Datenschutz</a></Link></FooterSubNavItem>
-        <FooterSubNavItem><Link href="/impressum"><a>Impressum</a></Link></FooterSubNavItem>
-        <FooterSubNavItem><Link href="mailto:kontakt@gis-netzwerk.com"><a>Kontakt</a></Link></FooterSubNavItem>
+        {footerSubNavItems.map((item, i) => (
+          <Link key={i} href={item.link} passHref>
+            <FooterSubNavItem title={item.name}>{item.name}</FooterSubNavItem>
+          </Link>
+      ))}
 
       </FooterSubNav>
 

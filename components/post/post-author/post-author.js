@@ -12,10 +12,12 @@ const AuthorMeta = styled.div`
   display: block;
   margin-left: 12px;
   width: 100%;
+  font-weight: 200;
 `
 
 const AuthorName = styled.a`
   font-weight: bold;
+  letter-spacing: 1px;
 `
 
 const AuthorImg = styled.img`

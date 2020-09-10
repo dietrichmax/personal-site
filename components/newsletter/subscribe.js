@@ -177,13 +177,3 @@ export default function Subscribe ({ noLabel, cb }) {
   )
 }
 
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://api.gis-netzwerk.com/subscribers/count`)
-  const data = await res.json()
-
-  // Pass data to the page via props
-  return {
-    props: { count },
-  }
-}

@@ -63,53 +63,52 @@ const TagItem = styled.button`
 
 export default function Index({ allPosts, allJobs, allTags }) {
   const router = useRouter()
-
   
   return (
     <>
       <Layout>
-      {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          
-        <>
-          <SEO   
-            title="Startseite"
-            slug="https://gis-netzwerk.com"
-          />
-          <Header link="/"/>
-          <IndexPageContainer >
-
-            <TitleWrapper>
-                <Title><Link href="/jobs"><a title="Zur Jobbörse">Die aktuellsten Jobs aus der Jobbörse</a></Link></Title>
-                <Separator/>
-            </TitleWrapper>
-            <MoreJobs jobs={allJobs} />
-
-            <TitleWrapper>
-                <Title><Link href="/blog"><a title="Zum Blog">Aus dem Blog</a></Link></Title>
-                <Separator/>
-            </TitleWrapper>
-            <MoreStories posts={allPosts} />
+        <Header link="/"/>
+        {router.isFallback ? (
+            <PageTitle>{config.loading}</PageTitle>
+          ) : (
             
-            <TitleWrapper>
-                <Title>Alle Themen</Title>
-                <Separator/>
-            </TitleWrapper>
+          <>
+            <SEO   
+              title="Startseite"
+              slug="https://gis-netzwerk.com"
+            />
+            <IndexPageContainer >
 
-            <TagWrapper>
-              {allTags.map((tag, i) => (
-                
-                  <Link key={i} href={`/blog/themen/${tag.slug}`} passHref>
-                    <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
-                  </Link>
-              ))}
-            </TagWrapper>
+              <TitleWrapper>
+                  <Title><Link href="/jobs"><a title="Zur Jobbörse">Entdecken Sie Ihren Traumjob</a></Link></Title>
+                  <Separator/>
+              </TitleWrapper>
+              <MoreJobs jobs={allJobs} />
 
-          </IndexPageContainer>
-          <Footer />
-        </>
+              <TitleWrapper>
+                  <Title><Link href="/blog"><a title="Zum Blog">Neue Beiträge</a></Link></Title>
+                  <Separator/>
+              </TitleWrapper>
+              <MoreStories posts={allPosts} />
+              
+              <TitleWrapper>
+                  <Title>Themen durchsuchen</Title>
+                  <Separator/>
+              </TitleWrapper>
+
+              <TagWrapper>
+                {allTags.map((tag, i) => (
+                  
+                    <Link key={i} href={`/blog/themen/${tag.slug}`} passHref>
+                      <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
+                    </Link>
+                ))}
+              </TagWrapper>
+
+            </IndexPageContainer>
+          </>
         )}
+        <Footer />
       </Layout>
     </>
   )

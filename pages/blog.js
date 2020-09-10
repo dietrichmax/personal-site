@@ -46,34 +46,33 @@ export default function Blog({ allPosts, allTags }) {
   return (
     <>
       <Layout>
-      {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          
-        <>
-          <Header section="Blog" link="/"/>
-          <SEO   
-            title="Blog"
-            slug="https://gis-netzwerk.com/blog"
-          />
-          <BlogPageContainer >
-            <PageTitle>Blog</PageTitle>
+        <Header section="Blog" link="/"/>
+        {router.isFallback ? (
+            <PageTitle>{config.loading}</PageTitle>
+          ) : (
+            
+          <>
+            <SEO   
+              title="Blog"
+              slug="https://gis-netzwerk.com/blog"
+            />
+            <BlogPageContainer >
+              <PageTitle>Blog</PageTitle>
 
-            <TagWrapper>
-              {allTags.map((tag, i) => (
-                  <Link key={i} href={`/blog/themen/${tag.slug}`}>
-                    <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
-                  </Link>
-              ))}
-            </TagWrapper>
+              <TagWrapper>
+                {allTags.map((tag, i) => (
+                    <Link key={i} href={`/blog/themen/${tag.slug}`}>
+                      <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
+                    </Link>
+                ))}
+              </TagWrapper>
 
-            {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+              {allPosts.length > 0 && <MoreStories posts={allPosts} />}
 
-          </BlogPageContainer>
-          
-          <Footer />
-        </>
+            </BlogPageContainer>
+          </>
         )}
+        <Footer />
       </Layout>
     </>
   )

@@ -30,6 +30,7 @@ export default function Tags({ tag }) {
   
   return (
     <Layout>
+      <Header section="Blog" link="/blog"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -39,16 +40,15 @@ export default function Tags({ tag }) {
               description={tag.description}
               slug={`https://gis-netzwerk.com/blog/themen(${tag.slug}`}
             />
-            <Header section="Blog" link="/blog"/>
             <TagContainer>
               <PageTitle color={tag.color}>{tag.name}</PageTitle>
               <TagPostsContainer>
                 {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}
               </TagPostsContainer>
             </TagContainer>
-            <Footer />
           </>
         )}
+      <Footer />
     </Layout>
   )
 }

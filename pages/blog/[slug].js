@@ -54,6 +54,7 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
+      <Header section="Blog" link="/blog" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -68,7 +69,6 @@ export default function Post({ post, morePosts }) {
               ogType="article"
               postSEO
             />
-            <Header section="Blog" link="/blog" />
             <article ref={target} >
               <ReadingProgress target={target} />
               <CoverImage title={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>

@@ -19,10 +19,9 @@ const NavTitle = styled.div`
   margin-bottom: auto;
   color: var(--gray);
   font-size: 2rem;
-  font-weight: 500;
 `
 
-const NavSection = styled.a`
+const NavSection = styled.span`
   width: auto;
   padding-left: calc(var(--space-sm)*0.5);
   color: var(--gray);
@@ -56,7 +55,7 @@ export default function HeaderNav( { section, link } ) {
         <Logo />
       </HeaderLogo>
         {section? 
-          <NavTitle title={config.siteTitle}>
+          <NavTitle>
             <Link href={link} passHref>
               <a title={`${section} | ${config.siteTitle}`}>
                 {section}
@@ -64,9 +63,9 @@ export default function HeaderNav( { section, link } ) {
               </a>
             </Link>
           </NavTitle> :
-          <NavTitle title={config.siteTitle}>
+          <NavTitle>
             <Link href={config.homePath}>
-              <a>{config.siteTitle}</a>
+              <a title={config.siteTitle}>{config.siteTitle}</a>
             </Link>
           </NavTitle>
         }

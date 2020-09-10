@@ -26,8 +26,6 @@ const AuthorImg = styled.img`
   margin-bottom: auto;
 `
 
-const AuthorLink = styled.a`
-`
 
 export default function Company({ name, logo, url }) {
 
@@ -39,8 +37,10 @@ export default function Company({ name, logo, url }) {
         alt={name}
         title={name}
       />
-      <AuthorName href={url} >
-        <AuthorLink title={name}>{name}</AuthorLink>
+      <AuthorName>
+        <Link href={url}>
+          <a title={name}>{name}</a>
+        </Link>
       </AuthorName>
     </AuthorWrapper>
   )

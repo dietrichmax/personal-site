@@ -114,7 +114,15 @@ export default function Subscribe ({ noLabel, cb }) {
           email: email,
         })
       })
-      setSubmitted(true)
+      .then(response => {
+        // Handle success.
+        console.log('Newsletter erfolgreich abboniert.');
+        setSubmitted(true)
+      })
+      .catch(error => {
+        // Handle error.
+        console.error('Ein Fehler ist aufgetreten!', error.response);
+      });
   }
 
 

@@ -3,11 +3,10 @@ import { SocialIcon } from 'react-social-icons';
 
 const AuthorWrapper = styled.div`
   display: flex;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--gray-light);
+  margin-top: var(--space);
+  margin-bottom: var(--space);
 `
+
 const AuthorMeta = styled.div`
   display: block;
   margin-left: 12px;

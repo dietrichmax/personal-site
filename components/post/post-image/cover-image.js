@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Caption = styled.p`
-  position: absolute;
-  right: 0px;
-  padding-right: 12px;
   text-transform: uppercase;
   color: var(--gray);
   font-size: 10px;
@@ -23,7 +20,7 @@ const PreviewCoverImageWrapper = styled.div`
 const PreviewCoverImage = styled.img`
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
-  width: 1920px;
+  width: 100%;
   height: 220px;
   object-fit: cover;
   ${media.lessThan('large')`
@@ -32,8 +29,8 @@ const PreviewCoverImage = styled.img`
 `
 
 const PostCoverImage = styled.img`
-  width: 1920px;
-  height: 300px;
+  width: 100%;
+  height: 400px;
   object-fit: cover;
   ${media.lessThan('large')`
     height: 200px;

@@ -13,11 +13,12 @@ const FooterWrapper = styled.div`
 `;
 
 const FooterContainer = styled.div`
-  padding: var(--space-lg);
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
   display: flex;
+  margin: var(--space);
+  padding-bottom: var(--space);
   border-bottom: 1px solid var(--gray-light);
 `;
 
@@ -28,7 +29,7 @@ const FooterLogo = styled.div`
 
 
 const NavTitle = styled.div`
-display: flex;
+  display: flex;
   padding: var(--space-sm);
   margin-top: auto;
   margin-bottom: auto;
@@ -44,8 +45,9 @@ const FooterSocials = styled.div`
   padding-bottom: var(--space-lg);
 `
 
-const FooterNav = styled.div`     
+const FooterNav = styled.div`  
   flex: 0 1 auto;
+  text-align: right;
   }
 `
 
@@ -54,6 +56,7 @@ const FooterNavItem = styled.a`
   color: var(--gray);
   font-size: 1.5rem;
   padding-right: var(--space);
+  margin-top: calc(var(--space-sm)*0.5);
   margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
     color: var(--primary-color);
@@ -63,16 +66,15 @@ const FooterNavItem = styled.a`
 const FooterSubNav = styled.div`  
   margin: var(--space) auto 0 auto; 
   text-align: center;
-  letter-spacing: -1px;
+  letter-spacing: 0.5px;
+  width: 100%;
+  font-weight: 200;
 `
 
 const FooterSubNavItem = styled.a`  
   color: var(--gray);
   font-size: 1.5rem;
   padding: var(--space);
-  margin: var(--space-sm);
-  font-weight: 200;
-  letter-spacing: 0.1px;
   :hover {
     color: var(--primary-color);
   }

@@ -80,7 +80,7 @@ const SEO = ({
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <html lang={lang}>
+      <html lang={lang} />
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}

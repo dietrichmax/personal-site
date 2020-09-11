@@ -104,18 +104,15 @@ export default function Subscribe ({ noLabel, cb }) {
 
 
   const handleSubmit = () => {
-    fetch('https://api.gis-netzwerk.com/subscribers', {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-      })
-    })
-    setSubmitted(true)
-  }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+  };
+  fetch('https://api.gis-netzwerk.com/subscribers', requestOptions)
+}
+console.log(email)
 
 
   return (

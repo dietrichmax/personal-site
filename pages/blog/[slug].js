@@ -19,6 +19,9 @@ import Header from '@/components/header/headerNav'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
+import Date from '@/components/date/date' 
+
+// components for posts
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -39,7 +42,7 @@ const MorePostsWrapper = styled.div`
   border: 1px solid var(--gray-light);;
 `
 
-const MorePostsTitle = styled.h4`
+const MorePostsTitle = styled.p`
   font-size: 1.5rem;
   padding: var(--space);
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -72,7 +75,6 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
-              <CoverImage title={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
               <PostWrapper>
               <PostHeader
                 title={post.title}
@@ -80,7 +82,9 @@ export default function Post({ post, morePosts }) {
                 author={post.user}
                 tags={post.tags}
               />
+              <CoverImage title={post.title} url={post.coverImage.coverImage.formats.medium.url} caption={post.coverImage.caption}/>
                 <RIWAAD allTags={post.tags} />
+                <Date dateString={post.date} />
                 <PostBody content={post.content} />
               </PostWrapper>
             </article>

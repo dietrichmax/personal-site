@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 export const Wrapper = styled.div`
-    margin: var(--space) auto var(--space) auto;
-    border-bottom: solid 1px var(--gray-light);
+    margin-top: var(--space);
+    padding-top: var(--space);
+    border-top: solid 1px var(--gray-light);
 `
 export const Subline = styled.p`
     text-decoration: none;

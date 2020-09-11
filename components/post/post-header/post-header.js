@@ -2,8 +2,7 @@ import Author from '../post-author/post-author'
 import PostTitle from '../../title/content-title'
 import media from 'styled-media-query';
 import styled from 'styled-components';
-import Link from 'next/link'
-import Date from '../../date/date'      
+import Link from 'next/link'     
 const _ = require("lodash");
 
 const TagsWrapper = styled.div`
@@ -34,6 +33,8 @@ const TagItem = styled.button`
 const PostHeaderWrapper = styled.div`
   max-width: 640px;
   margin: auto;
+  margin-bottom: var(--space);
+  border-bottom: 1px solid var(--gray-light);
 `
 
 const DateWrapper = styled.div`
@@ -61,9 +62,8 @@ export default function PostHeader({ title, date, author, tags }) {
 
         <PostTitle>{title}</PostTitle>
           
-        <Author name={author.username} picture={author.picture} bio={author.bio} socials={author.socials} date={date} />
-
-        <Date dateString={date} />
+        <Author name={author.username} picture={author.picture} bio={author.bio} socials={author.socials}/>
+        
       </PostHeaderWrapper>
     </>
   )

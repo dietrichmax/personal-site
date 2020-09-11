@@ -12,6 +12,9 @@ const Caption = styled.p`
 
 const PostCoverImageWrapper = styled.div`
   display: block;
+  border-bottom: 1px solid var(--gray-light);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
 `
 
 const PreviewCoverImageWrapper = styled.div`

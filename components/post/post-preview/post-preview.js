@@ -28,6 +28,8 @@ const CardItemTitle = styled.h2`
   font-size: 1.2em;
   line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
+  padding-bottom: calc(var(--space-sm) *0.5);
+  border-bottom: 1px solid var(--gray-light);
   :hover {
     color: var(--primary-color);
   }

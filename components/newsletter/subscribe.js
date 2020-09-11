@@ -112,7 +112,6 @@ export default function Subscribe ({ noLabel, cb }) {
   };
   fetch('https://api.gis-netzwerk.com/subscribers', requestOptions)
 }
-console.log(email)
 
 
   return (

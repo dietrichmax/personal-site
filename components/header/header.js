@@ -1,21 +1,31 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import config from "../../data/SiteConfig";
-import React, { Component } from 'react';
 import media from 'styled-media-query';
 import Logo from '../logo';
+import React, { Component, useState } from 'react';
+import ButtonMenu from './button';
+import Navigation from './header-navigation';
 
 const HeaderWrapper = styled.div`
   background-color: #fff;
   display: flex;
   font-family: var(--secondary-font);
   border-bottom: 1px solid var(--gray-light);
+
+  ${media.lessThan('large')`
+  top: 0;
+  left: 0;
+    position: sticky;
+    width: 100%;
+    z-index: 9999;
+  `}
 `
 
 const NavTitle = styled.div`
   width: auto;
   padding: var(--space-sm);
-  margin-top: auto;
+  margin-top: calc(var(--space-sm)*0.4);
   margin-bottom: auto;
   color: var(--gray);
   font-size: 2rem;
@@ -29,24 +39,30 @@ const NavSection = styled.span`
 `
 
 
-export const HeaderLogo = styled.div`
+const HeaderLogo = styled.div`
   padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
   ${media.lessThan('large')`
     padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
   `}
 `
 
-
+const NavMenu = styled.div`
+  width: auto;
+  ${media.greaterThan('medium')`
+    margin: 0 10px 0 auto;
+    width: auto;
+  `}
+`;
 
 
 export default function HeaderNav( { section, link } ) {
 
+  const [toggleMenu, setToggleMenu] = useState(false);
 
+  function handleToggleMenu() {
+    setToggleMenu(!toggleMenu);
+  }
 
-    
-  const headerItems = [
-    { "name": "Blog", "link":  "/" }
-  ]
 
   return (
     <HeaderWrapper>
@@ -69,6 +85,15 @@ export default function HeaderNav( { section, link } ) {
             </Link>
           </NavTitle>
         }
+
+        <ButtonMenu
+          handleClick={handleToggleMenu}
+          isActive={toggleMenu}
+        />
+        <NavMenu>
+          <Navigation isActive={toggleMenu} handleToggleMenu={handleToggleMenu} />
+        </NavMenu>
+
     </HeaderWrapper>
   )
 }

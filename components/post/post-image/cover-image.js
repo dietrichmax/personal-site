@@ -21,13 +21,18 @@ const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
 const PreviewCoverImage = styled.img`
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: ${props =>
+    props.hero ? "none" : "0.75rem" };
+  border-top-right-radius: ${props =>
+    props.hero ? "none" : "0.75rem" };
   width: 100%;
-  height: 220px;
+  height: ${props =>
+    props.hero ? "420px" : '200px'};
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 200px;
+    height: ${props =>
+      props.hero ? "300px" : '200px'};
+    object-fit: cover;
   `}
 `
 
@@ -35,12 +40,13 @@ const PostCoverImage = styled.img`
   width: 100%;
   height: 400px;
   object-fit: cover;
+  margin-top: var(--space);
   ${media.lessThan('large')`
     height: 200px;
   `}
 `
 
-export default function CoverImage({ title, url, slug, caption }) {
+export default function CoverImage({ title, url, slug, caption, hero }) {
   
   const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
 
@@ -51,7 +57,7 @@ export default function CoverImage({ title, url, slug, caption }) {
         <PreviewCoverImageWrapper>
           <Link as={`/blog/${slug}`} href="/blog/[slug]">
               <a aria-label={title}>
-                <PreviewCoverImage src={imageUrl} alt={title} title={title} />
+                <PreviewCoverImage src={imageUrl} alt={title} title={title} hero={hero} />
               </a>
           </Link>
         </PreviewCoverImageWrapper>

@@ -3,12 +3,13 @@ import Layout from '@/components/layout/layout'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
+import axios from 'axios';
 
 const JobsAdvertiseWrapper = styled.div`
   text-align:center;
@@ -111,7 +112,14 @@ margin-right: var(--space);
 export default function Recruiting({ }) {
   const router = useRouter()
 
-  
+  const handleSubmit = () => {
+    axios.post('https://api.gis-netzwerk.com/subscribers', {
+      data: {
+        email: "test"
+      },
+    });
+  }
+
   return (
     <>
       <Layout>
@@ -131,7 +139,11 @@ export default function Recruiting({ }) {
               <JobsAdvertiseTitle>
                 Nutzen Sie die Reichweite von GIS-Netzwerk
               </JobsAdvertiseTitle>
-              <JobAdvertiseButton>
+              <JobAdvertiseButton
+                type="button"
+                aria-label="Abonnieren"
+                onClick={() => handleSubmit()}
+              >
                 Stellenanzeige aufgeben
               </JobAdvertiseButton>
             </JobsAdvertiseWrapper>

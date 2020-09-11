@@ -85,8 +85,8 @@ export default function Footer() {
   const footerNavItems = [
     { "name": "Startseite", "link":  config.homePath },
     { "name": "Blog", "link":  "/blog" },
-    { "name": "Jobbörse", "link":  "/jobs" },
-    { "name": "Werben", "link":  "/werben" },
+    { "name": "Stellenmarkt", "link":  "/stellenmarkt" },
+    /*{ "name": "Werben", "link":  "/werben" },*/
     { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" }
   ]
 

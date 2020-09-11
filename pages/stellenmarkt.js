@@ -5,7 +5,7 @@ import { getAllJobsForJobboard } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
@@ -59,19 +59,19 @@ export default function Index({ allJobs }) {
   return (
     <>
       <Layout>
-        <Header section="Jobbörse" link="/jobs"/>
+        <Header section="Stellenmarkt" link="/stellenmarkt"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           
           <>
             <SEO   
-              title="Jobbörse"
-              description="Jobbörse für Geoinformatik und GIS-Jobs"
-              slug="https://gis-netzwerk.com/jobs"
+              title="Stellenmarkt"
+              description="Stellenmarkt für Geoinformatik und GIS-Jobs"
+              slug="https://gis-netzwerk.com/stellenmarkt"
             />
             <JobsPageContainer >
-                <PageTitle>Jobbörse</PageTitle>
+                <PageTitle>Stellenmarkt</PageTitle>
                 <MoreJobs jobs={allJobs} />
             </JobsPageContainer>
             {/*<JobsAdvertiseWrapper>

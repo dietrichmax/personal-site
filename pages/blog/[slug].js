@@ -15,7 +15,7 @@ import ReadingProgress from "@/components/post/post-reading-progress/reading-pro
 import media from 'styled-media-query';
 import CoverImage from '@/components/post/post-image/cover-image'
 import config from "../../data/SiteConfig";
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
@@ -43,10 +43,17 @@ const MorePostsWrapper = styled.div`
 `
 
 const MorePostsTitle = styled.p`
+  letter-spacing: 0.35px;
   font-size: 1.5rem;
-  padding: var(--space);
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  font-color: var(--gray);
+  padding: var(--space) 0 var(--space-sm) var(--space);
 `
+
+const PostDate = styled.div`
+  font-size: 1.3rem;
+  margin-bottom: calc(var(--space-sm) *0.5);
+`;
 
 export default function Post({ post, morePosts }) {
   const router = useRouter()
@@ -81,17 +88,22 @@ export default function Post({ post, morePosts }) {
                 date={post.date}
                 author={post.user}
                 tags={post.tags}
-              />
+              />                
+              <PostDate>
+                <Date dateString={post.date} />
+              </PostDate>
+              <PostBody content={post.excerpt} />
               <CoverImage title={post.title} url={post.coverImage.coverImage.formats.medium.url} caption={post.coverImage.caption}/>
                 <RIWAAD allTags={post.tags} />
-                <Date dateString={post.date} />
+
+
                 <PostBody content={post.content} />
               </PostWrapper>
             </article>
             <Newsletter />
             <MorePostsWrapper>
-              <MorePostsTitle><Link href="/blog"><a>Mehr Artikel:</a></Link></MorePostsTitle>
-              {morePosts.length > 0 && <MoreStories posts={morePosts} afterPost/>}
+              <MorePostsTitle><Link href="/blog"><a title="Zum Blog">Mehr Artikel:</a></Link></MorePostsTitle>
+              {morePosts.length > 0 && <MoreStories posts={morePosts}/>}
             </MorePostsWrapper>
           </>
         )}     
@@ -103,12 +115,14 @@ export default function Post({ post, morePosts }) {
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
   const content = await markdownToHtml(data?.posts[0]?.content || '')
+  const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
 
   return {
     props: {
       post: {
         ...data?.posts[0],
         content,
+        excerpt,
       },
       morePosts: data?.morePosts,
     },

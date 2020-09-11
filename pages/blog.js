@@ -5,7 +5,7 @@ import { getAllPostsForBlog, getAllTagsForHome } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'

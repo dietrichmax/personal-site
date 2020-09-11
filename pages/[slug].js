@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import Date from '@/components/date/date'    
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import config from "../data/SiteConfig";
 

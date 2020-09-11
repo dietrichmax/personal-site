@@ -2,9 +2,8 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 export const Wrapper = styled.div`
-    margin-top: var(--space);
-    padding-top: var(--space);
-    border-top: solid 1px var(--gray-light);
+    margin-top: var(--space-sm);
+    border-bottom: solid 1px var(--gray-light);
 `
 export const Subline = styled.p`
     text-decoration: none;
@@ -15,7 +14,6 @@ export const Subline = styled.p`
 export const VideoWrapper = styled.video`
     width: 100%;
     height: auto;
-    padding-bottom: var(--space);
     outline: none;
 `
 

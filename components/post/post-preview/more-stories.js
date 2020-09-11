@@ -10,7 +10,7 @@ const ListWrapper = styled.div`
   padding-left: var(--space);
   ${media.greaterThan('small')`
         display: grid;
-        grid-gap: 20px;
+        grid-gap: 10px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   `}
   ${media.greaterThan('medium')`
@@ -19,7 +19,7 @@ const ListWrapper = styled.div`
 `;
 
 
-export default function MoreStories({ posts, afterPost }) {
+export default function MoreStories({ posts}) {
   return (
     <section>
       <ListWrapper>
@@ -33,7 +33,6 @@ export default function MoreStories({ posts, afterPost }) {
             slug={post.slug}
             excerpt={post.excerpt}
             tags={post.tags}
-            afterPost={afterPost}
           />
         ))}
       </ListWrapper>

@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import Date from '@/components/date/date'    
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import config from "../../data/SiteConfig";
 import Link from 'next/link'
@@ -65,7 +65,7 @@ export default function Job({ job }) {
 
   return (
     <Layout>
-      <Header section="Jobbörse" link="/jobs"/>
+      <Header section="Stellenmarkt" link="/stellenmarkt"/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -73,7 +73,7 @@ export default function Job({ job }) {
             <SEO   
               title={job.title}
               description={job.jobDescription}
-              slug={`https://gis-netzwerk.com/jobs/${job.slug}`}
+              slug={`https://gis-netzwerk.com/stellenmarkt/${job.slug}`}
               date={job.date}
             />
             <PageTitle>{job.title}</PageTitle>
@@ -124,7 +124,7 @@ export async function getStaticPaths() {
   const allJobs = await getAllJobsWithSlug()
 
   return {
-    paths: allJobs?.map((job) => `/${job.slug}`) || [],
+    paths: allJobs?.map((job) => `/stellenmarkt/${job.slug}`) || [],
     fallback: true,
   }
 }

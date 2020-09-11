@@ -5,11 +5,13 @@ import { getAllPostsForHome, getAllJobsForHome, getAllTagsForHome } from '@/lib/
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
+import Dots from '@/components/funky-stuff/dots'
 import { useRouter } from 'next/router'
+import PostHero from '@/components/post/post-hero/post-hero'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -39,6 +41,7 @@ const TagWrapper = styled.div`
   text-align: center;
   background-color: #fff;
   border: 1px solid var(--gray-light);
+  border-radius: calc(var(--space-sm)*0.5);
 `
 
 const TagItem = styled.button`
@@ -60,9 +63,51 @@ const TagItem = styled.button`
       props.color ? props.color : '#798ad0'};
   }
 `
+const JobboardTeaser = styled.div`
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #fff;
+  margin-bottom: var(--space);
+  border-top: 2px solid var(--gray-light);
+  border-bottom: 2px solid var(--gray-light);
+  background: 
+    linear-gradient(135deg, var(--primary-color) 35%, transparent 235%) -50px 0,
+    linear-gradient(225deg, var(--primary-color) 35%, transparent 25%) -30px 0,
+    linear-gradient(315deg, var(--primary-color) 45%, transparent 25%);
+`
+
+const JobboardTextWrapper = styled.div`
+  max-width: 1200px;
+  margin: auto; 
+`
+
+const JobboardTitle = styled.div`
+  margin-left: var(--space);
+  letter-spacing: 0.35px;
+  font-size: 2.2rem;
+  padding-top: var(--space-sm);
+  :hover {
+    color: var(--gray-light);
+  }
+`
+
+const JobboardSubline = styled.div`
+  font-weight: 200;
+  margin-left: var(--space);
+  letter-spacing: -0.1px;
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+`
+
+
+
 
 export default function Index({ allPosts, allJobs, allTags }) {
   const router = useRouter()
+
+  const heroPost = allPosts[0]
+  const morePosts = allPosts.slice(1, 4)
+  const evenMorePosts = allPosts.slice(4)
   
   return (
     <>
@@ -77,22 +122,36 @@ export default function Index({ allPosts, allJobs, allTags }) {
               title="Startseite"
               slug="https://gis-netzwerk.com"
             />
+
+            <PostHero
+              title={heroPost.title}
+              coverImage={heroPost.coverImage}
+              date={heroPost.date}
+              slug={heroPost.slug}
+              excerpt={heroPost.excerpt}
+              tags={heroPost.tags}
+              hero
+            />
             <IndexPageContainer >
 
-              <TitleWrapper>
-                  <Title><Link href="/jobs"><a title="Zur Jobbörse">Entdecken Sie Ihren Traumjob</a></Link></Title>
-                  <Separator/>
-              </TitleWrapper>
-              <MoreJobs jobs={allJobs} />
+              <MoreStories posts={morePosts} />
+            </IndexPageContainer>
+
+              <JobboardTeaser>
+                <JobboardTextWrapper>
+                  <JobboardTitle><Link href="/stellenmarkt"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
+                  <JobboardSubline>...für alle, die mehr bewegen wollen.</JobboardSubline>
+                </JobboardTextWrapper>
+                <MoreJobs jobs={allJobs} />
+              </JobboardTeaser>
+
+            <IndexPageContainer >
+              <Dots/>
+
+              <MoreStories posts={evenMorePosts} />
 
               <TitleWrapper>
-                  <Title><Link href="/blog"><a title="Zum Blog">Neue Beiträge</a></Link></Title>
-                  <Separator/>
-              </TitleWrapper>
-              <MoreStories posts={allPosts} />
-              
-              <TitleWrapper>
-                  <Title>Themen durchsuchen</Title>
+                  <Title>Nach Thema durchsuchen</Title>
                   <Separator/>
               </TitleWrapper>
 

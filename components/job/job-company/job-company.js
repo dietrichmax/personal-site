@@ -16,6 +16,7 @@ const AuthorMeta = styled.a`
 
 const AuthorName = styled.div`
   margin-left: var(--space-sm);
+  color: var(--gray);
 `
 
 const AuthorImg = styled.img`

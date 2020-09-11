@@ -8,7 +8,7 @@ import Head from 'next/head'
 import config from "../../../data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
-import Header from '@/components/header/headerNav'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 
 const TagContainer = styled.div`

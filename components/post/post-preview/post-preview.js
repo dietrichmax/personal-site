@@ -9,6 +9,14 @@ const Card = styled.div`
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
   background-color: #fff;
+  
+  transition: 0.2s;
+  :hover {
+    ${media.greaterThan('medium')`
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px 0px;
+      transform: translateY(-5px) scale(1);
+    `}
+  }
 `
 
 const CardItemWrapper = styled.section`
@@ -20,7 +28,7 @@ const CardItemImg = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
-  padding: var(--space);
+  padding: var(--space-sm) var(--space);
 `;
 
 const CardItemTitle = styled.h2`
@@ -28,19 +36,19 @@ const CardItemTitle = styled.h2`
   font-size: 1.2em;
   line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
-  padding-bottom: calc(var(--space-sm) *0.5);
+  padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--gray-light);
   :hover {
     color: var(--primary-color);
   }
 `;
 
-const CardItemDate = styled.p`
-  font-size: 1.4rem;
+const CardItemDate = styled.div`
+  font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
 `;
 
-const CardItemDescription = styled.p`
+const CardItemDescription = styled.div`
 color: rgb(62, 69, 76);
   margin-bottom: var(--space-sm);
 `;
@@ -76,13 +84,15 @@ export default function PostPreview({
   author,
   slug,
   tags,
-  afterPost,
+  hero,
 }) {
+
+  const imageUrl = hero ? coverImage.coverImage.url : coverImage.coverImage.formats.small.url
   return (
     <Card>
       <CardItemWrapper>
         <CardItemImg>
-          <CoverImage slug={slug} title={title} url={coverImage.coverImage.formats.small.url} caption={coverImage.caption}/>
+          <CoverImage slug={slug} title={title} url={imageUrl} caption={coverImage.caption} hero={hero}/>
         </CardItemImg>
         <CardItemInfo>
           <CardItemTitle>
@@ -93,7 +103,7 @@ export default function PostPreview({
           <CardItemDate>
             <Date dateString={date} />
           </CardItemDate>
-          {afterPost ? null : <CardItemDescription>{excerpt}</CardItemDescription> }
+          <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (
                 <Link key={i} href={`/blog/themen/${tag.slug}`}>

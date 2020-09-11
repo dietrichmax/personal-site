@@ -7,8 +7,12 @@ import JobCompany from '@/components/job/job-company/job-company'
 const Card = styled.div`
   margin-bottom: var(--space);
   border: 1px solid var(--gray-light);
-  border-radius: 0.75rem;
   background-color: #fff;
+  transition: 0.3s;
+  max-height: 150px;
+  ${media.lessThan('large')`
+    height: 160px;
+  `}
 `
 
 const JobItemWrapper = styled.div`
@@ -30,6 +34,10 @@ const JobMeta = styled.p`
   color: var(--gray);
 `;
 
+const JobDate = styled.div`
+  font-size: 1.3rem;
+  color: var(--gray);
+`;
 
 
 export default function JobPreview({
@@ -46,13 +54,13 @@ export default function JobPreview({
       <Card>
         <JobItemWrapper>
           <JobItemTitle>
-            <Link as={`/jobs/${slug}`} href="/jobs/[slug]">
+            <Link as={`/stellenmarkt/${slug}`} href="/stellenmarkt/[slug]">
               <a title={title}>{title}</a>
           </Link>
           </JobItemTitle>
           <JobCompany name={company.name} logo={company.logo.url} url={company.websiteUrl}/>
           <JobMeta>{location} • {workingTime} • {contractType}</JobMeta>
-          <Date dateString={date} ago />
+          <JobDate><Date dateString={date} ago /></JobDate>
         </JobItemWrapper>
       </Card>
     </div>

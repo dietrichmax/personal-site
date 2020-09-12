@@ -9,7 +9,7 @@ const Card = styled.div`
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
   background-color: #fff;
-  
+  max-width: 400px;
   transition: 0.2s;
   :hover {
     ${media.greaterThan('medium')`
@@ -46,6 +46,7 @@ const CardItemTitle = styled.h2`
 const CardItemDate = styled.div`
   font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
+  color: var(--gray);
 `;
 
 const CardItemDescription = styled.div`
@@ -84,15 +85,14 @@ export default function PostPreview({
   author,
   slug,
   tags,
-  hero,
 }) {
 
-  const imageUrl = hero ? coverImage.coverImage.url : coverImage.coverImage.formats.small.url
+  
   return (
     <Card>
       <CardItemWrapper>
         <CardItemImg>
-          <CoverImage slug={slug} title={title} url={imageUrl} caption={coverImage.caption} hero={hero}/>
+          <CoverImage slug={slug} title={title} caption={coverImage.caption} hash={coverImage.coverImage.hash} ext={coverImage.coverImage.ext}/>
         </CardItemImg>
         <CardItemInfo>
           <CardItemTitle>

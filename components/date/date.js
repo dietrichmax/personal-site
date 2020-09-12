@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const PostDate = styled.time`
   position: relative;
   display: block;
-  color: var(--gray);
 `
 
 export default function Date({ dateString, ago }) {

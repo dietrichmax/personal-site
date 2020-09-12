@@ -59,7 +59,7 @@ export default function Index({ allJobs }) {
   return (
     <>
       <Layout>
-        <Header section="Stellenmarkt" link="/stellenmarkt"/>
+        <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -68,7 +68,7 @@ export default function Index({ allJobs }) {
             <SEO   
               title="Stellenmarkt"
               description="Stellenmarkt für Geoinformatik und GIS-Jobs"
-              slug="https://gis-netzwerk.com/stellenmarkt"
+              slug="https://gis-netzwerk.com/jobs"
             />
             <JobsPageContainer >
                 <PageTitle>Stellenmarkt</PageTitle>

@@ -112,7 +112,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
   return (
     <>
       <Layout>
-        <Header link="/"/>
+        <Header/>
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -139,7 +139,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
 
               <JobboardTeaser>
                 <JobboardTextWrapper>
-                  <JobboardTitle><Link href="/stellenmarkt"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
+                  <JobboardTitle><Link href="/jobs"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
                   <JobboardSubline>...für alle, die mehr bewegen wollen.</JobboardSubline>
                 </JobboardTextWrapper>
                 <MoreJobs jobs={allJobs} />

@@ -46,7 +46,7 @@ export default function Blog({ allPosts, allTags }) {
   return (
     <>
       <Layout>
-        <Header section="Blog" link="/"/>
+        <Header/>
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (

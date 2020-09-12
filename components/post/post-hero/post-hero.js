@@ -23,7 +23,7 @@ const HeroInfo = styled.div`
 `;
 
 const HeroMeta = styled.div`  
-  margin-left: var(--space); 
+  margin: var(--space-sm) var(--space) var(--space-sm) var(--space); 
   bottom: 0;
   left: 0;
   position: absolute;
@@ -35,9 +35,10 @@ const HeroMeta = styled.div`
   border-top-left-radius: var(--space-sm);
   ${media.lessThan('medium')`
     position: relative;
-    width: 100%;
     color: var(--gray);
+    max-width: 100%;
     background-color: #fff;
+    padding: 0;
 `}
 `;
 
@@ -46,8 +47,24 @@ const HeroTitle = styled.h2`
   line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
   padding-bottom: calc(var(--space-sm) *0.5);
+  ${media.lessThan('medium')`
+    border-bottom: 1px solid var(--gray-light);
+    position: relative;
+    color: var(--gray);
+    max-width: 100%;
+    background-color: #fff;
+    padding-bottom: calc(var(--space-sm) *0.5);
+`}
 `;
 
+const HeroDate = styled.div`
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: calc(var(--space-sm) *0.5);
+  ${media.lessThan('medium')`
+    color: var(--gray);
+`}
+`;
 
 const HeroDescription = styled.p`
   margin-bottom: var(--space-sm);
@@ -76,7 +93,7 @@ const TagItem = styled.a`
   }
 `
 
-export default function PostPreview({
+export default function PostHero({
   title,
   coverImage,
   date,
@@ -89,7 +106,7 @@ export default function PostPreview({
   return (
     <HeroWrapper>
         <HeroImg>
-          <CoverImage slug={slug} title={title} url={coverImage.coverImage.url} caption={coverImage.caption} hero={hero}/>
+          <CoverImage slug={slug} title={title} hash={coverImage.coverImage.hash} ext={coverImage.coverImage.ext} caption={coverImage.caption} hero={hero}/>
         </HeroImg>
         <HeroInfo>
           <HeroMeta>
@@ -98,6 +115,10 @@ export default function PostPreview({
                 <a title={title}>{title}</a>
               </Link>
             </HeroTitle>
+            
+          <HeroDate>
+            <Date dateString={date} />
+          </HeroDate>
             <HeroDescription>{excerpt}</HeroDescription>
             <TagsWrapper>
               {tags.map((tag, i) => (

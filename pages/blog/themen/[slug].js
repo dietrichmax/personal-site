@@ -30,7 +30,7 @@ export default function Tags({ tag }) {
   
   return (
     <Layout>
-      <Header section="Blog" link="/blog"/>
+      <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (

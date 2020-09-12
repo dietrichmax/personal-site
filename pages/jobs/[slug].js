@@ -65,7 +65,7 @@ export default function Job({ job }) {
 
   return (
     <Layout>
-      <Header section="Stellenmarkt" link="/stellenmarkt"/>
+      <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -73,7 +73,7 @@ export default function Job({ job }) {
             <SEO   
               title={job.title}
               description={job.jobDescription}
-              slug={`https://gis-netzwerk.com/stellenmarkt/${job.slug}`}
+              slug={`https://gis-netzwerk.com/jobs/${job.slug}`}
               date={job.date}
             />
             <PageTitle>{job.title}</PageTitle>
@@ -124,7 +124,7 @@ export async function getStaticPaths() {
   const allJobs = await getAllJobsWithSlug()
 
   return {
-    paths: allJobs?.map((job) => `/stellenmarkt/${job.slug}`) || [],
+    paths: allJobs?.map((job) => `/jobs/${job.slug}`) || [],
     fallback: true,
   }
 }

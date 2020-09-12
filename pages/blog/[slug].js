@@ -65,7 +65,7 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
-      <Header section="Blog" link="/blog" />
+      <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -82,6 +82,7 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
+              <CoverImage title={post.title} hash={post.coverImage.coverImage.hash} ext={post.coverImage.coverImage.ext} caption={post.coverImage.caption}/>
               <PostWrapper>
               <PostHeader
                 title={post.title}
@@ -93,7 +94,6 @@ export default function Post({ post, morePosts }) {
                 <Date dateString={post.date} />
               </PostDate>
               <PostBody content={post.excerpt} />
-              <CoverImage title={post.title} url={post.coverImage.coverImage.formats.medium.url} caption={post.coverImage.caption}/>
                 <RIWAAD allTags={post.tags} />
 
 

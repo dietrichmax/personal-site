@@ -9,10 +9,6 @@ const Card = styled.div`
   border: 1px solid var(--gray-light);
   background-color: #fff;
   transition: 0.3s;
-  max-height: 150px;
-  ${media.lessThan('large')`
-    height: 160px;
-  `}
 `
 
 const JobItemWrapper = styled.div`
@@ -54,7 +50,7 @@ export default function JobPreview({
       <Card>
         <JobItemWrapper>
           <JobItemTitle>
-            <Link as={`/stellenmarkt/${slug}`} href="/stellenmarkt/[slug]">
+            <Link as={`/jobs/${slug}`} href="/jobs/[slug]">
               <a title={title}>{title}</a>
           </Link>
           </JobItemTitle>

@@ -47,15 +47,15 @@ const HeaderLogo = styled.div`
 `
 
 const NavMenu = styled.div`
-  width: auto;
+  margin: calc(var(--space-lg)*1.5) calc(var(--space-lg)*3) auto auto;
   ${media.greaterThan('medium')`
-    margin: 0 10px 0 auto;
+    margin: 0 var(--space) 0 auto;
     width: auto;
   `}
 `;
 
 
-export default function HeaderNav( { section, link } ) {
+export default function HeaderNav() {
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -70,21 +70,12 @@ export default function HeaderNav( { section, link } ) {
       <HeaderLogo >
         <Logo />
       </HeaderLogo>
-        {section? 
-          <NavTitle>
-            <Link href={link} passHref>
-              <a title={`${section} | ${config.siteTitle}`}>
-                {section}
-                <NavSection>| {config.siteTitle}</NavSection>
-              </a>
-            </Link>
-          </NavTitle> :
-          <NavTitle>
-            <Link href={config.homePath}>
-              <a title={config.siteTitle}>{config.siteTitle}</a>
-            </Link>
-          </NavTitle>
-        }
+          
+        <NavTitle>
+          <Link href={config.homePath}>
+            <a title={config.siteTitle}>{config.siteTitle}</a>
+          </Link>
+        </NavTitle>
 
         <ButtonMenu
           handleClick={handleToggleMenu}

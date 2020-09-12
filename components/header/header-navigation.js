@@ -51,8 +51,8 @@ const HeaderNavigation = ({ isActive, handleToggleMenu }) => {
   return (
     <>
       <Navigation className={isActive ? 'active' : ''}>
-        {headerItems.map(menu => (
-            <Link href={menu.link} >
+        {headerItems.map((menu, i) => (
+            <Link key={i} href={menu.link} >
                 <NavigationLink
                     aria-label={menu.name}
                     title={menu.name}

@@ -4,6 +4,12 @@
     "version": 2,
 
     "trailingSlash": false,
+    "functions": {
+        "api/image/*.js": {
+          "memory": 3008,
+          "maxDuration": 60
+        }
+    },
 
     "redirects": [
         {

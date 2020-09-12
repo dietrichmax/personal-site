@@ -1,5 +1,5 @@
 
-
+//test image component
 export default function Img({ width, height, hash, ext }) {
     
     return (

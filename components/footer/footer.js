@@ -54,7 +54,7 @@ const FooterNav = styled.div`
 const FooterNavItem = styled.a`  
   display: block; 
   color: var(--gray);
-  font-size: 1.5rem;
+  letter-spacing: 0.2px;
   padding-right: var(--space);
   margin-top: calc(var(--space-sm)*0.5);
   margin-bottom: calc(var(--space-sm)*0.5);
@@ -66,15 +66,14 @@ const FooterNavItem = styled.a`
 const FooterSubNav = styled.div`  
   margin: var(--space) auto 0 auto; 
   text-align: center;
-  letter-spacing: 0.5px;
   width: 100%;
-  font-weight: 200;
 `
 
 const FooterSubNavItem = styled.a`  
   color: var(--gray);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: var(--space);
+  letter-spacing: 0.2px;
   :hover {
     color: var(--primary-color);
   }
@@ -85,8 +84,8 @@ export default function Footer() {
   const footerNavItems = [
     { "name": "Startseite", "link":  config.homePath },
     { "name": "Blog", "link":  "/blog" },
-    { "name": "Stellenmarkt", "link":  "/stellenmarkt" },
-    /*{ "name": "Werben", "link":  "/werben" },*/
+    { "name": "Stellenmarkt", "link":  "/jobs" },
+    { "name": "Werben", "link":  "/werben" },
     { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" }
   ]
 

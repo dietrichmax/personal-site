@@ -2,11 +2,12 @@ import Date from '../../date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import JobCompany from '@/components/job/job-company/job-company'
+import JobCompany from '@/components/job/job-company/job-company';
 
 const Card = styled.div`
   margin-bottom: var(--space);
-  border: 1px solid var(--gray-light);
+  border: 1px solid ${props =>
+    props.premium ? 'var(--primary-color)' : 'var(--gray-light)'};
   background-color: #fff;
   transition: 0.3s;
 `
@@ -43,18 +44,20 @@ export default function JobPreview({
   date,
   company,
   workingTime,
-  contractType
+  contractType,
+  premium
 }) {
+
   return (
     <div>
-      <Card>
+      <Card premium={premium}>
         <JobItemWrapper>
           <JobItemTitle>
             <Link as={`/jobs/${slug}`} href="/jobs/[slug]">
               <a title={title}>{title}</a>
           </Link>
           </JobItemTitle>
-          <JobCompany name={company.name} logo={company.logo.url} url={company.websiteUrl}/>
+          <JobCompany companyData={company}/>
           <JobMeta>{location} • {workingTime} • {contractType}</JobMeta>
           <JobDate><Date dateString={date} ago /></JobDate>
         </JobItemWrapper>

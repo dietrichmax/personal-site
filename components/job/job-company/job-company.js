@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link'
+import config from "../../../data/SiteConfig";
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -15,7 +16,6 @@ const AuthorMeta = styled.a`
 `
 
 const AuthorName = styled.div`
-  margin-left: var(--space-sm);
   color: var(--gray);
 `
 
@@ -24,22 +24,25 @@ const AuthorImg = styled.img`
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  margin-bottom: auto;
+  margin-right: var(--space-sm);
 `
 
 
-export default function Company({ name, logo, url }) {
+export default function Company({ companyData }) {
 
-  console
+  const { name, logo, websiteUrl } = companyData
+
+
   return (
     <AuthorWrapper>
-      <AuthorImg
-        src={`${logo.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logo}`}
-        alt={name}
-        title={name}
-      />
+      {logo ? 
+        <AuthorImg
+          src={`${logo.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logo.url}`}
+          alt={name}
+          title={name}
+        /> : null }
       <AuthorName>
-        <Link href={url}>
+        <Link href={websiteUrl}>
           <a title={name}>{name}</a>
         </Link>
       </AuthorName>

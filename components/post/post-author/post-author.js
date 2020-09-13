@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { SocialIcon } from 'react-social-icons';
-import Img from '@/components/image/image'
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -29,19 +28,19 @@ const AuthorImg = styled.img`
 const AuthorSocials = styled.div`
 `
 
-export default function Author({ name, picture, bio, socials }) {
+export default function Author({ author }) {
 
+  const {username, picture, bio , socials} = author
 
-  console
   return (
     <AuthorWrapper>
       <AuthorImg
-        src={`/api/image/w=50&h=50/https%3A%2F%2Fapi.gis-netzwerk.com%2Fuploads%2F${picture.hash}${picture.ext}`}
-        alt={name}
-        title={name}
+        src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
+        alt={username}
+        title={username}
       />
       <AuthorMeta>
-        <p>Von{' '}<AuthorName>{name}{' '}</AuthorName>| {bio}</p>
+        <p>Von{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
         
         <AuthorSocials>
           {socials.map((social, i) => (

@@ -9,7 +9,6 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
-import axios from 'axios';
 
 const JobsAdvertiseWrapper = styled.div`
   text-align:center;
@@ -20,7 +19,7 @@ const JobsAdvertiseTitle = styled.p`
   margin: 0 auto var(--space) auto;
   max-width: 1200px;
   color: #fff;
-  padding-top: var(--space);
+  padding: var(--space);
   font-size: 4rem;
   font-family: var(--secondary-font);
   font-weight: 200;
@@ -73,7 +72,7 @@ const BenefitDescription = styled.span`
 
 const PossibilityWrapper = styled.div`
   max-width: 1200px;
-  margin: auto;
+  margin: var(--space) auto var(--space) auto;
   text-align: center;
   ${media.greaterThan('small')`
     display: grid;
@@ -92,19 +91,19 @@ const Possibility = styled.div`
 `
 
 const PossibilityTitle = styled.h3`
-font-size: 3rem;
-font-weight: 200;
+  font-size: 3rem;
+  font-weight: 200;
   margin: var(--space);
 
 `
 
 const PossibilityDescription = styled.ul`
+  max-width: 67%;
+  margin: auto;
 
 `
 
 const PossibilityChecklistItem = styled.li`
-margin-left: var(--space);
-margin-right: var(--space);
   text-align: left;
 
 `
@@ -113,11 +112,43 @@ export default function Recruiting({ }) {
   const router = useRouter()
 
   const handleSubmit = () => {
-    axios.post('https://api.gis-netzwerk.com/subscribers', {
-      data: {
-        email: "test"
-      },
-    });
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        title: "testjasdasdob",
+        jobDescription: "JobDescription",
+        workingTime: "Vollzeit",
+        contractType: "unbefristet",
+        slug: slugify(`testjob`),
+        vacationDays: 30,
+        workingHours: 38,
+        salary: "4000",
+        location: "München",
+        applicationLink: "max.dietrich@gis-netzwerk.com",
+        status: "draft",
+        premium: false,
+        company: {
+          name: "TestCompany",
+          logo: 236,
+          size: "120",
+          websiteUrl: "https://api.gis-netzwerk.com"
+        },
+        date: "2020-09-13",
+
+      })
+    };
+    fetch('https://api.gis-netzwerk.com/jobs', requestOptions)
+      .then(function(response) {
+        if (!response.ok) {
+          console.log(response.statusText);
+        } else {
+          console.log("success")
+        }
+        }).catch(function(error) {
+            console.log(error);
+        });
   }
 
   return (
@@ -139,13 +170,7 @@ export default function Recruiting({ }) {
               <JobsAdvertiseTitle>
                 Nutzen Sie die Reichweite von GIS-Netzwerk
               </JobsAdvertiseTitle>
-              <JobAdvertiseButton
-                type="button"
-                aria-label="Abonnieren"
-                onClick={() => handleSubmit()}
-              >
-                Stellenanzeige aufgeben
-              </JobAdvertiseButton>
+              
             </JobsAdvertiseWrapper>
 
             {/* Benefits */}
@@ -190,6 +215,13 @@ export default function Recruiting({ }) {
                   <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
                 </PossibilityDescription>
+                <JobAdvertiseButton
+                  type="button"
+                  aria-label="Abonnieren"
+                  onClick={() => handleSubmit()}
+                >
+                Stellenanzeige aufgeben
+                </JobAdvertiseButton>
               </Possibility>
 
               <Possibility>

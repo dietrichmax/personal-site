@@ -7,12 +7,11 @@ const Caption = styled.p`
   text-transform: uppercase;
   color: var(--gray);
   font-size: 10px;
-  background-color: white;
   text-align: right;
+  margin-right: var(--space-sm);
 `
 
 const PostCoverImageWrapper = styled.div`
-  display: block;
 `
 
 const PreviewCoverImageWrapper = styled.div`
@@ -43,21 +42,18 @@ const PostCoverImage = styled.img`
   `}
 `
 
-export default function CoverImage({ title, slug, caption, hero, hash, ext }) {
+export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const previewImageUrl = hero ? 
-    `/api/image/w=1920&h=400/https%3A%2F%2Fapi.gis-netzwerk.com%2Fuploads%2F${hash}${ext}` : 
-    `/api/image/w=400&h=200/https%3A%2F%2Fapi.gis-netzwerk.com%2Fuploads%2F${hash}${ext}`
+  const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
 
-  const postImageUrl =  `/api/image/w=1920&h=400/https%3A%2F%2Fapi.gis-netzwerk.com%2Fuploads%2F${hash}${ext}`
-  
+
   return (
     <div className="">
       {slug ? (
         <PreviewCoverImageWrapper>
           <Link as={`/blog/${slug}`} href="/blog/[slug]">
               <a aria-label={title}>
-                <PreviewCoverImage src={previewImageUrl} alt={title} title={title} hero={hero} />
+                <PreviewCoverImage src={imageUrl} alt={title} title={title} hero={hero} />
               </a>
           </Link>
         </PreviewCoverImageWrapper>
@@ -65,7 +61,7 @@ export default function CoverImage({ title, slug, caption, hero, hash, ext }) {
       ) : (
 
         <PostCoverImageWrapper>
-            <PostCoverImage src={postImageUrl} alt={title} title={title} />
+            <PostCoverImage src={imageUrl} alt={title} title={title} />
             <Caption>Bildquelle: {caption}</Caption>
         </PostCoverImageWrapper>
         

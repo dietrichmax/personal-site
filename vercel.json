@@ -5,7 +5,7 @@
 
     "trailingSlash": false,
     "functions": {
-        "api/image/*.js": {
+        "api/*/*.js": {
           "memory": 3008,
           "maxDuration": 60
         }

@@ -108,10 +108,19 @@ export default function Subscribe ({ noLabel, cb }) {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-  };
-  fetch('https://api.gis-netzwerk.com/subscribers', requestOptions)
-}
+      body: JSON.stringify({ email: email })
+    };
+    fetch('https://api.gis-netzwerk.com/subscribers', requestOptions)
+      .then(function(response) {
+        if (!response.ok) {
+          console.log(response.statusText);
+        } else {
+          setSubmitted(true)
+        }
+        }).catch(function(error) {
+            console.log(error);
+        });
+  }
 
 
   return (

@@ -38,7 +38,7 @@ export default function JobHeader({ company, date, workingTime, contractType, va
     <>
       <JobHeaderWrapper>
         <CompanyWrapper>
-            <JobCompany name={company.name} hash={company.logo.hash} ext={company.logo.ext} url={company.websiteUrl}/>
+            <JobCompany companyData={company}/>
         </CompanyWrapper>
         <JobMeta>
           <JobMetaItem>📍 Arbeitsort: {location}</JobMetaItem>

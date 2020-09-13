@@ -5,18 +5,12 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Card = styled.div`
-  margin-bottom: var(--space);
+  margin: var(--space) auto var(--space) auto;
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
   background-color: #fff;
   max-width: 400px;
   transition: 0.2s;
-  :hover {
-    ${media.greaterThan('medium')`
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px 0px;
-      transform: translateY(-5px) scale(1);
-    `}
-  }
 `
 
 const CardItemWrapper = styled.section`
@@ -50,7 +44,7 @@ const CardItemDate = styled.div`
 `;
 
 const CardItemDescription = styled.div`
-color: rgb(62, 69, 76);
+  color: var(--gray);
   margin-bottom: var(--space-sm);
 `;
 
@@ -61,7 +55,7 @@ const TagsWrapper = styled.div`
 
 const TagItem = styled.a`
   background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
+    props.color ? props.color : 'var(--primary-color'};
   padding: calc(var(--space-sm)*0.5);
   border-radius: calc(var(--space-sm)*0.5);
   font-size: 13px;
@@ -92,7 +86,7 @@ export default function PostPreview({
     <Card>
       <CardItemWrapper>
         <CardItemImg>
-          <CoverImage slug={slug} title={title} caption={coverImage.caption} hash={coverImage.coverImage.hash} ext={coverImage.coverImage.ext}/>
+          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.formats.small.url}/>
         </CardItemImg>
         <CardItemInfo>
           <CardItemTitle>

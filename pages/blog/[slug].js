@@ -26,7 +26,7 @@ import Date from '@/components/date/date'
 const PostWrapper = styled.div`
   max-width: 720px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-  margin: var(--space) auto var(--space) auto;
+  margin: var(--space-sm) auto var(--space) auto;
   background-color: #fff;
   border: 1px solid var(--gray-light);;
   ${media.lessThan('large')`
@@ -82,24 +82,22 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
-              <CoverImage title={post.title} hash={post.coverImage.coverImage.hash} ext={post.coverImage.coverImage.ext} caption={post.coverImage.caption}/>
+              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
+
               <PostWrapper>
-              <PostHeader
-                title={post.title}
-                date={post.date}
-                author={post.user}
-                tags={post.tags}
-              />                
-              <PostDate>
-                <Date dateString={post.date} />
-              </PostDate>
-              <PostBody content={post.excerpt} />
-                <RIWAAD allTags={post.tags} />
+                <PostHeader postData={post} />                
+                <PostDate>
+                  <Date dateString={post.date} />
+                </PostDate>
+                <PostBody content={post.excerpt} />
+                  <RIWAAD allTags={post.tags} />
 
 
                 <PostBody content={post.content} />
               </PostWrapper>
+
             </article>
+            
             <Newsletter />
             <MorePostsWrapper>
               <MorePostsTitle><Link href="/blog"><a title="Zum Blog">Mehr Artikel:</a></Link></MorePostsTitle>

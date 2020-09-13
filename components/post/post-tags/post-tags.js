@@ -26,11 +26,12 @@ export const TagItem = styled.a`
 `
 
 export default function PostTags( tags ) {
-  console.log(tags)
+  
+  const  postTags = tags
   return (
     <>
         <TagsWrapper>
-          {tags.map((tag, i) => (
+          {postTags .map((tag, i) => (
               <Link key={i} href={`/blog/themen/${tag.slug}`}>
                 <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
               </Link>

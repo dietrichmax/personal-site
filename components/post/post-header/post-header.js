@@ -1,5 +1,6 @@
-import Author from '../post-author/post-author'
-import PostTitle from '../../title/content-title'
+import Author from '@/components/post/post-author/post-author'
+import PostTitle from '@/components/title/content-title'
+//import PostTags from '@/components/post/post-tags/post-tags'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
@@ -7,7 +8,7 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
-  margin-top: var(--space);
+  margin-top: var(--space-sm);
 `
 
 const TagItem = styled.button`
@@ -46,7 +47,10 @@ const DateWrapper = styled.div`
   `}
 `
 
-export default function PostHeader({ title, date, author, tags }) {
+export default function PostHeader({ postData }) {
+
+  
+  const { title, user, tags } = postData
   
   return (
     <>
@@ -61,8 +65,9 @@ export default function PostHeader({ title, date, author, tags }) {
         </TagsWrapper>
 
         <PostTitle>{title}</PostTitle>
+
+        <Author author={user} />
           
-        <Author name={author.username} picture={author.picture} bio={author.bio} socials={author.socials}  />
       </PostHeaderWrapper>
     </>
   )

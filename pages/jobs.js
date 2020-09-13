@@ -1,7 +1,7 @@
 import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
 import PageTitle from '@/components/title/page-title'
-import { getAllJobsForJobboard } from '@/lib/api'
+import { getAllJobs } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
+const slugify = require('slugify')
 
 const JobsPageContainer = styled.div`
   margin: auto;
@@ -56,6 +57,7 @@ const JobAdvertiseButton = styled.button`
 export default function Index({ allJobs }) {
   const router = useRouter()
   
+  
   return (
     <>
       <Layout>
@@ -74,14 +76,17 @@ export default function Index({ allJobs }) {
                 <PageTitle>Stellenmarkt</PageTitle>
                 <MoreJobs jobs={allJobs} />
             </JobsPageContainer>
-            {/*<JobsAdvertiseWrapper>
+            
+            <JobsAdvertiseWrapper>
               <JobsAdvertiseTitle>
                 Besetzen Sie freie Stellen mit GIS-Experten
               </JobsAdvertiseTitle>
-              <JobAdvertiseButton>
+              <JobAdvertiseButton
+                onClick={() => handleSubmit()}
+              >
                 Stellenanzeige aufgeben
               </JobAdvertiseButton>
-            </JobsAdvertiseWrapper>*/}
+            </JobsAdvertiseWrapper>
           </>
         )}
         <Footer />
@@ -91,7 +96,7 @@ export default function Index({ allJobs }) {
 }
 
 export async function getStaticProps() {
-  const allJobs = (await getAllJobsForJobboard()) || []
+  const allJobs = (await getAllJobs()) || []
   return {
     props: { allJobs },
   }

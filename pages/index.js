@@ -1,7 +1,7 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
-import { getAllPostsForHome, getAllJobsForHome, getAllTagsForHome } from '@/lib/api'
+import { getAllPosts, getAllJobs, getAllTags } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
@@ -108,6 +108,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1, 4)
   const evenMorePosts = allPosts.slice(4)
+  const previewJobs = allJobs.slice(0, 3)
   
   return (
     <>
@@ -123,15 +124,8 @@ export default function Index({ allPosts, allJobs, allTags }) {
               slug="https://gis-netzwerk.com"
             />
 
-            <PostHero
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-              tags={heroPost.tags}
-              hero
-            />
+            <PostHero heroData={heroPost} hero/>
+
             <IndexPageContainer >
 
               <MoreStories posts={morePosts} />
@@ -142,7 +136,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
                   <JobboardTitle><Link href="/jobs"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
                   <JobboardSubline>...für alle, die mehr bewegen wollen.</JobboardSubline>
                 </JobboardTextWrapper>
-                <MoreJobs jobs={allJobs} />
+                <MoreJobs jobs={previewJobs} />
               </JobboardTeaser>
 
             <IndexPageContainer >
@@ -174,9 +168,9 @@ export default function Index({ allPosts, allJobs, allTags }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = (await getAllPostsForHome()) || []
-  const allJobs = (await getAllJobsForHome()) || []
-  const allTags = (await getAllTagsForHome()) || []
+  const allPosts = (await getAllPosts()) || []
+  const allJobs = (await getAllJobs()) || []
+  const allTags = (await getAllTags()) || []
   
   return {
     props: { allPosts, allJobs, allTags },

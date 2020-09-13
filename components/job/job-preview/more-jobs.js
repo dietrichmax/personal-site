@@ -35,6 +35,7 @@ export default function MoreJobs({ jobs }) {
             date={job.date}
             contractType={job.contractType}
             slug={job.slug}
+            premium={job.premium}
           />
         ))}
       </ListWrapper>

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const HeroWrapper = styled.div`
-  margin-bottom: var(--space);
   border-bottom: 1px solid var(--gray-light);
 `
 
@@ -23,7 +22,7 @@ const HeroInfo = styled.div`
 `;
 
 const HeroMeta = styled.div`  
-  margin: var(--space-sm) var(--space) var(--space-sm) var(--space); 
+  margin: var(--space-sm) var(--space) 0 var(--space); 
   bottom: 0;
   left: 0;
   position: absolute;
@@ -93,20 +92,14 @@ const TagItem = styled.a`
   }
 `
 
-export default function PostHero({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  slug,
-  tags,
-  hero,
-}) {
+export default function PostHero({heroData, hero}) {
 
+  const { title, coverImage, date, excerpt, slug, tags } = heroData
+  
   return (
     <HeroWrapper>
         <HeroImg>
-          <CoverImage slug={slug} title={title} hash={coverImage.coverImage.hash} ext={coverImage.coverImage.ext} caption={coverImage.caption} hero={hero}/>
+          <CoverImage slug={slug} title={title} url={coverImage.coverImage.url} caption={coverImage.caption} hero={hero}/>
         </HeroImg>
         <HeroInfo>
           <HeroMeta>

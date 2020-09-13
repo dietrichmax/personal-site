@@ -4,12 +4,6 @@
     "version": 2,
 
     "trailingSlash": false,
-    "functions": {
-        "api/*/*.js": {
-          "memory": 3008,
-          "maxDuration": 60
-        }
-    },
 
     "redirects": [
         {

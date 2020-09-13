@@ -6,9 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "build": "npm run generate-sitemap && next build",
-    "generate-sitemap": "node ./lib/sitemap.js",
     "start": "next start",
+    "build": "npm run generate-sitemap && next build",
+    "deploy": "npm run build && npm run start",
+    "export": "next export",
+    "generate-sitemap": "node ./lib/sitemap.js",
     "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import PageTitle from '@/components/title/page-title'
-import { getAllPosts, getAllTagsForHome } from '@/lib/api'
+import { getAllPosts, getAllTags } from '@/lib/api'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
@@ -80,7 +80,7 @@ export default function Blog({ allPosts, allTags }) {
 
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
-  const allTags = (await getAllTagsForHome()) || []
+  const allTags = (await getAllTags()) || []
   return {
     props: { allPosts, allTags },
   }

@@ -26,7 +26,7 @@ const JobsAdvertiseTitle = styled.p`
   letter-spacing: -1px;
 `
 
-const JobAdvertiseButton = styled.button`
+const JobAdvertiseButton = styled.a`
   margin: var(--space-lg) auto calc(var(--space-lg)*2) auto;  
   padding: var(--space);  
   border-radius: var(--space-sm);
@@ -111,35 +111,8 @@ const PossibilityChecklistItem = styled.li`
 export default function Recruiting({ }) {
   const router = useRouter()
 
-  const handleSubmit = () => {
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        title: "testjasdasdob",
-        jobDescription: "JobDescription",
-        workingTime: "Vollzeit",
-        contractType: "unbefristet",
-        slug: slugify(`testjob`),
-        vacationDays: 30,
-        workingHours: 38,
-        salary: "4000",
-        location: "München",
-        applicationLink: "max.dietrich@gis-netzwerk.com",
-        status: "draft",
-        premium: false,
-        company: {
-          name: "TestCompany",
-          logo: 236,
-          size: "120",
-          websiteUrl: "https://api.gis-netzwerk.com"
-        },
-        date: "2020-09-13",
 
-      })
-    };
-    fetch('https://api.gis-netzwerk.com/jobs', requestOptions)
+    /*fetch('https://api.gis-netzwerk.com/jobs/count', requestOptions)
       .then(function(response) {
         if (!response.ok) {
           console.log(response.statusText);
@@ -148,8 +121,7 @@ export default function Recruiting({ }) {
         }
         }).catch(function(error) {
             console.log(error);
-        });
-  }
+        });*/
 
   return (
     <>
@@ -161,8 +133,8 @@ export default function Recruiting({ }) {
             
           <>
             <SEO   
-              title="Stellenanzeige aufgeben"
-              slug="https://gis-netzwerk.com/jobs/stellenanzeige-aufgeben"
+              title="Auf GIS-Netzwerk werben"
+              slug="https://gis-netzwerk.com/werben"
             />
 
             {/* Get Attention */}
@@ -215,13 +187,11 @@ export default function Recruiting({ }) {
                   <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
                 </PossibilityDescription>
-                <JobAdvertiseButton
-                  type="button"
-                  aria-label="Abonnieren"
-                  onClick={() => handleSubmit()}
-                >
-                Stellenanzeige aufgeben
-                </JobAdvertiseButton>
+                <Link href="/jobs/stellenanzeige-erstellen">
+                  <JobAdvertiseButton title="Stellenanzeige erstellen" >
+                    Stellenanzeige erstellen
+                  </JobAdvertiseButton>
+                </Link>
               </Possibility>
 
               <Possibility>

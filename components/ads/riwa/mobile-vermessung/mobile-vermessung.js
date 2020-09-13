@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 export const Wrapper = styled.div`
     margin-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
     border-bottom: solid 1px var(--gray-light);
 `
 export const Subline = styled.p`

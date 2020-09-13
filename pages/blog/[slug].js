@@ -89,8 +89,8 @@ export default function Post({ post, morePosts }) {
                 <PostDate>
                   <Date dateString={post.date} />
                 </PostDate>
-                <PostBody content={post.excerpt} />
                   <RIWAAD allTags={post.tags} />
+                <PostBody content={post.excerpt} />
 
 
                 <PostBody content={post.content} />

@@ -45,7 +45,7 @@ const HeaderNavigation = ({ isActive, handleToggleMenu }) => {
 
   const headerItems = [
     { "name": "Blog", "link":  "/blog" },
-    { "name": "Stellenmarkt", "link":  "/stellenmarkt" }
+    { "name": "Stellenmarkt", "link":  "/jobs" }
   ]
 
   return (

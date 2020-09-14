@@ -28,7 +28,7 @@ const HeroMeta = styled.div`
   position: absolute;
   padding: var(--space);
   color: #fff;
-  max-width: 50rem;
+  max-width: 60rem;
   background-color: #00000054;
   border-top-right-radius: var(--space-sm);
   border-top-left-radius: var(--space-sm);

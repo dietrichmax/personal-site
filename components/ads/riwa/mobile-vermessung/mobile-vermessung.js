@@ -30,7 +30,7 @@ export default function RIWAAD({ allTags}) {
             tags.includes("GIS") ?
                 <Wrapper>
                     <Subline>Mit der der Vermessungslösung aus der RIWA-GIS-Software, der Leica GG04 plus Smart-Antenne und dem GNSS Commander von ppm können Kommunen ihre Bestandskataster pflegen und erweitern. Erfassen Sie Objekte schneller und einfacher als jemals zuvor – bei jedem Wetter und unter schwierigen Bedingungen.  
-                    Weitere Informationen unter:
+                    Weitere Informationen unter:{' '} 
                         <Link href="http://www.riwa-gis.de/"> 
                             <a title="RIWA">www.riwa-gis.de</a>
                         </Link>

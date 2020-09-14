@@ -30,7 +30,14 @@ const JobAdvertiseButton = styled.button`
 
 `
 
-
+const Input = styled.input`
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid hsla(0,0%,90.2%,.95);
+`
 export default function Recruiting({ }) {
   const router = useRouter()
 
@@ -88,6 +95,13 @@ export default function Recruiting({ }) {
               slug="https://gis-netzwerk.com/jobs/stellenanzeige-erstellen"
             />
 
+                <Input
+                  type="title"
+                  name="title"
+                  id="title"
+                  label="title-input"
+                  placeholder="Job Bezeichnung"
+                />
                 <JobAdvertiseButton
                   type="button"
                   aria-label="Abonnieren"

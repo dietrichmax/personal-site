@@ -46,6 +46,7 @@ const JobApply = styled.a`
   letter-spacing: 0.1rem;
   font-size: 1.7rem;
   text-transform: uppercase;
+  outline: none;
   :hover {
       border: 1px solid var(--gray-light);
       cursor: pointer;

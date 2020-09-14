@@ -109,6 +109,13 @@ export default function Recruiting({ }) {
                 label="job-description-input"
                 placeholder="Job Beschreibung"
               />
+<Input
+                type="text"
+                name="Job Description"
+                id="job-description"
+                label="job-description-input"
+                placeholder="Job Beschreibung"
+              />
                 <JobAdvertiseButton
                   type="button"
                   aria-label="Abonnieren"

@@ -1,6 +1,5 @@
 import Router from "next/router";
 import React, { useEffect, useState } from "react";
-import GlobalStyle from '@/styles/global.js'
 import '@/styles/global.css'
 import { useAnalytics } from "../lib/useGA";
 
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
       <Component {...pageProps} />
     </>
   )

@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    Hi123
       <Component {...pageProps} />
     </>
   )

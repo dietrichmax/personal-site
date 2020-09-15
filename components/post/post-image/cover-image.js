@@ -28,7 +28,7 @@ const PreviewCoverImage = styled.img`
   object-fit: cover;
   ${media.lessThan('large')`
     height: ${props =>
-      props.hero ? "300px" : '200px'};
+      props.hero ? "250px" : '200px'};
     object-fit: cover;
   `}
 `

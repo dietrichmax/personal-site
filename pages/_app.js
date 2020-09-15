@@ -1,7 +1,7 @@
 import Router from "next/router";
 import React, { useEffect, useState } from "react";
 import '@/styles/global.css'
-import GlobalStyle from '@/styles/global.js'
+//import GlobalStyle from '@/styles/global.js'
 import { useAnalytics } from "../lib/useGA";
 
 function MyApp({ Component, pageProps }) {

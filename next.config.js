@@ -1,8 +1,9 @@
 // next.config.js
-const withPlugins = require('next-compose-plugins');
+const isDev = process.env.NODE_ENV === "development";
 const isProd = process.env.NODE_ENV === "production";
-const withPWA = require('next-pwa')
 const withOptimizedImages = require('next-optimized-images');
+const withPlugins = require('next-compose-plugins');
+const withPWA = require('next-pwa')
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });

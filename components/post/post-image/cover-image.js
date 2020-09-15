@@ -44,8 +44,7 @@ const PostCoverImage = styled.img`
 
 export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const imageUrl = `${url.startsWith('/') ? process.env.API_URL : ''}${url}`
-
+  const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
 
   return (
     <div className="">

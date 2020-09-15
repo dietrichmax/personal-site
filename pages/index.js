@@ -176,3 +176,4 @@ export async function getStaticProps() {
     props: { allPosts, allJobs, allTags },
   }
 }
+

@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
+    overflow-wrap: break-word;
   }
   a {
     transition: 0.2s;

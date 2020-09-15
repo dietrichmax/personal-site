@@ -1,6 +1,6 @@
 {
-  "name": "Next.js",
-  "short_name": "Next.js",
+  "name": "GIS-Netzwerk",
+  "short_name": "GIS-Netzwerk",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "var(--primary-color)",
-  "background_color": "var(--gray)",
+  "theme_color": "#1b496e",
+  "background_color": "#475060",
   "display": "standalone"
 }

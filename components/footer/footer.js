@@ -126,6 +126,7 @@ export default function Footer() {
         <SocialIcon url={config.socials.github} bgColor="var(--gray-light)" fgColor="var(--gray)" title="GitHub" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
         <SocialIcon url={config.socials.linkedin} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Linkedin" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
         <SocialIcon url={config.socials.instagram} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Instagram" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
+        <SocialIcon url="mailto:kontakt@gis-netzwerk.com" bgColor="var(--gray-light)" fgColor="var(--gray)" title="E-Mail" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
       </FooterSocials>
     </FooterWrapper>
   )

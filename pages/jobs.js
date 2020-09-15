@@ -77,7 +77,7 @@ export default function Index({ allJobs }) {
                 <MoreJobs jobs={allJobs} />
             </JobsPageContainer>
             
-            <JobsAdvertiseWrapper>
+            {/*<JobsAdvertiseWrapper>
               <JobsAdvertiseTitle>
                 Besetzen Sie freie Stellen mit GIS-Experten
               </JobsAdvertiseTitle>
@@ -86,7 +86,7 @@ export default function Index({ allJobs }) {
               >
                 Stellenanzeige aufgeben
               </JobAdvertiseButton>
-            </JobsAdvertiseWrapper>
+            </JobsAdvertiseWrapper>*/}
           </>
         )}
         <Footer />

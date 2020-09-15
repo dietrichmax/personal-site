@@ -32,12 +32,12 @@ export default function Company({ companyData }) {
 
   const { name, logo, websiteUrl } = companyData
 
-
+  const logoUrl = logo.formats.logo ? logo.formats.logo.url : logo.url
   return (
     <AuthorWrapper>
-      {logo ? 
+      {logoUrl ? 
         <AuthorImg
-          src={`${logo.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logo.url}`}
+          src={`${logoUrl.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logoUrl}`}
           alt={name}
           title={name}
         /> : null }

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Img from 'react-optimized-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import config from "../../../data/SiteConfig";
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -44,7 +45,7 @@ const PostCoverImage = styled.img`
 
 export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
+  const imageUrl = url ? `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}` : config.siteLogo
 
   return (
     <div className="">

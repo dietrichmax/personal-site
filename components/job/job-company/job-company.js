@@ -37,7 +37,7 @@ export default function Company({ companyData }) {
     <AuthorWrapper>
       {logo ? 
         <AuthorImg
-          src={`${logo.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${logo.url}`}
+          src={`${logo.url.startsWith('/') ? process.env.API_URL : ''}${logo.url}`}
           alt={name}
           title={name}
         /> : null }

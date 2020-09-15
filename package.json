@@ -20,7 +20,7 @@
     "fs": "^0.0.1-security",
     "isomorphic-unfetch": "^3.0.0",
     "leaflet": "^1.7.1",
-    "next": "latest",
+    "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^3.0.0-canary.10",
     "next-pwa": "^3.1.3",

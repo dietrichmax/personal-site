@@ -44,7 +44,7 @@ const PostCoverImage = styled.img`
 
 export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const imageUrl = `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}`
+  const imageUrl = `${url.startsWith('/') ? process.env.API_URL : ''}${url}`
 
 
   return (
@@ -62,7 +62,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
 
         <PostCoverImageWrapper>
             <PostCoverImage src={imageUrl} alt={title} title={title} />
-            <Caption>Bildquelle: {caption}</Caption>
+            <Caption>Bildquelle: {caption} (bearbeitet)</Caption>
         </PostCoverImageWrapper>
         
       )}

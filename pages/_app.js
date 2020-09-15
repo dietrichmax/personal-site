@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    Hi
       <Component {...pageProps} />
     </>
   )

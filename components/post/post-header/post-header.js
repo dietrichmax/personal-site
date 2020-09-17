@@ -8,7 +8,7 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
-  margin-top: var(--space-sm);
+  margin-top: var(--space);
 `
 
 const TagItem = styled.button`

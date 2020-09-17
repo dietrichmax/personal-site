@@ -97,7 +97,7 @@ class CookieBanner extends Component {
                 </CookieBannerText>
                 <AcceptButton 
                     onClick={() => {
-                        this.accept({ acceptedByScrolling: false });
+                        this.accept();
                     }} 
                 >
                     OK

@@ -43,7 +43,7 @@ export default function Company({ companyData }) {
         /> : null }
       <AuthorName>
         <Link href={websiteUrl}>
-          <a title={name}>{name}</a>
+          <a rel="nofollow" title={name}>{name}</a>
         </Link>
       </AuthorName>
     </AuthorWrapper>

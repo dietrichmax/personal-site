@@ -93,7 +93,7 @@ class CookieBanner extends Component {
                     <Link href="/datenschutz">
                         <PrivacyPolicyLink>Datenschutzerklärung</PrivacyPolicyLink>
                     </Link>   
-                .
+                . 🚀
                 </CookieBannerText>
                 <AcceptButton 
                     onClick={() => {

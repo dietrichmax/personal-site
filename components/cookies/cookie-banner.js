@@ -38,6 +38,7 @@ const PrivacyPolicyLink = styled.a`
 const AcceptButton = styled.button`
     background-color: var(--primary-color);
     padding: var(--space-sm) calc(var(--space-lg)*3);
+    margin-left: var(--space-lg);
     border: medium none;
     color: ##fff;
     cursor: pointer;
@@ -52,7 +53,8 @@ const AcceptButton = styled.button`
     }
     
     ${media.lessThan('large')`
-        margin-top: var(--space);
+        margin-top: calc(var(--space-lg)*1.5);
+        margin-bottom: var(--space);
     `}
 `
 

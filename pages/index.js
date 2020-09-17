@@ -109,7 +109,9 @@ export default function Index({ allPosts, allJobs, allTags }) {
   const morePosts = allPosts.slice(1, 4)
   const evenMorePosts = allPosts.slice(4)
   const previewJobs = allJobs.slice(0, 3)
-  
+
+
+
   return (
     <>
       <Layout>

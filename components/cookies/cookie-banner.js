@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const CookieBannerText = styled.p`
     margin-top: calc(var(--space-sm)*0.5);
-    font-size: 1.65rem;
+    font-size: 1.5rem;
 `
 
 const PrivacyPolicyLink = styled.a`
@@ -53,8 +53,7 @@ const AcceptButton = styled.button`
     }
     
     ${media.lessThan('large')`
-        margin-top: calc(var(--space-lg)*1.5);
-        margin-bottom: var(--space);
+        margin: calc(var(--space-lg)*1.5) auto var(--space) auto;
     `}
 `
 

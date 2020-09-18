@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 
 const CookieBannerText = styled.p`
     margin-top: calc(var(--space-sm)*0.5);
-    margin-right: var(--space);
     font-size: 1.5rem;
 `
 

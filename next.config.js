@@ -1,5 +1,4 @@
 // next.config.js
-const isDev = process.env.NODE_ENV === "development";
 const isProd = process.env.NODE_ENV === "production";
 const withOptimizedImages = require('next-optimized-images');
 const withPlugins = require('next-compose-plugins');

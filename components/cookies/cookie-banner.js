@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
 
+const Background = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+    background-color: #00000054;
+`
+
+
 const Wrapper = styled.div`    
     position: sticky;
     display: flex;
@@ -82,6 +93,7 @@ class CookieBanner extends Component {
         this.setState({ visible: false });
     }
 
+    
     render() {
 
         if (!this.state.visible) {
@@ -89,21 +101,24 @@ class CookieBanner extends Component {
           }
 
         return (
-            <Wrapper>
-                <CookieBannerText>Diese Webseite verwendet Cookies zur Analyse und Verbesserung der Webseite. Weitere Informationen zum Einsatz von Cookies findest du in der der {``}
-                    <Link href="/datenschutz">
-                        <PrivacyPolicyLink>Datenschutzerklärung</PrivacyPolicyLink>
-                    </Link>   
-                . 🚀
-                </CookieBannerText>
-                <AcceptButton 
-                    onClick={() => {
-                        this.accept();
-                    }} 
-                >
-                    OK
-                </AcceptButton>
-            </Wrapper>
+            <>
+            <Background />
+                <Wrapper>
+                    <CookieBannerText>Diese Webseite verwendet Cookies zur Analyse und Verbesserung der Webseite. Weitere Informationen zum Einsatz von Cookies findest du in der der {``}
+                        <Link href="/datenschutz">
+                            <PrivacyPolicyLink>Datenschutzerklärung</PrivacyPolicyLink>
+                        </Link>   
+                    . 🚀
+                    </CookieBannerText>
+                    <AcceptButton 
+                        onClick={() => {
+                            this.accept();
+                        }} 
+                    >
+                        OK
+                    </AcceptButton>
+                </Wrapper>
+                </>
         );
     }
 }

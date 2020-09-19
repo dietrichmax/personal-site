@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
 
+import { useAnalytics } from "../../lib/useGA";
+import Router from "next/router";
+
 const Background = styled.div`
     position: fixed;
     top: 0;
@@ -11,6 +14,7 @@ const Background = styled.div`
     height: 100%;
     width: 100%;
     opacity: 0.7;
+    z-index: 1000;
     background-color: #00000054;
 `
 
@@ -88,17 +92,18 @@ class CookieBanner extends Component {
         }
     }
 
+
     accept = () => {
         Cookie.set('consentGiven', true)
         this.setState({ visible: false });
     }
 
-    
+
     render() {
 
         if (!this.state.visible) {
             return null;
-          }
+          }          
 
         return (
             <>

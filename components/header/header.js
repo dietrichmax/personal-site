@@ -18,15 +18,15 @@ const HeaderWrapper = styled.div`
   left: 0;
     position: sticky;
     width: 100%;
-    z-index: 9999;
+    z-index: 10;
   `}
 `
 
 const NavTitle = styled.div`
   width: auto;
+  height: 50px;
   padding: var(--space-sm);
   margin-top: calc(var(--space-sm)*0.4);
-  margin-bottom: auto;
   color: var(--gray);
   font-size: 2rem;
 `
@@ -40,6 +40,7 @@ const NavSection = styled.span`
 
 
 const HeaderLogo = styled.div`
+  height: 50px;
   padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
   ${media.lessThan('large')`
     padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
@@ -47,10 +48,12 @@ const HeaderLogo = styled.div`
 `
 
 const NavMenu = styled.div`
-  margin: calc(var(--space-lg)*1.5) calc(var(--space-lg)*3) auto auto;
+  position: relative;
+  top: 60px;
   ${media.greaterThan('medium')`
     margin: 0 var(--space) 0 auto;
     width: auto;
+    top: 0;
   `}
 `;
 

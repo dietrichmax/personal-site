@@ -10,7 +10,6 @@ import Navigation from './header-navigation';
 const HeaderWrapper = styled.div`
   background-color: #fff;
   display: flex;
-  font-family: var(--secondary-font);
   border-bottom: 1px solid var(--gray-light);
 
   ${media.lessThan('large')`

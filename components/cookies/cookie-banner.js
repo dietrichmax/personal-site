@@ -94,7 +94,7 @@ class CookieBanner extends Component {
 
 
     accept = () => {
-        Cookie.set('consentGiven', true)
+        Cookie.set('consentGiven', true, { sameSite: 'strict', expires: 365 })
         this.setState({ visible: false });
     }
 

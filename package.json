@@ -16,9 +16,11 @@
   "dependencies": {
     "@zeit/next-mdx": "^1.2.0",
     "axios": "^0.20.0",
+    "crypto": "^1.0.1",
     "date-fns": "2.14.0",
     "fs": "^0.0.1-security",
     "google-maps-react": "^2.0.6",
+    "googleapis": "^59.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "leaflet": "^1.7.1",

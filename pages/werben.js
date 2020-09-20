@@ -9,6 +9,9 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
+const crypto = require("crypto")
+const { google } = require("googleapis")
+
 
 const JobsAdvertiseWrapper = styled.div`
   text-align:center;
@@ -121,7 +124,32 @@ export default function Recruiting({ }) {
         }
         }).catch(function(error) {
             console.log(error);
-        });*/
+        });
+  
+  const SiteWideStats = google.analytics("v3").data.ga.get({
+    auth: jwt,
+    ids: "ga:" + viewId,
+    "start-date": startDate || "2009-01-01",
+    "end-date": "today",
+    metrics: "ga:pageviews, ga:sessions",
+  })
+  for (let [pageViews, sessions] of SiteWideStats.data.rows) {
+    createNode({
+      pageViews: Number(pageViews),
+      sessions: Number(sessions),
+      id: "All-site",
+      internal: {
+        type: `SiteWideStats`,
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify({ pageViews, sessions }))
+          .digest(`hex`),
+        mediaType: `text/plain`,
+        description: `Page views & sessions for the site`,
+      },
+    })
+  }*/
+        
 
   return (
     <>

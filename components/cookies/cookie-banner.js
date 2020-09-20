@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
-
+import ReactGA from "react-ga";
 import { useAnalytics } from "../../lib/useGA";
 import Router from "next/router";
 
@@ -85,16 +85,21 @@ class CookieBanner extends Component {
 
     componentDidMount() {
         const { debug } = this.props;
-    
+
         // if cookie undefined or debug
         if (Cookie.get('consentGiven')  === undefined || debug) {
           this.setState({ visible: true });
         }
+
+        
     }
 
 
     accept = () => {
         Cookie.set('consentGiven', true, { sameSite: 'strict', expires: 365 })
+        const { init, trackPageViewed } = useAnalytics();
+        init(process.env.GA_ID);
+        trackPageViewed
         this.setState({ visible: false });
     }
 
@@ -104,6 +109,7 @@ class CookieBanner extends Component {
         if (!this.state.visible) {
             return null;
           }          
+
 
         return (
             <>

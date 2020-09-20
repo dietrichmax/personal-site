@@ -1,5 +1,4 @@
 // next.config.js
-const isProd = process.env.NODE_ENV === "production";
 const withOptimizedImages = require('next-optimized-images');
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa')
@@ -21,7 +20,6 @@ module.exports = withPlugins([
   [withPWA, {
     /* config for withPWA */
     pwa: {
-      disable: !isProd,
       dest: "public"
     },
   }],

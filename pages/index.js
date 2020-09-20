@@ -169,7 +169,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const allPosts = (await getAllPosts()) || []
   const allJobs = (await getAllJobs()) || []
   const allTags = (await getAllTags()) || []

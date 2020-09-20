@@ -10,8 +10,6 @@ function MyApp({ Component, pageProps }) {
   const { init, trackPageViewed } = useAnalytics();
 
   useEffect(() => {
-      init("UA-117248551-1");
-      trackPageViewed();
       Router.events.on("routeChangeComplete", () => {
         trackPageViewed();
       });

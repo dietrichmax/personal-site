@@ -98,7 +98,7 @@ class CookieBanner extends Component {
     accept = () => {
         Cookie.set('consentGiven', true, { sameSite: 'strict', expires: 365 })
         const { init, trackPageViewed } = useAnalytics();
-        init(process.env.GA_ID);
+        init("UA-117248551-1");
         trackPageViewed
         this.setState({ visible: false });
     }

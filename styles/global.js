@@ -74,7 +74,6 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--gray-dark);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
     --secondary-font: open sans,sans-serif !important;
     --code-font: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace !important;
     --link-color: var(--text-dark);

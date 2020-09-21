@@ -8,9 +8,8 @@ import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
-import media from 'styled-media-query';
 import React, { useState, useEffect } from "react"
-const slugify = require('slugify')
+import { format } from 'date-fns'
 
 
 const JobMeta = styled.div`
@@ -47,7 +46,7 @@ const JobTitleInput = styled.input`
   box-sizing: border-box;
   border: 2px solid hsla(0,0%,90.2%,.95);
 `
-const JobCompanyInput = styled.input`
+const JobCompanyNameInput = styled.input`
   width: 100%;
   display: block;
   margin: var(--space) auto var(--space) auto;
@@ -121,15 +120,16 @@ export default function Recruiting({ }) {
   const [jobTitle, setJobTitle] = useState("")
   const [jobWorkingTime, setJobWorkingTime] = useState("")
   const [jobContractType, setJobContractType] = useState("")
-  const [jobCompany, setJobCompany] = useState("")
+  const [jobCompanyName, setJobCompanyName] = useState("")
   const [jobLocation, setJobLocation] = useState("")
   const [jobApplicationLink, setJobApplicationLink] = useState("")
   const [jobContactEmail, setJobContactEmail] = useState("")
+  //const [jobCompanyWebsiteUrl, setJobCompanyWebsiteUrl] = useState("")
   //const [jobVacationDays, setJobVacationDays] = useState("")
   //const [jobWorkingHours, setJobWorkingHours] = useState("")
   //const [jobDescription, setJobDescription] = useState("")
 
-
+console.log(jobWorkingTime)
   const handleSubmit = () => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -137,6 +137,18 @@ export default function Recruiting({ }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         title: jobTitle,
+        company: {
+          name: jobCompanyName,
+        },
+        workingTime: jobWorkingTime,
+        contractType: jobContractType,
+        slug: `${jobTitle}-${jobCompanyName}`,
+        location: jobLocation,
+        applicationLink: jobApplicationLink,
+        status: "draft",
+        premium: false,
+        date: format(new Date(), 'yyyy-MM-dd'),
+        contactEmail: jobContactEmail,
       })
     };
     fetch('https://api.gis-netzwerk.com/jobs', requestOptions)
@@ -174,13 +186,13 @@ export default function Recruiting({ }) {
                   placeholder="Bezeichnung des Stellenangebots"
                   onChange={(e) => setJobTitle(e.target.value)}
                 />
-                <JobCompanyInput
+                <JobCompanyNameInput
                 type="text"
                 name="Job Company"
                 id="job-company"
                 label="job-company-input"
                 placeholder="Namen Ihres Unternehmens"
-                onChange={(e) => setJobCompany(e.target.value)}
+                onChange={(e) => setJobCompanyName(e.target.value)}
                 />
                 <JobLocationInput
                 type="text"
@@ -198,12 +210,9 @@ export default function Recruiting({ }) {
                   placeholder="Job Anstellungsart"
                   onChange={(e) => setJobWorkingTime(e.target.value)}
                 >
-                  <option value="Vollzeit">
-                    Vollzeit
-                  </option>
-                  <option value="Teilzeit">
-                    Teilzeit
-                  </option>
+                  <option value="" selected disabled hidden>Arbeitszeit:</option>
+                  <option value="Vollzeit">Vollzeit</option>
+                  <option value="Teilzeit">Teilzeit</option>
                 </JobWorkingTimeInput>
                 <JobContractTypeInput
                   type="text"
@@ -213,12 +222,9 @@ export default function Recruiting({ }) {
                   placeholder="Job Vertragsart"
                   onChange={(e) => setJobContractType(e.target.value)}
                 >
-                  <option value="unbefristet">
-                    Unbefristet
-                  </option>
-                  <option value="befristet">
-                    Befristet
-                  </option>
+                  <option value="" selected disabled hidden>Vertragsart:</option>
+                  <option value="unbefristet">Unbefristet</option>
+                  <option value="befristet">Befristet</option>
                 </JobContractTypeInput>
 
                 

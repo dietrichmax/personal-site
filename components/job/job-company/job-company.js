@@ -31,7 +31,8 @@ export default function Company({ companyData }) {
 
   const { name, logo, websiteUrl } = companyData
 
-  const logoUrl = logo.formats.logo ? logo.formats.logo.url : logo.url
+  const logoUrl = logo ? logo.formats.logo ? logo.formats.logo.url : logo.url : null
+
   return (
     <AuthorWrapper>
       {logoUrl ? 
@@ -41,9 +42,12 @@ export default function Company({ companyData }) {
           title={name}
         /> : null }
       <AuthorName>
-        <Link href={websiteUrl}>
-          <a rel="nofollow" title={name}>{name}</a>
-        </Link>
+        {websiteUrl ? 
+          <Link href={websiteUrl}>
+            <a rel="nofollow" title={name}>{name}</a>
+          </Link> 
+          : <a title={name}>{name}</a>
+        }
       </AuthorName>
     </AuthorWrapper>
   )

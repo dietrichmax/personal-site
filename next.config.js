@@ -1,7 +1,6 @@
 // next.config.js
 const withOptimizedImages = require('next-optimized-images');
 const withPlugins = require('next-compose-plugins');
-const withPWA = require('next-pwa')
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
@@ -16,12 +15,6 @@ module.exports = withPlugins([
     handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif', 'ico'],
     limit: 8192,
     optimize: true,
-  }],
-  [withPWA, {
-    /* config for withPWA */
-    pwa: {
-      dest: "public"
-    },
   }],
   /* Redirects 
   async redirects() {

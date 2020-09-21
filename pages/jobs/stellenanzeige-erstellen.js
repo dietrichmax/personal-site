@@ -233,7 +233,7 @@ console.log(jobWorkingTime)
                 name="Job Application Link"
                 id="job-application-link"
                 label="job-application-link-input"
-                placeholder="Link zu Stellenanzeige"
+                placeholder="Link zu Stellenanzeige oder E-Mail-Adresse"
                 onChange={(e) => setJobApplicationLink(e.target.value)}
                 />
                 <JobContactEmailInput

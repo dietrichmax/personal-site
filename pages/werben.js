@@ -28,8 +28,9 @@ const JobsAdvertiseTitle = styled.p`
 `
 
 const JobAdvertiseButton = styled.a`
-  margin: var(--space-lg) auto calc(var(--space-lg)*2) auto;  
-  padding: var(--space);  
+  display: block;
+  margin: var(--space-lg) calc(var(--space-lg)*2) calc(var(--space-lg)*2) calc(var(--space-lg)*2);  
+  padding: calc(var(--space-sm)*1.3) var(--space);  
   border-radius: var(--space-sm);
   border: none;
   background-color: var(--primary-color);
@@ -100,7 +101,7 @@ const PossibilityTitle = styled.h3`
 
 const PossibilityDescription = styled.ul`
   max-width: 67%;
-  margin: auto;
+  margin: var(--space) auto var(--space) auto;
 
 `
 
@@ -164,9 +165,17 @@ export default function Recruiting({ }) {
               <Possibility>
                 <PossibilityTitle>Native Advertising</PossibilityTitle>
                 <PossibilityDescription>
-                  <PossibilityChecklistItem>Von GIS-Netzwerk erstellter Content über Ihr Produkt in Form eines Blogposts</PossibilityChecklistItem>
-
+                  <PossibilityChecklistItem>Kostenfrei</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Inkl. Qualitätsprüfung</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
                 </PossibilityDescription>
+                <Link href="/jobs/stellenanzeige-erstellen">
+                  <JobAdvertiseButton title="Stellenanzeige erstellen" >
+                    Stellenanzeige erstellen
+                  </JobAdvertiseButton>
+                </Link>
               </Possibility>
 
               <Possibility>
@@ -187,6 +196,18 @@ export default function Recruiting({ }) {
 
               <Possibility>
                 <PossibilityTitle>Advertorials</PossibilityTitle>
+                <PossibilityDescription>
+                  <PossibilityChecklistItem>Kostenfrei</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Inkl. Qualitätsprüfung</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
+                </PossibilityDescription>
+                <Link href="/jobs/stellenanzeige-erstellen">
+                  <JobAdvertiseButton title="Stellenanzeige erstellen" >
+                    Stellenanzeige erstellen
+                  </JobAdvertiseButton>
+                </Link>
               </Possibility>
 
             </PossibilityWrapper>

@@ -1,8 +1,8 @@
 import Date from '../../date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
-import media from 'styled-media-query';
 import JobCompany from '@/components/job/job-company/job-company';
+import config from "../../../data/SiteConfig";
 
 const Card = styled.div`
   margin-bottom: var(--space);
@@ -45,15 +45,19 @@ export default function JobPreview({
   company,
   workingTime,
   contractType,
-  premium
+  premium,
+  applicationLink
 }) {
+
+  
+  const applyLink = applicationLink.includes("@") ? `mailto:${applicationLink}?subject=Bewerbung%20als%20${title}%20via%20${config.siteTitle}` : applicationLink
 
   return (
     <div>
       <Card premium={premium}>
         <JobItemWrapper>
           <JobItemTitle>
-            <Link as={`/jobs/${slug}`} href="/jobs/[slug]">
+            <Link href={applyLink}>
               <a title={title}>{title}</a>
           </Link>
           </JobItemTitle>

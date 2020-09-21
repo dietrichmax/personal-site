@@ -36,6 +36,7 @@ export default function MoreJobs({ jobs }) {
             contractType={job.contractType}
             slug={job.slug}
             premium={job.premium}
+            applicationLink={job.applicationLink}
           />
         ))}
       </ListWrapper>

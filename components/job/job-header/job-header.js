@@ -36,10 +36,10 @@ export default function JobHeader({ company, date, workingTime, contractType, va
   
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
-    const requestOptions = {
+    /*const requestOptions = {
         method: 'GET'
     };
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyC_07fR5BTQXK-kq4QINKnTbfmbqh5fkqo`, requestOptions)
+    fetch(`///`, requestOptions)
       .then(function(response) {
         if (!response.ok) {
           console.log(response.statusText);
@@ -51,7 +51,7 @@ export default function JobHeader({ company, date, workingTime, contractType, va
         .catch(function(error) {
             console.log(error);
         });
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  // empty dependency array means this effect will only run once (like componentDidMount in classes)*/
   }, []);
 
 

@@ -12,6 +12,14 @@ import media from 'styled-media-query';
 import React, { useState, useEffect } from "react"
 const slugify = require('slugify')
 
+
+const JobMeta = styled.div`
+  width: 400px;
+  margin: auto;
+  display: block;
+  text-align: center;
+`
+
 const JobAdvertiseButton = styled.button`
   display: block;
   margin: var(--space-lg) auto calc(var(--space-lg)*2) auto;  
@@ -32,26 +40,49 @@ const JobAdvertiseButton = styled.button`
 `
 
 const JobTitleInput = styled.input`
-    display: block;
-    margin: var(--space) auto var(--space) auto;
-    width: 500px;
-    padding: var(--space-sm);
-    box-sizing: border-box;
-    border: 2px solid hsla(0,0%,90.2%,.95);
-`
-const JobDescriptionInput = styled.input`
-    display: block;
-    margin: var(--space) auto var(--space) auto;
-    width: 750px;
-    height: 300px;
-    padding: var(--space);
-    box-sizing: border-box;
-    border: 2px solid hsla(0,0%,90.2%,.95);
-`
-const JobMeta = styled.div`
+  width: 100%;
   display: block;
-  text-align: center;
+  margin: var(--space) auto var(--space) auto;
+  padding: var(--space-sm);
+  box-sizing: border-box;
+  border: 2px solid hsla(0,0%,90.2%,.95);
 `
+const JobCompanyInput = styled.input`
+  width: 100%;
+  display: block;
+  margin: var(--space) auto var(--space) auto;
+  padding: var(--space-sm);
+  box-sizing: border-box;
+  border: 2px solid hsla(0,0%,90.2%,.95);
+`
+
+const JobLocationInput = styled.input`
+  width: 100%;
+  display: block;
+  margin: var(--space) auto var(--space) auto;
+  padding: var(--space-sm);
+  box-sizing: border-box;
+  border: 2px solid hsla(0,0%,90.2%,.95);
+`
+
+const JobApplicationLinkInput = styled.input`
+  width: 100%;
+  display: block;
+  margin: var(--space) auto var(--space) auto;
+  padding: var(--space-sm);
+  box-sizing: border-box;
+  border: 2px solid hsla(0,0%,90.2%,.95);
+`
+
+const JobContactEmailInput = styled.input`
+  width: 100%;
+  display: block;
+  margin: var(--space) auto var(--space) auto;
+  padding: var(--space-sm);
+  box-sizing: border-box;
+  border: 2px solid hsla(0,0%,90.2%,.95);
+`
+
 
 const JobWorkingTimeInput = styled.select`
   margin: var(--space);
@@ -60,26 +91,44 @@ const JobWorkingTimeInput = styled.select`
   border: 2px solid hsla(0,0%,90.2%,.95);
 `
 
-
 const JobContractTypeInput = styled.select`
   margin: var(--space);
   padding: var(--space-sm);
   box-sizing: border-box;
   border: 2px solid hsla(0,0%,90.2%,.95);
 `
+const SubmittedText = styled.div`
+  text-align: center;
+  max-width: 700px;
+  margin: calc(var(--space-lg)*2) auto calc(var(--space-lg)*2) auto;
+  padding: var(--space);
+  background-color: #fff;
+  border: 1px solid var(--gray-light);
+
+`
+const SubmittedTitle = styled.div`
+  font-size: 2rem;
+  margin-bottom: var(--space);
+`
+
+const SubmittedMail = styled.a`
+  border-bottom: 1px solid var(--primary-color);
+`
 
 export default function Recruiting({ }) {
   const router = useRouter()
   const [submitted, setSubmitted] = useState(false)
   const [jobTitle, setJobTitle] = useState("")
-  const [jobDescription, setJobDescription] = useState("")
   const [jobWorkingTime, setJobWorkingTime] = useState("")
   const [jobContractType, setJobContractType] = useState("")
-  const [jobVacationDays, setJobVacationDays] = useState("")
   const [jobCompany, setJobCompany] = useState("")
-  const [jobWorkingHours, setJobWorkingHours] = useState("")
   const [jobLocation, setJobLocation] = useState("")
   const [jobApplicationLink, setJobApplicationLink] = useState("")
+  const [jobContactEmail, setJobContactEmail] = useState("")
+  //const [jobVacationDays, setJobVacationDays] = useState("")
+  //const [jobWorkingHours, setJobWorkingHours] = useState("")
+  //const [jobDescription, setJobDescription] = useState("")
+
 
   const handleSubmit = () => {
     // POST request using fetch inside useEffect React hook
@@ -88,16 +137,14 @@ export default function Recruiting({ }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         title: jobTitle,
-        jobDescription: jobDescription,
-        workingTime: jobWorkingTime,
       })
     };
     fetch('https://api.gis-netzwerk.com/jobs', requestOptions)
       .then(function(response) {
         if (!response.ok) {
-          alert("😭");
+          console.log(response)
         } else {
-          console.log("success")
+          setSubmitted(true)
         }
         }).catch(function(error) {
             console.log(error);
@@ -118,64 +165,99 @@ export default function Recruiting({ }) {
               slug="https://gis-netzwerk.com/jobs/stellenanzeige-erstellen"
             />
 
+              <JobMeta>
                 <JobTitleInput
                   type="title"
                   name="Job Title"
                   id="job-title"
                   label="job-title-input"
-                  placeholder="Job Bezeichnung"
+                  placeholder="Bezeichnung des Stellenangebots"
                   onChange={(e) => setJobTitle(e.target.value)}
                 />
-                <JobDescriptionInput
+                <JobCompanyInput
                 type="text"
-                name="Job Description"
-                id="job-description"
-                label="job-description-input"
-                placeholder="Job Beschreibung"
-                onChange={(e) => setJobDescription(e.target.value)}
+                name="Job Company"
+                id="job-company"
+                label="job-company-input"
+                placeholder="Namen Ihres Unternehmens"
+                onChange={(e) => setJobCompany(e.target.value)}
                 />
-                <JobMeta>
-                  <JobWorkingTimeInput
-                    type="text"
-                    name="Job Anstellungsart"
-                    id="job-working-time"
-                    label="job-working-time-input"
-                    placeholder="Job Anstellungsart"
-                    onChange={(e) => setJobWorkingTime(e.target.value)}
-                  >
-                    <option value="Vollzeit">
-                      Vollzeit
-                    </option>
-                    <option value="Teilzeit">
-                      Teilzeit
-                    </option>
-                  </JobWorkingTimeInput>
-                  <JobContractTypeInput
-                    type="text"
-                    name="Job Vertragsart"
-                    id="job-contract-type"
-                    label="job-contract-type-input"
-                    placeholder="Job Vertragsart"
-                    onChange={(e) => setJobWorkingTime(e.target.value)}
-                  >
-                    <option value="Unbefristet">
-                      Unbefristet
-                    </option>
-                    <option value="Befristet">
-                      Befristet
-                    </option>
-                  </JobContractTypeInput>
+                <JobLocationInput
+                type="text"
+                name="Job Location"
+                id="job-location"
+                label="job-location-input"
+                placeholder="Anstellungsort"
+                onChange={(e) => setJobLocation(e.target.value)}
+                />
+                <JobWorkingTimeInput
+                  type="text"
+                  name="Job Anstellungsart"
+                  id="job-working-time"
+                  label="job-working-time-input"
+                  placeholder="Job Anstellungsart"
+                  onChange={(e) => setJobWorkingTime(e.target.value)}
+                >
+                  <option value="Vollzeit">
+                    Vollzeit
+                  </option>
+                  <option value="Teilzeit">
+                    Teilzeit
+                  </option>
+                </JobWorkingTimeInput>
+                <JobContractTypeInput
+                  type="text"
+                  name="Job Vertragsart"
+                  id="job-contract-type"
+                  label="job-contract-type-input"
+                  placeholder="Job Vertragsart"
+                  onChange={(e) => setJobContractType(e.target.value)}
+                >
+                  <option value="unbefristet">
+                    Unbefristet
+                  </option>
+                  <option value="befristet">
+                    Befristet
+                  </option>
+                </JobContractTypeInput>
+
+                
+                <JobApplicationLinkInput
+                type="text"
+                name="Job Application Link"
+                id="job-application-link"
+                label="job-application-link-input"
+                placeholder="Link zu Stellenanzeige"
+                onChange={(e) => setJobApplicationLink(e.target.value)}
+                />
+                <JobContactEmailInput
+                type="text"
+                name="Job Contact Email"
+                id="job-contact-email"
+                label="job-contact-email"
+                placeholder="Kontakt E-Mail-Adresse"
+                onChange={(e) => setJobContactEmail(e.target.value)}
+                />
                   
                 </JobMeta>
 
-
+              {submitted ? 
+                
+                <SubmittedText>
+                  <SubmittedTitle>
+                    Ihre Stellenanzeige wurde erfolgreich abgesendet. ✔️</SubmittedTitle>
+                    Sobald Ihre Stellenanzeige freigeschalten wurde bekommen Sie eine kurze Info an <br/>
+                  <SubmittedMail>{jobContactEmail}</SubmittedMail>.
+                </SubmittedText>
+                :
                 <JobAdvertiseButton
                   type="button"
                   aria-label="Abonnieren"
                   onClick={() => handleSubmit()}
                 >
-                Stellenanzeige aufgeben
+                  Stellenangebot absenden
                 </JobAdvertiseButton>
+              }
           </>
         )}
         <Footer />

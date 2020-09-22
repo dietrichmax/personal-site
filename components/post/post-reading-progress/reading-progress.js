@@ -24,7 +24,7 @@ export default function ReadingProgress({ target, color }) {
       document.body.scrollTop || 
       0
 
-    const toShow = windowScrollTop >= 324
+    const toShow = windowScrollTop >= 455
     if (toShow != show) {
       setShow(toShow)
     }

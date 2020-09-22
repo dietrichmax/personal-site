@@ -10,7 +10,7 @@ const ListWrapper = styled.div`
   padding-left: var(--space);
   ${media.greaterThan('small')`
         display: grid;
-        grid-gap: 10px;
+        grid-gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   `}
   ${media.greaterThan('medium')`

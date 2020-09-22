@@ -49,11 +49,3 @@
 .markdown blockquote p {
   display: inline;
 }
-
-
-.markdown pre  {
-  overflow: auto;
-  font-family: var(--code-font);
-}
-
-

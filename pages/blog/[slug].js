@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
@@ -20,6 +20,8 @@ import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
 import Date from '@/components/date/date' 
+
+
 
 // components for posts
 
@@ -62,6 +64,7 @@ export default function Post({ post, morePosts }) {
   }
 
   const target = React.createRef()
+
 
   return (
     <Layout>

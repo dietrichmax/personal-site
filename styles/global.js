@@ -75,7 +75,6 @@ const GlobalStyle = createGlobalStyle`
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
     --secondary-font: open sans,sans-serif;
-    --code-font: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
     --link-color: var(--text-dark);
     --link-color-hover: var(--text-light);
     --text-color: var(--gray);

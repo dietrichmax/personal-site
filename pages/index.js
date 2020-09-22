@@ -169,12 +169,13 @@ export default function Index({ allPosts, allJobs, allTags }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allJobs = (await getAllJobs()) || []
   const allTags = (await getAllTags()) || []
   
   return {
+    revalidate: 600,
     props: { allPosts, allJobs, allTags },
   }
 }

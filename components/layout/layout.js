@@ -1,5 +1,5 @@
 import Container from './container'
-import Prism from "Prismjs";
+import Prism from "prismjs";
 import React,  { useEffect } from "react"
 
 export default function Layout({ children }) {

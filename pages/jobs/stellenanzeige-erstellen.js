@@ -10,9 +10,14 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from "react"
 import { format } from 'date-fns'
+import PageTitle from '@/components/title/page-title'
 
+const Wrapper = styled.div`
+  max-width: 400px;
+  margin: calc(var(--space-lg)*2) auto var(--space-lg) auto;
+`
 
-const JobMeta = styled.div`
+const JobInputMeta = styled.div`
   width: 400px;
   margin: auto;
   display: block;
@@ -21,7 +26,7 @@ const JobMeta = styled.div`
 
 const JobAdvertiseButton = styled.button`
   display: block;
-  margin: var(--space-lg) auto calc(var(--space-lg)*2) auto;  
+  margin: calc(var(--space-lg)*2) auto calc(var(--space-lg)*2) auto;  
   padding: var(--space);  
   border-radius: var(--space-sm);
   border: none;
@@ -113,6 +118,74 @@ const SubmittedTitle = styled.div`
 const SubmittedMail = styled.a`
   border-bottom: 1px solid var(--primary-color);
 `
+const PreviewTitle = styled.div`
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  margin-top: var(--space-lg);
+  border-bottom: 1px solid var(--gray-light);
+`
+//preview
+
+const Card = styled.div`
+  max-width: 370px;
+  margin: auto;
+  border: 1px solid ${props =>
+    props.premium ? 'var(--primary-color)' : 'var(--gray-light)'};
+  background-color: #fff;
+  transition: 0.3s;
+`
+
+const JobItemWrapper = styled.div`
+  padding: var(--space-sm) var(--space);
+`
+
+
+const JobItemTitle = styled.h2`
+  color: var(--gray);
+  line-height: 1.35;
+  margin-bottom: calc(var(--space-sm) *0.5);
+  :hover {
+    color: var(--primary-color);
+  }
+`;
+
+const JobMeta = styled.p`
+  font-size: 1.4rem;
+  color: var(--gray);
+`;
+
+const JobDate = styled.div`
+  font-size: 1.3rem;
+  color: var(--gray);
+`;
+
+const AuthorWrapper = styled.div`
+  display: flex;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--gray-light);
+`
+const AuthorMeta = styled.a`
+  display: block;
+  margin-left: 12px;
+  width: 100%;
+`
+
+const AuthorName = styled.div`
+  color: var(--gray);
+`
+
+const AuthorImg = styled.img`
+  display: block;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: var(--space-sm);
+`
 
 export default function Recruiting({ }) {
   const router = useRouter()
@@ -124,13 +197,16 @@ export default function Recruiting({ }) {
   const [jobLocation, setJobLocation] = useState("")
   const [jobApplicationLink, setJobApplicationLink] = useState("")
   const [jobContactEmail, setJobContactEmail] = useState("")
+  const [jobSlug, setJobSlug] = useState("")
   //const [jobCompanyWebsiteUrl, setJobCompanyWebsiteUrl] = useState("")
   //const [jobVacationDays, setJobVacationDays] = useState("")
   //const [jobWorkingHours, setJobWorkingHours] = useState("")
   //const [jobDescription, setJobDescription] = useState("")
 
-console.log(jobWorkingTime)
+
+
   const handleSubmit = () => {
+    setJobSlug(`${jobTitle}-${jobCompanyName}`)
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: 'POST',
@@ -142,7 +218,7 @@ console.log(jobWorkingTime)
         },
         workingTime: jobWorkingTime,
         contractType: jobContractType,
-        slug: `${jobTitle}-${jobCompanyName}`,
+        slug: jobSlug,
         location: jobLocation,
         applicationLink: jobApplicationLink,
         status: "draft",
@@ -173,11 +249,12 @@ console.log(jobWorkingTime)
             
           <>
             <SEO   
-              title="Stellenanzeige aufgeben"
+              title="Stellenangebot aufgeben"
               slug="https://gis-netzwerk.com/jobs/stellenanzeige-erstellen"
             />
-
-              <JobMeta>
+            <PageTitle>Stellenangebot erstellen</PageTitle>
+            <Wrapper>
+              <JobInputMeta>
                 <JobTitleInput
                   type="title"
                   name="Job Title"
@@ -233,7 +310,7 @@ console.log(jobWorkingTime)
                 name="Job Application Link"
                 id="job-application-link"
                 label="job-application-link-input"
-                placeholder="Link zu Stellenanzeige oder E-Mail-Adresse"
+                placeholder="https://website.de oder kontakt@email.de"
                 onChange={(e) => setJobApplicationLink(e.target.value)}
                 />
                 <JobContactEmailInput
@@ -241,12 +318,29 @@ console.log(jobWorkingTime)
                 name="Job Contact Email"
                 id="job-contact-email"
                 label="job-contact-email"
-                placeholder="Kontakt E-Mail-Adresse"
+                placeholder="Kontakt E-Mail-Adresse für evtl. Rückfragen"
                 onChange={(e) => setJobContactEmail(e.target.value)}
                 />
                   
-                </JobMeta>
+                </JobInputMeta>
 
+                <PreviewTitle>So wird Ihre Stellenanzeige aussehen:</PreviewTitle>
+                <Card premium={false}>
+                  <JobItemWrapper>
+                    <JobItemTitle>
+                      <a target="_blank" href={jobApplicationLink} title={jobTitle}>{jobTitle}</a>
+                    </JobItemTitle>
+                    <AuthorWrapper>
+                      <AuthorName>
+                        <a title={jobCompanyName}>{jobCompanyName}</a>
+                      </AuthorName>
+                    </AuthorWrapper>
+                    <JobMeta>{jobLocation} • {jobWorkingTime} • {jobContractType}</JobMeta>
+                    <JobDate>{format(new Date(), 'dd.MM.yyyy')}</JobDate>
+                  </JobItemWrapper>
+                </Card>
+
+              </Wrapper>
               {submitted ? 
                 
                 <SubmittedText>

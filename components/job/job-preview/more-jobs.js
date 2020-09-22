@@ -30,7 +30,6 @@ export default function MoreJobs({ jobs }) {
             title={job.title}
             company={job.company}
             location={job.location}
-            company={job.company}
             workingTime={job.workingTime}
             date={job.date}
             contractType={job.contractType}

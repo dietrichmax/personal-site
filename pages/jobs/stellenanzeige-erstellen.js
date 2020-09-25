@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect } from "react"
 import { format } from 'date-fns'
 import PageTitle from '@/components/title/page-title'
+import Teaser from '@/components/title/teaser-title'
 
 const Wrapper = styled.div`
   max-width: 400px;
@@ -252,7 +253,9 @@ export default function Recruiting({ }) {
               title="Stellenangebot aufgeben"
               slug="https://gis-netzwerk.com/jobs/stellenanzeige-erstellen"
             />
-            <PageTitle>Stellenangebot erstellen</PageTitle>
+            <Teaser>
+              Stellenangebot erstellen
+            </Teaser>
             <Wrapper>
               <JobInputMeta>
                 <JobTitleInput

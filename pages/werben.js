@@ -9,22 +9,11 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
-
+import Teaser from '@/components/title/teaser-title'
 
 const JobsAdvertiseWrapper = styled.div`
   text-align:center;
   background-color: var(--primary-color);
-`
-
-const JobsAdvertiseTitle = styled.p`
-  margin: 0 auto var(--space) auto;
-  max-width: 1200px;
-  color: #fff;
-  padding: var(--space);
-  font-size: 4rem;
-  font-family: var(--secondary-font);
-  font-weight: 200;
-  letter-spacing: -1px;
 `
 
 const JobAdvertiseButton = styled.a`
@@ -131,9 +120,9 @@ export default function Recruiting({ }) {
 
             {/* Get Attention */}
             <JobsAdvertiseWrapper>
-              <JobsAdvertiseTitle>
+              <Teaser>
                 Nutzen Sie die Reichweite von GIS-Netzwerk
-              </JobsAdvertiseTitle>
+              </Teaser>
               
             </JobsAdvertiseWrapper>
 
@@ -146,9 +135,9 @@ export default function Recruiting({ }) {
                 </BenefitDescription>
               </Benefit>
               <Benefit>
-                <BenefitIcon>💳</BenefitIcon>
+                <BenefitIcon>🌍</BenefitIcon>
                 <BenefitDescription>
-                  Kostenfreie Möglichkeiten
+                  Eine der meistbesuchten GIS/Geoinformatik Websiten in D/A/CH
                 </BenefitDescription>
               </Benefit>
               <Benefit>
@@ -169,7 +158,7 @@ export default function Recruiting({ }) {
                   <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Inkl. Qualitätsprüfung</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
-                  <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Checklist Item</PossibilityChecklistItem>
                 </PossibilityDescription>
                 <Link href="/jobs/stellenanzeige-erstellen">
                   <JobAdvertiseButton title="Stellenanzeige erstellen" >
@@ -185,7 +174,7 @@ export default function Recruiting({ }) {
                   <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Inkl. Qualitätsprüfung</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
-                  <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Checklist Item</PossibilityChecklistItem>
                 </PossibilityDescription>
                 <Link href="/jobs/stellenanzeige-erstellen">
                   <JobAdvertiseButton title="Stellenanzeige erstellen" >
@@ -201,7 +190,7 @@ export default function Recruiting({ }) {
                   <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Inkl. Qualitätsprüfung</PossibilityChecklistItem>
                   <PossibilityChecklistItem>Einfache Bezahlung per Rechnung</PossibilityChecklistItem>
-                  <PossibilityChecklistItem>Wählen Sie Ihre passende Lösung: Starter oder Premium</PossibilityChecklistItem>
+                  <PossibilityChecklistItem>Checklist Item</PossibilityChecklistItem>
                 </PossibilityDescription>
                 <Link href="/jobs/stellenanzeige-erstellen">
                   <JobAdvertiseButton title="Stellenanzeige erstellen" >

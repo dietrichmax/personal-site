@@ -9,6 +9,7 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
+import Teaser from '@/components/title/teaser-title'
 const slugify = require('slugify')
 
 const JobsPageContainer = styled.div`
@@ -72,8 +73,10 @@ export default function Index({ allJobs }) {
               description="Stellenmarkt für Geoinformatik und GIS-Jobs"
               slug="https://gis-netzwerk.com/jobs"
             />
+            <Teaser>
+              Stellenmarkt
+            </Teaser>
             <JobsPageContainer >
-                <PageTitle>Stellenmarkt</PageTitle>
                 <MoreJobs jobs={allJobs} />
             </JobsPageContainer>
             

@@ -137,13 +137,13 @@ export default function Recruiting({ }) {
               <Benefit>
                 <BenefitIcon>🌍</BenefitIcon>
                 <BenefitDescription>
-                  Eine der meistbesuchten GIS/Geoinformatik Websiten in D/A/CH
+                  2
                 </BenefitDescription>
               </Benefit>
               <Benefit>
                 <BenefitIcon>🌍</BenefitIcon>
                 <BenefitDescription>
-                  Eine der meistbesuchten GIS/Geoinformatik Websiten in D/A/CH
+                  3
                 </BenefitDescription>
               </Benefit>
             </BenefitsWrapper>

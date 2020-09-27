@@ -1,4 +1,4 @@
-import lazySizes from 'lazysizes'; 
+import lazysizes from 'lazysizes'; 
 import styled from 'styled-components';
 import Img from '@/components/images/image';
 import Link from 'next/link'

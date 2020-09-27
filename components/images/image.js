@@ -1,10 +1,10 @@
-import 'lazysizes/plugins/attrchange/ls.attrchange';
-import 'lazysizes';
 import styled from 'styled-components';
 import Img from '@/components/images/image';
 import Link from 'next/link'
 
 //const fs = require('fs');
+//import 'lazysizes/plugins/attrchange/ls.attrchange';
+//import 'lazysizes';
 
 
 // styled components
@@ -34,7 +34,6 @@ class ImageComponent extends React.Component {
                     title={this.props.title} 
                     width={this.props.width} 
                     height={this.props.height} 
-                    class="lazyload"
                 /> 
             </>
         );

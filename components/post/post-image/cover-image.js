@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Img from 'react-optimized-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from "../../../data/SiteConfig";
+import Img from '@/components/images/image';
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -18,14 +18,14 @@ const PostCoverImageWrapper = styled.div`
 const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
-const PreviewCoverImage = styled.img`
+const PreviewCoverImage = styled(Img)`
   border-top-left-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   width: 100%;
   height: ${props =>
-    props.hero ? "400px" : '200px'};
+    props.hero ? "400px !important" : '200px'};
   object-fit: cover;
   ${media.lessThan('large')`
     height: 200px;
@@ -33,7 +33,7 @@ const PreviewCoverImage = styled.img`
   `}
 `
 
-const PostCoverImage = styled.img`
+const PostCoverImage = styled(Img)`
   width: 100%;
   height: 400px;
   object-fit: cover;

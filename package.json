@@ -11,6 +11,7 @@
     "deploy": "npm run generate-sitemap && npm run build && npm run start",
     "export": "next export",
     "generate-sitemap": "node ./lib/sitemap.js",
+    "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "js-cookie": "^2.2.1",
     "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",
+    "next-offline": "^5.0.2",
     "next-optimized-images": "^3.0.0-canary.10",
     "object-hash": "^2.0.3",
     "prismjs": "^1.21.0",

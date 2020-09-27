@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../public/favicon/gis-netzwerk_favicon.png';
+import logo from '../../public/logos/gis-netzwerk_favicon.png';
 import styled from 'styled-components';
 import config from "../../data/SiteConfig";
 import Img from 'react-optimized-image';

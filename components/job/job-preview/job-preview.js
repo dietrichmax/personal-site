@@ -6,7 +6,7 @@ import config from "../../../data/SiteConfig";
 
 const Card = styled.div`
   margin-bottom: var(--space);
-  border: 1px slid ${props =>
+  border: 1px solid ${props =>
     props.premium ? 'var(--primary-color)' : 'var(--gray-light)'};
   background-color: #fff;
   transition: 0.3s;

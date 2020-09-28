@@ -25,10 +25,10 @@ const PreviewCoverImage = styled(Img)`
     props.hero ? "none" : "0.75rem" };
   width: 100%;
   height: ${props =>
-    props.hero ? "400px !important" : '200px'};
+    props.hero ? "400px" : '200px'};
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 200px;
+    height: 200px !important;
     object-fit: cover;
   `}
 `

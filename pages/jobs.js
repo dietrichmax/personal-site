@@ -98,7 +98,7 @@ export default function Index({ allJobs }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const allJobs = (await getAllJobs()) || []
   return {
     revalidate: 600,

@@ -5,7 +5,7 @@
   GIS-Netzwerk
 </h1>
 <h4 align="center">
-  GIS-Netzwerk ist eine Informationsplattform für Geoinformatik, GIS, Geodaten und Web-Development.
+  GIS-Netzwerk is an information platform for geoinformatics, GIS, geodata and web-development.
 </h4>
 
 # 👋 Welcome to GIS-Netzwerk's site repo.

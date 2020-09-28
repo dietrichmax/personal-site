@@ -17,7 +17,7 @@ export const LogoWrapper = styled(Img)`
 export default function Logo() {
   return (
     <Link href={config.homePath}>
-      <LogoWrapper src={logo} alt={config.siteTitle} title={config.siteTitle} width="40" height="40"/>
+      <LogoWrapper src={logo} alt={config.siteTitle} title={config.siteTitle} />
     </Link>
   )
 }

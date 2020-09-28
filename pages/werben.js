@@ -10,6 +10,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
 import Teaser from '@/components/title/teaser-title'
+import { format } from 'date-fns'
 
 const JobsAdvertiseWrapper = styled.div`
   text-align:center;
@@ -82,7 +83,7 @@ const Possibility = styled.div`
 `
 
 const PossibilityTitle = styled.h3`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 200;
   margin: var(--space);
 
@@ -90,6 +91,8 @@ const PossibilityTitle = styled.h3`
 
 const PossibilityDescription = styled.ul`
   max-width: 67%;
+  font-weight: 200;
+  font-size: 1.7rem;
   margin: var(--space) auto var(--space) auto;
 
 `
@@ -99,10 +102,27 @@ const PossibilityChecklistItem = styled.li`
 
 `
 
+
 export default function Recruiting({ }) {
   const router = useRouter()
-
-        
+      
+  // Get Matomo Data
+  const dataOptions = {
+    url: process.env.NEXT_PUBLIC_MATOMO_URL,
+    method: "VisitsSummary.getVisits",
+    idSite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    period: "year",
+    date: "2020-01-01,2020-12-31",
+    format: "JSON",
+    token: process.env.NEXT_PUBLIC_MATOMO_API_KEY  
+  }
+  const matomoUrl = encodeURI(`${dataOptions.url}?method=${dataOptions.method}&idSite=${dataOptions.idSite}&period=${dataOptions.period}&date=${dataOptions.date}&module=API&format=${dataOptions.format}&token_auth=${dataOptions.token}`)
+  fetch(matomoUrl)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(function(error) {
+          console.log(error);
+      });
 
   return (
     <>
@@ -152,7 +172,7 @@ export default function Recruiting({ }) {
             <PossibilityWrapper>
 
               <Possibility>
-                <PossibilityTitle>Native Advertising</PossibilityTitle>
+                <PossibilityTitle>Native Advertising /Adertorials</PossibilityTitle>
                 <PossibilityDescription>
                   <PossibilityChecklistItem>Kostenfrei</PossibilityChecklistItem>
                   <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>
@@ -184,7 +204,7 @@ export default function Recruiting({ }) {
               </Possibility>
 
               <Possibility>
-                <PossibilityTitle>Advertorials</PossibilityTitle>
+                <PossibilityTitle>Banner ads</PossibilityTitle>
                 <PossibilityDescription>
                   <PossibilityChecklistItem>Kostenfrei</PossibilityChecklistItem>
                   <PossibilityChecklistItem>30 Tage Laufzeit</PossibilityChecklistItem>

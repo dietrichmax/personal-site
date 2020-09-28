@@ -20,6 +20,7 @@
     "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {
+    "@socialgouv/matomo-next": "^1.1.2",
     "@zeit/next-mdx": "^1.2.0",
     "crypto": "^1.0.1",
     "date-fns": "2.14.0",

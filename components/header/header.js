@@ -24,8 +24,8 @@ const HeaderWrapper = styled.div`
 const NavTitle = styled.div`
   width: auto;
   height: 50px;
-  padding: var(--space-sm);
-  margin-top: calc(var(--space-sm)*0.4);
+  padding-left: var(--space-sm);
+  padding-top: calc(var(--space-sm)*1.2);
   color: var(--gray);
   font-size: 2rem;
 `
@@ -39,11 +39,7 @@ const NavSection = styled.span`
 
 
 const HeaderLogo = styled.div`
-  height: 50px;
-  padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
-  ${media.lessThan('large')`
-    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
-  `}
+  padding: var(--space-sm) 0 calc(var(--space-sm)*0.5) var(--space-lg);
 `
 
 const NavMenu = styled.div`

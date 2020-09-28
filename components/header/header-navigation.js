@@ -10,6 +10,7 @@ const Navigation = styled.nav`
     display: flex;
   }
   ${media.greaterThan('medium')`
+    padding-top: calc(var(--space-sm)*0.5);
     display: flex;
     height: auto;
     flex-direction: row;
@@ -19,7 +20,7 @@ const Navigation = styled.nav`
 
 const NavigationLink = styled.a`
   color: var(--gray);
-  margin-top: 17px;
+  margin-top: var(--space-sm);
   margin-left: var(--space);
   font-size: 1.7rem;
   cursor: pointer;

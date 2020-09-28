@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
 import ReactGA from "react-ga";
-import { useAnalytics } from "../../lib/useGA";
+//import { useAnalytics } from "../../lib/useGA";
 import Router from "next/router";
 
 const Background = styled.div`

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import Img from '@/components/images/image';
-import Link from 'next/link'
-
+import ImageManipulation from '../../lib/imageManipulation.js';
 //const fs = require('fs');
 //import 'lazysizes/plugins/attrchange/ls.attrchange';
 //import 'lazysizes';
@@ -19,11 +17,11 @@ class ImageComponent extends React.Component {
 
 
     
-    /*componentWillMount() {
-    }*/
+    componentWillMount() {
+    }
 
 
-    render() {        
+    render () {
 
 
         return (

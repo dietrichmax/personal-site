@@ -18,6 +18,7 @@ The **frontend** of the site is built with the react framework [Next.js](https:/
 The **backend** consists of:
 - CMS: [Strapi](https://strapi.io/ "strapi") is an awsome open-source content management system.
 - Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo"). 
+- Web-Server: Nginx.
 
 No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on the private server.
 

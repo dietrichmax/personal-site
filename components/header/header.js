@@ -40,6 +40,9 @@ const NavSection = styled.span`
 
 const HeaderLogo = styled.div`
   padding: var(--space-sm) 0 calc(var(--space-sm)*0.5) var(--space-lg);
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+  `}
 `
 
 const NavMenu = styled.div`

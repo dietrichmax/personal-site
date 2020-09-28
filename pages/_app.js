@@ -22,7 +22,6 @@ class MyApp extends App {
       <>
         <GlobalStyle/>
         <Component {...pageProps} />
-        <CookieBanner/>
       </>
     )
   }

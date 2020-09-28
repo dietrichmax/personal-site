@@ -1,7 +1,7 @@
 import Router from "next/router";
 import React, { useEffect } from "react";
 import App from "next/app";
-import { init } from "@socialgouv/matomo-next";
+import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import CookieBanner from '@/components/cookies/cookie-banner'
 import "prismjs/themes/prism-tomorrow.css";

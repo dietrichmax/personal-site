@@ -4,10 +4,7 @@ import media from 'styled-media-query';
 
 const ListWrapper = styled.div`
   max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: var(--space);
-  padding-left: var(--space);
+  margin: var(--space);
   ${media.greaterThan('small')`
         display: grid;
         grid-gap: 20px;

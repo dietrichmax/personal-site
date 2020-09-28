@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Card = styled.div`
-  margin: var(--space) auto var(--space) auto;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
   background-color: #fff;

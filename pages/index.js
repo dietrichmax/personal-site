@@ -67,7 +67,6 @@ const JobboardTeaser = styled.div`
   width: 100%;
   background-color: var(--primary-color);
   color: #fff;
-  margin-bottom: var(--space);
   border-top: 2px solid var(--gray-light);
   border-bottom: 2px solid var(--gray-light);
   background: 

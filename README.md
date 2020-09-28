@@ -10,14 +10,16 @@
 
 # 👋 Welcome to GIS-Netzwerk's site repo.
 
-You can see it live here:
+You can see the site live here:
 
 [``` gis-netzwerk.com ```](https://gis-netzwerk.com/)
 
-The frontend of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js"). The backend is hosted on private server from netcup. To view server specs have a look at [VPS 1000 G9 12M](https://www.netcup.de/bestellen/produkt.php?produkt=2554 "VPS 1000 G9 12M")
+The **frontend** of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js"). 
+The **backend** consists of:
+- CMS: [strapi](https://strapi.io/ "strapi"); Strapi is an awsome open-source content management system.
+- Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo"). 
 
-Content is managed with the open-source cms [strapi](https://strapi.io/ "strapi").
-Traffic is analyzed via Matomo. No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on the private server.
+No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on the private server.
 
 ## Licensed under the [MIT License](https://github.com/DaTurboD/gis-netzwerk-frontend/blob/v2/LICENSE "MIT License")
 
@@ -29,5 +31,6 @@ Images are mainly from
 - https://unsplash.com/,
 - https://www.esa.int
 - https://pixabay.com/de/
+
 Have a look at the credits below the images to find the according licence!
 

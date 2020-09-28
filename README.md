@@ -5,14 +5,7 @@ You can visit the website on https://gis-netzwerk.com.
 
 ## Table of contents
 
-- [Installation](#installation)
-- [Optimization Packages](#optimization-packages)
-- [Usage](#usage)
-  - [Query Params](#query-params)
-- [Configuration](#configuration)
-- [Example](#example)
-- [See also](#see-also)
-- [License](#license)
+- 
 
 
 - styled-components
@@ -24,6 +17,3 @@ You can visit the website on https://gis-netzwerk.com.
 
 ## Deployment
 
-Website on Vercel via Cloudflare
-
-Strapi on virtual server

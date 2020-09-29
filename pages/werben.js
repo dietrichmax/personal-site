@@ -111,8 +111,8 @@ export default function Recruiting({ }) {
     url: process.env.NEXT_PUBLIC_MATOMO_URL,
     method: "VisitsSummary.getVisits",
     idSite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-    period: "year",
-    date: "2020-01-01,2020-12-31",
+    period: "day",
+    date: "previous365",
     format: "JSON",
     token: process.env.NEXT_PUBLIC_MATOMO_API_KEY  
   }

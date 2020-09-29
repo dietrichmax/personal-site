@@ -20,7 +20,7 @@ The **backend** consists of:
 - Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo"). 
 - Web-Server: Nginx.
 
-No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on the private server.
+No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on a private server.
 
 ## Licensed under the [MIT License](https://github.com/DaTurboD/gis-netzwerk-frontend/blob/v2/LICENSE "MIT License")
 

@@ -45,6 +45,7 @@ const GenerationTime = styled.a`
 const ViewsContainer = styled.div`
   max-width: 90%;
   margin: var(--space) auto;
+  padding-bottom: var(--space-sm);
   border-bottom: 3px solid var(--gray-light);
 `
 
@@ -54,6 +55,11 @@ const RecentViewsContainer = styled.div`
   justify-content: center;
   display: flex;
 `
+const Credits = styled.div`
+  text-align: right;
+  font-size: 1.2rem;
+`
+
 
 const ColumnWrapper = styled.div`
   position: relative;
@@ -201,8 +207,8 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
               </DateContainer>
+              <Credits>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
             </ViewsContainer>
-            Inspiriert von <a title="sld.codes/stats" href="https://sld.codes/stats">Sam Larsen-Disney</a>
           </Container>
           </>
         )}

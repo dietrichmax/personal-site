@@ -43,13 +43,12 @@ const GenerationTime = styled.a`
 
 
 const ViewsContainer = styled.div`
-  max-width: 1200px;
+  max-width: 90%;
   margin: var(--space) auto;
   border-bottom: 3px solid var(--gray-light);
 `
 
 const RecentViewsContainer = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
   height: 100px;
   justify-content: center;
@@ -97,7 +96,6 @@ const Column = styled.div`
   border-top-left-radius: calc(var(--space-sm)*0.5);
 `
 const DateContainer = styled.div`
-  max-width: 1200px;
   margin: 0 auto var(--space-lg) auto;
   justify-content: center;
   display: flex;
@@ -183,7 +181,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
             </GeneralStats>
             <ViewsContainer>
-              <Title>Seitenaufrufe in den letzten 30 Tagen</Title>
+              <Title>Seitenaufrufe in den letzten 60 Tagen</Title>
               <RecentViewsContainer>
               {matomoViews.map((item, i) => (
                 <ColumnWrapper 
@@ -204,6 +202,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                 ))}
               </DateContainer>
             </ViewsContainer>
+            Inspiriert von <a title="sld.codes/stats" href="https://sld.codes/stats">Sam Larsen-Disney</a>
           </Container>
           </>
         )}
@@ -216,7 +215,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
 
 export async function getServerSideProps() {
   // Get lastViews for last 30 days
-  const getViews = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous30&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
+  const getViews = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous60&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
   const matomoDataLastViews = await fetch(getViews)
   const lastViews = await matomoDataLastViews.json()
   if (lastViews.errors) {

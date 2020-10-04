@@ -99,15 +99,36 @@ const JobboardSubline = styled.div`
 `
 
 
+const MoreContainer = styled.div`
+  text-align: right;    
+  cursor: pointer;
+  margin-right: var(--space);
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--gray);
+  text-decoration: none;
+  ::after {
+    content: "\f061";
+    font-family: "Line Awesome Free";
+  }
+`
+const MoreArticles = styled.a`
+  text-align: right;    
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    text-decoration: underline;
+  }
+`
 
 
 export default function Index({ allPosts, allJobs, allTags }) {
   const router = useRouter()
 
   const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1, 4)
-  const evenMorePosts = allPosts.slice(4)
-  const previewJobs = allJobs.slice(0, 3)
+  const morePosts = allPosts.slice(1, 7)
+  //const evenMorePosts = allPosts.slice(4, 7)
+  //const previewJobs = allJobs.slice(0, 3)
 
 
 
@@ -130,20 +151,24 @@ export default function Index({ allPosts, allJobs, allTags }) {
             <IndexPageContainer >
 
               <MoreStories posts={morePosts} />
+              <MoreContainer>
+                <Link href={`/blog`} passHref>
+                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>
+                </Link>
+              </MoreContainer>
             </IndexPageContainer>
 
-              <JobboardTeaser>
+              {/*<JobboardTeaser>
                 <JobboardTextWrapper>
                   <JobboardTitle><Link href="/jobs"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
                   <JobboardSubline>...für alle, die mehr bewegen wollen.</JobboardSubline>
                 </JobboardTextWrapper>
                 <MoreJobs jobs={previewJobs} />
-              </JobboardTeaser>
+              </JobboardTeaser>*/}
 
             <IndexPageContainer >
-              <Dots/>
 
-              <MoreStories posts={evenMorePosts} />
+              {/*<MoreStories posts={evenMorePosts} />*/}
 
               <TitleWrapper>
                   <Title>Nach Thema durchsuchen</Title>

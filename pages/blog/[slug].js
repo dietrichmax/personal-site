@@ -28,7 +28,7 @@ import Date from '@/components/date/date'
 const PostWrapper = styled.div`
   max-width: 720px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-  margin: var(--space-sm) auto var(--space) auto;
+  margin: var(--space-sm) auto;
   background-color: #fff;
   border: 1px solid var(--gray-light);;
   ${media.lessThan('large')`
@@ -56,6 +56,28 @@ const PostDate = styled.div`
   font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
 `;
+
+const MoreContainer = styled.div`
+  max-width: 720px;
+  margin: var(--space-sm) auto;
+  text-align: left;    
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--gray);
+  text-decoration: none;
+  ::before {
+    content: "\f060";
+    font-family: "Line Awesome Free";
+  }
+`
+const MoreArticles = styled.a`
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    text-decoration: underline;
+  }
+`
 
 export default function Post({ post, morePosts }) {
   const router = useRouter()
@@ -86,6 +108,12 @@ export default function Post({ post, morePosts }) {
             <article ref={target} >
               <ReadingProgress target={target} />
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.formats.large.url} caption={post.coverImage.caption}/>
+
+              <MoreContainer>
+                <Link href={`/blog`} passHref>
+                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
+                </Link>
+              </MoreContainer>
 
               <PostWrapper>
                 <PostHeader postData={post} />                

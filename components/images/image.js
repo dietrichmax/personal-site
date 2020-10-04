@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import ImageManipulation from '../../lib/imageManipulation.js';
-//const fs = require('fs');
-//import 'lazysizes/plugins/attrchange/ls.attrchange';
-//import 'lazysizes';
+import styled from "styled-components";
+import ImageManipulation from "../../lib/imageManipulation.js";
+//const fs = require("fs");
+//import "lazysizes/plugins/attrchange/ls.attrchange";
+//import "lazysizes";
 
 
 // styled components

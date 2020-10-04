@@ -2,8 +2,7 @@ import Router from "next/router";
 import React, { useEffect } from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
-//import GlobalStyle from '@/styles/global.js'
-import '@/styles/global.css'
+import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -20,7 +19,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
-        {/*<GlobalStyle/>*/}
+        <GlobalStyle/>
         <Component {...pageProps} />
       </>
     )

@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: var(--body-bg);
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: system-ui,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: 1.5rem;
   }
   img {
@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-extra-light: #fafafa; 
     --gray-light: #eaeaea;  
     --gray: #475060;
-    --gray-dark: #29293a;
+    --gray-dark: #3f3f40;
     --primary-color: #1b496e;
     --secondary-color: #3f51b5;
     --thirdy-color: #001ff9;

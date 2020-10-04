@@ -16,6 +16,8 @@ const ListWrapper = styled.div`
 `;
 
 
+const Arrow = styled.div``
+
 export default function MoreStories({ posts}) {
   return (
     <section>

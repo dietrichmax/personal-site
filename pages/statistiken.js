@@ -121,6 +121,7 @@ const Date = styled.p`
 `
 
 export default function Recruiting({ lastViews, liveViews }) {
+  const [currentUsers, setCurrentUsers] = useState("")
   const router = useRouter()
 
   // Matomo lastViews last 30 days
@@ -154,12 +155,13 @@ export default function Recruiting({ lastViews, liveViews }) {
     const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
     const matomoDataActions = fetch(getActions)
     const actions = matomoDataActions.json()
+    
+    console.log(actions)
     if (actions.errors) {
       console.error(actions.errors)
       throw new Error('Failed to fetch MATOMO API')
     }
   }, []);
-  console.log(liveViews[0])
   
   Object.entries(actions).forEach((value) => {
     year.push(value[0])

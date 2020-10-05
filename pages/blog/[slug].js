@@ -7,7 +7,7 @@ import PostHeader from '@/components/post/post-header/post-header'
 import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
 import SEO from '@/components/seo/seo'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api'
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';

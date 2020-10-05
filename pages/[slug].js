@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
-import { getAllPagesWithSlug, getPage } from '@/lib/api'
+import { getAllPagesWithSlug, getPage } from '@/lib/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';

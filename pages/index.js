@@ -1,7 +1,7 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllJobs, getAllTags } from '@/lib/api'
+import { getAllPosts, getAllJobs, getAllTags } from '@/lib/cms'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';

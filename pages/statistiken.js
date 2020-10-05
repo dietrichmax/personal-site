@@ -118,7 +118,7 @@ const DateWrapper = styled.div`
 
 const Date = styled.p`
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   display: block;
   width: 100%;
   text-align: center;
@@ -186,7 +186,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
             </GeneralStats>
             <ViewsContainer>
-              <Title>Seitenaufrufe in den letzten 60 Tagen</Title>
+              <Title>Seitenaufrufe in den letzten 50 Tagen</Title>
               <RecentViewsContainer>
               {pageViews.map((item, i) => (
                 <ColumnWrapper 

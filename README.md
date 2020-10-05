@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://test.gis-netzwerk.com/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
+  <img alt="Logo" src="https://gis-netzwerk.com/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
 </div>
 <h1 align="center">
   GIS-Netzwerk

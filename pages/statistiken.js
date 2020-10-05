@@ -120,7 +120,7 @@ const Date = styled.p`
   text-align: center;
 `
 
-export default function Recruiting({ lastViews, liveViews }) {
+export default function Recruiting({ lastViews, liveViews, actions }) {
   const [currentUsers, setCurrentUsers] = useState("")
   const router = useRouter()
 
@@ -151,28 +151,13 @@ export default function Recruiting({ lastViews, liveViews }) {
   const overallOutlinks = []
   const overallAvgTimeGeneration = []
   
-  useEffect(() => {
-    const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
-    const matomoDataActions = fetch(getActions)
-    
-    
-    console.log(matomoDataActions)
-    const actions = matomoDataActions.json()
-    if (actions.errors) {
-      console.error(actions.errors)
-      throw new Error('Failed to fetch MATOMO API')
-    }
-    Object.entries(actions).forEach((value) => {
-      year.push(value[0])
-      overallPageViews.push(value[1].nb_pageviews)
-      overallDownloads.push(value[1].nb_downloads)
-      overallOutlinks.push(value[1].nb_outlinks)
-      overallAvgTimeGeneration.push(value[1].avg_time_generation)
-    });
-  }, []);
-  
-
-  
+  Object.entries(actions).forEach((value) => {
+    year.push(value[0])
+    overallPageViews.push(value[1].nb_pageviews)
+    overallDownloads.push(value[1].nb_downloads)
+    overallOutlinks.push(value[1].nb_outlinks)
+    overallAvgTimeGeneration.push(value[1].avg_time_generation)
+  });
 
   //const allPageViews = actions
   //console.log(allPageViews)
@@ -250,9 +235,16 @@ export async function getServerSideProps() {
     console.error(liveViews.errors)
     throw new Error('Failed to fetch MATOMO API')
   }
+  const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
+  const matomoDataActions = await fetch(getActions)
+  const actions = await matomoDataActions.json()
+  if (actions.errors) {
+    console.error(actions.errors)
+    throw new Error('Failed to fetch MATOMO API')
+  }
 
   return {
-    props: { lastViews, liveViews }
+    props: { lastViews, liveViews, actions }
   }
 }
 

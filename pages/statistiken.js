@@ -27,8 +27,6 @@ const Title = styled.h2`
   color: var(--primary-color);
 `
 
-
-
 const GeneralStats = styled.div`
   max-width: 600px;
   margin: var(--space-lg) auto;
@@ -122,6 +120,8 @@ const Date = styled.p`
   display: block;
   width: 100%;
   text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
 `
 
 export default function Recruiting({ lastViews, liveViews, actions }) {

@@ -188,7 +188,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               <br/>
               <a>Die Seite wurde im Jahr {year} insgesamt {overallPageViews} Mal aufgerufen. 
               Dabei wurde {overallOutlinks} Mal auf externe Links geklickt und {overallDownloads} Dateien heruntergeladen. 
-              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
+              Durschnittlich dauerte ein Ladevorgang für eine Seite <GenerationTime>{overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
             </GeneralStats>
             <ViewsContainer>
               <Title>Seitenaufrufe in den letzten 50 Tagen</Title>

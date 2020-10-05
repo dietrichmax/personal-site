@@ -170,8 +170,8 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
             
           <>
             <SEO   
-              title="Auf GIS-Netzwerk werben"
-              slug="https://gis-netzwerk.com/werben"
+              title="Statistiken - GIS-Netzwerk"
+              slug="https://gis-netzwerk.com/statistiken"
             />
           <PageTitle>Statistiken</PageTitle>
           <Container>

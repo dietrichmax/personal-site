@@ -161,15 +161,16 @@ export default function Recruiting({ lastViews, liveViews }) {
       console.error(actions.errors)
       throw new Error('Failed to fetch MATOMO API')
     }
+    Object.entries(actions).forEach((value) => {
+      year.push(value[0])
+      overallPageViews.push(value[1].nb_pageviews)
+      overallDownloads.push(value[1].nb_downloads)
+      overallOutlinks.push(value[1].nb_outlinks)
+      overallAvgTimeGeneration.push(value[1].avg_time_generation)
+    });
   }, []);
   
-  Object.entries(actions).forEach((value) => {
-    year.push(value[0])
-    overallPageViews.push(value[1].nb_pageviews)
-    overallDownloads.push(value[1].nb_downloads)
-    overallOutlinks.push(value[1].nb_outlinks)
-    overallAvgTimeGeneration.push(value[1].avg_time_generation)
-  });
+
   
 
   //const allPageViews = actions

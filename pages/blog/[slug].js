@@ -63,7 +63,7 @@ const MoreContainer = styled.div`
   text-align: left;    
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
   ::before {

@@ -47,6 +47,10 @@ const ViewsContainer = styled.div`
   margin: var(--space) auto;
   padding-bottom: var(--space-sm);
   border-bottom: 3px solid var(--gray-light);
+  ${media.lessThan('medium')`
+    margin-left: 0;
+    width: 100%;
+  `}
 `
 
 const RecentViewsContainer = styled.div`
@@ -179,9 +183,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
             <GeneralStats>
               {live < 2 ?
                 <a>Du bist momentan die einzige Person auf GIS-Netzwerk.com. </a> :
-               live = 2 ?
-                <a>Du bist derzeit mit einer weiteren Person auf GIS-Netzwerk.com. </a> : 
-                <a>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com. </a>
+                <a>Du bist derzeit eine von {live - 1} Personen auf GIS-Netzwerk.com. </a>
               }
               <br/>
               <a>Die Seite wurde im Jahr {year} insgesamt {overallPageViews} Mal aufgerufen. 
@@ -209,7 +211,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
               </DateContainer>
-              <Credits>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
+              <Credits>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney.</a></Credits>
             </ViewsContainer>
           </Container>
           </>

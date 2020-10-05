@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
-import { getTag, getAllTagsWithSlug } from '@/lib/cms'
+import { getTag, getAllTagsWithSlug } from '@/lib/api/cms'
 import PageTitle from '@/components/title/page-title'
 import Head from 'next/head'
 import config from "../../../data/SiteConfig";

@@ -8,7 +8,7 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
-import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/lib/analytics'
+import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/lib/api/analytics'
 import PageTitle from '@/components/title/page-title'
 
 

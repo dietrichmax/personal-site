@@ -57,9 +57,8 @@ const RecentViewsContainer = styled.div`
 `
 const Credits = styled.div`
   text-align: right;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `
-
 
 const ColumnWrapper = styled.div`
   position: relative;
@@ -121,10 +120,10 @@ const Date = styled.p`
   text-align: center;
 `
 
-export default function Recruiting({ lastViews, liveViews, actions }) {
+export default function Recruiting({ lastViews, liveViews }) {
   const router = useRouter()
 
-  // lastViews last 30 days
+  // Matomo lastViews last 30 days
   const α = 0.6;
   const B = 100;
   let allViews = []
@@ -142,14 +141,26 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
     dateShort: item.substring(8),
   }));
   const normalisedMax = (1 - α) * Math.max.apply(Math, allViews) + α * B;
-  //_____________________________________________
+  
+  // Matomo Actions
   let live = liveViews[0].visits
-
   const year = []
   const overallPageViews = []
   const overallDownloads = []
   const overallOutlinks = []
   const overallAvgTimeGeneration = []
+  
+  useEffect(() => {
+    const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
+    const matomoDataActions = await fetch(getActions)
+    const actions = await matomoDataActions.json()
+    if (actions.errors) {
+      console.error(actions.errors)
+      throw new Error('Failed to fetch MATOMO API')
+    }
+  }, []);
+  console.log(liveViews[0])
+  
   Object.entries(actions).forEach((value) => {
     year.push(value[0])
     overallPageViews.push(value[1].nb_pageviews)
@@ -187,7 +198,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
             </GeneralStats>
             <ViewsContainer>
-              <Title>Seitenaufrufe in den letzten 60 Tagen</Title>
+              <Title>Seitenaufrufe in den letzten 50 Tagen</Title>
               <RecentViewsContainer>
               {matomoViews.map((item, i) => (
                 <ColumnWrapper 
@@ -221,7 +232,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
 
 export async function getServerSideProps() {
   // Get lastViews for last 30 days
-  const getViews = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous60&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
+  const getViews = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous50&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
   const matomoDataLastViews = await fetch(getViews)
   const lastViews = await matomoDataLastViews.json()
   if (lastViews.errors) {
@@ -236,15 +247,8 @@ export async function getServerSideProps() {
     throw new Error('Failed to fetch MATOMO API')
   }
 
-  const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
-  const matomoDataActions = await fetch(getActions)
-  const actions = await matomoDataActions.json()
-  if (actions.errors) {
-    console.error(actions.errors)
-    throw new Error('Failed to fetch MATOMO API')
-  }
   return {
-    props: { lastViews, liveViews, actions }
+    props: { lastViews, liveViews }
   }
 }
 

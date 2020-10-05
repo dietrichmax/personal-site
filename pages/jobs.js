@@ -1,7 +1,7 @@
 import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
 import PageTitle from '@/components/title/page-title'
-import { getAllJobs } from '@/lib/cms'
+import { getAllJobs } from '@/lib/api/cms'
 import Head from 'next/head'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';

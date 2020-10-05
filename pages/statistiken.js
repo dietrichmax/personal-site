@@ -177,9 +177,11 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <PageTitle>Statistiken</PageTitle>
           <Container>
             <GeneralStats>
-              {live > 1 ?
-              <a>Du bist derzeit mit {live - 1} weiteren Person auf GIS-Netzwerk.com. </a> :
-              <a>Du bist momentan die einzige Person auf GIS-Netzwerk.com. </a>
+              {live < 2 ?
+                <a>Du bist momentan die einzige Person auf GIS-Netzwerk.com. </a> :
+               live = 2 ?
+                <a>Du bist derzeit mit einer weiteren Person auf GIS-Netzwerk.com. </a> : 
+                <a>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com. </a>
               }
               <br/>
               <a>Die Seite wurde im Jahr {year} insgesamt {overallPageViews} Mal aufgerufen. 

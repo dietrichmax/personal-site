@@ -152,8 +152,8 @@ export default function Recruiting({ lastViews, liveViews }) {
   
   useEffect(() => {
     const getActions = encodeURI(`${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=year&date=last&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
-    const matomoDataActions = await fetch(getActions)
-    const actions = await matomoDataActions.json()
+    const matomoDataActions = fetch(getActions)
+    const actions = matomoDataActions.json()
     if (actions.errors) {
       console.error(actions.errors)
       throw new Error('Failed to fetch MATOMO API')

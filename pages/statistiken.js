@@ -205,8 +205,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
                 </DateContainer>
-                <PageViewsInfo>Daten aus Matomo Reporting API.</PageViewsInfo>
-              <Credits>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
+              <Credits>Daten aus Matomo Reporting API.<br/>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
             </ViewsContainer>
           </Container>
           </>

@@ -66,7 +66,7 @@ cursor: pointer;
   position: relative;
   margin-right: calc(var(--space-sm)*0.3);
   width: 100%;
-  background-color: var(--gray-light);
+  background-color: var(--gray-extra-light);
   :before {
     content: attr(data-tip);
     font-size: 1.2rem;
@@ -117,8 +117,7 @@ const DateWrapper = styled.div`
 `
 
 const Date = styled.p`
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: block;
   width: 100%;
   text-align: center;

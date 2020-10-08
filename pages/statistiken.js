@@ -205,7 +205,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
                 </DateContainer>
-              <Credits>Daten aus <a title="Matomo Reporting API" href="https://developer.matomo.org/api-reference/reporting-api>Matomo Reporting API</a>.<br/>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
+              <Credits>Daten aus <a title="Matomo Reporting API" href="https://developer.matomo.org/api-reference/reporting-api">Matomo Reporting API</a>.<br/>Inspiriert von <a title="sld.codes" href="https://sld.codes/stats">Sam Larsen-Disney</a></Credits>
             </ViewsContainer>
           </Container>
           </>

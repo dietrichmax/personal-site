@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import Fonts from '@/components/fonts'
+import Fonts from '@/components/fonts/fonts.js'
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {

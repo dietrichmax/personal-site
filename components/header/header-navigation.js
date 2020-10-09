@@ -48,7 +48,7 @@ const NavigationButton = styled.a`
 const HeaderNavigation = ({ isActive, handleToggleMenu }) => {
 
   const headerItems = [
-    { "name": "Blog", "link":  "/blog" }
+    { "name": "sBlog", "link":  "/blog" }
   ]
 
   return (

@@ -66,6 +66,9 @@ const MoreContainer = styled.div`
   font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
+  ${media.lessThan('medium')`
+    margin-left: var(--space);
+  `}
 `
 const MoreArticles = styled.a`
   cursor: pointer;
@@ -106,8 +109,9 @@ export default function Post({ post, morePosts }) {
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.formats.large.url} caption={post.coverImage.caption}/>
 
               <MoreContainer>
+                🡐 
                 <Link href={`/blog`} passHref>
-                  🡐 <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
+                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
                 </Link>
               </MoreContainer>
 

@@ -129,7 +129,7 @@ const PageViewsInfo = styled.a`
 export default function Recruiting({ lastViews, liveViews, actions }) {
   const router = useRouter()
   
-  const α = 0;
+  const α = 0.4;
   const B = 1000;
   let pageViews = []
   let allViews = []
@@ -143,7 +143,11 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
     allViews.push(isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews)
   ));
   const normalisedMax = (1 - α) * Math.max.apply(Math, allViews) + α * B;
-
+  
+  
+  {pageViews.map((item, i) => (
+    console.log(Math.floor((item.normalisedViews / normalisedMax) * 100))
+  ))}
   let live = liveViews[0].visits
 
   const generalStats = []

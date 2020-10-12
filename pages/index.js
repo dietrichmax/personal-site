@@ -1,15 +1,13 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
-import MoreJobs from '@/components/job/job-preview/more-jobs'
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllJobs, getAllTags } from '@/lib/api/cms'
-import Head from 'next/head'
+import { getAllPosts, getAllTags } from '@/lib/api/cms'
 import config from "../data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
-import Dots from '@/components/funky-stuff/dots'
+import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import PostHero from '@/components/post/post-hero/post-hero'
 
@@ -72,6 +70,9 @@ const MoreContainer = styled.div`
   font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
+  ${media.lessThan('large')`
+    margin-left: var(--space);
+  `}
 `
 const MoreArticles = styled.a`
   text-align: right;    
@@ -83,13 +84,11 @@ const MoreArticles = styled.a`
 `
 
 
-export default function Index({ allPosts, allJobs, allTags }) {
+export default function Index({ allPosts, allTags }) {
   const router = useRouter()
 
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1, 7)
-  //const evenMorePosts = allPosts.slice(4, 7)
-  //const previewJobs = allJobs.slice(0, 3)
 
 
   return (
@@ -113,14 +112,12 @@ export default function Index({ allPosts, allJobs, allTags }) {
               <MoreStories posts={morePosts} />
               <MoreContainer>
                 <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles> 🡒
-                </Link>
+                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>
+                </Link> 🡒
               </MoreContainer>
             </IndexPageContainer>
 
             <IndexPageContainer >
-
-              {/*<MoreStories posts={evenMorePosts} />*/}
 
               <TitleWrapper>
                   <Title>Nach Thema durchsuchen</Title>
@@ -147,12 +144,11 @@ export default function Index({ allPosts, allJobs, allTags }) {
 
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
-  const allJobs = (await getAllJobs()) || []
   const allTags = (await getAllTags()) || []
   
   return {
     revalidate: 600,
-    props: { allPosts, allJobs, allTags },
+    props: { allPosts, allTags },
   }
 }
 

@@ -107,10 +107,6 @@ const MoreContainer = styled.div`
   font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
-  ::after {
-    content: "\f061";
-    font-family: "Line Awesome Free";
-  }
 `
 const MoreArticles = styled.a`
   text-align: right;    
@@ -153,7 +149,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
               <MoreStories posts={morePosts} />
               <MoreContainer>
                 <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>
+                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>→
                 </Link>
               </MoreContainer>
             </IndexPageContainer>

@@ -66,10 +66,6 @@ const MoreContainer = styled.div`
   font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
-  ::before {
-    content: "\f060";
-    font-family: "Line Awesome Free";
-  }
 `
 const MoreArticles = styled.a`
   cursor: pointer;
@@ -111,7 +107,7 @@ export default function Post({ post, morePosts }) {
 
               <MoreContainer>
                 <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
+                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles> →
                 </Link>
               </MoreContainer>
 

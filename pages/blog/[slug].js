@@ -107,7 +107,7 @@ export default function Post({ post, morePosts }) {
 
               <MoreContainer>
                 <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
+                  🡐 <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
                 </Link>
               </MoreContainer>
 

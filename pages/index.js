@@ -63,41 +63,6 @@ const TagItem = styled.button`
       props.color ? props.color : '#798ad0'};
   }
 `
-const JobboardTeaser = styled.div`
-  width: 100%;
-  background-color: var(--primary-color);
-  color: #fff;
-  border-top: 2px solid var(--gray-light);
-  border-bottom: 2px solid var(--gray-light);
-  background: 
-    linear-gradient(135deg, var(--primary-color) 35%, transparent 235%) -50px 0,
-    linear-gradient(225deg, var(--primary-color) 35%, transparent 25%) -30px 0,
-    linear-gradient(315deg, var(--primary-color) 45%, transparent 25%);
-`
-
-const JobboardTextWrapper = styled.div`
-  max-width: 1200px;
-  margin: auto; 
-`
-
-const JobboardTitle = styled.div`
-  margin-left: var(--space);
-  letter-spacing: 0.35px;
-  font-size: 2.2rem;
-  padding-top: var(--space-sm);
-  :hover {
-    color: var(--gray-light);
-  }
-`
-
-const JobboardSubline = styled.div`
-  font-weight: 200;
-  margin-left: var(--space);
-  letter-spacing: -0.1px;
-  font-size: 1.5rem;
-  margin-bottom: var(--space-sm);
-`
-
 
 const MoreContainer = styled.div`
   text-align: right;    
@@ -127,7 +92,6 @@ export default function Index({ allPosts, allJobs, allTags }) {
   //const previewJobs = allJobs.slice(0, 3)
 
 
-
   return (
     <>
       <Layout>
@@ -153,14 +117,6 @@ export default function Index({ allPosts, allJobs, allTags }) {
                 </Link>
               </MoreContainer>
             </IndexPageContainer>
-
-              {/*<JobboardTeaser>
-                <JobboardTextWrapper>
-                  <JobboardTitle><Link href="/jobs"><a title="Zum Stellenmarkt">Der GIS-Netzwerk Stellenmarkt.</a></Link></JobboardTitle>
-                  <JobboardSubline>...für alle, die mehr bewegen wollen.</JobboardSubline>
-                </JobboardTextWrapper>
-                <MoreJobs jobs={previewJobs} />
-              </JobboardTeaser>*/}
 
             <IndexPageContainer >
 

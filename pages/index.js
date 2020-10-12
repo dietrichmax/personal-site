@@ -113,7 +113,7 @@ export default function Index({ allPosts, allJobs, allTags }) {
               <MoreStories posts={morePosts} />
               <MoreContainer>
                 <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>→
+                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles> →
                 </Link>
               </MoreContainer>
             </IndexPageContainer>

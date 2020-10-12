@@ -55,6 +55,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-family: system-ui,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: 1.5rem;
+    font-display: swap;
   }
   img {
     display: block;

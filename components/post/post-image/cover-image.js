@@ -23,7 +23,7 @@ const PreviewCoverImage = styled(Img)`
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
-  width: 100%;
+  max-width: 400px;
   height: ${props =>
     props.hero ? "400px" : '200px'};
   object-fit: cover;

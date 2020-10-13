@@ -89,6 +89,9 @@ cursor: pointer;
   :hover::before {
     opacity: 1;
   }
+  ${media.lessThan('medium')`
+    margin-right: 0;
+  `}
 `
 
 const Column = styled.div`
@@ -183,7 +186,6 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               <p>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com.</p> :
               <p>Du bist momentan die einzige Person auf GIS-Netzwerk.com.</p>
               }
-              <br/>
               Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 
               Dabei wurde {stats.overallOutlinks} Mal auf externe Links geklickt und {stats.overallDownloads} Dateien heruntergeladen. 
               Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden.

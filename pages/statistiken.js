@@ -89,9 +89,6 @@ cursor: pointer;
   :hover::before {
     opacity: 1;
   }
-  ${media.lessThan('medium')`
-    margin-right: 0;
-  `}
 `
 
 const Column = styled.div`

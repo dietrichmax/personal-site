@@ -180,8 +180,8 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <Container>
             <GeneralStats>
               {live > 1 ?
-              Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com. :
-              Du bist momentan die einzige Person auf GIS-Netzwerk.com.
+              <p>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com.</p> :
+              <p>Du bist momentan die einzige Person auf GIS-Netzwerk.com.</p>
               }
               <br/>
               Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 

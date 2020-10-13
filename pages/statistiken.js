@@ -157,7 +157,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
       overallPageViews: value[1].nb_pageviews,
       overallDownloads: value[1].nb_downloads,
       overallOutlinks: value[1].nb_outlinks,
-      overallAvgTimeGeneration: value[1].avg_time_generation.replace(".",","),
+      overallAvgTimeGeneration: value[1].avg_time_generation,
     })
   ));
   const stats = generalStats[0]
@@ -186,7 +186,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               <br/>
               Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 
               Dabei wurde {stats.overallOutlinks} Mal auf externe Links geklickt und {stats.overallDownloads} Dateien heruntergeladen. 
-              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden.
+              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration.replace(".",",")}</GenerationTime> Sekunden.
             </GeneralStats>
             <ViewsContainer>
               <Title>Seitenaufrufe in den letzten 50 Tagen</Title>

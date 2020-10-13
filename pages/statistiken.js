@@ -129,7 +129,7 @@ const PageViewsInfo = styled.a`
 export default function Recruiting({ lastViews, liveViews, actions }) {
   const router = useRouter()
   
-  const α = 0.4;
+  const α = 0.0;
   const B = 1000;
   let pageViews = []
   let allViews = []

@@ -157,7 +157,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
       overallPageViews: value[1].nb_pageviews,
       overallDownloads: value[1].nb_downloads,
       overallOutlinks: value[1].nb_outlinks,
-      overallAvgTimeGeneration: value[1].avg_time_generation,
+      overallAvgTimeGeneration: value[1].avg_time_generation.replace(".",","),
     })
   ));
   const stats = generalStats[0]
@@ -180,13 +180,13 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <Container>
             <GeneralStats>
               {live > 1 ?
-              <a>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com. </a> :
-              <a>Du bist momentan die einzige Person auf GIS-Netzwerk.com. </a>
+              Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com. :
+              Du bist momentan die einzige Person auf GIS-Netzwerk.com.
               }
               <br/>
-              <a>Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 
+              Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 
               Dabei wurde {stats.overallOutlinks} Mal auf externe Links geklickt und {stats.overallDownloads} Dateien heruntergeladen. 
-              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden</a>
+              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden.
             </GeneralStats>
             <ViewsContainer>
               <Title>Seitenaufrufe in den letzten 50 Tagen</Title>

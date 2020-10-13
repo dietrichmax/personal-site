@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     text-decoration: none;
     overflow-wrap: break-word;
-    font-display: swap;
+    font-display: block;
   }
   a {
     transition: 0.2s;
@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     display: block;
-  	max-width: 100%;
+    max-width: 100%;
     height: auto;
   }
   :root { 

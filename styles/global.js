@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     text-decoration: none;
     overflow-wrap: break-word;
-    font-display: fallback;
+    font-display: optional;
   }
   a {
     transition: 0.2s;

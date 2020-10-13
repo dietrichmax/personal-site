@@ -13,7 +13,7 @@ const AuthorMeta = styled.div`
   width: 100%;
 `
 
-const AuthorName = styled.a`
+const AuthorName = styled.span`
   font-weight: bold;
 `
 

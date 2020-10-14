@@ -40,8 +40,8 @@ export default function Tags({ tag }) {
               description={tag.description}
               slug={`https://gis-netzwerk.com/blog/themen(${tag.slug}`}
             />
+            <PageTitle color={tag.color}>{tag.name}</PageTitle>
             <TagContainer>
-              <PageTitle color={tag.color}>{tag.name}</PageTitle>
               <TagPostsContainer>
                 {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}
               </TagPostsContainer>

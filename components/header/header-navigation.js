@@ -65,10 +65,7 @@ const HeaderNavigation = ({ isActive, handleToggleMenu }) => {
                 </NavigationLink>
           </Link>
         ))}
-
-        {/*<NavigationButton to="" aria-label="Login">
-          Login
-        </NavigationButton>*/}
+        
       </Navigation>
     </>
   );

@@ -22,7 +22,6 @@ import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
 import Date from '@/components/date/date' 
 
 
-
 // components for posts
 
 const PostWrapper = styled.div`

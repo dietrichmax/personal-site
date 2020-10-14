@@ -56,8 +56,8 @@ export default function Blog({ allPosts, allTags }) {
               title="Blog"
               slug="https://gis-netzwerk.com/blog"
             />
+            <PageTitle>Blog</PageTitle>
             <BlogPageContainer >
-              <PageTitle>Blog</PageTitle>
 
               <TagWrapper>
                 {allTags.map((tag, i) => (

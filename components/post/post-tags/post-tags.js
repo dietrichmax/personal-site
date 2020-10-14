@@ -26,8 +26,16 @@ export const TagItem = styled.a`
 `
 
 export default function PostTags( tags ) {
-  
-  const  postTags = tags
+  const  postTags = []
+  Object.values(tags).forEach((value) => (
+    console.log(value[1]),
+    postTags.push({
+      name: value.name,
+      color: value.color,
+      slug: value.slug,
+    })
+  ));
+  //console.log(postTags)
   return (
     <>
         <TagsWrapper>

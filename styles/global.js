@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: var(--body-bg);
     font-weight: 400;
-    font-family: system-ui,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1.5rem;
     font-display: block !important;
   }

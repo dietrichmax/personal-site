@@ -54,10 +54,9 @@ const FooterNav = styled.div`
 const FooterNavItem = styled.a`  
   display: block; 
   color: var(--gray);
-  letter-spacing: 0.2px;
-  padding-right: var(--space);
-  margin-top: calc(var(--space-sm)*0.5);
-  margin-bottom: calc(var(--space-sm)*0.5);
+  letter-spacing: 0.2px;    
+  margin: calc(var(--space-sm)*0.5) var(--space) calc(var(--space-sm)*0.5) auto;
+  padding: calc(var(--space-sm)*0.4) 0 calc(var(--space-sm)*0.4) 0;
   :hover {
     color: var(--primary-color);
   }

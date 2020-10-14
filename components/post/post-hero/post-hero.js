@@ -86,7 +86,7 @@ const TagItem = styled.a`
   transition: 0.3s;
   cursor: pointer;
   :hover {
-    background-color: white;
+    background-color: #00000054;
     color: ${props =>
       props.color ? props.color : '#798ad0'};
   }

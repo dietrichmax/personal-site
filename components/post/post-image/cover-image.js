@@ -2,7 +2,6 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from "../../../data/SiteConfig";
-import Img from '@/components/images/image';
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -18,7 +17,7 @@ const PostCoverImageWrapper = styled.div`
 const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
-const PreviewCoverImage = styled(Img)`
+const PreviewCoverImage = styled(img)`
   border-top-left-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
@@ -34,7 +33,7 @@ const PreviewCoverImage = styled(Img)`
   `}
 `
 
-const PostCoverImage = styled(Img)`
+const PostCoverImage = styled(img)`
   width: 100%;
   height: 400px;
   object-fit: cover;

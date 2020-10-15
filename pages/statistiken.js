@@ -130,7 +130,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
   const router = useRouter()
   
   const α = 0.4;
-  const B = 200;
+  const B = 100;
   let pageViews = []
   let allViews = []
   Object.entries(lastViews).forEach((value) => (

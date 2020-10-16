@@ -12,10 +12,9 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "npm run generate-sitemap && next build",
-    "deploy": "npm run generate-sitemap && npm run build && npm run start",
+    "build": "next build",
+    "deploy": "npm run build && npm run start",
     "export": "next export",
-    "generate-sitemap": "node ./lib/sitemap.js",
     "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py"
   },

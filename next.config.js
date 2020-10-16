@@ -254,6 +254,6 @@ module.exports = withPlugins([
   }],
   [offline],
   [mdx],
-  [redirects]
-
+  [redirects],
+  // more config
 ]);

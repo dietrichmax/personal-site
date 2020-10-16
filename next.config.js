@@ -1,7 +1,8 @@
 // next.config.js
-const withOptimizedImages = require('next-optimized-images');
-const withOffline = require("next-offline");
-const withMDX = require('@zeit/next-mdx')({
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
+const offline = require("next-offline");
+const mdx = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
 
@@ -246,4 +247,13 @@ const redirects = {async redirects() {
   ]
 }};
 
-module.exports = withOffline(withOptimizedImages(withMDX(redirects)));
+
+module.exports = withPlugins([
+  [optimizedImages, {
+    /* config for next-optimized-images */
+  }],
+  [offline],
+  [mdx],
+  [redirects]
+
+]);

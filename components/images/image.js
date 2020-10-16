@@ -7,8 +7,8 @@ import ImageManipulation from "../../lib/imageManipulation.js";
 
 // styled components
 const Image = styled.img`
-height: ${props => props.height ? props.height : "100%" };
-width: ${props => props.width ? props.width : "100%" };
+    height: ${props => props.height ? props.height : "100%" };
+    width: ${props => props.width ? props.width : "100%" };
 `
 
 
@@ -32,6 +32,7 @@ class ImageComponent extends React.Component {
                     title={this.props.title} 
                     width={this.props.width} 
                     height={this.props.height} 
+                    loading="lazy"
                 /> 
             </>
         );

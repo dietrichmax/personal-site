@@ -1,4 +1,6 @@
 {
     "presets": ["next/babel"],
-    "plugins": [["styled-components", { "ssr": true }],["react-optimized-image/plugin"]]
+    "plugins": [
+        ["styled-components", { "ssr": true }],
+        ["react-optimized-image/plugin"]]
 }

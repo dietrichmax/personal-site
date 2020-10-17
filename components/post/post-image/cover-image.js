@@ -51,7 +51,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
     <div className="">
       {slug ? (
         <PreviewCoverImageWrapper>
-          <Link as={`/blog/${slug}`} href="/blog/[slug]">
+          <Link as={`/articles/${slug}`} href="/articles/[slug]">
               <a aria-label={title}>
                 <PreviewCoverImage src={imageUrl} alt={title} title={title} hero={hero} />
               </a>

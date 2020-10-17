@@ -38,7 +38,7 @@ export default function Tags({ tag }) {
             <SEO   
               title={tag.name}
               description={tag.description}
-              slug={`https://gis-netzwerk.com/blog/themen(${tag.slug}`}
+              slug={`https://gis-netzwerk.com/articles/topics(${tag.slug}`}
             />
             <PageTitle color={tag.color}>{tag.name}</PageTitle>
             <TagContainer>
@@ -57,6 +57,7 @@ export async function getStaticProps({ params }) {
   const data = await getTag(params.slug)
 
   return {
+    revalidate:  86400,
     props: {
       tag: {
         ...data?.tags[0],
@@ -68,7 +69,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const allTags = await getAllTagsWithSlug()
   return {
-    paths: allTags?.map((tag) => `/blog/themen/${tag.slug}`) || [],
+    paths: allTags?.map((tag) => `/articles/topics/${tag.slug}`) || [],
     fallback: true,
   }
 }

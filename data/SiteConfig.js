@@ -10,15 +10,14 @@ const config = {
   homePath: "/", // Domain of your website without pathPrefix.
   pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteRss: "/rss.xml", // Path to the RSS file.
-  dateFormat: "dd.MM.yyyy", // Date format for display.
+  dateFormat: "dd-MM-yyyy", // Date format for display.
   copyright: "Creative Commons Attribution-ShareAlike 3.0", // Copyright string for the footer of the website and RSS feed.
   defaultLang: "de_DE", // og lang
   themeColor: "#f2f2f2", // Used for setting manifest and progress theme colors.
   backgroundColor: "#f2f2f2", // Used for setting manifest background color.
-  loading: "Lade Daten...",
+  loading: "Loading Data...",
   socials: { // socials
-    twitter: "https://twitter.com/GISNetzwerk",
-    github: "https://github.com/DaTurboD/GIS-Netzwerk",
+    github: "https://github.com/DaTurboD/",
     linkedin: "https://www.linkedin.com/in/maxdiet/",
     instagram: "https://www.instagram.com/_maxdietrich/"
   },

@@ -2,7 +2,7 @@ import Date from '../../date/date'
 import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
-import media from 'styled-media-query';
+import PostTags from '@/components/post/post-tags/post-tags'
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -50,20 +50,22 @@ const CardItemDescription = styled.div`
 
 const TagsWrapper = styled.div`
   display: block;
-  margin-bottom: var(--space-sm);
+  margin-top: var(--space);
+  margin-bottom: var(--space);
 `
 
 const TagItem = styled.a`
-  background-color: ${props =>
-    props.color ? props.color : 'var(--primary-color'};
-  padding: calc(var(--space-sm)*0.5);
-  border-radius: calc(var(--space-sm)*0.5);
-  font-size: 13px;
+  display: inline-block;
   text-transform: uppercase;
-  margin: calc(var(--space-sm)*0.5) var(--space-sm) calc(var(--space-sm)*0.5) 0;
-  color: #fff;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: calc(var(--space-sm)*0.2) var(--space-sm);
+  margin-right: var(--space-sm);
+  background-color: var(--primary-color);
+  color: var(--gray-light);
+  border-radius: var(--space-sm);
   :hover {
     background-color: white;
     color: ${props =>
@@ -90,7 +92,7 @@ export default function PostPreview({
         </CardItemImg>
         <CardItemInfo>
           <CardItemTitle>
-            <Link as={`/blog/${slug}`} href="/blog/[slug]">
+            <Link as={`/articles/${slug}`} href="/articles/[slug]">
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
@@ -100,7 +102,7 @@ export default function PostPreview({
           <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (
-                <Link key={i} href={`/blog/themen/${tag.slug}`}>
+                <Link key={i} href={`/articles/topics/${tag.slug}`}>
                   <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
                 </Link>
             ))}

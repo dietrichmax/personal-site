@@ -9,21 +9,21 @@ const _ = require("lodash");
 const TagsWrapper = styled.div`
   display: block;
   margin-top: var(--space);
+  margin-bottom: var(--space);
 `
 
-const TagItem = styled.button`
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
-  padding: calc(var(--space-sm)*0.5);
-  border-radius: calc(var(--space-sm)*0.5);
-  font-size: 13px;
+const TagItem = styled.a`
+  display: inline-block;
   text-transform: uppercase;
-  margin: calc(var(--space-sm)*0.5) var(--space-sm) calc(var(--space-sm)*0.5) 0;
-  color: #fff;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
-  border: none;
-  outline: none;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: calc(var(--space-sm)*0.2) var(--space-sm);
+  margin-right: var(--space-sm);
+  background-color: var(--primary-color);
+  color: var(--gray-light);
+  border-radius: var(--space-sm);
   :hover {
     background-color: white;
     color: ${props =>
@@ -58,7 +58,7 @@ export default function PostHeader({ postData }) {
 
         <TagsWrapper>
           {tags.map((tag, i) => (
-              <Link key={i} href={`/blog/themen/${tag.slug}`}>
+              <Link key={i} href={`/articles/topics/${tag.slug}`}>
                 <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
               </Link>
           ))}

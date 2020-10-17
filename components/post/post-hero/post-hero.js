@@ -71,20 +71,22 @@ const HeroDescription = styled.p`
 
 const TagsWrapper = styled.div`
   display: block;
+  margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
 `
 
 const TagItem = styled.a`
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
-  padding: calc(var(--space-sm)*0.5);
-  border-radius: calc(var(--space-sm)*0.5);
-  font-size: 13px;
+  display: inline-block;
   text-transform: uppercase;
-  margin: calc(var(--space-sm)*0.5) var(--space-sm) calc(var(--space-sm)*0.5) 0;
-  color: #fff;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: calc(var(--space-sm)*0.2) var(--space-sm);
+  margin-right: var(--space-sm);
+  background-color: var(--primary-color);
+  color: var(--gray-light);
+  border-radius: var(--space-sm);
   :hover {
     background-color: #00000054;
     color: ${props =>

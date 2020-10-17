@@ -10,6 +10,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import PostHero from '@/components/post/post-hero/post-hero'
+import PostTags from '@/components/post/post-tags/post-tags'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -31,35 +32,6 @@ const Separator = styled.div`
     props.color ? props.color : '#798ad0'};
   width: 10%;
   margin: auto;
-`
-
-const TagWrapper = styled.div`
-  margin: var(--space-lg);
-  padding: var(--space-lg);
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid var(--gray-light);
-  border-radius: calc(var(--space-sm)*0.5);
-`
-
-const TagItem = styled.button`
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
-  padding: calc(var(--space-sm)*0.5);
-  border-radius: calc(var(--space-sm)*0.5);
-  font-size: 13px;
-  text-transform: uppercase;
-  margin: calc(var(--space-sm)*0.5) var(--space-sm) calc(var(--space-sm)*0.5) 0;
-  color: #fff;
-  transition: 0.3s;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  :hover {
-    background-color: white;
-    color: ${props =>
-      props.color ? props.color : '#798ad0'};
-  }
 `
 
 const MoreContainer = styled.div`
@@ -90,7 +62,6 @@ export default function Index({ allPosts, allTags }) {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1, 7)
 
-
   return (
     <>
       <Layout>
@@ -101,7 +72,7 @@ export default function Index({ allPosts, allTags }) {
             
           <>
             <SEO   
-              title="Startseite"
+              title="Home"
               slug="https://gis-netzwerk.com"
             />
 
@@ -111,8 +82,8 @@ export default function Index({ allPosts, allTags }) {
 
               <MoreStories posts={morePosts} />
               <MoreContainer>
-                <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zum Blog">Alle Artikel {' '}</MoreArticles>
+                <Link href={`/articles`} passHref>
+                  <MoreArticles title="All Articles">All Articles{' '}</MoreArticles>
                 </Link> 🡒
               </MoreContainer>
             </IndexPageContainer>
@@ -120,18 +91,11 @@ export default function Index({ allPosts, allTags }) {
             <IndexPageContainer >
 
               <TitleWrapper>
-                  <Title>Nach Thema durchsuchen</Title>
+                  <Title>Search by Topic</Title>
                   <Separator/>
               </TitleWrapper>
 
-              <TagWrapper>
-                {allTags.map((tag, i) => (
-                  
-                    <Link key={i} href={`/blog/themen/${tag.slug}`} passHref>
-                      <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
-                    </Link>
-                ))}
-              </TagWrapper>
+              <PostTags tags={allTags} preview={false}/>
 
             </IndexPageContainer>
           </>
@@ -147,7 +111,7 @@ export async function getStaticProps() {
   const allTags = (await getAllTags()) || []
   
   return {
-    revalidate: 600,
+    revalidate:  86400,
     props: { allPosts, allTags },
   }
 }

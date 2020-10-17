@@ -5,78 +5,96 @@ import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
 import React, { useState, useEffect } from "react"
 import { getAllPosts } from '@/lib/api/cms'
-
+import { format } from 'date-fns'
+import { Emojione } from "react-emoji-render"
+import media from 'styled-media-query';
 // styled components
-const FooterWrapper = styled.div`    
-  background-color: #fff;
-  border-top: 1px solid var(--gray-light);
-  }
-`;
 
 const FooterContainer = styled.div`
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: relative;
-  display: flex;
-  margin: var(--space);
-  padding-bottom: var(--space);
-  border-bottom: 1px solid var(--gray-light);
+
 `;
 
-const FooterLogo = styled.div`
-  flex: 1 0 auto;
-  color: #80868B;
-`
+const FooterWrapper = styled.div`    
+  background-color: var(--primary-color);
+`;
 
 
-const NavTitle = styled.div`
+const FooterTopContainer = styled.div`
+  max-width: 1200px;
+  margin: auto;
   display: flex;
-  padding: var(--space-sm);
-  margin-top: auto;
-  margin-bottom: auto;
-  color: var(--gray);
-  font-size: 2rem;
-  font-weight: 500;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
 `
 
-const FooterSocials = styled.div`    
-  text-align: center;
-  flex: 1 0 auto;
-  padding-top: var(--space);
+
+const FooterColumn = styled.div`
+  margin: var(--space);
+  width: 20%;
+  color: var(--gray-light);
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
+`
+
+const FooterTitle = styled.h4`
+  font-size: 1.75rem;
+  margin-bottom: var(--space-sm);
+  padding-bottom: calc(var(--space-sm)*0.5);
+  border-bottom: 1px solid var(--gray);
+`
+
+const FooterColumnContent = styled.p`
+`
+
+const FooterSocials = styled.div`  
   padding-bottom: var(--space-lg);
 `
 
-const FooterNav = styled.div`  
-  flex: 0 1 auto;
+const FooterNav = styled.ul`  
+  list-style: none;
+  padding: 0;
+`
+
+const FooterNavItem = styled.li`  
+  transition: 0.2s;
+  margin-bottom: calc(var(--space-sm)*0.4);
+  :hover {
+    color: var(--gray-extra-light);
+  }
+`
+
+const FooterSubContainer = styled.div`  
+  background-color: var(--gray-dark);
+  color: var(--gray-light);
+`
+
+const FooterSubContainerContent = styled.div` 
+  max-width: 1200px;  
+  padding: var(--space-sm);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  ${media.lessThan('medium')`
+    display: block;
+  `}
+`
+
+const FooterSubContainerContentLeft = styled.div`
+  text-align: left;
+  ${media.lessThan('medium')`
+    text-align: center;
+    margin-bottom: calc(var(--space-sm)*0.5);
+  `}
+`
+
+const FooterSubContainerContentRight = styled.div`
   text-align: right;
-  }
-`
-
-const FooterNavItem = styled.a`  
-  display: block; 
-  color: var(--gray);
-  letter-spacing: 0.2px;    
-  margin: calc(var(--space-sm)*0.5) var(--space) calc(var(--space-sm)*0.5) auto;
-  padding: calc(var(--space-sm)*0.4) 0 calc(var(--space-sm)*0.4) 0;
-  :hover {
-    color: var(--primary-color);
-  }
-`
-
-const FooterSubNav = styled.div`  
-  margin: var(--space) auto 0 auto; 
-  text-align: center;
-  width: 100%;
-`
-
-const FooterSubNavItem = styled.a`  
-  color: var(--gray);
-  font-size: 1.2rem;
-  padding: var(--space);
-  letter-spacing: 0.2px;
-  :hover {
-    color: var(--primary-color);
-  }
+  ${media.lessThan('medium')`
+    text-align: center;
+  `}
 `
 
 export default function Footer(newPosts) {
@@ -84,52 +102,72 @@ export default function Footer(newPosts) {
   //const posts = newPosts.slice(0, 5)
 
   const footerNavItems = [
-    { "name": "Startseite", "link":  config.homePath },
-    { "name": "Blog", "link":  "/blog" },
-    { "name": "Statistiken", "link":  "/statistiken" },
-    { "name": "Über GIS-Netzwerk", "link":  "/ueber-gis-netzwerk" }
-  ]
-
-  const footerSubNavItems = [
-    { "name": "Datenschutz", "link":  "/datenschutz" },
-    { "name": "Impressum", "link":  "/impressum" },
-    { "name": "Kontakt", "link":  "mailto:kontakt@gis-netzwerk.com" }
+    { "name": "About me", "link":  "/about-me" },
+    { "name": "About this site", "link":  "/about-this-site" },
+    { "name": "All Articles", "link":  "/articles" },
+    { "name": "Site Stats", "link":  "/stats" },
+    { "name": "Disclaimer", "link":  "/disclaimer" }
   ]
 
 
   return (
-    <FooterWrapper>
-      <FooterContainer>
-        <FooterLogo >
-          <Logo />
-        </FooterLogo>
-        <FooterNav>
-          {footerNavItems.map((item, i) => (
-            <Link key={i} href={item.link} passHref>
-              <FooterNavItem title={item.name}>{item.name}</FooterNavItem>
-            </Link>
-          ))}
-        </FooterNav>
+    <FooterContainer>
+      <FooterWrapper>
+        <FooterContainer>
+          <FooterTopContainer>
+            <FooterColumn>
+              <FooterTitle>I am Max Dietrich.</FooterTitle>
+              <FooterColumnContent>
+                I am currently working as Geodata-Manager at RIWA. I love to figure out how things work and documenting it on this site.
+              </FooterColumnContent>
+            </FooterColumn>
 
-      </FooterContainer>
+            <FooterColumn>
+              <FooterTitle>Recent Posts</FooterTitle>
+              <FooterColumnContent>
+                Posts
 
-      <FooterSubNav>
-        {footerSubNavItems.map((item, i) => (
-          <Link key={i} href={item.link} passHref>
-            <FooterSubNavItem title={item.name}>{item.name}</FooterSubNavItem>
-          </Link>
-      ))}
+              </FooterColumnContent>
+            </FooterColumn>
 
-      </FooterSubNav>
+            <FooterColumn>
+              <FooterTitle>Good Stuff</FooterTitle>
+              <FooterNav>
+                {footerNavItems.map((item, i) => (
+                  <FooterNavItem key={i} >
+                    <Link href={item.link} passHref>
+                      <a title={item.name}>{item.name}</a>
+                    </Link>
+                  </FooterNavItem>
+                ))}
+              </FooterNav>
+            </FooterColumn>
 
-      <FooterSocials>
-        <SocialIcon url={config.socials.twitter} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Twitter" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.github} bgColor="var(--gray-light)" fgColor="var(--gray)" title="GitHub" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.linkedin} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Linkedin" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
-        <SocialIcon url={config.socials.instagram} bgColor="var(--gray-light)" fgColor="var(--gray)" title="Instagram" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
-        <SocialIcon url="mailto:kontakt@gis-netzwerk.com" bgColor="var(--gray-light)" fgColor="var(--gray)" title="E-Mail" style={{ height: 27, width: 27, margin: 'var(--space-sm)' }}/>
-      </FooterSocials>
-    </FooterWrapper>
+            <FooterColumn>
+              <FooterTitle>Connect</FooterTitle>
+              You can connect with me on:
+              <FooterSocials>
+                <SocialIcon url={config.socials.github} fgColor="#fff"  title="GitHub" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.linkedin} fgColor="#fff"  title="Linkedin" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.instagram} fgColor="#fff"  title="Instagram" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="#fff"  title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+              </FooterSocials>
+
+            </FooterColumn>
+          </FooterTopContainer>
+        </FooterContainer>
+      </FooterWrapper>
+      <FooterSubContainer>
+        <FooterSubContainerContent>
+          <FooterSubContainerContentLeft>
+            Copyright © {format(new Date(), "yyyy")} Max Dietrich. All Rights Reserved.
+          </FooterSubContainerContentLeft>
+          <FooterSubContainerContentRight>
+          Made with ❤️ by MXD.
+          </FooterSubContainerContentRight>
+        </FooterSubContainerContent>
+      </FooterSubContainer>
+    </FooterContainer>
   )
 }
 
@@ -137,7 +175,7 @@ export async function getInitialProps() {
   const newPosts = (await getAllPosts()) || []
   console.log(newPosts)
   return {
-    revalidate: 600,
+    revalidate: 86400,
     props: { newPosts },
   }
 }

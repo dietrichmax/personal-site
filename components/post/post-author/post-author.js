@@ -40,7 +40,7 @@ export default function Author({ author }) {
         title={username}
       />
       <AuthorMeta>
-        <p>Von{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
+        <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
         
         <AuthorSocials>
           {socials.map((social, i) => (

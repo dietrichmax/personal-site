@@ -97,7 +97,7 @@ export default function Post({ post, morePosts }) {
               title={post.title}
               description={post.excerpt}
               image={post.coverImage.coverImage.url}
-              slug={`https://gis-netzwerk.com/blog/${post.slug}`}
+              slug={`https://gis-netzwerk.com/articles/${post.slug}`}
               date={post.date}
               lang={post.lang}
               ogType="article"
@@ -109,8 +109,8 @@ export default function Post({ post, morePosts }) {
 
               <MoreContainer>
                 🡐 
-                <Link href={`/blog`} passHref>
-                  <MoreArticles title="Zurück zum Blog">{' '}Zurück</MoreArticles>
+                <Link href={`/articles`} passHref>
+                  <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
                 </Link>
               </MoreContainer>
 
@@ -130,7 +130,7 @@ export default function Post({ post, morePosts }) {
             
             <Newsletter />
             <MorePostsWrapper>
-              <MorePostsTitle><Link href="/blog"><a title="Zum Blog">Mehr Artikel:</a></Link></MorePostsTitle>
+              <MorePostsTitle><Link href="/articles"><a title="More Articles">More Articles:</a></Link></MorePostsTitle>
               {morePosts.length > 0 && <MoreStories posts={morePosts}/>}
             </MorePostsWrapper>
           </>
@@ -146,6 +146,7 @@ export async function getStaticProps({ params }) {
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
 
   return {
+    revalidate:  86400,
     props: {
       post: {
         ...data?.posts[0],
@@ -160,7 +161,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
   return {
-    paths: allPosts?.map((post) => `/blog/${post.slug}`) || [],
+    paths: allPosts?.map((post) => `/articles/${post.slug}`) || [],
     fallback: true,
   }
 }

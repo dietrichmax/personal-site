@@ -4,6 +4,7 @@ import Logo from '../logo';
 import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
 import React, { useState, useEffect } from "react"
+import { getAllPosts } from '@/lib/api/cms'
 
 // styled components
 const FooterWrapper = styled.div`    
@@ -78,7 +79,9 @@ const FooterSubNavItem = styled.a`
   }
 `
 
-export default function Footer() {
+export default function Footer(newPosts) {
+
+  //const posts = newPosts.slice(0, 5)
 
   const footerNavItems = [
     { "name": "Startseite", "link":  config.homePath },
@@ -129,3 +132,13 @@ export default function Footer() {
     </FooterWrapper>
   )
 }
+
+export async function getInitialProps() {
+  const newPosts = (await getAllPosts()) || []
+  console.log(newPosts)
+  return {
+    revalidate: 600,
+    props: { newPosts },
+  }
+}
+

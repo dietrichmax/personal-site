@@ -132,7 +132,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
   const α = 0.4;
   const B = 400;
   let pageViews = []
-  let allViews = []
+  let normalisedViews = []
   Object.entries(lastViews).forEach((value) => (
     pageViews.push({
       date: value[0],
@@ -140,9 +140,9 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
       views: isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews,
       normalisedViews: (1 - α) * isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews + α * B,
     }),
-    allViews.push(isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews)
+    normalisedViews.push((1 - α) * isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews + α * B)
   ));
-  const normalisedMax = (1 - α) * Math.max.apply(Math, allViews) + α * B;
+  const normalisedMax = Math.max.apply(Math, normalisedViews);
   
   
   {pageViews.map((item, i) => (

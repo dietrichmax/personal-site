@@ -127,7 +127,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
   const router = useRouter()
   
   const α = 0.4;
-  const B = 400;
+  const B = 1000;
   let pageViews = []
   let normalisedViews = []
   Object.entries(lastViews).forEach((value) => (
@@ -188,7 +188,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   key={i}
                   data-tip={`${item.views} Aufrufe`}>
                   <Column 
-                    height={Math.floor((item.normalisedViews / normalisedMax) * 70)}
+                    height={Math.floor((item.normalisedViews / normalisedMax) * 100)}
                   />
                 </ColumnWrapper>
               ))}

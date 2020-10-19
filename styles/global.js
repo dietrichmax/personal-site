@@ -23,11 +23,6 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     transition: 0.2s;
-    color: var(--gray-dark);
-    border-bottom: 1px solid var(--primary-color);
-  }
-  a:hover {
-    border-bottom: 1px solid var(--border-light);
   }
   ::selection {
     background: var(--primary-color);

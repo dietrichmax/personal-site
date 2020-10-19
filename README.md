@@ -2,17 +2,17 @@
   <img alt="Logo" src="https://gis-netzwerk.com/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
 </div>
 <h1 align="center">
-  GIS-Netzwerk
+  mxd.codes
 </h1>
 <h4 align="center">
-  GIS-Netzwerk is an information platform for geoinformatics, GIS, geodata and web-development.
+  mxd.codes is my personal website focussing gis and web-development.
 </h4>
 
 # 👋 Welcome to GIS-Netzwerk's site repo.
 
 You can see the site live here:
 
-[``` gis-netzwerk.com ```](https://gis-netzwerk.com/)
+[``` mxd.codes ```](https://gis-netzwerk.com/)
 
 The **frontend** of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js"). 
 The **backend** consists of:
@@ -22,10 +22,10 @@ The **backend** consists of:
 
 No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on a private server.
 
-## Licensed under the [MIT License](https://github.com/DaTurboD/gis-netzwerk-frontend/blob/v2/LICENSE "MIT License")
+## Licensed under the [MIT License](https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/LICENSE "MIT License")
 
 You can fork this repo or use any individual piece of code you would like to.
-It would be awsome to give credit by back to [gis-netzwerk.com](https://gis-netzwerk.com/). Thanks!👍
+It would be awsome to give credit by back to [mxd.codes](https://mxd.codes). Thanks!👍
 
 Please keep in mind that i dont own most images used on the site.
 Images are mainly from

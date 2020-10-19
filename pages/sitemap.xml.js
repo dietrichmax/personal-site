@@ -3,8 +3,6 @@ import { format } from 'date-fns'
 import { getAllSitemapPosts, getAllSitemapPages } from '@/lib/data/api/cms'
 const globby = require('globby');
 
-const EXTERNAL_DATA_URL = 'https://jsonplaceholder.typicode.com/posts';
-
 
 const createSitemap = (posts, pages, morePages) => 
 
@@ -13,7 +11,7 @@ const createSitemap = (posts, pages, morePages) =>
         ${posts.map((post) => {
           return `
               <url>
-                  <loc>${`https://gis-netzwerk.com/blog/${post.slug}`}</loc>
+                  <loc>${`https://mxd.codes/blog/${post.slug}`}</loc>
                   <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.5</priority>
@@ -24,7 +22,7 @@ const createSitemap = (posts, pages, morePages) =>
         ${pages.map((page) => {
             return `
                 <url>
-                    <loc>${`https://gis-netzwerk.com/blog/${page.slug}`}</loc>
+                    <loc>${`https://mxd.codes/blog/${page.slug}`}</loc>
                     <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
@@ -40,7 +38,7 @@ const createSitemap = (posts, pages, morePages) =>
               const route = path === '/index' ? '' : path;
               return `
                       <url>
-                          <loc>${`https://gis-netzwerk.com${route}`}</loc>
+                          <loc>${`https://mxd.codes${route}`}</loc>
                           <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                           <changefreq>monthly</changefreq>
                           <priority>0.5</priority>

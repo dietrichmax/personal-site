@@ -105,7 +105,9 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
+              {post.coverImage.coverImage ? (
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.formats.large.url} caption={post.coverImage.caption}/>
+              ) : null }
 
               <MoreContainer>
                 🡐 

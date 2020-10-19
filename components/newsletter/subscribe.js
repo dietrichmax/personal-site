@@ -145,7 +145,7 @@ export default function Subscribe ({ noLabel, cb }) {
       ) : (
         <NewsletterWrapper>
             <DescriptionWrapper>
-              Du möchtest wissen, wann es etwas Neues gibt? <br/> Dann abonniere den GIS-Netzwerk Newsletter, sowie bereits {count} weitere Abonnenten.<Emoji text={"🚀"} /> 
+              Du möchtest wissen, wann es etwas Neues gibt? <br/> Dann abonniere den Newsletter, sowie bereits {count} weitere Abonnenten.<Emoji text={"🚀"} /> 
             </DescriptionWrapper>
 
           <InputWrapper>

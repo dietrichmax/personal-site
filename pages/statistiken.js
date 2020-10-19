@@ -188,7 +188,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden.
             </GeneralStats>
             <ViewsContainer>
-              <Title>Seitenaufrufe in den letzten 50 Tagen</Title>
+              <Title>Seitenaufrufe in den letzten 30 Tagen</Title>
               <RecentViewsContainer>
               {pageViews.map((item, i) => (
                 <ColumnWrapper 

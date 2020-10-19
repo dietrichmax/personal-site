@@ -27,12 +27,13 @@ class ImageComponent extends React.Component {
         return (
             <>
                 <Image 
-                    src={this.props.src} 
+                    data-src={this.props.src} 
                     alt={this.props.alt} 
                     title={this.props.title} 
                     width={this.props.width} 
                     height={this.props.height} 
-                    loading="lazy"
+                    class="lazyload" 
+                    
                 /> 
             </>
         );

@@ -1,5 +1,5 @@
 import { parseISO, format } from 'date-fns'
-import config from "../../data/SiteConfig";
+import config from "../../lib/data/SiteConfig";
 import styled from 'styled-components';
 
 const PostDate = styled.time`

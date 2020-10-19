@@ -7,14 +7,14 @@ import PostHeader from '@/components/post/post-header/post-header'
 import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
 import SEO from '@/components/seo/seo'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api/cms'
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 import CoverImage from '@/components/post/post-image/cover-image'
-import config from "../../data/SiteConfig";
+import config from "../../lib/data/SiteConfig";
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'

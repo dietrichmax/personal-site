@@ -1,9 +1,9 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import PageTitle from '@/components/title/page-title'
-import { getAllPosts, getAllTags } from '@/lib/api/cms'
+import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import Head from 'next/head'
-import config from "../data/SiteConfig";
+import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'

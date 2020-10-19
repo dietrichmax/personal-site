@@ -81,16 +81,16 @@ const TagItem = styled.a`
   transition: 0.2s;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin-right: var(--space-sm);
   background-color: var(--primary-color);
   color: var(--gray-light);
   border-radius: var(--space-sm);
   :hover {
-    background-color: #00000054;
-    color: ${props =>
+    background-color: ${props =>
       props.color ? props.color : '#798ad0'};
+    color: white;
   }
 `
 
@@ -106,7 +106,7 @@ export default function PostHero({heroData, hero}) {
         <HeroInfo>
           <HeroMeta>
             <HeroTitle>
-              <Link as={`/blog/${slug}`} href="/blog/[slug]">
+              <Link as={`/articles/${slug}`} href="/articles/[slug]">
                 <a title={title}>{title}</a>
               </Link>
             </HeroTitle>
@@ -117,7 +117,7 @@ export default function PostHero({heroData, hero}) {
             <HeroDescription>{excerpt}</HeroDescription>
             <TagsWrapper>
               {tags.map((tag, i) => (
-                  <Link key={i} href={`/blog/themen/${tag.slug}`}>
+                  <Link key={i} href={`/articles/topics/${tag.slug}`}>
                     <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
                   </Link>
               ))}

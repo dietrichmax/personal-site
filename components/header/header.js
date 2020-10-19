@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import config from "../../data/SiteConfig";
+import config from "../../lib/data/SiteConfig";
 import media from 'styled-media-query';
 import Logo from '../logo';
 import React, { Component, useState } from 'react';
@@ -24,15 +24,8 @@ const HeaderWrapper = styled.div`
 const NavTitle = styled.div`
   width: auto;
   height: 50px;
-  padding-left: var(--space-sm);
-  padding-top: calc(var(--space-sm)*1.2);
-  color: var(--gray);
-  font-size: 2rem;
-`
-
-const NavSection = styled.span`
-  width: auto;
-  padding-left: calc(var(--space-sm)*0.5);
+  padding-left: var(--space);
+  padding-top: var(--space-sm);
   color: var(--gray);
   font-size: 2rem;
 `
@@ -68,9 +61,9 @@ export default function HeaderNav() {
   return (
     <HeaderWrapper>
 
-      <HeaderLogo >
+     {/*} <HeaderLogo >
         <Logo />
-      </HeaderLogo>
+  </HeaderLogo>*/}
           
         <NavTitle>
           <Link href={config.homePath}>

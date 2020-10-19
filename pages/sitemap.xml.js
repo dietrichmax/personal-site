@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns'
-import { getAllSitemapPosts, getAllSitemapPages } from '@/lib/api/cms'
+import { getAllSitemapPosts, getAllSitemapPages } from '@/lib/data/api/cms'
 const globby = require('globby');
 
 const EXTERNAL_DATA_URL = 'https://jsonplaceholder.typicode.com/posts';

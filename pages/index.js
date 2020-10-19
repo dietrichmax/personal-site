@@ -1,7 +1,7 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllTags } from '@/lib/api/cms'
-import config from "../data/SiteConfig";
+import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
+import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
@@ -95,7 +95,7 @@ export default function Index({ allPosts, allTags }) {
                   <Separator/>
               </TitleWrapper>
 
-              <PostTags tags={allTags} preview={false}/>
+              <PostTags tags={allTags}/>
 
             </IndexPageContainer>
           </>

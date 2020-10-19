@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
-import { getAllPagesWithSlug, getPage } from '@/lib/api/cms'
+import { getAllPagesWithSlug, getPage } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ import media from 'styled-media-query';
 import Date from '@/components/date/date'    
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
-import config from "../data/SiteConfig";
+import config from "../lib/data/SiteConfig";
 
 const PageWrapper = styled.div`
 max-width: 720px;

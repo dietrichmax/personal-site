@@ -1,6 +1,6 @@
 import React from "react"
 import Lottie from "react-lottie"
-import data from "../../data/animation-data/confetti.json"
+import data from "../../lib/data/animation-data/confetti.json"
 
 export default function Animation() {
   const defaultOptions = {

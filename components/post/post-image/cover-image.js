@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import config from "../../../data/SiteConfig";
-import Img from '@/components/images/image';
+import config from "../../../lib/data/SiteConfig";
+//import Img from '@/components/images/image';
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -18,7 +18,7 @@ const PostCoverImageWrapper = styled.div`
 const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
-const PreviewCoverImage = styled(Img)`
+const PreviewCoverImage = styled.img`
   border-top-left-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
@@ -34,7 +34,7 @@ const PreviewCoverImage = styled(Img)`
   `}
 `
 
-const PostCoverImage = styled(Img)`
+const PostCoverImage = styled.img`
   width: 100%;
   height: 400px;
   object-fit: cover;
@@ -53,7 +53,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
         <PreviewCoverImageWrapper>
           <Link as={`/articles/${slug}`} href="/articles/[slug]">
               <a aria-label={title}>
-                <PreviewCoverImage src={imageUrl} alt={title} title={title} hero={hero} />
+                <PreviewCoverImage className="lazyload" data-src={imageUrl} alt={title} title={title} hero={hero} />
               </a>
           </Link>
         </PreviewCoverImageWrapper>
@@ -61,7 +61,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
       ) : (
 
         <PostCoverImageWrapper>
-            <PostCoverImage src={imageUrl} alt={title} title={title} />
+            <PostCoverImage className="lazyload" data-src={imageUrl} alt={title} title={title} />
             <Caption>Bildquelle: {caption} (bearbeitet)</Caption>
         </PostCoverImageWrapper>
         

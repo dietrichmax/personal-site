@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import config, { dateFormat } from "../../data/SiteConfig";
+import config, { dateFormat } from "../../lib/data/SiteConfig";
 
 const SEO = ({ 
   title,

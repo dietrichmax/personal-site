@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Layout from '@/components/layout/layout'
-import config from "../data/SiteConfig";
+import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
-import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/lib/api/analytics'
+import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/lib/data/api/analytics'
 import PageTitle from '@/components/title/page-title'
 
 
@@ -127,7 +127,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
   const router = useRouter()
   
   const α = 0.4;
-  const B = 1000;
+  const B = 400;
   let pageViews = []
   let normalisedViews = []
   Object.entries(lastViews).forEach((value) => (
@@ -141,10 +141,6 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
   ));
   const normalisedMax = Math.max.apply(Math, normalisedViews);
   
-  
-  {pageViews.map((item, i) => (
-    console.log(Math.floor((item.normalisedViews / normalisedMax) * 100))
-  ))}
   let live = liveViews[0].visits
 
   const generalStats = []
@@ -170,29 +166,29 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
             
           <>
             <SEO   
-              title="Statistiken - GIS-Netzwerk"
+              title="Site Stats"
               slug="https://gis-netzwerk.com/statistiken"
             />
-          <PageTitle>Statistiken</PageTitle>
+          <PageTitle>Site statistics</PageTitle>
           <Container>
             <GeneralStats>
               {live > 1 ?
-              <p>Du bist derzeit mit {live - 1} weiteren Personen auf GIS-Netzwerk.com.</p> :
-              <p>Du bist momentan die einzige Person auf GIS-Netzwerk.com.</p>
+              <p>You are with {live - 1} others on this site.</p> :
+              <p>At the moment you are the only person on this site.</p>
               }
-              Die Seite wurde im Jahr {stats.year} insgesamt {stats.overallPageViews} Mal aufgerufen. 
-              Dabei wurde {stats.overallOutlinks} Mal auf externe Links geklickt und {stats.overallDownloads} Dateien heruntergeladen. 
-              Durschnittlich dauert ein Ladevorgang für eine Seite <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> Sekunden.
+              In {stats.year} this site was viewed {stats.overallPageViews} times. 
+              There were {stats.overallOutlinks} clicks on external link and {stats.overallDownloads} files have been downloaded. 
+              Loading time for a page takes in average <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> seconds.
             </GeneralStats>
             <ViewsContainer>
-              <Title>Seitenaufrufe in den letzten 30 Tagen</Title>
+              <Title>Views in the past 50 days</Title>
               <RecentViewsContainer>
               {pageViews.map((item, i) => (
                 <ColumnWrapper 
                   key={i}
                   data-tip={`${item.views} Aufrufe`}>
                   <Column 
-                    height={Math.floor((item.normalisedViews / normalisedMax) * 100)}
+                    height={Math.floor((item.normalisedViews / normalisedMax) * 70)}
                   />
                 </ColumnWrapper>
               ))}
@@ -205,7 +201,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
                 </DateContainer>
-              <Credits>Daten aus <a title="Matomo Reporting API" href="https://developer.matomo.org/api-reference/reporting-api">Matomo Reporting API</a>.</Credits>
+              <Credits>Data via <a title="Matomo Reporting API" href="https://developer.matomo.org/api-reference/reporting-api">Matomo Reporting API</a>.</Credits>
             </ViewsContainer>
           </Container>
           </>

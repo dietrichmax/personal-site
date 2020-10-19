@@ -1,10 +1,10 @@
-import config from "../../data/SiteConfig";
+import config from "../../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Logo from '../logo';
 import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
 import React, { useState, useEffect } from "react"
-import { getAllPosts } from '@/lib/api/cms'
+import { getAllPostsWithSlug, getAllPosts } from '@/lib/data/api/cms'
 import { format } from 'date-fns'
 import { Emojione } from "react-emoji-render"
 import media from 'styled-media-query';
@@ -28,8 +28,47 @@ const FooterTopContainer = styled.div`
 
 `
 
+const FooterTopWrapper = styled.div`
+  margin: var(--space);
 
+`
 const FooterColumn = styled.div`
+  margin: var(--space);
+  width: 20%;
+  color: var(--gray-light);
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
+`
+
+const FooterPostColumn = styled.div`
+  margin: var(--space);
+  width: 25%;
+  color: var(--gray-light);
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
+`
+
+const FooterBioColumn = styled.div`
+  margin: var(--space);
+  width: 25%;
+  color: var(--gray-light);
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
+`
+
+const FooterLinksColumn = styled.div`
+  margin: var(--space);
+  width: 15%;
+  color: var(--gray-light);
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
+`
+
+const FooterConnectColumn = styled.div`
   margin: var(--space);
   width: 20%;
   color: var(--gray-light);
@@ -45,7 +84,7 @@ const FooterTitle = styled.h4`
   border-bottom: 1px solid var(--gray);
 `
 
-const FooterColumnContent = styled.p`
+const FooterColumnContent = styled.div`
 `
 
 const FooterSocials = styled.div`  
@@ -58,8 +97,9 @@ const FooterNav = styled.ul`
 `
 
 const FooterNavItem = styled.li`  
+  cursor: pointer;
   transition: 0.2s;
-  margin-bottom: calc(var(--space-sm)*0.4);
+  margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
     color: var(--gray-extra-light);
   }
@@ -97,16 +137,32 @@ const FooterSubContainerContentRight = styled.div`
   `}
 `
 
-export default function Footer(newPosts) {
+export default function Footer() {
+  const [posts, setPosts] = useState("")
 
-  //const posts = newPosts.slice(0, 5)
-
+  useEffect(() => {
+    async function getPosts() {
+      const allPosts = await getAllPosts()
+      setPosts(allPosts.slice(0,4))  
+    }
+    getPosts()
+  }, []);
+  
+  
+  const newPosts = []
+  Object.entries(posts).forEach((post) => (
+    newPosts.push({
+    title: post[1].title,
+    slug: post[1].slug,
+    })
+  ));
+  
   const footerNavItems = [
-    { "name": "About me", "link":  "/about-me" },
-    { "name": "About this site", "link":  "/about-this-site" },
     { "name": "All Articles", "link":  "/articles" },
-    { "name": "Site Stats", "link":  "/stats" },
-    { "name": "Disclaimer", "link":  "/disclaimer" }
+    { "name": "Site Stats", "link":  "/site-stats" },
+    { "name": "About this site", "link":  "/about-this-site" },
+    { "name": "About me", "link":  "/about-me" },
+    { "name": "Disclaimer & Imprint", "link":  "/disclaimer-and-imprint" }
   ]
 
 
@@ -115,35 +171,38 @@ export default function Footer(newPosts) {
       <FooterWrapper>
         <FooterContainer>
           <FooterTopContainer>
-            <FooterColumn>
+            <FooterBioColumn>
               <FooterTitle>I am Max Dietrich.</FooterTitle>
               <FooterColumnContent>
-                I am currently working as Geodata-Manager at RIWA. I love to figure out how things work and documenting it on this site.
+                I am currently working as Geodata-Manager at RIWA. I love to experiment with web-(gis-)applications which i document on this site.
               </FooterColumnContent>
-            </FooterColumn>
+            </FooterBioColumn>
 
-            <FooterColumn>
-              <FooterTitle>Recent Posts</FooterTitle>
+            <FooterPostColumn>
+              <FooterTitle>Recent Articles</FooterTitle>
               <FooterColumnContent>
-                Posts
-
+              <FooterNav>
+                {newPosts.map((item, i) => (
+                    <Link key={i} href={`/articles/${item.slug}`}>
+                      <FooterNavItem title={item.title}>{item.title}</FooterNavItem>
+                    </Link>
+                ))}
+                </FooterNav>
               </FooterColumnContent>
-            </FooterColumn>
+            </FooterPostColumn>
 
-            <FooterColumn>
-              <FooterTitle>Good Stuff</FooterTitle>
+            <FooterLinksColumn>
+              <FooterTitle>Good Links</FooterTitle>
               <FooterNav>
                 {footerNavItems.map((item, i) => (
-                  <FooterNavItem key={i} >
-                    <Link href={item.link} passHref>
-                      <a title={item.name}>{item.name}</a>
+                    <Link key={i} href={item.link} passHref>
+                      <FooterNavItem title={item.name}>{item.name}</FooterNavItem>
                     </Link>
-                  </FooterNavItem>
                 ))}
               </FooterNav>
-            </FooterColumn>
+            </FooterLinksColumn>
 
-            <FooterColumn>
+            <FooterConnectColumn>
               <FooterTitle>Connect</FooterTitle>
               You can connect with me on:
               <FooterSocials>
@@ -153,7 +212,7 @@ export default function Footer(newPosts) {
                 <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="#fff"  title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
               </FooterSocials>
 
-            </FooterColumn>
+            </FooterConnectColumn>
           </FooterTopContainer>
         </FooterContainer>
       </FooterWrapper>
@@ -171,12 +230,12 @@ export default function Footer(newPosts) {
   )
 }
 
-export async function getInitialProps() {
-  const newPosts = (await getAllPosts()) || []
-  console.log(newPosts)
+export async function getStaticProps() {
+  const allPosts = (await getAllPosts()) || []
+  
   return {
-    revalidate: 86400,
-    props: { newPosts },
+    revalidate:  86400,
+    props: { allPosts },
   }
 }
 

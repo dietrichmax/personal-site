@@ -18,16 +18,16 @@ const TagItem = styled.a`
   transition: 0.2s;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin-right: var(--space-sm);
   background-color: var(--primary-color);
   color: var(--gray-light);
   border-radius: var(--space-sm);
   :hover {
-    background-color: white;
-    color: ${props =>
+    background-color: ${props =>
       props.color ? props.color : '#798ad0'};
+    color: white;
   }
 `
 

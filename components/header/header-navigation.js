@@ -10,7 +10,7 @@ const Navigation = styled.nav`
     display: flex;
   }
   ${media.greaterThan('medium')`
-    padding-top: calc(var(--space-sm)*0.5);
+    padding-top: var(--space-sm);
     display: flex;
     height: auto;
     flex-direction: row;
@@ -20,7 +20,6 @@ const Navigation = styled.nav`
 
 const NavigationLink = styled.a`
   color: var(--gray);
-  margin-top: var(--space-sm);
   margin-left: var(--space);
   font-size: 1.7rem;
   cursor: pointer;
@@ -48,7 +47,9 @@ const NavigationButton = styled.a`
 const HeaderNavigation = ({ isActive, handleToggleMenu }) => {
 
   const headerItems = [
-    { "name": "Articles", "link":  "/articles" }
+    { "name": "Articles", "link":  "/articles" },
+    { "name": "Statistics", "link":  "/site-stats" },
+    { "name": "About Me", "link":  "/about-me" }
   ]
 
   return (

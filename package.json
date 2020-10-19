@@ -1,8 +1,8 @@
 {
-  "name": "GIS-Netzwerk",
-  "description": "Website about GIS and Web-Development.",
+  "name": "Max Dietrich",
+  "description": "Personal Website",
   "author": "Max Dietrich",
-  "version": "2.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "browser": {
     "fs": false,

@@ -45,7 +45,7 @@ const PostCoverImage = styled.img`
 
 export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const imageUrl = url ? `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}` : config.siteLogo
+  const imageUrl = url ? `${url.startsWith('/') ? "https://api.mxd.codes" : ''}${url}` : config.siteLogo
 
   return (
     <div className="">

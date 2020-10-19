@@ -38,15 +38,12 @@ const GenerationTime = styled.span`
 `
 
 const ViewsContainer = styled.div`
+  max-width: 1200px;
   margin: var(--space-lg) auto;
   background-color: #fff;
   padding: var(--space);
   border-bottom: 3px solid var(--gray-light);
   border: 1px solid var(--gray-light);
-  ${media.greaterThan('medium')`
-    margin-left: calc(var(--space-lg)*2);
-    margin-right: calc(var(--space-lg)*2);
-  `}
 `
 
 const RecentViewsContainer = styled.div`

@@ -207,6 +207,7 @@ export default function Footer() {
               You can connect with me on:
               <FooterSocials>
                 <SocialIcon url={config.socials.github} fgColor="#fff"  title="GitHub" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.twitter} fgColor="#fff"  title="Twitter" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
                 <SocialIcon url={config.socials.linkedin} fgColor="#fff"  title="Linkedin" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
                 <SocialIcon url={config.socials.instagram} fgColor="#fff"  title="Instagram" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
                 <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="#fff"  title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>

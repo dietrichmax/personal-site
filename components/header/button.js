@@ -34,7 +34,7 @@ const ButtonHamburger = styled.button`
   }
 
   span {
-    background: var(--gray);
+    background: var(--gray-light);
     border-radius: 10px;
     display: inline-block;
     height: 2px;
@@ -47,7 +47,7 @@ const ButtonHamburger = styled.button`
     &:before,
     &:after {
       content: '';
-      background: var(--gray);
+      background: var(--gray-light);
       border-radius: 10px;
       display: inline-block;
       height: 2px;

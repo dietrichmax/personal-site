@@ -1,10 +1,10 @@
 import React from 'react';
 import { format } from 'date-fns'
-import { getAllSitemapPosts, getAllSitemapPages } from '@/lib/data/api/cms'
+import { getAllSitemapPosts, getAllSitemapPages, getAllSitemapTags } from '@/lib/data/api/cms'
 const globby = require('globby');
 
 
-const createSitemap = (posts, pages, morePages) => 
+const createSitemap = (posts, tags, pages, morePages) => 
 
 `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
@@ -46,12 +46,24 @@ const createSitemap = (posts, pages, morePages) =>
                   `;
             })
             .join('')}
+        ${tags.map((tag) => {
+            return `
+                <url>
+                    <loc>${`https://mxd.codes/articles/topic/${tag.slug}`}</loc>
+                    <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                 </url>
+            `;
+          })
+          .join('')}
     </urlset>
     `;
 
 class Sitemap extends React.Component {
   static async getInitialProps({ res }) {
     const getPosts = (await getAllSitemapPosts()) || []
+    const getTags = (await getAllSitemapTags()) || []
     const getPages = (await getAllSitemapPages()) || []
     const morePages = await globby([
         'pages/**/*{.js,.mdx}',
@@ -62,9 +74,10 @@ class Sitemap extends React.Component {
     ]);
     const posts = getPosts.posts
     const pages = getPages.pages
+    const tags = getTags.tags
     
     res.setHeader('Content-Type', 'text/xml');
-    res.write(createSitemap(posts, pages, morePages));
+    res.write(createSitemap(posts, tags, pages, morePages));
     res.end();
   }
 }

@@ -49,7 +49,7 @@ const createSitemap = (posts, tags, pages, morePages) =>
         ${tags.map((tag) => {
             return `
                 <url>
-                    <loc>${`https://mxd.codes/articles/topic/${tag.slug}`}</loc>
+                    <loc>${`https://mxd.codes/articles/topics/${tag.slug}`}</loc>
                     <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>

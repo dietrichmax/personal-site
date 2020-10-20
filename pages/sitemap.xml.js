@@ -11,7 +11,7 @@ const createSitemap = (posts, pages, morePages) =>
         ${posts.map((post) => {
           return `
               <url>
-                  <loc>${`https://mxd.codes/blog/${post.slug}`}</loc>
+                  <loc>${`https://mxd.codes/articles/${post.slug}`}</loc>
                   <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.5</priority>
@@ -22,7 +22,7 @@ const createSitemap = (posts, pages, morePages) =>
         ${pages.map((page) => {
             return `
                 <url>
-                    <loc>${`https://mxd.codes/blog/${page.slug}`}</loc>
+                    <loc>${`https://mxd.codes/${page.slug}`}</loc>
                     <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>

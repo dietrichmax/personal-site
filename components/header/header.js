@@ -8,7 +8,7 @@ import ButtonMenu from './button';
 import Navigation from './header-navigation';
 
 const HeaderWrapper = styled.div`
-  background-color: #fff;
+  background-color: var(--primary-color);
   display: flex;
   border-bottom: 1px solid var(--gray-light);
 

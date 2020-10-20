@@ -10,7 +10,7 @@ import Navigation from './header-navigation';
 const HeaderWrapper = styled.div`
   background-color: var(--primary-color);
   display: flex;
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.33);
 
   ${media.lessThan('large')`
   top: 0;

@@ -13,17 +13,11 @@ const Title = styled.h1`
   text-transform: capitalize;
 
 `
-const Separator = styled.div`
-  border-bottom: 2px solid  ${props =>
-    props.color ? props.color : '#798ad0'};
-  width: 10%;
-  margin: auto;
-`
+
 export default function PageTitle({ children, color }) {
   return (
     <TitleWrapper>
         <Title>{children}</Title>
-        <Separator color={color}/>
     </TitleWrapper>
   )
 }

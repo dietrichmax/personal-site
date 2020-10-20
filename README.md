@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://gis-netzwerk.com/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
+  <img alt="Logo" src="https://mxd.codes/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
 </div>
 <h1 align="center">
   mxd.codes
@@ -8,7 +8,7 @@
   mxd.codes is my personal website focussing gis and web-development.
 </h4>
 
-# 👋 Welcome to GIS-Netzwerk's site repo.
+# 👋 Welcome to mxd.codes's site repo.
 
 You can see the site live here:
 

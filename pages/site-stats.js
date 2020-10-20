@@ -181,7 +181,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               Loading time for a page takes in average <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> seconds.
             </GeneralStats>
             <ViewsContainer>
-              <Title>Views in the past 50 days</Title>
+              <Title>Views in the past 30 days</Title>
               <RecentViewsContainer>
               {pageViews.map((item, i) => (
                 <ColumnWrapper 

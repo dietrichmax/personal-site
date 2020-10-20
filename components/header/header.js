@@ -26,7 +26,7 @@ const NavTitle = styled.div`
   height: 50px;
   padding-left: var(--space);
   padding-top: var(--space-sm);
-  color: var(--gray);
+  color: var(--gray-light);
   font-size: 2rem;
 `
 

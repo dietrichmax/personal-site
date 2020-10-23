@@ -101,7 +101,7 @@ export default function PostHero({heroData, hero}) {
   return (
     <HeroWrapper>
         <HeroImg>
-          <CoverImage slug={slug} title={title} url={coverImage.coverImage.formats.large.url} hero={hero}/>
+          <CoverImage slug={slug} title={title} url={coverImage.coverImage.url} hero={hero}/>
         </HeroImg>
         <HeroInfo>
           <HeroMeta>

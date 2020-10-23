@@ -39,6 +39,8 @@ const PostWrapper = styled.div`
 const MorePostsWrapper = styled.div`
   max-width: 1140px;
   margin: var(--space) auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
   background-color: #fff;
   border: 1px solid var(--gray-light);;
 `
@@ -48,7 +50,7 @@ const MorePostsTitle = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   font-color: var(--gray);
-  padding: var(--space) 0 var(--space-sm) var(--space);
+  margin-top: var(--space);
 `
 
 const PostDate = styled.div`

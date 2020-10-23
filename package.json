@@ -31,7 +31,6 @@
     "next": "^9.5.5",
     "next-compose-plugins": "^2.2.0",
     "next-offline": "^5.0.2",
-    "next-optimized-images": "^3.0.0-canary.10",
     "object-hash": "^2.0.3",
     "prettier": "^2.1.2",
     "prismjs": "^1.21.0",

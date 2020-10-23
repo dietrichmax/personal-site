@@ -1,21 +1,19 @@
 import config from "../../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Logo from '../logo';
 import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
 import React, { useState, useEffect } from "react"
-import { getAllPostsWithSlug, getAllPosts } from '@/lib/data/api/cms'
+import { getAllPosts } from '@/lib/data/api/cms'
 import { format } from 'date-fns'
-import { Emojione } from "react-emoji-render"
 import media from 'styled-media-query';
 // styled components
 
 const FooterContainer = styled.div`
+background-color: var(--primary-color);
 
 `;
 
 const FooterWrapper = styled.div`    
-  background-color: var(--primary-color);
 `;
 
 

@@ -35,7 +35,7 @@ export default function Author({ author }) {
   return (
     <AuthorWrapper>
       <AuthorImg
-        src={`${picture.formats.logo.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.formats.logo.url}`}
+        src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
         alt={username}
         title={username}
       />

@@ -89,7 +89,7 @@ export default function PostPreview({
       <CardItemWrapper>
         <CardItemImg>
           {coverImage.coverImage ? (
-          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.formats.small.url}/>
+          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.url}/>
           ) : null
           }
         </CardItemImg>

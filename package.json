@@ -24,13 +24,6 @@
     "date-fns": "^2.16.1",
     "js-cookie": "^2.2.1",
     "lazysizes": "^5.2.2",
-<<<<<<< HEAD
-    "next": "9.5.5",
-    "next-compose-plugins": "^2.2.0",
-    "prismjs": "^1.22.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-=======
     "next": "^9.5.5",
     "next-compose-plugins": "^2.2.0",
     "next-offline": "^5.0.2",
@@ -44,7 +37,6 @@
     "react-lottie": "^1.2.3",
     "react-optimized-image": "^0.4.1",
     "react-router-dom": "^5.2.0",
->>>>>>> temp-branch
     "react-social-icons": "^4.1.0",
     "styled-components": "^5.2.0",
     "styled-media-query": "^2.1.2"

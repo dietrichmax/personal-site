@@ -73,12 +73,12 @@ export default function Index({ allPosts, allTags }) {
           <>
             <SEO   
               title="Home"
-              slug="https://gis-netzwerk.com"
+              slug=""
             />
 
             <PostHero heroData={heroPost} hero/>
 
-            <IndexPageContainer >
+            <IndexPageContainer>
 
               <MoreStories posts={morePosts} />
               <MoreContainer>
@@ -88,7 +88,7 @@ export default function Index({ allPosts, allTags }) {
               </MoreContainer>
             </IndexPageContainer>
 
-            <IndexPageContainer >
+            <IndexPageContainer>
 
               <TitleWrapper>
                   <Title>Search by Topic</Title>

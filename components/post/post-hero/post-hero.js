@@ -97,7 +97,6 @@ const TagItem = styled.a`
 export default function PostHero({heroData, hero}) {
 
   const { title, coverImage, date, excerpt, slug, tags } = heroData
-  
   return (
     <HeroWrapper>
         <HeroImg>

@@ -167,7 +167,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <>
             <SEO   
               title="Site Stats"
-              slug="https://gis-netzwerk.com/statistiken"
+              slug="site-stats"
             />
           <PageTitle>Site statistics</PageTitle>
           <Container>

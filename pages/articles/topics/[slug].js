@@ -38,7 +38,7 @@ export default function Tags({ tag }) {
             <SEO   
               title={tag.name}
               description={tag.description}
-              slug={`https://gis-netzwerk.com/articles/topics(${tag.slug}`}
+              slug={tag.slug}
             />
             <PageTitle color={tag.color}>{tag.name}</PageTitle>
             <TagContainer>

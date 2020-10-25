@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import config from "../../lib/data/SiteConfig";
 import media from 'styled-media-query';
-import Logo from '../logo';
 import React, { Component, useState } from 'react';
 import ButtonMenu from './button';
 import Navigation from './header-navigation';

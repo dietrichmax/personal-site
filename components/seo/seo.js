@@ -16,7 +16,6 @@ const SEO = ({
   title = title ? title : config.siteTitle
   description  = description ? description : config.siteDescription
   slug = slug ? slug : config.siteUrl
-  lang = lang ? lang : "en_US"
   image = image ? `${image.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
@@ -76,12 +75,11 @@ const SEO = ({
   return (
     <Head>
       {/* General tags */}
-      <title>{title} - {config.siteTitle}</title>
-      <link rel="canonical" href={slug} />
+      <title>{title} - {config.siteTitleShort}</title>
+      <link rel="canonical" href={`${config.siteUrl}/${slug}`} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <html lang="de" />
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
@@ -94,7 +92,6 @@ const SEO = ({
       <meta name="og:description" property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
       <meta property="og:image" content={`${image}`} /> 
-      <meta property="og:locale" content={lang} /> 
 
       {/* Twitter Card tags */}
       <meta name="twitter:title" content={title} />

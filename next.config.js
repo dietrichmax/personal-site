@@ -1,5 +1,12 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const offline = require("next-offline");
+=======
+>>>>>>> new domain
+>>>>>>> temp-branch
 const mdx = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
@@ -278,6 +285,6 @@ const redirects = {async redirects() {
 
 module.exports = withPlugins([
   [mdx],
-  [redirects],
+  redirects,
   // more config
 ]);

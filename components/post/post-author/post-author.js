@@ -34,6 +34,11 @@ export default function Author({ author }) {
 
   return (
     <AuthorWrapper>
+      <AuthorImg
+        src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
+        alt={username}
+        title={username}
+      />
       <AuthorMeta>
         <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
         

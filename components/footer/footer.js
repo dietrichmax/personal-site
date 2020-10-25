@@ -9,11 +9,11 @@ import media from 'styled-media-query';
 // styled components
 
 const FooterContainer = styled.div`
+background-color: var(--primary-color);
 
 `;
 
 const FooterWrapper = styled.div`    
-  background-color: var(--primary-color);
 `;
 
 

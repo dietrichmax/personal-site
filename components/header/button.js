@@ -9,7 +9,7 @@ const ButtonHamburger = styled.button`
   border: none;
   position: absolute;
   border-radius: 3px;
-  top: var(--space-sm);
+  top: calc(var(--space-sm)*0.5);
   right: var(--space-sm);
   outline: none;
   ${media.greaterThan('medium')`

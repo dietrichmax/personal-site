@@ -107,17 +107,9 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
-<<<<<<< HEAD
-              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
-=======
-<<<<<<< HEAD
               {post.coverImage.coverImage ? (
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
               ) : null }
-=======
-              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
->>>>>>> new domain
->>>>>>> temp-branch
 
               <MoreContainer>
                 🡐 

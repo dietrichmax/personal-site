@@ -31,7 +31,7 @@ export default function Blog({ allPosts, allTags }) {
           <>
             <SEO   
               title="Articles"
-              slug="https://gis-netzwerk.com/blog"
+              slug="articles"
             />
             <PageTitle>Articles</PageTitle>
             <BlogPageContainer >

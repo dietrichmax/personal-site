@@ -1,6 +1,12 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export const theme = {
+  colors: {
+    primary: '#0070f3',
+  },
+}
+
+export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -88,5 +94,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-export default GlobalStyle
   

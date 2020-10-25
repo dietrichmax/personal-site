@@ -43,7 +43,7 @@ export default function Post({ page }) {
             <SEO   
               title={page.title}
               description={page.description}
-              slug={`https://gis-netzwerk.com/${page.slug}`}
+              slug={page.slug}
               date={page.date}
             />
             <PageTitle>{page.title}</PageTitle>

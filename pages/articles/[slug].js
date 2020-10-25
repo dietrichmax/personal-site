@@ -97,7 +97,7 @@ export default function Post({ post, morePosts }) {
               title={post.title}
               description={post.excerpt}
               image={post.coverImage.coverImage.url}
-              slug={`https://gis-netzwerk.com/articles/${post.slug}`}
+              slug={post.slug}
               date={post.date}
               lang={post.lang}
               ogType="article"
@@ -105,9 +105,7 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
-              {post.coverImage.coverImage ? (
-              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.formats.large.url} caption={post.coverImage.caption}/>
-              ) : null }
+              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
 
               <MoreContainer>
                 🡐 

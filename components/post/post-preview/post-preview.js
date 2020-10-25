@@ -2,7 +2,6 @@ import Date from '../../date/date'
 import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
-import PostTags from '@/components/post/post-tags/post-tags'
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -89,7 +88,7 @@ export default function PostPreview({
       <CardItemWrapper>
         <CardItemImg>
           {coverImage.coverImage ? (
-          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.formats.small.url}/>
+          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.url}/>
           ) : null
           }
         </CardItemImg>

@@ -252,6 +252,26 @@ const redirects = {async redirects() {
       destination: '/articles/topics/:slug',
       permanent: true
     },
+    {
+      source: '/articles/was-ist-gis-geoinformationssystem',
+      destination: '/articles/what-is-gis-geographic-information-system',
+      permanent: true
+    },
+    {
+      source: '/articles/geodaten-was-sind-geodaten',
+      destination: '/articles/geodata-what-are-geodata',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-software-optionen-open-source-kostenlos-kostenpflichtig',
+      destination: '/articles/gis-software-options-free-open-source-and-proprietary',
+      permanent: true
+    },
+    {
+      source: '/articles/hochaufloesende-satellitenbilder-downloaden',
+      destination: '/articles/satellite-imagery-download-high-resolution',
+      permanent: true
+    }
   ]
 }};
 

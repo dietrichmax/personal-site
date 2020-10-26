@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from "../../../lib/data/SiteConfig";
-//import Img from '@/components/images/image';
+import Img from '@/components/images/image';
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -45,7 +45,7 @@ const PostCoverImage = styled.img`
 
 export default function CoverImage({ title, url, slug, caption, hero }) {
   
-  const imageUrl = url ? `${url.startsWith('/') ? "https://api.mxd.codes" : ''}${url}` : config.siteLogo
+  const imageUrl = url ? `${url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${url}` : config.siteLogo
 
   return (
     <div className="">

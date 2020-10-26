@@ -1,9 +1,8 @@
 import Router from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
-import { GlobalStyle } from '@/styles/global.js'
-import ThemeProvider from 'styled-components'
+import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
 import "prismjs/themes/prism-tomorrow.css";
 import 'lazysizes';

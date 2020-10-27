@@ -29,6 +29,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-offline": "^5.0.2",
     "next-optimized-images": "^3.0.0-canary.10",
+    "polished": "^4.0.3",
     "prettier": "^2.1.2",
     "prismjs": "^1.21.0",
     "react": "^16.13.1",

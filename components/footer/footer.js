@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react"
 import { getAllPosts } from '@/lib/data/api/cms'
 import { format } from 'date-fns'
 import media from 'styled-media-query';
+import { darken } from 'polished';
 // styled components
 
 const FooterContainer = styled.div`
@@ -24,19 +25,6 @@ const FooterTopContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-`
-
-const FooterTopWrapper = styled.div`
-  margin: var(--space);
-
-`
-const FooterColumn = styled.div`
-  margin: var(--space);
-  width: 20%;
-  color: var(--gray-light);
-  ${media.lessThan('medium')`
-    width: 100%;
-  `}
 `
 
 const FooterPostColumn = styled.div`
@@ -105,7 +93,7 @@ const FooterNavItem = styled.li`
 `
 
 const FooterSubContainer = styled.div`  
-  background-color: var(--gray-dark);
+  background-color: #040a0f;
   color: var(--gray-light);
 `
 

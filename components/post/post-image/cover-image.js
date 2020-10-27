@@ -29,7 +29,7 @@ const PreviewCoverImage = styled(Image)`
     props.hero ? "400px" : '200px'};
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 400px !important;
+    height: 200px !important;
     object-fit: cover;
   `}
 `
@@ -38,7 +38,7 @@ const PostCoverImage = styled(Image)`
   height: 400px;
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 400px;
+    height: 200px;
   `}
 `
 

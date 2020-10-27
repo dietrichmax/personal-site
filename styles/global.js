@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     line-height: 1.6;
-    color: var(--text-dark)
+    color: var(--text-color)
   }
   strong {
     font-weight: bold;
@@ -78,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-font: open sans,sans-serif;
     --link-color: var(--text-dark);
     --link-color-hover: var(--text-light);
-    --text-color: var(--gray);
+    --text-color: var(--primary-color);
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1040px;

@@ -80,6 +80,7 @@ const TagItem = styled.a`
   transition: 0.2s;
   cursor: pointer;
   font-size: 1.3rem;
+  color: var(--gray-extra-light);
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
   background-color: var(--primary-color);

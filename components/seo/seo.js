@@ -79,7 +79,7 @@ const SEO = ({
       <link rel="canonical" href={`${config.siteUrl}/${slug}`} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <html lang="en">
+      <html lang="en" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       {/* Schema.org tags */}
       <script type="application/ld+json">

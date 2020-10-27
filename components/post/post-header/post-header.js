@@ -1,6 +1,6 @@
 import Author from '@/components/post/post-author/post-author'
 import PostTitle from '@/components/title/content-title'
-//import PostTags from '@/components/post/post-tags/post-tags'
+import TagItem from '@/components/post/post-tags/post-tags'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
@@ -10,24 +10,6 @@ const TagsWrapper = styled.div`
   display: block;
   margin-top: var(--space);
   margin-bottom: var(--space);
-`
-
-const TagItem = styled.a`
-  display: inline-block;
-  text-transform: uppercase;
-  transition: 0.2s;
-  cursor: pointer;
-  font-size: 1.3rem;
-  padding: calc(var(--space-sm)*0.2) var(--space-sm);
-  margin-right: var(--space-sm);
-  background-color: var(--gray-light);
-  color: var(--gray-dark);
-  border-radius: var(--space-sm);
-  :hover {
-    background-color: ${props =>
-      props.color ? props.color : '#798ad0'};
-    color: white;
-  }
 `
 
 const PostHeaderWrapper = styled.div`

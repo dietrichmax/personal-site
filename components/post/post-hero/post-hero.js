@@ -47,6 +47,7 @@ const HeroTitle = styled.h2`
   padding-bottom: calc(var(--space-sm) *0.5);
   border-bottom: 1px solid var(--secondary-color);
   ${media.lessThan('medium')`
+    border-bottom: 1px solid var(--gray-light);
     position: relative;
     color: var(--gray);
     max-width: 100%;

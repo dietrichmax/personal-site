@@ -25,13 +25,7 @@ const Title = styled.h2`
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: var(--space-sm);
-  color: var(--gray);
-`
-const Separator = styled.div`
-  border-bottom: 2px solid  ${props =>
-    props.color ? props.color : '#798ad0'};
-  width: 10%;
-  margin: auto;
+  color: var(--primary-color);
 `
 
 const MoreContainer = styled.div`
@@ -92,7 +86,6 @@ export default function Index({ allPosts, allTags }) {
 
               <TitleWrapper>
                   <Title>Search by Topic</Title>
-                  <Separator/>
               </TitleWrapper>
 
               <PostTags tags={allTags}/>

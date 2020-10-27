@@ -25,14 +25,14 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  color: rgb(62, 69, 76);
+  color: var(--primary-color);
   font-size: 1.2em;
   line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--gray-light);
   :hover {
-    color: var(--primary-color);
+    color: var(--secondary-color);;
   }
 `;
 

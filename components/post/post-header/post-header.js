@@ -1,6 +1,5 @@
 import Author from '@/components/post/post-author/post-author'
 import PostTitle from '@/components/title/content-title'
-import TagItem from '@/components/post/post-tags/post-tags'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
@@ -27,7 +26,22 @@ const DateWrapper = styled.div`
     padding-right: 1rem;
   `}
 `
-
+const TagItem = styled.a`
+  display: inline-block;
+  text-transform: uppercase;
+  transition: 0.2s;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: calc(var(--space-sm)*0.2) var(--space-sm);
+  margin: calc(var(--space-sm)*0.5);
+  background-color: var(--gray-light);
+  border-radius: var(--space-sm);
+  :hover {
+    background-color: ${props =>
+      props.color ? props.color : '#798ad0'};
+    color: white;
+  }
+`
 export default function PostHeader({ postData }) {
 
   

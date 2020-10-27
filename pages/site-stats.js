@@ -114,12 +114,10 @@ const Date = styled.p`
   width: 100%;
   text-align: center;
 `
-const PageViewsInfo = styled.a`
-  font-size: 1.3rem;
-`
 
 const StatsContainer = styled.p`
   font-size: 2rem;
+  margin-bottom: var(--space);
 `
 
 const Stats = styled.span`
@@ -193,11 +191,13 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <PageTitle>Site statistics</PageTitle>
           <Container>
             <GeneralStats>
-              {live > 1 ?
-              <StatsContainer>You are with <Stats>{live - 1}</Stats> others on this site.</StatsContainer> :
-              <StatsContainer>At the moment you are the only person on this site.</StatsContainer>
-              }
-              <StatsContainer>In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.</StatsContainer>
+              <StatsContainer>
+                {live > 1 ?
+                <span>"You are with <Stats>{live - 1}</Stats> others on this site."</span> :
+                <span>At the moment you are the only person on this site.</span>
+                }
+                In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.
+              </StatsContainer>
               <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
               <StatsContainer>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
               Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>

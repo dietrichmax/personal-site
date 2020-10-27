@@ -2,7 +2,7 @@ import Date from '../../date/date'
 import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
-import TagItem from '@/components/post/post-tags/post-tags
+import TagItem from '@/components/post/post-tags/post-tags';
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;

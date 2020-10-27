@@ -32,11 +32,6 @@ const GeneralStats = styled.div`
   line-height: 2;
 `
 
-const GenerationTime = styled.span`
-  color: ${props =>
-    props.children < 0.5 ? "#166416" : "red"};
-`
-
 const ViewsContainer = styled.div`
   max-width: 1200px;
   margin: var(--space-lg) auto;
@@ -123,6 +118,10 @@ const PageViewsInfo = styled.a`
   font-size: 1.3rem;
 `
 
+const Stats = styled.span`
+  color: var(--secondary-color)
+`
+
 export default function Recruiting({ lastViews, liveViews, actions }) {
   const [posts, postsCount] = useState("")
   const [tags, tagsCount] = useState("")
@@ -191,13 +190,13 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <Container>
             <GeneralStats>
               {live > 1 ?
-              <p>You are with {live - 1} others on this site.</p> :
+              <p>You are with <Stats>{live - 1}</Stats> others on this site.</p> :
               <p>At the moment you are the only person on this site.</p>
               }
-              <p>In {stats.year} this site was viewed {stats.overallPageViews} times.</p>
-              <p>Overall i have published {posts} articles on this site with {tags} different topics and {subscribers} awsome persons have subscribed to my newsletter.</p>
-              <p>There were {stats.overallOutlinks} clicks on external link and {stats.overallDownloads} files have been downloaded. 
-              Loading time for a page takes in average <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> seconds.</p>
+              <p>In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.</p>
+              <p>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</p>
+              <p>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
+              Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</p>
             </GeneralStats>
             <ViewsContainer>
               <Title>Views in the past 30 days</Title>

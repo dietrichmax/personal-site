@@ -2,6 +2,7 @@ import Date from '../../date/date'
 import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
+import TagItem from '@/components/post/post-tags/post-tags
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -51,24 +52,6 @@ const TagsWrapper = styled.div`
   display: block;
   margin-top: var(--space);
   margin-bottom: var(--space);
-`
-
-const TagItem = styled.a`
-  display: inline-block;
-  text-transform: uppercase;
-  transition: 0.2s;
-  cursor: pointer;
-  font-size: 1.3rem;
-  padding: calc(var(--space-sm)*0.2) var(--space-sm);
-  margin-right: var(--space-sm);
-  background-color: var(--gray-light);
-  color: var(--gray-dark);
-  border-radius: var(--space-sm);
-  :hover {
-    background-color: ${props =>
-      props.color ? props.color : '#798ad0'};
-    color: white;
-  }
 `
 
 export default function PostPreview({

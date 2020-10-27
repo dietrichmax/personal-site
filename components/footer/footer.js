@@ -75,8 +75,9 @@ const FooterConnectColumn = styled.div`
   `}
 `
 
-const FooterTitle = styled.h4`
+const FooterTitle = styled.p`
   font-size: 1.75rem;
+  font-weight: 700;
   margin-bottom: var(--space-sm);
   padding-bottom: calc(var(--space-sm)*0.5);
   border-bottom: 1px solid var(--gray);

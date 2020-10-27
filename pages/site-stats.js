@@ -118,6 +118,10 @@ const PageViewsInfo = styled.a`
   font-size: 1.3rem;
 `
 
+const StatsContainer = styled.p`
+  font-size: 2rem;
+`
+
 const Stats = styled.span`
   color: var(--secondary-color)
 `
@@ -190,13 +194,13 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
           <Container>
             <GeneralStats>
               {live > 1 ?
-              <p>You are with <Stats>{live - 1}</Stats> others on this site.</p> :
-              <p>At the moment you are the only person on this site.</p>
+              <StatsContainer>You are with <Stats>{live - 1}</Stats> others on this site.</StatsContainer> :
+              <StatsContainer>At the moment you are the only person on this site.</StatsContainer>
               }
-              <p>In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.</p>
-              <p>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</p>
-              <p>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
-              Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</p>
+              <StatsContainer>In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.</StatsContainer>
+              <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
+              <StatsContainer>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
+              Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
             </GeneralStats>
             <ViewsContainer>
               <Title>Views in the past 30 days</Title>

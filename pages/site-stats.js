@@ -124,6 +124,9 @@ const PageViewsInfo = styled.a`
 `
 
 export default function Recruiting({ lastViews, liveViews, actions }) {
+  const [posts, postsCount] = useState("")
+  const [tags, tagsCount] = useState("")
+  const [subscribers, subscribersCount] = useState("")
   const router = useRouter()
   
   const α = 0.4;
@@ -154,7 +157,22 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
     })
   ));
   const stats = generalStats[0]
-
+  
+  useEffect(() => {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+    fetch('https://api.mxd.codes/posts/count', requestOptions)
+        .then(response => response.json())
+        .then(data => postsCount(data));
+    fetch('https://api.mxd.codes/tags/count', requestOptions)
+        .then(response => response.json())
+        .then(data => tagsCount(data));
+    fetch('https://api.mxd.codes/subscribers/count', requestOptions)
+        .then(response => response.json())
+        .then(data => subscribersCount(data))
+  }, []);
 
   return (
     <>
@@ -176,9 +194,10 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
               <p>You are with {live - 1} others on this site.</p> :
               <p>At the moment you are the only person on this site.</p>
               }
-              In {stats.year} this site was viewed {stats.overallPageViews} times. 
-              There were {stats.overallOutlinks} clicks on external link and {stats.overallDownloads} files have been downloaded. 
-              Loading time for a page takes in average <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> seconds.
+              <p>In {stats.year} this site was viewed {stats.overallPageViews} times.</p>
+              <p>Overall i have published {posts} articles on this site with {tags} different topics and {subscribers} awsome persons have subscribed to my newsletter.</p>
+              <p>There were {stats.overallOutlinks} clicks on external link and {stats.overallDownloads} files have been downloaded. 
+              Loading time for a page takes in average <GenerationTime>{stats.overallAvgTimeGeneration}</GenerationTime> seconds.</p>
             </GeneralStats>
             <ViewsContainer>
               <Title>Views in the past 30 days</Title>

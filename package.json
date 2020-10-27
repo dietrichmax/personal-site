@@ -42,7 +42,7 @@
     "remark-html": "11.0.2",
     "sharp": "^0.26.0",
     "slugify": "^1.4.5",
-    "styled-components": "^5.2.0",
+    "styled-components": "5.1.1",
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {}

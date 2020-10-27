@@ -87,7 +87,7 @@ const Column = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   height: ${props =>
     props.height ? `${props.height}px !important` : "0px"};
   border-top-right-radius: calc(var(--space-sm)*0.5);
@@ -195,7 +195,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                 {live > 1 ?
                 <span>"You are with <Stats>{live - 1}</Stats> others on this site."</span> :
                 <span>At the moment you are the only person on this site.</span>
-                }
+                }{' '}
                 In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.
               </StatsContainer>
               <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>

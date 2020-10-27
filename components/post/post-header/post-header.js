@@ -17,7 +17,6 @@ const TagItem = styled.a`
   text-transform: uppercase;
   transition: 0.2s;
   cursor: pointer;
-  font-weight: 600;
   font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin-right: var(--space-sm);

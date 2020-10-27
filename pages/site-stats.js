@@ -97,7 +97,7 @@ const Column = styled.div`
   }
 `
 const DateContainer = styled.div`
-  margin: 0 auto var(--space-lg) auto;
+  margin: 0 auto var(--space) auto;
   justify-content: center;
   display: flex;
   ${media.lessThan('large')`
@@ -226,7 +226,6 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                   </DateWrapper>
                 ))}
                 </DateContainer>
-              <Credits>Data via <a title="Matomo Reporting API" href="https://developer.matomo.org/api-reference/reporting-api">Matomo Reporting API</a>.</Credits>
             </ViewsContainer>
           </Container>
           </>

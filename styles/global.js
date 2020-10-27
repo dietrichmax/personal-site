@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: var(--body-bg);
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    font-family: -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-size: 1.5rem;
     font-display: block !important;
   }
@@ -87,5 +87,6 @@ const GlobalStyle = createGlobalStyle`
     --space-lg: 3rem;
   }
 `
+
 export default GlobalStyle
   

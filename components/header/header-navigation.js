@@ -23,10 +23,9 @@ const NavigationLink = styled.a`
   margin-left: var(--space);
   font-size: 1.7rem;
   cursor: pointer;
-  border-bottom: 3px solid var(--primary-color;
   transition: 0.3s;
   :hover {
-      border-bottom: 3px solid #fff;
+      color: var(--secondary-color);
   }
 `;
 

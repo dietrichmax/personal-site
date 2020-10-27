@@ -27,6 +27,9 @@ const NavTitle = styled.div`
   padding-top: var(--space-sm);
   color: var(--gray-light);
   font-size: 2rem;
+  :hover {
+      color: var(--secondary-color);
+  }
 `
 
 

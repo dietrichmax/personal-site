@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const HeroWrapper = styled.div`
-  border-bottom: 1px solid var(--gray-light);
 `
 
 const CardItemWrapper = styled.section`
@@ -46,8 +45,8 @@ const HeroTitle = styled.h2`
   line-height: 1.35;
   margin-bottom: calc(var(--space-sm) *0.5);
   padding-bottom: calc(var(--space-sm) *0.5);
+  border-bottom: 1px solid var(--secondary-color);
   ${media.lessThan('medium')`
-    border-bottom: 1px solid var(--gray-light);
     position: relative;
     color: var(--gray);
     max-width: 100%;

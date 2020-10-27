@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 const _ = require("lodash");
 
-const TagsWrapper = styled.div`
+export const TagsWrapper = styled.div`
   display: block;
   margin: 0 var(--space) var(--space-lg) var(--space);
   padding: var(--space-lg);
@@ -11,7 +11,7 @@ const TagsWrapper = styled.div`
   border: 1px solid var(--gray-light);
 `
 
-const TagItem = styled.a`
+export const TagItem = styled.a`
   display: inline-block;
   text-transform: uppercase;
   transition: 0.2s;

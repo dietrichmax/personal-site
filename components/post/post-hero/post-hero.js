@@ -3,7 +3,7 @@ import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import TagItem from '@/components/post/post-tags/post-tags
+import TagItem from '@/components/post/post-tags/post-tags';
 
 const HeroWrapper = styled.div`
   border-bottom: 1px solid var(--gray-light);

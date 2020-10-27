@@ -279,5 +279,8 @@ const redirects = {async redirects() {
 module.exports = withPlugins([
   [mdx],
   redirects,
-  // more config
+  {images: {
+    deviceSizes: [320, 420, 768, 1024, 1200],
+    domains: ['api.mxd.codes'],
+  }}
 ]);

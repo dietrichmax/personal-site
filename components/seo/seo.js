@@ -7,7 +7,6 @@ const SEO = ({
   image,
   slug,
   date,
-  lang,
   ogType,
   postSEO
 

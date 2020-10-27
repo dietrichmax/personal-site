@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from "../../../lib/data/SiteConfig";
-import Img from '@/components/images/image';
+import Image from 'next/image'
 
 const Caption = styled.p`
   text-transform: uppercase;
@@ -18,7 +18,7 @@ const PostCoverImageWrapper = styled.div`
 const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
-const PreviewCoverImage = styled.img`
+const PreviewCoverImage = styled(Image)`
   border-top-left-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
@@ -29,17 +29,16 @@ const PreviewCoverImage = styled.img`
     props.hero ? "400px" : '200px'};
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 200px !important;
+    height: 400px !important;
     object-fit: cover;
   `}
 `
 
-const PostCoverImage = styled.img`
-  width: 100%;
+const PostCoverImage = styled(Image)`
   height: 400px;
   object-fit: cover;
   ${media.lessThan('large')`
-    height: 200px;
+    height: 400px;
   `}
 `
 
@@ -53,7 +52,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
         <PreviewCoverImageWrapper>
           <Link as={`/articles/${slug}`} href="/articles/[slug]">
               <a aria-label={title}>
-                <PreviewCoverImage className="lazyload" data-src={imageUrl} alt={title} title={title} hero={hero} />
+                <PreviewCoverImage src={imageUrl} alt={title} title={title} hero={hero} width="370" height="200" />
               </a>
           </Link>
         </PreviewCoverImageWrapper>
@@ -61,7 +60,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
       ) : (
 
         <PostCoverImageWrapper>
-            <PostCoverImage className="lazyload" data-src={imageUrl} alt={title} title={title} />
+            <PostCoverImage src={imageUrl} alt={title} title={title} width="1920" height="400" />
             <Caption>Bildquelle: {caption} (bearbeitet)</Caption>
         </PostCoverImageWrapper>
         

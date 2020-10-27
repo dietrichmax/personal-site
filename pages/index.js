@@ -70,7 +70,7 @@ export default function Index({ allPosts, allTags }) {
               slug=""
             />
 
-            <PostHero heroData={heroPost} hero/>
+            <PostHero post={heroPost}/>
 
             <IndexPageContainer>
 

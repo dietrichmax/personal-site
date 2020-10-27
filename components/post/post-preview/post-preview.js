@@ -8,7 +8,7 @@ const Card = styled.div`
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
   background-color: #fff;
-  max-width: 400px;
+  max-width: 370px;
   transition: 0.2s;
 `
 

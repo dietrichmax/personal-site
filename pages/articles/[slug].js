@@ -101,9 +101,7 @@ export default function Post({ post, morePosts }) {
               image={post.coverImage.coverImage.url}
               slug={post.slug}
               date={post.date}
-              lang={post.lang}
               ogType="article"
-              postSEO
             />
             <article ref={target} >
               <ReadingProgress target={target} />

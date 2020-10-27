@@ -1,8 +1,8 @@
 import Date from '../../date/date'
-import CoverImage from '../post-image/cover-image'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import Image from 'next/image'
 
 const HeroWrapper = styled.div`
 `
@@ -11,8 +11,11 @@ const CardItemWrapper = styled.section`
   height: 100%;
 `;
 
-const HeroImg = styled.div`
-`;
+const HeroImg = styled(Image)`
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+`
 
 const HeroInfo = styled.div`    
   position: relative;
@@ -91,14 +94,21 @@ const TagItem = styled.a`
     color: white;
   }
 `
-export default function PostHero({heroData, hero}) {
+export default function PostHero({post}) {
 
-  const { title, coverImage, date, excerpt, slug, tags } = heroData
+  const { title, coverImage, date, excerpt, slug, tags } = post
+
+  const imageUrl = coverImage.coverImage.url ? `${coverImage.coverImage.url.startsWith('/') ? 
+    process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${coverImage.coverImage.url}` : 
+    config.siteLogo
+
   return (
     <HeroWrapper>
-        <HeroImg>
-          <CoverImage slug={slug} title={title} url={coverImage.coverImage.url} hero={hero}/>
-        </HeroImg>
+            <Link as={`/articles/${slug}`} href="/articles/[slug]">
+                <a aria-label={title}>
+                  <HeroImg src={imageUrl} alt={title} title={title} width="1920" height="400" priority/>
+                </a>
+            </Link>
         <HeroInfo>
           <HeroMeta>
             <HeroTitle>

@@ -5,14 +5,9 @@ import media from 'styled-media-query';
 const ListWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space);
-  ${media.greaterThan('small')`
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  `}
-  ${media.greaterThan('medium')`
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  `}
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;
 
 

@@ -121,7 +121,7 @@ const StatsContainer = styled.p`
 `
 
 const Stats = styled.span`
-  color: var(--secondary-color)
+  color: var(--secondary-color);
 `
 
 export default function Recruiting({ lastViews, liveViews, actions }) {
@@ -198,7 +198,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                 }{' '}
                 In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.
               </StatsContainer>
-              <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics and <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
+              <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics. <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
               <StatsContainer>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
               Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
             </GeneralStats>

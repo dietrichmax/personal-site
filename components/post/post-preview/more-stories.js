@@ -6,7 +6,6 @@ const ListWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space);
   ${media.greaterThan('small')`
-    margin: var(--space) auto;
         display: grid;
         grid-gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

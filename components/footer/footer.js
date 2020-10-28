@@ -88,7 +88,7 @@ const FooterNavItem = styled.li`
   transition: 0.2s;
   margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
-    color: var(--gray-extra-light);
+    color: var(--secondary-color);
   }
 `
 

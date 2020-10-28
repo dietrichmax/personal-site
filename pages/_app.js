@@ -22,7 +22,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <link rel="preconnect" href="https://api.mxd.codes">
+          <link rel="preconnect" href="https://api.mxd.codes"/>
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

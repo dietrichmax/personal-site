@@ -9,7 +9,7 @@ const ListWrapper = styled.div`
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   ${media.lessThan('medium')`
-    margin-top: var(--space-lg);
+    margin: var(--space-lg) var(--space);
 `}
 `;
 

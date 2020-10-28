@@ -80,6 +80,7 @@ const SEO = ({
       <meta name="image" content={image} />
       <html lang="en" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="apple-touch-icon" href="/logos/android-chrome-192x192.png"/>
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}

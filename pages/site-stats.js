@@ -9,6 +9,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import media from 'styled-media-query';
 import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/lib/data/api/analytics'
+import { getPostsCount, getTagsCount, getSubscribersCount } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 
 
@@ -127,12 +128,9 @@ const Stats = styled.span`
   color: var(--secondary-color);
 `
 
-export default function Recruiting({ lastViews, liveViews, actions }) {
-  const [posts, postsCount] = useState("")
-  const [tags, tagsCount] = useState("")
-  const [subscribers, subscribersCount] = useState("")
+export default function Recruiting({ lastViews, liveViews, actions, postsCount, tagsCount, subscribersCount }) {
   const router = useRouter()
-  
+
   const α = 0.4;
   const B = 1000;
   let pageViews = []
@@ -161,22 +159,6 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
     })
   ));
   const stats = generalStats[0]
-  
-  useEffect(() => {
-    const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    };
-    fetch('https://api.mxd.codes/posts/count', requestOptions)
-        .then(response => response.json())
-        .then(data => postsCount(data));
-    fetch('https://api.mxd.codes/tags/count', requestOptions)
-        .then(response => response.json())
-        .then(data => tagsCount(data));
-    fetch('https://api.mxd.codes/subscribers/count', requestOptions)
-        .then(response => response.json())
-        .then(data => subscribersCount(data))
-  }, []);
 
   return (
     <>
@@ -201,7 +183,7 @@ export default function Recruiting({ lastViews, liveViews, actions }) {
                 }{' '}<br/>
                 In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.
               </StatsContainer>
-              <StatsContainer>Overall i have published <Stats>{posts}</Stats> articles on this site with <Stats>{tags}</Stats> different topics. <Stats>{subscribers}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
+              <StatsContainer>Overall i have published <Stats>{postsCount}</Stats> articles on this site with <Stats>{tagsCount}</Stats> different topics. <Stats>{subscribersCount}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
               <StatsContainer>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
               Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
             </GeneralStats>
@@ -242,9 +224,19 @@ export async function getServerSideProps() {
   const lastViews = (await getMatomoPageViews()) || []
   const actions = (await getMatomoActions()) || []
   const liveViews = (await getMatomoLiveCounter()) || []
+  const postsCount = (await getPostsCount()) || []
+  const tagsCount = (await getTagsCount()) || []
+  const subscribersCount = (await getSubscribersCount()) || []
 
   return {
-    props: { lastViews, liveViews, actions }
+    props: { 
+      lastViews, 
+      liveViews, 
+      actions,
+      postsCount,
+      tagsCount,
+      subscribersCount
+    }
   }
 }
 

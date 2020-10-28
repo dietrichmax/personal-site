@@ -218,12 +218,3 @@ export default function Footer() {
   )
 }
 
-export async function getStaticProps() {
-  const allPosts = (await getAllPosts()) || []
-  
-  return {
-    revalidate:  86400,
-    props: { allPosts },
-  }
-}
-

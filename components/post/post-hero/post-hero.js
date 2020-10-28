@@ -41,8 +41,7 @@ const HeroMeta = styled.div`
     position: relative;
     color: var(--gray);
     max-width: 100%;
-    background-color: #fff;
-    padding: 0;
+    background-color: var(--body-bg);
 `}
 `;
 

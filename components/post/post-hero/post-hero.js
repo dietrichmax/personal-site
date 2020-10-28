@@ -11,10 +11,13 @@ const CardItemWrapper = styled.section`
   height: 100%;
 `;
 
-const HeroImg = styled(Image)`
+const HeroImg = styled.img`
   width: 100%;
   height: 400px !important;
   object-fit: cover;
+  ${media.lessThan('medium')`
+    height: 200px !important;
+`}
 `
 
 const HeroInfo = styled.div`    

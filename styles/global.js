@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-dark: #3f3f40;
     --primary-color: #0a1924;
     --secondary-color: #c85517;
-    --thirdy-color: #1d4766;
+    --thirdy-color: #618cac;
     --body-bg: var(--gray-extra-light); 
     --bg-light: var(--gray-extra-light);
     --bg-dark: var(--gray-dark);

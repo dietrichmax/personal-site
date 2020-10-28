@@ -13,7 +13,7 @@ const CardItemWrapper = styled.section`
 
 const HeroImg = styled(Image)`
   width: 100%;
-  height: 400px;
+  height: 400px !important;
   object-fit: cover;
 `
 

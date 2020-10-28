@@ -41,7 +41,7 @@ const HeroMeta = styled.div`
     position: relative;
     color: var(--gray);
     max-width: 100%;
-    background-color: var(--body-bg);
+    background-color: var(--bg-light);
 `}
 `;
 
@@ -56,7 +56,6 @@ const HeroTitle = styled.h2`
     position: relative;
     color: var(--gray);
     max-width: 100%;
-    background-color: #fff;
     padding-bottom: calc(var(--space-sm) *0.5);
 `}
 `;

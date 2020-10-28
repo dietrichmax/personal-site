@@ -74,7 +74,7 @@ export default function Index({ allPosts, allTags }) {
               slug=""
             />
             <Hero>
-            <Title>Welcome to my corner in the web! 👋</Title>
+            <Title>Welcome to my corner of the web! 👋</Title>
             </Hero>
             <IndexPageContainer>
 

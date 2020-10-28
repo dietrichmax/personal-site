@@ -1,5 +1,6 @@
 
 import Router from "next/router";
+import Head from 'next/head'
 import React, { useEffect } from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
@@ -20,6 +21,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
+        <Head>
+          <link rel="preconnect" href="https://api.mxd.codes">
+        </Head>
         <GlobalStyle/>
         <Component {...pageProps} />
       </>

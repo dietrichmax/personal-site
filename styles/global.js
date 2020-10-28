@@ -77,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     --border-dark: var(--gray-dark);
     --secondary-font: open sans,sans-serif;
     --link-color: var(--text-dark);
-    --link-color-hover: var(--text-light);
+    --link-color-hover: var(--secondary-color);
     --text-color: var(--primary-color);
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);

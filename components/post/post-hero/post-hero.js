@@ -42,8 +42,8 @@ const HeroMeta = styled.div`
     color: var(--gray);
     max-width: 100%;
     background-color: var(--bg-light);
-    border-top-right-radius: none;
-    border-top-left-radius: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 `}
 `;
 

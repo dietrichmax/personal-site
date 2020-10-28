@@ -19,12 +19,18 @@ const TitleWrapper = styled.div`
   margin: var(--space) auto var(--space) auto;
 `
 
-const Title = styled.h2`
+const Hero = styled.div`
+  height: 400px;
+  background-color: var(--secondary-color);
+`
+
+
+const Title = styled.h1`
   max-width: auto;
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: var(--space-sm);
-  color: var(--primary-color);
+  font-size: 5rem;
+  padding-top: 9rem;
+  color: var(--gray-extra-light);
 `
 
 const MoreContainer = styled.div`
@@ -67,7 +73,9 @@ export default function Index({ allPosts, allTags }) {
               title="Home"
               slug=""
             />
-
+            <Hero>
+            <Title>Welcome to my personal site! 👋</Title>
+            </Hero>
             <IndexPageContainer>
 
               <MoreStories posts={posts} />

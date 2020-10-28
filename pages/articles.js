@@ -11,6 +11,7 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PostTags from '@/components/post/post-tags/post-tags'
+import PostHero from '@/components/post/post-hero/post-hero'
 
 const BlogPageContainer = styled.div`
   margin: auto;
@@ -20,6 +21,10 @@ const BlogPageContainer = styled.div`
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
   
+  const heroPost = allPosts[0]
+  const posts = allPosts.slice(1)
+  const morePosts = allPosts.slice(7)
+
   return (
     <>
       <Layout>
@@ -33,12 +38,13 @@ export default function Blog({ allPosts, allTags }) {
               title="Articles"
               slug="articles"
             />
-            <PageTitle>Articles</PageTitle>
+            
+            <PostHero post={heroPost}/>
             <BlogPageContainer >
 
               <PostTags tags={allTags} />
 
-              {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+              <MoreStories posts={posts}/>
 
             </BlogPageContainer>
           </>

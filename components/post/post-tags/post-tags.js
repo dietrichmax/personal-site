@@ -4,7 +4,7 @@ const _ = require("lodash");
 
 export const TagsWrapper = styled.div`
   display: block;
-  margin: 0 var(--space) var(--space-lg) var(--space);
+  margin: var(--space) var(--space) var(--space-lg) var(--space);
   padding: var(--space-lg);
   text-align: center;
   background-color: #fff;

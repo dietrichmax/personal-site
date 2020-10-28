@@ -9,7 +9,6 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import PostHero from '@/components/post/post-hero/post-hero'
 import PostTags from '@/components/post/post-tags/post-tags'
 
 const IndexPageContainer = styled.div`
@@ -53,8 +52,7 @@ const MoreArticles = styled.a`
 export default function Index({ allPosts, allTags }) {
   const router = useRouter()
 
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1, 7)
+  const posts = allPosts.slice(0, 6)
 
   return (
     <>
@@ -70,11 +68,9 @@ export default function Index({ allPosts, allTags }) {
               slug=""
             />
 
-            <PostHero post={heroPost}/>
-
             <IndexPageContainer>
 
-              <MoreStories posts={morePosts} />
+              <MoreStories posts={posts} />
               <MoreContainer>
                 <Link href={`/articles`} passHref>
                   <MoreArticles title="All Articles">All Articles{' '}</MoreArticles>

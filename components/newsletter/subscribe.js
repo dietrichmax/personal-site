@@ -13,7 +13,7 @@ const NewsletterWrapper = styled.label`
     padding: var(--space);
     justify-content: center;
     margin: auto;
-    background-color: #fff;
+    background-color: var(--bg-light);
     border: 1px solid var(--gray-light);;
 `
 const DescriptionWrapper = styled.div`

@@ -36,7 +36,6 @@ const GeneralStats = styled.div`
 const ViewsContainer = styled.div`
   max-width: 1200px;
   margin: var(--space-lg) auto;
-  background-color: #fff;
   padding: var(--space);
   border-bottom: 3px solid var(--gray-light);
   border: 1px solid var(--gray-light);
@@ -59,7 +58,7 @@ cursor: pointer;
   position: relative;
   margin-right: calc(var(--space-sm)*0.3);
   width: 100%;
-  background-color: var(--gray-extra-light);
+  background-color: var(--gray-light);
   :before {
     content: attr(data-tip);
     font-size: 1.2rem;

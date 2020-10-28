@@ -7,7 +7,7 @@ const Card = styled.div`
   margin: 0 auto var(--space) auto;
   border: 1px solid var(--gray-light);
   border-radius: 0.75rem;
-  background-color: #fff;
+  background-color: var(--bg-light);
   max-width: 370px;
   transition: 0.2s;
 `
@@ -50,7 +50,7 @@ const CardItemDescription = styled.div`
 const TagsWrapper = styled.div`
   display: block;
   margin-top: var(--space);
-  margin-bottom: var(--space);
+  margin-bottom: var(--space-sm);
 `
 
 const TagItem = styled.a`

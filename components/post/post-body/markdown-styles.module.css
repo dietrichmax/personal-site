@@ -1,8 +1,4 @@
 
-.markdown  {
-  background-color: #fff;
-}
-
 .markdown a {
   color: var(--gray-dark);
   border-bottom: 1px solid var(--primary-color);

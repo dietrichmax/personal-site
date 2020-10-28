@@ -88,10 +88,6 @@ export default function Index({ allPosts, allTags }) {
 
             <IndexPageContainer>
 
-              <TitleWrapper>
-                  <Title>Search by Topic</Title>
-              </TitleWrapper>
-
               <PostTags tags={allTags}/>
 
             </IndexPageContainer>

@@ -124,6 +124,10 @@ const FooterSubContainerContentRight = styled.div`
   `}
 `
 
+const Heart = styled.span`
+  color: transparent;  
+  text-shadow: 0 0 0 var(--gray);
+`
 export default function Footer() {
   const [posts, setPosts] = useState("")
 
@@ -210,7 +214,7 @@ export default function Footer() {
             Copyright © {format(new Date(), "yyyy")} Max Dietrich. All Rights Reserved.
           </FooterSubContainerContentLeft>
           <FooterSubContainerContentRight>
-          Made with ❤️ by MXD.
+          Made with <Heart>❤️</Heart> by MXD.
           </FooterSubContainerContentRight>
         </FooterSubContainerContent>
       </FooterSubContainer>

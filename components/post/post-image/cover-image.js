@@ -18,7 +18,7 @@ const PostCoverImageWrapper = styled.div`
 const PreviewCoverImageWrapper = styled.div`
   display: block;
 `
-const PreviewCoverImage = styled(Image)`
+const PreviewCoverImage = styled.img`
   border-top-left-radius: ${props =>
     props.hero ? "none" : "0.75rem" };
   border-top-right-radius: ${props =>
@@ -34,7 +34,7 @@ const PreviewCoverImage = styled(Image)`
   `}
 `
 
-const PostCoverImage = styled(Image)`
+const PostCoverImage = styled.img`
   height: 400px;
   object-fit: cover;
   ${media.lessThan('large')`

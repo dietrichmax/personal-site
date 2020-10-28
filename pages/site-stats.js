@@ -87,7 +87,7 @@ const Column = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--gray);
   height: ${props =>
     props.height ? `${props.height}px !important` : "0px"};
   border-top-right-radius: calc(var(--space-sm)*0.5);

@@ -84,7 +84,7 @@ const redirects = {async redirects() {
     },
     {
       source: '/gis/srtm-download',
-      destination: '/blog/einfacher-download-fuer-30-meter-srtm-tiles',
+      destination: '/articles',
       permanent: true
     },
     {
@@ -119,7 +119,7 @@ const redirects = {async redirects() {
     },
     {
       source: '/gis/gis-influencer',
-      destination: '/blog/die-bekanntesten-geospatial-und-gis-influencers',
+      destination: '/articles',
       permanent: true
     },
     {
@@ -203,11 +203,6 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
-      source: '/web-development/gatsby-js-google-adsense',
-      destination: '/blog/google-adsense-auf-einer-gatsby-js-seite-integrieren',
-      permanent: true
-    },
-    {
       source: '/web-development/statische-website-aws-cloudfront',
       destination: '/blog/statische-webseite-mit-eigener-domain-aws-s3-und-cloud-front-hosten',
       permanent: true
@@ -271,7 +266,92 @@ const redirects = {async redirects() {
       source: '/articles/hochaufloesende-satellitenbilder-downloaden',
       destination: '/articles/satellite-imagery-download-high-resolution',
       permanent: true
-    }
+    },
+    {
+      source: '/articles/gis-vs-cad-unterschied-zwischen-gis-cad',
+      destination: '/articles/gis-vs-cad-the-difference-between-gis-and-cad',
+      permanent: true
+    },
+    {
+      source: '/articles/geographie-gis-blogs',
+      destination: '/articles/geographie-gis-blogs',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-freiwilligenarbeit',
+      destination: '/articles/gis-volunteering-make-the-world-a-better-place-with-gis',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-anwendungen-welche-gis-anwendungen-gibt-es',
+      destination: '/articles/gis-applications-which-gis-applications-are-there',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-geo-datenbank-managementsystem-optionen',
+      destination: '/articles/gis-and-geo-database-management-system-options',
+      permanent: true
+    },
+    {
+      source: '/articles/geo-gis-podcasts',
+      destination: '/articles/geo-and-gis-podcasts-to-stay-up-to-date',
+      permanent: true
+    },
+    {
+      source: '/articles/was-ist-ein-shapefile-shp-dbf-und-shx',
+      destination: '/articles/what-is-a-shapefile-shp-dbf-and-shx',
+      permanent: true
+    },
+    {
+      source: '/articles/openstreetmap-daten-shapefiles-downloaden',
+      destination: '/articles/download-open-street-map-data-as-shapefiles',
+      permanent: true
+    },
+    {
+      source: '/articles/open-source-web-gis-anwendungen',
+      destination: '/articles/open-source-web-gis-applications',
+      permanent: true
+    },
+    {
+      source: '/articles/fme-lizenz-kostenlos-fuer-den-privaten-gebrauch',
+      destination: '/articles/free-fme-licence-for-private-use',
+      permanent: true
+    },
+    {
+      source: '/articles/openlayers-web-map',
+      destination: '/articles/how-to-create-a-web-map-with-open-layers',
+      permanent: true
+    },
+    {
+      source: '/articles/fernerkundung-und-bildklassifikation',
+      destination: '/articles/remote-sensing-and-image-classification',
+      permanent: true
+    },
+    {
+      source: '/articles/erste-schritte-react-und-leaflet',
+      destination: '/articles/first-steps-with-leaflet-and-react',
+      permanent: true
+    },
+    {
+      source: '/articles/statische-webseite-mit-eigener-domain-aws-s3-und-cloud-front-hosten',
+      destination: '/articles/host-a-static-website-with-your-own-domain-aws-s3-and-cloud-front',
+      permanent: true
+    },
+    {
+      source: '/articles/pyqgis-layer-bilder-exportieren',
+      destination: '/articles/export-qgis-layers-as-images-with-py-qgis',
+      permanent: true
+    },
+    {
+      source: '/articles/integrate-google-ad-manager-with-adsense-in-your-gatsby-site',
+      destination: '/articles/using-google-adsense-with-gatsby-js',
+      permanent: true
+    },
+    {
+      source: '/articles/mailchimp-newsletter-gatsby-js',
+      destination: '/articles/how-to-create-a-mailchimp-newsletter-sign-up-form-for-your-gatsby-site',
+      permanent: true
+    }, 
   ]
 }};
 

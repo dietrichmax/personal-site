@@ -37,8 +37,6 @@ const ViewsContainer = styled.div`
   max-width: 1200px;
   margin: var(--space-lg) auto;
   padding: var(--space);
-  border-bottom: 3px solid var(--gray-light);
-  border: 1px solid var(--gray-light);
 `
 
 const RecentViewsContainer = styled.div`
@@ -54,7 +52,7 @@ const Credits = styled.div`
 `
 
 const ColumnWrapper = styled.div`
-cursor: pointer;
+  cursor: pointer;
   position: relative;
   margin-right: calc(var(--space-sm)*0.3);
   width: 100%;

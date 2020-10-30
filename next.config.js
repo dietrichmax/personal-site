@@ -382,7 +382,17 @@ const redirects = {async redirects() {
       destination: '/articles',
       permanent: true
     },
-      
+    {
+      source: '/articles/skalieren-und-zuschneiden-von-bildern-mit-python',
+      destination: '/articles/scaling-and-cropping-images-using-python',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-firmen-gis-dienstleister-verzeichnis',
+      destination: '/articles/',
+      permanent: true
+    },
+    
   ]
 }};
 

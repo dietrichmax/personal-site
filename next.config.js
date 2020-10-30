@@ -352,6 +352,11 @@ const redirects = {async redirects() {
       destination: '/articles/how-to-create-a-mailchimp-newsletter-sign-up-form-for-your-gatsby-site',
       permanent: true
     }, 
+    {
+      source: '/articles/geodaten-deutschland-online-download-kostenlos ',
+      destination: '/articles',
+      permanent: true
+    }, 
   ]
 }};
 

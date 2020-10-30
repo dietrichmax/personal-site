@@ -353,10 +353,36 @@ const redirects = {async redirects() {
       permanent: true
     }, 
     {
-      source: '/articles/geodaten-deutschland-online-download-kostenlos ',
+      source: '/articles/geodaten-deutschland-online-download-kostenlos',
       destination: '/articles',
       permanent: true
     }, 
+    {
+      source: '/articles/gk-utm-koordinaten-umrechnen-transformationstool',
+      destination: '/articles',
+      permanent: true
+    },  
+    {
+      source: '/articles/geodata-what-are-geodata',
+      destination: '/articles/what-are-geodata',
+      permanent: true
+    },
+    {
+      source: '/en/web-development/gatsby-js-google-adsense',
+      destination: '/articles/using-google-adsense-with-gatsby-js' ,
+      permanent: true
+    },
+    {
+      source: '/articles/gehalt-und-jobs-in-der-gis-branche',
+      destination: '/articles',
+      permanent: true
+    },
+    {
+      source: '/articles/gis-software-kategorien',
+      destination: '/articles',
+      permanent: true
+    },
+      
   ]
 }};
 

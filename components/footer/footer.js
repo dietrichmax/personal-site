@@ -152,7 +152,6 @@ export default function Footer() {
     { "name": "All Articles", "link":  "/articles" },
     { "name": "Site Stats", "link":  "/site-stats" },
     { "name": "About this site", "link":  "/about-this-site" },
-    { "name": "About me", "link":  "/about-me" },
     { "name": "Disclaimer & Imprint", "link":  "/disclaimer-and-imprint" }
   ]
 

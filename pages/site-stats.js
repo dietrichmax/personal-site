@@ -181,7 +181,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
               </StatsContainer>
               <StatsContainer>Overall i have published <Stats>{postsCount}</Stats> articles on this site with <Stats>{tagsCount}</Stats> different topics. <Stats>{subscribersCount}</Stats> awsome persons have subscribed to my newsletter.</StatsContainer>
               <StatsContainer>There were <Stats>{stats.overallOutlinks}</Stats> clicks on external link and <Stats>{stats.overallDownloads}</Stats> files have been downloaded. 
-              Loading time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
+              Generation time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
             </GeneralStats>
             <ViewsContainer>
               <Title>Views in the past 30 days</Title>

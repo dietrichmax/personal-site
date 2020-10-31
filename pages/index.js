@@ -88,9 +88,9 @@ export default function Index({ allPosts, allTags }) {
             </IndexPageContainer>
 
             <IndexPageContainer>
-              <SubTitle>All Topics</SubTitle>
+              {/*<SubTitle>All Topics</SubTitle>
               <PostTags tags={allTags}/>
-
+              */}
             </IndexPageContainer>
           </>
         )}

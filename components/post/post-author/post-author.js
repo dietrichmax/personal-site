@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SocialIcon } from 'react-social-icons';
+import Image from 'next/image'
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const AuthorName = styled.span`
   font-weight: bold;
 `
 
-const AuthorImg = styled.img`
+const AuthorImg = styled(Image)`
   display: block;
   border-radius: 50%;
   width: 50px;
@@ -38,6 +39,8 @@ export default function Author({ author }) {
         src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
         alt={username}
         title={username}
+        width="50"
+        height="50"
       />
       <AuthorMeta>
         <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>

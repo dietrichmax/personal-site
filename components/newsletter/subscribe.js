@@ -135,17 +135,17 @@ export default function Subscribe ({ noLabel, cb }) {
         <NewsletterWrapper>
           <DescriptionWrapper>
             <h2>
-              <Emoji text={"🎉"} />Super, Du bist angemeldet!<Emoji text={"🎉"} />
+              <Emoji text={"🎉"} />Awsome, your are signed up!<Emoji text={"🎉"} />
             </h2>
             <p>
-            Vielen Dank für dein Interesse an meinem Content.
+            Thank you for your interest in my content.
             </p>
           </DescriptionWrapper>
         </NewsletterWrapper>
       ) : (
         <NewsletterWrapper>
             <DescriptionWrapper>
-              Du möchtest wissen, wann es etwas Neues gibt? <br/> Dann abonniere den Newsletter, sowie bereits {count} weitere Abonnenten.<Emoji text={"🚀"} /> 
+              Would you like to know when there is something new? <br/> Then subscribe to the newsletter, as well as {count} other subscribers.<Emoji text={"🚀"} /> 
             </DescriptionWrapper>
 
           <InputWrapper>
@@ -165,7 +165,7 @@ export default function Subscribe ({ noLabel, cb }) {
               onClick={() => handleSubmit()}
               style={{ width: "100%" }}
             >
-              Abonnieren
+              Subscribe
             </Button>
           </ButtonWrapper>
         </NewsletterWrapper>

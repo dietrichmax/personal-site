@@ -39,8 +39,6 @@ const PostWrapper = styled.div`
 const MorePostsWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space) auto;
-  padding-left: var(--space);
-  padding-right: var(--space);
   border: 1px solid var(--gray-light);;
 `
 

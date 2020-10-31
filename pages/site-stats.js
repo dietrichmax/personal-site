@@ -174,7 +174,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
             <GeneralStats>
               <StatsContainer>
                 {live > 1 ?
-                <span>You are with <Stats>{live - 1}</Stats> others on this site.</span> :
+                <span>You are among <Stats>{live}</Stats> peoples on this site.</span> :
                 <span>At the moment you are the only person on this site.</span>
                 }{' '}<br/>
                 In <Stats>{stats.year}</Stats> this site was viewed <Stats>{stats.overallPageViews}</Stats> times.

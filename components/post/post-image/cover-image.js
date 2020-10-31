@@ -61,7 +61,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
 
         <PostCoverImageWrapper>
             <PostCoverImage src={imageUrl} alt={title} title={title} width="1920" height="400" />
-            <Caption>Bildquelle: {caption} (bearbeitet)</Caption>
+            <Caption>Bildquelle: {caption} (modified)</Caption>
         </PostCoverImageWrapper>
         
       )}

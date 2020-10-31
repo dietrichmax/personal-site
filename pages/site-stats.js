@@ -189,7 +189,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
               {pageViews.map((item, i) => (
                 <ColumnWrapper 
                   key={i}
-                  data-tip={`${item.views} Aufrufe`}>
+                  data-tip={`${item.views} Views`}>
                   <Column 
                     height={Math.floor((item.normalisedViews / normalisedMax) * 100)}
                   />

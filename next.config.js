@@ -4,6 +4,8 @@ const mdx = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
 
+const withPWA = require('next-pwa')
+
 // redirects
 const redirects = {async redirects() {
   return [
@@ -399,6 +401,11 @@ const redirects = {async redirects() {
 module.exports = withPlugins([
   [mdx],
   redirects,
+  withPWA({
+    pwa: {
+        dest: 'public'
+    },
+  }),
   {images: {
     deviceSizes: [320, 420, 768, 1024, 1200, 1920],
     imageSizes: [50, 368, 1920 ],

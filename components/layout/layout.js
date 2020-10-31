@@ -1,11 +1,12 @@
 import Container from './container'
-import Prism from "prismjs";
 import React,  { useEffect } from "react"
+const prism = require("prismjs")
+require('prismjs/components/prism-python');
 
 export default function Layout({ children }) {
-
+  
   useEffect(() => {
-    Prism.highlightAll();
+    prism.highlightAll();
   }, []);
 
   return (

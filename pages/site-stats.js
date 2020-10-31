@@ -29,7 +29,6 @@ const Title = styled.h2`
 const GeneralStats = styled.div`
   max-width: 600px;
   margin: var(--space-lg) auto;
-  font-weight: 600;
   line-height: 2;
 `
 

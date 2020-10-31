@@ -48,7 +48,6 @@ export default function Post({ page }) {
             />
             <PageTitle>{page.title}</PageTitle>
             <PageWrapper>
-              <Date dateString={page.date} />
               <PageBody content={page.content} />
             </PageWrapper>
           </>

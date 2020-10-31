@@ -12,6 +12,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PostTags from '@/components/post/post-tags/post-tags'
 import PostHero from '@/components/post/post-hero/post-hero'
+import SubTitle from '@/components/title/page-title'
 
 const BlogPageContainer = styled.div`
   margin: auto;

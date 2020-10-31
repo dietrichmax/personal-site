@@ -10,6 +10,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import PostTags from '@/components/post/post-tags/post-tags'
+import SubTitle from '@/components/title/page-title'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -25,7 +26,7 @@ const Hero = styled.div`
 `
 
 
-const Title = styled.h1`
+const Title = styled.h2`
   max-width: auto;
   text-align: center;
   font-size: 5rem;
@@ -73,11 +74,11 @@ export default function Index({ allPosts, allTags }) {
               title="Home"
               slug=""
             />
-            <Hero>
+            {/*<Hero>
             <Title>Welcome to my corner of the web! 👋</Title>
-            </Hero>
+            </Hero>*/}
             <IndexPageContainer>
-
+              <SubTitle>Recent Posts</SubTitle>
               <MoreStories posts={posts} />
               <MoreContainer>
                 <Link href={`/articles`} passHref>
@@ -87,7 +88,7 @@ export default function Index({ allPosts, allTags }) {
             </IndexPageContainer>
 
             <IndexPageContainer>
-
+              <SubTitle>All Topics</SubTitle>
               <PostTags tags={allTags}/>
 
             </IndexPageContainer>

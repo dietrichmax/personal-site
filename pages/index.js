@@ -37,11 +37,12 @@ const Title = styled.h2`
 const MoreContainer = styled.div`
   text-align: right;    
   cursor: pointer;
-  margin-right: var(--space);
   font-weight: 600;
   font-size: 1.3rem;
   color: var(--gray);
   text-decoration: none;
+  margin-bottom: var(--space);
+  margin-right: var(--space);
   ${media.lessThan('large')`
     margin-left: var(--space);
   `}
@@ -87,10 +88,6 @@ export default function Index({ allPosts, allTags }) {
               </MoreContainer>
             </IndexPageContainer>
 
-            <IndexPageContainer>
-              <SubTitle>Projects</SubTitle>
-              tbd
-            </IndexPageContainer>
           </>
         )}
         <Footer />

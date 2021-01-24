@@ -3,8 +3,8 @@ const withPlugins = require('next-compose-plugins');
 const mdx = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
-
 const withPWA = require('next-pwa')
+const isProd = process.env.NODE_ENV === "production";
 
 // redirects
 const redirects = {async redirects() {
@@ -403,7 +403,8 @@ module.exports = withPlugins([
   redirects,
   withPWA({
     pwa: {
-        dest: 'public'
+      disable: !isProd,
+      dest: 'public'
     },
   }),
   {images: {

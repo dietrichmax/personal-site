@@ -12,7 +12,6 @@ import { getMatomoActions, getMatomoLiveCounter, getMatomoPageViews } from '@/li
 import { getPostsCount, getTagsCount, getSubscribersCount } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 
-
 const Container = styled.div`
   ${media.lessThan('medium')`
     margin-left: var(--space);
@@ -124,10 +123,11 @@ const Stats = styled.span`
   color: var(--secondary-color);
 `
 
+
 export default function Recruiting({ lastViews, liveViews, actions, postsCount, tagsCount, subscribersCount }) {
   const router = useRouter()
 
-  const α = 0.4;
+  const α = 0.6;
   const B = 1000;
   let pageViews = []
   let normalisedViews = []
@@ -156,6 +156,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
   ));
   const stats = generalStats[0]
 
+  const test = [{ label: 'Apples', value: 10 }, { label: 'Oranges', value: 20 }];
   return (
     <>
       <Layout>

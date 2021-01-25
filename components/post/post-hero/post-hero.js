@@ -11,7 +11,7 @@ const CardItemWrapper = styled.section`
   height: 100%;
 `;
 
-const HeroImg = styled.img`
+const HeroImg = styled(Image)`
   width: 100%;
   height: 400px !important;
   object-fit: cover;

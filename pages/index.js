@@ -75,9 +75,9 @@ export default function Index({ allPosts, allTags }) {
               title="Home"
               slug=""
             />
-            <Hero>
+            {/*<Hero>
             <Title>Welcome to my corner of the web! 👋</Title>
-            </Hero>
+            </Hero>*/}
             <IndexPageContainer>
               <SubTitle>Recent Posts</SubTitle>
               <MoreStories posts={posts} />

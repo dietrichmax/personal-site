@@ -73,6 +73,7 @@ export default function Index({ allPosts, allTags }) {
           <>
             <SEO   
               title="Home"
+              slug=""
             />
             {/*<Hero>
             <Title>Welcome to my corner of the web! 👋</Title>

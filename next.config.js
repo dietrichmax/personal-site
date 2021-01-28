@@ -411,5 +411,9 @@ module.exports = withPlugins([
     deviceSizes: [320, 420, 768, 1024, 1200, 1920],
     imageSizes: [50, 368, 1920 ],
     domains: ['api.mxd.codes'],
-  }}
+  }},
+  {i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US'
+  }},
 ]);

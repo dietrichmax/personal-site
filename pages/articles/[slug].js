@@ -98,7 +98,7 @@ export default function Post({ post, morePosts }) {
               title={post.title}
               description={post.excerpt}
               image={post.coverImage.coverImage.url}
-              slug={`/articles/${post.slug}`}
+              slug={`articles/${post.slug}`}
               date={post.date}
               ogType="article"
             />

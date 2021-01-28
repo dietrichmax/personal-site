@@ -38,7 +38,7 @@ export default function Tags({ tag }) {
             <SEO   
               title={tag.name}
               description={tag.description}
-              slug={`/topics/${tag.slug}`}
+              slug={`topics/${tag.slug}`}
             />
             <PageTitle color={tag.color}>{tag.name}</PageTitle>
             <TagContainer>

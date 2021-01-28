@@ -39,7 +39,7 @@ const ViewsContainer = styled.div`
 
 const RecentViewsContainer = styled.div`
   margin: 0 auto;
-  height: 100px;
+  height: 120px;
   justify-content: center;
   display: flex;
 `
@@ -128,7 +128,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
   const router = useRouter()
 
   const α = 0.6;
-  const B = 1000;
+  const B = 20;
   let pageViews = []
   let normalisedViews = []
   Object.entries(lastViews).forEach((value) => (
@@ -192,7 +192,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
                   key={i}
                   data-tip={`${item.views} Views`}>
                   <Column 
-                    height={Math.floor((item.normalisedViews / normalisedMax) * 100)}
+                    height={Math.floor((item.normalisedViews / normalisedMax) * 120)}
                   />
                 </ColumnWrapper>
               ))}

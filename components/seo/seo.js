@@ -18,7 +18,7 @@ const SEO = ({
   image = image ? `${image.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : 'website'
-  
+  slug = config.siteUrl ? slug : `${config.siteUrl}/${slug}`
 
 
   const schemaOrgJSONLD = [
@@ -75,7 +75,7 @@ const SEO = ({
     <Head>
       {/* General tags */}
       <title>{title} - {config.siteTitleShort}</title>
-      <link rel='canonical' href={`${config.siteUrl}/${slug}`} />
+      <link rel='canonical' href={slug} />
       <meta name='description' content={description} />
       <meta name='image' content={image} />
       <html lang='en' />

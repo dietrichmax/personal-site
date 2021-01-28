@@ -14,7 +14,7 @@ const SEO = ({
 
   title = title ? title : config.siteTitle
   description  = description ? description : config.siteDescription
-  slug = slug ? slug : config.siteUrl
+  slug = config.siteUrl ? slug : config.siteUrl
   image = image ? `${image.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : 'website'
@@ -78,8 +78,8 @@ const SEO = ({
       <link rel='canonical' href={`${config.siteUrl}/${slug}`} />
       <meta name='description' content={description} />
       <meta name='image' content={image} />
-      {/*<html lang='en' />*/}
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      {/*<html lang='en' />*/}
       
       <link rel="manifest" href="/manifest.json" />
       <link href='/logos/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' />

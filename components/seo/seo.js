@@ -14,11 +14,10 @@ const SEO = ({
 
   title = title ? title : config.siteTitle
   description  = description ? description : config.siteDescription
-  slug = slug ? slug : config.siteUrl
   image = image ? `${image.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : 'website'
-  slug = config.siteUrl ? slug : `${config.siteUrl}/${slug}`
+  slug = config.siteUrl ? slug : `${config.siteUrl}${slug}`
 
 
   const schemaOrgJSONLD = [

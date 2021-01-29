@@ -275,11 +275,6 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
-      source: '/articles/geographie-gis-blogs',
-      destination: '/articles/geographie-gis-blogs',
-      permanent: true
-    },
-    {
       source: '/articles/gis-freiwilligenarbeit',
       destination: '/articles/gis-volunteering-make-the-world-a-better-place-with-gis',
       permanent: true

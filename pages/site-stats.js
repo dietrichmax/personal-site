@@ -186,7 +186,7 @@ export default function Recruiting({ lastViews, liveViews, actions, postsCount, 
               Generation time for a page takes in average <Stats>{stats.overallAvgTimeGeneration}</Stats> seconds.</StatsContainer>
             </GeneralStats>
             <ViewsContainer>
-              <Title>Views in the past 30 days</Title>
+              <Title style={{color:'var(--gray)'}}>Views in the past 30 days</Title>
               <RecentViewsContainer>
               {pageViews.map((item, i) => (
                 <ColumnWrapper 

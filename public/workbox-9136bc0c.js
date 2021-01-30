@@ -1,7 +1,7 @@
-define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
+define("./workbox-9136bc0c.js",['exports'], function (exports) { 'use strict';
 
     try {
-      self['workbox:core:6.0.2'] && _();
+      self['workbox:core:6.1.0'] && _();
     } catch (e) {}
 
     /*
@@ -476,7 +476,7 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
     };
 
     try {
-      self['workbox:routing:6.0.2'] && _();
+      self['workbox:routing:6.1.0'] && _();
     } catch (e) {}
 
     /*
@@ -599,6 +599,16 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
         this.handler = normalizeHandler(handler);
         this.match = match;
         this.method = method;
+      }
+      /**
+       *
+       * @param {module:workbox-routing-handlerCallback} handler A callback
+       * function that returns a Promise resolving to a Response
+       */
+
+
+      setCatchHandler(handler) {
+        this.catchHandler = normalizeHandler(handler);
       }
 
     }
@@ -928,24 +938,54 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
           });
         } catch (err) {
           responsePromise = Promise.reject(err);
-        }
+        } // Get route's catch handler, if it exists
 
-        if (responsePromise instanceof Promise && this._catchHandler) {
-          responsePromise = responsePromise.catch(err => {
-            {
-              // Still include URL here as it will be async from the console group
-              // and may not make sense without the URL
-              logger.groupCollapsed(`Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to Catch Handler.`);
-              logger.error(`Error thrown by:`, route);
-              logger.error(err);
-              logger.groupEnd();
+
+        const catchHandler = route && route.catchHandler;
+
+        if (responsePromise instanceof Promise && (this._catchHandler || catchHandler)) {
+          responsePromise = responsePromise.catch(async err => {
+            // If there's a route catch handler, process that first
+            if (catchHandler) {
+              {
+                // Still include URL here as it will be async from the console group
+                // and may not make sense without the URL
+                logger.groupCollapsed(`Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to route's Catch Handler.`);
+                logger.error(`Error thrown by:`, route);
+                logger.error(err);
+                logger.groupEnd();
+              }
+
+              try {
+                return await catchHandler.handle({
+                  url,
+                  request,
+                  event,
+                  params
+                });
+              } catch (catchErr) {
+                err = catchErr;
+              }
             }
 
-            return this._catchHandler.handle({
-              url,
-              request,
-              event
-            });
+            if (this._catchHandler) {
+              {
+                // Still include URL here as it will be async from the console group
+                // and may not make sense without the URL
+                logger.groupCollapsed(`Error thrown when responding to: ` + ` ${getFriendlyURL(url)}. Falling back to global Catch Handler.`);
+                logger.error(`Error thrown by:`, route);
+                logger.error(err);
+                logger.groupEnd();
+              }
+
+              return this._catchHandler.handle({
+                url,
+                request,
+                event
+              });
+            }
+
+            throw err;
           });
         }
 
@@ -1447,7 +1487,7 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
     }
 
     try {
-      self['workbox:strategies:6.0.2'] && _();
+      self['workbox:strategies:6.1.0'] && _();
     } catch (e) {}
 
     function toRequest(input) {
@@ -1725,7 +1765,9 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
        * - cacheDidUpdate()
        *
        * @param {Request|string} key The request or URL to use as the cache key.
-       * @param {Promise<void>} response The response to cache.
+       * @param {Response} response The response to cache.
+       * @return {Promise<boolean>} `false` if a cacheWillUpdate caused the response
+       * not be cached, and `true` otherwise.
        */
 
 
@@ -1762,7 +1804,7 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
             logger.debug(`Response '${getFriendlyURL(effectiveRequest.url)}' ` + `will not be cached.`, responseToCache);
           }
 
-          return;
+          return false;
         }
 
         const {
@@ -1800,6 +1842,8 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
             event: this.event
           });
         }
+
+        return true;
       }
       /**
        * Checks the list of plugins for the `cacheKeyWillBeUsed` callback, and
@@ -2395,4 +2439,4 @@ define("./workbox-32092201.js",['exports'], function (exports) { 'use strict';
     exports.registerRoute = registerRoute;
 
 });
-//# sourceMappingURL=workbox-32092201.js.map
+//# sourceMappingURL=workbox-9136bc0c.js.map

@@ -107,10 +107,8 @@ export default function PostHero({post}) {
 
   return (
     <HeroWrapper>
-            <Link as={`/articles/${slug}`} href="/articles/[slug]">
-                <a aria-label={title}>
-                  <HeroImg src={imageUrl} alt={title} title={title} width="1920" height="400" priority/>
-                </a>
+            <Link as={`/articles/${slug}`} href="/articles/[slug]" aria-label={title}>
+              <HeroImg src={imageUrl} alt={title} title={title} width="1920" height="400" priority/>
             </Link>
         <HeroInfo>
           <HeroMeta>

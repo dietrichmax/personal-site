@@ -52,7 +52,7 @@ const SEO = ({
       <link rel="canonical" href={`${config.siteUrl}/${slug}`} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
       {/*<html lang="en" />*/}
       
       <link rel="manifest" href="/manifest.json" />

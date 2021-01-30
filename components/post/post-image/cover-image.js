@@ -50,8 +50,7 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
     <div className="">
       {slug ? (
         <PreviewCoverImageWrapper>
-          <Link as={`/articles/${slug}`} href="/articles/[slug]">
-              <a aria-label={title}>
+          <Link as={`/articles/${slug}`} href="/articles/[slug]" aria-label={title}>
                 <PreviewCoverImage 
                   src={imageUrl} 
                   alt={title} 
@@ -59,7 +58,6 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
                   width="368"
                   height="200"
                 />
-              </a>
           </Link>
         </PreviewCoverImageWrapper>
 

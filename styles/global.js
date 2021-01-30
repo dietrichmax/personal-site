@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     text-decoration: none;
     overflow-wrap: break-word;
+    scrollbar-color: var(--secondary-color) var(--primary-color);
   }
   a {
     transition: 0.2s;
@@ -62,6 +63,9 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
+
+
+
   :root { 
     --gray-extra-light: #fafafa; 
     --gray-light: #eaeaea;  

@@ -25,7 +25,7 @@
     "d3": "^6.5.0",
     "date-fns": "2.16.1",
     "globby": "^11.0.2",
-    "next": "^10.0.5",
+    "next": "latest",
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.0.4",
     "polished": "^4.1.0",

@@ -5,7 +5,7 @@ const mdx = require('@zeit/next-mdx')({
 });
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
-const isProd = process.env.NODE_ENV === "production";
+//const isProd = process.env.NODE_ENV === "production";
 
 // redirects
 const redirects = {async redirects() {

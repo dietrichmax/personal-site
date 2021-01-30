@@ -29,6 +29,7 @@ const GeneralStats = styled.div`
   max-width: 600px;
   margin: var(--space-lg) auto;
   line-height: 2;
+  color: var(--gray);
 `
 
 const ViewsContainer = styled.div`
@@ -54,7 +55,7 @@ const ColumnWrapper = styled.div`
   position: relative;
   margin-right: calc(var(--space-sm)*0.3);
   width: 100%;
-  background-color: var(--gray-light);
+  background-color: var(--primary-color);
   :before {
     content: attr(data-tip);
     font-size: 1.2rem;
@@ -83,7 +84,7 @@ const Column = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--thirdy-color);
+  background-color: var(--gray);
   height: ${props =>
     props.height ? `${props.height}px !important` : "0px"};
   border-top-right-radius: calc(var(--space-sm)*0.5);

@@ -10,6 +10,7 @@ const Title = styled.h1`
   font-size: 2.5rem;
   margin-bottom: var(--space-sm);
   text-transform: capitalize;
+  color: var(--gray);
 
 `
 

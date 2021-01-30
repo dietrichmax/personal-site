@@ -3678,7 +3678,7 @@ next-pwa@^5.0.4:
     workbox-webpack-plugin "^6.0.2"
     workbox-window "^6.0.2"
 
-next@latest:
+next@^10.0.5:
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.6.tgz#1d33723d714c85f282b9bf6ff59dcae40f9252cb"
   integrity sha512-uM5Yv4Ha9iL6Lbg7Ez36GyJ0YTdRLzXLA9b1REH3rX2Wytw0Ls5qPuFGk4BHSQpQhYx6Z61iA2qPkGl33W4iBg==

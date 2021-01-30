@@ -19,13 +19,14 @@
     "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {
+    "webpack": "^4.46.0",
     "@socialgouv/matomo-next": "^1.1.2",
     "@zeit/next-mdx": "^1.2.0",
     "axios": "^0.21.1",
     "d3": "^6.5.0",
     "date-fns": "2.16.1",
     "globby": "^11.0.2",
-    "next": "latest",
+    "next": "^10.0.5",
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.0.4",
     "polished": "^4.1.0",

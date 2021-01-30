@@ -10,11 +10,11 @@ import { darken } from 'polished';
 // styled components
 
 const FooterContainer = styled.div`
-background-color: var(--primary-color);
-
+  background-color: var(--primary-color);
 `;
 
 const FooterWrapper = styled.div`    
+  color: var(--gray);
 `;
 
 
@@ -30,7 +30,6 @@ const FooterTopContainer = styled.div`
 const FooterPostColumn = styled.div`
   margin: var(--space);
   width: 25%;
-  color: var(--gray-light);
   ${media.lessThan('medium')`
     width: 100%;
   `}
@@ -39,7 +38,6 @@ const FooterPostColumn = styled.div`
 const FooterBioColumn = styled.div`
   margin: var(--space);
   width: 25%;
-  color: var(--gray-light);
   ${media.lessThan('medium')`
     width: 100%;
   `}
@@ -48,7 +46,6 @@ const FooterBioColumn = styled.div`
 const FooterLinksColumn = styled.div`
   margin: var(--space);
   width: 15%;
-  color: var(--gray-light);
   ${media.lessThan('medium')`
     width: 100%;
   `}
@@ -57,7 +54,6 @@ const FooterLinksColumn = styled.div`
 const FooterConnectColumn = styled.div`
   margin: var(--space);
   width: 20%;
-  color: var(--gray-light);
   ${media.lessThan('medium')`
     width: 100%;
   `}

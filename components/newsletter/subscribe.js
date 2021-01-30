@@ -14,7 +14,7 @@ const NewsletterWrapper = styled.label`
     justify-content: center;
     margin: auto;
     background-color: var(--bg-light);
-    border: 1px solid var(--gray-light);;
+    border: 1px solid var(--gray);
 `
 const DescriptionWrapper = styled.div`
     text-align: center;

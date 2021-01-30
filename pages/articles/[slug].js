@@ -29,7 +29,7 @@ const PostWrapper = styled.div`
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: var(--space-sm) auto;
   background-color: var(--bg-light);
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--gray-dark);
   ${media.lessThan('large')`
     padding-left: var(--space);
     padding-right: var(--space);
@@ -39,14 +39,13 @@ const PostWrapper = styled.div`
 const MorePostsWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space) auto;
-  border: 1px solid var(--gray-light);;
 `
 
 const MorePostsTitle = styled.p`
   letter-spacing: 0.35px;
   font-size: 1.5rem;
   font-weight: bold;
-  font-color: var(--gray);
+  color: var(--gray);
   margin-top: var(--space);
   margin-left: var(--space);
   margin-bottom: var(--space-sm);
@@ -131,7 +130,7 @@ export default function Post({ post, morePosts }) {
             
             <Newsletter />
             <MorePostsWrapper>
-              <MorePostsTitle><Link href="/articles"><a title="More Articles">More Articles:</a></Link></MorePostsTitle>
+              <MorePostsTitle><Link href="/articles" title="More Articles">More Articles:</Link></MorePostsTitle>
               {morePosts.length > 0 && <MoreStories posts={morePosts}/>}
             </MorePostsWrapper>
           </>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--gray-dark);
   border-radius: 0.75rem;
   background-color: var(--bg-light);
   max-width: 370px;
@@ -43,7 +43,7 @@ const CardItemDate = styled.div`
 `;
 
 const CardItemDescription = styled.div`
-  color: var(--gray);
+  color: var(--gray-dark);
   margin-bottom: var(--space-sm);
 `;
 
@@ -61,7 +61,7 @@ const TagItem = styled.a`
   font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: var(--gray-light);
+  background-color: #dcdcdc;
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

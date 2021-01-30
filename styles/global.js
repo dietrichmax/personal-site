@@ -65,13 +65,13 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #fafafa; 
     --gray-light: #eaeaea;  
-    --gray: #475060;
+    --gray: #7a8a95;
     --gray-dark: #3f3f40;
     --primary-color: #0a1924;
     --secondary-color: #c85517;
     --thirdy-color: #889baa;
-    --body-bg: #0a19241c; 
-    --bg-light: var(--gray-extra-light);
+    --body-bg: var(--primary-color); 
+    --bg-light: var(--gray-light);
     --bg-dark: var(--gray-dark);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);

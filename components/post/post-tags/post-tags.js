@@ -7,8 +7,6 @@ export const TagsWrapper = styled.div`
   margin: var(--space) var(--space) var(--space-lg) var(--space);
   padding: var(--space-lg);
   text-align: center;
-  background-color: var(--bg-light);
-  border: 1px solid var(--gray-light);
 `
 
 export const TagItem = styled.a`

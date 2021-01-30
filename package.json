@@ -19,7 +19,6 @@
     "img-optimize": "py ./utils/resize_images.py"
   },
   "dependencies": {
-    "webpack": "^4.46.0",
     "@socialgouv/matomo-next": "^1.1.2",
     "@zeit/next-mdx": "^1.2.0",
     "axios": "^0.21.1",
@@ -45,7 +44,8 @@
     "sharp": "^0.27.1",
     "slugify": "^1.4.6",
     "styled-components": "5.2.1",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {}
 }

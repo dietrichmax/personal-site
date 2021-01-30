@@ -51,13 +51,13 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
       {slug ? (
         <PreviewCoverImageWrapper>
           <Link as={`/articles/${slug}`} href="/articles/[slug]" aria-label={title}>
-                <PreviewCoverImage 
-                  src={imageUrl} 
-                  alt={title} 
-                  title={title} 
-                  width="368"
-                  height="200"
-                />
+            <PreviewCoverImage 
+              src={imageUrl} 
+              alt={title} 
+              title={title} 
+              width="368"
+              height="200"
+            />
           </Link>
         </PreviewCoverImageWrapper>
 

@@ -18,7 +18,6 @@ import config from "../../lib/data/SiteConfig";
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
-import RIWAAD from '@/components/ads/riwa/mobile-vermessung/mobile-vermessung'
 import Date from '@/components/date/date' 
 
 
@@ -119,7 +118,6 @@ export default function Post({ post, morePosts }) {
                 <PostDate>
                   <Date dateString={post.date} />
                 </PostDate>
-                {/* <RIWAAD allTags={post.tags} /> */}
                 {/* <PostBody content={post.excerpt} /> */}
 
 

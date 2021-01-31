@@ -513,7 +513,7 @@ export default function Recruiting({
                                             % CSS
                                         </LanguageTitle>
                                         <LanguageMoreStats>
-                                            {codeStats.CSS.nFiles} files
+                                            {codeStats.CSS.nFiles} file
                                         </LanguageMoreStats>
                                         <LanguageMoreStats>
                                             {codeStats.CSS.code} lines
@@ -530,7 +530,7 @@ export default function Recruiting({
                                             % Markdown
                                         </LanguageTitle>
                                         <LanguageMoreStats>
-                                            {codeStats.Markdown.nFiles} files
+                                            {codeStats.Markdown.nFiles} file
                                         </LanguageMoreStats>
                                         <LanguageMoreStats>
                                             {codeStats.Markdown.code} lines

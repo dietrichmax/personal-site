@@ -229,7 +229,17 @@ const VisitorWrapper = styled.div`
 
 `
 
-const VisitorList = styled.li`
+const VisitorDot = styled.span`
+    background-image: url(${props => (props.url ? `${process.env.NEXT_PUBLIC_MATOMO_URL}/${props.url}` : "")});
+    background-size: cover;
+    margin-right: 1rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+`
+
+const VisitorList = styled.p`
     margin: 0;
 `
 
@@ -409,7 +419,7 @@ export default function Recruiting({
                                 <Title style={{ color: "var(--gray)" }}>Most Visitors have been from</Title>
                                 <ul>
                                 {visitorCountries.slice(0,5).map((item, i) => (
-                                        <VisitorList key={i}>{item.label} ({item.nb_actions})</VisitorList>
+                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({item.nb_actions})</VisitorList>
                                     
                                     ))}
                                 </ul> 

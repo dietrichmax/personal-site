@@ -16,12 +16,17 @@
     "deploy": "npm run build && npm run start",
     "export": "next export",
     "generate-manifest": "node ./lib/manifest.js",
-    "img-optimize": "py ./utils/resize_images.py"
+    "img-optimize": "py ./utils/resize_images.py",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,css,json}' --config ./.prettierrc",
+    "count": "cloc --exclude-ext=svg --exclude-dir=animations,node_modules,.next --json components/ lib/ pages/ styles/ public/ . > data/stats/count_total.json"
   },
   "dependencies": {
     "@socialgouv/matomo-next": "^1.1.2",
     "@zeit/next-mdx": "^1.2.0",
     "axios": "^0.21.1",
+    "babel-eslint": "^10.1.0",
+    "cloc": "^2.7.0",
     "d3": "^6.5.0",
     "date-fns": "2.16.1",
     "globby": "^11.0.2",
@@ -29,7 +34,7 @@
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.0.4",
     "polished": "^4.1.0",
-    "prettier": "^2.2.1",
+    "prettier": "1.16.4",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -47,5 +52,17 @@
     "styled-media-query": "^2.1.2",
     "webpack": "^4.46.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-nextjs": "1.0.7",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-html": "5.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "3.0.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "pretty-quick": "^3.1.0"
+  }
 }

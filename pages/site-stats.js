@@ -267,7 +267,6 @@ export default function Recruiting({
     Object.entries(countryCount).forEach(country =>
         visitorCountries = country[1]
     )
-    console.log(visitorCountries.slice(0,3))
 
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
@@ -418,8 +417,8 @@ export default function Recruiting({
                             <VisitorWrapper>
                                 <Title style={{ color: "var(--gray)" }}>Most Visitors have been from</Title>
                                 <ul>
-                                {visitorCountries.slice(0,5).map((item, i) => (
-                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({item.nb_actions})</VisitorList>
+                                {visitorCountries.slice(0,10).map((item, i) => (
+                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({item.nb_visits})</VisitorList>
                                     
                                     ))}
                                 </ul> 

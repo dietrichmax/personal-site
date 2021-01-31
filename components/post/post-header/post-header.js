@@ -34,7 +34,7 @@ const TagItem = styled.a`
   font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: var(--gray-light);
+  background-color: rgb(220, 220, 220);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

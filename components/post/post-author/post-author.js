@@ -44,7 +44,7 @@ export default function Author({ author }) {
         
         <AuthorSocials>
           {socials.map((social, i) => (
-            <SocialIcon key={i} url={social.link} bgColor="var(--gray-light)" fgColor="var(--gray)" title={social.plattform} style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
+            <SocialIcon key={i} url={social.link} bgColor="rgb(220, 220, 220)" fgColor="var(--gray-dark)" title={social.plattform} style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
           ))}
         </AuthorSocials>
       </AuthorMeta>

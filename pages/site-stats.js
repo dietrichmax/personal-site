@@ -22,6 +22,7 @@ import {
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/data/stats/count_total.json"
+import WorldMap from "@/components/d3/world-map/worldMap"
 
 const Container = styled.div`
     ${media.lessThan("medium")`
@@ -135,6 +136,7 @@ const Stats = styled.span`
     color: var(--secondary-color);
 `
 
+
 const GitHubWrapper = styled.div`
     max-width: 600px;
     margin: var(--space-lg) auto;
@@ -213,6 +215,23 @@ const LanguageDot = styled.span`
     margin-right: var(--space-sm);
 `
 
+const MapWrapper = styled.div`
+    max-width: 600px;
+    margin: var(--space-lg) auto;
+    font-size: 2rem;
+`
+
+const VisitorWrapper = styled.div`
+    max-width: 600px;
+    margin: var(--space-lg) auto;
+    font-size: 2rem;
+    color: var(--gray);
+
+`
+
+const VisitorList = styled.li`
+    margin: 0;
+`
 
 export default function Recruiting({
     lastViews,
@@ -226,14 +245,19 @@ export default function Recruiting({
 }) {
     const router = useRouter()
 
-    const languages = []
-    Object.keys(codeStats).forEach(language =>
+    /*const languages = []
+    Object.entries(codeStats).forEach(language =>
         languages.push({
             name: language,
         })
     )
+    languages.shift()*/
 
-    languages.shift()
+    let visitorCountries = []
+    Object.entries(countryCount).forEach(country =>
+        visitorCountries = country[1]
+    )
+    console.log(visitorCountries.slice(0,3))
 
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
@@ -379,6 +403,21 @@ export default function Recruiting({
                                     ))}
                                 </DateContainer>
                             </ViewsContainer>
+
+                            
+                            <VisitorWrapper>
+                                <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
+                                <ul>
+                                {visitorCountries.slice(0,5).map((item, i) => (
+                                        <VisitorList key={i}>{item.label} ({item.nb_actions})</VisitorList>
+                                    
+                                    ))}
+                                </ul> 
+                            </VisitorWrapper>
+
+                            <MapWrapper>
+                                {/*<WorldMap />*/}
+                            </MapWrapper>
 
                             <GitHubWrapper>
                                 <Title style={{ color: "var(--gray)" }}>

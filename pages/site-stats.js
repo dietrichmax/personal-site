@@ -406,7 +406,7 @@ export default function Recruiting({
 
                             
                             <VisitorWrapper>
-                                <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
+                                <Title style={{ color: "var(--gray)" }}>Most Visitors have been from</Title>
                                 <ul>
                                 {visitorCountries.slice(0,5).map((item, i) => (
                                         <VisitorList key={i}>{item.label} ({item.nb_actions})</VisitorList>

@@ -123,6 +123,7 @@ const Date = styled.p`
     display: block;
     width: 100%;
     text-align: center;
+    color: var(--gray);
 `
 
 const StatsContainer = styled.p`
@@ -167,8 +168,8 @@ const GitHubButton = styled.button`
     }
 `
 const LanguageContainer = styled.div`
-    max-width: 600px;
-    margin: var(--space-lg) auto;
+    max-width: 1000px;
+    margin: calc(var(--space-lg)*2) auto;
     color: var(--gray);
 `
 
@@ -179,6 +180,7 @@ const LanguageWrapper = styled.div`
 
 const LanguageColumn = styled.div`
     margin-right: calc(var(--space-lg) * 1.5);
+    margin-bottom: var(--space);
 `
 
 const LanguageTitle = styled.a`
@@ -187,6 +189,7 @@ const LanguageTitle = styled.a`
 `
 const LanguageMoreStats = styled.a`
     display: block;
+    margin-left: 2rem;
 `
 
 const LanguageBar = styled.div`
@@ -200,6 +203,16 @@ const LanguageBarChild = styled.div`
     height: 1.5rem;
     width: ${props => (props.width ? `${props.width}%` : "10%")};
 `
+const LanguageDot = styled.span`
+    height: 1rem;
+    width: 1rem;
+    background-color: ${props =>
+        props.color ? `${props.color}` : "var(--gray)"};
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: var(--space-sm);
+`
+
 
 export default function Recruiting({
     lastViews,
@@ -272,10 +285,6 @@ export default function Recruiting({
     )
     const stats = generalStats[0]
 
-    const test = [
-        { label: "Apples", value: 10 },
-        { label: "Oranges", value: 20 },
-    ]
     return (
         <>
             <Layout>
@@ -375,8 +384,8 @@ export default function Recruiting({
                                 <Title style={{ color: "var(--gray)" }}>
                                     GitHub Repository
                                 </Title>
-                                This site's repository has been starred {stars}{" "}
-                                times and forked {forkCount} times.
+                                This site's repository has been starred <Stats>{stars}</Stats>{" "}
+                                times and forked <Stats>{forkCount}</Stats> times.
                                 <GitHubButtonWrapper>
                                     <GitHubButtonLink
                                         href={githubUrl}
@@ -461,6 +470,7 @@ export default function Recruiting({
                                 <LanguageWrapper>
                                     <LanguageColumn>
                                         <LanguageTitle>
+                                            <LanguageDot color="#f0db4f"/>
                                             {parseFloat(
                                                 (codeStats.JavaScript.code /
                                                     linesOfCode) *
@@ -477,6 +487,7 @@ export default function Recruiting({
                                     </LanguageColumn>
                                     <LanguageColumn>
                                         <LanguageTitle>
+                                            <LanguageDot color="brown"/>
                                             {parseFloat(
                                                 (codeStats.JSON.code /
                                                     linesOfCode) *
@@ -493,6 +504,7 @@ export default function Recruiting({
                                     </LanguageColumn>
                                     <LanguageColumn>
                                         <LanguageTitle>
+                                            <LanguageDot color="pink"/>
                                             {parseFloat(
                                                 (codeStats.CSS.code /
                                                     linesOfCode) *
@@ -509,6 +521,7 @@ export default function Recruiting({
                                     </LanguageColumn>
                                     <LanguageColumn>
                                         <LanguageTitle>
+                                            <LanguageDot color="var(--gray)"/>
                                             {parseFloat(
                                                 (codeStats.Markdown.code /
                                                     linesOfCode) *

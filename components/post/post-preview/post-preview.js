@@ -39,7 +39,7 @@ const CardItemTitle = styled.h2`
 const CardItemDate = styled.div`
   font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
-  color: var(--gray);
+  color: var(--gray-dark);
 `;
 
 const CardItemDescription = styled.div`

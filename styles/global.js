@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #fafafa; 
     --gray-light: #eaeaea;  
-    --gray: #7a8a95;
+    --gray: #a8bfce;
     --gray-dark: #3f3f40;
     --primary-color: #0a1924;
     --secondary-color: #c85517;

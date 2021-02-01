@@ -25,7 +25,7 @@ const NavigationLink = styled.a`
   cursor: pointer;
   transition: 0.3s;
   :hover {
-      color: var(--secondary-color);
+    color: var(--link-color-hover);
   }
 `;
 

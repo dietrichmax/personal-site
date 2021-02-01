@@ -200,10 +200,31 @@ const LanguageBar = styled.div`
     margin-bottom: var(--space);
 `
 const LanguageBarChild = styled.div`
+    cursor: pointer;
     background-color: ${props =>
         props.color ? `${props.color}` : "var(--gray)"};
     height: 1.5rem;
     width: ${props => (props.width ? `${props.width}%` : "10%")};
+    :before {
+        content: attr(data-tip);
+        font-size: 1.2rem;
+        font-family: var(--secondary-font);
+        z-index: 999;
+        white-space: nowrap;
+        background: rgba(0, 0, 0, 0.8);
+        color: #e0e0e0;
+        padding: var(--space-sm);
+        height: var(--space);
+        opacity: 0;
+        -webkit-transition: opacity 0.4s ease-out;
+        -moz-transition: opacity 0.4s ease-out;
+        -o-transition: opacity 0.4s ease-out;
+        transition: opacity 0.4s ease-out;
+        text-shadow: none;
+    }
+    :hover::before {
+        opacity: 1;
+    }
 `
 const LanguageDot = styled.span`
     height: 1rem;
@@ -477,11 +498,11 @@ export default function Recruiting({
                                                 100
                                         )}
                                         color="#f0db4f"
-                                        data-tip={`${parseFloat(
+                                        data-tip={parseFloat(
                                             (codeStats.JavaScript.code /
                                                 linesOfCode) *
                                                 100
-                                        )}% JavaScript`}
+                                        ).toFixed(2)}
                                         style={{
                                             borderTopLeftRadius: "5px",
                                             borderBottomLeftRadius: "5px",
@@ -492,14 +513,14 @@ export default function Recruiting({
                                             (codeStats.JSON.code /
                                                 linesOfCode) *
                                                 100
-                                        )}
+                                        ).toFixed(2)}
                                         color="brown"
                                     />
                                     <LanguageBarChild
                                         width={parseFloat(
                                             (codeStats.CSS.code / linesOfCode) *
                                                 100
-                                        )}
+                                        ).toFixed(2)}
                                         color="pink"
                                     />
                                     <LanguageBarChild
@@ -507,7 +528,7 @@ export default function Recruiting({
                                             (codeStats.Markdown.code /
                                                 linesOfCode) *
                                                 100
-                                        )}
+                                        ).toFixed(2)}
                                         color="var(--gray)"
                                         style={{
                                             borderTopRightRadius: "5px",

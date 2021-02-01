@@ -22,9 +22,8 @@ const BlogPageContainer = styled.div`
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
   
-  const heroPost = allPosts[0]
-  const posts = allPosts.slice(1)
-  const morePosts = allPosts.slice(7)
+
+  const posts = allPosts
 
   return (
     <>
@@ -40,7 +39,6 @@ export default function Blog({ allPosts, allTags }) {
               slug="articles"
             />
             
-            <PostHero post={heroPost}/>
             <BlogPageContainer >
 
               <PostTags tags={allTags} />

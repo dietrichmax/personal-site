@@ -5,9 +5,8 @@ import styled from 'styled-components';
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
-  border: 1px solid var(--gray-dark);
   border-radius: 0.75rem;
-  background-color: var(--bg-light);
+  background-color: var(--bg-dark);
   max-width: 370px;
   transition: 0.2s;
 `
@@ -25,25 +24,26 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.2em;
   line-height: 1.35;
-  margin-bottom: calc(var(--space-sm) *0.5);
+  margin-top: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--border-dark);
   :hover {
-    color: var(--secondary-color);;
+    color: var(--link-color-hover);
   }
 `;
 
 const CardItemDate = styled.div`
   font-size: 1.3rem;
+  margin-top: calc(var(--space-sm) *0.5);
   margin-bottom: calc(var(--space-sm) *0.5);
-  color: var(--gray-dark);
+  color: var(--text-color);
 `;
 
 const CardItemDescription = styled.div`
-  color: var(--gray-dark);
+  color: var(--text-color);
   margin-bottom: var(--space-sm);
 `;
 
@@ -61,7 +61,7 @@ const TagItem = styled.a`
   font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: #dcdcdc;
+  background-color: var(--primary-color);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>
@@ -84,12 +84,12 @@ export default function PostPreview({
   return (
     <Card>
       <CardItemWrapper>
-        <CardItemImg>
+        {/*<CardItemImg>
           {coverImage.coverImage ? (
           <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.url}/>
           ) : null
           }
-        </CardItemImg>
+        </CardItemImg>*/}
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/articles/${slug}`} href="/articles/[slug]">

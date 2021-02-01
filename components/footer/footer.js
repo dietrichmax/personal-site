@@ -64,7 +64,7 @@ const FooterTitle = styled.p`
   font-weight: 700;
   margin-bottom: var(--space-sm);
   padding-bottom: calc(var(--space-sm)*0.5);
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--thirdy-color);
 `
 
 const FooterColumnContent = styled.div`
@@ -84,12 +84,12 @@ const FooterNavItem = styled.li`
   transition: 0.2s;
   margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
-    color: var(--secondary-color);
+    color: var(--link-color-hover);
   }
 `
 
 const FooterSubContainer = styled.div`  
-  background-color: #040a0f;
+  background-color: var(--secondary-color);
   color: var(--gray-light);
 `
 
@@ -122,7 +122,7 @@ const FooterSubContainerContentRight = styled.div`
 
 const Heart = styled.span`
   color: transparent;  
-  text-shadow: 0 0 0 var(--gray);
+  text-shadow: 0 0 0 var(--thirdy-color);
 `
 export default function Footer() {
   const [posts, setPosts] = useState("")
@@ -147,8 +147,10 @@ export default function Footer() {
   const footerNavItems = [
     { "name": "All Articles", "link":  "/articles" },
     { "name": "Site Stats", "link":  "/site-stats" },
-    { "name": "About this site", "link":  "/about-this-site" },
-    { "name": "Disclaimer & Imprint", "link":  "/disclaimer-and-imprint" }
+    { "name": "Uses", "link":  "/uses" },
+    { "name": "CV", "link":  "/cv" },
+    { "name": "Disclaimer & Imprint", "link":  "/disclaimer-and-imprint" },
+    { "name": "About this site", "link":  "/about-this-site" }
   ]
 
 

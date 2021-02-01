@@ -7,9 +7,8 @@ import ButtonMenu from './button';
 import Navigation from './header-navigation';
 
 const HeaderWrapper = styled.div`
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.33);
 
   ${media.lessThan('large')`
   top: 0;
@@ -28,7 +27,7 @@ const NavTitle = styled.div`
   color: var(--gray-light);
   font-size: 2rem;
   :hover {
-      color: var(--secondary-color);
+      color: var(--link-color-hover);
   }
 `
 

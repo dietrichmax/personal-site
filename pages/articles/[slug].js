@@ -27,8 +27,7 @@ const PostWrapper = styled.div`
   max-width: 720px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: var(--space-sm) auto;
-  background-color: var(--bg-light);
-  border: 1px solid var(--gray-dark);
+  background-color: var(--bg-dark);
   ${media.lessThan('large')`
     padding-left: var(--space);
     padding-right: var(--space);
@@ -57,7 +56,7 @@ const PostDate = styled.div`
 
 const MoreContainer = styled.div`
   max-width: 720px;
-  margin: var(--space-sm) auto;
+  margin: var(--space) auto;
   text-align: left;    
   cursor: pointer;
   font-weight: 600;
@@ -102,9 +101,9 @@ export default function Post({ post, morePosts }) {
             />
             <article ref={target} >
               <ReadingProgress target={target} />
-              {post.coverImage.coverImage ? (
+              {/*{post.coverImage.coverImage ? (
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
-              ) : null }
+              ) : null }*/}
 
               <MoreContainer>
                 🡐 

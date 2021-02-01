@@ -1,11 +1,11 @@
 
 .markdown a {
-  color: var(--gray-dark);
-  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--link-color);
 }
 .markdown a:hover {
-  border-bottom: 1px solid var(--border-light);
-  color: var(--secondary-color);
+  border-bottom: 1px solid var(--border-darkt);
+  color: var(--link-color-hover);
 }
 
 .markdown p {

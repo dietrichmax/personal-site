@@ -7,15 +7,16 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
+  padding-top: var(--space);
   margin-top: var(--space);
-  margin-bottom: var(--space);
+  margin-bottom: var(--space-sm);
 `
 
 const PostHeaderWrapper = styled.div`
   max-width: 640px;
   margin: auto;
   margin-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--thirdy-color);
 `
 
 const DateWrapper = styled.div`
@@ -34,7 +35,7 @@ const TagItem = styled.a`
   font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: rgb(220, 220, 220);
+  background-color: var(--primary-color);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

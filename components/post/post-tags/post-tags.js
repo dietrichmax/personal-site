@@ -15,9 +15,10 @@ export const TagItem = styled.a`
   transition: 0.2s;
   cursor: pointer;
   font-size: 1.3rem;
+  color: var(--text-color);
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: var(--gray-light);
+  background-color: var(--secondary-color);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

@@ -21,6 +21,8 @@ const AuthorName = styled.span`
 const AuthorImg = styled(Image)`
   border-radius: 50%;
   margin-bottom: auto;
+  width: 50px;
+  height: 50px;
 `
 
 const AuthorSocials = styled.div`

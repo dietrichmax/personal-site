@@ -68,28 +68,6 @@ const ColumnWrapper = styled.div`
     margin-right: calc(var(--space-sm) * 0.3);
     width: 100%;
     background-color: var(--primary-color);
-    :before {
-        content: attr(data-tip);
-        font-size: 1.2rem;
-        font-family: var(--secondary-font);
-        position: absolute;
-        z-index: 999;
-        white-space: nowrap;
-        background: rgba(0, 0, 0, 0.8);
-        color: #e0e0e0;
-        padding: var(--space-sm);
-        height: var(--space);
-        top: -2rem;
-        opacity: 0;
-        -webkit-transition: opacity 0.4s ease-out;
-        -moz-transition: opacity 0.4s ease-out;
-        -o-transition: opacity 0.4s ease-out;
-        transition: opacity 0.4s ease-out;
-        text-shadow: none;
-    }
-    :hover::before {
-        opacity: 1;
-    }
 `
 
 const Column = styled.div`
@@ -101,7 +79,27 @@ const Column = styled.div`
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
     :hover {
-        background-color: var(--secondary-color);
+        background-color: var(--thirdy-color);
+    }
+    :before {
+        content: attr(data-tip);
+        font-size: 1.2rem;
+        font-family: var(--secondary-font);
+        position: absolute;
+        z-index: 999;
+        white-space: nowrap;
+        background: rgba(0, 0, 0, 0.8);
+        color: #e0e0e0;
+        padding: var(--space-sm);
+        opacity: 0;
+        -webkit-transition: opacity 0.4s ease-out;
+        -moz-transition: opacity 0.4s ease-out;
+        -o-transition: opacity 0.4s ease-out;
+        transition: opacity 0.4s ease-out;
+        text-shadow: none;
+    }
+    :hover::before {
+        opacity: 1;
     }
 `
 const DateContainer = styled.div`
@@ -133,7 +131,7 @@ const StatsContainer = styled.p`
 `
 
 const Stats = styled.span`
-    color: var(--secondary-color);
+    color: var(--thirdy-color);
 `
 
 
@@ -157,7 +155,7 @@ const GitHubButtonLink = styled.a`
 const GitHubButton = styled.button`
     transition: 0.2s;
     border-radius: 0.25rem;
-    background-color: var(--secondary-color);
+    background-color: var(--thirdy-color);
     cursor: pointer;
     max-width: 28rem;
     color: var(--gray-light);
@@ -166,7 +164,7 @@ const GitHubButton = styled.button`
     outline: none;
     font-size: 1.4rem;
     :hover {
-        background-color: var(--gray);
+        background-color: var(--secondary-color);
     }
 `
 const LanguageContainer = styled.div`
@@ -205,26 +203,6 @@ const LanguageBarChild = styled.div`
         props.color ? `${props.color}` : "var(--gray)"};
     height: 1.5rem;
     width: ${props => (props.width ? `${props.width}%` : "10%")};
-    :before {
-        content: attr(data-tip);
-        font-size: 1.2rem;
-        font-family: var(--secondary-font);
-        z-index: 999;
-        white-space: nowrap;
-        background: rgba(0, 0, 0, 0.8);
-        color: #e0e0e0;
-        padding: var(--space-sm);
-        height: var(--space);
-        opacity: 0;
-        -webkit-transition: opacity 0.4s ease-out;
-        -moz-transition: opacity 0.4s ease-out;
-        -o-transition: opacity 0.4s ease-out;
-        transition: opacity 0.4s ease-out;
-        text-shadow: none;
-    }
-    :hover::before {
-        opacity: 1;
-    }
 `
 const LanguageDot = styled.span`
     height: 1rem;
@@ -411,7 +389,6 @@ export default function Recruiting({
                                     {pageViews.map((item, i) => (
                                         <ColumnWrapper
                                             key={i}
-                                            data-tip={`${item.views} Views`}
                                         >
                                             <Column
                                                 height={Math.floor(
@@ -419,6 +396,7 @@ export default function Recruiting({
                                                         normalisedMax) *
                                                         120
                                                 )}
+                                                data-tip={`${item.views} Views`}
                                             />
                                         </ColumnWrapper>
                                     ))}
@@ -498,11 +476,6 @@ export default function Recruiting({
                                                 100
                                         )}
                                         color="#f0db4f"
-                                        data-tip={parseFloat(
-                                            (codeStats.JavaScript.code /
-                                                linesOfCode) *
-                                                100
-                                        ).toFixed(2)}
                                         style={{
                                             borderTopLeftRadius: "5px",
                                             borderBottomLeftRadius: "5px",

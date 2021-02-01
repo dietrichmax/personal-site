@@ -3,12 +3,12 @@ import config from "@/lib/data/SiteConfig"
 
 const createManifest = () => 
 `{
-    "name": ${config.siteTitle},
-    "short_name": ${config.siteTitleShort},
-    "start_url": ${config.homePath},
+    "name": "${config.siteTitle}",
+    "short_name": "${config.siteTitleShort}",
+    "start_url": "${config.homePath}",
     "display": "standalone",
-    "background_color": ${config.backgroundColor},
-    "theme_color": ${config.themeColor},
+    "background_color": "${config.backgroundColor}",
+    "theme_color": "${config.themeColor}",
     "icons": [
         {
             "src": "/logos/android-chrome-192x192.png",

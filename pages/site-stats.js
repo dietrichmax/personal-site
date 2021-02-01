@@ -21,7 +21,7 @@ import {
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
-import codeStats from "@/data/stats/count_total.json"
+import codeStats from "@/lib/data/count_total.json"
 import WorldMap from "@/components/d3/world-map/worldMap"
 
 const Container = styled.div`

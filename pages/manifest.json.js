@@ -20,7 +20,7 @@ const createManifest = () =>
             "type": "image/png",
             "sizes": "512x512"
         }
-    ],
+    ]
 }`;
 
 class Manifest extends React.Component {

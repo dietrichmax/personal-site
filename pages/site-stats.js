@@ -336,15 +336,15 @@ export default function Recruiting({
                                         </span>
                                     )}{" "}
                                     <br />
-                                    Since 01-11-2020 this site was viewed{" "}
+                                    Overall this site was viewed{" "}
                                     <Stats>{actions.nb_pageviews}</Stats>{" "}
                                     times.
                                 </StatsContainer>
                                 <StatsContainer>
-                                    Overall i have published{" "}
+                                    I have published{" "}
                                     <Stats>{postsCount}</Stats> articles on this
                                     site with <Stats>{tagsCount}</Stats>{" "}
-                                    different topics.{" "}
+                                    different topics and{" "}
                                     <Stats>{subscribersCount}</Stats> awsome
                                     persons have subscribed to my newsletter.
                                 </StatsContainer>

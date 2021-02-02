@@ -26,6 +26,10 @@ class MyApp extends App {
             rel="preconnect" 
             href="https://api.mxd.codes"
           />,
+          <link 
+            rel="preconnect" 
+            href="https://analytics.mxd.codes"
+          />,
           <link
             rel="preconnect"
             key="preconnect-icons8"

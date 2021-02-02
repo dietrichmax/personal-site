@@ -15,14 +15,14 @@ import Footer from '@/components/footer/footer'
 import config from "../lib/data/SiteConfig";
 
 const PageWrapper = styled.div`
-max-width: 720px;
-padding: var(--space) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-margin: var(--space) auto var(--space) auto;
-background-color: var(--bg-dark);
-${media.lessThan('large')`
-  padding-left: var(--space);
-  padding-right: var(--space);
-`}
+  max-width: 720px;
+  padding: var(--space) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
+  margin: var(--space) auto var(--space) auto;
+  background-color: var(--primary-color);
+  ${media.lessThan('large')`
+    padding-left: var(--space);
+    padding-right: var(--space);
+  `}
 `
 
 

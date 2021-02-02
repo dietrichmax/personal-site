@@ -459,7 +459,7 @@ export default function Recruiting({
                             <VisitorWrapper>
                                 <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
                                 <ul>
-                                {countryCount.slice(0,10).map((item, i) => (
+                                {countryCount.slice(0,5).map((item, i) => (
                                         <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({parseFloat(item.nb_visits/actions.nb_pageviews*100).toFixed(0)}%)</VisitorList>
                                     
                                     ))}

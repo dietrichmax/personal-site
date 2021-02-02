@@ -147,7 +147,7 @@ export default function Footer() {
   const footerNavItems = [
     { "name": "All Articles", "link":  "/articles" },
     { "name": "Site Stats", "link":  "/site-stats" },
-    { "name": "Disclaimer & Imprint", "link":  "/disclaimer-and-imprint" },
+    { "name": "Privacy Policy", "link":  "/disclaimer-and-imprint" },
     { "name": "About me", "link":  "/about-me" },
     { "name": "About this site", "link":  "/about-this-site" }
   ]

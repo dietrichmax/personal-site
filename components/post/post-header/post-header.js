@@ -62,7 +62,7 @@ export default function PostHeader({ postData }) {
 
         <PostTitle>{title}</PostTitle>
 
-        <Author author={user} />
+        {/*<Author author={user} />*/}
           
       </PostHeaderWrapper>
     </>

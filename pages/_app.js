@@ -22,7 +22,19 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <link rel="preconnect" href="https://api.mxd.codes"/>
+          <link 
+            rel="preconnect" 
+            href="https://api.mxd.codes"
+          />,
+          <link
+            rel="preconnect"
+            key="preconnect-icons8"
+            href="https://maxst.icons8.com"
+          />,
+          <link 
+            rel="stylesheet" 
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
+          />,
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

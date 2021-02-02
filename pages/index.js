@@ -54,6 +54,11 @@ const MoreArticles = styled.a`
   :hover {
     text-decoration: underline;
   }
+  :before {
+    content: "\f061";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+  }
 `
 
 
@@ -84,7 +89,7 @@ export default function Index({ allPosts, allTags }) {
               <MoreContainer>
                 <Link href={`/articles`} passHref>
                   <MoreArticles title="All Articles">All Articles{' '}</MoreArticles>
-                </Link> 🡒
+                </Link>
               </MoreContainer>
             </IndexPageContainer>
 

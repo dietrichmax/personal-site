@@ -32,7 +32,7 @@ const ArticleDate = styled.a`
     font-weight: 200;
     color: var(--gray);
     margin-right: var(--space);
-    width: 7.25rem;
+    width: 9rem;
     ${media.lessThan('medium')`
         display: block;
         order: +1;

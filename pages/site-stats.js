@@ -467,7 +467,7 @@ export default function Recruiting({
                                             (codeStats.JavaScript.code /
                                                 linesOfCode) *
                                                 100
-                                        )}
+                                        ).toFixed(2)}
                                         color="#f0db4f"
                                         style={{
                                             borderTopLeftRadius: "5px",
@@ -484,7 +484,8 @@ export default function Recruiting({
                                     />
                                     <LanguageBarChild
                                         width={parseFloat(
-                                            (codeStats.CSS.code / linesOfCode) *
+                                            (codeStats.CSS.code /
+                                                linesOfCode) *
                                                 100
                                         ).toFixed(2)}
                                         color="pink"

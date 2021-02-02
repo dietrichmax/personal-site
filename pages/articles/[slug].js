@@ -73,6 +73,11 @@ const MoreArticles = styled.a`
   :hover {
     text-decoration: underline;
   }
+  :before {
+    content: "\f060";
+    font-family: "Line Awesome Free";
+    font-weight: 900;
+  }
 `
 
 export default function Post({ post, morePosts }) {
@@ -106,7 +111,6 @@ export default function Post({ post, morePosts }) {
               ) : null }*/}
 
               <MoreContainer>
-                🡐 
                 <Link href={`/articles`} passHref>
                   <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
                 </Link>

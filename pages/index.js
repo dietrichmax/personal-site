@@ -54,7 +54,7 @@ const MoreArticles = styled.a`
   :hover {
     text-decoration: underline;
   }
-  :before {
+  :after {
     content: "\f061";
     font-family: 'Line Awesome Free';
     font-weight: 900;

@@ -29,6 +29,14 @@ const GlobalStyle = createGlobalStyle`
     background: var(--primary-color);
     color: var(--gray-extra-light);
   }
+  h1 {
+    font-weight: 200;
+    letter-spacing: 0.6px;
+  }
+  h2, h3, h4, h5, h6 {
+    font-weight: 200;
+    letter-spacing: 0.3px;
+  }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {

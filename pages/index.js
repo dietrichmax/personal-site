@@ -25,13 +25,29 @@ const Hero = styled.div`
   background-color: var(--secondary-color);
 `
 
-
-const Title = styled.h2`
-  max-width: auto;
+const Title = styled.h1`
   text-align: center;
   font-size: 5rem;
   padding-top: 9rem;
   color: var(--gray-extra-light);
+  margin-bottom: var(--space-lg);
+  ${media.lessThan('medium')`
+    margin-left: var(--space);
+    margin-right: var(--space);
+    font-size: 4rem;
+  `}
+`
+
+const HeroDescription = styled.h3`
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  ${media.lessThan('medium')`
+    margin-left: var(--space);
+    margin-right: var(--space);
+    font-size: 2rem;
+  `}
 `
 
 const MoreContainer = styled.div`
@@ -80,9 +96,10 @@ export default function Index({ allPosts, allTags }) {
               title="Home"
               slug=""
             />
-            {/*<Hero>
-            <Title>Welcome to my corner of the web! 👋</Title>
-            </Hero>*/}
+            <Hero>
+              <Title>Welcome to my corner of the web! 👋</Title>
+              <HeroDescription>My name is Max and i am making websites and gis-applications.</HeroDescription>
+            </Hero>
             <IndexPageContainer>
               <SubTitle>Recent Posts</SubTitle>
               <MoreStories posts={posts} />

@@ -1,10 +1,10 @@
 
 .markdown a {
   color: var(--text-color);
-  border-bottom: 1px solid var(--link-color);
+  border-bottom: 1px dashed var(--link-color);
 }
 .markdown a:hover {
-  border-bottom: 1px solid var(--border-darkt);
+  border-bottom: none;
   color: var(--link-color-hover);
 }
 

@@ -12,7 +12,7 @@ const NewsletterWrapper = styled.label`
     max-width: 720px;
     padding: var(--space);
     justify-content: center;
-    margin: auto;
+    margin: 0 auto var(--space-lg) auto;
     background-color: var(--bg-dark);
 `
 const DescriptionWrapper = styled.div`

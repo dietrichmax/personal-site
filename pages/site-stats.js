@@ -35,13 +35,67 @@ const Title = styled.h2`
     margin: 0 auto var(--space) auto;
     font-size: 2.25rem;
     color: var(--primary-color);
+    font-weight: 200;
+`
+
+const Stats = styled.span`
+    color: var(--thirdy-color);
 `
 
 const GeneralStats = styled.div`
-    max-width: 600px;
+    max-width: 1200px;
     margin: var(--space-lg) auto;
-    line-height: 2;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    display: grid;
+    gap: var(--space-lg);
+    ${media.lessThan('1000px')`
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        margin: var(--space);
+    `}
+
+`
+
+const StatsGrid = styled.div`
+    font-size: 2rem;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: repeat(2,minmax(0,1fr));
+`
+
+const GridTitle = styled.div`
+    font-weight: 200;
+    grid-column: span 2/span 2;
+    letter-spacing: 0.2px;
     color: var(--gray);
+`
+
+const GridStats = styled.div`
+    padding-top: var(--space);
+    display: block;
+    color: var(--thirdy-color);
+    font-weight: 700;
+    font-size: 2.5rem;
+`
+
+const GridStatsDescription = styled.div`
+    display: block;
+    padding-bottom: var(--space);
+    text-transform: capitalize;
+    font-weight: 200;
+    color: var(--gray);
+`
+
+const StatsSmallGrid = styled.div`
+    text-align: center;
+    background-color: var(--secondary-color);  
+    border-radius: var(--space-sm);  
+`
+
+const StatsLargeGrid = styled.div`
+    text-align: center;
+    background-color: var(--secondary-color);
+    grid-column: span 2/span 2;    
+    border-radius: var(--space-sm);  
 `
 
 const ViewsContainer = styled.div`
@@ -130,9 +184,6 @@ const StatsContainer = styled.p`
     margin-bottom: var(--space);
 `
 
-const Stats = styled.span`
-    color: var(--thirdy-color);
-`
 
 
 const GitHubWrapper = styled.div`
@@ -242,6 +293,7 @@ const VisitorList = styled.p`
     margin: 0;
 `
 
+
 export default function Recruiting({
     lastViews,
     liveViews,
@@ -261,11 +313,6 @@ export default function Recruiting({
         })
     )
     languages.shift()*/
-
-    let visitorCountries = []
-    Object.entries(countryCount).forEach(country =>
-        visitorCountries = country[1]
-    )
 
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
@@ -323,57 +370,57 @@ export default function Recruiting({
                         <PageTitle>Site statistics</PageTitle>
                         <Container>
                             <GeneralStats>
-                                <StatsContainer>
-                                    {live > 1 ? (
-                                        <span>
-                                            You are among <Stats>{live}</Stats>{" "}
-                                            peoples on this site.
-                                        </span>
-                                    ) : (
-                                        <span>
-                                            At the moment you are the only
-                                            person on this site.
-                                        </span>
-                                    )}{" "}
-                                    <br />
-                                    Overall this site was viewed{" "}
-                                    <Stats>{actions.nb_pageviews}</Stats>{" "}
-                                    times.
-                                </StatsContainer>
-                                <StatsContainer>
-                                    I have published{" "}
-                                    <Stats>{postsCount}</Stats> articles on this
-                                    site with <Stats>{tagsCount}</Stats>{" "}
-                                    different topics and{" "}
-                                    <Stats>{subscribersCount}</Stats> awsome
-                                    persons have subscribed to my newsletter.
-                                </StatsContainer>
-                                <StatsContainer>
-                                    There were{" "}
-                                    <Stats>{actions.nb_outlinks}</Stats>{" "}
-                                    clicks on external link and{" "}
-                                    <Stats>{actions.nb_downloads}</Stats>{" "}
-                                    files have been downloaded. Generation time
-                                    for a page takes in average{" "}
-                                    <Stats>
-                                        {actions.avg_time_generation}
-                                    </Stats>{" "}
-                                    seconds.
-                                </StatsContainer>
-                                <StatsContainer>
-                                    The latest build of this site has{" "}
-                                    <Stats>{linesOfCode}</Stats> lines of code,{" "}
-                                    <Stats>{comments}</Stats> comments and was
-                                    published on{" "}
-                                    <Stats>
-                                        {format(
-                                            parseISO(lastModified),
-                                            config.dateFormat
-                                        )}
-                                    </Stats>
-                                    .
-                                </StatsContainer>
+                                <StatsGrid>
+                                    <GridTitle>Site Stats</GridTitle>
+                                    <StatsLargeGrid>
+                                        <GridStats>{live} people</GridStats>
+                                        <GridStatsDescription>Visiting right Now!</GridStatsDescription>
+                                    </StatsLargeGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{actions.nb_pageviews}</GridStats>
+                                        <GridStatsDescription>Page Views</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{subscribersCount}</GridStats>
+                                        <GridStatsDescription>Newsletter Subscribers</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{actions.nb_outlinks}</GridStats>
+                                        <GridStatsDescription>Clicks on external Links</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{actions.nb_downloads}</GridStats>
+                                        <GridStatsDescription>Downloads</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                </StatsGrid>
+
+                                
+                                <StatsGrid>
+                                    <GridTitle>Even More Stats</GridTitle>
+                                    <StatsLargeGrid>
+                                        <GridStats>{postsCount}</GridStats>
+                                        <GridStatsDescription>Articles Written</GridStatsDescription>
+                                    </StatsLargeGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{tagsCount}</GridStats>
+                                        <GridStatsDescription>Different Topics</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{linesOfCode}</GridStats>
+                                        <GridStatsDescription>Lines of code</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{comments}</GridStats>
+                                        <GridStatsDescription>Code Comments</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{format(parseISO(lastModified),config.dateFormat)}</GridStats>
+                                        <GridStatsDescription>Date of latest Build</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                </StatsGrid>
+                                
                             </GeneralStats>
+
                             <ViewsContainer>
                                 <Title style={{ color: "var(--gray)" }}>
                                     Views in the past 30 days
@@ -407,13 +454,13 @@ export default function Recruiting({
 
                             
                             <VisitorWrapper>
-                                <Title style={{ color: "var(--gray)" }}>Most Visitors have been from</Title>
+                                <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
                                 <ul>
-                                {visitorCountries.slice(0,10).map((item, i) => (
+                                {countryCount.slice(0,10).map((item, i) => (
                                         <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({item.nb_visits})</VisitorList>
                                     
                                     ))}
-                                </ul> 
+                                </ul>
                             </VisitorWrapper>
 
                             <MapWrapper>

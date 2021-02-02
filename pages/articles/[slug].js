@@ -27,7 +27,7 @@ const PostWrapper = styled.div`
   max-width: 720px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: var(--space-sm) auto;
-  background-color: var(--bg-dark);
+  background-color: var(--primary-color);
   ${media.lessThan('large')`
     padding-left: var(--space);
     padding-right: var(--space);

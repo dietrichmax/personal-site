@@ -373,11 +373,14 @@ export default function Recruiting({
                                 <StatsGrid>
                                     <GridTitle>Site Stats</GridTitle>
                                     <StatsLargeGrid>
-                                        <GridStats>{live} people</GridStats>
+                                        {live == 0 ? 
+                                            <GridStats>You are</GridStats> :
+                                            <GridStats>{live} people</GridStats>
+                                        }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>
                                     </StatsLargeGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{actions.nb_pageviews}</GridStats>
+                                        <GridStats>{actions.nb_pageviews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Page Views</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
@@ -385,7 +388,7 @@ export default function Recruiting({
                                         <GridStatsDescription>Newsletter Subscribers</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{actions.nb_outlinks}</GridStats>
+                                        <GridStats>{actions.nb_outlinks.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Clicks on external Links</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
@@ -406,12 +409,12 @@ export default function Recruiting({
                                         <GridStatsDescription>Different Topics</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{linesOfCode}</GridStats>
+                                        <GridStats>{linesOfCode.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Lines of code</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{comments}</GridStats>
-                                        <GridStatsDescription>Code Comments</GridStatsDescription>
+                                        <GridStats>{comments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStatsDescription>Build comments</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
                                         <GridStats>{format(parseISO(lastModified),config.dateFormat)}</GridStats>
@@ -457,7 +460,7 @@ export default function Recruiting({
                                 <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
                                 <ul>
                                 {countryCount.slice(0,10).map((item, i) => (
-                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({item.nb_visits})</VisitorList>
+                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({parseFloat(item.nb_visits/actions.nb_pageviews*100).toFixed(0)}%)</VisitorList>
                                     
                                     ))}
                                 </ul>
@@ -565,7 +568,7 @@ export default function Recruiting({
                                             {codeStats.JavaScript.nFiles} files
                                         </LanguageMoreStats>
                                         <LanguageMoreStats>
-                                            {codeStats.JavaScript.code} lines
+                                            {codeStats.JavaScript.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
                                         </LanguageMoreStats>
                                     </LanguageColumn>
                                     <LanguageColumn>
@@ -582,7 +585,7 @@ export default function Recruiting({
                                             {codeStats.JSON.nFiles} files
                                         </LanguageMoreStats>
                                         <LanguageMoreStats>
-                                            {codeStats.JSON.code} lines
+                                            {codeStats.JSON.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
                                         </LanguageMoreStats>
                                     </LanguageColumn>
                                     <LanguageColumn>

@@ -11,7 +11,12 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
-      source: '/gis/pyqgis-layer-bilder-exportieren',
+      source: '/gis/py-qgis-layer-bilder-exportieren',
+      destination: '/blog/pyqgis-layer-bilder-exportieren',
+      permanent: true
+    },
+    {
+      source: '/py-qgis-layer-als-bilder-exportieren',
       destination: '/blog/pyqgis-layer-bilder-exportieren',
       permanent: true
     },

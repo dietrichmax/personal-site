@@ -305,18 +305,12 @@ export default function Recruiting({
 
     let live = liveViews[0].visits
 
-    const generalStats = []
-    Object.entries(actions).forEach(value =>
-        generalStats.push({
-            year: value[0],
-            overallPageViews: value[1].nb_pageviews,
-            overallDownloads: value[1].nb_downloads,
-            overallOutlinks: value[1].nb_outlinks,
-            overallAvgTimeGeneration: value[1].avg_time_generation,
-        })
-    )
-    const stats = generalStats[0]
-
+    
+    const overallPageViews = actions.nb_pageviews
+    const overallDownloads = actions.nb_downloads
+    const overallOutlinks = actions.nb_outlinks
+    const overallAvgTimeGeneration = actions.avg_time_generation
+    
     return (
         <>
             <Layout>
@@ -342,9 +336,8 @@ export default function Recruiting({
                                         </span>
                                     )}{" "}
                                     <br />
-                                    In <Stats>{stats.year}</Stats> this site was
-                                    viewed{" "}
-                                    <Stats>{stats.overallPageViews}</Stats>{" "}
+                                    Since 01-11-2020 this site was viewed{" "}
+                                    <Stats>{actions.nb_pageviews}</Stats>{" "}
                                     times.
                                 </StatsContainer>
                                 <StatsContainer>
@@ -357,13 +350,13 @@ export default function Recruiting({
                                 </StatsContainer>
                                 <StatsContainer>
                                     There were{" "}
-                                    <Stats>{stats.overallOutlinks}</Stats>{" "}
+                                    <Stats>{actions.nb_outlinks}</Stats>{" "}
                                     clicks on external link and{" "}
-                                    <Stats>{stats.overallDownloads}</Stats>{" "}
+                                    <Stats>{actions.nb_downloads}</Stats>{" "}
                                     files have been downloaded. Generation time
                                     for a page takes in average{" "}
                                     <Stats>
-                                        {stats.overallAvgTimeGeneration}
+                                        {actions.avg_time_generation}
                                     </Stats>{" "}
                                     seconds.
                                 </StatsContainer>

@@ -1,6 +1,6 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-const withMDX = require('@zeit/next-mdx')({
+const mdx = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
 const withPWA = require('next-pwa')
@@ -400,8 +400,8 @@ const redirects = {async redirects() {
 }};
 
 module.exports = withPlugins([
-  withMDX({
-  pageExtensions: ['js', 'jsx', 'mdx'],
+  mdx({
+    pageExtensions: ['js', 'jsx', 'mdx'],
   }),
   redirects,
   withPWA({

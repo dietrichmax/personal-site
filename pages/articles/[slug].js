@@ -55,7 +55,6 @@ const MoreContainer = styled.div`
   cursor: pointer;
   font-weight: 600;
   font-size: 1.3rem;
-  color: var(--gray);
   text-decoration: none;
   ${media.lessThan('medium')`
     margin-left: var(--space);

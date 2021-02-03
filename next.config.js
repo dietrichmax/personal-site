@@ -1,6 +1,6 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-const withMDX = require('@next/mdx')({
+const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)$/,
 });
 const withPWA = require('next-pwa')

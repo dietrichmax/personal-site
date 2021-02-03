@@ -101,10 +101,6 @@ const StatsLargeGrid = styled.div`
 const ViewsContainer = styled.div`
     max-width: 1200px;
     margin: var(--space-lg) auto;
-    padding: var(--space);
-    ${media.lessThan('medium')`
-        padding: 0;
-    `}
 `
 
 const RecentViewsContainer = styled.div`

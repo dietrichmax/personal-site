@@ -406,7 +406,7 @@ export default function Recruiting({
                                         <GridStatsDescription>Articles Written</GridStatsDescription>
                                     </StatsLargeGrid>
                                     <StatsSmallGrid>
-                                        <GridStats><Link href="/topics title="See all Topics">{tagsCount}</Link></GridStats>
+                                        <GridStats><Link href="/topics" title="See all Topics">{tagsCount}</Link></GridStats>
                                         <GridStatsDescription>Different Topics</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>

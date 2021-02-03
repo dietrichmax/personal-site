@@ -14,6 +14,9 @@ import {
     getMatomoLiveCounter,
     getMatomoPageViews,
     getMatomoCountryVisits,
+    getMatomoSEOStats,
+    getMatomoAllVisits,
+    getMatomoSumVisitDuration,
 } from "@/lib/data/api/analytics"
 import {
     getPostsCount,
@@ -75,6 +78,7 @@ const GridStats = styled.div`
     color: var(--thirdy-color);
     font-weight: 700;
     font-size: 2.5rem;
+    text-transform: capitalize;
 `
 
 const GridStatsDescription = styled.div`
@@ -98,10 +102,35 @@ const StatsLargeGrid = styled.div`
     border-radius: var(--space-sm);  
 `
 
+const StatsGridMedium = styled.div`
+    font-size: 2rem;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    grid-column: span 2/span 2;
+`
+const GridMediumTitle = styled.div`
+    font-weight: 200;
+    grid-column: span 4/span 4;
+    letter-spacing: 0.2px;
+    color: var(--gray);
+`
+const BottomStatsGrid = styled.div`
+    text-align: center;
+    background-color: var(--secondary-color);
+    border-radius: var(--space-sm); 
+    grid-column: span 1/span 1; 
+    ${media.lessThan('1000px')`
+        grid-column: span 2/span 2;
+    `}
+
+`
+
 const ViewsContainer = styled.div`
     max-width: 1200px;
     margin: var(--space-lg) auto;
 `
+
 
 const RecentViewsContainer = styled.div`
     margin: 0 auto;
@@ -302,6 +331,9 @@ export default function Recruiting({
     subscribersCount,
     countryCount,
     githubStats,
+    seoStats,
+    allVisits,
+    visitDuration,
 }) {
     const router = useRouter()
 
@@ -312,7 +344,7 @@ export default function Recruiting({
         })
     )
     languages.shift()*/
-
+    
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
     const githubUrl = "https://github.com/DaTurboD/"
@@ -323,14 +355,13 @@ export default function Recruiting({
     const linesOfCode = codeStats.SUM.code
     const comments = codeStats.SUM.comment
     const files = codeStats.SUM.nFiles
-
+    
     const countryVisits = []
     const α = 0.6
     const B = 20
     let pageViews = []
     let normalisedViews = []
-    Object.entries(lastViews).forEach(
-        value => (
+    Object.entries(lastViews).forEach(value => (
             pageViews.push({
                 date: value[0],
                 dateShort: value[0].substring(8),
@@ -351,11 +382,8 @@ export default function Recruiting({
 
     let live = liveViews[0].visits
 
-    
-    const overallPageViews = actions.nb_pageviews
-    const overallDownloads = actions.nb_downloads
-    const overallOutlinks = actions.nb_outlinks
-    const overallAvgTimeGeneration = actions.avg_time_generation
+    const visits = Object.entries(allVisits)[0].toString().replace("value,","")
+    const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
     return (
         <>
@@ -383,16 +411,16 @@ export default function Recruiting({
                                         <GridStatsDescription>Page Views</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
+                                        <GridStats>{visits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStatsDescription>Sessions</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{(visitTime/60).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStatsDescription>Min Visit duration</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
                                         <GridStats>{subscribersCount}</GridStats>
                                         <GridStatsDescription>Newsletter Subscribers</GridStatsDescription>
-                                    </StatsSmallGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats>{actions.nb_outlinks.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
-                                        <GridStatsDescription>Clicks on external Links</GridStatsDescription>
-                                    </StatsSmallGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats>{actions.nb_downloads}</GridStats>
-                                        <GridStatsDescription>Downloads</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>
 
@@ -420,7 +448,18 @@ export default function Recruiting({
                                         <GridStatsDescription>Date of latest Build</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>
+                            </GeneralStats>
                                 
+                            <GeneralStats>
+                                <StatsGridMedium>
+                                    <GridMediumTitle>SEO Stats</GridMediumTitle>
+                                        {seoStats.map((item, i) => (
+                                            <BottomStatsGrid key={i}>
+                                                <GridStats>{item.rank}</GridStats>
+                                                <GridStatsDescription>{item.label}</GridStatsDescription>
+                                            </BottomStatsGrid>
+                                        ))}
+                                </StatsGridMedium>
                             </GeneralStats>
 
                             <ViewsContainer>
@@ -641,6 +680,11 @@ export async function getServerSideProps() {
     const subscribersCount = (await getSubscribersCount()) || []
     const countryCount = (await getMatomoCountryVisits()) || []
     const githubStats = (await getGitHubStats()) || []
+    const seoStats = (await getMatomoSEOStats()) || []
+    const allVisits = (await getMatomoAllVisits()) || []
+    const visitDuration = (await getMatomoSumVisitDuration()) || []
+    
+    
 
     return {
         props: {
@@ -652,6 +696,9 @@ export async function getServerSideProps() {
             subscribersCount,
             countryCount,
             githubStats,
+            seoStats,
+            allVisits,
+            visitDuration,
         },
     }
 }

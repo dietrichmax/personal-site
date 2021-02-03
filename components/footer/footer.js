@@ -206,7 +206,7 @@ export default function Footer() {
       <FooterSubContainer>
         <FooterSubContainerContent>
           <FooterSubContainerContentLeft>
-            Copyright © {format(new Date(), "yyyy")} Max Dietrich. All Rights Reserved.
+            © 2018 - {format(new Date(), "yyyy")} <Link href={config.siteUrl}> Max Dietrich</Link>
           </FooterSubContainerContentLeft>
           <FooterSubContainerContentRight>
           Made with <Heart>❤️</Heart> by MXD.

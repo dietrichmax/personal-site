@@ -400,9 +400,7 @@ const redirects = {async redirects() {
 }};
 
 module.exports = withPlugins([
-  mdx({
-    pageExtensions: ['js', 'jsx', 'mdx'],
-  }),
+  [mdx],
   redirects,
   withPWA({
     pwa: {

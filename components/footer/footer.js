@@ -193,11 +193,11 @@ export default function Footer() {
               <FooterTitle>Connect</FooterTitle>
               You can connect with me on:
               <FooterSocials>
-                <SocialIcon url={config.socials.github} fgColor="#fff"  title="GitHub" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.twitter} fgColor="#fff"  title="Twitter" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.linkedin} fgColor="#fff"  title="Linkedin" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.instagram} fgColor="#fff"  title="Instagram" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="#fff"  title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.github} fgColor="var(--gray)" bgColor="var(--secondary-color) title="GitHub" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.twitter} fgColor="var(--gray)" bgColor="var(--secondary-color) title="Twitter" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.linkedin} fgColor="var(--gray)" bgColor="var(--secondary-color) title="Linkedin" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url={config.socials.instagram} fgColor="var(--gray)" bgColor="var(--secondary-color) title="Instagram" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="var(--gray)" bgColor="var(--secondary-color) title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
               </FooterSocials>
 
             </FooterConnectColumn>

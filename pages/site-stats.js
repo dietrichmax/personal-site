@@ -51,7 +51,6 @@ const GeneralStats = styled.div`
     gap: var(--space-lg);
     ${media.lessThan('1000px')`
         grid-template-columns: repeat(1,minmax(0,1fr));
-        margin: var(--space);
     `}
 
 `
@@ -103,6 +102,9 @@ const ViewsContainer = styled.div`
     max-width: 1200px;
     margin: var(--space-lg) auto;
     padding: var(--space);
+    ${media.lessThan('middle')`
+        padding: 0;
+    `}
 `
 
 const RecentViewsContainer = styled.div`

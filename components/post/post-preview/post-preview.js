@@ -2,6 +2,7 @@ import Date from '../../date/date'
 import { usePalette } from "react-palette"
 import Link from 'next/link'
 import styled from 'styled-components';
+import media from "styled-media-query"
 
 function hexToRgbA(hex){
   var c;
@@ -27,10 +28,12 @@ const Card = styled.div`
   background-size: cover;
   background-image: ${props =>
     props.image ? `url("${props.image}")` : ''};
-  :hover {
-    box-shadow: 0 25px 25px ${props => props.color ? hexToRgbA(props.color) : 'rgb(0 0 0 / 25%)}'},0.25);    
-    transform: translateY(-3px) scale(1);
-  }
+  ${media.greaterThan('large')`
+    :hover {
+      box-shadow: 0 25px 25px ${props => props.color ? hexToRgbA(props.color) : 'rgb(0 0 0 / 25%)}'},0.25);    
+      transform: translateY(-3px) scale(1);
+    }
+`}
 `
 
 const CardItemWrapper = styled.section`

@@ -10,7 +10,7 @@ import { darken } from 'polished';
 // styled components
 
 const FooterContainer = styled.div`
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 `;
 
 const FooterWrapper = styled.div`    
@@ -90,7 +90,6 @@ const FooterNavItem = styled.li`
 
 const FooterSubContainer = styled.div`  
   background-color: var(--secondary-color);
-  color: var(--gray-light);
 `
 
 const FooterSubContainerContent = styled.div` 

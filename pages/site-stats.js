@@ -26,7 +26,7 @@ import codeStats from "@/lib/data/count_total.json"
 import WorldMap from "@/components/d3/world-map/worldMap"
 
 const Container = styled.div`
-    ${media.lessThan("medium")`
+    ${media.lessThan("1200px")`
     margin-left: var(--space);
     margin-right: var(--space);
   `}

@@ -8,6 +8,7 @@ import { parseISO, format } from "date-fns"
 import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"
 import media from "styled-media-query"
+import Link from "next/link"
 import {
     getMatomoActions,
     getMatomoLiveCounter,
@@ -401,11 +402,11 @@ export default function Recruiting({
                                 <StatsGrid>
                                     <GridTitle>Even More Stats</GridTitle>
                                     <StatsLargeGrid>
-                                        <GridStats>{postsCount}</GridStats>
+                                        <GridStats><Link href="/articles" title="See all Articles">{postsCount}</Link></GridStats>
                                         <GridStatsDescription>Articles Written</GridStatsDescription>
                                     </StatsLargeGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{tagsCount}</GridStats>
+                                        <GridStats>Link href="/topics title="See all Topics">{tagsCount}</Link></GridStats>
                                         <GridStatsDescription>Different Topics</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>

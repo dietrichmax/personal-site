@@ -19,7 +19,6 @@ const Navigation = styled.nav`
 `;
 
 const NavigationLink = styled.a`
-  color: var(--gray);
   margin-left: var(--space);
   font-size: 1.7rem;
   cursor: pointer;

@@ -11,6 +11,16 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
+      source: '/gis-und-geo-datenbank-managementsystem-optionen',
+      destination: '/articles/gis-and-geo-database-management-system-options',
+      permanent: true
+    },
+    {
+      source: '/articles/syntax-highlighting-mit-prism-und-next-js',
+      destination: '/articles/syntax-highlighting-with-prism-and-next-js',
+      permanent: true
+    },
+    {
       source: '/gis/py-qgis-layer-bilder-exportieren',
       destination: '/blog/pyqgis-layer-bilder-exportieren',
       permanent: true

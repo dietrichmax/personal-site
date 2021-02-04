@@ -23,11 +23,6 @@ const Card = styled.div`
   background-color: var(--bg-dark);
   max-width: 370px;
   transition: 0.2s;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: ${props =>
-    props.image ? `url("${props.image}")` : ''};
   ${media.greaterThan('large')`
     :hover {
       box-shadow: 0 25px 25px ${props => props.color ? hexToRgbA(props.color) : 'rgb(0 0 0 / 25%)}'},0.25);    

@@ -7,6 +7,7 @@ class LeafletMap extends React.Component {
     constructor() {
     super();
     this.state = {
+      inBrowser: false,
       markers: [[51.8, 9.0]],
       center: [51.8, 9.0],
       zoom: 5,
@@ -16,10 +17,8 @@ class LeafletMap extends React.Component {
     };
   }
 
-  componentDidMount(){
-    //Only runs on Client, not on server render
-    Map = require('react-leaflet').Map
-    this.forceUpdate()
+  componentDidMount() {
+    this.setState({ inBrowser: true });
   }
 
   render() {
@@ -29,6 +28,10 @@ class LeafletMap extends React.Component {
       weight: this.state.weight,
       opacity: this.state.opacity,
     };
+
+    if (!this.state.inBrowser) {
+      return null;
+    }
 
     return (
         <MapContainer 

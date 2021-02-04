@@ -33,7 +33,7 @@ const Card = styled.div`
 
 const CardItemWrapper = styled.section`
   height: 100%;
-  background-image: linear-gradient(to right, ${props => props.color ? hexToRgbA(props.color) : ''},1) 150px, var(--secondary-color) 100%);
+  background-image: linear-gradient(to right, ${props => props.color ? hexToRgbA(props.color) : ''},1) 150px, ${props => props.color ? hexToRgbA(props.color) : ''},0.4) 100%);
 `;
 
 const CardItemImg = styled.div`

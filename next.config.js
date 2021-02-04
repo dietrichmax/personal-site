@@ -16,6 +16,11 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
+      source: '/gis/pyqgis-layer-bilder-exportieren',
+      destination: '/blog/pyqgis-layer-bilder-exportieren',
+      permanent: true
+    },
+    {
       source: '/py-qgis-layer-als-bilder-exportieren',
       destination: '/blog/pyqgis-layer-bilder-exportieren',
       permanent: true

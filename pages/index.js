@@ -35,6 +35,7 @@ const Title = styled.h1`
     margin-left: var(--space);
     margin-right: var(--space);
     font-size: 4rem;
+    padding-top: 4rem;
   `}
 `
 

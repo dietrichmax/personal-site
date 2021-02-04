@@ -1,11 +1,9 @@
 import React from "react"
-import Helmet from "react-helmet";
-import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import hash from 'object-hash';
-import "./leafletmap.css"
 import 'leaflet/dist/leaflet.css';
 
-class OnlineKoordinaten extends React.Component {    
+class LeafletMap extends React.Component {    
     constructor() {
     super();
     this.state = {
@@ -18,44 +16,46 @@ class OnlineKoordinaten extends React.Component {
     };
   }
 
-    render() {
+  componentDidMount(){
+    //Only runs on Client, not on server render
+    Map = require('react-leaflet').Map
+    this.forceUpdate()
+  }
 
-        const Style = {
-          color: this.state.color,
-          weight: this.state.weight,
-          opacity: this.state.opacity,
-        };
+  render() {
 
-      return (
-      <div className="react-leaflet-demo-container">
-              {typeof window !== 'undefined' &&
-                  <Map 
-                  center={this.state.center} 
-                  zoom={this.state.zoom} 
-                  attribution="false"
-                  >
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-                    url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                  />
-                  <GeoJSON key={hash(getGeoJson())} data={getGeoJson()} style={Style}/>
-                  {this.state.markers.map((position) => 
-                  <Marker 
-                    position={position}
-                  >
-                    <Popup>
-                    <pre>{position}</pre>
-                    </Popup>
-                  </Marker>
-                  )}
-                </Map>
-              }
-      </div>
+    const Style = {
+      color: this.state.color,
+      weight: this.state.weight,
+      opacity: this.state.opacity,
+    };
+
+    return (
+        <MapContainer 
+          center={this.state.center} 
+          zoom={this.state.zoom} 
+          attribution="false"
+        >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+          url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        />
+        <GeoJSON key={hash(getGeoJson())} data={getGeoJson()} style={Style}/>
+          {this.state.markers.map((position) => 
+            <Marker 
+              position={position}
+            >
+              <Popup>
+                <pre>{position}</pre>
+              </Popup>
+            </Marker>
+          )}
+        </MapContainer>
     );
   }
 }
 
-export default OnlineKoordinaten;
+export default LeafletMap;
 
 function getGeoJson() {
   return {

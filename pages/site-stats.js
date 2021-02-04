@@ -65,6 +65,18 @@ const StatsGrid = styled.div`
     grid-template-columns: repeat(2,minmax(0,1fr));
 `
 
+const TripleStatsGrid = styled.div`
+    font-size: 2rem;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    max-width: 1200px;
+    margin: var(--space-lg) auto;
+    ${media.lessThan('1000px')`
+        grid-template-columns: repeat(1,minmax(0,1fr));
+    `}
+`
+
 const GridTitle = styled.div`
     font-weight: 200;
     grid-column: span 2/span 2;
@@ -128,7 +140,7 @@ const BottomStatsGrid = styled.div`
 
 const ViewsContainer = styled.div`
     max-width: 1200px;
-    margin: var(--space-lg) auto;
+    margin: calc(var(--space-lg)*2) auto;
 `
 
 
@@ -207,18 +219,16 @@ const Date = styled.p`
     color: var(--gray);
 `
 
-const StatsContainer = styled.p`
-    font-size: 2rem;
-    margin-bottom: var(--space);
-`
-
 
 
 const GitHubWrapper = styled.div`
-    max-width: 600px;
-    margin: var(--space-lg) auto;
+    grid-column: span 2/span 2;
     color: var(--gray);
     font-size: 2rem;
+    ${media.lessThan('1000px')`
+        grid-column: span 1/span 1;
+        margin-top: calc(var(--space)*2);
+    `}
 `
 
 const GitHubButtonWrapper = styled.div`
@@ -247,7 +257,8 @@ const GitHubButton = styled.button`
     }
 `
 const LanguageContainer = styled.div`
-    max-width: 1000px;
+    max-width: 1200px;
+    margin: auto;
     margin: calc(var(--space-lg)*2) auto;
     color: var(--gray);
 `
@@ -300,8 +311,7 @@ const MapWrapper = styled.div`
 `
 
 const VisitorWrapper = styled.div`
-    max-width: 600px;
-    margin: var(--space-lg) auto;
+    grid-column: span 1/span 1;
     font-size: 2rem;
     color: var(--gray);
 
@@ -493,175 +503,180 @@ export default function Recruiting({
                                 </DateContainer>
                             </ViewsContainer>
 
+
+                            <TripleStatsGrid>
                             
-                            <VisitorWrapper>
-                                <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
-                                <ul>
-                                {countryCount.slice(0,5).map((item, i) => (
-                                        <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({parseFloat(item.nb_visits/actions.nb_pageviews*100).toFixed(0)}%)</VisitorList>
-                                    
-                                    ))}
-                                </ul>
-                            </VisitorWrapper>
+                                <VisitorWrapper>
+                                    <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
+                                    <ul>
+                                    {countryCount.slice(0,5).map((item, i) => (
+                                            <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({parseFloat(item.nb_visits/actions.nb_pageviews*100).toFixed(0)}%)</VisitorList>
+                                        
+                                        ))}
+                                    </ul>
+                                </VisitorWrapper>
 
-                            <MapWrapper>
-                                {/*<WorldMap />*/}
-                            </MapWrapper>
+                                {/*<MapWrapper>
+                                    <WorldMap />
+                                </MapWrapper>*/}
 
-                            <GitHubWrapper>
-                                <Title style={{ color: "var(--gray)" }}>
-                                    GitHub Repository
-                                </Title>
-                                This site's repository has been starred <Stats>{stars}</Stats>{" "}
-                                times and forked <Stats>{forkCount}</Stats> times.
-                                <GitHubButtonWrapper>
-                                    <GitHubButtonLink
-                                        href={githubUrl}
-                                        title="GitHub - DaTurboD"
-                                        alt="GitHub - DaTurboD"
-                                    >
-                                        <GitHubButton>
-                                            Follow me on GitHub
-                                        </GitHubButton>
-                                    </GitHubButtonLink>
-                                    <GitHubButtonLink
-                                        href={forkUrl}
-                                        title="Fork mxd-codes-frontend"
-                                        alt="Fork mxd-codes-frontend"
-                                    >
-                                        <GitHubButton>
-                                            Fork this repo
-                                        </GitHubButton>
-                                    </GitHubButtonLink>
-                                    <GitHubButtonLink
-                                        href={starUrl}
-                                        title="Star mxd-codes-frontend"
-                                        alt="Star mxd-codes-frontend"
-                                    >
-                                        <GitHubButton>
-                                            Star this repo
-                                        </GitHubButton>
-                                    </GitHubButtonLink>
-                                </GitHubButtonWrapper>
-                            </GitHubWrapper>
+                                <GitHubWrapper>
+                                    <Title style={{ color: "var(--gray)" }}>
+                                        GitHub Repository
+                                    </Title>
+                                    This site's repository has been starred <Stats>{stars}</Stats>{" "}
+                                    times and forked <Stats>{forkCount}</Stats> times.
+                                    <GitHubButtonWrapper>
+                                        <GitHubButtonLink
+                                            href={githubUrl}
+                                            title="GitHub - DaTurboD"
+                                            alt="GitHub - DaTurboD"
+                                        >
+                                            <GitHubButton>
+                                                Follow me on GitHub
+                                            </GitHubButton>
+                                        </GitHubButtonLink>
+                                        <GitHubButtonLink
+                                            href={forkUrl}
+                                            title="Fork mxd-codes-frontend"
+                                            alt="Fork mxd-codes-frontend"
+                                        >
+                                            <GitHubButton>
+                                                Fork this repo
+                                            </GitHubButton>
+                                        </GitHubButtonLink>
+                                        <GitHubButtonLink
+                                            href={starUrl}
+                                            title="Star mxd-codes-frontend"
+                                            alt="Star mxd-codes-frontend"
+                                        >
+                                            <GitHubButton>
+                                                Star this repo
+                                            </GitHubButton>
+                                        </GitHubButtonLink>
+                                    </GitHubButtonWrapper>
+                                </GitHubWrapper>
 
-                            <LanguageContainer>
-                                <Title style={{ color: "var(--gray)" }}>
-                                    Project Breakdown by Language
-                                </Title>
-                                <LanguageBar>
-                                    <LanguageBarChild
-                                        width={parseFloat(
-                                            (codeStats.JavaScript.code /
-                                                linesOfCode) *
-                                                100
-                                        ).toFixed(2)}
-                                        color="#f0db4f"
-                                        style={{
-                                            borderTopLeftRadius: "5px",
-                                            borderBottomLeftRadius: "5px",
-                                        }}
-                                    />
-                                    <LanguageBarChild
-                                        width={parseFloat(
-                                            (codeStats.JSON.code /
-                                                linesOfCode) *
-                                                100
-                                        ).toFixed(2)}
-                                        color="brown"
-                                    />
-                                    <LanguageBarChild
-                                        width={parseFloat(
-                                            (codeStats.CSS.code /
-                                                linesOfCode) *
-                                                100
-                                        ).toFixed(2)}
-                                        color="pink"
-                                    />
-                                    <LanguageBarChild
-                                        width={parseFloat(
-                                            (codeStats.Markdown.code /
-                                                linesOfCode) *
-                                                100
-                                        ).toFixed(2)}
-                                        color="var(--gray)"
-                                        style={{
-                                            borderTopRightRadius: "5px",
-                                            borderBottomRightRadius: "5px",
-                                        }}
-                                    />
-                                </LanguageBar>
-                                <LanguageWrapper>
-                                    <LanguageColumn>
-                                        <LanguageTitle>
-                                            <LanguageDot color="#f0db4f"/>
-                                            {parseFloat(
+                            </TripleStatsGrid>
+
+                                <LanguageContainer>
+                                    <Title style={{ color: "var(--gray)" }}>
+                                        Project Breakdown by Language
+                                    </Title>
+                                    <LanguageBar>
+                                        <LanguageBarChild
+                                            width={parseFloat(
                                                 (codeStats.JavaScript.code /
                                                     linesOfCode) *
                                                     100
                                             ).toFixed(2)}
-                                            % Javascript
-                                        </LanguageTitle>
-                                        <LanguageMoreStats>
-                                            {codeStats.JavaScript.nFiles} files
-                                        </LanguageMoreStats>
-                                        <LanguageMoreStats>
-                                            {codeStats.JavaScript.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
-                                        </LanguageMoreStats>
-                                    </LanguageColumn>
-                                    <LanguageColumn>
-                                        <LanguageTitle>
-                                            <LanguageDot color="brown"/>
-                                            {parseFloat(
+                                            color="#f0db4f"
+                                            style={{
+                                                borderTopLeftRadius: "5px",
+                                                borderBottomLeftRadius: "5px",
+                                            }}
+                                        />
+                                        <LanguageBarChild
+                                            width={parseFloat(
                                                 (codeStats.JSON.code /
                                                     linesOfCode) *
                                                     100
                                             ).toFixed(2)}
-                                            % JSON
-                                        </LanguageTitle>
-                                        <LanguageMoreStats>
-                                            {codeStats.JSON.nFiles} files
-                                        </LanguageMoreStats>
-                                        <LanguageMoreStats>
-                                            {codeStats.JSON.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
-                                        </LanguageMoreStats>
-                                    </LanguageColumn>
-                                    <LanguageColumn>
-                                        <LanguageTitle>
-                                            <LanguageDot color="pink"/>
-                                            {parseFloat(
+                                            color="brown"
+                                        />
+                                        <LanguageBarChild
+                                            width={parseFloat(
                                                 (codeStats.CSS.code /
                                                     linesOfCode) *
                                                     100
                                             ).toFixed(2)}
-                                            % CSS
-                                        </LanguageTitle>
-                                        <LanguageMoreStats>
-                                            {codeStats.CSS.nFiles} file
-                                        </LanguageMoreStats>
-                                        <LanguageMoreStats>
-                                            {codeStats.CSS.code} lines
-                                        </LanguageMoreStats>
-                                    </LanguageColumn>
-                                    <LanguageColumn>
-                                        <LanguageTitle>
-                                            <LanguageDot color="var(--gray)"/>
-                                            {parseFloat(
+                                            color="pink"
+                                        />
+                                        <LanguageBarChild
+                                            width={parseFloat(
                                                 (codeStats.Markdown.code /
                                                     linesOfCode) *
                                                     100
                                             ).toFixed(2)}
-                                            % Markdown
-                                        </LanguageTitle>
-                                        <LanguageMoreStats>
-                                            {codeStats.Markdown.nFiles} file
-                                        </LanguageMoreStats>
-                                        <LanguageMoreStats>
-                                            {codeStats.Markdown.code} lines
-                                        </LanguageMoreStats>
-                                    </LanguageColumn>
-                                </LanguageWrapper>
-                            </LanguageContainer>
+                                            color="var(--gray)"
+                                            style={{
+                                                borderTopRightRadius: "5px",
+                                                borderBottomRightRadius: "5px",
+                                            }}
+                                        />
+                                    </LanguageBar>
+                                    <LanguageWrapper>
+                                        <LanguageColumn>
+                                            <LanguageTitle>
+                                                <LanguageDot color="#f0db4f"/>
+                                                {parseFloat(
+                                                    (codeStats.JavaScript.code /
+                                                        linesOfCode) *
+                                                        100
+                                                ).toFixed(2)}
+                                                % Javascript
+                                            </LanguageTitle>
+                                            <LanguageMoreStats>
+                                                {codeStats.JavaScript.nFiles} files
+                                            </LanguageMoreStats>
+                                            <LanguageMoreStats>
+                                                {codeStats.JavaScript.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
+                                            </LanguageMoreStats>
+                                        </LanguageColumn>
+                                        <LanguageColumn>
+                                            <LanguageTitle>
+                                                <LanguageDot color="brown"/>
+                                                {parseFloat(
+                                                    (codeStats.JSON.code /
+                                                        linesOfCode) *
+                                                        100
+                                                ).toFixed(2)}
+                                                % JSON
+                                            </LanguageTitle>
+                                            <LanguageMoreStats>
+                                                {codeStats.JSON.nFiles} files
+                                            </LanguageMoreStats>
+                                            <LanguageMoreStats>
+                                                {codeStats.JSON.code.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lines
+                                            </LanguageMoreStats>
+                                        </LanguageColumn>
+                                        <LanguageColumn>
+                                            <LanguageTitle>
+                                                <LanguageDot color="pink"/>
+                                                {parseFloat(
+                                                    (codeStats.CSS.code /
+                                                        linesOfCode) *
+                                                        100
+                                                ).toFixed(2)}
+                                                % CSS
+                                            </LanguageTitle>
+                                            <LanguageMoreStats>
+                                                {codeStats.CSS.nFiles} file
+                                            </LanguageMoreStats>
+                                            <LanguageMoreStats>
+                                                {codeStats.CSS.code} lines
+                                            </LanguageMoreStats>
+                                        </LanguageColumn>
+                                        <LanguageColumn>
+                                            <LanguageTitle>
+                                                <LanguageDot color="var(--gray)"/>
+                                                {parseFloat(
+                                                    (codeStats.Markdown.code /
+                                                        linesOfCode) *
+                                                        100
+                                                ).toFixed(2)}
+                                                % Markdown
+                                            </LanguageTitle>
+                                            <LanguageMoreStats>
+                                                {codeStats.Markdown.nFiles} file
+                                            </LanguageMoreStats>
+                                            <LanguageMoreStats>
+                                                {codeStats.Markdown.code} lines
+                                            </LanguageMoreStats>
+                                        </LanguageColumn>
+                                    </LanguageWrapper>
+                                </LanguageContainer>
+                        
                         </Container>
                     </>
                 )}

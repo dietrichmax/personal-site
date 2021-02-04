@@ -2,7 +2,6 @@ import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
-import MoreStories from '@/components/post/post-preview/more-stories'
 import PostHeader from '@/components/post/post-header/post-header'
 import Layout from '@/components/layout/layout'
 import Newsletter from '@/components/newsletter/subscribe'
@@ -18,10 +17,17 @@ import config from "../../lib/data/SiteConfig";
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
-import Date from '@/components/date/date' 
 import RelatedPosts from '@/components/post/post-preview/related-posts'
-
+import renderToString from 'next-mdx-remote/render-to-string'
+import dynamic from 'next/dynamic'
 // components for posts
+
+const components = {
+  // It also works with dynamically-imported components, which is especially
+  // useful for conditionally loading components for certain routes.
+  // See the notes in README.md for more details.
+  Dots: dynamic(() => import('@/components/funky-stuff/dots')),
+}
 
 const PostWrapper = styled.div`
   max-width: 720px;
@@ -81,7 +87,7 @@ export default function Post({ post, morePosts }) {
   }
 
   const target = React.createRef()
-
+  
   return (
     <Layout>
       <Header/>
@@ -92,7 +98,7 @@ export default function Post({ post, morePosts }) {
             <SEO   
               title={post.title}
               description={post.excerpt}
-              image={post.coverImage.coverImage.url}
+              image={post.coverImage.coverImage.formats.small.url}
               slug={`articles/${post.slug}`}
               date={post.date}
               ogType="article"
@@ -110,14 +116,12 @@ export default function Post({ post, morePosts }) {
               </MoreContainer>
 
               <PostWrapper>
-                <PostHeader postData={post} />                
-                <PostDate>
-                  <Date dateString={post.date} />
-                </PostDate>
+                <PostHeader postData={post} />          
+
                 {/* <PostBody content={post.excerpt} /> */}
 
 
-                <PostBody content={post.content} />
+                <PostBody content={post.content.renderedOutput} />
 
                 <RelatedPosts relatedPosts={morePosts} />
 
@@ -136,7 +140,7 @@ export default function Post({ post, morePosts }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const content = await markdownToHtml(data?.posts[0]?.content || '')
+  const mdxSource = await renderToString(data?.posts[0]?.content || '', { components })
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
 
   return {
@@ -144,7 +148,7 @@ export async function getStaticProps({ params }) {
     props: {
       post: {
         ...data?.posts[0],
-        content,
+        content: mdxSource,
         excerpt,
       },
       morePosts: data?.morePosts,

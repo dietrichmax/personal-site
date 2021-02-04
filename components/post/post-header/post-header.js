@@ -3,6 +3,7 @@ import PostTitle from '@/components/title/content-title'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
+import Date from '@/components/date/date' 
 const _ = require("lodash");
 
 const TagsWrapper = styled.div`
@@ -13,20 +14,17 @@ const TagsWrapper = styled.div`
 `
 
 const PostHeaderWrapper = styled.div`
-  max-width: 640px;
-  margin: auto;
-  margin-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--thirdy-color);
 `
 
-const DateWrapper = styled.div`
-  max-width: 640px;
-  margin: auto;
-  ${media.lessThan('large')`
-    padding-left: 1rem;
-    padding-right: 1rem;
-  `}
+const PostTitleWrapper = styled.div`
+  border-bottom: 1px solid var(--thirdy-color);
+  margin-bottom: var(--space-sm);
 `
+const PostDate = styled.div`
+  font-size: 1.3rem;
+  margin-bottom: calc(var(--space-sm) *0.5);
+`;
+
 const TagItem = styled.a`
   display: inline-block;
   text-transform: uppercase;
@@ -46,7 +44,7 @@ const TagItem = styled.a`
 export default function PostHeader({ postData }) {
 
   
-  const { title, user, tags } = postData
+  const { title, user, tags, date } = postData
   
   return (
     <>
@@ -60,7 +58,13 @@ export default function PostHeader({ postData }) {
           ))}
         </TagsWrapper>
 
-        <PostTitle>{title}</PostTitle>
+        <PostTitleWrapper>  
+          <PostTitle>{title}</PostTitle>   
+        </PostTitleWrapper> 
+
+        <PostDate>
+          <Date dateString={date} />
+          </PostDate>
 
         {/*<Author author={user} />*/}
           

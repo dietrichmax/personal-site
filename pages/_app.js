@@ -14,7 +14,8 @@ const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 class MyApp extends App {
   componentDidMount() {
     if (window.location.href.includes("mxd.codes")) {
-      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
+      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID }), 
+      window._paq.push(['enableHeartBeatTimer']);
     }
   }
   render() {

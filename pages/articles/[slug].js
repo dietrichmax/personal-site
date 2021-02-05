@@ -26,7 +26,7 @@ const components = {
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
-  Dots: dynamic(() => import('@/components/maps/leaflet/react-leaflet-demo'), {
+  LeafletDemo: dynamic(() => import('@/components/maps/leaflet/react-leaflet-demo'), {
     ssr: false
   }),
 }

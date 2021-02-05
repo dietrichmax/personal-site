@@ -11,6 +11,11 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
+      source: '/nuetzliche-links/liste-gis-software',
+      destination: '/articles/gis-software-options-free-open-source-and-proprietary',
+      permanent: true
+    },
+    {
       source: '/gis-und-geo-datenbank-managementsystem-optionen',
       destination: '/articles/gis-and-geo-database-management-system-options',
       permanent: true

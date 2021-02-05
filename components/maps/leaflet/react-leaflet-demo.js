@@ -38,6 +38,10 @@ class LeafletMap extends React.Component {
           center={this.state.center} 
           zoom={this.state.zoom} 
           attribution="false"
+          style={{
+            height: '400px',
+            width: '100%'
+          }}
         >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'

@@ -676,7 +676,7 @@ export default function Recruiting({
                                         </LanguageColumn>
                                     </LanguageWrapper>
                                 </LanguageContainer>
-                        
+                        {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
                         </Container>
                     </>
                 )}

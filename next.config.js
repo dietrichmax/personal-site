@@ -1,8 +1,5 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-const mdx = require('@zeit/next-mdx')({
-  extension: /\.(md|mdx)$/,
-});
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 //const isProd = process.env.NODE_ENV === "production";
@@ -420,7 +417,6 @@ const redirects = {async redirects() {
 }};
 
 module.exports = withPlugins([
-  [mdx],
   redirects,
   withPWA({
     pwa: {

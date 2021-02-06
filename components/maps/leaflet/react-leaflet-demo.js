@@ -1,5 +1,5 @@
 import React from "react"
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet-universal";
 import hash from 'object-hash';
 import 'leaflet/dist/leaflet.css';
 
@@ -7,7 +7,6 @@ class LeafletMap extends React.Component {
     constructor() {
     super();
     this.state = {
-      inBrowser: false,
       markers: [[51.8, 9.0]],
       center: [51.8, 9.0],
       zoom: 5,
@@ -17,10 +16,6 @@ class LeafletMap extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ inBrowser: true });
-  }
-
   render() {
 
     const Style = {
@@ -28,10 +23,6 @@ class LeafletMap extends React.Component {
       weight: this.state.weight,
       opacity: this.state.opacity,
     };
-
-    if (!this.state.inBrowser) {
-      return null;
-    }
 
     return (
         <MapContainer 

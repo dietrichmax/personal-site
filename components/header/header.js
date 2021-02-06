@@ -2,9 +2,11 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import config from "../../lib/data/SiteConfig";
 import media from 'styled-media-query';
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import ButtonMenu from './button';
 import Navigation from './header-navigation';
+//import ThemePicker from "@/components/themes/themePicker";
+import { push } from "@socialgouv/matomo-next";
 
 const HeaderWrapper = styled.div`
   background-color: var(--secondary-color);
@@ -54,11 +56,12 @@ export default function HeaderNav() {
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
+
   function handleToggleMenu() {
     setToggleMenu(!toggleMenu);
   }
 
-
+  
   return (
     <HeaderWrapper>
 
@@ -71,6 +74,8 @@ export default function HeaderNav() {
             <a title={config.siteTitle}>{config.siteTitle}</a>
           </Link>
         </NavTitle>
+
+
 
         <ButtonMenu
           handleClick={handleToggleMenu}

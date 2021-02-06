@@ -1,12 +1,11 @@
 import config from "../../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
-import { SocialIcon } from 'react-social-icons';
 import React, { useState, useEffect } from "react"
 import { getAllPosts } from '@/lib/data/api/cms'
 import { format } from 'date-fns'
 import media from 'styled-media-query';
-import { darken } from 'polished';
+import { push } from "@socialgouv/matomo-next";
 // styled components
 
 const FooterContainer = styled.div`
@@ -119,10 +118,26 @@ const FooterSubContainerContentRight = styled.div`
   `}
 `
 
-const Heart = styled.span`
+const Heart = styled.i`
   color: transparent;  
   text-shadow: 0 0 0 var(--thirdy-color);
 `
+
+
+const FooterIconsLink= styled(Link)` 
+`
+
+const FooterIcons= styled.i`    
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: var(--space-sm);
+  color: var(--text-color);
+  font-size: 20px;
+`
+
 export default function Footer() {
   const [posts, setPosts] = useState("")
 
@@ -192,11 +207,11 @@ export default function Footer() {
               <FooterTitle>Connect</FooterTitle>
               You can connect with me on:
               <FooterSocials>
-                <SocialIcon url={config.socials.github} fgColor="var(--text-color)" bgColor="var(--primary-color)" title="GitHub" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.twitter} fgColor="var(--text-color)" bgColor="var(--primary-color)" title="Twitter" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.linkedin} fgColor="var(--text-color)" bgColor="var(--primary-color)" title="Linkedin" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url={config.socials.instagram} fgColor="var(--text-color)" bgColor="var(--primary-color)" title="Instagram" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
-                <SocialIcon url="mailto:kontakt@gis-netzwerk.com" fgColor="var(--text-color)" bgColor="var(--primary-color)" title="E-Mail" style={{ height: 25, width: 25, margin: 'var(--space-sm)' }}/>
+                <FooterIconsLink href={config.socials.github} title="GitHub"><FooterIcons className="lab la-github" title="GitHub"/></FooterIconsLink>
+                <FooterIconsLink href={config.socials.twitter} title="Twitter" ><FooterIcons className="lab la-twitter" title="Twitter"/></FooterIconsLink>
+                <FooterIconsLink href={config.socials.instagram} title="Instagram"><FooterIcons className="lab la-instagram" title="Instagram"/></FooterIconsLink>
+                <FooterIconsLink href="mailto:kontakt@gis-netzwerk.com" title="Mail" ><FooterIcons className="las la-envelope" title="Mail"/></FooterIconsLink>
+                <FooterIconsLink href={config.siteRss} title="RSS" ><FooterIcons className="las la-rss" title="RSS"/></FooterIconsLink>
               </FooterSocials>
 
             </FooterConnectColumn>
@@ -209,7 +224,7 @@ export default function Footer() {
             © 2018-{format(new Date(), "yyyy")} <Link href={config.siteUrl}> Max Dietrich</Link>
           </FooterSubContainerContentLeft>
           <FooterSubContainerContentRight>
-          Made with <Heart>❤️</Heart> by MXD.
+          Made with <Heart className="lar la-heart"></Heart> by MXD.
           </FooterSubContainerContentRight>
         </FooterSubContainerContent>
       </FooterSubContainer>

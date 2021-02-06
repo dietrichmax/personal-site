@@ -16,7 +16,7 @@ const createManifest = () =>
             "sizes": "192x192"
         },
         {
-            "src": "/logos/logo_square_512.png",
+            "src": "/logos/android-chrome-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

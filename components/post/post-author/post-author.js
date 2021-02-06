@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SocialIcon } from 'react-social-icons';
 import Image from 'next/image'
 
 const AuthorWrapper = styled.div`
@@ -45,9 +44,9 @@ export default function Author({ author }) {
         <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
         
         <AuthorSocials>
-          {socials.map((social, i) => (
+          {/*{socials.map((social, i) => (
             <SocialIcon key={i} url={social.link} bgColor="var(--primary-color)" fgColor="var(--text-color)" title={social.plattform} style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
-          ))}
+          ))}*/}
         </AuthorSocials>
       </AuthorMeta>
     </AuthorWrapper>

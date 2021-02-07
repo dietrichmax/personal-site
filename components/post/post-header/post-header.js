@@ -45,7 +45,7 @@ const TagItem = styled.a`
 export default function PostHeader({ postData }) {
 
   
-  const { title, user, tags, date } = postData
+  const { title, user, tags, date, id } = postData
   
   return (
     <>
@@ -65,7 +65,7 @@ export default function PostHeader({ postData }) {
 
         <PostDate>
           <Date dateString={date} />
-          <PostReactions postID={post.id} preview/>
+          <PostReactions postID={id} preview/>
           </PostDate>
 
         {/*<Author author={user} />*/}

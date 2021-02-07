@@ -24,6 +24,7 @@ const PostTitleWrapper = styled.div`
 const PostDate = styled.div`
   font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
+  display: flex;
 `;
 
 const TagItem = styled.a`

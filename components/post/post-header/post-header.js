@@ -4,6 +4,7 @@ import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
 import Date from '@/components/date/date' 
+import PostReactions from "@/components/post/post-reactions/post-reactions" 
 const _ = require("lodash");
 
 const TagsWrapper = styled.div`
@@ -64,6 +65,7 @@ export default function PostHeader({ postData }) {
 
         <PostDate>
           <Date dateString={date} />
+          <PostReactions postID={post.id} preview/>
           </PostDate>
 
         {/*<Author author={user} />*/}

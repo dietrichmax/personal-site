@@ -31,6 +31,7 @@ export default function MoreStories({ posts}) {
             slug={post.slug}
             excerpt={post.excerpt}
             tags={post.tags}
+            heart={post.heart}
           />
         ))}
       </ListWrapper>

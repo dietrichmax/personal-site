@@ -20,6 +20,7 @@ import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
 import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
+import PostReactions from "@/components/post/post-reactions/post-reactions"
 // components for posts
 
 const components = {
@@ -54,16 +55,12 @@ const PostDate = styled.div`
 `;
 
 const MoreContainer = styled.div`
-  max-width: 630px;
   margin: var(--space) auto 0 auto;
   text-align: left;    
   cursor: pointer;
   font-weight: 600;
   font-size: 1.3rem;
   text-decoration: none;
-  ${media.lessThan('medium')`
-    margin-left: var(--space);
-  `}
 `
 const MoreArticles = styled.a`
   cursor: pointer;
@@ -86,7 +83,7 @@ export default function Post({ post, morePosts }) {
   }
 
   const target = React.createRef()
-  
+
   return (
     <Layout>
       <Header/>
@@ -108,20 +105,25 @@ export default function Post({ post, morePosts }) {
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
               ) : null }*/}
 
-              <MoreContainer>
-                <Link href={`/articles`} passHref>
-                  <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
-                </Link>
-              </MoreContainer>
+
 
               <PostWrapper>
+                <MoreContainer>
+                  <Link href={`/articles`} passHref>
+                    <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
+                  </Link>
+                </MoreContainer>
+
                 <PostHeader postData={post} />          
 
                 {/* <PostBody content={post.excerpt} /> */}
 
 
                 <PostBody content={post.content.renderedOutput} />
+                
+                <PostReactions post={post}/>
 
+                
                 <RelatedPosts relatedPosts={morePosts} />
 
               </PostWrapper>

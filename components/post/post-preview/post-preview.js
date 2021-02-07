@@ -26,7 +26,6 @@ const Card = styled.div`
   ${media.greaterThan('large')`
     :hover {
       box-shadow: 0 25px 25px ${props => props.color ? hexToRgbA(props.color) : 'rgb(0 0 0 / 25%)}'},0.25);    
-      transform: translateY(-3px) scale(1);
     }
 `}
 `
@@ -53,7 +52,8 @@ const CardItemTitle = styled.h2`
   border-bottom: 1px solid var(--border-dark);
 `;
 
-const CardItemDate = styled.div`
+const CardItemMeta = styled.div`
+  display: flex;
   font-size: 1.3rem;
   margin-top: calc(var(--space-sm) *0.5);
   margin-bottom: calc(var(--space-sm) *0.5);
@@ -88,6 +88,14 @@ const TagItem = styled.a`
   }
 `
 
+const LikeCount = styled.span`   
+  margin-left: var(--space-sm);
+`
+
+const Icon = styled.i`
+  color: var(--text-color);
+`
+
 export default function PostPreview({
   title,
   coverImage,
@@ -96,6 +104,7 @@ export default function PostPreview({
   author,
   slug,
   tags,
+  heart,
 }) {
 
   const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
@@ -116,9 +125,10 @@ export default function PostPreview({
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
-          <CardItemDate>
+          <CardItemMeta>
             <Date dateString={date} />
-          </CardItemDate>
+            <LikeCount aria-label={heart}><Icon className="las la-heart"/> {heart}</LikeCount>
+          </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (

@@ -121,7 +121,7 @@ export default function Post({ post, morePosts }) {
 
                 <PostBody content={post.content.renderedOutput} />
                 
-                <PostReactions post={post}/>
+                <PostReactions postID={post.id}/>
 
                 
                 <RelatedPosts relatedPosts={morePosts} />

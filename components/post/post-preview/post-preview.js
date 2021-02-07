@@ -3,6 +3,7 @@ import { usePalette } from "react-palette"
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
+import PostReactions from "@/components/post/post-reactions/post-reactions"
 
 function hexToRgbA(hex){
   var c;
@@ -88,15 +89,9 @@ const TagItem = styled.a`
   }
 `
 
-const LikeCount = styled.span`   
-  margin-left: var(--space-sm);
-`
-
-const Icon = styled.i`
-  color: var(--text-color);
-`
 
 export default function PostPreview({
+  id,
   title,
   coverImage,
   date,
@@ -104,7 +99,6 @@ export default function PostPreview({
   author,
   slug,
   tags,
-  heart,
 }) {
 
   const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
@@ -127,7 +121,7 @@ export default function PostPreview({
           </CardItemTitle>
           <CardItemMeta>
             <Date dateString={date} />
-            <LikeCount aria-label={heart}><Icon className="las la-heart"/> {heart}</LikeCount>
+            <PostReactions preview postID={id}/>
           </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>

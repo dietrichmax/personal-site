@@ -46,13 +46,34 @@ const Count = styled.a`
 
 `
 
-export default function PostReactions({ post }) {
-    const [heart, setHeart] = useState(post.heart)
+const PreviewLikeCount = styled.span`   
+  margin-left: var(--space-sm);
+  font-size: inherit;
+`
+const PreviewIcon = styled.i`
+`
+
+export default function PostReactions({ postID, preview }) {
+    const [heart, setHeart] = useState(0)
     const [useful, setUseful] = useState(0)
     const [starred, setStarred] = useState(0)
     const [incremented, setIncremented] = useState(false)
     const [submitted, setSubmitted] = useState(false)
-    const postID = post.id
+
+
+    useEffect(() => {
+      const requestOptions = {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+      };
+      fetch(`https://api.mxd.codes/posts/${postID}`, requestOptions)
+          .then(response => response.json())
+          .then(function(data) {
+            setHeart(data.heart)
+            setUseful(data.useful),
+            setStarred(data.starred)
+          })
+    }, []);
 
     const sendIncrement = (value) => {
         
@@ -86,6 +107,9 @@ export default function PostReactions({ post }) {
     }
 
   return (
+    preview ?
+    <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart}</PreviewLikeCount> 
+    :
     <Container>
       <Reaction>
         <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart"/></Button>

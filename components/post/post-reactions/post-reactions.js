@@ -95,7 +95,7 @@ export default function PostReactions({ postID, preview }) {
     }
 
     const handleSubmit = () => {
-
+      window._paq.push(['trackEvent', 'Page Reaction', 'Page Reaction Click']);
       if (!incremented) {
         setHeart(heart+1),
         setIncremented(true),

@@ -61,7 +61,7 @@ const SEO = ({
       <meta name="theme-color" content="#0a1924"/>
       {/* Schema.org tags */}
       <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD.replace("&quot;","""))} 
+        {JSON.stringify(schemaOrgJSONLD.replace("&quot;","'"))} 
       </script>
 
       {/* OpenGraph tags */}

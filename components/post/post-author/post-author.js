@@ -17,7 +17,7 @@ const AuthorName = styled.span`
   font-weight: bold;
 `
 
-const AuthorImgWrapper = styled(Image)`
+const AuthorImgWrapper = styled.div`
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -33,7 +33,7 @@ export default function Author({ author }) {
   return (
     <AuthorWrapper>
       <AuthorImgWrapper>
-        <AuthorImg
+        <Image
           src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
           alt={username}
           title={username}

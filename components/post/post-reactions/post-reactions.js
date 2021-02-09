@@ -40,7 +40,7 @@ const Icon = styled.i`
   color: ${props => (props.incremented ? "var(--thirdy-color)" : "var(--text-color)")};
 `
 
-const Count = styled.a`
+const Count = styled.span`
   font-size: 1.5rem;
   margin-top: var(--space-sm);
 

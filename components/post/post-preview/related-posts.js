@@ -28,7 +28,7 @@ const ArticlesItem = styled.li`
 `}
 `
 
-const ArticleDate = styled.a`
+const ArticleDate = styled.span`
     font-weight: 200;
     color: var(--gray);
     margin-right: var(--space);

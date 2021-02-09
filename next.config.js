@@ -8,6 +8,11 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
+      source: '/en/gis/gis-voluntary-work',
+      destination: '/articles/gis-volunteering-make-the-world-a-better-place-with-gis',
+      permanent: true
+    },
+    {
       source: '/nuetzliche-links/liste-gis-software',
       destination: '/articles/gis-software-options-free-open-source-and-proprietary',
       permanent: true

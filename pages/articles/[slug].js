@@ -129,6 +129,7 @@ export default function Post({ post, morePosts }) {
               slug={`articles/${post.slug}`}
               date={post.date}
               ogType="article"
+              author={post.user}
               postSEO
             />
             <article ref={target} >

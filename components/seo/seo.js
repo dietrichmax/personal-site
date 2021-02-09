@@ -8,8 +8,8 @@ const SEO = ({
   slug,
   date,
   ogType,
+  author,
   postSEO
-
 }) => {
 
   title = title ? title : config.siteTitle
@@ -32,7 +32,9 @@ const SEO = ({
           image,
          ],
         "datePublished": date,
-        "dateModified": date
+        "dateModified": date,
+        "author": author.username,
+        "publisher": config.siteTitle,
     }
   } else { 
       schemaOrgJSONLD = {

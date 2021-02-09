@@ -123,10 +123,6 @@ const Heart = styled.i`
   text-shadow: 0 0 0 var(--thirdy-color);
 `
 
-
-const FooterIconsLink= styled(Link)` 
-`
-
 const FooterIcons= styled.i`    
   cursor: pointer;
   display: inline-block;
@@ -207,11 +203,11 @@ export default function Footer() {
               <FooterTitle>Connect</FooterTitle>
               You can connect with me on:
               <FooterSocials>
-                <FooterIconsLink href={config.socials.github} title="GitHub" passHref><FooterIcons className="lab la-github" title="GitHub"/></FooterIconsLink>
-                <FooterIconsLink href={config.socials.twitter} title="Twitter" passHref>><FooterIcons className="lab la-twitter" title="Twitter"/></FooterIconsLink>
-                <FooterIconsLink href={config.socials.instagram} title="Instagram" passHref>><FooterIcons className="lab la-instagram" title="Instagram"/></FooterIconsLink>
-                <FooterIconsLink href="mailto:kontakt@gis-netzwerk.com" title="Mail" passHref>><FooterIcons className="las la-envelope" title="Mail"/></FooterIconsLink>
-                <FooterIconsLink href={config.siteRss} title="RSS" passHref>><FooterIcons className="las la-rss" title="RSS"/></FooterIconsLink>
+                <Link href={config.socials.github} title="GitHub" passHref><FooterIcons className="lab la-github" title="GitHub"/></Link>
+                <Link href={config.socials.twitter} title="Twitter" passHref>><FooterIcons className="lab la-twitter" title="Twitter"/></Link>
+                <Link href={config.socials.instagram} title="Instagram" passHref>><FooterIcons className="lab la-instagram" title="Instagram"/></Link>
+                <Link href="mailto:kontakt@gis-netzwerk.com" title="Mail" passHref>><FooterIcons className="las la-envelope" title="Mail"/></Link>
+                <Link href={config.siteRss} title="RSS" passHref>><FooterIcons className="las la-rss" title="RSS"/></Link>
               </FooterSocials>
 
             </FooterConnectColumn>

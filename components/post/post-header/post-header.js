@@ -67,9 +67,9 @@ export default function PostHeader({ postData }) {
         <PostDate>
           <Date dateString={date} />
           <PostReactions postID={id} preview/>
-          </PostDate>
+        </PostDate>
 
-        {/*<Author author={user} />*/}
+        <Author author={user} />
           
       </PostHeaderWrapper>
     </>

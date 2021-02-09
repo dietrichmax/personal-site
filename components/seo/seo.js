@@ -33,8 +33,18 @@ const SEO = ({
          ],
         "datePublished": date,
         "dateModified": date,
-        "author": author.username,
-        "publisher": config.siteTitle,
+        "author": {
+          "@type": "Person",
+          "name": author.username,
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": config.siteTitle,
+          "logo": {
+            "@type": "ImageObject",
+            "url": config.siteLogo
+          }
+        }  
     }
   } else { 
       schemaOrgJSONLD = {

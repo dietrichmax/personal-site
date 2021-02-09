@@ -60,8 +60,8 @@ export default function RelatedPosts({ relatedPosts }) {
             {relatedPosts.map((post) => (
                 <ArticlesItem>
                         <ArticleDate>{post.date} </ArticleDate>
-                        <Link href={post.slug} title={post.title} passHref>
-                          <ArticleTitle>{post.title}</ArticleTitle>  
+                        <Link href={post.slug} passHref>
+                          <ArticleTitle title={post.title}>{post.title}</ArticleTitle>  
                         </Link>
                 </ArticlesItem>
             ))}

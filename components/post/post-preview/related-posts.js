@@ -41,7 +41,6 @@ const ArticleDate = styled.a`
 `
 const ArticleTitle = styled.a`
     font-size: 1.5rem;
-    font-weight: 200;
     margin-right: var(--space);
     ${media.lessThan('medium')`
         display: block;

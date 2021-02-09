@@ -16,12 +16,7 @@ export default function Animation() {
     <div title="newsletter-animation">
       <Lottie
         style={{
-          position: 'fixed',
-          top: '0',
-          left: '0',
-          height: '100%',
           width: '100%',
-          zIndex: '99999'
         }}
         isClickToPauseDisabled={true}
         options={defaultOptions}

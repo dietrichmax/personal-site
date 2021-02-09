@@ -2,7 +2,6 @@
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
-//const isProd = process.env.NODE_ENV === "production";
 
 // redirects
 const redirects = {async redirects() {
@@ -421,12 +420,14 @@ const redirects = {async redirects() {
   ]
 }};
 
+const images = 
 module.exports = withPlugins([
+  {future: { 
+    webpack5: true }},
   redirects,
   withPWA({
     pwa: {
-      dest: 'public',
-      runtimeCaching,
+      disable: process.env.NODE_ENV === 'development',
     },
   }),
   {images: {

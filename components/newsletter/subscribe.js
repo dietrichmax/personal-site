@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import ConfettiAnimation from "@/components/animations/confetti-animation"
 import styled from 'styled-components';
 import { Emojione } from "react-emoji-render"
 
@@ -124,12 +123,6 @@ export default function Subscribe ({ noLabel, cb }) {
 
   return (
     <>
-      {submitted && (
-        <div className="firework-window">
-          <ConfettiAnimation />
-        </div>
-      )}
-
       {submitted ? (
         <NewsletterWrapper>
           <DescriptionWrapper>

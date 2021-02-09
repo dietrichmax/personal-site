@@ -30,18 +30,42 @@ const components = {
 }
 
 const PostWrapper = styled.div`
-  max-width: 720px;
+  max-width: 1300px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: var(--space-sm) auto;
   background-color: var(--primary-color);
-  ${media.lessThan('large')`
+  ${media.lessThan('medium')`
     padding-left: var(--space);
     padding-right: var(--space);
   `}
 `
 
+const PostGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8,minmax(0,1fr));
+  gap: var(--space);
+  ${media.lessThan('medium')`
+    display: block;
+  `}
+`
+
+const Sidebar = styled.div`
+  display: block;
+  grid-column: span 2/span 2;
+  margin-top: var(--space-lg);
+  ${media.lessThan('large')`
+    grid-column: span 1/span 1;
+  `}
+`
+
+const Content = styled.div`
+  grid-column: span 4/span 4;
+  ${media.lessThan('large')`
+    grid-column: span 6/span 6;
+  `}
+`
+
 const MorePostsWrapper = styled.div`
-  max-width: 720px;
   background-color: var(--primary-color);
   ${media.lessThan('large')`
     padding-left: var(--space);
@@ -105,32 +129,35 @@ export default function Post({ post, morePosts }) {
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
               ) : null }*/}
 
-
-
               <PostWrapper>
-                <MoreContainer>
-                  <Link href={`/articles`} passHref>
-                    <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
-                  </Link>
-                </MoreContainer>
+                <PostGrid>
+                  <Sidebar />
+                  <Content>
+                    <MoreContainer>
+                      <Link href={`/articles`} passHref>
+                        <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
+                      </Link>
+                    </MoreContainer>
 
-                <PostHeader postData={post} />          
+                    <PostHeader postData={post} />          
 
-                {/* <PostBody content={post.excerpt} /> */}
+                    {/* <PostBody content={post.excerpt} /> */}
 
 
-                <PostBody content={post.content.renderedOutput} />
-                
-                <PostReactions postID={post.id}/>
+                    <PostBody content={post.content.renderedOutput} />
+                    
+                    <PostReactions postID={post.id}/>
 
-                
-                <RelatedPosts relatedPosts={morePosts} />
-
+                    
+                    <RelatedPosts relatedPosts={morePosts} />
+                  </Content>
+                  <Sidebar />
+                </PostGrid>
               </PostWrapper>
 
-            </article>
             
-            <Newsletter />
+              <Newsletter />
+            </article>
             
           </>
         )}     

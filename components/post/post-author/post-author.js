@@ -20,7 +20,6 @@ const AuthorName = styled.span`
 const AuthorImg = styled(Image)`
   border-radius: 50%;
   margin-bottom: auto;
-  width: 50px;
   height: 50px;
 `
 
@@ -37,7 +36,7 @@ export default function Author({ author }) {
         src={`${picture.url.startsWith('/') ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ''}${picture.url}`}
         alt={username}
         title={username}
-        width="55"
+        width="50"
         height="50"
       />
       <AuthorMeta>

@@ -184,7 +184,7 @@ export default function Footer() {
               <FooterColumnContent>
               <FooterNav>
                 {newPosts.map((item, i) => (
-                    <Link key={i} href={`/articles/${item.slug}`}>
+                    <Link key={i} href={`/articles/${item.slug}`} passHref>
                       <FooterNavItem title={item.title}>{item.title}</FooterNavItem>
                     </Link>
                 ))}

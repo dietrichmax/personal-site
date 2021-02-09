@@ -19,7 +19,7 @@
     "img-optimize": "py ./utils/resize_images.py",
     "lint": "eslint --fix .",
     "format": "prettier --write './**/*.{js,jsx,css,json}' --config .prettierrc",
-    "count": "cloc --exclude-ext=svg --exclude-dir=animation-data,node_modules,.next --json components/ lib/ pages/ styles/ public/ . > lib/data/count_total.json"
+    "count": "cloc --exclude-ext=svg --exclude-dir=animation-data,node_modules,.next --json components/ lib/ pages/ styles/ public/ > lib/data/count_total.json"
   },
   "dependencies": {
     "@socialgouv/matomo-next": "^1.1.2",

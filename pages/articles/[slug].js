@@ -33,7 +33,7 @@ const components = {
 }
 
 const PostWrapper = styled.div`
-  max-width: 1300px;
+  max-width: 1400px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: var(--space-sm) auto;
   background-color: var(--primary-color);

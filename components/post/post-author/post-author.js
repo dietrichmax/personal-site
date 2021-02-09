@@ -40,7 +40,7 @@ export default function Author({ author }) {
           width="50"
           height="50"
         />
-       <AuthorImgWrapper>
+       </AuthorImgWrapper>
       <AuthorMeta>
         <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
         

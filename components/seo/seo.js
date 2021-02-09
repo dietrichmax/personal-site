@@ -40,6 +40,44 @@ const SEO = ({
         "author": {
           "@type": "Person",
           "name": author.username,
+          "nationality": "German",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Rosenheim",
+            "addressRegion": "BY",
+            "addressCountry": "Germany"
+          },
+          "alumniOf": [
+            {
+             "@type": "CollegeOrUniversity",
+             "name": "University of Salzburg",
+             "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
+            }
+          ],
+          "gender": "Male",
+          "jobTitle": "GeoData Manager",
+          "worksFor": [
+            {
+              "@type": "Organization",
+              "name": "RIWA GmbH Gesellschaft für Geoinformationen",
+              "sameAs": [
+                "http://www.riwa-gis.de/",
+                "http://www.riwa.de/"
+              ]
+            }
+          ],
+          "nationality": "German",
+          "url": "http://mxd.codes",
+          "sameAs" : [ 
+            config.socials.twitter,
+            config.socials.linkedin,
+            config.socials.github,
+            config.socials.instagram],
+          "knowsAbout": [
+            "GIS",
+            "Web-Development",
+            "Technical drawing"
+          ],
         },
         "publisher": {
           "@type": "Organization",

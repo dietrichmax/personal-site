@@ -27,7 +27,7 @@ const PostDate = styled.div`
   display: flex;
 `;
 
-const TagItem = styled(Link)`
+const TagItem = styled.a`
   display: inline-block;
   text-transform: uppercase;
   transition: 0.2s;
@@ -53,8 +53,10 @@ export default function PostHeader({ postData }) {
       <PostHeaderWrapper>
 
         <TagsWrapper>
-          {tags.map((tag, i) => (
-            <TagItem key={i} href={`/articles/topics/${tag.slug}`} color={tag.color} title={tag.name}>{tag.name}</TagItem>
+          {tags.map((tag, i) => (              
+            <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
+              <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
+            </Link>
           ))}
         </TagsWrapper>
 

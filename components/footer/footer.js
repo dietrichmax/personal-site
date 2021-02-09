@@ -217,7 +217,7 @@ export default function Footer() {
       <FooterSubContainer>
         <FooterSubContainerContent>
           <FooterSubContainerContentLeft>
-            © 2018-{format(new Date(), "yyyy")} <Link href={config.siteUrl}> Max Dietrich</Link>
+            © 2018-{format(new Date(), "yyyy")} <Link href={config.siteUrl} title="Max Dietrich"> Max Dietrich</Link>
           </FooterSubContainerContentLeft>
           <FooterSubContainerContentRight>
           Made with <Heart className="lar la-heart"></Heart> by MXD.

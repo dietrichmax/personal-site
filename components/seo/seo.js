@@ -26,7 +26,11 @@ const SEO = ({
   if (postSEO) {
       schemaOrgJSONLD = {
         "@context": "http://schema.org",
-        "@type": "NewsArticle",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id":  `${config.siteUrl}/articles`
+        },  
         "headline": title,
         "image": [
           image,

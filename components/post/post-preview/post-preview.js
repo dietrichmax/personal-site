@@ -115,7 +115,7 @@ export default function PostPreview({
         </CardItemImg>*/}
         <CardItemInfo>
           <CardItemTitle>
-            <Link as={`/articles/${slug}`} href="/articles/[slug]">
+            <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
@@ -126,7 +126,7 @@ export default function PostPreview({
           <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (
-              <Link key={i} href={`/articles/topics/${tag.slug}`}>
+              <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
                 <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
               </Link>
             ))}

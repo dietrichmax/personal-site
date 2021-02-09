@@ -1,6 +1,7 @@
 import PostPreview from './post-preview'
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import getReadTime from "@/lib/read-time"
 
 const ListWrapper = styled.div`
   max-width: 1200px;
@@ -33,6 +34,7 @@ export default function MoreStories({ posts}) {
             excerpt={post.excerpt}
             tags={post.tags}
             heart={post.heart}
+            readingTime={getReadTime(post.content)}
           />
         ))}
       </ListWrapper>

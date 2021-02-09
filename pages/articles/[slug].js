@@ -10,10 +10,10 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
+import config from "@/lib/data/SiteConfig";
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 //import CoverImage from '@/components/post/post-image/cover-image'
-import config from "../../lib/data/SiteConfig";
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
@@ -21,6 +21,9 @@ import RelatedPosts from '@/components/post/post-preview/related-posts'
 import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
+import getReadTime from "@/lib/read-time"
+
+
 // components for posts
 
 const components = {
@@ -108,6 +111,10 @@ export default function Post({ post, morePosts }) {
 
   const target = React.createRef()
 
+
+  
+ 
+
   return (
     <Layout>
       <Header/>
@@ -170,12 +177,14 @@ export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
   const mdxSource = await renderToString(data?.posts[0]?.content || '', { components })
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
+  const readingTime = getReadTime(mdxSource.renderedOutput); 
 
   return {
     revalidate:  86400,
     props: {
       post: {
         ...data?.posts[0],
+        readingTime: readingTime,
         content: mdxSource,
         excerpt,
       },

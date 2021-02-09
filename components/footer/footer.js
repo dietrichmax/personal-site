@@ -1,4 +1,4 @@
-import config from "../../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
 import React, { useState, useEffect } from "react"
@@ -63,7 +63,7 @@ const FooterTitle = styled.p`
   font-weight: 200;
   margin-bottom: var(--space-sm);
   padding-bottom: calc(var(--space-sm)*0.5);
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--thirdy-color);
 `
 
 const FooterColumnContent = styled.div`

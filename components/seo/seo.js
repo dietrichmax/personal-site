@@ -13,7 +13,7 @@ const SEO = ({
 }) => {
 
   title = title ? title : config.siteTitle
-  description  = description ? description : config.siteDescription
+  description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? slug : ""
   image = image ? `${image.startsWith("/") ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ""}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
@@ -60,9 +60,7 @@ const SEO = ({
       <link rel="apple-touch-icon" href="/logos/android-chrome-192x192.png"/>
       <meta name="theme-color" content="#0a1924"/>
       {/* Schema.org tags */}
-      <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD).replace("&quot;","'")} 
-      </script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}/>
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={slug} /> 

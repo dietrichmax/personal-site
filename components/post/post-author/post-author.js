@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import Image from 'next/image'
+import Link from 'next/link'
+import config from "@/lib/data/SiteConfig";
 
 const AuthorWrapper = styled.div`
   display: flex;
   margin-top: var(--space);
   margin-bottom: var(--space);
+  background-color: var(--secondary-color);
+  padding: var(--space-sm);
 `
 
 const AuthorMeta = styled.div`
@@ -15,17 +19,27 @@ const AuthorMeta = styled.div`
 
 const AuthorName = styled.span`
   font-weight: bold;
+  cursor: pointer;
 `
 
 const AuthorImgWrapper = styled.div`
   border-radius: 50%;
+  overflow: hidden;
   height: 50px;
-  width: 50px;
 `
 
 const AuthorSocials = styled.div`
 `
 
+const AuthorSocialIcons= styled.i`    
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: var(--space-sm);
+  color: var(--thirdy-color);
+`
 export default function Author({ author }) {
 
   const {username, picture, bio , socials} = author
@@ -42,12 +56,14 @@ export default function Author({ author }) {
         />
        </AuthorImgWrapper>
       <AuthorMeta>
-        <p>By{' '}<AuthorName>{username}{' '}</AuthorName>| {bio}</p>
+        <p>By{' '}<Link href="/about-me" passHref><AuthorName title="About me" >{username}{' '}</AuthorName></Link>| {bio}</p>
         
         <AuthorSocials>
-          {/*{socials.map((social, i) => (
-            <SocialIcon key={i} url={social.link} bgColor="var(--primary-color)" fgColor="var(--text-color)" title={social.plattform} style={{ height: 23, width: 23, marginRight: 'var(--space-sm)' }}/>
-          ))}*/}
+          <Link href={config.socials.github} passHref><AuthorSocialIcons className="lab la-github" title="GitHub"/></Link>
+          <Link href={config.socials.twitter} passHref><AuthorSocialIcons className="lab la-twitter" title="Twitter"/></Link>
+          <Link href="mailto:kontakt@gis-netzwerk.com" passHref><AuthorSocialIcons className="las la-envelope" title="Mail"/></Link>
+          <Link href={config.socials.instagram} passHref><AuthorSocialIcons className="lab la-instagram" title="Instagram"/></Link>
+          <Link href={config.siteRss} passHref><AuthorSocialIcons className="las la-rss" title="RSS"/></Link>
         </AuthorSocials>
       </AuthorMeta>
     </AuthorWrapper>

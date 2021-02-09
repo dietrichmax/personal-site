@@ -89,6 +89,12 @@ const TagItem = styled.a`
   }
 `
 
+const ReadingTime = styled.span`
+  margin-left: var(--space-sm);
+`
+
+const ReadingTimeSymbol = styled.i`
+`
 
 export default function PostPreview({
   id,
@@ -99,6 +105,7 @@ export default function PostPreview({
   author,
   slug,
   tags,
+  readingTime
 }) {
 
   const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
@@ -122,6 +129,7 @@ export default function PostPreview({
           <CardItemMeta>
             <Date dateString={date} />
             <PostReactions preview postID={id}/>
+            <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>
           <TagsWrapper>

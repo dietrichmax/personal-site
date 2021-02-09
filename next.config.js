@@ -422,8 +422,8 @@ const redirects = {async redirects() {
 
 const images = 
 module.exports = withPlugins([
-  {future: { 
-    webpack5: true }},
+  /*{future: { 
+    webpack5: true }},*/
   redirects,
   withPWA({
     pwa: {
@@ -431,8 +431,6 @@ module.exports = withPlugins([
     },
   }),
   {images: {
-    deviceSizes: [320, 420, 768, 1024, 1200, 1920],
-    imageSizes: [50, 368, 1920 ],
     domains: ['api.mxd.codes'],
   }},
   {i18n: {

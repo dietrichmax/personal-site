@@ -9,7 +9,6 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
-  padding-top: var(--space);
   margin-top: var(--space);
   margin-bottom: var(--space-sm);
 `
@@ -21,11 +20,18 @@ const PostTitleWrapper = styled.div`
   border-bottom: 1px solid var(--thirdy-color);
   margin-bottom: var(--space-sm);
 `
-const PostDate = styled.div`
+const PostMeta = styled.div`
   font-size: 1.3rem;
   margin-bottom: calc(var(--space-sm) *0.5);
   display: flex;
 `;
+
+const ReadingTime = styled.span`
+  margin-left: var(--space-sm);
+`
+
+const ReadingTimeSymbol = styled.i`
+`
 
 const TagItem = styled.a`
   display: inline-block;
@@ -46,8 +52,8 @@ const TagItem = styled.a`
 export default function PostHeader({ postData }) {
 
   
-  const { title, user, tags, date, id } = postData
-  
+  const { title, user, tags, date, id, readingTime } = postData
+
   return (
     <>
       <PostHeaderWrapper>
@@ -64,10 +70,11 @@ export default function PostHeader({ postData }) {
           <PostTitle>{title}</PostTitle>   
         </PostTitleWrapper> 
 
-        <PostDate>
+        <PostMeta>
           <Date dateString={date} />
           <PostReactions postID={id} preview/>
-        </PostDate>
+          <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
+        </PostMeta>
 
         <Author author={user} />
           

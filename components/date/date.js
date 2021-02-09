@@ -1,5 +1,4 @@
 import { parseISO, format } from 'date-fns'
-import config from "../../lib/data/SiteConfig";
 import styled from 'styled-components';
 
 const PostDate = styled.time`
@@ -9,5 +8,5 @@ const PostDate = styled.time`
 
 export default function Date({ dateString, ago }) {
   const date = parseISO(dateString)
-  return <PostDate dateTime={dateString}><i class="las la-calendar"></i> {format(date, config.dateFormat)}</PostDate>
+  return <PostDate dateTime={dateString}><i class="las la-calendar"></i> {format(date, "dd-MM-yyyy")}</PostDate>
 }

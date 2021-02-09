@@ -39,7 +39,7 @@ const ArticleDate = styled.a`
         font-size: 0.9em;
     `}
 `
-const ArticleTitle = styled(Link)`
+const ArticleTitle = styled.a`
     font-size: 1.5rem;
     font-weight: 200;
     margin-right: var(--space);
@@ -60,7 +60,9 @@ export default function RelatedPosts({ relatedPosts }) {
             {relatedPosts.map((post) => (
                 <ArticlesItem>
                         <ArticleDate>{post.date} </ArticleDate>
-                        <ArticleTitle href={post.slug} title={post.title}>{post.title}</ArticleTitle>  
+                        <Link href={post.slug} title={post.title} passHref>
+                          <ArticleTitle>{post.title}</ArticleTitle>  
+                        </Link>
                 </ArticlesItem>
             ))}
       </ArticlesList>

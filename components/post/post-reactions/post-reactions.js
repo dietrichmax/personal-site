@@ -112,7 +112,7 @@ export default function PostReactions({ postID, preview }) {
     :
     <Container>
       <Reaction>
-        <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart"/></Button>
+        <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart" title="Like this article?"/></Button>
         <Count>{heart}</Count>
       </Reaction>
     </Container>

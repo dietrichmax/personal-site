@@ -9,7 +9,7 @@ const Container = styled.div`
   padding: var(--space-sm) var(--space);
   display: flex;
   justify-content: space-around;
-  background-color: var(--secondary-color);
+  
 `
 
 const Title = styled.div`
@@ -24,6 +24,8 @@ const Reaction = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  border: 1px solid var(--secondary-color);
+  padding: var(--space-sm);
 `
 
 const Button = styled.button`

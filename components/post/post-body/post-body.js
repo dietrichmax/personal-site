@@ -9,6 +9,7 @@ const PostContent = styled.div`
 
 
 export default function PostBody({ content }) {
+
   return (
       <PostContent
         className={markdownStyles['markdown']}

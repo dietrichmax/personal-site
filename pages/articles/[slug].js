@@ -18,19 +18,14 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
-import renderToString from 'next-mdx-remote/render-to-string'
+//import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
 import getReadTime from "@/lib/read-time"
-
+import TableOfContents from "@/components/post/post-toc/table-of-contents"
+import toc from 'markdown-toc'
 
 // components for posts
-
-const components = {
-  LeafletDemo: dynamic(() => import('@/components/maps/leaflet/react-leaflet-demo'), {
-    ssr: false
-  }),
-}
 
 const PostWrapper = styled.div`
   max-width: 1400px;
@@ -102,18 +97,22 @@ const MoreArticles = styled.a`
   }
 `
 
+const SideReactions = styled.div`
+  top: 0;
+  position: sticky;
+  ${media.lessThan('large')`
+    display: none
+  `}
+`
+
 
 export default function Post({ post, morePosts }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-
-  const target = React.createRef()
-
-
   
- 
+  const target = React.createRef()
 
   return (
     <Layout>
@@ -140,7 +139,10 @@ export default function Post({ post, morePosts }) {
 
               <PostWrapper>
                 <PostGrid>
-                  <Sidebar />
+
+                  <Sidebar>
+                  </Sidebar>
+
                   <Content>
                     <MoreContainer>
                       <Link href={`/articles`} passHref>
@@ -150,17 +152,24 @@ export default function Post({ post, morePosts }) {
 
                     <PostHeader postData={post} />          
 
-                    {/* <PostBody content={post.excerpt} /> */}
 
 
-                    <PostBody content={post.content.renderedOutput} />
+                    <PostBody content={post.content} />
                     
                     <PostReactions postID={post.id}/>
 
                     
                     <RelatedPosts relatedPosts={morePosts} />
                   </Content>
-                  <Sidebar />
+
+                  <Sidebar>
+                      
+                    {/*<SideReactions>
+                      <PostReactions postID={post.id}/>
+                    </SideReactions>*/}
+                    <TableOfContents content={post.toc}/>
+                  </Sidebar>
+                  
                 </PostGrid>
               </PostWrapper>
 
@@ -177,9 +186,10 @@ export default function Post({ post, morePosts }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const mdxSource = await renderToString(data?.posts[0]?.content || '', { components })
+  const mdxSource = await markdownToHtml(data?.posts[0]?.content || '')
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
-  const readingTime = getReadTime(mdxSource.renderedOutput); 
+  const readingTime = getReadTime(mdxSource); 
+  const tocContent = await markdownToHtml(toc(data?.posts[0]?.content || '').content)
 
   return {
     revalidate:  86400,
@@ -189,6 +199,7 @@ export async function getStaticProps({ params }) {
         readingTime: readingTime,
         content: mdxSource,
         excerpt,
+        toc: tocContent
       },
       morePosts: data?.morePosts,
     },

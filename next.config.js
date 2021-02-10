@@ -436,7 +436,6 @@ const redirects = {async redirects() {
   ]
 }};
 
-const images = 
 module.exports = withPlugins([
   /*withPreact,*/
   redirects,

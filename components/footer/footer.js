@@ -171,7 +171,8 @@ export default function Footer() {
             <FooterBioColumn>
               <FooterTitle>I am Max Dietrich.</FooterTitle>
               <FooterColumnContent>
-                I am currently working as Geodata-Manager at RIWA. <br/> I love to experiment with web-applications which i am documenting on this site.
+                <p>This is my personal site where i document my experimentations with web-applications.</p>
+                <p>When i am not creating new content or features on this site i am probably mountainbiking.</p>
               </FooterColumnContent>
             </FooterBioColumn>
 

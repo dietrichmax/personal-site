@@ -8,6 +8,16 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
+      source: '/skalieren-und-zuschneiden-von-bildern-mit-python',
+      destination: '/articles/scaling-and-cropping-images-using-python',
+      permanent: true
+    },
+    {
+      source: '/gis-vs-cad-der-unterschied-zwischen-gis-und-cad',
+      destination: '/articles/gis-vs-cad-the-difference-between-gis-and-cad',
+      permanent: true
+    },
+    {
       source: '/articles/geographie-gis-blogs',
       destination: '/articles/geography-and-gis-blogs',
       permanent: true

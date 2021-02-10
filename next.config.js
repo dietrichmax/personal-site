@@ -2,7 +2,7 @@
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
-const withPreact = require('next-plugin-preact')
+//const withPreact = require('next-plugin-preact')
 
 // redirects
 const redirects = {async redirects() {
@@ -428,7 +428,7 @@ const redirects = {async redirects() {
 
 const images = 
 module.exports = withPlugins([
-  withPreact,
+  /*withPreact,*/
   redirects,
   withPWA({
     pwa: {

@@ -8,7 +8,7 @@ import media from 'styled-media-query';
 import { push } from "@socialgouv/matomo-next";
 // styled components
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   background-color: var(--secondary-color);
 `;
 

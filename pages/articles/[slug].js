@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
@@ -112,17 +112,6 @@ export default function Post({ post, morePosts }) {
 
   const target = React.createRef()
 
-  //toc
-  const headingsContainerRef = useRef();
-	const [pageHeadingNodes, setPageHedingNodes] = useState([]);
-	const [pageHeadingTree, setPageHeadingTree] = useState(null);
-
-  useEffect(() => {
-    const headingNodes = headingsContainerRef.current.querySelectorAll("h2,h3,h4,h5,h6");
-    setPageHedingNodes(headingNodes);
-   }, []);
-
-  console.log(pageHeadingNodes)
  
 
   return (
@@ -163,10 +152,7 @@ export default function Post({ post, morePosts }) {
                     {/* <PostBody content={post.excerpt} /> */}
 
 
-                    <PostBody 
-				              ref={headingsContainerRef}
-                      content={post.content.renderedOutput} 
-                    />
+                    <PostBody content={post.content.renderedOutput} />
                     
                     <PostReactions postID={post.id}/>
 

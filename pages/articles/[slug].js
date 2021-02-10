@@ -122,8 +122,6 @@ export default function Post({ post, morePosts }) {
     setPageHedingNodes(headingNodes);
    }, []);
 
-  usePageHeadingsTree(pageHeadingNodes, setPageHeadingTree, false);
-
   console.log(pageHeadingNodes)
  
 

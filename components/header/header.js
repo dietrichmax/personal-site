@@ -8,7 +8,7 @@ import Navigation from './header-navigation';
 //import ThemePicker from "@/components/themes/themePicker";
 import { push } from "@socialgouv/matomo-next";
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   background-color: var(--secondary-color);
   display: flex;
 
@@ -41,7 +41,7 @@ const HeaderLogo = styled.div`
   `}
 `
 
-const NavMenu = styled.div`
+const NavMenu = styled.nav`
   position: relative;
   top: 60px;
   ${media.greaterThan('medium')`

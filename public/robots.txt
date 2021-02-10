@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://gis-netzwerk.com/sitemap.xml
+Sitemap: https://mxd.codes/sitemap.xml

@@ -74,8 +74,6 @@ export default function PostReactions({ postID, preview }) {
           className="las la-heart"
           incremented={incremented} 
           title="Like this article?"
-       /> 
-       {heart == undefined ? 0 : heart}
-    </PreviewLikeCount> 
+       /> {heart == undefined ? 0 : heart}</PreviewLikeCount> 
   )
 }

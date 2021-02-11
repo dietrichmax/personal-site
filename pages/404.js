@@ -10,7 +10,7 @@ export default function FourOhFour() {
   return (
   <>
     <SEO   
-      title="Home"
+      title="404 - Page not found"
       slug=""
     />
     <Layout>

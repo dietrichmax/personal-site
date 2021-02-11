@@ -41,8 +41,6 @@ export default function Blog({ allPosts, allTags }) {
             
             <BlogPageContainer >
 
-              <PostTags tags={allTags} />
-
               <MoreStories posts={posts}/>
 
             </BlogPageContainer>

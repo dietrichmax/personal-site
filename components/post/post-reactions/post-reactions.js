@@ -50,7 +50,6 @@ const Count = styled.span`
 
 const PreviewLikeCount = styled.span`   
   margin-left: var(--space-sm);
-  font-size: inherit;
 `
 const PreviewIcon = styled.i`
 `
@@ -110,14 +109,6 @@ export default function PostReactions({ postID, preview }) {
     }
 
   return (
-    preview ?
     <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart == undefined ? 0 : heart}</PreviewLikeCount> 
-    :
-    <Container>
-      <Reaction>
-        <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart" title="Like this article?"/></Button>
-        <Count>{heart == undefined ? 0 : heart}</Count>
-      </Reaction>
-    </Container>
   )
 }

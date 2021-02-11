@@ -56,6 +56,7 @@ const PreviewIcon = styled.i`
 `
 
 export default function PostReactions({ postID, preview }) {
+    const [reactionId, setReactionID] = useState()
     const [heart, setHeart] = useState(0)
     const [useful, setUseful] = useState(0)
     const [starred, setStarred] = useState(0)
@@ -68,23 +69,23 @@ export default function PostReactions({ postID, preview }) {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
       };
-      fetch(`https://api.mxd.codes/posts/${postID}`, requestOptions)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions?postId=${postID}`, requestOptions)
           .then(response => response.json())
           .then(function(data) {
-            setHeart(data.heart)
-            setUseful(data.useful),
-            setStarred(data.starred)
+            setReactionID(data[0].id)
+            setHeart(data[0].reaction1_count)
           })
     }, []);
 
     const sendIncrement = (value) => {
-        
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ heart: value })
+        body: JSON.stringify({ 
+          reaction1_count: value,
+        })
       };
-      fetch(`https://api.mxd.codes/posts/${postID}`, requestOptions)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions/${reactionId}`, requestOptions)
         .then(function(response) {
           if (!response.ok) {
             console.log(response.statusText);
@@ -110,12 +111,12 @@ export default function PostReactions({ postID, preview }) {
 
   return (
     preview ?
-    <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart}</PreviewLikeCount> 
+    <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart == undefined ? 0 : heart}</PreviewLikeCount> 
     :
     <Container>
       <Reaction>
         <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart" title="Like this article?"/></Button>
-        <Count>{heart}</Count>
+        <Count>{heart == undefined ? 0 : heart}</Count>
       </Reaction>
     </Container>
   )

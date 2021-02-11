@@ -10,6 +10,7 @@ const TOCWrapper = styled.div`
   position: sticky;
   margin-top: calc(var(--space-lg)*5);
   padding-top: var(--space-lg);
+  margin-left: var(--space);
   ${media.lessThan('large')`
     display: none;
 `}

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Icon = styled.i`
-  font-size: 30px;
   cursor: pointer;
   color: ${props => (props.incremented ? "var(--thirdy-color)" : "var(--text-color)")};
 `

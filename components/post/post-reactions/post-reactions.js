@@ -90,6 +90,7 @@ export default function PostReactions({ postID, preview }) {
             console.log(response.statusText);
           } else {
             setSubmitted(true)
+            !process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'Page Reaction', 'Page Reaction Click']) : null
           }
           }).catch(function(error) {
               console.log(error);
@@ -97,7 +98,6 @@ export default function PostReactions({ postID, preview }) {
     }
 
     const handleSubmit = () => {
-      !process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'Page Reaction', 'Page Reaction Click']) : null
       if (!incremented) {
         setHeart(heart+1),
         setIncremented(true),

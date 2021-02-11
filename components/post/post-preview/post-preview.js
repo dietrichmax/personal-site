@@ -1,22 +1,8 @@
 import Date from '../../date/date'
-import { usePalette } from "react-palette"
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostReactions from "@/components/post/post-reactions/post-reactions"
-
-function hexToRgbA(hex){
-  var c;
-  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-      c= hex.substring(1).split('');
-      if(c.length== 3){
-          c= [c[0], c[0], c[1], c[1], c[2], c[2]];
-      }
-      c= '0x'+c.join('');
-      return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',');
-  }
-  throw new Error('Bad Hex');
-}
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -26,14 +12,13 @@ const Card = styled.div`
   transition: 0.2s;
   ${media.greaterThan('large')`
     :hover {
-      box-shadow: 0 25px 25px ${props => props.color ? hexToRgbA(props.color) : 'rgb(0 0 0 / 25%)}'},0.25);    
+      box-shadow: 0 25px 25px var(--secondary-color);    
     }
 `}
 `
 
 const CardItemWrapper = styled.section`
   height: 100%;
-  background-image: linear-gradient(to right, ${props => props.color ? hexToRgbA(props.color) : ''},1) 150px, ${props => props.color ? hexToRgbA(props.color) : ''},0.4) 100%);
 `;
 
 const CardItemImg = styled.div`
@@ -109,11 +94,10 @@ export default function PostPreview({
 }) {
 
   const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
-  const { data, loading, error } = usePalette(backgroundImage)
-
+  
   return (
-    <Card image={backgroundImage} color={data.darkVibrant}>
-      <CardItemWrapper color={data.darkVibrant}>
+    <Card>
+      <CardItemWrapper>
         {/*<CardItemImg>
           {coverImage.coverImage ? (
           <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.url}/>

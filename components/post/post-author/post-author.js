@@ -56,7 +56,7 @@ export default function Author({ author }) {
         />
        </AuthorImgWrapper>
       <AuthorMeta>
-        <p>By{' '}<Link href="/about-me" passHref><AuthorName title="About me" >{username}{' '}</AuthorName></Link>| {bio}</p>
+        <p>By{' '}<Link href="/about-me" passHref><AuthorName title="About me" >{username}{' '}</AuthorName></Link>{/*| {bio}*/} </p>
         
         <AuthorSocials>
           <Link href={config.socials.github} passHref><AuthorSocialIcons className="lab la-github" title="GitHub"/></Link>

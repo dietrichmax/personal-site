@@ -90,7 +90,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-font: open sans,sans-serif;
     --link-color: var(--text-dark);
     --link-color-hover: var(--thirdy-color);
-    --text-color: var(--gray-light);
+    --text-color: #c9d1d9;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1040px;

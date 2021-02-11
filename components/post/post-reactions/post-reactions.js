@@ -109,6 +109,20 @@ export default function PostReactions({ postID, preview }) {
     }
 
   return (
-    <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart == undefined ? 0 : heart}</PreviewLikeCount> 
+    <PreviewLikeCount aria-label={heart}>
+       <Icon 
+          onClick={() => handleSubmit()}
+          className="las la-heart"
+          incremented={incremented} 
+          title="Like this article?"
+       /> 
+       {heart == undefined ? 0 : heart}
+    </PreviewLikeCount> 
   )
 }
+<Container>
+      <Reaction>
+        <Button ><Icon } className="las la-heart" /></Button>
+        <Count>{heart == undefined ? 0 : heart}</Count>
+      </Reaction>
+    </Container>

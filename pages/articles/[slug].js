@@ -21,6 +21,7 @@ import RelatedPosts from '@/components/post/post-preview/related-posts'
 //import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
+import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/read-time"
 import TableOfContents from "@/components/post/post-toc/table-of-contents"
 import toc from 'markdown-toc'
@@ -151,15 +152,11 @@ export default function Post({ post, morePosts }) {
                     </MoreContainer>
 
                     <PostHeader postData={post} />          
-
-
-
-                    <PostBody content={post.content} />
-                    
+                    <PostBody content={post.content} />                  
                     <PostReactions postID={post.id}/>
-
-                    
+                    {/*<PostComments postID={post.id}/>*/}                    
                     <RelatedPosts relatedPosts={morePosts} />
+                    
                   </Content>
 
                   <Sidebar>

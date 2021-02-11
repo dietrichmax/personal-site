@@ -9,7 +9,7 @@ const Container = styled.div`
   padding: var(--space-sm) var(--space);
   display: flex;
   justify-content: space-around;
-  background-color: var(--secondary-color);
+  
 `
 
 const Title = styled.div`
@@ -19,11 +19,13 @@ const Title = styled.div`
 `
 
 
-const Reaction = styled.div`
+const Comment = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
+  border: 1px solid var(--secondary-color);
+  padding: var(--space-sm);
 `
 
 const Button = styled.button`
@@ -40,7 +42,7 @@ const Icon = styled.i`
   color: ${props => (props.incremented ? "var(--thirdy-color)" : "var(--text-color)")};
 `
 
-const Count = styled.a`
+const Count = styled.span`
   font-size: 1.5rem;
   margin-top: var(--space-sm);
 
@@ -54,6 +56,7 @@ const PreviewIcon = styled.i`
 `
 
 export default function PostComments({ postID, preview }) {
+    const [reactionId, setCommentID] = useState()
     const [heart, setHeart] = useState(0)
     const [useful, setUseful] = useState(0)
     const [starred, setStarred] = useState(0)
@@ -66,28 +69,29 @@ export default function PostComments({ postID, preview }) {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
       };
-      fetch(`https://api.mxd.codes/comments/posts/{postID}`, requestOptions)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments?post=${postID}`, requestOptions)
           .then(response => response.json())
           .then(function(data) {
-            setHeart(data.heart)
-            setUseful(data.useful),
-            setStarred(data.starred)
+            setCommentID(data[0].id)
+            setComments(data[0].reaction1_count)
           })
     }, []);
 
     const sendIncrement = (value) => {
-        
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ heart: value })
+        body: JSON.stringify({ 
+          reaction1_count: value,
+        })
       };
-      fetch(`https://api.mxd.codes/posts/${postID}`, requestOptions)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions/${reactionId}`, requestOptions)
         .then(function(response) {
           if (!response.ok) {
             console.log(response.statusText);
           } else {
             setSubmitted(true)
+            !process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'Page Comment', 'Page Comment Click']) : null
           }
           }).catch(function(error) {
               console.log(error);
@@ -95,7 +99,6 @@ export default function PostComments({ postID, preview }) {
     }
 
     const handleSubmit = () => {
-      window._paq.push(['trackEvent', 'Page Reaction', 'Page Reaction Click']);
       if (!incremented) {
         setHeart(heart+1),
         setIncremented(true),
@@ -107,11 +110,14 @@ export default function PostComments({ postID, preview }) {
     }
 
   return (
+    preview ?
+    <PreviewLikeCount aria-label={heart}><PreviewIcon className="las la-heart"/> {heart == undefined ? 0 : heart}</PreviewLikeCount> 
+    :
     <Container>
-      <Reaction>
-        <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart"/></Button>
-        <Count>{heart}</Count>
-      </Reaction>
+      <Comment>
+        <Button onClick={() => handleSubmit()}><Icon incremented={incremented} className="las la-heart" title="Like this article?"/></Button>
+        <Count>{heart == undefined ? 0 : heart}</Count>
+      </Comment>
     </Container>
   )
 }

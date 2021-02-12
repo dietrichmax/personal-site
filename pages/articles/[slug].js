@@ -152,10 +152,11 @@ export default function Post({ post, morePosts }) {
                     </MoreContainer>
 
                     <PostHeader postData={post} />          
-                    <PostBody content={post.content} />                  
-                    <PostReactions postID={post.id} postSlug={post.slug} />
+                    <PostBody content={post.content} />     
 
-                    {/*<PostComments postID={post.id}/>*/}                    
+                    {/*<PostReactions postID={post.id} postSlug={post.slug} />*/} 
+                    {/*<PostComments postID={post.id}/>*/}       
+
                     <RelatedPosts relatedPosts={morePosts} />
                     
                   </Content>

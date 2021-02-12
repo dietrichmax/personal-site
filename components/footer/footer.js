@@ -16,14 +16,13 @@ const FooterWrapper = styled.div`
   color: var(--gray);
 `;
 
-
 const FooterTopContainer = styled.div`
   max-width: 1200px;
+
   margin: auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
 `
 
 const FooterPostColumn = styled.div`
@@ -206,7 +205,7 @@ export default function Footer() {
               <FooterSocials>
                 <Link href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
                 <Link href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
-                <Link href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" ></Link>
+                <Link href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
                 <Link href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
                 <Link href={config.siteRss} passHref><FooterIcons className="las la-rss" title="RSS"/></Link>
               </FooterSocials>

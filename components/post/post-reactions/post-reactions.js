@@ -15,7 +15,7 @@ const PreviewLikeCount = styled.span`
 
 
 export default function PostReactions({ postId, postSlug, preview }) {
-    const [reactionId, setReactionID] = useState(0)
+    const [reactionId, setReactionID] = useState()
     const [heart, setHeart] = useState(0)
     const [mentions, setMentions] = useState([])
     const [incremented, setIncremented] = useState(false)

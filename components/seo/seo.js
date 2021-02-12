@@ -29,7 +29,7 @@ const SEO = ({
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id":  `${config.siteUrl}/articles`
+          "@id":  `${config.siteUrl}`
         },  
         "headline": title,
         "image": [
@@ -72,7 +72,9 @@ const SEO = ({
             config.socials.twitter,
             config.socials.linkedin,
             config.socials.github,
-            config.socials.instagram],
+            config.socials.instagram,
+            config.socials.mastodon,
+          ],
           "knowsAbout": [
             "GIS",
             "Web-Development",

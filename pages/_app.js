@@ -40,6 +40,10 @@ class MyApp extends App {
             rel="stylesheet" 
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
           />,
+          <link 
+            rel="preconnect" 
+            href="https://webmention.io"
+          />
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

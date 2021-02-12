@@ -40,10 +40,8 @@ class MyApp extends App {
             rel="stylesheet" 
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
           />,
-          <link 
-            rel="preconnect" 
-            href="https://webmention.io"
-          />,
+          <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />
+          <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />
           <link href="https://github.com/DaTurboD/" rel="me" />,
           <link href="https://twitter.com/mxdietrich" rel="me" />,
           <link href="mailto:kontakt@gis-netzwerk.com" rel="me" />,

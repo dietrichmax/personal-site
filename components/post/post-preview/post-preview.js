@@ -112,7 +112,7 @@ export default function PostPreview({
           </CardItemTitle>
           <CardItemMeta>
             <Date dateString={date} />
-            <PostReactions preview postID={id}/>
+            <PostReactions preview postID={id} postSlug={slug}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>

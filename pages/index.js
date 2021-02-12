@@ -22,7 +22,6 @@ const TitleWrapper = styled.div`
 
 const Hero = styled.div`
   height: 400px;
-  background-color: var(--secondary-color);
 `
 
 const Title = styled.h1`

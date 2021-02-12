@@ -23,7 +23,6 @@ const TOCContainer = styled.div`
 
 const TOCTitle = styled.p`
   margin-bottom: var(--space-sm);
-  font-weight: 200;
   text-transform: uppercase;
 `
 

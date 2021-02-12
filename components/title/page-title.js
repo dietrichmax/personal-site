@@ -11,7 +11,7 @@ const Title = styled.h1`
   margin-bottom: var(--space-sm);
   text-transform: capitalize;
   color: var(--gray);
-
+  font-family: var(--secondary-font);
 `
 
 export default function PageTitle({ children, color }) {

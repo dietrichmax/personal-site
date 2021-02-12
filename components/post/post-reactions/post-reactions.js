@@ -14,7 +14,8 @@ const PreviewLikeCount = styled.span`
 `
 
 
-export default function PostReactions({ postID, preview }) {
+export default function PostReactions({ post, preview }) {
+    const { postID, slug } = post
     const [reactionId, setReactionID] = useState()
     const [heart, setHeart] = useState(0)
     const [mentions, setMentions] = useState([])
@@ -34,11 +35,12 @@ export default function PostReactions({ postID, preview }) {
             setHeart(data[0].reaction1_count)
           })
       
+      //https://webmention.io/api/mentions.jf2?${config.domain}&token=${process.env.WEBMENTION_KEY}
       fetch(`https://webmention.io/api/mentions.jf2?${config.domain}&token=${process.env.WEBMENTION_KEY}`)
           .then((response) => response.json())
           .then((result) => {
              setMentions(result.children);
-        console.log(mentions
+        console.log(mentions)
         });
     }, []);
 

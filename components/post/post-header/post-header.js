@@ -76,7 +76,7 @@ export default function PostHeader({ postData }) {
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>
 
-        <Author author={user} />
+        {/*<Author author={user} />*/}
           
       </PostHeaderWrapper>
     </>

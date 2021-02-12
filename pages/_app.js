@@ -44,11 +44,10 @@ class MyApp extends App {
             rel="preconnect" 
             href="https://webmention.io"
           />,
-          <link href="https://github.com/DaTurboD/" rel="me">,
-          <link href="https://twitter.com/mxdietrich" rel="me">,
-          <link href="mailto:kontakt@gis-netzwerk.com" rel="me">,
-          <link href="https://www.instagram.com/_maxdietrich/" rel="me">,
-          <link href="https://twitter.com/aaronpk" rel="me">,
+          <link href="https://github.com/DaTurboD/" rel="me" />,
+          <link href="https://twitter.com/mxdietrich" rel="me" />,
+          <link href="mailto:kontakt@gis-netzwerk.com" rel="me" />,
+          <link href="https://www.instagram.com/_maxdietrich/" rel="me" />,
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

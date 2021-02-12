@@ -62,6 +62,7 @@ const FooterTitle = styled.p`
   margin-bottom: var(--space-sm);
   padding-bottom: calc(var(--space-sm)*0.5);
   border-bottom: 1px solid var(--thirdy-color);
+  font-family: var(--secondary-font);
 `
 
 const FooterColumnContent = styled.div`

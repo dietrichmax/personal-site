@@ -15,7 +15,7 @@ const PreviewLikeCount = styled.span`
 
 
 export default function PostReactions({ postId, postSlug, preview }) {
-    const [reactionId, setReactionID] = useState()
+    const [reactionId, setReactionID] = useState(0)
     const [heart, setHeart] = useState(0)
     const [mentions, setMentions] = useState([])
     const [incremented, setIncremented] = useState(false)
@@ -27,7 +27,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
       };
-      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions?postId=${postID}`, requestOptions)
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions?postId=${postId}`, requestOptions)
           .then(response => response.json())
           .then(function(data) {
             setReactionID(data[0].id)

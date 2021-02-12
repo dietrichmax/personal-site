@@ -5,6 +5,7 @@ const Title = styled.h1`
   font-size: 3rem;
   line-height: 4.5rem;
   font-family: var(--secondary-font);
+  font-weight: 500;
 `
 export default function PostTitle({ children }) {
   return (

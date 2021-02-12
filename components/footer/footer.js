@@ -203,8 +203,9 @@ export default function Footer() {
               <FooterTitle>Connect</FooterTitle>
               You can connect with me on:
               <FooterSocials>
-                <Link href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
                 <Link href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
+                <Link href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
+                <Link href={config.socials.mastodon} passHref><FooterIcons className="lab la-mastodon" title="Mastodon" /></Link>
                 <Link href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
                 <Link href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
                 <Link href={config.siteRss} passHref><FooterIcons className="las la-rss" title="RSS"/></Link>

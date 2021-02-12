@@ -8,6 +8,11 @@ const runtimeCaching = require('next-pwa/cache')
 const redirects = {async redirects() {
   return [
     {
+      source: '/geodaten/fernerkundung-satellitenbilder-downloaden',
+      destination: '/articles/satellite-imagery-download-high-resolution',
+      permanent: true
+    },
+    {
       source: '/skalieren-und-zuschneiden-von-bildern-mit-python',
       destination: '/articles/scaling-and-cropping-images-using-python',
       permanent: true

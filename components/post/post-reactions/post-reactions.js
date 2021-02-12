@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import config from "@/lib/data/SiteConfig"
 
 const Icon = styled.i`
   cursor: pointer;
@@ -16,8 +17,7 @@ const PreviewLikeCount = styled.span`
 export default function PostReactions({ postID, preview }) {
     const [reactionId, setReactionID] = useState()
     const [heart, setHeart] = useState(0)
-    const [useful, setUseful] = useState(0)
-    const [starred, setStarred] = useState(0)
+    const [mentions, setMentions] = useState([])
     const [incremented, setIncremented] = useState(false)
     const [submitted, setSubmitted] = useState(false)
 
@@ -33,6 +33,13 @@ export default function PostReactions({ postID, preview }) {
             setReactionID(data[0].id)
             setHeart(data[0].reaction1_count)
           })
+      
+      fetch(`https://webmention.io/api/mentions.jf2?${config.domain}&token=${process.env.WEBMENTION_KEY}`)
+          .then((response) => response.json())
+          .then((result) => {
+             setMentions(result.children);
+        console.log(mentions
+        });
     }, []);
 
     const sendIncrement = (value) => {

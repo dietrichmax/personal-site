@@ -48,10 +48,9 @@ margin-right: var(--space);
 
 const BlogRollProfileImg = styled(Image)`
   flex: none;
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 50%;
+  width: 70px;
   object-fit: cover;
+  border-radius: 50%;
 `
 
 const BlogrollProfileName = styled.span`

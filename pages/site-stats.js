@@ -91,6 +91,9 @@ const GridStats = styled.div`
     font-weight: 700;
     font-size: 2.5rem;
     text-transform: capitalize;
+    ${media.lessThan('1000px')`
+        font-size: 2rem;
+    `}
 `
 
 const GridStatsDescription = styled.div`
@@ -99,6 +102,9 @@ const GridStatsDescription = styled.div`
     text-transform: capitalize;
     font-weight: 200;
     color: var(--gray);
+    ${media.lessThan('1000px')`
+        font-size: 1.75rem;
+    `}
 `
 
 const StatsSmallGrid = styled.div`

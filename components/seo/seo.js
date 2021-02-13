@@ -103,7 +103,7 @@ const SEO = ({
   return (
     <Head>
       {/* General tags */}
-      <title>{title} - {config.siteTitleShort}</title>
+      <title>{title} - {config.siteTitle}</title>
       <link rel="canonical" href={`${config.siteUrl}/${slug}`} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

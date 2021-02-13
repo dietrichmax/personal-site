@@ -5,7 +5,7 @@ import Link from "next/link";
 import { parseISO, format } from 'date-fns'
 
 const RelatedPostsWrapper = styled.section`    
-  margin-top: var(--space-lg);
+  margin-top: var(--space);
   margin-bottom: var(--space);
 `
 

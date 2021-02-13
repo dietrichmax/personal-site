@@ -17,6 +17,8 @@ export default function AboutMe() {
       <Header/>
       <Title>About</Title>
       
+      <h2>About me</h2>
+      <h2>About this site</h2>
 
       <Footer />
     </Layout>

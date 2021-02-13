@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState} from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
@@ -103,13 +103,51 @@ const SideReactions = styled.div`
   `}
 `
 
+const PostShare = styled.div`
+  margin-top: var(--space-sm);
+`
 
-export default function Post({ post, morePosts }) {
+const PostShareTitle = styled.p`
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+`
+
+const Icons= styled.i`    
+background-color: var(--secondary-color);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: var(--space-sm);
+  color: var(--text-color);
+  font-size: 20px;
+  outline: none;
+  padding: var(--space-sm);
+  border-radius: 50%;
+`
+
+export default function Post({ post, morePosts }) {  
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+
+
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
   
+
+
+  function copyToClipboard(e) {
+    navigator.clipboard.writeText(`${config.siteUrl}/articles/${post.slug}`);
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
+
   const target = React.createRef()
 
   return (
@@ -152,11 +190,18 @@ export default function Post({ post, morePosts }) {
                     <PostHeader postData={post} />          
                     <PostBody content={post.content} />     
 
+                    <PostShare> 
+                    <PostShareTitle>Share</PostShareTitle>
+                      <Link href={`https://twitter.com/share?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-twitter" title="Share on Twitter" /></a></Link>
+                      <Link href={`http://www.reddit.com/submit?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-reddit" title="Share on Reddit" /></a></Link>
+                      <Link href={`https://www.facebook.com/sharer/sharer.php?u=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-facebook" title="Share on Facebook" /></a></Link>
+                      <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-linkedin" title="Share on Linkedin" /></a></Link>
+                      <Link href={`https://wa.me/?text=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-whatsapp" title="Share on Whatsapp" /></a></Link>
+                      <a><Icons onClick={copyToClipboard} className="las la-paste" title="Copy to Clipboard" /></a>
+                    </PostShare> 
                     <PostReactions postId={post.id} postSlug={post.slug} />
-                    {/*<PostComments postID={post.id}/>*/}       
-
+                    {/*<PostComments postID={post.id}/>*/}  
                     <RelatedPosts relatedPosts={morePosts} />
-                    
                   </Content>
 
                   <Sidebar>

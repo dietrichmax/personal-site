@@ -14,18 +14,18 @@ const createRssFeed = ( allContent ) =>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${config.siteRss}" rel="self" type="application/atom+xml"/>
-        <link href="${config.siteUrl}" rel="alternate" type="text/html"/>
+        <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>
         <author>
             <name>Max Dietrich</name>
         </author>
-        <updated>${new Date()}</updated>
+        <updated>${new Date().toISOString()}</updated>
         <id>${config.siteUrl}</id>
         ${allContent.map((content) => {
           return `
             <entry>
               <title>${content.title}</title>
               <link href="${content.slug}"/>
-              <updated>${new Date()}</updated>
+              <updated>${new Date().toISOString()}</updated>
               <id>${content.slug}</id>
               <content type="html">
                 <![CDATA[${content.content}]]>

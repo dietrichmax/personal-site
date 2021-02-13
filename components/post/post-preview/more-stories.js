@@ -29,11 +29,11 @@ export default function MoreStories({ posts}) {
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}
+            dateUpdated={post.dateUpdated}
             author={post.author}
             slug={post.slug}
             excerpt={post.excerpt}
             tags={post.tags}
-            heart={post.heart}
             readingTime={getReadTime(post.content)}
           />
         ))}

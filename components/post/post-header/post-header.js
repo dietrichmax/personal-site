@@ -51,8 +51,7 @@ const TagItem = styled.a`
 `
 export default function PostHeader({ postData }) {
 
-  
-  const { title, user, tags, date, id, readingTime, slug } = postData
+  const { id, title, user, tags, date, dateUpdated, readingTime, slug } = postData
 
   return (
     <>
@@ -71,8 +70,8 @@ export default function PostHeader({ postData }) {
         </PostTitleWrapper> 
 
         <PostMeta>
-          <Date dateString={date} />
-          <PostReactions postID={id} postSlug={slug} preview/>
+          <Date dateString={dateUpdated? dateUpdated : date} />
+          <PostReactions postId={id} postSlug={slug} preview/>
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>
 

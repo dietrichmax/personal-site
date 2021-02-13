@@ -6,7 +6,7 @@ import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import Link from 'next/link'
 
-export default function FourOhFour() {
+export default function Custom404() {
   return (
   <>
     <SEO   

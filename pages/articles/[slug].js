@@ -142,6 +142,7 @@ export default function Post({ post, morePosts }) {
                 <PostGrid>
 
                   <Sidebar>
+                    
                   </Sidebar>
 
                   <Content>
@@ -154,7 +155,7 @@ export default function Post({ post, morePosts }) {
                     <PostHeader postData={post} />          
                     <PostBody content={post.content} />     
 
-                    {/*<PostReactions postID={post.id} postSlug={post.slug} />*/} 
+                    <PostReactions postId={post.id} postSlug={post.slug} />
                     {/*<PostComments postID={post.id}/>*/}       
 
                     <RelatedPosts relatedPosts={morePosts} />
@@ -163,9 +164,7 @@ export default function Post({ post, morePosts }) {
 
                   <Sidebar>
                       
-                    {/*<SideReactions>
-                      <PostReactions postID={post.id}/>
-                    </SideReactions>*/}
+                    {/**/}
                     <TableOfContents content={post.toc}/>
                   </Sidebar>
                   

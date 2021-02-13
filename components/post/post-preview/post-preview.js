@@ -1,4 +1,4 @@
-import Date from '../../date/date'
+import Date from '@/components/date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
@@ -86,6 +86,7 @@ export default function PostPreview({
   title,
   coverImage,
   date,
+  dateUpdated,
   excerpt,
   author,
   slug,
@@ -93,7 +94,7 @@ export default function PostPreview({
   readingTime
 }) {
 
-  const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
+  //const backgroundImage = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`
   
   return (
     <Card>
@@ -111,8 +112,8 @@ export default function PostPreview({
             </Link>
           </CardItemTitle>
           <CardItemMeta>
-            <Date dateString={date} />
-            <PostReactions preview postID={id} postSlug={slug}/>
+            <Date dateString={dateUpdated ? dateUpdated : date} />
+            <PostReactions preview postId={id} postSlug={slug}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>

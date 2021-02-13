@@ -2,14 +2,21 @@ import PostPreview from './post-preview'
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import Link from "next/link";
-//import Date from '../../date/date'
+import { parseISO, format } from 'date-fns'
 
-const MorePostsTitle = styled.p`
-  letter-spacing: 0.35px;
-  font-size: 1.5rem;
+const RelatedPostsWrapper = styled.section`    
   margin-top: var(--space-lg);
   margin-bottom: var(--space);
+`
+
+
+
+const MorePostsTitle = styled.p`
+  letter-spacing: 3px;
+  font-size: 1.5rem;
   color: var(--gray);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
 `
 
 const ArticlesList = styled.ol`
@@ -18,7 +25,7 @@ const ArticlesList = styled.ol`
   list-style-type: none;
 `
 const ArticlesItem = styled.li`
-  margin-bottom: var(--space-sm);
+  margin: var(--space-sm) 0;
   display: flex;
   :hover {
       color: var(--link-color-hover);
@@ -50,7 +57,7 @@ const ArticleTitle = styled.a`
 export default function RelatedPosts({ relatedPosts }) {
 
   return (
-    <section>
+    <RelatedPostsWrapper>
         
         <MorePostsTitle>
             <Link href="/articles" title="More Articles">Other things I've written:</Link>
@@ -58,13 +65,13 @@ export default function RelatedPosts({ relatedPosts }) {
         <ArticlesList>
             {relatedPosts.map((post) => (
                 <ArticlesItem>
-                        <ArticleDate>{post.date} </ArticleDate>
+                        <ArticleDate>{format(parseISO(post.dateUpdated ? post.dateUpdated : post.date), "dd-MM-yyyy")}</ArticleDate>
                         <Link href={post.slug} passHref>
                           <ArticleTitle title={post.title}>{post.title}</ArticleTitle>  
                         </Link>
                 </ArticlesItem>
             ))}
       </ArticlesList>
-    </section>
+    </RelatedPostsWrapper>
   )
 }

@@ -456,6 +456,7 @@ module.exports = withPlugins([
       "sld.codes",
       "mxb.dev",
       "rusingh.com",
+      "anitagraser.com",
     ],
   }},
   {i18n: {

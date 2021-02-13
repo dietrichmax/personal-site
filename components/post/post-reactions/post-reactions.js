@@ -20,7 +20,7 @@ const PreviewLikeCount = styled.span`
   margin-left: var(--space-sm);
 `
 
-const WebMentionsWrapper = styled.div`
+const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: 1px solid var(--secondary-color);
@@ -31,10 +31,10 @@ const WebmentionsHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
 `
 
 const WebmentionsTitle = styled.p`
-  margin-bottom: var(--space-sm);
   letter-spacing: 3px;
   font-size: 1.5rem;
   color: var(--gray);
@@ -67,11 +67,12 @@ const WebmentionComment = styled.div`
 const WebmentionAuthor = styled.div`    
 `
 
-const WebmentionAuthorImg = styled.img`
+const WebmentionAuthorImgWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
   border-radius: 50%;
   margin: var(--space-sm);
   :hover {
@@ -119,7 +120,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
       } else if (property == "like-of") {
         return "liked"
       } else if (property == "repost-of") {
-        return "reposted"
+        return "retweeted"
       } else if (property == "bookmark-of") {
         return "bookmarked"
       } else if(property == "mention-of") {
@@ -195,7 +196,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
       <ReactionsIcon onClick={() => handleSubmit()}
         className="las la-heart"
         incremented={incremented} 
-        title="Like this article?"
+        title="Reactions"
       /> {webmentionCount.count+reactionsCount}</PreviewLikeCount> 
       <PreviewLikeCount aria-label={webmentionCount+reactionsCount}>
       <Icon onClick={() => handleSubmit()}
@@ -221,16 +222,16 @@ export default function PostReactions({ postId, postSlug, preview }) {
           mentions.map((mention) => (
             <WebmentionComment>
               <WebmentionAuthor>
-                <WebmentionAuthorImg
-                  src={mention.author.photo}
-                  alt={mention.author.name}
-                  title={mention.author.name}
-                  href={mention.author.url}
-                />
+              <WebmentionAuthorImgWrapper>
+                  <Image
+                    src={mention.author.photo}
+                    height="30"
+                    width="30"
+                  />
+                </WebmentionAuthorImgWrapper>
                 <WebmentionAuthorName>{mention.author.name}</WebmentionAuthorName>
                 <WebmentionType href={mention.url} title={mention.url}> {GetWebMentionType(mention["wm-property"])} </WebmentionType>
-                <WebmentionDate>{formatDistance(new Date(mention["wm-received"]), new Date())} ago</WebmentionDate>
-
+                <WebmentionDate>{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
 
               </WebmentionAuthor>
               <WebmentionContent>{mention.content? mention.content.text : null}</WebmentionContent>

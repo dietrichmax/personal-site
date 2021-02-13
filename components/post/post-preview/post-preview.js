@@ -7,12 +7,12 @@ import PostReactions from "@/components/post/post-reactions/post-reactions"
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
   border-radius: 0.75rem;
-  background-color: var(--bg-dark);
   max-width: 370px;
   transition: 0.2s;
+  background-color: var(--secondary-color);
   ${media.greaterThan('large')`
     :hover {
-      box-shadow: 0 25px 25px var(--secondary-color);    
+      box-shadow: 0 25px 25px var(--gray-dark);    
     }
 `}
 `
@@ -36,6 +36,10 @@ const CardItemTitle = styled.h2`
   margin-top: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--border-dark);
+  
+  :hover {
+    color: var(--thirdy-color);    
+  }
 `;
 
 const CardItemMeta = styled.div`

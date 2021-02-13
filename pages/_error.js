@@ -16,11 +16,11 @@ export default function Error({ statusCode }) {
         title="500 - Error"
         slug=""
       />
-      <p>
+      <Title>
         {statusCode
           ? `An error ${statusCode} occurred on server`
           : 'An error occurred on client'}
-      </p>
+      </Title>
       
       <Footer />
     </Layout>

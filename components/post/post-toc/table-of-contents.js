@@ -19,6 +19,7 @@ const TOCWrapper = styled.div`
 const TOCContainer = styled.div`
   background-color: var(--secondary-color);
   padding: var(--space);
+  border-radius: var(--space-sm);
 `
 
 const TOCTitle = styled.p`

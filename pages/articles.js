@@ -1,6 +1,5 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
-import PageTitle from '@/components/title/page-title'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
@@ -10,9 +9,7 @@ import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
-import PostTags from '@/components/post/post-tags/post-tags'
-import PostHero from '@/components/post/post-hero/post-hero'
-import SubTitle from '@/components/title/page-title'
+import PageTitle from '@/components/title/page-title'
 
 const BlogPageContainer = styled.div`
   margin: auto;
@@ -39,6 +36,7 @@ export default function Blog({ allPosts, allTags }) {
               slug="articles"
             />
             
+            <PageTitle>Articles</PageTitle>
             <BlogPageContainer >
 
               <MoreStories posts={posts}/>

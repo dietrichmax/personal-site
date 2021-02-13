@@ -7,7 +7,7 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   max-width: auto;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 4rem;
   margin-bottom: var(--space-sm);
   text-transform: capitalize;
   font-family: var(--secondary-font);

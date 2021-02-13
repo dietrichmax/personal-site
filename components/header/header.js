@@ -1,45 +1,24 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+import Image from "next/image"
 import config from "../../lib/data/SiteConfig";
 import media from 'styled-media-query';
 import React, { useState, useEffect, useContext } from "react";
 import ButtonMenu from './button';
-import Navigation from './header-navigation';
 //import ThemePicker from "@/components/themes/themePicker";
+
 import { push } from "@socialgouv/matomo-next";
 
 const HeaderWrapper = styled.header`
-  background-color: var(--secondary-color);
   display: flex;
-
-  ${media.lessThan('large')`
-  top: 0;
-  left: 0;
-    position: sticky;
-    width: 100%;
-    z-index: 10;
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--space-sm) var(--space);
+  ${media.greaterThan('medium')`
+    margin: var(--space-lg) auto;
   `}
 `
 
-const NavTitle = styled.div`
-  width: auto;
-  height: 50px;
-  padding-left: var(--space);
-  padding-top: var(--space-sm);
-  color: var(--gray-light);
-  font-size: 2rem;
-  :hover {
-      color: var(--link-color-hover);
-  }
-`
-
-
-const HeaderLogo = styled.div`
-  padding: var(--space-sm) 0 calc(var(--space-sm)*0.5) var(--space-lg);
-  ${media.lessThan('medium')`
-    padding-left: var(--space-sm);
-  `}
-`
 
 const NavMenu = styled.nav`
   position: relative;
@@ -51,7 +30,63 @@ const NavMenu = styled.nav`
   `}
 `;
 
+const Navigation = styled.nav`
+  display: none;
+  height: 100vh;
+  flex-direction: column;
+  &.active {
+    display: flex;
+  }
+  ${media.greaterThan('medium')`
+    padding-top: var(--space-sm);
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+  `}
+`;
 
+const NavigationLink = styled.a`
+  margin-left: var(--space);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: 0.3s;
+  :hover {
+    color: var(--link-color-hover);
+  }
+`;
+
+const NavigationButton = styled.a`
+  background: var(--primary-color);
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  padding: var(--space-sm) var(--space);
+  text-decoration: none;
+  text-align: center;
+  ${media.greaterThan('medium')`
+    margin-left: var(--space-lg);
+  `}
+`;
+
+
+const HeaderBrand = styled.a`
+  display: flex;
+  align-items: center;
+  color: inherit;
+  :hover {
+    display: cursor;
+  }
+`
+
+const HeaderBrandImg = styled(Image)`
+  border-radius: 50%;
+`
+
+const HeaderBrandText = styled.span`
+  margin-left: var(--space-sm);
+  font-weight: 700;
+`
 export default function HeaderNav() {
 
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -61,7 +96,16 @@ export default function HeaderNav() {
     setToggleMenu(!toggleMenu);
   }
 
-  
+  const headerItems = [
+    
+    { "name": "Home", "link":  "/" },
+    { "name": "Articles", "link":  "/articles" },
+    { "name": "Notes", "link":  "/notes" },
+    { "name": "Statistics", "link":  "/site-stats" },
+    { "name": "About", "link":  "/about" },
+  ]
+
+
   return (
     <HeaderWrapper>
 
@@ -69,11 +113,20 @@ export default function HeaderNav() {
         <Logo />
   </HeaderLogo>*/}
           
-        <NavTitle>
-          <Link href={config.homePath}>
-            <a title={config.siteTitle}>{config.siteTitle}</a>
+          <Link href={config.homePath} passHref>
+            <HeaderBrand 
+              title="mxd.codes"
+              aria-label="Go To Homepage"
+            >
+              <HeaderBrandImg
+                src="https://api.mxd.codes/uploads/13248880_1549733958655108_1942312651_a_a25f8b8c84.jpg?469206" 
+                alt="" 
+                width="48" 
+                height="48" 
+              />
+            <HeaderBrandText>Max Dietrich</HeaderBrandText>
+           </HeaderBrand>
           </Link>
-        </NavTitle>
 
 
 
@@ -82,8 +135,24 @@ export default function HeaderNav() {
           isActive={toggleMenu}
         />
         <NavMenu>
-          <Navigation isActive={toggleMenu} handleToggleMenu={handleToggleMenu} />
+
+          <Navigation className={toggleMenu ? 'active' : ''}>
+            {headerItems.map((menu, i) => (
+              <Link key={i} href={menu.link} passHref>
+                <NavigationLink
+                  aria-label={menu.name}
+                  title={menu.name}
+                  activeClassName="active"
+                  onClick={() => handleToggleMenu()}
+                >
+                {menu.name}
+                </NavigationLink>
+              </Link>
+            ))}
+          </Navigation>
+          
         </NavMenu>
+       
 
     </HeaderWrapper>
   )

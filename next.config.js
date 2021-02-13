@@ -450,7 +450,13 @@ module.exports = withPlugins([
     },
   }),
   {images: {
-    domains: ['api.mxd.codes'],
+    domains: [
+      "api.mxd.codes",
+      "webmention.io",
+      "sld.codes",
+      "mxb.dev",
+      "rusingh.com",
+    ],
   }},
   {i18n: {
     locales: ['en-US'],

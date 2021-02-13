@@ -5,24 +5,21 @@ import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import Link from 'next/link'
+import Newsletter from '@/components/newsletter/subscribe'
 
-export default function AboutMe() {
+export default function MailingList() {
   return (
   <>
     <SEO   
-      title="About Max Dietrich"
-      slug=""
+      title="Mailing List"
+      slug="mailinglist"
     />
     <Layout>
       <Header/>
-      <Title>About Max Dietrich</Title>
-      
-      <Link href="/">
-        <a>
-          Go back home
-        </a>
-      </Link>
+      <Title>Mailing List</Title>
 
+      <Newsletter />
+      
       <Footer />
     </Layout>
   </>

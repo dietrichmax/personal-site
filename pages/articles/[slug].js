@@ -4,7 +4,6 @@ import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
 import PostHeader from '@/components/post/post-header/post-header'
 import Layout from '@/components/layout/layout'
-import Newsletter from '@/components/newsletter/subscribe'
 import SEO from '@/components/seo/seo'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
@@ -18,10 +17,8 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
-//import renderToString from 'next-mdx-remote/render-to-string'
-import dynamic from 'next/dynamic'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
-import PostComments from "@/components/post/post-comments/post-comments"
+//import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/read-time"
 import TableOfContents from "@/components/post/post-toc/table-of-contents"
 import toc from 'markdown-toc'
@@ -31,7 +28,7 @@ import toc from 'markdown-toc'
 const PostWrapper = styled.div`
   max-width: 1400px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
-  margin: var(--space-sm) auto;
+  margin: auto;
   background-color: var(--primary-color);
   ${media.lessThan('medium')`
     padding-left: var(--space);
@@ -171,8 +168,6 @@ export default function Post({ post, morePosts }) {
                 </PostGrid>
               </PostWrapper>
 
-            
-              <Newsletter />
             </article>
             
           </>

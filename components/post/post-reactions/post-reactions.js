@@ -86,6 +86,9 @@ const WebmentionAuthorName = styled.span`
 const WebmentionDate = styled.span`
   color: var(--gray);
   font-weight: 200;
+  ${media.lessThan('small')`
+    display: none;
+  `}
 `
 
 const WebmentionType = styled.a`

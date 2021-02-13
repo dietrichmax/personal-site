@@ -14,7 +14,6 @@ const createRssFeed = ( allContent ) =>
 
 `<?xml version="1.0" encoding="UTF-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">   
-        <script/>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${config.siteRss}" rel="self" type="application/atom+xml"/>
@@ -29,7 +28,7 @@ const createRssFeed = ( allContent ) =>
             <entry>
               <title>${content.title}</title>
               <link href="${content.slug}"/>
-              <updated>${new Date().toISOString()}</updated>
+              <updated>${content.date.toISOString()}</updated>
               <id>${content.slug}/</id>
               <content type="html">
                 <![CDATA[${content.content}]]>

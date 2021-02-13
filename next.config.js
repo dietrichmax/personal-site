@@ -457,6 +457,8 @@ module.exports = withPlugins([
       "mxb.dev",
       "rusingh.com",
       "underdark.files.wordpress.com",
+      "matthiasott.com",
+      "lisilinhart.info",
     ],
   }},
   {i18n: {

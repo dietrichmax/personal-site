@@ -1,6 +1,6 @@
 import { parseISO, format } from 'date-fns'
 import styled from 'styled-components';
-import config from "@/lib/data/siteConfig"
+import config from "@/lib/data/SiteConfig"
 
 const PostDate = styled.time`
   position: relative;

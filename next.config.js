@@ -456,7 +456,7 @@ module.exports = withPlugins([
       "sld.codes",
       "mxb.dev",
       "rusingh.com",
-      "anitagraser.com",
+      "underdark.files.wordpress.com",
     ],
   }},
   {i18n: {

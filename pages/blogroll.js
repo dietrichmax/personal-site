@@ -42,6 +42,10 @@ const BlogrollProfile = styled.div`
   margin-bottom: var(--space-sm);
 `
 
+const BlogrollProfileImgWrapper = styled.div`
+margin-right: var(--space);
+`
+
 const BlogRollProfileImg = styled(Image)`
   flex: none;
   width: 4.5rem;
@@ -52,7 +56,6 @@ const BlogRollProfileImg = styled(Image)`
 
 const BlogrollProfileName = styled.span`
   font-size: 2rem;
-  margin-left: var(--space);
 `
 
 const BlogrollLink = styled.a`
@@ -61,7 +64,6 @@ const BlogrollLink = styled.a`
 
 const BlogrollProfileLink = styled.a`
   display: block;
-  margin-left: var(--space);
   color: var(--gray);
 `
 
@@ -93,11 +95,15 @@ export default function Blogroll({ allBlogrolls }) {
               <BlogrollLink href={blogroll.websiteUrl} title={blogroll.name} >
                 <BlogrollItem >
                   <BlogrollProfile>
-                  <BlogRollProfileImg
-                    src={blogroll.profilePictureUrl}
-                    width="70"
-                    height="70"
-                  />
+                    {blogroll.profilePictureUrl ? (
+                    <BlogrollProfileImgWrapper>
+                      <BlogRollProfileImg
+                        src={blogroll.profilePictureUrl}
+                        width="70"
+                        height="70"
+                      /> 
+                      </BlogrollProfileImgWrapper>
+                    ) : null }
                   <div>
                     <BlogrollProfileName>{blogroll.name}</BlogrollProfileName>
                     <BlogrollProfileLink>{blogroll.websiteUrl}</BlogrollProfileLink>

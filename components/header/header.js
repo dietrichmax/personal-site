@@ -70,8 +70,10 @@ const NavigationButton = styled.a`
 `;
 
 
-const HeaderBrand = styled.a`
+const HeaderBrand = styled.div`
   display: flex;
+  positon: relative
+  height: 50px;
   align-items: center;
   color: inherit;
   :hover {
@@ -115,7 +117,7 @@ export default function HeaderNav() {
           
           <Link href={config.homePath} passHref>
             <HeaderBrand 
-              title="mxd.codes"
+              title="Max Dietrich"
               aria-label="Go To Homepage"
             >
               <HeaderBrandImg

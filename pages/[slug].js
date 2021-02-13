@@ -58,7 +58,7 @@ export default function Post({ page }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPage(params.slug)
-  const content = await markdownToHtml(data?.pages[0]?.content || '')
+  const content = data?.pages[0]?.content || ''
 
   return {
     props: {

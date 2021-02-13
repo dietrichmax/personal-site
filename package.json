@@ -19,9 +19,11 @@
     "img-optimize": "py ./utils/resize_images.py",
     "lint": "eslint --fix .",
     "format": "prettier --write './**/*.{js,jsx,css,json}' --config .prettierrc",
-    "count": "cloc --exclude-ext=svg --exclude-dir=animation-data,node_modules,.next --json components/ lib/ pages/ styles/ public/ . > lib/data/count_total.json"
+    "count": "cloc --exclude-ext=svg --exclude-dir=animation-data,node_modules,.next --json components/ lib/ pages/ styles/ public/ . > lib/data/count_total.json",
+    "postbuild": "webmention dist/feed.xml --limit 1 --send"
   },
   "dependencies": {
+    "@remy/webmention": "^1.4.5",
     "@socialgouv/matomo-next": "^1.1.2",
     "babel-eslint": "^10.1.0",
     "cloc": "^2.7.0",
@@ -55,6 +57,7 @@
     "remark-html": "13.0.1",
     "remark-slug": "^6.0.0",
     "request": "^2.88.2",
+    "showdown": "^1.9.1",
     "slugify": "^1.4.6",
     "styled-components": "5.2.1",
     "styled-media-query": "^2.1.2",

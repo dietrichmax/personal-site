@@ -92,7 +92,7 @@ export default function Footer() {
 
         <FooterItem>
           <FooterItemTitle>© 2018-{format(new Date(), "yyyy")}</FooterItemTitle>
-          <FooterItemLink href="/" title="Max Dietrich">Max Dietrich</FooterItemLink>
+          <FooterItemLink className="p-name u-url" href="/" title="Max Dietrich">Max Dietrich</FooterItemLink>
         </FooterItem>
 
         <FooterItem>
@@ -117,16 +117,16 @@ export default function Footer() {
         </FooterItem>
 
         <FooterDetail>
-          <Link href="/about" title="About"><FooterItemTitle>Made with <Heart className="lar la-heart"></Heart></FooterItemTitle></Link>
+          <Link className="p-name u-url" href="/about" title="About"><FooterItemTitle>Made with <Heart className="lar la-heart"></Heart></FooterItemTitle></Link>
         </FooterDetail>
         
 
-        <FooterSocials>
-          <Link href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
-          <Link href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
-          <Link href={config.socials.mastodon} passHref><FooterIcons className="lab la-mastodon" title="Mastodon" /></Link>
-          <Link href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
-          <Link href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
+        <FooterSocials className="h-card">
+          <Link rel="me" href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
+          <Link rel="me" href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
+          <Link rel="me" href={config.socials.mastodon} passHref><FooterIcons className="lab la-mastodon" title="Mastodon" /></Link>
+          <Link rel="me" href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
+          <Link rel="me" href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
           <a href={config.siteRss} title="Feed"><FooterIcons className="las la-rss"/></a>
         </FooterSocials>
       </FooterInnerContainer>

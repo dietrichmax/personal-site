@@ -67,7 +67,7 @@ const WebmentionComment = styled.div`
 const WebmentionAuthor = styled.div`    
 `
 
-const WebmentionAuthorImgWrapper = styled.div`
+const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
   width: 30px;
@@ -215,20 +215,21 @@ export default function PostReactions({ postId, postSlug, preview }) {
           {mentions.length > 0 ? (
           mentions.map((mention) => (
             <WebmentionComment>
-              <WebmentionAuthor>
-              <WebmentionAuthorImgWrapper>
+              <WebmentionAuthor className="h-card" >
+              <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
                   <Image
                     src={mention.author.photo}
                     height="30"
                     width="30"
+                    className="u-photo"
                   />
                 </WebmentionAuthorImgWrapper>
-                <WebmentionAuthorName>{mention.author.name}</WebmentionAuthorName>
+                <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
                 <WebmentionType href={mention.url} title={mention.url}> {GetWebMentionType(mention["wm-property"])} </WebmentionType>
-                <WebmentionDate>{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
+                <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
 
               </WebmentionAuthor>
-              <WebmentionContent>{mention.content? mention.content.text : null}</WebmentionContent>
+              <WebmentionContent className="p-content">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
           ))
           ) : (

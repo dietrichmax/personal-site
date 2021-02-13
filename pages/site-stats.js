@@ -18,10 +18,12 @@ import {
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
 } from "@/lib/data/api/analytics"
+import { fetchWebmentions } from "@/lib/data/api/webmentions"
 import {
     getPostsCount,
     getTagsCount,
     getSubscribersCount,
+    getNotesCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
@@ -103,7 +105,7 @@ const GridStatsDescription = styled.div`
     font-weight: 200;
     color: var(--gray);
     ${media.lessThan('1000px')`
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     `}
 `
 
@@ -350,6 +352,8 @@ export default function Recruiting({
     seoStats,
     allVisits,
     visitDuration,
+    allWebmentions,
+    notesCount,
 }) {
     const router = useRouter()
 
@@ -367,6 +371,8 @@ export default function Recruiting({
     const forkUrl = `${githubStats.user.repository.url}/fork`
     const starUrl = githubStats.user.repository.url
     const lastModified = githubStats.user.repository.pushedAt
+
+    const webmentionsCount = allWebmentions.length
 
     const linesOfCode = codeStats.SUM.code
     const comments = codeStats.SUM.comment
@@ -452,12 +458,12 @@ export default function Recruiting({
                                         <GridStatsDescription>Different Topics</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{linesOfCode.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
-                                        <GridStatsDescription>Lines of code</GridStatsDescription>
+                                        <GridStats>{notesCount}</GridStats>
+                                        <GridStatsDescription>Notes written</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{comments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
-                                        <GridStatsDescription>Build comments</GridStatsDescription>
+                                        <GridStats>{webmentionsCount}</GridStats>
+                                        <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
                                         <GridStats>{format(parseISO(lastModified),config.dateFormat)}</GridStats>
@@ -512,15 +518,6 @@ export default function Recruiting({
 
                             <TripleStatsGrid>
                             
-                                <VisitorWrapper>
-                                    <Title style={{ color: "var(--gray)" }}>Most Visitors are from</Title>
-                                    <ul>
-                                    {countryCount.slice(0,5).map((item, i) => (
-                                            <VisitorList key={i}><VisitorDot url={item.logo}/>{item.label} ({parseFloat(item.nb_visits/actions.nb_pageviews*100).toFixed(0)}%)</VisitorList>
-                                        
-                                        ))}
-                                    </ul>
-                                </VisitorWrapper>
 
                                 {/*<MapWrapper>
                                     <WorldMap />
@@ -698,13 +695,15 @@ export async function getServerSideProps() {
     const liveViews = (await getMatomoLiveCounter()) || []
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
+    const notesCount = (await getNotesCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
     const countryCount = (await getMatomoCountryVisits()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
     const allVisits = (await getMatomoAllVisits()) || []
     const visitDuration = (await getMatomoSumVisitDuration()) || []
-    
+    const allWebmentions = (await fetchWebmentions()) || []
+
     
 
     return {
@@ -720,6 +719,8 @@ export async function getServerSideProps() {
             seoStats,
             allVisits,
             visitDuration,
+            allWebmentions,
+            notesCount,
         },
     }
 }

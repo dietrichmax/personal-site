@@ -133,6 +133,23 @@ background-color: var(--secondary-color);
   border-radius: 50%;
 `
 
+const TOCSidebarWrapper = styled.div`
+  top: 0;
+  position: sticky;
+  margin-top: calc(var(--space-lg)*5);
+  padding-top: var(--space-lg);
+  margin-left: var(--space);
+  ${media.lessThan('1200px')`
+    display: none;
+  `}
+`
+
+
+const TOCInPostWrapper = styled.div`
+  ${media.greaterThan('1200px')`
+    display: none;
+  `}
+`
 export default function Post({ post, morePosts }) {  
   const [copySuccess, setCopySuccess] = useState('');
   const textAreaRef = useRef(null);
@@ -170,7 +187,7 @@ export default function Post({ post, morePosts }) {
               author={post.user}
               postSEO
             />
-            <article ref={target} >
+            <article ref={target} className="h-entry">
               <ReadingProgress target={target} />
               {/*{post.coverImage.coverImage ? (
               <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
@@ -180,9 +197,7 @@ export default function Post({ post, morePosts }) {
                 <PostGrid>
 
                   <Sidebar>
-                    <SideReactions>
-                      <PostReactions postId={post.id} postSlug={post.slug} preview/>
-                    </SideReactions>
+                    {/*****/}
                   </Sidebar>
 
                   <Content>
@@ -192,8 +207,12 @@ export default function Post({ post, morePosts }) {
                       </Link>
                     </MoreContainer>
 
-                    <PostHeader postData={post} />          
-                    <PostBody content={post.content} />     
+                    <PostHeader postData={post} />    
+                    <TOCInPostWrapper>
+                      <TableOfContents content={post.toc}/>
+                    </TOCInPostWrapper>      
+                    
+                    <PostBody className="e-content" content={post.content} />     
 
                     <PostShare> 
                     <PostShareTitle>Share</PostShareTitle>
@@ -210,9 +229,9 @@ export default function Post({ post, morePosts }) {
                   </Content>
 
                   <Sidebar>
-                      
-                    {/**/}
-                    <TableOfContents content={post.toc}/>
+                    <TOCSidebarWrapper>
+                      <TableOfContents content={post.toc}/>
+                    </TOCSidebarWrapper>
                   </Sidebar>
                   
                 </PostGrid>

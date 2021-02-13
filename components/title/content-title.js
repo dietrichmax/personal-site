@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  margin: calc(var(--space-sm)*0.5) auto var(--space) auto;
+  margin: var(--space);
   font-size: 3rem;
   line-height: 4.5rem;
   font-family: var(--secondary-font);

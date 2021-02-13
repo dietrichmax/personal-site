@@ -20,9 +20,8 @@ const SEO = ({
   ogType = ogType ? ogType : "website"
   
 
-
   let schemaOrgJSONLD = []
-  
+
   if (postSEO) {
       schemaOrgJSONLD = {
         "@context": "http://schema.org",

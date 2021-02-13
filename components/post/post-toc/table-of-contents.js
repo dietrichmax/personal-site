@@ -6,14 +6,7 @@ import media from 'styled-media-query';
 import markdownToHtml from '@/lib/markdownToHtml'
 
 const TOCWrapper = styled.div`
-  top: 0;
-  position: sticky;
-  margin-top: calc(var(--space-lg)*5);
-  padding-top: var(--space-lg);
-  margin-left: var(--space);
-  ${media.lessThan('large')`
-    display: none;
-`}
+  margin: var(--space-sm) auto;
 `
 
 const TOCContainer = styled.div`

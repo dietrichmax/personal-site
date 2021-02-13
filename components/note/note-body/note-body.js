@@ -1,13 +1,11 @@
-import markdownStyles from './markdown-styles.module.css'
+import markdownStyles from '@/components/post/post-body/markdown-styles.module.css'
 import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"
 import Link from "next/link"
 
 
-const PostContent = styled.section`
-  padding-bottom: var(--space);
-  border-bottom: 1px solid var(--secondary-color);
+const NoteContent = styled.section`
   position: relative;
 `
 
@@ -26,15 +24,15 @@ const renderers = {
   },
 }
 
-export default function PostBody({ content }) {
+export default function NoteBody({ content }) {
 
   return (
-    <PostContent>
+    <NoteContent>
       <ReactMarkdown
         className={markdownStyles['markdown']}
         children={content}
         renderers={renderers}
       />
-    </PostContent>
+    </NoteContent>
   )
 }

@@ -13,6 +13,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import Date from "@/components/date/date"
+import NoteBody from "@/components/note/note-body/note-body"
 
 const NotesContainer = styled.ol`
   max-width: 600px;
@@ -22,7 +23,7 @@ const NotesContainer = styled.ol`
   :before {
     content: '';
     display: block;
-    width: 1px;
+    width: 2px;
     background-color: var(--secondary-color);
     position: absolute;
     top: 0;
@@ -82,7 +83,7 @@ export default function Notes({ allNotes }) {
               <Link href={`/notes/${note.date}`} passHref>
                 <a><NotesItem>
                   <NotesDate><Date dateString={note.date} /></NotesDate>
-                  <NotesContent>{note.content}</NotesContent>
+                  <NotesContent><NoteBody content={note.content} /></NotesContent>
                 </NotesItem></a>
               </Link>
             ))}

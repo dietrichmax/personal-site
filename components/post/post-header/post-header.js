@@ -60,17 +60,17 @@ export default function PostHeader({ postData }) {
         <TagsWrapper>
           {tags.map((tag, i) => (              
             <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
-              <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
+              <TagItem className="p-category" color={tag.color} title={tag.name}>{tag.name}</TagItem>
             </Link>
           ))}
         </TagsWrapper>
 
         <PostTitleWrapper>  
-          <PostTitle>{title}</PostTitle>   
+          <PostTitle className="p-name">{title}</PostTitle>   
         </PostTitleWrapper> 
 
         <PostMeta>
-          <Date dateString={dateUpdated? dateUpdated : date} />
+          <Date className="dt-published" dateString={dateUpdated? dateUpdated : date} />
           <PostReactions postId={id} postSlug={slug} preview/>
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>

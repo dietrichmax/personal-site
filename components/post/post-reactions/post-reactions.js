@@ -60,7 +60,7 @@ const WebMentionsComments = styled.div`
 const WebmentionComment = styled.div`
   border-radius: var(--space-sm);
   background-color: var(--secondary-color);
-  padding: calc(var(--space-sm)*0.5);
+  padding: var(--space-sm);
   margin-top: var(--space-sm);
 `
 
@@ -198,12 +198,6 @@ export default function PostReactions({ postId, postSlug, preview }) {
         incremented={incremented} 
         title="Reactions"
       /> {webmentionCount.count+reactionsCount}</PreviewLikeCount> 
-      <PreviewLikeCount aria-label={webmentionCount+reactionsCount}>
-      <Icon onClick={() => handleSubmit()}
-        className="las la-comment"
-        incremented={incremented} 
-        title="Webmentions"
-      /> {webmentionCount.mention + webmentionCount.reply || 0}</PreviewLikeCount> 
     </>
     ) : (
       <>
@@ -239,7 +233,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
           ))
           ) : (
           
-            <WebmentionComment><WebmentionContent>Found no Webmentions yet 😭</WebmentionContent></WebmentionComment>
+            <WebmentionComment><WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent></WebmentionComment>
           )}
         </WebMentionsComments>
       </WebMentionsWrapper> 

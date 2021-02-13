@@ -15,20 +15,25 @@ import PageTitle from '@/components/title/page-title'
 
 const BlogrollContainer = styled.ol`
   max-width: 1200px;
+  padding-inline-start: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
   grid-gap: 2rem;
   margin: 0 auto var(--space-lg) auto;
   list-style-type: none;
+  ${media.lessThan('1200px')`
+    margin: var(--space);
+`}
 `
 
 const BlogrollItem = styled.li`
+  height: 225px;
   position: relative;
   padding: var(--space-sm) var(--space);
   transition: 0.2s;
   background-color: var(--secondary-color); 
   border-radius: var(--space-sm);
-  ${media.greaterThan('large')`
+  ${media.greaterThan('1200px')`
     :hover {
       cursor: pointer;
       box-shadow: 0 25px 25px var(--gray-dark);    

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
-import { getAllPagesWithSlug, getPage } from '@/lib/data/api/cms'
+import { getAllPages, getPage } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
@@ -71,7 +71,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allPages = await getAllPagesWithSlug()
+  const allPages = await getAllPages()
   return {
     paths: allPages?.map((page) => `/${page.slug}`) || [],
     fallback: true,

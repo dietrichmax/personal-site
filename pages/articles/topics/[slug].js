@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
-import { getTag, getAllTagsWithSlug } from '@/lib/data/api/cms'
+import { getTag, getAllTags } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import Head from 'next/head'
 import config from "../../../lib/data/SiteConfig";
@@ -67,7 +67,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allTags = await getAllTagsWithSlug()
+  const allTags = await getAllTags()
   return {
     paths: allTags?.map((tag) => `/articles/topics/${tag.slug}`) || [],
     fallback: true,

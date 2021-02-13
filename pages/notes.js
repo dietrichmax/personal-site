@@ -12,10 +12,27 @@ import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
+import Date from "@/components/date/date"
 
 const NotesContainer = styled.ol`
   max-width: 600px;
-  margin: 0 auto var(--space-lg) auto;;
+  position: relative;
+  margin: 0 auto var(--space-lg) auto;
+  padding-inline-start: 0 !important;
+  :before {
+    content: '';
+    display: block;
+    width: 1px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--space-lg);
+  }
+  
+  ${media.lessThan('medium')`
+    margin: var(--space);
+`}
 `
 
 const NotesItem = styled.div`
@@ -24,7 +41,6 @@ const NotesItem = styled.div`
   border-radius: var(--space-sm);
   padding: var(--space);
   cursor: pointer;
-  
   ${media.greaterThan('large')`
     :hover {
       box-shadow: 0 25px 25px var(--gray-dark);    
@@ -39,7 +55,8 @@ margin-bottom: var(--space-sm);
 `
 
 const NotesContent = styled.div`
-  font-size: 2rem;`
+  font-size: 2rem;
+`
 
 export default function Notes({ allNotes }) {
   const router = useRouter()
@@ -62,10 +79,12 @@ export default function Notes({ allNotes }) {
             <NotesContainer >
 
             {allNotes.map((note) => (
-              <NotesItem>
-                <NotesDate>{note.date}</NotesDate>
-                <NotesContent>{note.content}</NotesContent>
-              </NotesItem>
+              <Link href={`/notes/${note.date}`} passHref>
+                <a><NotesItem>
+                  <NotesDate><Date dateString={note.date} /></NotesDate>
+                  <NotesContent>{note.content}</NotesContent>
+                </NotesItem></a>
+              </Link>
             ))}
 
               

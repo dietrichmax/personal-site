@@ -5,7 +5,7 @@ import PostBody from '@/components/post/post-body/post-body'
 import PostHeader from '@/components/post/post-header/post-header'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/data/api/cms'
+import { getAllPosts, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/markdownToHtml'
 import styled from 'styled-components';
@@ -95,9 +95,12 @@ const MoreArticles = styled.a`
   }
 `
 
-const SideReactions = styled.div`
+const SideReactions = styled.div`    
   top: 0;
   position: sticky;
+  margin-top: calc(var(--space-lg)*5);
+  padding-top: var(--space-lg);
+  text-align: right;
   ${media.lessThan('large')`
     display: none
   `}
@@ -177,7 +180,9 @@ export default function Post({ post, morePosts }) {
                 <PostGrid>
 
                   <Sidebar>
-                    
+                    <SideReactions>
+                      <PostReactions postId={post.id} postSlug={post.slug} preview/>
+                    </SideReactions>
                   </Sidebar>
 
                   <Content>
@@ -224,10 +229,10 @@ export default function Post({ post, morePosts }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const mdxSource = await markdownToHtml(data?.posts[0]?.content || '')
+  const content = data?.posts[0]?.content || ''
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
-  const readingTime = getReadTime(mdxSource); 
-  const tocContent = await markdownToHtml(toc(data?.posts[0]?.content || '').content)
+  const readingTime = getReadTime(content); 
+  const tocContent = await markdownToHtml(toc(content).content)
 
   return {
     revalidate:  86400,
@@ -235,7 +240,7 @@ export async function getStaticProps({ params }) {
       post: {
         ...data?.posts[0],
         readingTime: readingTime,
-        content: mdxSource,
+        content,
         excerpt,
         toc: tocContent
       },
@@ -245,7 +250,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug()
+  const allPosts = await getAllPosts()
   return {
     paths: allPosts?.map((post) => `/articles/${post.slug}`) || [],
     fallback: true,

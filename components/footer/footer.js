@@ -127,7 +127,7 @@ export default function Footer() {
           <Link href={config.socials.mastodon} passHref><FooterIcons className="lab la-mastodon" title="Mastodon" /></Link>
           <Link href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
           <Link href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
-          <Link href={config.siteRss} passHref><FooterIcons className="las la-rss" title="RSS"/></Link>
+          <Link href={config.siteRss} passHref><FooterIcons className="las la-rss" title="Feed"/></Link>
         </FooterSocials>
       </FooterInnerContainer>
     </FooterContainer>

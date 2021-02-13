@@ -14,7 +14,6 @@ const createRssFeed = ( allContent ) =>
 
 `<?xml version="1.0" encoding="UTF-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">   
-        <script/>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${config.siteRss}" rel="self" type="application/atom+xml"/>

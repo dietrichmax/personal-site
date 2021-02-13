@@ -123,6 +123,7 @@ export async function getStaticProps() {
   const allBlogrolls = (await getAllBlogrolls()) || []
   
   return {
+    revalidate:  86400,
     props: { allBlogrolls },
   }
 }

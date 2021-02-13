@@ -83,6 +83,7 @@ export async function getStaticProps() {
   const allNotes = (await getAllNotes()) || []
   
   return {
+    revalidate:  86400,
     props: { allNotes },
   }
 }

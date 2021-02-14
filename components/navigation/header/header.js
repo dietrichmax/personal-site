@@ -56,6 +56,7 @@ const Logo = styled.li`
   }
   ${media.lessThan('small')`
     font-size: 1em;
+    margin-bottom: var(--space-sm);
   `}
 `
 

@@ -24,8 +24,7 @@ const MoreContainer = styled.div`
   margin: var(--space);
   text-align: right;    
   cursor: pointer;
-  font-weight: 600;
-  font-size: .75em;
+  font-size: .6em;
   text-decoration: none;
 `
 const MoreArticles = styled.p`
@@ -90,10 +89,11 @@ const HeroFont = styled.span`
   font-weight: 600;
 `
 const SubTitle = styled.p`
-  font-weight: 600;
   padding-top: var(--space);
+  padding-left: var(--space-sm);
   margin: var(--space);
-  font-size: 1em;
+  font-size: 0.75em;
+  font-weight: 600;
 `
 
 export default function Index({ allPosts, allTags }) {

@@ -1,7 +1,7 @@
 .markdown {
   font-family: var(--secondary-font);
-  line-height: 32px;
-  font-size: .85em;
+  font-size: .75em;
+  line-height: 1.5;
   max-width: var(--content-width);
 }
 

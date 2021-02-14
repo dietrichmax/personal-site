@@ -73,9 +73,6 @@ const PostShare = styled.div`
 `
 
 const PostShareTitle = styled.p`
-  font-size: .6em;
-  letter-spacing: 3px;
-  text-transform: uppercase;
   margin-bottom: var(--space-sm);
 `
 

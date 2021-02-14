@@ -36,12 +36,10 @@ const WebmentionsHeader = styled.div`
 `
 
 const WebmentionsTitle = styled.p`
-  letter-spacing: 3px;
-  font-size: 0.6em;
-  text-transform: uppercase;
 `
 
 const WebmentionsInfo = styled.a`
+  font-size: 1.5em;
   display: flex;
   align-items: center;
 `

@@ -11,9 +11,6 @@ const RelatedPostsWrapper = styled.section`
 `
 
 const MorePostsTitle = styled.p`
-  letter-spacing: 3px;
-  font-size: 0.6em;
-  text-transform: uppercase;
   margin-bottom: var(--space-sm);
 `
 
@@ -46,6 +43,7 @@ const ArticleDate = styled.span`
 `
 const ArticleTitle = styled.a`
   font-size: 0.7em;
+  font-weight: 600;
   margin-right: var(--space);
   ${media.lessThan('medium')`
       display: block;

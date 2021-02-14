@@ -30,9 +30,8 @@ const CardItemInfo = styled.div`
 
 const CardItemTitle = styled.h2`
   color: var(--text-color);
-  font-size: 1.25em;
-  line-height: 46px;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: 600;
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--border-dark);
   
@@ -44,6 +43,7 @@ const CardItemTitle = styled.h2`
 const CardItemMeta = styled.div`
   display: flex;
   font-size: .6em;
+  font-weight: 200;
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
   color: var(--text-color);
@@ -53,7 +53,7 @@ const CardItemDescription = styled.div`
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
   font-family: var(--secondary-font);
-  font-size: 0.75em;
+  font-size: .75em;
 `;
 
 const TagsWrapper = styled.div`

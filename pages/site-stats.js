@@ -175,8 +175,7 @@ const Column = styled.div`
     }
     :before {
         content: attr(data-tip);
-        font-size: 1.2rem;
-        font-family: var(--secondary-font);
+        font-size: .5em;
         position: absolute;
         z-index: 999;
         white-space: nowrap;
@@ -214,7 +213,6 @@ const Date = styled.p`
     display: block;
     width: 100%;
     text-align: center;
-    color: var(--gray-dark);
 `
 
 
@@ -366,7 +364,7 @@ export default function Recruiting({
     
     const countryVisits = []
     const α = 0.6
-    const B = 20
+    const B = 100
     let pageViews = []
     let normalisedViews = []
     Object.entries(lastViews).forEach(value => (

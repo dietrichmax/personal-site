@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import Layout from "@/components/layout/layout"
 import config from "../lib/data/SiteConfig"
 import styled from "styled-components"
-import Header from "@/components/header/header"
-import Footer from "@/components/footer/footer"
+import Header from "@/components/navigation/header/header"
+import Footer from "@/components/navigation/footer/footer"
 import { parseISO, format } from "date-fns"
 import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"
@@ -31,17 +31,18 @@ import codeStats from "@/lib/data/count_total.json"
 import WorldMap from "@/components/d3/world-map/worldMap"
 
 const Container = styled.div`
+    max-width: 1200px;
+    margin: auto;
+    padding-left: var(--space);
+    padding-right: var(--space);
     ${media.lessThan("1200px")`
-    margin-left: var(--space);
-    margin-right: var(--space);
+        margin-left: var(--space);
+        margin-right: var(--space);
   `}
 `
 
-const Title = styled.h2`
-    margin: 0 auto var(--space) auto;
-    font-size: 2.25rem;
-    color: var(--primary-color);
-    font-weight: 200;
+const Title = styled.p`
+    letter-spacing: 0.2px;
 `
 
 const Stats = styled.span`
@@ -61,7 +62,6 @@ const GeneralStats = styled.div`
 `
 
 const StatsGrid = styled.div`
-    font-size: 2rem;
     display: grid;
     gap: var(--space-sm);
     grid-template-columns: repeat(2,minmax(0,1fr));
@@ -79,11 +79,9 @@ const TripleStatsGrid = styled.div`
     `}
 `
 
-const GridTitle = styled.div`
-    font-weight: 200;
+const GridTitle = styled.p`
     grid-column: span 2/span 2;
     letter-spacing: 0.2px;
-    color: var(--gray);
 `
 
 const GridStats = styled.div`
@@ -91,10 +89,10 @@ const GridStats = styled.div`
     display: block;
     color: var(--thirdy-color);
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 1em;
     text-transform: capitalize;
     ${media.lessThan('1000px')`
-        font-size: 2rem;
+        font-size: 0.75em;
     `}
 `
 
@@ -103,41 +101,37 @@ const GridStatsDescription = styled.div`
     padding-bottom: var(--space);
     text-transform: capitalize;
     font-weight: 200;
-    color: var(--gray);
+    font-size: 0.75em;
     ${media.lessThan('1000px')`
-        font-size: 1.5rem;
+        font-size: 0.5em;
     `}
 `
 
 const StatsSmallGrid = styled.div`
     text-align: center;
-    background-color: var(--secondary-color);  
+    border: 1px solid var(--primary-color);  
     border-radius: var(--space-sm);  
 `
 
 const StatsLargeGrid = styled.div`
     text-align: center;
-    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);  
     grid-column: span 2/span 2;    
     border-radius: var(--space-sm);  
 `
 
-const StatsGridMedium = styled.div`
-    font-size: 2rem;
+const StatsGridMedium = styled.div` 
     display: grid;
     gap: var(--space-sm);
     grid-template-columns: repeat(4,minmax(0,1fr));
     grid-column: span 2/span 2;
 `
 const GridMediumTitle = styled.div`
-    font-weight: 200;
     grid-column: span 4/span 4;
-    letter-spacing: 0.2px;
-    color: var(--gray);
 `
 const BottomStatsGrid = styled.div`
     text-align: center;
-    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     border-radius: var(--space-sm); 
     grid-column: span 1/span 1; 
     ${media.lessThan('1000px')`
@@ -159,24 +153,20 @@ const RecentViewsContainer = styled.div`
     display: flex;
 `
 
-const Credits = styled.div`
-    text-align: right;
-    font-size: 1.1rem;
-`
 
 const ColumnWrapper = styled.div`
     cursor: pointer;
     position: relative;
     margin-right: calc(var(--space-sm) * 0.3);
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--gray-extra-light);
 `
 
 const Column = styled.div`
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: var(--gray);
+    background-color: var(--primary-color);
     height: ${props => (props.height ? `${props.height}px !important` : "0px")};
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
@@ -220,19 +210,17 @@ const DateWrapper = styled.div`
 `
 
 const Date = styled.p`
-    font-size: 1rem;
+    font-size: .5em;
     display: block;
     width: 100%;
     text-align: center;
-    color: var(--gray);
+    color: var(--gray-dark);
 `
 
 
 
 const GitHubWrapper = styled.div`
     grid-column: span 2/span 2;
-    color: var(--gray);
-    font-size: 2rem;
     ${media.lessThan('1000px')`
         grid-column: span 1/span 1;
         margin-top: calc(var(--space)*2);
@@ -255,11 +243,11 @@ const GitHubButton = styled.button`
     background-color: var(--thirdy-color);
     cursor: pointer;
     max-width: 28rem;
-    color: var(--gray-light);
     padding: var(--space-sm) var(--space);
     border: none;
+    color: #fff;
     outline: none;
-    font-size: 1.4rem;
+    font-size: 0.6em;
     :hover {
         background-color: var(--secondary-color);
     }
@@ -268,7 +256,6 @@ const LanguageContainer = styled.div`
     max-width: 1200px;
     margin: auto;
     margin: calc(var(--space-lg)*2) auto;
-    color: var(--gray);
 `
 
 const LanguageWrapper = styled.div`
@@ -281,9 +268,8 @@ const LanguageColumn = styled.div`
     margin-bottom: var(--space);
 `
 
-const LanguageTitle = styled.a`
+const LanguageTitle = styled.strong`
     display: block;
-    font-weight: bold;
 `
 const LanguageMoreStats = styled.a`
     display: block;
@@ -485,7 +471,7 @@ export default function Recruiting({
                             </GeneralStats>
 
                             <ViewsContainer>
-                                <Title style={{ color: "var(--gray)" }}>
+                                <Title>
                                     Views in the past 30 days
                                 </Title>
                                 <RecentViewsContainer>
@@ -524,7 +510,7 @@ export default function Recruiting({
                                 </MapWrapper>*/}
 
                                 <GitHubWrapper>
-                                    <Title style={{ color: "var(--gray)" }}>
+                                    <Title>
                                         GitHub Repository
                                     </Title>
                                     This site's repository has been starred <Stats>{stars}</Stats>{" "}
@@ -563,7 +549,7 @@ export default function Recruiting({
                             </TripleStatsGrid>
 
                                 <LanguageContainer>
-                                    <Title style={{ color: "var(--gray)" }}>
+                                    <Title>
                                         Project Breakdown by Language
                                     </Title>
                                     <LanguageBar>

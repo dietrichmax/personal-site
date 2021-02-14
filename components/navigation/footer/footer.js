@@ -8,9 +8,11 @@ import { push } from "@socialgouv/matomo-next";
 // styled components
 
 const FooterContainer = styled.footer`
-  padding: var(--space-lg) 0;
+  padding: var(--space-lg) var(--space) var(--space-lg) var(--space);
   border-top: 1px solid var(--secondary-color);
-  margin: 0 var(--space);
+  margin: 0 auto;
+  font-size: 0.75em;
+  max-width: 1200px;
 `;
 
 const FooterInnerContainer = styled.div`
@@ -42,7 +44,10 @@ const FooterItemTitle = styled.p`
 `
 
 const FooterItemLink = styled(Link)`
-  font-weight: regular !important;
+  font-weight: regular;
+  :hover { 
+    color: var(--gray-extra-light);
+  }
 `
 
 const FooterDetail = styled.div`
@@ -75,7 +80,7 @@ const FooterIcons= styled.i`
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  margin: var(--space-sm);
+  margin-right: var(--space);
   color: var(--text-color);
   font-size: 20px;
 `
@@ -91,28 +96,19 @@ export default function Footer() {
       <FooterInnerContainer>
 
         <FooterItem>
-          <FooterItemTitle>© 2018-{format(new Date(), "yyyy")}</FooterItemTitle>
-          <FooterItemLink className="p-name u-url" href="/" title="Max Dietrich">Max Dietrich</FooterItemLink>
-        </FooterItem>
-
-        <FooterItem>
-          <FooterItemTitle>Subscribe</FooterItemTitle>
           <FooterItemLink href="/mailinglist" title="Max Dietrich">Mailing</FooterItemLink>
         </FooterItem>
 
         
         <FooterItem>
-          <FooterItemTitle>Legal</FooterItemTitle>
           <FooterItemLink href="/privacy" title="Privacy Policy">Privacy Policy</FooterItemLink>
         </FooterItem>
 
         <FooterItem>
-          <FooterItemTitle>Links</FooterItemTitle>
           <FooterItemLink href="/blogroll" title="Privacy Policy">Blogroll</FooterItemLink>
         </FooterItem>
 
         <FooterItem>
-          <FooterItemTitle>Data</FooterItemTitle>
           <FooterItemLink href="/site-stats" title="Privacy Policy">Stats</FooterItemLink>
         </FooterItem>
 
@@ -124,9 +120,8 @@ export default function Footer() {
         <FooterSocials className="h-card">
           <Link rel="me" href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
           <Link rel="me" href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
-          <Link rel="me" href={config.socials.mastodon} passHref><FooterIcons className="lab la-mastodon" title="Mastodon" /></Link>
           <Link rel="me" href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
-          <Link rel="me" href="mailto:kontakt@gis-netzwerk.com" passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
+          <Link rel="me" href={config.socials.mail} passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
           <a href={config.siteRss} title="Feed"><FooterIcons className="las la-rss"/></a>
         </FooterSocials>
       </FooterInnerContainer>

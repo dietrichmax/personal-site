@@ -1,5 +1,5 @@
 import Author from '@/components/post/post-author/post-author'
-import PostTitle from '@/components/title/content-title'
+import PostTitle from '@/components/title/post-title'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
@@ -9,7 +9,7 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
-  margin-top: var(--space);
+  margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
 `
 
@@ -21,7 +21,7 @@ const PostTitleWrapper = styled.div`
   margin-bottom: var(--space-sm);
 `
 const PostMeta = styled.div`
-  font-size: 1.3rem;
+  font-size: .6em;
   margin-bottom: calc(var(--space-sm) *0.5);
   display: flex;
 `;
@@ -38,10 +38,10 @@ const TagItem = styled.a`
   text-transform: uppercase;
   transition: 0.2s;
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: .6em;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: var(--secondary-color);
+  border: 1px solid var(--text-color);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

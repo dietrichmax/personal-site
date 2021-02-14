@@ -7,7 +7,6 @@ import Link from "next/link"
 
 const PostContent = styled.section`
   padding-bottom: var(--space);
-  border-bottom: 1px solid var(--secondary-color);
   position: relative;
 `
 

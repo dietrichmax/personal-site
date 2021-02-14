@@ -31,18 +31,10 @@ class MyApp extends App {
             rel="preconnect" 
             href="https://analytics.mxd.codes"
           />,
-          <link
-            rel="preconnect"
-            key="preconnect-icons8"
-            href="https://maxst.icons8.com"
-          />,
+          {/* webmentions */}
           <link
             rel="preconnect"
             href="https://webmention.io"
-          />,
-          <link 
-            rel="stylesheet" 
-            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
           />,
           <link 
             rel="webmention" 
@@ -56,6 +48,24 @@ class MyApp extends App {
           <link href="https://twitter.com/mxdietrich" rel="me" />,
           <link href="mailto:kontakt@gis-netzwerk.com" rel="me" />,
           <link href="https://www.instagram.com/_maxdietrich/" rel="me" />,
+          {/* fonts */}
+          <link
+            rel="preconnect"
+            key="preconnect-icons8"
+            href="https://maxst.icons8.com"
+          />,
+          <link 
+            rel="stylesheet" 
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
+          />,
+          <link 
+            rel="preconnect" 
+            href="https://fonts.gstatic.com"
+          />,
+          <link 
+            href="https://fonts.googleapis.com/css2?family=Martel+Slab&family=Tinos&family=Open+Sans&display=swap" 
+            rel="stylesheet"
+          />,
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

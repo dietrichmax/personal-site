@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -20,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     text-decoration: none;
     overflow-wrap: break-word;
-    scrollbar-color: var(--secondary-color) var(--primary-color);
   }
   a {
     transition: 0.2s;
@@ -34,12 +34,13 @@ const GlobalStyle = createGlobalStyle`
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
-  html {
-    font-size: 62.5%;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #191f45;
   }
+
   body {
-    line-height: 1.6;
-    color: var(--text-color)
+    color: var(--text-color);
   }
   strong {
     font-weight: bold;
@@ -51,10 +52,11 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
   body {
     background: var(--body-bg);
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family: var(--primary-font);
     font-size: 1.5rem;
     font-display: block !important;
   }
@@ -70,25 +72,27 @@ const GlobalStyle = createGlobalStyle`
     --gray-extra-light: #fafafa; 
     --gray-light: #c9d1d9;  
     --gray: #a8bfce;
-    --gray-dark: #020a0f;
-    --primary-color: #071017;
-    --secondary-color: #0a1924;
+    --gray-dark: #3a3d4d;
+    --primary-color: #111936;
+    --secondary-color: #191f45;
     --thirdy-color: #c85517;
-    --body-bg: var(--primary-color); 
+    --body-bg: #fff; 
     --bg-light: var(--gray-light);
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --secondary-font: open sans,sans-serif;
+    --primary-font: 'Open Sans', sans-serif;
+    --secondary-font: 'Tinos', serif;
+    --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--text-dark);
-    --link-color-hover: var(--thirdy-color);
-    --text-color: #c9d1d9;
+    --link-color-hover: var(--gray-dark);
+    --text-color: var(--primary-color);
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1040px;
-    --space: 2rem;
-    --space-sm: 1rem;
-    --space-lg: 3rem;
+    --space: 1em;
+    --space-sm: 0.5em;
+    --space-lg: 1.5em;
   }
 `
 

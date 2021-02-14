@@ -36,30 +36,26 @@ const WebmentionsHeader = styled.div`
 
 const WebmentionsTitle = styled.p`
   letter-spacing: 3px;
-  font-size: 1.5rem;
-  color: var(--gray);
+  font-size: 0.6em;
   text-transform: uppercase;
 `
 
 const WebmentionsInfo = styled.a`
   display: flex;
   align-items: center;
-  color: var(--gray);
-  :hover {
-    color: var(--text-color);
-  }
 `
 
 const WebmentionsInfoIcon = styled.i`
-  font-size: 2rem;
+  font-size: 0.6em;
 `
 
 const WebMentionsComments = styled.div`
+  font-size: 0.6em;
 `
 
 const WebmentionComment = styled.div`
   border-radius: var(--space-sm);
-  background-color: var(--secondary-color);
+  border: 1px solid;
   padding: var(--space-sm);
   margin-top: var(--space-sm);
 `
@@ -85,7 +81,6 @@ const WebmentionAuthorName = styled.span`
 `
 
 const WebmentionDate = styled.span`
-  color: var(--gray);
   font-weight: 200;
   ${media.lessThan('small')`
     display: none;
@@ -222,6 +217,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
                     height="30"
                     width="30"
                     className="u-photo"
+                    title={mention.author.name}
                   />
                 </WebmentionAuthorImgWrapper>
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>

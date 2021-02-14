@@ -4,8 +4,8 @@ import { getAllNotes } from '@/lib/data/api/cms'
 import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import media from "styled-media-query"
@@ -20,17 +20,7 @@ const NotesContainer = styled.ol`
   position: relative;
   margin: 0 auto var(--space-lg) auto;
   padding-inline-start: 0 !important;
-  :before {
-    content: '';
-    display: block;
-    width: 2px;
-    background-color: var(--secondary-color);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: var(--space-lg);
-  }
-  
+
   ${media.lessThan('medium')`
     margin: var(--space);
 `}
@@ -38,20 +28,14 @@ const NotesContainer = styled.ol`
 
 const NotesItem = styled.div`
   margin-bottom: var(--space);
-  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
   border-radius: var(--space-sm);
   padding: var(--space);
   cursor: pointer;
-  ${media.greaterThan('large')`
-    :hover {
-      box-shadow: 0 25px 25px var(--gray-dark);    
-    }
-`}
 `
 
 const NotesDate = styled.div`
-color: var(--gray);
-font-size: 1.3rem;
+font-size: 0.6em;
 margin-bottom: var(--space-sm);
 `
 

@@ -4,15 +4,17 @@ import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 
 const BlogPageContainer = styled.div`
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
   max-width: 1200px;
 `
 
@@ -37,6 +39,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
+
             <BlogPageContainer >
 
               <MoreStories posts={posts}/>

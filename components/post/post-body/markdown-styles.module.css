@@ -1,8 +1,15 @@
+.markdown {
+  font-family: var(--secondary-font);
+  line-height: 28px;
+  font-size: 18px;
+}
 
 .markdown a {
   color: var(--text-color);
   border-bottom: 1px dashed var(--link-color);
+  cursor: pointer;
 }
+
 .markdown a:hover {
   border-bottom: none;
   color: var(--link-color-hover);
@@ -17,14 +24,18 @@
   font-size: 2.5rem;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
 }
 
 .markdown h3 {
   font-size: 2rem;
   margin-top: 1.8rem;
   margin-bottom: 1rem;
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
+}
+
+.markdown h4, .markdown h5, .markdown h6 {
+  font-family: var(--primary-font);
 }
 
 .markdown img {

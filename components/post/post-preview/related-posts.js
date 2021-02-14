@@ -9,12 +9,9 @@ const RelatedPostsWrapper = styled.section`
   margin-bottom: var(--space);
 `
 
-
-
 const MorePostsTitle = styled.p`
   letter-spacing: 3px;
-  font-size: 1.5rem;
-  color: var(--gray);
+  font-size: 0.6em;
   text-transform: uppercase;
   margin-bottom: var(--space-sm);
 `
@@ -27,6 +24,7 @@ const ArticlesList = styled.ol`
 const ArticlesItem = styled.li`
   margin: var(--space-sm) 0;
   display: flex;
+  padding-inline-start: 0;
   :hover {
       color: var(--link-color-hover);
   }
@@ -36,22 +34,21 @@ const ArticlesItem = styled.li`
 `
 
 const ArticleDate = styled.span`
-    font-weight: 200;
-    color: var(--gray);
+    font-size: 0.6em;
     margin-right: var(--space);
-    width: 9rem;
+    min-width: 6rem;
     ${media.lessThan('medium')`
         display: block;
+        font-size: .5em;
         order: +1;
-        font-size: 0.9em;
     `}
 `
 const ArticleTitle = styled.a`
-    font-size: 1.5rem;
-    margin-right: var(--space);
-    ${media.lessThan('medium')`
-        display: block;
-    `}
+  font-size: 0.7em;
+  margin-right: var(--space);
+  ${media.lessThan('medium')`
+      display: block;
+  `}
 `
 
 export default function RelatedPosts({ relatedPosts }) {

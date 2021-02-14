@@ -7,14 +7,10 @@ import PostReactions from "@/components/post/post-reactions/post-reactions"
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
   border-radius: 0.75rem;
-  max-width: 370px;
   transition: 0.2s;
-  background-color: var(--secondary-color);
-  ${media.greaterThan('large')`
-    :hover {
-      box-shadow: 0 25px 25px var(--gray-dark);    
-    }
-`}
+  ${media.lessThan('medium')`
+    margin: var(--space);
+  `}
 `
 
 const CardItemWrapper = styled.section`
@@ -26,14 +22,17 @@ const CardItemImg = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
-  padding: var(--space-sm) var(--space);
+  padding: 0 var(--space);
+  ${media.lessThan('medium')`
+   padding: 0;
+  `}
 `;
 
 const CardItemTitle = styled.h2`
   color: var(--text-color);
-  font-size: 1.2em;
-  line-height: 1.35;
-  margin-top: var(--space-sm);
+  font-size: 1.25em;
+  line-height: 46px;
+  font-weight: 700;
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--border-dark);
   
@@ -44,20 +43,21 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 1.3rem;
-  margin-top: calc(var(--space-sm) *0.5);
-  margin-bottom: calc(var(--space-sm) *0.5);
+  font-size: 0.6em;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
   color: var(--text-color);
 `;
 
 const CardItemDescription = styled.div`
-  color: var(--text-color);
+  margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
+  font-family: var(--secondary-font);
+  font-size: 0.75em;
 `;
 
 const TagsWrapper = styled.div`
   display: block;
-  margin-top: var(--space);
   margin-bottom: var(--space-sm);
 `
 
@@ -65,11 +65,11 @@ const TagItem = styled.a`
   display: inline-block;
   text-transform: uppercase;
   transition: 0.2s;
+  font-size: .6em;
+  border: 1px solid var(--text-color);
   cursor: pointer;
-  font-size: 1.3rem;
   padding: calc(var(--space-sm)*0.2) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  background-color: var(--primary-color);
   border-radius: var(--space-sm);
   :hover {
     background-color: ${props =>

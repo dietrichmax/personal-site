@@ -10,15 +10,14 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import Date from '@/components/date/date'    
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import config from "../lib/data/SiteConfig";
 
 const PageWrapper = styled.div`
-  max-width: 720px;
-  padding: var(--space) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
+  max-width: 1200px;
   margin: var(--space) auto var(--space) auto;
-  background-color: var(--primary-color);
+  padding: 0 var(--space);
   ${media.lessThan('large')`
     padding-left: var(--space);
     padding-right: var(--space);

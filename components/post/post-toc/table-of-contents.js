@@ -7,12 +7,13 @@ import markdownToHtml from '@/lib/markdownToHtml'
 
 const TOCWrapper = styled.div`
   margin: var(--space-sm) auto;
+  border: 1px solid var(--text-color);
+  border-radius: var(--space-sm);
 `
 
 const TOCContainer = styled.div`
-  background-color: var(--secondary-color);
   padding: var(--space);
-  border-radius: var(--space-sm);
+  font-size: 0.6em;
 `
 
 const TOCTitle = styled.p`

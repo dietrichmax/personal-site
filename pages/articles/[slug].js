@@ -13,8 +13,8 @@ import config from "@/lib/data/SiteConfig";
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 //import CoverImage from '@/components/post/post-image/cover-image'
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
@@ -29,7 +29,6 @@ const PostWrapper = styled.div`
   max-width: 1400px;
   padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
   margin: auto;
-  background-color: var(--primary-color);
   ${media.lessThan('medium')`
     padding-left: var(--space);
     padding-right: var(--space);
@@ -51,11 +50,13 @@ const Sidebar = styled.div`
   margin-top: var(--space-lg);
   ${media.lessThan('large')`
     grid-column: span 1/span 1;
+    margin-top: calc(var(--space-lg)*1.5);
   `}
 `
 
 const Content = styled.div`
   grid-column: span 4/span 4;
+  margin-top: var(--space-lg);
   ${media.lessThan('large')`
     grid-column: span 6/span 6;
   `}
@@ -78,8 +79,8 @@ const MoreContainer = styled.div`
   margin: var(--space) auto 0 auto;
   text-align: left;    
   cursor: pointer;
-  font-weight: 600;
-  font-size: 1.3rem;
+  font-weight: 600;font-size: .75em;
+  font-size: 0.5em;
   text-decoration: none;
 `
 const MoreArticles = styled.a`
@@ -107,19 +108,22 @@ const SideReactions = styled.div`
 `
 
 const PostShare = styled.div`
+  border-top: 1px solid var(--primary-color);
+  padding-top: var(--space);
   margin-top: var(--space-sm);
 `
 
 const PostShareTitle = styled.p`
+  font-size: .6em;
   letter-spacing: 3px;
-  font-size: 1.5rem;
-  color: var(--gray);
   text-transform: uppercase;
   margin-bottom: var(--space-sm);
 `
 
 const Icons= styled.i`    
-background-color: var(--secondary-color);
+  font-size: .75em;
+  transition: 0.2s;
+  border: 1px solid;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -127,10 +131,13 @@ background-color: var(--secondary-color);
   vertical-align: middle;
   margin-right: var(--space-sm);
   color: var(--text-color);
-  font-size: 20px;
   outline: none;
   padding: var(--space-sm);
   border-radius: 50%;
+  :hover {
+    background-color: var(--text-color);
+    color: #fff;
+  }
 `
 
 const TOCSidebarWrapper = styled.div`

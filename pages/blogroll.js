@@ -4,8 +4,8 @@ import { getAllBlogrolls } from '@/lib/data/api/cms'
 import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import media from "styled-media-query"
@@ -19,7 +19,9 @@ const BlogrollContainer = styled.ol`
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
   grid-gap: 2rem;
-  margin: 0 auto var(--space-lg) auto;
+  margin: var(--space-lg) auto var(--space-lg) auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
   list-style-type: none;
   ${media.lessThan('1200px')`
     margin: var(--space);
@@ -31,14 +33,11 @@ const BlogrollItem = styled.li`
   position: relative;
   padding: var(--space-sm) var(--space);
   transition: 0.2s;
-  background-color: var(--secondary-color); 
+  border: 1px solid;
   border-radius: var(--space-sm);
-  ${media.greaterThan('1200px')`
-    :hover {
-      cursor: pointer;
-      box-shadow: 0 25px 25px var(--gray-dark);    
-    }
-`}
+  :hover {
+    cursor: pointer; 
+  }
 `
 
 const BlogrollProfile = styled.div`
@@ -59,7 +58,7 @@ const BlogRollProfileImg = styled(Image)`
 `
 
 const BlogrollProfileName = styled.span`
-  font-size: 2rem;
+  font-size: 1em;
 `
 
 const BlogrollLink = styled.a`
@@ -68,10 +67,12 @@ const BlogrollLink = styled.a`
 
 const BlogrollProfileLink = styled.a`
   display: block;
-  color: var(--gray);
+  color: var(--link-color);
+  font-size: .6em;
 `
 
 const BlogrollProfileDesc = styled.p`
+font-size: .75em;
 
 `
 export default function Blogroll({ allBlogrolls }) {

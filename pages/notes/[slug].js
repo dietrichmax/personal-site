@@ -8,8 +8,8 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import Date from '@/components/date/date'    
-import Header from '@/components/header/header'
-import Footer from '@/components/footer/footer'
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 import config from "@/lib/data/SiteConfig";
 import Link from 'next/link'
 import NoteBody from "@/components/note/note-body/note-body"

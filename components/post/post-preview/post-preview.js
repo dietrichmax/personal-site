@@ -62,20 +62,22 @@ const TagsWrapper = styled.div`
 `
 
 const TagItem = styled.a`
-  display: inline-block;
-  text-transform: uppercase;
-  transition: 0.2s;
-  font-size: .6em;
-  border: 1px solid var(--text-color);
-  cursor: pointer;
-  padding: calc(var(--space-sm)*0.2) var(--space-sm);
-  margin: calc(var(--space-sm)*0.5);
-  border-radius: var(--space-sm);
-  :hover {
-    background-color: ${props =>
-      props.color ? props.color : '#798ad0'};
-    color: white;
-  }
+display: inline-block;
+text-transform: uppercase;
+transition: 0.2s;
+cursor: pointer;
+font-size: .6em;
+background-color: ${props =>
+  props.color ? props.color : '#798ad0'};
+color: white;
+padding: calc(var(--space-sm)*0.5) var(--space-sm);
+margin: calc(var(--space-sm)*0.5);
+border-radius: var(--space-sm);
+:hover {
+  color: ${props =>
+    props.color ? props.color : '#798ad0'};
+    background-color: white;
+}
 `
 
 const ReadingTime = styled.span`

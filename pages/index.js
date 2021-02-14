@@ -53,7 +53,7 @@ const Hero = styled.div`
   display: flex;
   color: var(--thirdy-color);
   max-width: 1200px;
-  padding: calc(1.2em + 120px) 0 calc(1.2em + 120px) 0;
+  padding: calc(2em + 120px) 0 calc(1.2em + 120px) 0;
   margin: 0 auto;
   ${media.lessThan('large')`
     padding: 3em 0 3em 0;
@@ -92,9 +92,8 @@ const HeroFont = styled.span`
 const SubTitle = styled.p`
   font-weight: 600;
   padding-top: var(--space);
-  margin-left: var(--space);
-  margin-top: var(--space);
-  margin-bottom: var(--space);
+  margin: var(--space);
+  font-size: 1em;
 `
 
 export default function Index({ allPosts, allTags }) {

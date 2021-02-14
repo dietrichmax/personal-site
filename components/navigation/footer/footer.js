@@ -109,7 +109,7 @@ export default function Footer() {
         </FooterItem>
 
         <FooterItem>
-          <FooterItemLink href="/site-stats" title="Privacy Policy">Stats</FooterItemLink>
+          <FooterItemLink href="/site-stats" title="Privacy Policy">Data</FooterItemLink>
         </FooterItem>
 
         <FooterDetail>

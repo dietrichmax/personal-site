@@ -17,6 +17,7 @@ const PostHeaderWrapper = styled.div`
 `
 
 const PostTitleWrapper = styled.div`
+  max-width: 800px;
   border-bottom: 1px solid var(--thirdy-color);
   margin-bottom: var(--space-sm);
 `
@@ -39,14 +40,16 @@ const TagItem = styled.a`
   transition: 0.2s;
   cursor: pointer;
   font-size: .6em;
-  padding: calc(var(--space-sm)*0.2) var(--space-sm);
+  background-color: ${props =>
+    props.color ? props.color : '#798ad0'};
+  color: white;
+  padding: calc(var(--space-sm)*0.5) var(--space-sm);
   margin: calc(var(--space-sm)*0.5);
-  border: 1px solid var(--text-color);
   border-radius: var(--space-sm);
   :hover {
-    background-color: ${props =>
+    color: ${props =>
       props.color ? props.color : '#798ad0'};
-    color: white;
+      background-color: white;
   }
 `
 export default function PostHeader({ postData }) {

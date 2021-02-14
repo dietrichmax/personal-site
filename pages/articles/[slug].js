@@ -26,33 +26,15 @@ import toc from 'markdown-toc'
 // components for posts
 
 const PostWrapper = styled.div`
-  max-width: 1400px;
-  padding: 0 calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5) calc(var(--space-lg)*1.5);
+  max-width: 1200px;
+  padding: var(--space-lg) var(--space);
   margin: auto;
   ${media.lessThan('medium')`
-    padding-left: var(--space);
-    padding-right: var(--space);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
   `}
 `
 
-const PostGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(8,minmax(0,1fr));
-  gap: var(--space);
-  ${media.lessThan('medium')`
-    display: block;
-  `}
-`
-
-const Sidebar = styled.div`
-  display: block;
-  grid-column: span 2/span 2;
-  margin-top: var(--space-lg);
-  ${media.lessThan('large')`
-    grid-column: span 1/span 1;
-    margin-top: calc(var(--space-lg)*1.5);
-  `}
-`
 
 const Content = styled.div`
   grid-column: span 4/span 4;
@@ -62,24 +44,11 @@ const Content = styled.div`
   `}
 `
 
-const MorePostsWrapper = styled.div`
-  background-color: var(--primary-color);
-  ${media.lessThan('large')`
-    padding-left: var(--space);
-    padding-right: var(--space);
-  `}
-`
-
-const PostDate = styled.div`
-  font-size: 1.3rem;
-  margin-bottom: calc(var(--space-sm) *0.5);
-`;
-
 const MoreContainer = styled.div`
   margin: var(--space) auto 0 auto;
   text-align: left;    
   cursor: pointer;
-  font-weight: 600;font-size: .75em;
+  font-weight: 600;
   font-size: 0.6em;
   text-decoration: none;
 `
@@ -96,18 +65,8 @@ const MoreArticles = styled.a`
   }
 `
 
-const SideReactions = styled.div`    
-  top: 0;
-  position: sticky;
-  margin-top: calc(var(--space-lg)*5);
-  padding-top: var(--space-lg);
-  text-align: right;
-  ${media.lessThan('large')`
-    display: none
-  `}
-`
-
 const PostShare = styled.div`
+  max-width: 700px;
   border-top: 1px solid var(--primary-color);
   padding-top: var(--space);
   margin-top: var(--space-sm);
@@ -201,11 +160,6 @@ export default function Post({ post, morePosts }) {
               ) : null }*/}
 
               <PostWrapper>
-                <PostGrid>
-
-                  <Sidebar>
-                    {/*****/}
-                  </Sidebar>
 
                   <Content>
                     <MoreContainer>
@@ -235,13 +189,7 @@ export default function Post({ post, morePosts }) {
                     <RelatedPosts relatedPosts={morePosts} />
                   </Content>
 
-                  <Sidebar>
-                    <TOCSidebarWrapper>
-                      <TableOfContents content={post.toc}/>
-                    </TOCSidebarWrapper>
-                  </Sidebar>
-                  
-                </PostGrid>
+
               </PostWrapper>
 
             </article>

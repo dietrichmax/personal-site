@@ -34,7 +34,8 @@ const Container = styled.div`
     max-width: 1200px;
     margin: auto;
     padding-right: var(--space);
-    ${media.lessThan("1200px")`
+    padding-left: var(--space);
+    ${media.lessThan('medium')`
         margin-left: var(--space-sm);
         margin-right: var(--space-sm);
         padding-left: 0;

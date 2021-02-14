@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     color: #191f45;
   }
-
+  
   body {
     color: var(--text-color);
   }

@@ -5,13 +5,9 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import Date from '@/components/date/date' 
 import PostReactions from "@/components/post/post-reactions/post-reactions" 
+import PostTags from "@/components/post/post-tags/post-tags"
 const _ = require("lodash");
 
-const TagsWrapper = styled.div`
-  display: block;
-  margin-top: var(--space-sm);
-  margin-bottom: var(--space-sm);
-`
 
 const PostHeaderWrapper = styled.div`
 `
@@ -34,24 +30,6 @@ const ReadingTime = styled.span`
 const ReadingTimeSymbol = styled.i`
 `
 
-const TagItem = styled.a`
-  display: inline-block;
-  text-transform: uppercase;
-  transition: 0.2s;
-  cursor: pointer;
-  font-size: .6em;
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
-  color: white;
-  padding: calc(var(--space-sm)*0.5) var(--space-sm);
-  margin: calc(var(--space-sm)*0.5);
-  border-radius: var(--space-sm);
-  :hover {
-    color: ${props =>
-      props.color ? props.color : '#798ad0'};
-      background-color: white;
-  }
-`
 export default function PostHeader({ postData }) {
 
   const { id, title, user, tags, date, dateUpdated, readingTime, slug } = postData
@@ -59,15 +37,9 @@ export default function PostHeader({ postData }) {
   return (
     <>
       <PostHeaderWrapper>
-
-        <TagsWrapper>
-          {tags.map((tag, i) => (              
-            <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
-              <TagItem className="p-category" color={tag.color} title={tag.name}>{tag.name}</TagItem>
-            </Link>
-          ))}
-        </TagsWrapper>
-
+         
+        <PostTags tags={tags}/>
+        
         <PostTitleWrapper>  
           <PostTitle className="p-name">{title}</PostTitle>   
         </PostTitleWrapper> 

@@ -9,13 +9,10 @@ const NewsletterWrapper = styled.label`
     flex-wrap: wrap;
     box-sizing: border-box;
     max-width: 720px;
-    padding: var(--space);
-    justify-content: center;
+    padding: var(--space-sm);
     margin: 0 auto var(--space-lg) auto;
-    background-color: var(--bg-dark);
 `
 const DescriptionWrapper = styled.div`
-    text-align: center;
     flex-grow: 0;    
     flex-shrink: 0;
     flex-basis: 100%;    
@@ -146,7 +143,7 @@ export default function Subscribe ({ noLabel, cb }) {
               name="email"
               id="mail"
               label="email-input"
-              placeholder="Deine E-Mail-Adresse"
+              placeholder="Your E-Mail adress"
               onChange={(e) => setEmail(e.target.value)}
             />
           </InputWrapper>

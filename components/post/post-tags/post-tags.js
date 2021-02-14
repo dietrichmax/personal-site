@@ -4,9 +4,6 @@ const _ = require("lodash");
 
 export const TagsWrapper = styled.div`
   display: block;
-  margin: var(--space) var(--space) var(--space-lg) var(--space);
-  padding: var(--space-lg);
-  text-align: center;
 `
 
 export const TagItem = styled.a`
@@ -14,16 +11,17 @@ export const TagItem = styled.a`
   text-transform: uppercase;
   transition: 0.2s;
   cursor: pointer;
-  font-size: 1.3rem;
-  color: var(--text-color);
-  padding: calc(var(--space-sm)*0.2) var(--space-sm);
-  margin: calc(var(--space-sm)*0.5);
-  background-color: var(--secondary-color);
+  font-size: .6em;
+  background-color: ${props =>
+    props.color ? props.color : '#798ad0'};
+  color: white;
+  padding: calc(var(--space-sm)*0.5) var(--space-sm);
+  margin-right: var(--space);
   border-radius: var(--space-sm);
   :hover {
-    background-color: ${props =>
+    color: ${props =>
       props.color ? props.color : '#798ad0'};
-    color: white;
+      background-color: white;
   }
 `
 

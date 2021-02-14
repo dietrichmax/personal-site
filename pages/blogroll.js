@@ -12,6 +12,7 @@ import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
+import SubTitle from '@/components/title/sub-title'
 
 const BlogrollContainer = styled.ol`
   max-width: 1200px;
@@ -34,8 +35,6 @@ const BlogrollItem = styled.li`
   padding: var(--space-sm) var(--space);
   transition: 0.2s;
   height: 100%;
-  border: 1px solid var(--gray);;
-  border-radius: var(--space-sm);
   :hover {
     cursor: pointer; 
   }
@@ -75,20 +74,7 @@ const BlogrollProfileLink = styled.a`
 const BlogrollProfileDesc = styled.p`
   font-size: .75em;
 `
-const SubTitle = styled.p`
-  max-width: 1200px;
-  margin: auto;
-  padding-left: var(--space);
-  padding-right: var(--space);
-  font-size: 1.5rem;
-  font-weight: 200;
-  line-height: 1.4;
-  color: var(--gray);
-  ${media.lessThan('1200px')`
-    margin: var(--space-sm);
-    padding: 0;
-`}
-`
+
 export default function Blogroll({ allBlogrolls }) {
   const router = useRouter()
 

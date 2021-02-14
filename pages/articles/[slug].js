@@ -45,7 +45,7 @@ const Content = styled.div`
 `
 
 const MoreContainer = styled.div`
-  margin: var(--space) auto 0 auto;
+  margin: var(--space) auto;
   text-align: left;    
   cursor: pointer;
   font-weight: 600;

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostReactions from "@/components/post/post-reactions/post-reactions"
+import PostTags from "@/components/post/post-tags/post-tags"
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -29,12 +30,7 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  color: var(--text-color);
-  font-size: 1em;
-  font-weight: 600;
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border-dark);
-  
+  font-size: 0.75em;
   :hover {
     color: var(--thirdy-color);    
   }
@@ -42,11 +38,10 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: .6em;
-  font-weight: 200;
+  font-size: 0.6em;
+  cursor: pointer;
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
-  color: var(--text-color);
 `;
 
 const CardItemDescription = styled.div`
@@ -56,29 +51,6 @@ const CardItemDescription = styled.div`
   font-size: .75em;
 `;
 
-const TagsWrapper = styled.div`
-  display: block;
-  margin-bottom: var(--space-sm);
-`
-
-const TagItem = styled.a`
-display: inline-block;
-text-transform: uppercase;
-transition: 0.2s;
-cursor: pointer;
-font-size: .6em;
-background-color: ${props =>
-  props.color ? props.color : '#798ad0'};
-color: white;
-padding: calc(var(--space-sm)*0.5) var(--space-sm);
-margin: calc(var(--space-sm)*0.5);
-border-radius: var(--space-sm);
-:hover {
-  color: ${props =>
-    props.color ? props.color : '#798ad0'};
-    background-color: white;
-}
-`
 
 const ReadingTime = styled.span`
   margin-left: var(--space-sm);
@@ -123,13 +95,7 @@ export default function PostPreview({
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <CardItemDescription>{excerpt}</CardItemDescription>
-          <TagsWrapper>
-            {tags.map((tag, i) => (
-              <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
-                <TagItem color={tag.color} title={tag.name}>{tag.name}</TagItem>
-              </Link>
-            ))}
-          </TagsWrapper>
+          <PostTags tags={tags}/>
         </CardItemInfo>
       </CardItemWrapper>
     </Card>

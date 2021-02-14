@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllPosts, getAllNotes } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks } from '@/lib/data/api/cms'
 import markdownToHtml from '@/lib/markdownToHtml'
 import remark from 'remark'
 import html from 'remark-html'
@@ -44,6 +44,7 @@ class Rss extends React.Component {
   static async getInitialProps({ res }) {
     const posts = (await getAllPosts()) || []
     const notes = (await getAllNotes()) || []
+    const links = (await getAllLinks()) || []
 
     const allContent = []
     const converter = new showdown.Converter()
@@ -65,7 +66,17 @@ class Rss extends React.Component {
         content: converter.makeHtml(note.content)
       })
     })
+
+    links.map((link) => {
+      allContent.push({
+        title: link.title,
+        slug: `${link.link}`,
+        date: link.date,
+        content: converter.makeHtml(link.description)
+      })
+    })
     
+
     res.setHeader('Content-Type', 'text/xml');
     res.write(createRssFeed( allContent ));
     res.end();

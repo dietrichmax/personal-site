@@ -73,6 +73,7 @@ const NavItems = styled.li`
 const NavItem = styled.li`
   margin-top: auto;
   line-height: 22px;
+  margin-left: calc(var(--space-lg)*2);
   :hover { 
     color: var(--link-color-hover);;
     text-decoration: none;
@@ -84,6 +85,10 @@ const NavItem = styled.li`
   .active {
     font-weight: 600;
   }
+  ${media.lessThan('medium')`
+    margin-left: 0;
+  `}
+  
   ${media.lessThan('small')`
     font-size: 1em;
   `}
@@ -97,7 +102,7 @@ export default function Header() {
   const headerItems = [
     { "name": "Articles", "link":  "/articles" },
     { "name": "Notes", "link":  "/notes" },
-    { "name": "Links", "link":  "/about" },
+    { "name": "Links", "link":  "/links" },
     { "name": "Data", "link":  "/site-stats" },
     { "name": "About", "link":  "/about" },
   ]

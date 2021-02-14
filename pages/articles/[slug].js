@@ -27,7 +27,7 @@ import toc from 'markdown-toc'
 
 const PostWrapper = styled.div`
   max-width: 1200px;
-  padding: var(--space-lg) var(--space);
+  padding: var(--space);
   margin: auto;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
@@ -38,7 +38,7 @@ const PostWrapper = styled.div`
 
 const Content = styled.div`
   grid-column: span 4/span 4;
-  margin-top: var(--space-lg);
+  margin-top: var(--space-);
   ${media.lessThan('large')`
     grid-column: span 6/span 6;
   `}
@@ -166,9 +166,9 @@ export default function Post({ post, morePosts }) {
                     </MoreContainer>
 
                     <PostHeader postData={post} />    
-                    <TOCInPostWrapper>
+                    {/*<TOCInPostWrapper>
                       <TableOfContents content={post.toc}/>
-                    </TOCInPostWrapper>      
+                    </TOCInPostWrapper>      */}
                     
                     <PostBody className="e-content" content={post.content} />     
 

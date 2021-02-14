@@ -44,8 +44,8 @@ const MoreArticles = styled.p`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  padding-left: var(--space);
-  padding-right: var(--space);
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
   background-color: var(--primary-color);
 `
 const Hero = styled.div`   
@@ -90,10 +90,10 @@ const HeroFont = styled.span`
 `
 const SubTitle = styled.p`
   padding-top: var(--space);
-  padding-left: var(--space-sm);
   margin: var(--space);
   font-size: 0.75em;
   font-weight: 600;
+  padding-left: var(--space-sm);
 `
 
 export default function Index({ allPosts, allTags }) {

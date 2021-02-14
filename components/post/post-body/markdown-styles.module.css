@@ -7,12 +7,11 @@
 
 .markdown a {
   color: var(--text-color);
-  border-bottom: 1px dashed var(--link-color);
+  border-bottom: 1px solid var(--link-color);
   cursor: pointer;
 }
 
 .markdown a:hover {
-  border-bottom: none;
   color: var(--link-color-hover);
 }
 
@@ -22,14 +21,14 @@
 }
 
 .markdown h2 {
-  font-size: 2.5rem;
+  font-size: 1.75em;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
   font-family: var(--primary-font);
 }
 
 .markdown h3 {
-  font-size: 2rem;
+  font-size: 1.5em;
   margin-top: 1.8rem;
   margin-bottom: 1rem;
   font-family: var(--primary-font);

@@ -17,23 +17,24 @@ const BlogrollContainer = styled.ol`
   max-width: 1200px;
   padding-inline-start: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
   grid-gap: 2rem;
   margin: var(--space-lg) auto var(--space-lg) auto;
   padding-left: var(--space);
   padding-right: var(--space);
   list-style-type: none;
   ${media.lessThan('1200px')`
-    margin: var(--space);
+    margin: var(--space-sm);
+    padding: 0;
 `}
 `
 
 const BlogrollItem = styled.li`
-  height: 225px;
   position: relative;
   padding: var(--space-sm) var(--space);
   transition: 0.2s;
-  border: 1px solid;
+  height: 100%;
+  border: 1px solid var(--gray);;
   border-radius: var(--space-sm);
   :hover {
     cursor: pointer; 
@@ -47,12 +48,12 @@ const BlogrollProfile = styled.div`
 `
 
 const BlogrollProfileImgWrapper = styled.div`
-margin-right: var(--space);
+  margin-right: var(--space);
 `
 
 const BlogRollProfileImg = styled(Image)`
   flex: none;
-  width: 70px;
+  max-width: 70px;
   object-fit: cover;
   border-radius: 50%;
 `
@@ -72,8 +73,21 @@ const BlogrollProfileLink = styled.a`
 `
 
 const BlogrollProfileDesc = styled.p`
-font-size: .75em;
-
+  font-size: .75em;
+`
+const SubTitle = styled.p`
+  max-width: 1200px;
+  margin: auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.4;
+  color: var(--gray);
+  ${media.lessThan('1200px')`
+    margin: var(--space-sm);
+    padding: 0;
+`}
 `
 export default function Blogroll({ allBlogrolls }) {
   const router = useRouter()
@@ -94,6 +108,8 @@ export default function Blogroll({ allBlogrolls }) {
             />
             
             <PageTitle>Blogroll</PageTitle>
+            <SubTitle>Awesome people on the web, in random order.</SubTitle>
+
             <BlogrollContainer >
 
             {allBlogrolls.map((blogroll) => (
@@ -106,6 +122,7 @@ export default function Blogroll({ allBlogrolls }) {
                         src={blogroll.profilePictureUrl}
                         width="70"
                         height="70"
+                        alt={blogroll.name}
                       /> 
                       </BlogrollProfileImgWrapper>
                     ) : null }

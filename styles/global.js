@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #fafafa; 
     --gray-light: #c9d1d9;  
-    --gray: #a8bfce;
+    --gray: #4b4c4c;
     --gray-dark: #3a3d4d;
     --primary-color: #111936;
     --secondary-color: #191f45;
@@ -84,12 +84,12 @@ const GlobalStyle = createGlobalStyle`
     --primary-font: 'Open Sans', sans-serif;
     --secondary-font: 'Tinos', serif;
     --thirdy-font: 'Cousine', sans-serif;
-    --link-color: var(--text-dark);
+    --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray-dark);
     --text-color: var(--primary-color);
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
-    --width-container: 1040px;
+    --width-container: 1200px;
     --content-width: 680px;
     --space: 1em;
     --space-sm: 0.5em;

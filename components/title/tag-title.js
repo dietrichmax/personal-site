@@ -7,7 +7,7 @@ const TitleWrapper = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 2em;
   text-transform: capitalize;
   color: ${props =>
     props.color ? props.color : 'var(--text-color'};

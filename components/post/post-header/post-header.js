@@ -18,7 +18,7 @@ const PostHeaderWrapper = styled.div`
 
 const PostTitleWrapper = styled.div`
   max-width: 800px;
-  border-bottom: 1px solid var(--thirdy-color);
+  border-bottom: 1px solid var(--primary-color);
   margin-bottom: var(--space-sm);
 `
 const PostMeta = styled.div`

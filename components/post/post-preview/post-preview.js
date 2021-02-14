@@ -9,7 +9,7 @@ const Card = styled.div`
   border-radius: 0.75rem;
   transition: 0.2s;
   ${media.lessThan('medium')`
-    margin: var(--space);
+    margin: var(--space-sm);
   `}
 `
 

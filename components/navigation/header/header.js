@@ -60,7 +60,7 @@ const Logo = styled.li`
   `}
 `
 
-const NavItems = styled.div`
+const NavItems = styled.li`
   flex: 50%;
   display: flex;
   justify-content: space-between;

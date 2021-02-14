@@ -33,11 +33,11 @@ import WorldMap from "@/components/d3/world-map/worldMap"
 const Container = styled.div`
     max-width: 1200px;
     margin: auto;
-    padding-left: var(--space);
     padding-right: var(--space);
     ${media.lessThan("1200px")`
-        margin-left: var(--space);
-        margin-right: var(--space);
+        margin-left: var(--space-sm);
+        margin-right: var(--space-sm);
+        padding-left: 0;
   `}
 `
 

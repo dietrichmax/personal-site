@@ -43,7 +43,7 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 0.6em;
+  font-size: .6em;
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
   color: var(--text-color);

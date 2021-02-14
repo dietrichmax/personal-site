@@ -63,7 +63,7 @@ class MyApp extends App {
             href="https://fonts.gstatic.com"
           />,
           <link 
-            href="https://fonts.googleapis.com/css2?family=Martel+Slab&family=Tinos&family=Open+Sans&display=swap" 
+            href="https://fonts.googleapis.com/css2?family=Tinos&family=Open+Sans&display=swap" 
             rel="stylesheet"
           />,
         </Head>

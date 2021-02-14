@@ -80,7 +80,7 @@ const MoreContainer = styled.div`
   text-align: left;    
   cursor: pointer;
   font-weight: 600;font-size: .75em;
-  font-size: 0.5em;
+  font-size: 0.6em;
   text-decoration: none;
 `
 const MoreArticles = styled.a`

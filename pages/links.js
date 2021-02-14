@@ -37,9 +37,6 @@ const LinksItem = styled.section`
 
 const LinksTitle = styled.h2`
   font-size: 0.75em;
-  font-weight: 800;
-  margin-bottom: 0;
-  line-height: 0.5;
 `
 
 const LinksLink = styled.cite`
@@ -73,9 +70,9 @@ export default function Links({ allLinks }) {
               <LinksContainer >
 
               {allLinks.map((link) => (
-                <LinksItem>
+                <LinksItem className="h-entry">
                     <LinksTitle><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-                    <LinksLink><span className="h-entry" href={link.link} title={link.title}>{link.link}</span></LinksLink>
+                    <LinksLink><span className="u-bookmark-of h-cite"href={link.link} title={link.title}>{link.link}</span></LinksLink>
                     <LinksContent><NoteBody content={link.description} /></LinksContent>
                     <PostTags tags={link.tags} />
 

@@ -61,6 +61,8 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
+  word-break: break-word;
+  hyphens: auto;
   margin: 0 var(--space-sm);
   font-size: calc(.7em + 2vw);
   font-weight: 300;

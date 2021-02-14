@@ -62,7 +62,7 @@ const createSitemap = (posts, tags, pages, notes, morePages) =>
           ${notes.map((note) => {
             return `
                 <url>
-                    <loc>${`${config.siteUrl}/notes/${note.date}`}</loc>
+                    <loc>${`${config.siteUrl}/notes/${note.slug}`}</loc>
                     <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
@@ -84,7 +84,9 @@ class Sitemap extends React.Component {
         '!pages/**/*[*.js',
         '!pages/_*.js',
         '!pages/sitemap.xml.js',
-        '!pages/api'
+        '!pages/api',
+        '!pages/404.js',
+        '!pages/feed.xml.js',
     ]);
 
     const posts = getPosts

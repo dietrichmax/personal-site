@@ -64,7 +64,7 @@ export default function Notes({ allNotes }) {
             <NotesContainer >
 
             {allNotes.map((note) => (
-              <Link href={`/notes/${note.date}`} passHref>
+              <Link href={`/notes/${note.slug}`} passHref>
                 <a><NotesItem>
                   <NotesDate><Date dateString={note.date} /></NotesDate>
                   <NotesContent><NoteBody content={note.content} /></NotesContent>

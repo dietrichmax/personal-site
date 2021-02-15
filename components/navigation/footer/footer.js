@@ -8,11 +8,16 @@ import { push } from "@socialgouv/matomo-next";
 // styled components
 
 const FooterContainer = styled.footer`
-  padding: var(--space-lg) var(--space) var(--space-lg) var(--space);
+  padding: var(--space);
   border-top: 1px solid var(--secondary-color);
   margin: 0 auto;
   font-size: 1rem;
   max-width: 1200px;
+
+  ${media.lessThan('medium')`  
+    flex-wrap: wrap;
+    padding: var(--space) var(--space-sm);
+  `}
 `;
 
 const FooterInnerContainer = styled.div`
@@ -34,7 +39,7 @@ const FooterItem = styled.div`
   margin: 0;
 
   ${media.lessThan('medium')` 
-  padding: 0 var(--space);
+  padding: 0;
   margin-bottom: var(--space-sm);
   flex-basis: 50%;
   `}
@@ -57,7 +62,7 @@ const FooterDetail = styled.div`
   text-transform: lowercase;
   
   ${media.lessThan('medium')` 
-    padding: 0 var(--space);
+    padding: 0;
     margin-bottom: var(--space-sm);
     flex-basis: 50%;
   `}

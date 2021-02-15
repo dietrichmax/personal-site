@@ -36,11 +36,12 @@ const ArticlesItem = styled.li`
 const ArticleDate = styled.span`
     font-size: 1rem;
     margin-right: var(--space);
+    color: var(--gray);
     font-weight: 200;
     min-width: 6rem;
     ${media.lessThan('medium')`
         display: block;
-        font-size: .5em;
+        font-size: .75em;
         order: +1;
     `}
 `

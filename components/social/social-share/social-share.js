@@ -36,6 +36,9 @@ const Icons= styled.i`
     background-color: var(--text-color);
     color: #fff;
   }
+  ${media.lessThan('small')`
+    margin-bottom: var(--space-sm);
+  `}
   `
 
 const Copied = styled.span`

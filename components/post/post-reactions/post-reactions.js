@@ -216,6 +216,7 @@ export default function PostReactions({ postId, postSlug, preview }) {
                     height="30"
                     width="30"
                     className="u-photo"
+                    alt={`Photo of ${mention.author.name}`}
                     title={mention.author.name}
                   />
                 </WebmentionAuthorImgWrapper>

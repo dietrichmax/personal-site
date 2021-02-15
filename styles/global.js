@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: 'Open Sans', sans-serif;
+    --primary-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: 'Tinos', serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);

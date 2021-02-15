@@ -49,3 +49,10 @@
 .markdown code {
   font-size: 1rem;
 }
+.markdown blockquote {
+  border-left: 2px solid var(--thirdy-color);
+  padding: var(--space-sm) var(--space);
+  margin: var(--space) 0 var(--space) var(--space-sm);
+  margin-left: var(--space-sm);
+  background: var(--gray-extra-light); 
+}

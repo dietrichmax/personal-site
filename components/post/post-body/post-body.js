@@ -47,7 +47,7 @@ export default function PostBody({ content }) {
         children={content}
         renderers={{
           renderers,
-          paragraph: this.renderParagraph,
+          paragraph: renderParagraph,
         }}
       />
     </PostContent>

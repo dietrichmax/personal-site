@@ -60,12 +60,12 @@ class MyApp extends App {
           />,
           <link 
             rel="preconnect" 
-            href="https://fonts.gstatic.com"
+            href="https://use.typekit.net"
           />,
           <link 
-            href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" 
-            rel="stylesheet"
-          />,
+            rel="stylesheet" 
+            href="https://use.typekit.net/xhe6fwq.css"
+          />
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

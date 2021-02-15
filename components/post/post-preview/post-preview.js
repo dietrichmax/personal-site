@@ -39,9 +39,11 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 0.6em;
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  font-style: italic;
 `;
 
 const CardItemDescription = styled.div`

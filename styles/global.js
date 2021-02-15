@@ -55,17 +55,15 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: var(--body-bg);
     font-weight: 400;
+    font-style: normal; 
     font-family: var(--primary-font);
-    font-size: 1.5rem;
-    font-display: block !important;
   }
+
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
-
-
 
   :root { 
     --gray-extra-light: #f4f6f9; 
@@ -80,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --primary-font: ibm-plex-serif, sans-serif;
     --secondary-font: 'Tinos', serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);

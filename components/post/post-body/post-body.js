@@ -26,7 +26,7 @@ const renderers = {
 
 export default function PostBody({ content }) {
 
-  renderParagraph(props) = {
+  const renderParagraph = (props) => {
     const { children } = props;
 
     if (children && children[0]

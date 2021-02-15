@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import media from "styled-media-query"
 import PostReactions from "@/components/post/post-reactions/post-reactions"
 import PostTags from "@/components/post/post-tags/post-tags"
+import PostBody from "@/components/post/post-body/post-body"
 
 const Card = styled.div`
   margin: 0 auto var(--space) auto;
@@ -39,7 +40,6 @@ const CardItemTitle = styled.h2`
 const CardItemMeta = styled.div`
   display: flex;
   font-size: 0.6em;
-  cursor: pointer;
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
 `;
@@ -47,7 +47,6 @@ const CardItemMeta = styled.div`
 const CardItemDescription = styled.div`
   margin-top: var(--space-sm);
   margin-bottom: var(--space-sm);
-  font-size: .75em;
 `;
 
 
@@ -93,7 +92,7 @@ export default function PostPreview({
             <PostReactions preview postId={id} postSlug={slug}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
-          <CardItemDescription>{excerpt}</CardItemDescription>
+          <CardItemDescription><PostBody content={excerpt}/></CardItemDescription>
           <PostTags tags={tags}/>
         </CardItemInfo>
       </CardItemWrapper>

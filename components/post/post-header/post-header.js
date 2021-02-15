@@ -45,7 +45,7 @@ export default function PostHeader({ postData }) {
         </PostTitleWrapper> 
 
         <PostMeta>
-          <Date className="dt-published" dateString={dateUpdated? dateUpdated : date} />
+          <Date className="dt-published" dateString={dateUpdated? dateUpdated : date} /><span>{dateUpdated? "(Updated)" : null}</span>
           <PostReactions postId={id} postSlug={slug} preview/>
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>

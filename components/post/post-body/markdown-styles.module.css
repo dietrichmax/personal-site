@@ -19,6 +19,10 @@
   margin: 0 0 1rem;
 }
 
+.markdown ul, .markdown ol {
+  padding-inline-start: 1.5rem;
+}
+
 .markdown h2 {
   font-size: 1.75em;
   margin-top: 2rem;

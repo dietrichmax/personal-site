@@ -8,7 +8,7 @@ import Link from "next/link"
 const PostContent = styled.section`
 `
 
-const renderParagraph(props) = {
+renderParagraph(props) = {
   const { children } = props;
 
   if (children && children[0]

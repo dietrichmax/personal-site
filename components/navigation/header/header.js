@@ -19,7 +19,7 @@ const InnerHeader = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space);
-  padding: var(--space-lg) var(--space);;
+  padding: var(--space);;
   height: 80px;
   ${media.lessThan('medium')`
     padding: var(--space-sm);

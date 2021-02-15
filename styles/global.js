@@ -54,10 +54,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: var(--body-bg);
-    font-size: 1.5rem;
+    font-size: 18px;
     font-weight: 400;
     font-style: normal; 
     font-family: var(--primary-font);
+    word-break: break-word;
+    hyphens: auto;
   }
 
   img {
@@ -83,15 +85,15 @@ const GlobalStyle = createGlobalStyle`
     --secondary-font: source-serif-pro, serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
-    --link-color-hover: var(--gray-dark);
+    --link-color-hover: var(--gray);
     --text-color: var(--primary-color);
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;
-    --content-width: 680px;
-    --space: 1em;
-    --space-sm: 0.5em;
-    --space-lg: 1.5em;
+    --content-width: 650px;
+    --space: 2rem;
+    --space-sm: 1rem;
+    --space-lg: 3rem;
   }
 `
 

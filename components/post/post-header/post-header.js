@@ -3,7 +3,7 @@ import PostTitle from '@/components/title/post-title'
 import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
-import Date from '@/components/date/date' 
+import Date from '@/lib/utils/date/date' 
 import PostReactions from "@/components/post/post-reactions/post-reactions" 
 import PostTags from "@/components/post/post-tags/post-tags"
 const _ = require("lodash");
@@ -17,9 +17,10 @@ const PostTitleWrapper = styled.div`
   margin: var(--space-sm) 0;
 `
 const PostMeta = styled.div`
-  font-size: .6em;
+  font-size: 1rem;
   margin-bottom: calc(var(--space-sm) *0.5);
   display: flex;
+  font-family: var(--secondary-font);
 `;
 
 const ReadingTime = styled.span`

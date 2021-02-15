@@ -11,7 +11,7 @@ const FooterContainer = styled.footer`
   padding: var(--space-lg) var(--space) var(--space-lg) var(--space);
   border-top: 1px solid var(--secondary-color);
   margin: 0 auto;
-  font-size: 0.75em;
+  font-size: 1rem;
   max-width: 1200px;
 `;
 
@@ -21,6 +21,7 @@ const FooterInnerContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   max-width: 1200px;
+  font-size: 18px;
 
   ${media.lessThan('medium')`  
     flex-wrap: wrap;
@@ -39,7 +40,7 @@ const FooterItem = styled.div`
   `}
 `
 
-const FooterItemTitle = styled.p`
+const FooterItemTitle = styled.a`
   font-weight: bold;
 `
 
@@ -82,7 +83,7 @@ const FooterIcons= styled.i`
   vertical-align: middle;
   margin-right: var(--space);
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 1.25rem;
 `
 
 export default function Footer() {
@@ -96,33 +97,33 @@ export default function Footer() {
       <FooterInnerContainer>
 
         <FooterItem>
-          <FooterItemLink href="/mailinglist" title="Max Dietrich">Mailing</FooterItemLink>
+          <FooterItemLink href="/mailinglist"><a title="Max Dietrich">Mailing</a></FooterItemLink>
         </FooterItem>
 
         
         <FooterItem>
-          <FooterItemLink href="/privacy" title="Privacy Policy">Privacy Policy</FooterItemLink>
+          <FooterItemLink href="/privacy"><a title="Privacy Policy">Privacy Policy</a></FooterItemLink>
         </FooterItem>
 
         <FooterItem>
-          <FooterItemLink href="/blogroll" title="Privacy Policy">Blogroll</FooterItemLink>
+          <FooterItemLink href="/blogroll"><a title="Privacy Policy">Blogroll</a></FooterItemLink>
         </FooterItem>
 
         <FooterItem>
-          <FooterItemLink href="/site-stats" title="Privacy Policy">Data</FooterItemLink>
+          <FooterItemLink href="/site-stats"><a title="Privacy Policy">Data</a></FooterItemLink>
         </FooterItem>
 
         <FooterDetail>
-          <Link className="p-name u-url" href="/about" title="About"><FooterItemTitle>Made with <Heart className="lar la-heart"></Heart></FooterItemTitle></Link>
+          <Link className="p-name u-url" href="/about" passHref><FooterItemTitle title="Feed">Made with <Heart className="lar la-heart"/></FooterItemTitle></Link>
         </FooterDetail>
         
 
         <FooterSocials className="h-card">
-          <Link rel="me" href={config.socials.twitter} passHref><FooterIcons className="lab la-twitter" title="Twitter" /></Link>
-          <Link rel="me" href={config.socials.github} passHref><FooterIcons className="lab la-github" title="GitHub" /></Link>
-          <Link rel="me" href={config.socials.instagram} passHref><FooterIcons className="lab la-instagram" title="Instagram" /></Link>
-          <Link rel="me" href={config.socials.mail} passHref><FooterIcons className="las la-envelope" title="Mail" /></Link>
-          <a href={config.siteRss} title="Feed"><FooterIcons className="las la-rss"/></a>
+          <Link rel="me" href={config.socials.twitter} passHref><a title="Twitter"><FooterIcons className="lab la-twitter" /></a></Link>
+          <Link rel="me" href={config.socials.github} passHref><a title="GitHub" ><FooterIcons className="lab la-github"/></a></Link>
+          <Link rel="me" href={config.socials.instagram} passHref><a title="Instagram" ><FooterIcons className="lab la-instagram"/></a></Link>
+          <Link rel="me" href={config.socials.mail} passHref><a title="Mail" ><FooterIcons className="las la-envelope"/></a></Link>
+          <Link href={config.siteRss} passHref><a title="Feed"><FooterIcons className="las la-rss"/></a></Link>
         </FooterSocials>
       </FooterInnerContainer>
     </FooterContainer>

@@ -8,7 +8,6 @@ const SEO = ({
   slug,
   date,
   ogType,
-  author,
   postSEO
 }) => {
 
@@ -38,7 +37,7 @@ const SEO = ({
         "dateModified": date,
         "author": {
           "@type": "Person",
-          "name": author.username,
+          "name": config.siteTItle,
           "nationality": "German",
           "address": {
             "@type": "PostalAddress",

@@ -1,7 +1,7 @@
 import PostPreview from './post-preview'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import getReadTime from "@/lib/read-time"
+import getReadTime from "@/lib/utils/read-time"
 
 const ListWrapper = styled.div`
   max-width: 1200px;

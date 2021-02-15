@@ -10,8 +10,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { push } from "@socialgouv/matomo-next";
 
 const HeaderWrapper = styled.header`
-  position: relative;
+  position: absolute;
   width: 100%;
+  top: 0;
+  left: 0;
 `
 
 const InnerHeader = styled.div`
@@ -19,7 +21,7 @@ const InnerHeader = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space);
-  padding: var(--space);;
+  padding: var(--space-sm) var(--space);
   height: 80px;
   ${media.lessThan('medium')`
     padding: var(--space-sm);
@@ -32,8 +34,10 @@ const Navigation = styled.nav`
   float: left;
   right: 0;
   padding: 0;
+  font-size: 18px;
   text-align: right;
   border-bottom-style: none;
+  color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
 `
 
 const MainNav = styled.ul`
@@ -41,22 +45,19 @@ const MainNav = styled.ul`
   list-style-type: none;
   padding-inline-start: 0;
   display: flex;
-  font-size: 0.75em;
   ${media.lessThan('medium')`
     display: block;
   `}
 `
 
 const Logo = styled.li`
-  flex: 50%;
+  flex: 60%;
   display: inline-block;
-  line-height: 22px;
-  :hover { 
-    color: var(--link-color-hover);
+  :hover {
+    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
   }
   ${media.lessThan('small')`
-    font-size: 1em;
-    margin-bottom: var(--space-sm);
+    font-size: 1rem;
   `}
 `
 
@@ -72,10 +73,9 @@ const NavItems = styled.li`
 
 const NavItem = styled.li`
   margin-top: auto;
-  line-height: 22px;
-  margin-left: calc(var(--space-lg)*2);
+  margin-left: var(--space-sm);
   :hover { 
-    color: var(--link-color-hover);;
+    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
     text-decoration: none;
     background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
     background-size: 100% 1px;
@@ -90,13 +90,12 @@ const NavItem = styled.li`
   `}
   
   ${media.lessThan('small')`
-    font-size: 1em;
+    font-size: 1rem;
   `}
 `
 
 
-export default function Header() {
-
+export default function Header( color ) {
 
 
   const headerItems = [
@@ -112,11 +111,11 @@ export default function Header() {
     <HeaderWrapper>
       
       <InnerHeader>
-        <Navigation itemtype="https://schema.org/SiteNavigationElement">
+        <Navigation itemtype="https://schema.org/SiteNavigationElement" color={color.color}>
 
         <MainNav>
 
-          <Logo>
+          <Logo color={color.color}>
             <a href="/" className="u-url" rel="me" title={config.siteTitle}>
             <strong className="p-name" >{config.siteTitle}</strong>
             <br/>
@@ -126,7 +125,7 @@ export default function Header() {
 
           <NavItems>
             {headerItems.map((item, i) => (
-                <NavItem className={i}>
+                <NavItem className={i} color={color.color}>
                   <ActiveLink activeClassName={`active ${i}`} href={item.link}>
                     <a title={item.name}>{item.name}</a>
                   </ActiveLink> 

@@ -3,14 +3,14 @@ import media from "styled-media-query"
 
 const Title = styled.p`
   max-width: 1200px;
-  margin: auto;
+  margin: var(--space-lg) auto;
   padding-left: var(--space);
   padding-right: var(--space);
   font-size: 1.5rem;
   font-weight: 200;
   line-height: 1.4;
   color: var(--gray);
-  ${media.lessThan('1200px')`
+  ${media.lessThan('medium')`
     margin: var(--space-sm);
     padding: 0;
   `}

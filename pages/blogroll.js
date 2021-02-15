@@ -24,7 +24,7 @@ const BlogrollContainer = styled.ol`
   padding-left: var(--space);
   padding-right: var(--space);
   list-style-type: none;
-  ${media.lessThan('1200px')`
+  ${media.lessThan('medium')`
     margin: var(--space-sm);
     padding: 0;
 `}
@@ -32,7 +32,6 @@ const BlogrollContainer = styled.ol`
 
 const BlogrollItem = styled.li`
   position: relative;
-  padding: var(--space-sm) var(--space);
   transition: 0.2s;
   height: 100%;
   :hover {
@@ -58,21 +57,21 @@ const BlogRollProfileImg = styled(Image)`
 `
 
 const BlogrollProfileName = styled.span`
-  font-size: 1em;
+  font-size: 1.5rem;
 `
 
 const BlogrollLink = styled.a`
   outline: none;
 `
 
-const BlogrollProfileLink = styled.a`
+const BlogrollProfileLink = styled.cite`
   display: block;
-  color: var(--link-color);
-  font-size: .6em;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--link-color);
 `
 
 const BlogrollProfileDesc = styled.p`
-  font-size: .75em;
+  font-size: 18px;
 `
 
 export default function Blogroll({ allBlogrolls }) {

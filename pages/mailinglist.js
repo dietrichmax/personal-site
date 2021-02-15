@@ -5,7 +5,7 @@ import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import Link from 'next/link'
-import Newsletter from '@/components/newsletter/subscribe'
+import Newsletter from '@/components/social/newsletter/subscribe'
 
 export default function MailingList() {
   return (

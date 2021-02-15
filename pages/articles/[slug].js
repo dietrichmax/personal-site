@@ -7,7 +7,7 @@ import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import { getAllPosts, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
-import markdownToHtml from '@/lib/markdownToHtml'
+import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig";
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
@@ -19,16 +19,18 @@ import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
 import PostReactions from "@/components/post/post-reactions/post-reactions"
 //import PostComments from "@/components/post/post-comments/post-comments"
-import getReadTime from "@/lib/read-time"
+import getReadTime from "@/lib/utils/read-time"
 import TableOfContents from "@/components/post/post-toc/table-of-contents"
 import toc from 'markdown-toc'
+import SocialShare from "@/components/social/social-share/social-share"
+
 
 // components for posts
 
 const PostWrapper = styled.div`
   max-width: 1200px;
   padding: var(--space);
-  margin: auto;
+  margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
@@ -44,78 +46,9 @@ const Content = styled.div`
   `}
 `
 
-const MoreContainer = styled.div`
-  margin: var(--space) auto;
-  text-align: left;    
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.6em;
-  text-decoration: none;
-`
-const MoreArticles = styled.a`
-  cursor: pointer;
-  transition: 0.2s;
-  :hover {
-    text-decoration: underline;
-  }
-  :before {
-    content: "\f060";
-    font-family: "Line Awesome Free";
-    font-weight: 900;
-  }
-`
-
-const PostShare = styled.div`
-  max-width: 700px;
-  border-top: 1px solid var(--primary-color);
-  padding-top: var(--space);
-  margin-top: var(--space-sm);
-`
-
-const PostShareTitle = styled.p`
-  margin-bottom: var(--space-sm);
-`
-
-const Icons= styled.i`    
-  font-size: .75em;
-  transition: 0.2s;
-  border: 1px solid;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  vertical-align: middle;
-  margin-right: var(--space-sm);
-  color: var(--text-color);
-  outline: none;
-  padding: var(--space-sm);
-  border-radius: 50%;
-  :hover {
-    background-color: var(--text-color);
-    color: #fff;
-  }
-`
-
-const TOCSidebarWrapper = styled.div`
-  top: 0;
-  position: sticky;
-  margin-top: calc(var(--space-lg)*5);
-  padding-top: var(--space-lg);
-  margin-left: var(--space);
-  ${media.lessThan('1200px')`
-    display: none;
-  `}
-`
 
 
-const TOCInPostWrapper = styled.div`
-  ${media.greaterThan('1200px')`
-    display: none;
-  `}
-`
 export default function Post({ post, morePosts }) {  
-  const [copySuccess, setCopySuccess] = useState('');
-  const textAreaRef = useRef(null);
 
 
   const router = useRouter()
@@ -159,11 +92,7 @@ export default function Post({ post, morePosts }) {
               <PostWrapper>
 
                   <Content>
-                    <MoreContainer>
-                      <Link href={`/articles`} passHref>
-                        <MoreArticles title="Back to all articles">{' '}Back to Articles</MoreArticles>
-                      </Link>
-                    </MoreContainer>
+
 
                     <PostHeader postData={post} />    
                     {/*<TOCInPostWrapper>
@@ -172,17 +101,11 @@ export default function Post({ post, morePosts }) {
                     
                     <PostBody className="e-content" content={post.content} />     
 
-                    <PostShare> 
-                    <PostShareTitle>Share</PostShareTitle>
-                      <Link href={`https://twitter.com/share?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-twitter" title="Share on Twitter" /></a></Link>
-                      <Link href={`http://www.reddit.com/submit?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-reddit" title="Share on Reddit" /></a></Link>
-                      <Link href={`https://www.facebook.com/sharer/sharer.php?u=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-facebook" title="Share on Facebook" /></a></Link>
-                      <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-linkedin" title="Share on Linkedin" /></a></Link>
-                      <Link href={`https://wa.me/?text=${config.siteUrl}/articles/${post.slug}`} passHref><a><Icons className="lab la-whatsapp" title="Share on Whatsapp" /></a></Link>
-                      <a><Icons onClick={copyToClipboard} className="las la-paste" title="Copy to Clipboard" /></a>
-                    </PostShare> 
+                    <SocialShare slug={`/articles/${post.slug}`} /> 
                     <PostReactions postId={post.id} postSlug={post.slug} />
+
                     {/*<PostComments postID={post.id}/>*/}  
+
                     <RelatedPosts relatedPosts={morePosts} />
                   </Content>
 

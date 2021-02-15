@@ -11,10 +11,10 @@ const TitleWrapper = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 2em;
+  font-size: 3rem;
   text-transform: capitalize;
   ${media.lessThan('medium')`
-    font-size: 1.3em;
+    font-size: 2rem;
 `}
 `
 

@@ -12,6 +12,8 @@ const RelatedPostsWrapper = styled.section`
 
 const MorePostsTitle = styled.p`
   margin-bottom: var(--space-sm);
+  font-size: 1.25rem;
+  font-weight: 600;
 `
 
 const ArticlesList = styled.ol`
@@ -32,8 +34,9 @@ const ArticlesItem = styled.li`
 `
 
 const ArticleDate = styled.span`
-    font-size: 0.6em;
+    font-size: 1rem;
     margin-right: var(--space);
+    font-weight: 200;
     min-width: 6rem;
     ${media.lessThan('medium')`
         display: block;
@@ -42,8 +45,7 @@ const ArticleDate = styled.span`
     `}
 `
 const ArticleTitle = styled.a`
-  font-size: 0.7em;
-  font-weight: 600;
+  font-size: 1rem;
   margin-right: var(--space);
   ${media.lessThan('medium')`
       display: block;

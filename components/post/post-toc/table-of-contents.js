@@ -3,7 +3,7 @@ import React from "react"
 //import AnchorLink from "react-anchor-link-smooth-scroll"
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import markdownToHtml from '@/lib/markdownToHtml'
+import markdownToHtml from '@/lib/utils/markdownToHtml'
 
 const TOCWrapper = styled.div`
   margin: var(--space-sm) auto;

@@ -24,7 +24,7 @@ const MoreContainer = styled.div`
   margin: var(--space);
   text-align: right;    
   cursor: pointer;
-  font-size: .6em;
+  font-size: 1rem;
   text-decoration: none;
 `
 const MoreArticles = styled.p`
@@ -44,26 +44,22 @@ const MoreArticles = styled.p`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  padding-left: var(--space-sm);
-  padding-right: var(--space-sm);
   background-color: var(--primary-color);
 `
 const Hero = styled.div`   
   display: flex;
   color: var(--thirdy-color);
   max-width: 1200px;
-  padding: calc(2em + 120px) 0 calc(1.2em + 120px) 0;
+  padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
-  ${media.lessThan('large')`
-    padding: 3em 0 3em 0;
+  ${media.lessThan('medium')`
+  padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
     width: 100%;
   `}
 `
 
 const HeroDescription = styled.h3`
-  word-break: break-word;
-  hyphens: auto;
-  margin: 0 var(--space-sm);
+  margin: 0 var(--space);
   font-size: calc(.7em + 2vw);
   font-weight: 300;
   line-height: 1.15;
@@ -72,8 +68,8 @@ const HeroDescription = styled.h3`
   ${media.lessThan('medium')`
     font-size: 1.5em;
   `}
-  ${media.lessThan('large')`
-  margin: 0;
+  ${media.lessThan('medium')`
+    margin: 0 var(--space-sm);
   `}
 `
 
@@ -91,10 +87,12 @@ const HeroFont = styled.span`
   font-weight: 600;
 `
 const SubTitle = styled.p`
-  padding-top: var(--space);
-  margin: var(--space);
-  font-size: 0.75em;
+  margin: var(--space) var(--space) var(--space-sm) var(--space);
+  font-size: 1rem;
   font-weight: 600;
+  ${media.lessThan('medium')`
+    margin: var(--space-sm);
+  `}
 `
 
 export default function Index({ allPosts, allTags }) {
@@ -105,7 +103,7 @@ export default function Index({ allPosts, allTags }) {
   return (
     <>
       <Layout>
-        <Header/>
+        <Header color={`var(--gray-extra-light)`} />
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (

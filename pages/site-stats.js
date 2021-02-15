@@ -13,7 +13,6 @@ import {
     getMatomoActions,
     getMatomoLiveCounter,
     getMatomoPageViews,
-    getMatomoCountryVisits,
     getMatomoSEOStats,
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
@@ -24,11 +23,12 @@ import {
     getTagsCount,
     getSubscribersCount,
     getNotesCount,
+    getLinksCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
-import WorldMap from "@/components/d3/world-map/worldMap"
+import SubTitle from '@/components/title/sub-title'
 
 const Container = styled.div`
     max-width: 1200px;
@@ -43,7 +43,8 @@ const Container = styled.div`
 `
 
 const Title = styled.p`
-    letter-spacing: 0.2px;
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
 `
 
 const Stats = styled.span`
@@ -90,10 +91,10 @@ const GridStats = styled.div`
     display: block;
     color: var(--thirdy-color);
     font-weight: 700;
-    font-size: 1em;
+    font-size: 1.5rem;
     text-transform: capitalize;
     ${media.lessThan('1000px')`
-        font-size: 0.75em;
+        font-size: 1rem;
     `}
 `
 
@@ -102,9 +103,9 @@ const GridStatsDescription = styled.div`
     padding-bottom: var(--space);
     text-transform: capitalize;
     font-weight: 200;
-    font-size: 0.75em;
+    font-size: 1.25rem;
     ${media.lessThan('1000px')`
-        font-size: 0.5em;
+        font-size: 0.75rem;
     `}
 `
 
@@ -176,7 +177,7 @@ const Column = styled.div`
     }
     :before {
         content: attr(data-tip);
-        font-size: .5em;
+        font-size: .75rem;
         position: absolute;
         z-index: 999;
         white-space: nowrap;
@@ -210,7 +211,7 @@ const DateWrapper = styled.div`
 `
 
 const Date = styled.p`
-    font-size: .5em;
+    font-size: .75rem;
     display: block;
     width: 100%;
     text-align: center;
@@ -236,6 +237,10 @@ const GitHubButtonLink = styled.a`
     margin-top: var(--space-sm);
 `
 
+const GitHubDescription = styled.p`
+    font-size: 1.25rem;
+`
+
 const GitHubButton = styled.button`
     transition: 0.2s;
     border-radius: 0.25rem;
@@ -246,9 +251,9 @@ const GitHubButton = styled.button`
     border: none;
     color: #fff;
     outline: none;
-    font-size: 0.6em;
+    font-size: 1rem;
     :hover {
-        background-color: var(--secondary-color);
+        background-color: var(--gray);
     }
 `
 const LanguageContainer = styled.div`
@@ -269,10 +274,12 @@ const LanguageColumn = styled.div`
 
 const LanguageTitle = styled.strong`
     display: block;
+    font-size: 1rem;
 `
 const LanguageMoreStats = styled.a`
     display: block;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
+    font-size: 1rem;
 `
 
 const LanguageBar = styled.div`
@@ -297,33 +304,6 @@ const LanguageDot = styled.span`
     margin-right: var(--space-sm);
 `
 
-const MapWrapper = styled.div`
-    max-width: 600px;
-    margin: var(--space-lg) auto;
-    font-size: 2rem;
-`
-
-const VisitorWrapper = styled.div`
-    grid-column: span 1/span 1;
-    font-size: 2rem;
-    color: var(--gray);
-
-`
-
-const VisitorDot = styled.span`
-    background-image: url(${props => (props.url ? `${process.env.NEXT_PUBLIC_MATOMO_URL}/${props.url}` : "")});
-    background-size: cover;
-    margin-right: 1rem;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-    display: inline-block;
-`
-
-const VisitorList = styled.p`
-    margin: 0;
-`
-
 
 export default function Recruiting({
     lastViews,
@@ -332,23 +312,17 @@ export default function Recruiting({
     postsCount,
     tagsCount,
     subscribersCount,
-    countryCount,
     githubStats,
     seoStats,
     allVisits,
     visitDuration,
     allWebmentions,
     notesCount,
+    linksCount,
 }) {
     const router = useRouter()
 
-    /*const languages = []
-    Object.entries(codeStats).forEach(language =>
-        languages.push({
-            name: language,
-        })
-    )
-    languages.shift()*/
+    
     
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
@@ -360,10 +334,8 @@ export default function Recruiting({
     const webmentionsCount = allWebmentions.length
 
     const linesOfCode = codeStats.SUM.code
-    const comments = codeStats.SUM.comment
-    const files = codeStats.SUM.nFiles
-    
-    const countryVisits = []
+
+
     const α = 0.6
     const B = 100
     let pageViews = []
@@ -402,6 +374,7 @@ export default function Recruiting({
                     <>
                         <SEO title="Site Stats" slug="site-stats" />
                         <PageTitle>Site statistics</PageTitle>
+                        <SubTitle>Different stats from multiple sources</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>
@@ -451,8 +424,8 @@ export default function Recruiting({
                                         <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{format(parseISO(lastModified),config.dateFormat)}</GridStats>
-                                        <GridStatsDescription>Date of latest Build</GridStatsDescription>
+                                        <GridStats>{linksCount}</GridStats>
+                                        <GridStatsDescription>Links published</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>
                             </GeneralStats>
@@ -512,8 +485,10 @@ export default function Recruiting({
                                     <Title>
                                         GitHub Repository
                                     </Title>
-                                    This site's repository has been starred <Stats>{stars}</Stats>{" "}
-                                    times and forked <Stats>{forkCount}</Stats> times.
+                                    <GitHubDescription>
+                                        This site's repository has been starred <Stats>{stars}</Stats>{" "}
+                                        times and forked <Stats>{forkCount}</Stats> times.
+                                    </GitHubDescription>
                                     <GitHubButtonWrapper>
                                         <GitHubButtonLink
                                             href={githubUrl}
@@ -674,15 +649,15 @@ export default function Recruiting({
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const liveViews = (await getMatomoLiveCounter()) || []
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const notesCount = (await getNotesCount()) || []
+    const linksCount = (await getLinksCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
-    const countryCount = (await getMatomoCountryVisits()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
     const allVisits = (await getMatomoAllVisits()) || []
@@ -692,6 +667,7 @@ export async function getServerSideProps() {
     
 
     return {
+        revalidate:  86400,
         props: {
             lastViews,
             liveViews,
@@ -699,13 +675,13 @@ export async function getServerSideProps() {
             postsCount,
             tagsCount,
             subscribersCount,
-            countryCount,
             githubStats,
             seoStats,
             allVisits,
             visitDuration,
             allWebmentions,
             notesCount,
+            linksCount,
         },
     }
 }

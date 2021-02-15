@@ -1,4 +1,4 @@
-import Date from '@/components/date/date'
+import Date from '@/lib/utils/date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
@@ -31,7 +31,7 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  font-size: 0.75em;
+  font-size: 1.25rem;
   :hover {
     color: var(--thirdy-color);    
   }
@@ -39,16 +39,15 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  margin-top: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  font-size: 16px;
+  margin: calc(var(--space-sm)*0.25) 0;
   font-family: var(--secondary-font);
-  font-size: 1rem;
-  font-style: italic;
 `;
 
 const CardItemDescription = styled.div`
-  margin-top: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  margin: calc(var(--space-sm)*0.5) 0;
 `;
 
 
@@ -94,7 +93,7 @@ export default function PostPreview({
             <PostReactions preview postId={id} postSlug={slug}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
-          <CardItemDescription><PostBody content={excerpt}/></CardItemDescription>
+          <CardItemDescription>{excerpt}</CardItemDescription>
           <PostTags tags={tags}/>
         </CardItemInfo>
       </CardItemWrapper>

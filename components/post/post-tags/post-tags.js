@@ -11,13 +11,13 @@ export const TagItem = styled.a`
   text-transform: uppercase;
   transition: 0.2s;
   cursor: pointer;
-  font-size: .6em;
+  font-size: .75rem;
   background-color: ${props =>
     props.color ? props.color : '#798ad0'};
   color: white;
-  padding: calc(var(--space-sm)*0.5) var(--space-sm);
-  margin-right: var(--space);
-  border-radius: var(--space-sm);
+  padding: calc(var(--space-sm)*0.25) calc(var(--space-sm)*0.5);
+  margin-right: var(--space-sm);
+  border-radius: .75rem;
   :hover {
     color: ${props =>
       props.color ? props.color : '#798ad0'};

@@ -23,8 +23,6 @@ const PreviewLikeCount = styled.span`
 const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
   max-width: 800px;
-  padding-bottom: var(--space);
-  border-bottom: 1px solid var(--secondary-color);
 `
 
 const WebmentionsHeader = styled.div`
@@ -36,20 +34,22 @@ const WebmentionsHeader = styled.div`
 `
 
 const WebmentionsTitle = styled.p`
+  font-size: 1.25rem;
+  font-weight: 600;
 `
 
 const WebmentionsInfo = styled.a`
-  font-size: 1.5em;
+  font-size: 1rem;
   display: flex;
   align-items: center;
 `
 
 const WebmentionsInfoIcon = styled.i`
-  font-size: 0.6em;
+  font-size: 1.5rem;
 `
 
 const WebMentionsComments = styled.div`
-  font-size: 0.6em;
+  font-size: .75rem;
 `
 
 const WebmentionComment = styled.div`
@@ -57,6 +57,7 @@ const WebmentionComment = styled.div`
   border: 1px solid;
   padding: var(--space-sm);
   margin-top: var(--space-sm);
+  font-size: 1rem;
 `
 
 const WebmentionAuthor = styled.div`    

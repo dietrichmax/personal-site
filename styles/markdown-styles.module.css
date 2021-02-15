@@ -1,7 +1,7 @@
 .markdown {
   font-family: var(--secondary-font);
   font-size: 18px;
-  line-height: 30px;
+  line-height: 26px;
   max-width: var(--content-width);
   word-break: break-word;
   hyphens: auto;
@@ -18,7 +18,7 @@
 }
 
 .markdown p, .markdown blockquote, .markdown dl, .markdown ol, .markdown ul {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.125rem;
 }
 
 .markdown ul, .markdown ol {
@@ -27,15 +27,15 @@
 
 .markdown h2 {
   font-size: 1.75em;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
   font-family: var(--primary-font);
 }
 
 .markdown h3 {
   font-size: 1.5em;
-  margin-top: 1.8rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1.75rem;
   font-family: var(--primary-font);
 }
 
@@ -49,8 +49,13 @@
 }
 
 .markdown code {
+  overflow: auto;
+  background: #f4f6f9;
+  color: #393A34;
   font-size: 1rem;
 }
+
+.markdown
 .markdown blockquote {
   border-left: 2px solid var(--thirdy-color);
   padding: var(--space-sm) var(--space);

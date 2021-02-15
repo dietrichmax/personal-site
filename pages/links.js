@@ -12,9 +12,10 @@ import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
-import Date from "@/components/date/date"
+import Date from "@/lib/utils/date/date"
 import NoteBody from "@/components/note/note-body/note-body"
 import PostTags from "@/components/post/post-tags/post-tags"
+import SubTitle from '@/components/title/sub-title'
 
 const LinksContainer = styled.div`
   max-width: 1200px;
@@ -29,23 +30,27 @@ const LinksContainer = styled.div`
 
 const LinksItem = styled.section`
   margin-left: var(--space);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space);
+  padding-bottom: var(--space);
+  border-bottom: 1px dashed var(--gray-light);
   ${media.lessThan('medium')`
     margin-left: 0;
 `}
 `
 
 const LinksTitle = styled.h2`
-  font-size: 0.75em;
+  font-size: 1.5rem;
 `
 
 const LinksLink = styled.cite`
-  font-size: 0.6em;
+  font-size: 1rem;
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
 `
 
 const LinksContent = styled.div`
+  margin: calc(var(--space-sm)*0.5) 0;
+  font-size: 18px;
 `
 
 
@@ -67,13 +72,14 @@ export default function Links({ allLinks }) {
             />
             <article className="b-links">
               <PageTitle>Links</PageTitle>
+              <SubTitle>Awesome content on the web, in random order.</SubTitle>
               <LinksContainer >
 
               {allLinks.map((link) => (
                 <LinksItem className="h-entry">
                     <LinksTitle><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
                     <LinksLink><span className="u-bookmark-of h-cite"href={link.link} title={link.title}>{link.link}</span></LinksLink>
-                    <LinksContent><NoteBody content={link.description} /></LinksContent>
+                    <LinksContent>{link.description}</LinksContent>
                     <PostTags tags={link.tags} />
 
                 </LinksItem>

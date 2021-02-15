@@ -2,7 +2,7 @@ import React from 'react';
 import { format, parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
 import { getAllPosts, getAllNotes, getAllLinks } from '@/lib/data/api/cms'
-import markdownToHtml from '@/lib/markdownToHtml'
+import markdownToHtml from '@/lib/utils/markdownToHtml'
 import remark from 'remark'
 import html from 'remark-html'
 import slug from 'remark-slug'

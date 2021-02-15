@@ -1,4 +1,4 @@
-import markdownStyles from '@/components/post/post-body/markdown-styles.module.css'
+import markdownStyles from '@/styles/markdown-styles.module.css'
 import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"

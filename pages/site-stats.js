@@ -649,7 +649,7 @@ export default function Recruiting({
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const liveViews = (await getMatomoLiveCounter()) || []
@@ -667,6 +667,7 @@ export async function getServerSideProps() {
     
 
     return {
+      revalidate:  86400,
         props: {
             lastViews,
             liveViews,

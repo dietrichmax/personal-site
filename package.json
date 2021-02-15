@@ -42,6 +42,7 @@
     "preact-render-to-string": "^5.1.10",
     "prettier": "1.16.4",
     "prismjs": "^1.23.0",
+    "prism-themes": "1.4.0.",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-emoji-render": "^1.2.4",

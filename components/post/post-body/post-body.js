@@ -8,19 +8,6 @@ import Link from "next/link"
 const PostContent = styled.section`
 `
 
-renderParagraph(props) = {
-  const { children } = props;
-
-  if (children && children[0]
-    && children.length === 1
-    && children[0].props
-    && children[0].props.src) { // rendering media without p wrapper
-
-    return children;
-  }
-
-  return <p>{children}</p>;
-}
 
 const renderers = {
   image: image => {
@@ -39,8 +26,20 @@ const renderers = {
 
 export default function PostBody({ content }) {
 
+  renderParagraph(props) = {
+    const { children } = props;
 
-      
+    if (children && children[0]
+      && children.length === 1
+      && children[0].props
+      && children[0].props.src) { // rendering media without p wrapper
+
+      return children;
+    }
+
+    return <p>{children}</p>;
+  }
+
   return (
     <PostContent>
       <ReactMarkdown

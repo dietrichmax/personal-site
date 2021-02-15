@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'styled-media-query';
 
-const Title = styled.h2`
+const Title = styled.h1`
   margin: 0 auto var(--space-sm) auto;
   font-size: 2em;
   font-weight: 700;

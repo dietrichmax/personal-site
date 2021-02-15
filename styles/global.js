@@ -54,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: var(--body-bg);
+    font-size: 1.5rem;
     font-weight: 400;
     font-style: normal; 
     font-family: var(--primary-font);
@@ -78,8 +79,8 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: ibm-plex-serif, sans-serif;
-    --secondary-font: 'Tinos', serif;
+    --primary-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --secondary-font: ibm-plex-serif, sans-serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray-dark);

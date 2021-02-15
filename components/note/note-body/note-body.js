@@ -19,7 +19,7 @@ const renderers = {
       <Link href={link.href} passHref> 
         <a alt={link.alt} title={link.title}>{link.children}</a>
       </Link> :
-      <a alt={link.alt} title={link.title}>{link.children}</a>
+      <a href={link.href} alt={link.alt} title={link.title}>{link.children}</a>
     )
   },
 }

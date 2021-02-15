@@ -9,9 +9,9 @@ const PostContent = styled.section`
 `
 
 const renderers = {
-  /*image: image => {
-    return <Image src={image.src} alt={image.alt} height={image.width} width={image.height} quality="90" />
-  },*/
+  image: image => {
+    return <img id="test" src={image.src} alt={image.alt} height={image.width} width={image.height} />
+  },
   link: link => {
     return ( 
       link.href.startsWith("/") ?

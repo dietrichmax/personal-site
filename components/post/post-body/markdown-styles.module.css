@@ -15,7 +15,7 @@
   color: var(--link-color-hover);
 }
 
-.markdown p, .markdown blockquote, .markdown dl, .markdown ol {
+.markdown p, .markdown blockquote, .markdown dl, .markdown ol, markdown ul {
   margin: 0 0 1rem;
 }
 

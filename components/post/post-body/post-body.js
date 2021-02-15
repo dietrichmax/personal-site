@@ -8,6 +8,20 @@ import Link from "next/link"
 const PostContent = styled.section`
 `
 
+renderParagraph(props) {
+  const { children } = props;
+
+  if (children && children[0]
+    && children.length === 1
+    && children[0].props
+    && children[0].props.src) { // rendering media without p wrapper
+
+    return children;
+  }
+
+  return <p>{children}</p>;
+}
+
 const renderers = {
   image: image => {
     return <img id="test" src={image.src} alt={image.alt} height={image.width} width={image.height} />
@@ -30,7 +44,10 @@ export default function PostBody({ content }) {
       <ReactMarkdown
         className={markdownStyles['markdown']}
         children={content}
-        renderers={renderers}
+        renderers={{
+          renderers,
+          paragraph: this.renderParagraph,
+        }}
       />
     </PostContent>
   )

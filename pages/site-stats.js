@@ -649,7 +649,7 @@ export default function Recruiting({
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const liveViews = (await getMatomoLiveCounter()) || []

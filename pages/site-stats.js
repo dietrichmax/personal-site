@@ -667,7 +667,6 @@ export async function getServerSideProps() {
     
 
     return {
-        revalidate:  86400,
         props: {
             lastViews,
             liveViews,

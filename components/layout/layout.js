@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 const prism = require("prismjs")
 require('prismjs/components/prism-python');
+require('prism-themes/themes/prism-vs.css')
 
 const Container = styled.div`
 `

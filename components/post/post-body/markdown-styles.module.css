@@ -3,6 +3,8 @@
   font-size: 18px;
   line-height: 30px;
   max-width: var(--content-width);
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .markdown a {

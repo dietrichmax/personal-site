@@ -95,7 +95,6 @@ const SubTitle = styled.p`
   margin: var(--space);
   font-size: 0.75em;
   font-weight: 600;
-  padding-left: var(--space-sm);
 `
 
 export default function Index({ allPosts, allTags }) {

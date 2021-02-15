@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
-import { getAllNotes } from '@/lib/data/api/cms'
+import { getAllNotes, getNote } from '@/lib/data/api/cms'
 import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
@@ -43,7 +43,7 @@ const NotesContent = styled.div`
 
 export default function Note({ note }) {
   const router = useRouter()
-console.log(note.tags)
+
   return (
     <Layout>
       <Header />
@@ -79,16 +79,14 @@ console.log(note.tags)
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getAllNotes()
-  const content = await markdownToHtml(data[0]?.content || '')
+  const data = await getNote(params.slug)
+  const content = data?.notes[0]?.content || ''
 
   return {
     props: {
       note: {
-        title: data[0]?.title,
-        date: data[0]?.date,
-        content: data[0]?.content,
-        tags: data[0]?.tags,
+        ...data?.notes[0],
+        content: content,
       },
     },
   }

@@ -6,8 +6,6 @@ import Link from "next/link"
 
 
 const PostContent = styled.section`
-  padding-bottom: var(--space);
-  position: relative;
 `
 
 const renderers = {

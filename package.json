@@ -55,7 +55,7 @@
     "styled-components": "5.2.1",
     "styled-media-query": "^2.1.2",
     "topojson-client": "^3.1.0",
-    "webpack": "5.22.0"
+    "webpack": "4.6.0"
   },
   "devDependencies": {
     "eslint": "^7.20.0",

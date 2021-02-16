@@ -15,31 +15,6 @@ const IndexPageContainer = styled.div`
   margin: auto;
   max-width: 1200px;
 `
-const TitleWrapper = styled.div`
-  margin: var(--space) auto var(--space) auto;
-`
-
-
-const MoreContainer = styled.div`
-  margin: var(--space);
-  text-align: right;    
-  cursor: pointer;
-  font-size: 1rem;
-  text-decoration: none;
-`
-const MoreArticles = styled.p`
-  cursor: pointer;
-  transition: 0.2s;
-  :hover {
-    text-decoration: underline;
-  }
-  :after {
-    content: "\f061";
-    font-family: "Line Awesome Free";
-    font-weight: 900;
-  }
-`
-
 
 const HeroWrapper = styled.div`
   width: 100%;
@@ -87,12 +62,38 @@ const HeroFont = styled.span`
   font-weight: 600;
 `
 const SubTitle = styled.p`
-  margin: var(--space) var(--space) var(--space-sm) var(--space);
+  margin: var(--space);
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.4;
   ${media.lessThan('medium')`
     margin: var(--space-sm);
   `}
+`
+
+const MoreContainer = styled.div`
+  margin: var(--space);
+  text-align: right;    
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+`
+const MoreArticles = styled.p`
+  margin: var(--space);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  ${media.lessThan('medium')`
+    margin: var(--space-sm);
+  `}
+  :hover {
+    text-decoration: underline;
+  }
+  :after {
+    content: "\f061";
+    font-family: "Line Awesome Free";
+    font-weight: 900;
+  }
 `
 
 export default function Index({ allPosts, allTags }) {
@@ -123,7 +124,7 @@ export default function Index({ allPosts, allTags }) {
             </HeroWrapper>
 
             <IndexPageContainer>
-              <SubTitle>Recent Posts</SubTitle>
+              <SubTitle>Selected Articles</SubTitle>
               <MoreStories posts={posts} />
 
               <MoreContainer>

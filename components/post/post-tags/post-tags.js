@@ -7,21 +7,16 @@ export const TagsWrapper = styled.div`
 `
 
 export const TagItem = styled.a`
+  background: var(--gray-extra-light);
+  border-radius: 3px;
   display: inline-block;
-  text-transform: uppercase;
-  transition: 0.2s;
-  cursor: pointer;
-  font-size: .75rem;
-  background-color: ${props =>
-    props.color ? props.color : '#798ad0'};
-  color: white;
-  padding: calc(var(--space-sm)*0.25) calc(var(--space-sm)*0.5);
-  margin-right: var(--space-sm);
-  border-radius: .75rem;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 4px 8px 4px 0;
+  padding: 2px 6px;
   :hover {
-    color: ${props =>
-      props.color ? props.color : '#798ad0'};
-      background-color: white;
+    background-color: ${props => props.color ? props.color : '#798ad0'};
+    color: white;
   }
 `
 

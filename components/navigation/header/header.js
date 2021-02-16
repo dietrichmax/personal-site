@@ -18,13 +18,12 @@ const HeaderWrapper = styled.header`
 
 const InnerHeader = styled.div`
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: var(--space);
+  margin: calc(var(--space-sm)*0.5) auto var(--space) auto;
   padding: var(--space-sm) var(--space);
   height: 80px;
   ${media.lessThan('medium')`
     padding: var(--space-sm);
+    margin: calc(var(--space-sm)*0.5) auto var(--space) auto;
   `}
 `
 
@@ -34,7 +33,7 @@ const Navigation = styled.nav`
   float: left;
   right: 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 1rem;
   text-align: right;
   border-bottom-style: none;
   color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};

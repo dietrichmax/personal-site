@@ -66,7 +66,7 @@ export default function SocialShare({ slug }) {
             <Link href={`https://www.facebook.com/sharer/sharer.php?u=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-facebook" title="Share on Facebook" /></a></Link>
             <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-linkedin" title="Share on Linkedin" /></a></Link>
             <Link href={`https://wa.me/?text=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-whatsapp" title="Share on Whatsapp" /></a></Link>
-            <a><Icons onClick={copyToClipboard} className="las la-paste" title="Copy to Clipboard" /><Copied>{copied ? "Copied" : null}</Copied></a>
+            <a><Icons onClick={copyToClipboard} className="las la-paste" title="Copy to Clipboard" /><Copied>{copied ? `Copied` : null}</Copied></a>
       </Share>
     )
   }

@@ -40,7 +40,6 @@ const PostWrapper = styled.div`
 
 const Content = styled.div`
   grid-column: span 4/span 4;
-  margin-top: var(--space-);
   ${media.lessThan('large')`
     grid-column: span 6/span 6;
   `}

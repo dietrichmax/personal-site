@@ -26,7 +26,7 @@ const FooterInnerContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   max-width: 1200px;
-  font-size: 18px;
+  font-size: 1rem;
 
   ${media.lessThan('medium')`  
     flex-wrap: wrap;

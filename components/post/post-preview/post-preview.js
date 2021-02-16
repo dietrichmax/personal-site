@@ -39,14 +39,14 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 16px;
-  margin: calc(var(--space-sm)*0.25) 0;
+  font-size: 14px;
+  margin: calc(var(--space-sm)*0.5) 0;
   font-family: var(--secondary-font);
 `;
 
 const CardItemDescription = styled.div`
   font-family: var(--secondary-font);
-  font-size: 18px;
+  font-size: 1rem;
   margin: calc(var(--space-sm)*0.5) 0;
 `;
 
@@ -88,12 +88,12 @@ export default function PostPreview({
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
+          <CardItemDescription>{excerpt}</CardItemDescription>
           <CardItemMeta>
             <Date dateString={dateUpdated ? dateUpdated : date} />
             <PostReactions preview postId={id} postSlug={slug}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
-          <CardItemDescription>{excerpt}</CardItemDescription>
           <PostTags tags={tags}/>
         </CardItemInfo>
       </CardItemWrapper>

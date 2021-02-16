@@ -6,6 +6,7 @@ import Link from "next/link"
 
 
 const PostContent = styled.section`
+  margin: var(--space-sm) 0;
 `
 
 

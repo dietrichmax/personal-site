@@ -14,10 +14,9 @@ const PostHeaderWrapper = styled.div`
 
 const PostTitleWrapper = styled.div`
   max-width: 800px;
-  margin: var(--space-sm) 0;
 `
 const PostMeta = styled.div`
-  font-size: 1rem;
+  font-size: 14px;
   margin-bottom: calc(var(--space-sm) *0.5);
   display: flex;
   font-family: var(--secondary-font);
@@ -37,8 +36,6 @@ export default function PostHeader({ postData }) {
   return (
     <>
       <PostHeaderWrapper>
-         
-        <PostTags tags={tags}/>
         
         <PostTitleWrapper>  
           <PostTitle className="p-name">{title}</PostTitle>   
@@ -49,6 +46,8 @@ export default function PostHeader({ postData }) {
           <PostReactions postId={id} postSlug={slug} preview/>
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>
+         
+         <PostTags tags={tags}/>
 
         {/*<Author author={user} />*/}
           

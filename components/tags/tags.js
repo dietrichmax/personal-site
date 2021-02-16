@@ -2,21 +2,25 @@ import styled from 'styled-components';
 import Link from 'next/link'
 const _ = require("lodash");
 
-export const TagsWrapper = styled.div`
+const TagsWrapper = styled.div`
   display: block;
 `
 
-export const TagItem = styled.a`
-  background: var(--gray-extra-light);
+const TagItem = styled.a`
+  font-family: var(--secondary-font);
   border-radius: 3px;
   display: inline-block;
-  font-size: 12px;
-  line-height: 1.6;
-  margin: 4px 8px 4px 0;
-  padding: 2px 6px;
+  font-size: 16px;
+  margin-right: var(--space-sm);
+  :before {
+    content: "#";
+    margin-right: 2px;
+    font-weight: 600;
+    color: ${props => props.color ? props.color : '#798ad0'};
+  }
   :hover {
-    background-color: ${props => props.color ? props.color : '#798ad0'};
-    color: white;
+    color: ${props => props.color ? props.color : '#798ad0'};
+    background-color: var(--gray-extra-light);
   }
 `
 

@@ -4,8 +4,8 @@ import media from 'styled-media-query';
 import styled from 'styled-components';
 import Link from 'next/link'
 import Date from '@/lib/utils/date/date' 
-import PostReactions from "@/components/post/post-reactions/post-reactions" 
-import PostTags from "@/components/post/post-tags/post-tags"
+import Webmentions from "@/components/social/webmentions/webmentions" 
+import PostTags from "@/components/tags/tags"
 const _ = require("lodash");
 
 
@@ -17,7 +17,6 @@ const PostTitleWrapper = styled.div`
 `
 const PostMeta = styled.div`
   font-size: 14px;
-  margin-bottom: calc(var(--space-sm) *0.5);
   display: flex;
   font-family: var(--secondary-font);
 `;
@@ -43,7 +42,7 @@ export default function PostHeader({ postData }) {
 
         <PostMeta>
           <Date className="dt-published" dateString={dateUpdated? dateUpdated : date} /><span>{dateUpdated? "(Updated)" : null}</span>
-          <PostReactions postId={id} postSlug={slug} preview/>
+          <Webmentions slug={`/articles/${slug}`} preview/>
           <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
         </PostMeta>
          

@@ -98,7 +98,7 @@ const MoreArticles = styled.p`
 export default function Index({ allPosts, allTags }) {
   const router = useRouter()
 
-  const posts = allPosts.slice(0, 6)
+  const posts = allPosts.slice(0, 2)
 
   return (
     <>

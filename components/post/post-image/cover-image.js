@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import config from "../../../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import Image from 'next/image'
 
 const Caption = styled.p`

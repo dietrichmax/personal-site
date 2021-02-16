@@ -9,19 +9,17 @@ const Share = styled.div`
   border-top: 1px solid var(--primary-color);
   padding-top: var(--space);
   margin-top: var(--space-sm);
-  font-size: 1.25rem;
 `
 
 const PostShareTitle = styled.p`
   margin-bottom: var(--space-sm);
-  font-size: 1.25rem;
+  font-size: 1.5em;
   font-weight: 600;
 `
 
 const Icons= styled.i`    
-  font-size: 1rem;
+  font-size: 1.25rem;
   transition: 0.2s;
-  border: 1px solid;
   cursor: pointer;
   display: inline-block;
   position: relative;

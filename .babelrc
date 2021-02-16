@@ -5,7 +5,7 @@
       "plugins": [
         ["styled-components", {
           "ssr": false,
-          "displayName": false
+          "displayName": true
         }]
       ]
     },

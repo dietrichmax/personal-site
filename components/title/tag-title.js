@@ -4,8 +4,13 @@ import media from 'styled-media-query';
 
 const TitleWrapper = styled.div`
   max-width: 1200px;
-  margin: calc(var(--space-lg)*2) auto var(--space-lg) auto;
+  margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
   padding-left: var(--space);
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
+  `}
+
 `
 
 const Title = styled.h1`

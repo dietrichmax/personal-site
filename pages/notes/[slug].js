@@ -11,7 +11,9 @@ import Footer from '@/components/navigation/footer/footer'
 import config from "@/lib/data/SiteConfig";
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
-import NoteTags from "@/components/post/post-tags/post-tags"
+import NoteTags from "@/components/tags/tags"
+import Webmentions from "@/components/social/webmentions/webmentions"
+import SocialShare from "@/components/social/social-share/social-share"
 
 const NoteWrapper = styled.div`
 max-width: 1200px;
@@ -66,7 +68,10 @@ export default function Note({ note }) {
                 <NotesContent>
                   <NoteBody className="e-content" content={note.content} />
                 </NotesContent>
-                
+      
+
+                <SocialShare slug={`/notes/${note.slug}`} /> 
+                <Webmentions slug={note.slug} />
 
             </NotesItem>
             </NoteWrapper>

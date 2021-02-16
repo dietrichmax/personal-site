@@ -17,7 +17,7 @@ import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
-import PostReactions from "@/components/post/post-reactions/post-reactions"
+import Webmentions from "@/components/social/webmentions/webmentions"
 //import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/utils/read-time"
 import TableOfContents from "@/components/post/post-toc/table-of-contents"
@@ -101,7 +101,7 @@ export default function Post({ post, morePosts }) {
                     <PostBody className="e-content" content={post.content} />     
 
                     <SocialShare slug={`/articles/${post.slug}`} /> 
-                    <PostReactions postId={post.id} postSlug={post.slug} />
+                    <Webmentions slug={`/articles/${post.slug}`} />
 
                     {/*<PostComments postID={post.id}/>*/}  
 

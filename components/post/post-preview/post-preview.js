@@ -2,16 +2,16 @@ import Date from '@/lib/utils/date/date'
 import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
-import PostReactions from "@/components/post/post-reactions/post-reactions"
-import PostTags from "@/components/post/post-tags/post-tags"
+import Webmentions from "@/components/social/webmentions/webmentions"
+import PostTags from "@/components/tags/tags"
 import PostBody from "@/components/post/post-body/post-body"
+import CoverImage from "@/components/post/post-image/cover-image"
 
 const Card = styled.div`
-  margin: 0 auto var(--space) auto;
-  border-radius: 0.75rem;
   transition: 0.2s;
+  margin-bottom: var(--space);
   ${media.lessThan('medium')`
-    margin: var(--space-sm);
+    margin: 0 auto var(--space) var(--space-sm);
   `}
 `
 
@@ -32,6 +32,7 @@ const CardItemInfo = styled.div`
 
 const CardItemTitle = styled.h2`
   font-size: 1.25rem;
+  margin-bottom: calc(var(--space-sm)*0.5);
   :hover {
     color: var(--thirdy-color);    
   }
@@ -39,14 +40,13 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 14px;
-  margin: calc(var(--space-sm)*0.5) 0;
+  font-size: 16px;
   font-family: var(--secondary-font);
 `;
 
 const CardItemDescription = styled.div`
   font-family: var(--secondary-font);
-  font-size: 1rem;
+  font-size: 18px;
   margin: calc(var(--space-sm)*0.5) 0;
 `;
 
@@ -76,25 +76,25 @@ export default function PostPreview({
   return (
     <Card>
       <CardItemWrapper>
-        {/*<CardItemImg>
-          {coverImage.coverImage ? (
-          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.url}/>
+        <CardItemImg>
+          {/*{coverImage.coverImage ? (
+          <CoverImage slug={slug} title={title} caption={coverImage.caption} url={coverImage.coverImage.formats.medium.url}/>
           ) : null
-          }
-        </CardItemImg>*/}
+          }*/}
+        </CardItemImg>
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
-          <CardItemDescription>{excerpt}</CardItemDescription>
           <CardItemMeta>
             <Date dateString={dateUpdated ? dateUpdated : date} />
-            <PostReactions preview postId={id} postSlug={slug}/>
+            <Webmentions preview slug={`/articles/${slug}`}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <PostTags tags={tags}/>
+          <CardItemDescription>{excerpt}</CardItemDescription>
         </CardItemInfo>
       </CardItemWrapper>
     </Card>

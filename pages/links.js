@@ -8,7 +8,7 @@ import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
-import PostTags from "@/components/post/post-tags/post-tags"
+import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
 
 const LinksContainer = styled.div`
@@ -34,6 +34,7 @@ const LinksItem = styled.section`
 
 const LinksTitle = styled.h2`
   font-size: 1.5rem;
+  margin-bottom: calc(var(--space-sm)*0.5);
 `
 
 const LinksLink = styled.cite`

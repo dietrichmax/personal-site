@@ -6,12 +6,13 @@ const Title = styled.p`
   margin: var(--space-lg) auto;
   padding-left: var(--space);
   padding-right: var(--space);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
   color: var(--gray);
   ${media.lessThan('medium')`
     margin: var(--space-sm);
+    font-size: 1rem;
     padding: 0;
   `}
 `

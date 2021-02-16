@@ -1,13 +1,7 @@
 import React from 'react';
-import { format, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
 import { getAllPosts, getAllNotes, getAllLinks } from '@/lib/data/api/cms'
-import markdownToHtml from '@/lib/utils/markdownToHtml'
-import remark from 'remark'
-import html from 'remark-html'
-import slug from 'remark-slug'
-const showdown  = require('showdown')
-const globby = require('globby')
 
 
 const createRssFeed = ( allContent ) => 
@@ -47,7 +41,6 @@ class Rss extends React.Component {
     const links = (await getAllLinks()) || []
 
     const allContent = []
-    const converter = new showdown.Converter()
 
     posts.map((post) => {
       allContent.push({

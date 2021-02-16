@@ -1,19 +1,15 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import { getAllNotes } from '@/lib/data/api/cms'
-import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
-import Image from 'next/image'
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
-import Date from "@/lib/utils/date/date"
-import NoteBody from "@/components/note/note-body/note-body"
 
 const NotesWrapper = styled.section`
   margin: 0 auto;

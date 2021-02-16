@@ -5,7 +5,6 @@ import PageBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
 import { getAllPages, getPage } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
-import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';

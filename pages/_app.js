@@ -1,7 +1,5 @@
-
-import Router from "next/router";
 import Head from 'next/head'
-import React, { useEffect } from "react";
+import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'

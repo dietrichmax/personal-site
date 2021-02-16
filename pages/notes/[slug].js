@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
 import { getAllNotes, getNote } from '@/lib/data/api/cms'
-import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
@@ -10,7 +9,6 @@ import Date from '@/lib/utils/date/date'
 import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
 import config from "@/lib/data/SiteConfig";
-import Link from 'next/link'
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
 import NoteTags from "@/components/post/post-tags/post-tags"

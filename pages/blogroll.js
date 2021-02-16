@@ -1,12 +1,9 @@
-import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import { getAllBlogrolls } from '@/lib/data/api/cms'
-import Head from 'next/head'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
-import Link from 'next/link'
 import Image from 'next/image'
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'

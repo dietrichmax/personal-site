@@ -9,7 +9,6 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import PostTags from '@/components/post/post-tags/post-tags'
 
 const IndexPageContainer = styled.div`
   margin: auto;

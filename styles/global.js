@@ -77,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
     --primary-font: open-sans, sans-serif;
-    --secondary-font: Brygada 1918, serif;
+    --secondary-font: 'Brygada 1918', serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);

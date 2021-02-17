@@ -81,7 +81,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: source-serif-pro, sans-serif;
+    --primary-font: "open-sans, sans-serif";
     --secondary-font: source-serif-pro, serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);

@@ -16,17 +16,14 @@ const PostCoverImageWrapper = styled.div`
 `
 
 const PreviewCoverImageWrapper = styled.div`
+  
+  margin-left: var(--space);
+  margin-right: var(--space);
   display: block;
 `
 const PreviewCoverImage = styled(Image)`
-  border-top-left-radius: ${props =>
-    props.hero ? "none" : "0.75rem" };
-  border-top-right-radius: ${props =>
-    props.hero ? "none" : "0.75rem" };
-  width: ${props =>
-    props.hero ? "100%" : "400px" };;
-  height: ${props =>
-    props.hero ? "400px" : '200px'};
+  width: 526px; 
+  height: 205px;
   object-fit: cover;
   ${media.lessThan('large')`
     height: 200px;
@@ -35,7 +32,10 @@ const PreviewCoverImage = styled(Image)`
 `
 
 const PostCoverImage = styled(Image)`
+  text-align: center;
   height: 400px;
+  margin-left: var(--space);
+  margin-right: var(--space);
   object-fit: cover;
   ${media.lessThan('large')`
     height: 200px;
@@ -55,8 +55,8 @@ export default function CoverImage({ title, url, slug, caption, hero }) {
               src={imageUrl} 
               alt={title} 
               title={title} 
-              width="368"
-              height="200"
+              width="526"
+              height="205"
             />
           </Link>
         </PreviewCoverImageWrapper>

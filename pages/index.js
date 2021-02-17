@@ -123,7 +123,7 @@ export default function Index({ allPosts, allTags }) {
             </HeroWrapper>
 
             <IndexPageContainer>
-              <SubTitle>Selected Articles</SubTitle>
+              <SubTitle>The latest Articles</SubTitle>
               <MoreStories posts={posts} />
 
               <MoreContainer>

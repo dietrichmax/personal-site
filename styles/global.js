@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #f4f6f9; 
     --gray-light: #c9d1d9;  
-    --gray: #4b4c4c;
+    --gray: #485055;
     --gray-dark: #3a3d4d;
     --primary-color: #111936;
     --secondary-color: #191f45;
@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: open-sans, sans-serif;
+    --primary-font: 'Inter', sans-serif;
     --secondary-font: source-serif-pro,serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);

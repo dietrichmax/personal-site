@@ -7,8 +7,7 @@ import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
 
 const ReactionsIcon = styled.i`
-  cursor: pointer;
-  color: ${props => (props.incremented ? "var(--thirdy-color)" : "var(--text-color)")};
+  color: var(--gray);
 `
 
 const Icon  = styled.i`

@@ -7,20 +7,20 @@ const TagsWrapper = styled.div`
 `
 
 const TagItem = styled.a`
-  font-family: var(--secondary-font);
   border-radius: 3px;
   display: inline-block;
-  font-size: 16px;
+  font-size: .875rem;
   margin-right: var(--space-sm);
+  margin-top: 0.5rem;
+  padding: 3px 5px;
+  background-color: var(--gray-extra-light);
   :before {
     content: "#";
     margin-right: 2px;
-    font-weight: 600;
     color: ${props => props.color ? props.color : '#798ad0'};
   }
   :hover {
     color: ${props => props.color ? props.color : '#798ad0'};
-    background-color: var(--gray-extra-light);
   }
 `
 

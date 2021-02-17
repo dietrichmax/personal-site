@@ -24,7 +24,7 @@ const PageWrapper = styled.div`
 `
 
 
-export default function Post({ page }) {
+export default function Page({ page }) {
   const router = useRouter()
   if (!router.isFallback && !page?.slug) {
     return <ErrorPage statusCode={404} />

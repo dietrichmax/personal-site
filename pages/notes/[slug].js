@@ -33,7 +33,6 @@ const NotesItem = styled.div`
 
 const NotesDate = styled.div`
   color: var(--gray);
-  margin: var(--space-sm) 0;
   font-size: 14px;
 `
 

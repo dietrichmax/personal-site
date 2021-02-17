@@ -59,11 +59,12 @@ const Logo = styled.li`
     font-size: 1rem;
   `}
 `
-
-const LogoName = styled.strong`
-  font-weight: 800;
+const LogoName = styled.span`
+  font-weight: 700;
 `
+const LogoDescription = styled.span`
 
+`
 const NavItems = styled.li`
   flex: 50%;
   display: flex;
@@ -77,6 +78,7 @@ const NavItems = styled.li`
 const NavItem = styled.li`
   margin-top: auto;
   margin-left: var(--space-sm);
+  color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
   :hover { 
     color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
     text-decoration: none;
@@ -87,6 +89,7 @@ const NavItem = styled.li`
   }
   .active {
     font-weight: 600;
+    color: var(--text-color);
   }
   ${media.lessThan('medium')`
     margin-left: 0;
@@ -119,11 +122,13 @@ export default function Header( color ) {
         <MainNav>
 
           <Logo color={color.color}>
-            <a href="/" className="u-url" rel="me" title={config.siteTitle}>
-            <LogoName className="p-name" >{config.siteTitle}</LogoName>
-            <br/>
-            GeoData Manager
-            </a>
+            <Link href="/" passHref>
+              <a className="u-url" rel="me" title={config.siteTitle}>
+                <LogoName className="p-name" >{config.siteTitle}</LogoName>
+                <br/>
+                <LogoDescription>GeoData-Manager</LogoDescription>
+              </a>
+            </Link>
           </Logo>
 
           <NavItems>

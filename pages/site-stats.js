@@ -103,7 +103,7 @@ const GridStatsDescription = styled.div`
     padding-bottom: var(--space);
     text-transform: capitalize;
     font-weight: 200;
-    font-size: 1.25rem;
+    font-size: 1rem;
     ${media.lessThan('1000px')`
         font-size: 0.75rem;
     `}
@@ -181,7 +181,7 @@ const Column = styled.div`
         content: attr(data-tip);
         font-size: .75rem;
         position: absolute;
-        z-index: 999;
+        z-index: 4;
         white-space: nowrap;
         background: rgba(0, 0, 0, 0.8);
         color: #e0e0e0;
@@ -281,7 +281,7 @@ const LanguageTitle = styled.strong`
 `
 const LanguageMoreStats = styled.a`
     display: block;
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     font-size: 1rem;
 `
 
@@ -652,7 +652,7 @@ export default function Recruiting({
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const liveViews = (await getMatomoLiveCounter()) || []

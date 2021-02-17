@@ -9,7 +9,7 @@ import CoverImage from "@/components/post/post-image/cover-image"
 
 const Card = styled.div`
   transition: 0.2s;
-  margin-bottom: var(--space);
+  margin-bottom: var(--space-lg);
   ${media.lessThan('medium')`
     margin: 0 auto var(--space) var(--space-sm);
   `}
@@ -31,8 +31,8 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  font-size: 1.25rem;
-  margin-bottom: calc(var(--space-sm)*0.5);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
   :hover {
     color: var(--thirdy-color);    
   }
@@ -40,14 +40,14 @@ const CardItemTitle = styled.h2`
 
 const CardItemMeta = styled.div`
   display: flex;
-  font-size: 16px;
-  font-family: var(--secondary-font);
+  font-size: .875rem;
 `;
 
 const CardItemDescription = styled.div`
   font-family: var(--secondary-font);
-  font-size: 18px;
-  margin: calc(var(--space-sm)*0.5) 0;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  margin: 0.75rem 0;
 `;
 
 
@@ -88,13 +88,13 @@ export default function PostPreview({
               <a title={title}>{title}</a>
             </Link>
           </CardItemTitle>
+          <CardItemDescription>{excerpt}</CardItemDescription>
           <CardItemMeta>
             <Date dateString={dateUpdated ? dateUpdated : date} />
             <Webmentions preview slug={`/articles/${slug}`}/>
             <ReadingTime><ReadingTimeSymbol className="las la-book-open" /> {readingTime} min read</ReadingTime>
           </CardItemMeta>
           <PostTags tags={tags}/>
-          <CardItemDescription>{excerpt}</CardItemDescription>
         </CardItemInfo>
       </CardItemWrapper>
     </Card>

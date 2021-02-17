@@ -56,8 +56,16 @@ class MyApp extends App {
             rel="stylesheet" 
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
           />,
-          <link rel="preconnect" href="https://fonts.gstatic.com" /> 
-          <link href="https://fonts.googleapis.com/css2?family=Brygada+1918&display=swap" rel="stylesheet" /> 
+          {/* Gfont */}
+          <link 
+            rel="preconnect" 
+            href="https://fonts.gstatic.com" 
+          />,
+          <link 
+            href="https://fonts.googleapis.com/css2?family=Brygada+1918&display=swap" 
+            rel="stylesheet" 
+          />,
+          {/* Typekit */}
           <link 
             rel="preconnect" 
             href="https://use.typekit.net"

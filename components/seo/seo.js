@@ -18,7 +18,6 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
   
-
   let schemaOrgJSONLD = []
 
   if (postSEO) {

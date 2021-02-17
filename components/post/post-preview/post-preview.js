@@ -9,7 +9,9 @@ import CoverImage from "@/components/post/post-image/cover-image"
 
 const Card = styled.div`
   transition: 0.2s;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space);
+  padding-bottom: var(--space);
+  border-bottom: 1px dashed var(--gray-extra-light);
   ${media.lessThan('medium')`
     margin: 0 auto var(--space) var(--space-sm);
   `}
@@ -24,9 +26,8 @@ const CardItemImg = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
-  padding: 0 var(--space);
   ${media.lessThan('medium')`
-   padding: 0;
+   margin: 0;
   `}
 `;
 

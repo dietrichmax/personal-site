@@ -26,7 +26,7 @@ const LinksItem = styled.section`
   margin-left: var(--space);
   margin-bottom: var(--space);
   padding-bottom: var(--space);
-  border-bottom: 1px dashed var(--gray-light);
+  border-bottom: 2px dashed var(--gray-extra-light);
   ${media.lessThan('medium')`
     margin-left: 0;
 `}
@@ -47,6 +47,7 @@ const LinksContent = styled.p`
   margin: calc(var(--space-sm)*0.5) 0;
   font-size: 1.125rem;
   line-height: 1.75rem;
+  max-width: 700px;
 `
 
 

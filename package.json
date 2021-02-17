@@ -26,6 +26,7 @@
     "@remy/webmention": "^1.4.5",
     "@socialgouv/matomo-next": "^1.1.2",
     "babel-eslint": "^10.1.0",
+    "capture-website": "^1.4.0",
     "cloc": "^2.7.0",
     "d3": "^6.5.0",
     "d3-geo": "^2.0.1",

@@ -670,6 +670,7 @@ export async function getStaticProps() {
     
 
     return {
+        revalidate:  86400,
         props: {
             lastViews,
             liveViews,

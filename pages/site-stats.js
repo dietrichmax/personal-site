@@ -111,13 +111,13 @@ const GridStatsDescription = styled.div`
 
 const StatsSmallGrid = styled.div`
     text-align: center;
-    border: 1px solid var(--primary-color);  
+    background-color: var(--gray-extra-light);
     border-radius: var(--space-sm);  
 `
 
 const StatsLargeGrid = styled.div`
     text-align: center;
-    border: 1px solid var(--primary-color);  
+    background-color: var(--gray-extra-light);
     grid-column: span 2/span 2;    
     border-radius: var(--space-sm);  
 `
@@ -133,7 +133,7 @@ const GridMediumTitle = styled.div`
 `
 const BottomStatsGrid = styled.div`
     text-align: center;
-    border: 1px solid var(--secondary-color);
+    background-color: var(--gray-extra-light);
     border-radius: var(--space-sm); 
     grid-column: span 1/span 1; 
     ${media.lessThan('1000px')`
@@ -162,6 +162,8 @@ const ColumnWrapper = styled.div`
     margin-right: calc(var(--space-sm) * 0.3);
     width: 100%;
     background-color: var(--gray-extra-light);
+    border-top-right-radius: calc(var(--space-sm) * 0.5);
+    border-top-left-radius: calc(var(--space-sm) * 0.5);
 `
 
 const Column = styled.div`
@@ -253,7 +255,8 @@ const GitHubButton = styled.button`
     outline: none;
     font-size: 1rem;
     :hover {
-        background-color: var(--gray);
+        background-color: var(--gray-extra-light);
+        color: var(--thirdy-color);
     }
 `
 const LanguageContainer = styled.div`
@@ -374,7 +377,7 @@ export default function Recruiting({
                     <>
                         <SEO title="Site Stats" slug="site-stats" />
                         <PageTitle>Site statistics</PageTitle>
-                        <SubTitle>Different stats from multiple sources</SubTitle>
+                        <SubTitle>Different stats from Matomo, Strapi and Webmentions</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>

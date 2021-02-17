@@ -56,7 +56,7 @@ const GeneralStats = styled.div`
     margin: var(--space-lg) auto;
     grid-template-columns: repeat(2,minmax(0,1fr));
     display: grid;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
     ${media.lessThan('1000px')`
         grid-template-columns: repeat(1,minmax(0,1fr));
     `}

@@ -60,6 +60,10 @@ const Logo = styled.li`
   `}
 `
 
+const LogoName = styled.strong`
+  font-weight: 800;
+`
+
 const NavItems = styled.li`
   flex: 50%;
   display: flex;
@@ -116,7 +120,7 @@ export default function Header( color ) {
 
           <Logo color={color.color}>
             <a href="/" className="u-url" rel="me" title={config.siteTitle}>
-            <strong className="p-name" >{config.siteTitle}</strong>
+            <LogoName className="p-name" >{config.siteTitle}</LogoName>
             <br/>
             GeoData Manager
             </a>

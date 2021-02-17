@@ -1,7 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -34,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
-
   h1, h2, h3, h4, h5, h6 {
     color: #191f45;
   }
@@ -51,7 +49,6 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
   body {
     background: var(--body-bg);
     font-size: 18px;
@@ -61,13 +58,11 @@ const GlobalStyle = createGlobalStyle`
     word-break: break-word;
     hyphens: auto;
   }
-
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
-
   :root { 
     --gray-extra-light: #f4f6f9; 
     --gray-light: #c9d1d9;  
@@ -81,8 +76,8 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: open-sans, sans-serif";
-    --secondary-font: Brygada 1918, serif;
+    --primary-font: open-sans, sans-serif;
+    --secondary-font: source-serif-pro, serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
@@ -98,4 +93,3 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default GlobalStyle
-  

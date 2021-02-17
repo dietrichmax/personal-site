@@ -44,8 +44,7 @@ const CardItemMeta = styled.div`
 `;
 
 const CardItemDescription = styled.div`
-  font-family: var(--secondary-font);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.75rem;
   margin: 0.75rem 0;
 `;

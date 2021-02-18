@@ -34,9 +34,6 @@ const CardItemInfo = styled.div`
 const CardItemTitle = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
-  :hover {
-    color: var(--thirdy-color);    
-  }
 `;
 
 const CardItemMeta = styled.div`

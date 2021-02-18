@@ -9,7 +9,6 @@ import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
-import ReactTooltip from 'react-tooltip';
 import {
     getMatomoActions,
     getMatomoLiveCounter,

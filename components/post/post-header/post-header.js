@@ -18,6 +18,7 @@ const PostTitleWrapper = styled.div`
 const PostMeta = styled.div`
   font-size: 0.875rem;;
   display: flex;
+  margin: calc(var(--space-sm)*0.5) 0;
 `;
 
 const ReadingTime = styled.span`

@@ -1,8 +1,5 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
-//const withPreact = require('next-plugin-preact')
 
 // redirects
 const redirects = {async redirects() {
@@ -442,13 +439,7 @@ const redirects = {async redirects() {
 }};
 
 module.exports = withPlugins([
-  /*withPreact,*/
   redirects,
-  withPWA({
-    pwa: {
-      disable: process.env.NODE_ENV === 'development',
-    },
-  }),
   {images: {
     domains: [
       "api.mxd.codes",

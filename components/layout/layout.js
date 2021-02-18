@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 const prism = require("prismjs")
 require('prismjs/components/prism-python');
+import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
 `
@@ -15,6 +16,7 @@ export default function Layout({ children }) {
 
   return (
     <>
+      <ReactTooltip />
       <Container>{children}</Container>
     </>
   )

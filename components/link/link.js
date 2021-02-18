@@ -4,8 +4,8 @@ import React, { useRef, useState} from "react"
 export default React.forwardRef(({ to, prefetch, ...props }: IProps, ref: any) => {
 
   const handleSubmit = (type,to) => {
-    
-    _paq.push(['trackEvent', 'link click', `${type} link click` , to]);
+    window.location.href.includes("mxd.codes") ?
+    window._paq.push(['trackEvent', 'link click', `${type} link click` , to]) : console.log("Event tracking disabled on local")
   }
 
   return (

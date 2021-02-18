@@ -213,7 +213,7 @@ const DateWrapper = styled.div`
 `
 
 const Date = styled.p`
-    font-size: .75rem;
+    font-size: .625rem;
     display: block;
     width: 100%;
     text-align: center;

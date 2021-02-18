@@ -1,4 +1,4 @@
-import MoreStories from '@/components/post/post-preview/more-stories'
+import PostPreview from '@/components/post/post-preview/post-preview'
 import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
@@ -73,7 +73,7 @@ const SubTitle = styled.p`
 const PostContainer = styled.div`
   grid-template-columns: repeat(2, minmax(0px, 1fr));
   grid-gap: var(--space);
-  grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
+  gap: var(--space-lg);
 `
 
 
@@ -132,7 +132,19 @@ export default function Index({ allPosts, allTags }) {
             <IndexPageContainer>
               <SubTitle>The latest Articles</SubTitle>
               <PostContainer>
-                <MoreStories posts={posts} />
+                {posts.map((post) => (
+                  <PostPreview
+                    key={post.slug}
+                    id={post.id}
+                    title={post.title}
+                    date={post.date}
+                    dateUpdated={post.dateUpdated}
+                    slug={post.slug}
+                    excerpt={post.excerpt}
+                    tags={post.tags}
+                    readingTime={getReadTime(post.content)}
+                  />
+                ))}
               </PostContainer>
               <MoreContainer>
                 <Link href={`/articles`} passHref>

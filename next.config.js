@@ -454,7 +454,7 @@ module.exports = withPlugins([
     ],
   }},
   {i18n: {
-    locales: "en-US",
+    locales: ["en-US"],
     defaultLocale: "en-US",
   }},
 ]);

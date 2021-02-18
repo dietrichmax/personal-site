@@ -38,7 +38,7 @@ const Container = styled.div`
     ${media.lessThan('medium')`
         margin-left: var(--space-sm);
         margin-right: var(--space-sm);
-        padding-left: 0;
+        padding: 0;
   `}
 `
 
@@ -83,7 +83,6 @@ const TripleStatsGrid = styled.div`
 
 const GridTitle = styled.p`
     grid-column: span 2/span 2;
-    letter-spacing: 0.2px;
 `
 
 const GridStats = styled.div`
@@ -128,7 +127,7 @@ const StatsGridMedium = styled.div`
     grid-template-columns: repeat(4,minmax(0,1fr));
     grid-column: span 2/span 2;
 `
-const GridMediumTitle = styled.div`
+const GridMediumTitle = styled.p`
     grid-column: span 4/span 4;
 `
 const BottomStatsGrid = styled.div`

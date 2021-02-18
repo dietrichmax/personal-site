@@ -133,7 +133,7 @@ export default function Header( color ) {
 
           <NavItems>
             {headerItems.map((item, i) => (
-                <NavItem className={i} color={color.color}>
+                <NavItem color={color.color}>
                   <ActiveLink activeClassName={`active ${i}`} href={item.link}>
                     <a title={item.name}>{item.name}</a>
                   </ActiveLink> 

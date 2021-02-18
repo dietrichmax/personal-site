@@ -76,21 +76,14 @@ class MyApp extends App {
             href="https://fonts.gstatic.com" 
           />,
           <link 
-            rel="preconnect" 
-            href="https://fonts.gstatic.com" 
-          />
-          <link 
+            rel="preload" 
+            as="style"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
-            rel="stylesheet" 
           />,
           {/* Typekit */}
           <link 
             rel="dns-prefetch" 
             href="https://use.typekit.net" 
-          />,
-          <link 
-            rel="preconnect" 
-            href="https://use.typekit.net"
           />,
           <link 
             rel="preload" 

@@ -55,7 +55,6 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal; 
     font-family: var(--primary-font);
-    font-display: swap;
     word-break: break-word;
     hyphens: auto;
   }

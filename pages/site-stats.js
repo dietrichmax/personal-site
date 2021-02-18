@@ -9,6 +9,7 @@ import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
+import ReactTooltip from 'react-tooltip';
 import {
     getMatomoActions,
     getMatomoLiveCounter,
@@ -176,25 +177,6 @@ const Column = styled.div`
     border-top-left-radius: calc(var(--space-sm) * 0.5);
     :hover {
         background-color: var(--thirdy-color);
-    }
-    :before {
-        content: attr(data-tip);
-        font-size: .75rem;
-        position: absolute;
-        z-index: 4;
-        white-space: nowrap;
-        background: rgba(0, 0, 0, 0.8);
-        color: #e0e0e0;
-        padding: var(--space-sm);
-        opacity: 0;
-        -webkit-transition: opacity 0.4s ease-out;
-        -moz-transition: opacity 0.4s ease-out;
-        -o-transition: opacity 0.4s ease-out;
-        transition: opacity 0.4s ease-out;
-        text-shadow: none;
-    }
-    :hover::before {
-        opacity: 1;
     }
 `
 const DateContainer = styled.div`
@@ -537,6 +519,7 @@ export default function Recruiting({
                                                     100
                                             ).toFixed(2)}
                                             color="#f0db4f"
+                                            data-tip={`${parseFloat((codeStats.JavaScript.code / linesOfCode) * 100).toFixed(2)}% JavaScript`}
                                             style={{
                                                 borderTopLeftRadius: "5px",
                                                 borderBottomLeftRadius: "5px",
@@ -549,6 +532,7 @@ export default function Recruiting({
                                                     100
                                             ).toFixed(2)}
                                             color="brown"
+                                            data-tip={`${parseFloat((codeStats.JSON.code / linesOfCode) * 100).toFixed(2)}% JSON`}
                                         />
                                         <LanguageBarChild
                                             width={parseFloat(
@@ -557,6 +541,7 @@ export default function Recruiting({
                                                     100
                                             ).toFixed(2)}
                                             color="pink"
+                                            data-tip={`${parseFloat((codeStats.CSS.code / linesOfCode) * 100).toFixed(2)}% CSS`}
                                         />
                                         <LanguageBarChild
                                             width={parseFloat(
@@ -565,6 +550,7 @@ export default function Recruiting({
                                                     100
                                             ).toFixed(2)}
                                             color="var(--gray)"
+                                            data-tip={`${parseFloat((codeStats.Markdown.code / linesOfCode) * 100).toFixed(2)}% Markdown`}
                                             style={{
                                                 borderTopRightRadius: "5px",
                                                 borderBottomRightRadius: "5px",

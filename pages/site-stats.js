@@ -297,9 +297,18 @@ export default function Recruiting({
     notesCount,
     linksCount,
 }) {
+    const [testData, setTestData] = useState();
     const router = useRouter()
 
+    useEffect(() => {
+       const fetchData = async () => {
+          const result = await getMatomoLiveCounter() || []
+          setTestData(result.data);
+        };
+        fetchData();
+    }, []);
     
+    console.log(testData)
     
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount

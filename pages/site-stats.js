@@ -314,7 +314,7 @@ export default function Recruiting({
 
 
     const α = 0.6
-    const B = 100
+    const B = 200
     let pageViews = []
     let normalisedViews = []
     Object.entries(lastViews).forEach(value => (
@@ -427,9 +427,9 @@ export default function Recruiting({
                                     {pageViews.map((item, i) => (
                                         <ColumnWrapper
                                             key={i}
-                                            data-tip={`${item.views} Views`}
                                         >
                                             <Column
+                                                data-tip={`${item.views} Views`}
                                                 height={Math.floor(
                                                     (item.normalisedViews /
                                                         normalisedMax) *

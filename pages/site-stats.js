@@ -284,7 +284,6 @@ const LanguageDot = styled.span`
 
 export default function Recruiting({
     lastViews,
-    liveViews,
     actions,
     postsCount,
     tagsCount,
@@ -297,18 +296,16 @@ export default function Recruiting({
     notesCount,
     linksCount,
 }) {
-    const [testData, setTestData] = useState();
+    const [liveViews, setLiveViews] = useState(0);
     const router = useRouter()
 
     useEffect(() => {
        const fetchData = async () => {
           const result = await getMatomoLiveCounter() || []
-          setTestData(result);
+          setLiveViews(result[0].visits);
         };
         fetchData();
     }, []);
-    
-    console.log(testData)
     
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
@@ -345,7 +342,7 @@ export default function Recruiting({
     )
     const normalisedMax = Math.max.apply(Math, normalisedViews)
 
-    let live = liveViews[0].visits
+    
 
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
@@ -366,9 +363,9 @@ export default function Recruiting({
                                 <StatsGrid>
                                     <GridTitle>Site Stats</GridTitle>
                                     <StatsLargeGrid>
-                                        {live == 0 ? 
+                                        {liveViews == 0 ? 
                                             <GridStats>You are</GridStats> :
-                                            <GridStats>{live} people</GridStats>
+                                            <GridStats>{liveViews} people</GridStats>
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>
                                     </StatsLargeGrid>
@@ -642,7 +639,6 @@ export default function Recruiting({
 export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
-    const liveViews = (await getMatomoLiveCounter()) || []
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const notesCount = (await getNotesCount()) || []
@@ -660,7 +656,6 @@ export async function getStaticProps() {
         revalidate:  86400,
         props: {
             lastViews,
-            liveViews,
             actions,
             postsCount,
             tagsCount,

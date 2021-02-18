@@ -26,7 +26,8 @@ class MyApp extends App {
             rel="dns-prefetch" 
             href="https://analytics.mxd.codes" 
           />,
-          <link rel="preload" 
+          <link 
+            rel="preload" 
             href="https://analytics.mxd.codes/matomo.js" 
             onload="embedTracker()" 
             type="script" 
@@ -69,10 +70,6 @@ class MyApp extends App {
             as="style" 
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css"
           />,
-          <link 
-            rel="stylesheet"
-            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
-          />,
           {/* Google Font */}
           <link 
             rel="dns-prefetch" 
@@ -96,9 +93,10 @@ class MyApp extends App {
             href="https://use.typekit.net"
           />,
           <link 
-            rel="stylesheet" 
+            rel="preload" 
+            as="style" 
             href="https://use.typekit.net/xhe6fwq.css"
-          />*/}
+          />
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

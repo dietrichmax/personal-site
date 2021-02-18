@@ -140,7 +140,7 @@ const BottomStatsGrid = styled.div`
 
 const ViewsContainer = styled.div`
     max-width: 1200px;
-    margin: calc(var(--space-lg)*2) auto;
+    margin: var(--space-lg) auto;
 `
 
 
@@ -199,7 +199,6 @@ const GitHubWrapper = styled.div`
     grid-column: span 2/span 2;
     ${media.lessThan('1000px')`
         grid-column: span 1/span 1;
-        margin-top: calc(var(--space)*2);
     `}
 `
 
@@ -214,7 +213,6 @@ const GitHubButtonLink = styled.a`
 `
 
 const GitHubDescription = styled.p`
-    font-size: 1.25rem;
 `
 
 const GitHubButton = styled.button`
@@ -223,7 +221,7 @@ const GitHubButton = styled.button`
     background-color: var(--thirdy-color);
     cursor: pointer;
     max-width: 28rem;
-    padding: var(--space-sm) var(--space);
+    padding: 0.725rem;
     border: none;
     color: #fff;
     outline: none;
@@ -236,7 +234,7 @@ const GitHubButton = styled.button`
 const LanguageContainer = styled.div`
     max-width: 1200px;
     margin: auto;
-    margin: calc(var(--space-lg)*2) auto;
+    margin: var(--space-lg) auto;
 `
 
 const LanguageWrapper = styled.div`
@@ -351,7 +349,7 @@ export default function Recruiting({
                     <>
                         <SEO title="Site Stats" slug="site-stats" />
                         <PageTitle>Site statistics</PageTitle>
-                        <SubTitle>Different stats from Matomo, Strapi and Webmentions</SubTitle>
+                        <SubTitle>Stats from Matomo, Strapi and Webmentions</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>

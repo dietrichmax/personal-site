@@ -21,15 +21,27 @@ class MyApp extends App {
     return (
       <>
         <Head>
+          {/* Matomo Optimization*/}
+          <link 
+            rel="dns-prefetch" 
+            href="https://analytics.mxd.codes" 
+          />,
+          <link rel="preload" 
+            href="https://analytics.mxd.codes/matomo.js" 
+            onload="embedTracker()" 
+            type="script" 
+            crossorigin 
+          />,
+          {/* Strapi Optimization*/}
           <link 
             rel="preconnect" 
             href="https://api.mxd.codes"
           />,
-          <link 
-            rel="preconnect" 
-            href="https://analytics.mxd.codes"
-          />,
           {/* webmentions */}
+          <link
+            rel="prefetch"
+            href="https://webmention.io"
+          />,
           <link
             rel="preconnect"
             href="https://webmention.io"
@@ -42,23 +54,43 @@ class MyApp extends App {
             rel="pingback" 
             href="https://webmention.io/mxd.codes/xmlrpc" 
           />,
+          {/* IndieWeb stuff */}
           <link href="https://github.com/DaTurboD/" rel="me" />,
           <link href="https://twitter.com/mxdietrich" rel="me" />,
           <link href="mailto:kontakt@gis-netzwerk.com" rel="me" />,
           <link href="https://www.instagram.com/_maxdietrich/" rel="me" />,
-          {/* fonts */}
-          <link
-            rel="preconnect"
-            key="preconnect-icons8"
-            href="https://maxst.icons8.com"
+          {/* LineAwsome */}
+          <link 
+            rel="dns-prefetch" 
+            href="https://maxst.icons8.com" 
           />,
           <link 
-            rel="stylesheet" 
+            rel="preload" 
+            as="style" 
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css"
+          />,
+          <link 
+            rel="stylesheet"
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" 
           />,
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
-          {/* 
+          {/* Google Font */}
+          <link 
+            rel="dns-prefetch" 
+            href="https://fonts.gstatic.com" 
+          />,
+          <link 
+            rel="preconnect" 
+            href="https://fonts.gstatic.com" 
+          />
+          <link 
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
+            rel="stylesheet" 
+          />,
+          {/* Typekit */}
+          <link 
+            rel="dns-prefetch" 
+            href="https://use.typekit.net" 
+          />,
           <link 
             rel="preconnect" 
             href="https://use.typekit.net"

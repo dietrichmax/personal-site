@@ -20,7 +20,7 @@ const FooterContainer = styled.footer`
   `}
 `;
 
-const FooterInnerContainer = styled.div`
+const FooterInnerContainer = styled.nav`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;

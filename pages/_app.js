@@ -86,7 +86,7 @@ class MyApp extends App {
           />,
           <link 
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
           />,
           {/* Typekit */}
           <link 

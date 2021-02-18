@@ -77,6 +77,7 @@ const NavItems = styled.li`
 
 
 const NavItem = styled.a`
+  transition: none;
   margin-left: var(--space-sm);
   color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
   :hover { 

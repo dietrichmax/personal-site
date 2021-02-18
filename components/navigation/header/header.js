@@ -69,6 +69,7 @@ const NavItems = styled.li`
   flex: 50%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   ${media.lessThan('medium')`
     margin-top: var(--space-sm);
   `}
@@ -76,7 +77,6 @@ const NavItems = styled.li`
 
 
 const NavItem = styled.a`
-  margin-top: auto;
   margin-left: var(--space-sm);
   color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
   :hover { 

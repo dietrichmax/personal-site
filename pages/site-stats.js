@@ -157,7 +157,6 @@ const ColumnWrapper = styled.div`
     position: relative;
     margin-right: calc(var(--space-sm) * 0.3);
     width: 100%;
-    background-color: var(--gray-extra-light);
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
 `
@@ -166,10 +165,13 @@ const Column = styled.div`
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: var(--thirdy-color);
+    background-color: var(--primary-color);
     height: ${props => (props.height ? `${props.height}px !important` : "0px")};
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
+    :hover {
+        background-color: var(--thirdy-color);
+    }
 `
 const DateContainer = styled.div`
     margin: 0 auto var(--space) auto;

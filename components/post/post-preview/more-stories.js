@@ -5,8 +5,6 @@ import getReadTime from "@/lib/utils/read-time"
 
 const ListWrapper = styled.div`
   max-width: 1200px;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
   padding-left: var(--space);
   padding-right: var(--space);
   ${media.lessThan('medium')`

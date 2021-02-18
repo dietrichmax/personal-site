@@ -75,7 +75,7 @@ const NavItems = styled.li`
 `
 
 
-const NavItem = styled.li`
+const NavItem = styled.a`
   margin-top: auto;
   margin-left: var(--space-sm);
   color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}

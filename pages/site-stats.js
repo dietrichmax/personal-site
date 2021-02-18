@@ -83,18 +83,19 @@ const GridTitle = styled.p`
     grid-column: span 2/span 2;
 `
 
-const GridStats = styled.div`
+const GridStats = styled.p`
     padding-top: var(--space);
     display: block;
     color: var(--thirdy-color);
     font-weight: 700;
+    font-size: 1.5rem;
     text-transform: capitalize;
     ${media.lessThan('1000px')`
         font-size: 1rem;
     `}
 `
 
-const GridStatsDescription = styled.div`
+const GridStatsDescription = styled.p`
     display: block;
     padding-bottom: var(--space);
     text-transform: capitalize;
@@ -392,7 +393,7 @@ export default function Recruiting({
                                         <GridStatsDescription>Different Topics</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{notesCount}</GridStats>
+                                        <GridStats><Link href="/notes" title="See all Notes">{notesCount}</Link></GridStats>
                                         <GridStatsDescription>Notes written</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>

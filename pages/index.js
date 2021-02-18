@@ -73,8 +73,13 @@ const SubTitle = styled.p`
 
 const PostContainer = styled.div`
   grid-template-columns: repeat(2, minmax(0px, 1fr));
-  grid-gap: var(--space);
   gap: var(--space-lg);
+  display: grid;
+  margin: 0 var(--space);
+  ${media.lessThan('medium')`
+    margin: 0;
+    display: block;
+  `}
 `
 
 

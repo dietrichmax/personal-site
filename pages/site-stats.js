@@ -303,7 +303,7 @@ export default function Recruiting({
     useEffect(() => {
        const fetchData = async () => {
           const result = await getMatomoLiveCounter() || []
-          setTestData(result.data);
+          setTestData(result);
         };
         fetchData();
     }, []);

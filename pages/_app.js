@@ -66,8 +66,8 @@ class MyApp extends App {
             href="https://maxst.icons8.com" 
           />,
           <link 
-            rel="preconnect" 
-            href="https://maxst.icons8.com"
+            rel="preload" 
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css"
           />,
           <link 
             rel="stylesheet" 
@@ -79,8 +79,8 @@ class MyApp extends App {
             href="https://fonts.gstatic.com" 
           />,
           <link 
-            rel="preconnect" 
-            href="https://fonts.gstatic.com" 
+            rel="preload" 
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
           />,
           <link 
             rel="stylesheet"
@@ -92,8 +92,8 @@ class MyApp extends App {
             href="https://use.typekit.net" 
           />,
           <link 
-            rel="preconnect" 
-            href="https://use.typekit.net" 
+            rel="preload" 
+            href="https://use.typekit.net/xhe6fwq.css" 
           />,
           <link 
             rel="stylesheet"  

@@ -170,13 +170,10 @@ const Column = styled.div`
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--thirdy-color);
     height: ${props => (props.height ? `${props.height}px !important` : "0px")};
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
-    :hover {
-        background-color: var(--thirdy-color);
-    }
 `
 const DateContainer = styled.div`
     margin: 0 auto var(--space) auto;
@@ -434,6 +431,7 @@ export default function Recruiting({
                                     {pageViews.map((item, i) => (
                                         <ColumnWrapper
                                             key={i}
+                                            data-tip={`${item.views} Views`}
                                         >
                                             <Column
                                                 height={Math.floor(
@@ -441,7 +439,6 @@ export default function Recruiting({
                                                         normalisedMax) *
                                                         120
                                                 )}
-                                                data-tip={`${item.views} Views`}
                                             />
                                         </ColumnWrapper>
                                     ))}

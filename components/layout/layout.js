@@ -8,6 +8,13 @@ import ReactTooltip from 'react-tooltip';
 const Container = styled.div`
 `
 
+const StyledTooltip = styled(ReactTooltip)`
+  background-color: var(--gray-extra-light);
+  color: var(--primary-color);
+`
+
+
+
 export default function Layout({ children }) {
   
   useEffect(() => {

@@ -84,20 +84,19 @@ const PostContainer = styled.div`
 
 
 const MoreContainer = styled.div`
-  margin: var(--space);
+  margin: 0 var(--space) var(--space) var(--space);
   text-align: right;    
   cursor: pointer;
   font-weight: 600;
   text-decoration: none;
+  ${media.lessThan('medium')`
+    margin: 0 var(--space-sm);
+  `}
 `
 const MoreArticles = styled.p`
-  margin: var(--space);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
-  ${media.lessThan('medium')`
-    margin: var(--space-sm);
-  `}
   :hover {
     text-decoration: underline;
   }
@@ -140,15 +139,7 @@ export default function Index({ allPosts, allTags }) {
               <PostContainer>
                 {posts.map((post) => (
                   <PostPreview
-                    key={post.slug}
-                    id={post.id}
-                    title={post.title}
-                    date={post.date}
-                    dateUpdated={post.dateUpdated}
-                    slug={post.slug}
-                    excerpt={post.excerpt}
-                    tags={post.tags}
-                    readingTime={getReadTime(post.content)}
+                    postData={post}
                   />
                 ))}
               </PostContainer>

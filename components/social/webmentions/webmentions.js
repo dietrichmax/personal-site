@@ -55,19 +55,18 @@ const WebMentionsComments = styled.ol`
 
 const WebmentionComment = styled.li`
   font-size: 1rem;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space);
 `
 
 const WebmentionAuthor = styled.div`  
-  font-weight: 600;  
   margin-bottom: calc(var(--space-sm)*.5);
 `
 
 const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
   :hover {
@@ -76,32 +75,46 @@ const WebmentionAuthorImgWrapper = styled.a`
 `
 
 const WebmentionAuthorName = styled.span`
+  font-weight: 600;  
   display: inline-block;
 `
 
-const WebmentionDate = styled.span`
-  font-weight: 200;
+const WebmentionDate = styled.cite`
   ${media.lessThan('small')`
     display: none;
   `}
 `
 
+const WebmentionType = styled.cite`
+`
 
 const WebmentionContent = styled.p`
 `
 
 
 export default function Webmentions({ slug, preview }) {
-    const [webmentionsCount, setWebmentionsCount] = useState(0)
-    const [webmentions, setWebmentions] = useState([])
-      
+  const [webmentionsCount, setWebmentionsCount] = useState(0)
+  const [webmentions, setWebmentions] = useState([])
+
+  const GetWebMentionType = (property) => { 
+    if (property == "in-reply-to") {
+      return "replied"
+    } else if (property == "like-of") {
+      return "liked"
+    } else if (property == "repost-of") {
+      return "retweeted"
+    } else if (property == "bookmark-of") {
+      return "bookmarked"
+    } else if(property == "mention-of") {
+      return "mentioned"
+    } 
+  }
 
     useEffect(() => {
       // GET WebmentionCount
       fetch(`https://webmention.io/api/count.json?target=${config.siteUrl}${slug}`)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
           setWebmentionsCount(result) 
         });
       // GET all Webmentions
@@ -144,14 +157,15 @@ export default function Webmentions({ slug, preview }) {
               <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
                   <Image
                     src={mention.author.photo}
-                    height="50"
-                    width="50"
+                    height="40"
+                    width="40"
                     className="u-photo"
                     alt={`Photo of ${mention.author.name}`}
                     title={mention.author.name}
                   />
                 </WebmentionAuthorImgWrapper>
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
+                <WebmentionType href={mention.url} title={mention.url}> {GetWebMentionType(mention["wm-property"])} </WebmentionType>
                 <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
 
               </WebmentionAuthor>

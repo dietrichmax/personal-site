@@ -29,9 +29,7 @@ class MyApp extends App {
           <link 
             rel="preload" 
             href="https://analytics.mxd.codes/matomo.js" 
-            onload="embedTracker()" 
-            type="script" 
-            crossorigin 
+            type="script"
           />,
           {/* Strapi Optimization*/}
           <link 
@@ -86,9 +84,9 @@ class MyApp extends App {
           />,
           <link 
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" 
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" 
           />,
-          {/* Typekit */}
+          {/* Typekit 
           <link 
             rel="dns-prefetch" 
             href="https://use.typekit.net" 
@@ -101,7 +99,7 @@ class MyApp extends App {
           <link 
             rel="stylesheet"  
             href="https://use.typekit.net/xhe6fwq.css"
-          />
+          />*/}
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

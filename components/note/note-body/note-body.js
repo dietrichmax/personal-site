@@ -1,8 +1,6 @@
 import markdownStyles from '@/styles/markdown-styles.module.css'
 import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
-import Image from "next/image"
-import Link from "next/link"
 import renderers from "@/lib/utils/renderers"
 
 const NoteContent = styled.section`

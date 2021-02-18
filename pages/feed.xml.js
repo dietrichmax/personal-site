@@ -2,7 +2,8 @@ import React from 'react';
 import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
 import { getAllPosts, getAllNotes, getAllLinks } from '@/lib/data/api/cms'
-
+const showdown  = require('showdown'),
+converter = new showdown.Converter()
 
 const createRssFeed = ( allContent ) => 
 

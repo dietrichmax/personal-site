@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
 import { getAllNotes, getNote } from '@/lib/data/api/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import Date from '@/lib/utils/date/date'    
 import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
 import config from "@/lib/data/SiteConfig";
@@ -14,6 +12,7 @@ import NoteTitle from "@/components/title/post-title"
 import NoteTags from "@/components/tags/tags"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import SocialShare from "@/components/social/social-share/social-share"
+import NoteMeta from "@/components/post/post-meta/post-meta"
 
 const NoteWrapper = styled.div`
 max-width: 1200px;
@@ -31,10 +30,6 @@ const NotesItem = styled.div`
   cursor: pointer;
 `
 
-const NotesDate = styled.div`
-  color: var(--gray);
-  font-size: 14px;
-`
 
 const NotesContent = styled.div`
   margin: var(--space) 0;
@@ -61,7 +56,8 @@ export default function Note({ note }) {
             <NoteWrapper>
               
             <NoteTitle>{note.title}</NoteTitle>
-            <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
+          
+            <NoteMeta postMetaData={note} />
             <NoteTags tags={note.tags} />
             <NotesItem className="h-entry">
                 <NotesContent>

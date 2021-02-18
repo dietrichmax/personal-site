@@ -1,10 +1,8 @@
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
-import React, { useState, useEffect } from "react"
-import { format } from 'date-fns'
 import media from 'styled-media-query';
-import { push } from "@socialgouv/matomo-next";
+import Nav from "@/components/navigation/nav"
 // styled components
 
 const FooterContainer = styled.footer`
@@ -93,30 +91,28 @@ const FooterIcons= styled.i`
 
 export default function Footer() {
 
-
+  const footerItems = [
+    { "name": "Mailing", "link":  "/mailinglist" },
+    { "name": "Privacy Policy", "link":  "/privacy" },
+    { "name": "Blogroll", "link":  "/blogroll" },
+    { "name": "Data", "link":  "/site-stats" },
+  ]
 
 
 
   return (
     <FooterContainer>
+
+      {/*<Nav />*/}
+
       <FooterInnerContainer>
 
-        <FooterItem>
-          <FooterItemLink href="/mailinglist"><a title="Max Dietrich">Mailing</a></FooterItemLink>
-        </FooterItem>
+        {footerItems.map((item, i) => (
+          <FooterItem>
+            <FooterItemLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterItemLink>
+          </FooterItem>
+          ))}
 
-        
-        <FooterItem>
-          <FooterItemLink href="/privacy"><a title="Privacy Policy">Privacy Policy</a></FooterItemLink>
-        </FooterItem>
-
-        <FooterItem>
-          <FooterItemLink href="/blogroll"><a title="Privacy Policy">Blogroll</a></FooterItemLink>
-        </FooterItem>
-
-        <FooterItem>
-          <FooterItemLink href="/site-stats"><a title="Privacy Policy">Data</a></FooterItemLink>
-        </FooterItem>
 
         <FooterDetail>
           <Link className="p-name u-url" href="/about" passHref><FooterItemTitle title="Feed">Made with <Heart className="lar la-heart"/></FooterItemTitle></Link>

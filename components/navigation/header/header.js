@@ -1,13 +1,10 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import Image from "next/image"
 import config from "@/lib/data/SiteConfig";
 import media from 'styled-media-query';
-import ActiveLink from "@/components/navigation/active-link"
-import React, { useState, useEffect, useContext } from "react";
+import React  from "react";
 //import ThemePicker from "@/components/themes/themePicker";
-
-import { push } from "@socialgouv/matomo-next";
+import Nav from "@/components/navigation/nav"
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -65,54 +62,9 @@ const LogoName = styled.span`
 const LogoDescription = styled.span`
 
 `
-const NavItems = styled.li`
-  flex: 50%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  ${media.lessThan('medium')`
-    margin-top: var(--space-sm);
-  `}
-`
-
-
-const NavItem = styled.a`
-  transition: none;
-  margin-left: var(--space-sm);
-  color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
-  :hover { 
-    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
-    text-decoration: none;
-    background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
-    background-size: 100% 1px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-  }
-  .active {
-    font-weight: 600;
-    color: var(--text-color);
-  }
-  ${media.lessThan('medium')`
-    margin-left: 0;
-  `}
-  
-  ${media.lessThan('small')`
-    font-size: 1rem;
-  `}
-`
 
 
 export default function Header( color ) {
-
-
-  const headerItems = [
-    { "name": "Articles", "link":  "/articles" },
-    { "name": "Notes", "link":  "/notes" },
-    { "name": "Links", "link":  "/links" },
-    { "name": "Data", "link":  "/site-stats" },
-    { "name": "About", "link":  "/about" },
-  ]
-
 
   return (
     <HeaderWrapper>
@@ -132,15 +84,7 @@ export default function Header( color ) {
             </Link>
           </Logo>
 
-          <NavItems>
-            {headerItems.map((item, i) => (
-                <NavItem color={color.color}>
-                  <ActiveLink activeClassName={`active ${i}`} href={item.link}>
-                    <a title={item.name}>{item.name}</a>
-                  </ActiveLink> 
-                </NavItem>
-            ))}
-          </NavItems>
+          <Nav color={color.color} />
         
         </MainNav>
 

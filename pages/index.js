@@ -70,6 +70,13 @@ const SubTitle = styled.p`
   `}
 `
 
+const PostContainer = styled.div`
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  grid-gap: var(--space);
+  grid-template-columns: repeat(auto-fit, minmax(49%, 1fr));
+`
+
+
 const MoreContainer = styled.div`
   margin: var(--space);
   text-align: right;    
@@ -124,8 +131,9 @@ export default function Index({ allPosts, allTags }) {
 
             <IndexPageContainer>
               <SubTitle>The latest Articles</SubTitle>
-              <MoreStories posts={posts} />
-
+              <PostContainer>
+                <MoreStories posts={posts} />
+              </PostContainer>
               <MoreContainer>
                 <Link href={`/articles`} passHref>
                   <MoreArticles title="All Articles">All Articles{' '}</MoreArticles>

@@ -44,7 +44,6 @@ const Container = styled.div`
 
 const Title = styled.p`
     margin-bottom: var(--space-sm);
-    font-size: 1.5rem;
 `
 
 const Stats = styled.span`
@@ -70,7 +69,6 @@ const StatsGrid = styled.div`
 `
 
 const TripleStatsGrid = styled.div`
-    font-size: 2rem;
     display: grid;
     gap: var(--space-sm);
     grid-template-columns: repeat(3,minmax(0,1fr));
@@ -90,7 +88,6 @@ const GridStats = styled.div`
     display: block;
     color: var(--thirdy-color);
     font-weight: 700;
-    font-size: 1.5rem;
     text-transform: capitalize;
     ${media.lessThan('1000px')`
         font-size: 1rem;
@@ -102,7 +99,6 @@ const GridStatsDescription = styled.div`
     padding-bottom: var(--space);
     text-transform: capitalize;
     font-weight: 200;
-    font-size: 1rem;
     ${media.lessThan('1000px')`
         font-size: 0.75rem;
     `}

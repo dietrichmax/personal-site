@@ -77,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
     --primary-font: 'Inter', sans-serif;
-    --secondary-font: 'Source Serif Pro', serif;
+    --secondary-font: 'Happy-Times', serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);

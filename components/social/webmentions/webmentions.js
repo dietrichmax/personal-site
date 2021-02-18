@@ -10,11 +10,6 @@ const ReactionsIcon = styled.i`
   color: var(--gray);
 `
 
-const Icon  = styled.i`
-  cursor: pointer;
-  color: var(--text-color);
-`
-
 const PreviewLikeCount = styled.span`   
   margin-left: var(--space-sm);
 `
@@ -56,6 +51,7 @@ const WebMentionsComments = styled.ol`
 const WebmentionComment = styled.li`
   font-size: 1rem;
   margin-bottom: var(--space);
+  font-family: var(--secondary-font);
 `
 
 const WebmentionAuthor = styled.div`  

@@ -18,6 +18,7 @@ const DescriptionWrapper = styled.div`
     flex-basis: 100%;    
     max-width: 100%;
     margin-bottom: 1rem;
+    line-height: 28px;
 `
 
 const InputWrapper = styled.div`

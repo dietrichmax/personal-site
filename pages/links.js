@@ -41,6 +41,7 @@ const LinksLink = styled.cite`
   font-size: 1rem;
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
+  font-family: var(--secondary-font);
 `
 
 const LinksContent = styled.p`
@@ -48,6 +49,7 @@ const LinksContent = styled.p`
   font-size: 1.125rem;
   line-height: 1.75rem;
   max-width: 700px;
+  font-family: var(--secondary-font);
 `
 
 

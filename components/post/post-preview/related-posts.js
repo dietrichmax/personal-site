@@ -25,6 +25,7 @@ const ArticlesItem = styled.li`
   margin: var(--space-sm) 0;
   display: flex;
   padding-inline-start: 0;
+  font-family: var(--secondary-font);
   :hover {
       color: var(--link-color-hover);
   }

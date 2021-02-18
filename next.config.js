@@ -1,6 +1,6 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-
+const withFonts = require('next-fonts');
 // redirects
 const redirects = {async redirects() {
   return [
@@ -440,6 +440,11 @@ const redirects = {async redirects() {
 
 module.exports = withPlugins([
   redirects,
+  withFonts({
+    webpack(config, options) {
+      return config;
+    }
+  }),
   {images: {
     domains: [
       "api.mxd.codes",

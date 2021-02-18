@@ -6,6 +6,9 @@ import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
 import "@/styles/prism.css"
 
+//import "@/public/fonts/Inter/style.css"
+import "@/public/fonts/Happy-Times/style.css"
+
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
@@ -84,22 +87,8 @@ class MyApp extends App {
           />,
           <link 
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" 
-          />,
-          {/* Typekit 
-          <link 
-            rel="dns-prefetch" 
-            href="https://use.typekit.net" 
-          />,
-          <link 
-            rel="preconnect" 
-            href="https://use.typekit.net" 
-            crossorigin 
-          />,
-          <link 
-            rel="stylesheet"  
-            href="https://use.typekit.net/xhe6fwq.css"
-          />*/}
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" 
+          />
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

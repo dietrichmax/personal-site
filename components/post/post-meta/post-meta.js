@@ -8,6 +8,7 @@ const CardItemMeta = styled.div`
   display: flex;
   font-size: .875rem;
   margin: calc(var(--space-sm)*0.5) 0;
+  font-family: var(--secondary-font);
 `;
 
 

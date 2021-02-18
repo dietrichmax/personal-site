@@ -50,9 +50,11 @@ const Intro = styled.p`
   max-width: var(--content-width);
   margin: var(--space-sm) 0;
   line-height: 1.75rem;
+  font-family: var(--secondary-font);
 `
 
 const BioContainer = styled.section`
+font-family: var(--secondary-font);
 `
 
 const BioTitle = styled.p`

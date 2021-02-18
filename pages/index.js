@@ -90,7 +90,7 @@ const MoreContainer = styled.div`
   font-weight: 600;
   text-decoration: none;
   ${media.lessThan('medium')`
-    margin: 0 var(--space-sm);
+    margin: 0 var(--space-sm) var(--space-sm) 0;
   `}
 `
 const MoreArticles = styled.p`

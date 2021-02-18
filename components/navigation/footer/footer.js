@@ -25,7 +25,8 @@ const FooterInnerContainer = styled.nav`
   margin: 0 auto;
   max-width: 1200px;
   font-size: 1rem;
-
+  justify-content: space-between;
+  align-items: center;
   ${media.lessThan('medium')`  
     flex-wrap: wrap;
   `}
@@ -37,14 +38,9 @@ const FooterItem = styled.div`
   margin: 0;
 
   ${media.lessThan('medium')` 
-  padding: 0;
-  margin-bottom: var(--space-sm);
-  flex-basis: 50%;
+    padding: 0;
+    margin: var(--space-sm);
   `}
-`
-
-const FooterItemTitle = styled.a`
-  font-weight: bold;
 `
 
 const FooterItemLink = styled(Link)`
@@ -54,27 +50,9 @@ const FooterItemLink = styled(Link)`
   }
 `
 
-const FooterDetail = styled.div`
-  margin-left: auto;
-  padding-right: 0;
-  text-transform: lowercase;
-  
-  ${media.lessThan('medium')` 
-    padding: 0;
-    margin-bottom: var(--space-sm);
-    flex-basis: 50%;
-  `}
-`
-const Heart = styled.i`
-  color: transparent;  
-  text-shadow: 0 0 0 var(--thirdy-color);
-`
-
 const FooterSocials = styled.div`  
-  margin-left: auto;
-  padding-right: 0 !important;
   ${media.lessThan('medium')` 
-    margin: var(--space-sm) auto;
+  margin: var(--space-sm) auto;
 `}
 `
 
@@ -112,11 +90,6 @@ export default function Footer() {
             <FooterItemLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterItemLink>
           </FooterItem>
           ))}
-
-
-        <FooterDetail>
-          <Link className="p-name u-url" href="/about" passHref><FooterItemTitle title="Feed">Made with <Heart className="lar la-heart"/></FooterItemTitle></Link>
-        </FooterDetail>
         
 
         <FooterSocials className="h-card">

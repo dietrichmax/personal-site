@@ -69,7 +69,6 @@ const WebmentionAuthorImgWrapper = styled.a`
   width: 50px;
   height: 50px;
   overflow: hidden;
-  border-radius: 50%;
   margin-right: calc(var(--space-sm)*.5);
   :hover {
     display: cursor;

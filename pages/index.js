@@ -9,6 +9,7 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
+import getReadTime from "@/lib/utils/read-time"
 
 const IndexPageContainer = styled.div`
   margin: auto;

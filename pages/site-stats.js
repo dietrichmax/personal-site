@@ -373,9 +373,9 @@ export default function Recruiting({
                                 <StatsGrid>
                                     <GridTitle>Site Stats</GridTitle>
                                     <StatsLargeGrid>
-                                        {liveViews == 0 ? 
-                                            <GridStats>You are</GridStats> :
-                                            <GridStats>{liveViews} people</GridStats>
+                                        {liveViews > 1 ? 
+                                            <GridStats>{liveViews} people</GridStats> :
+                                            <GridStats>You are</GridStats>
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>
                                     </StatsLargeGrid>

@@ -69,9 +69,10 @@ export default function Footer() {
 
   const footerItems = [
     { "name": "Mailing", "link":  "/mailinglist" },
-    { "name": "Privacy Policy", "link":  "/privacy" },
     { "name": "Blogroll", "link":  "/blogroll" },
     { "name": "Data", "link":  "/site-stats" },
+    { "name": "Privacy Policy", "link":  "/privacy" },
+    { "name": "Site Notice", "link":  "/site-notice" },
   ]
 
 

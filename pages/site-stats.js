@@ -9,6 +9,7 @@ import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
+import ReactTooltip from 'react-tooltip';
 import {
     getMatomoActions,
     getMatomoLiveCounter,
@@ -29,6 +30,12 @@ import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
+
+
+const StyledReactTooltip = styled(ReactTooltip)`
+  background-color: var(--gray-extra-light);
+  color: var(--primary-color);
+`
 
 const Container = styled.div`
     max-width: 1200px;
@@ -358,6 +365,7 @@ export default function Recruiting({
                 ) : (
                     <>
                         <SEO title="Site Stats" slug="site-stats" />
+                        <StyledReactTooltip />
                         <PageTitle>Site statistics</PageTitle>
                         <SubTitle>Stats from Matomo, Strapi and Webmentions</SubTitle>
                         <Container>

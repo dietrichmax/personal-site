@@ -309,11 +309,9 @@ export default function Recruiting({
     useEffect(() => {
         async function fetchLiveData() {
           const result = await getMatomoLiveCounter() || []
-          console.log("result"+result[0].visits);
           setLiveViews(result[0].visits);
         };
         fetchLiveData();
-        console.log("liveViews"+liveViews);
     }, []);
     
     const { forkCount } = githubStats.user.repository

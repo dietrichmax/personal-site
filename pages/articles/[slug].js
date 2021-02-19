@@ -1,4 +1,4 @@
-import React, { useRef, useState} from "react"
+import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
@@ -15,13 +15,10 @@ import media from 'styled-media-query';
 //import CoverImage from '@/components/post/post-image/cover-image'
 import Header from '@/components/navigation/header/header'
 import Footer from '@/components/navigation/footer/footer'
-import Link from 'next/link'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
 import Webmentions from "@/components/social/webmentions/webmentions"
 //import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/utils/read-time"
-import TableOfContents from "@/components/post/post-toc/table-of-contents"
-import toc from 'markdown-toc'
 import SocialShare from "@/components/social/social-share/social-share"
 
 
@@ -125,7 +122,6 @@ export async function getStaticProps({ params }) {
   const content = data?.posts[0]?.content || ''
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
   const readingTime = getReadTime(content); 
-  const tocContent = await markdownToHtml(toc(content).content)
 
   return {
     revalidate:  86400,
@@ -135,7 +131,6 @@ export async function getStaticProps({ params }) {
         readingTime: readingTime,
         content,
         excerpt,
-        toc: tocContent
       },
       morePosts: data?.morePosts,
     },

@@ -7,7 +7,6 @@ import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
 
 const ReactionsIcon = styled.i`
-  color: var(--gray);
 `
 
 const PreviewLikeCount = styled.span`   
@@ -129,8 +128,8 @@ export default function Webmentions({ slug, preview }) {
     <>
       <PreviewLikeCount aria-label={webmentionsCount.count} >
       <ReactionsIcon 
+        title={`${webmentionsCount.count} Reactions`}
         className="las la-heart"
-        title="Reactions"
       /> {webmentionsCount.count}</PreviewLikeCount> 
     </>
     ) : (

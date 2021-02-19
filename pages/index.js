@@ -101,9 +101,7 @@ const MoreArticles = styled.p`
     text-decoration: underline;
   }
   :after {
-    content: "\f061";
-    font-family: "Line Awesome Free";
-    font-weight: 900;
+    content: "→";
   }
 `
 

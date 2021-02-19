@@ -13,7 +13,7 @@ const SEO = ({
 
   title = title ? title : config.siteTitle
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
-  slug = slug ? slug : ""
+  slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl
   image = image ? `${image.startsWith("/") ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ""}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
@@ -36,7 +36,7 @@ const SEO = ({
         "dateModified": date,
         "author": {
           "@type": "Person",
-          "name": config.siteTItle,
+          "name": config.siteTitle,
           "nationality": "German",
           "address": {
             "@type": "PostalAddress",
@@ -64,13 +64,12 @@ const SEO = ({
             }
           ],
           "nationality": "German",
-          "url": "http://mxd.codes",
+          "url": config.siteUrl,
           "sameAs" : [ 
             config.socials.twitter,
             config.socials.linkedin,
             config.socials.github,
             config.socials.instagram,
-            config.socials.mastodon,
           ],
           "knowsAbout": [
             "GIS",
@@ -101,7 +100,7 @@ const SEO = ({
     <Head>
       {/* General tags */}
       <title>{title} - {config.siteTitle}</title>
-      <link rel="canonical" href={`${config.siteUrl}/${slug}`} />
+      <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -111,7 +110,7 @@ const SEO = ({
       <link href="/logos/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16" />
       <link href="/logos/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
       <link rel="apple-touch-icon" href="/logos/android-chrome-192x192.png"/>
-      <meta name="theme-color" content="#0a1924"/>
+      <meta name="theme-color" content={config.themeColor}/>
       {/* Schema.org tags */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}/>
 

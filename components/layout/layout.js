@@ -3,17 +3,9 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 const prism = require("prismjs")
 require('prismjs/components/prism-python');
-import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
 `
-
-const StyledReactTooltip = styled(ReactTooltip)`
-  background-color: var(--gray-extra-light);
-  color: var(--primary-color);
-`
-
-
 
 export default function Layout({ children }) {
   
@@ -23,7 +15,6 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <StyledReactTooltip />
       <Container>{children}</Container>
     </>
   )

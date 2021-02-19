@@ -300,11 +300,12 @@ export default function Recruiting({
     const router = useRouter()
 
     useEffect(() => {
-       const fetchData = async () => {
+        async function fetchLiveData() {
           const result = await getMatomoLiveCounter() || []
           setLiveViews(result[0].visits);
         };
-        fetchData();
+        fetchLiveData();
+        console.log(liveViews);
     }, []);
     
     const { forkCount } = githubStats.user.repository

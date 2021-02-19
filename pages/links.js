@@ -2,8 +2,6 @@ import Layout from '@/components/layout/layout'
 import { getAllLinks } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
@@ -59,7 +57,6 @@ export default function Links({ allLinks }) {
   return (
     <>
       <Layout>
-        <Header/>
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -90,7 +87,6 @@ export default function Links({ allLinks }) {
             </article>
           </>
         )}
-        <Footer />
       </Layout>
     </>
   )

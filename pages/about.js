@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
 import Image from "next/image"
 import Content from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
@@ -9,8 +8,6 @@ import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import config from "../lib/data/SiteConfig";
 
 const PageWrapper = styled.div`
@@ -109,7 +106,6 @@ export default function About({ about }) {
   
   return (
     <Layout>
-      <Header link="/" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -154,7 +150,6 @@ export default function About({ about }) {
             </PageWrapper>
           </>
         )}
-      <Footer />
     </Layout>
   )
 }

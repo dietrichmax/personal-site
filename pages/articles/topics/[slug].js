@@ -7,8 +7,6 @@ import PageTitle from '@/components/title/tag-title'
 import config from "../../../lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 
 const TagContainer = styled.div`
   max-width: 1200px;
@@ -29,7 +27,6 @@ export default function Tags({ tag }) {
   
   return (
     <Layout>
-      <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -47,7 +44,6 @@ export default function Tags({ tag }) {
             </TagContainer>
           </>
         )}
-      <Footer />
     </Layout>
   )
 }

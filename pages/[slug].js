@@ -8,8 +8,6 @@ import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import config from "../lib/data/SiteConfig";
 
 const PageWrapper = styled.div`
@@ -31,7 +29,6 @@ export default function Page({ page }) {
 
   return (
     <Layout>
-      <Header link="/" />
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -48,7 +45,6 @@ export default function Page({ page }) {
             </PageWrapper>
           </>
         )}
-      <Footer />
     </Layout>
   )
 }

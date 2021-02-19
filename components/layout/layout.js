@@ -2,12 +2,14 @@ import React,  { useEffect } from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
 const prism = require("prismjs")
+import Header from '@/components/navigation/header/header'
+import Footer from '@/components/navigation/footer/footer'
 require('prismjs/components/prism-python');
 
 const Container = styled.div`
 `
 
-export default function Layout({ children }) {
+export default function Layout({ children, color }) {
   
   useEffect(() => {
     prism.highlightAll();
@@ -15,7 +17,9 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Container>{children}</Container>
+      <Header color={color} />
+        <Container>{children}</Container>
+      <Footer />
     </>
   )
 }

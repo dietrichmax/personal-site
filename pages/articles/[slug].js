@@ -13,8 +13,6 @@ import config from "@/lib/data/SiteConfig";
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 //import CoverImage from '@/components/post/post-image/cover-image'
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import RelatedPosts from '@/components/post/post-preview/related-posts'
 import Webmentions from "@/components/social/webmentions/webmentions"
 //import PostComments from "@/components/post/post-comments/post-comments"
@@ -64,7 +62,6 @@ export default function Post({ post, morePosts }) {
 
   return (
     <Layout>
-      <Header/>
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
@@ -112,7 +109,6 @@ export default function Post({ post, morePosts }) {
             
           </>
         )}     
-      <Footer />
     </Layout>
   )
 }

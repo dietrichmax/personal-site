@@ -3,13 +3,10 @@ import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import getReadTime from "@/lib/utils/read-time"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -112,8 +109,7 @@ export default function Index({ allPosts, allTags }) {
 
   return (
     <>
-      <Layout>
-        <Header color={`var(--gray-extra-light)`} />
+      <Layout color={`var(--gray-extra-light)`}>
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -151,7 +147,6 @@ export default function Index({ allPosts, allTags }) {
 
           </>
         )}
-        <Footer />
       </Layout>
     </>
   )

@@ -1,10 +1,7 @@
-import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import { getAllNotes } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import Link from 'next/link'
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
@@ -104,7 +101,6 @@ export default function Notes({ allNotes }) {
   return (
     <>
       <Layout>
-        <Header/>
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -141,7 +137,6 @@ export default function Notes({ allNotes }) {
             </NotesWrapper>
           </>
         )}
-        <Footer />
       </Layout>
     </>
   )

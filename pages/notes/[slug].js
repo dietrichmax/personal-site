@@ -4,8 +4,6 @@ import { getAllNotes, getNote } from '@/lib/data/api/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import Header from '@/components/navigation/header/header'
-import Footer from '@/components/navigation/footer/footer'
 import config from "@/lib/data/SiteConfig";
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
@@ -41,7 +39,6 @@ export default function Note({ note }) {
 
   return (
     <Layout>
-      <Header />
         {router.isFallback ? (
           <NoteTitle>{config.loading}</NoteTitle>
         ) : (
@@ -72,7 +69,6 @@ export default function Note({ note }) {
             </NoteWrapper>
           </>
         )}
-      <Footer />
     </Layout>
   )
 }

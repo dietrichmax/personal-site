@@ -65,7 +65,10 @@ const FooterColumnWrapper = styled.ul`
   `}
 `
 const FooterColumn = styled.li`
-  width: auto
+  width: auto;
+  ${media.lessThan('medium')`  
+    margin-bottom: var(--space);
+  `}
 `
 
 const FooterColumnTitle = styled.p`

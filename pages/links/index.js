@@ -1,6 +1,6 @@
 import Layout from '@/components/layout/layout'
 import { getAllLinks } from '@/lib/data/api/cms'
-import config from "../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'

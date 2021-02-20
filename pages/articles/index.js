@@ -1,7 +1,7 @@
 import MoreStories from '@/components/post/post-preview/more-stories'
 import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
-import config from "../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'

@@ -310,7 +310,6 @@ export default function Recruiting({
         };
         fetchLiveData();
     }, []);
-    
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
     const githubUrl = "https://github.com/DaTurboD/"

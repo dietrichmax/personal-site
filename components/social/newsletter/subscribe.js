@@ -19,6 +19,7 @@ const DescriptionWrapper = styled.div`
     max-width: 100%;
     margin-bottom: 1rem;
     line-height: 28px;
+    font-size: 1rem;
 `
 
 const InputWrapper = styled.div`

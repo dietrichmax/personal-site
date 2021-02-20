@@ -58,8 +58,8 @@ const FooterColumnWrapper = styled.ul`
   max-width: 1200px;
   margin-top: var(--space);
   font-size: .875rem;
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: repeat(4,minmax(0px,1fr));
+  display: grid;
   ${media.lessThan('medium')`  
     display: block;
   `}
@@ -77,9 +77,13 @@ const FooterColumnTitle = styled.p`
 `
 
 const FooterColumnDescription = styled.p`
-
+  margin-bottom: var(--space);
 `
 
+const FooterSocials = styled.div`
+margin-top: .75rem;
+margin-bottom: .5rem;
+`
 
 const FooterItemSocials = styled.a`
   display: inline-block;
@@ -95,7 +99,6 @@ const FooterItem = styled.p`
   `}
 `
 const FooterItemLink = styled(Link)`
-  font-weight: regular;
   :hover { 
     color: var(--gray-extra-light);
   }
@@ -134,7 +137,7 @@ export default function Footer() {
     },
     { 
       name: "Webmention Endpoint",
-      link: "/webmentions" 
+      link: "/webmention" 
     },
   ]
 
@@ -188,14 +191,13 @@ export default function Footer() {
           </FooterColumn>
 
 
-          <FooterColumn style={{gridColumn: 'span 2/span 2'}}>      
+          <FooterColumn style={{gridColumn: 'span 3/span 3'}}>      
             <FooterColumnTitle>Subscribe</FooterColumnTitle>
             <FooterColumnDescription>
               You can subscribe to the RSS feeds for all <FooterLink href="/feed.xml" passHref><a title="Feed">content</a></FooterLink> or to individual feeds for <FooterLink href="/articles/feed.xml" passHref><a title="Articles-Feed">articles</a></FooterLink>, <FooterLink href="/notes/feed.xml" passHref><a title="Notes-Feed">notes</a></FooterLink>, and <FooterLink href="/links/feed.xml" passHref><a title="Links-Feed">links</a></FooterLink>.
             </FooterColumnDescription>
-          </FooterColumn>
-
-          <FooterColumn className="h-card" >      
+            
+            <FooterSocials className="h-card">
             <FooterColumnTitle>Connect</FooterColumnTitle>
             <FooterItemSocials  rel="me" href={config.socials.twitter} title="@mxdietrich on Twitter">
               <FooterIcons className="lab la-twitter"/>
@@ -208,8 +210,11 @@ export default function Footer() {
             </FooterItemSocials >
             <FooterItemSocials  href={config.siteRss} title="Subscribe via RSS/Atom">
               <FooterIcons className="las la-rss" />
-            </FooterItemSocials >    
+            </FooterItemSocials >  
+
+            </FooterSocials>
           </FooterColumn>
+
 
         </FooterColumnWrapper> 
 
@@ -218,7 +223,7 @@ export default function Footer() {
             <a title={config.siteTitle}>{config.siteTitle}</a>
           </Link>
           <span> • </span>
-          <Link href="/privacy"> 
+          <Link href="/privacy-policy"> 
             <FooterLink title="Privacy Policy">Privacy Policy</FooterLink>
           </Link>
           <span> • </span>

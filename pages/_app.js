@@ -56,11 +56,6 @@ class MyApp extends App {
             rel="pingback" 
             href="https://webmention.io/mxd.codes/xmlrpc" 
           />,
-          {/* IndieWeb stuff */}
-          <link href="https://github.com/DaTurboD/" rel="me" />,
-          <link href="https://twitter.com/mxdietrich" rel="me" />,
-          <link href="mailto:kontakt@gis-netzwerk.com" rel="me" />,
-          <link href="https://www.instagram.com/_maxdietrich/" rel="me" />,
           {/* LineAwsome */}
           <link 
             rel="dns-prefetch" 

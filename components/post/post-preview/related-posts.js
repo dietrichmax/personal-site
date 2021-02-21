@@ -64,10 +64,10 @@ export default function RelatedPosts({ relatedPosts }) {
         </MorePostsTitle>
         <ArticlesList>
             {relatedPosts.map((post) => (
-                <ArticlesItem>
-                        <ArticleDate>{format(parseISO(post.dateUpdated ? post.dateUpdated : post.date), "dd-MM-yyyy")}</ArticleDate>
-                        <Link href={post.slug} passHref>
-                          <ArticleTitle title={post.title}>{post.title}</ArticleTitle>  
+                <ArticlesItem className="h-entry">
+                        <ArticleDate className="dt-published">{format(parseISO(post.dateUpdated ? post.dateUpdated : post.date), "dd-MM-yyyy")}</ArticleDate>
+                        <Link className="u-url" href={post.slug} passHref>
+                          <ArticleTitle className="p-name" title={post.title}>{post.title}</ArticleTitle>  
                         </Link>
                 </ArticlesItem>
             ))}

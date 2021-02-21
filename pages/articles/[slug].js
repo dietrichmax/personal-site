@@ -18,18 +18,25 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 //import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/utils/read-time"
 import SocialShare from "@/components/social/social-share/social-share"
-
+import PostImage from "@/components/post/post-image/post-image"
+import PostTitle from '@/components/title/post-title'
 
 // components for posts
 
 const PostWrapper = styled.div`
   max-width: 1200px;
-  padding: var(--space);
-  margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
+  padding: 0 var(--space);
+  margin: var(--space-sm) auto var(--space-lg) auto;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
+`
+
+const PostImgWrapper = styled.div`
+  max-width: 1300px;
+  margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
+  position: relative;
 `
 
 
@@ -40,23 +47,35 @@ const Content = styled.div`
   `}
 `
 
+const PostTitleWrapper = styled.div`
+  max-width: 800px;
+  margin: var(--space-sm) auto var(--space-lg) 50px;
+  padding: var(--space-sm) var(--space);
+  position:absolute;
+  bottom: 0;
+  background-color: #ffffffd7;
+  border-radius: var(--border-radius);
+  z-index: 4;
+  ${media.lessThan('large')`
+    position: relative;
+    margin: var(--space-sm) var(--space);
+    padding: 0;
+  `}
+  ${media.lessThan('medium')`
+    margin: var(--space-sm);
+  `}
+`
 
 
 export default function Post({ post, morePosts }) {  
 
+  const { title, excerpt, coverImage, date, slug, user, content } = post
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-  
 
-
-  function copyToClipboard(e) {
-    navigator.clipboard.writeText(`${config.siteUrl}/articles/${post.slug}`);
-    e.target.focus();
-    setCopySuccess('Copied!');
-  };
 
   const target = React.createRef()
 
@@ -67,25 +86,27 @@ export default function Post({ post, morePosts }) {
         ) : (
           <>
             <SEO   
-              title={post.title}
-              description={post.excerpt}
-              image={post.coverImage.coverImage.formats.small.url}
-              slug={`articles/${post.slug}`}
-              date={post.date}
+              title={title}
+              description={excerpt}
+              image="{`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`}"
+              slug={`articles/${slug}`}
+              date={date}
               ogType="article"
-              author={post.user}
+              author={user}
               postSEO
             />
             <article ref={target} className="h-entry">
               <ReadingProgress target={target} />
-              {/*{post.coverImage.coverImage ? (
-              <CoverImage title={post.title} alt={post.title} url={post.coverImage.coverImage.url} caption={post.coverImage.caption}/>
-              ) : null }*/}
+
+              <PostImgWrapper>
+                <PostImage postData={post} /> 
+                <PostTitleWrapper>  
+                  <PostTitle className="p-name">{title}</PostTitle>   
+                </PostTitleWrapper> 
+              </PostImgWrapper>
 
               <PostWrapper>
-
                   <Content>
-
 
                     <PostHeader postData={post} />    
                     {/*<TOCInPostWrapper>

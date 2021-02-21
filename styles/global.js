@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-light: #c9d1d9;  
     --gray: #485055;
     --gray-dark: #3a3d4d;
-    --primary-color: #111936;
+    --primary-color: #0c132b;
     --secondary-color: #191f45;
     --thirdy-color: #c85517;
     --body-bg: #fff; 
@@ -76,9 +76,10 @@ const GlobalStyle = createGlobalStyle`
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: 'Inter', sans-serif;
-    --secondary-font: 'Happy-Times', serif;
-    --thirdy-font: 'Cousine', sans-serif;
+    --border-radius: 4px;
+    --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --secondary-font: ff-spinoza-web-pro, serif; 
+    --thirdy-font: 'Cousine', serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
     --text-color: var(--primary-color);

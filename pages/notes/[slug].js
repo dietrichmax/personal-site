@@ -50,13 +50,13 @@ export default function Note({ note }) {
               date={note.date}
               postSEO
             />
-            <NoteWrapper>
+            <NoteWrapper className="h-entry">
               
-            <NoteTitle>{note.title}</NoteTitle>
+            <NoteTitle className="p-name">{note.title}</NoteTitle>
           
             <NoteMeta postMetaData={note} />
             <NoteTags tags={note.tags} />
-            <NotesItem className="h-entry">
+            <NotesItem >
                 <NotesContent>
                   <NoteBody className="e-content" content={note.content} />
                 </NotesContent>

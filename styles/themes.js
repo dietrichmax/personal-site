@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Themes = createGlobalStyle`
-default-theme {
+.default-theme {
     --gray-extra-light: #f4f6f9; 
     --gray-light: #c9d1d9;  
     --gray: #485055;
@@ -14,8 +14,6 @@ default-theme {
     --bg-dark: var(--secondary-color);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --primary-font: 'Inter', sans-serif;
-    --secondary-font: 'Happy-Times', serif;
     --thirdy-font: 'Cousine', sans-serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
@@ -24,7 +22,7 @@ default-theme {
     --text-dark: var(--gray-dark);
 }
 
-space {
+.theme-space {
     --gray-extra-light: #fafafa; 
     --gray-light: #eaeaea;  
     --gray: #a8bfce;
@@ -37,7 +35,6 @@ space {
     --bg-dark: var(--gray-dark);
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
-    --secondary-font: open sans,sans-serif;
     --link-color: var(--text-dark);
     --link-color-hover: var(--secondary-color);
     --text-color: var(--primary-color);

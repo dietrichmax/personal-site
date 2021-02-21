@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import config from "@/lib/data/SiteConfig";
 import media from 'styled-media-query';
-import React  from "react";
+import React, { useEffect }  from "react";
 //import ThemePicker from "@/components/themes/themePicker";
 import Nav from "@/components/navigation/nav"
 
@@ -66,6 +66,7 @@ const LogoDescription = styled.span`
 
 export default function Header( color ) {
 
+  
   return (
     <HeaderWrapper>
       

@@ -42,12 +42,13 @@ const WebmentionsInfoIcon = styled.i`
   font-size: 1.5rem;
 `
 
-const WebMentionsComments = styled.ol`
+const WebmentionsList = styled.div`
   list-style: none;
   padding-inline-start: 0;
+  margin-bottom: var(--space-sm);
 `
 
-const WebmentionComment = styled.li`
+const WebmentionComment = styled.div`
   font-size: 1rem;
   margin-bottom: var(--space);
   font-family: var(--secondary-font);
@@ -64,6 +65,10 @@ const WebmentionAuthorImgWrapper = styled.a`
   height: 40px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-extra-light);
+  background-color: var(--gray-extra-light);
+  box-shadow: none;
   :hover {
     display: cursor;
   }
@@ -80,9 +85,6 @@ const WebmentionDate = styled.cite`
   `}
 `
 
-const WebmentionType = styled.cite`
-`
-
 const WebmentionContent = styled.p`
 `
 
@@ -90,37 +92,30 @@ const WebmentionContent = styled.p`
 export default function Webmentions({ slug, preview }) {
   const [webmentionsCount, setWebmentionsCount] = useState(0)
   const [webmentions, setWebmentions] = useState([])
+  const [webmentionComments, setWebmentionComments] = useState([])
+  const [webmentionLikes, setWebmentionLikes] = useState([])
 
-  const GetWebMentionType = (property) => { 
-    if (property == "in-reply-to") {
-      return "replied"
-    } else if (property == "like-of") {
-      return "liked"
-    } else if (property == "repost-of") {
-      return "retweeted"
-    } else if (property == "bookmark-of") {
-      return "bookmarked"
-    } else if(property == "mention-of") {
-      return "mentioned"
-    } 
-  }
-
-    useEffect(() => {
-      // GET WebmentionCount
-      fetch(`https://webmention.io/api/count.json?target=${config.siteUrl}${slug}`)
-        .then((response) => response.json())
-        .then((result) => {
-          setWebmentionsCount(result) 
-        });
-      // GET all Webmentions
-      fetch(`https://webmention.io/api/mentions.jf2?target=${config.siteUrl}${slug}`)
-        .then((response) => response.json())
-        .then((result) => {
-          setWebmentions(result.children);
-        });
-    }, []);
+  useEffect(() => {
+    // GET WebmentionCount
+    fetch(`https://webmention.io/api/count.json?target=${config.siteUrl}${slug}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setWebmentionsCount(result) 
+      });
+    // GET all Webmentions
+    fetch(`https://webmention.io/api/mentions.jf2?target=${config.siteUrl}${slug}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setWebmentions(result.children);
+      });
+  }, []);
     
-
+  webmentions.length > 0 ?
+    webmentions.map((mention) => (
+      mention["wm-property"] == "like-of" ?
+        webmentionLikes.push(mention) : webmentionComments.push(mention)
+    ))
+  : null
 
   return (
     <>
@@ -136,7 +131,7 @@ export default function Webmentions({ slug, preview }) {
       <>
       <WebMentionsWrapper> 
         <WebmentionsHeader>
-          <WebmentionsTitle>{webmentionsCount.count} WebMentions</WebmentionsTitle>
+          <WebmentionsTitle>{webmentionsCount.count} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
             href="https://indieweb.org/Webmention" 
             target="_blank" rel="noopener noreferrer" 
@@ -144,34 +139,53 @@ export default function Webmentions({ slug, preview }) {
             onClick={() => {!process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'WebMentionsInfo', 'Click on Info']) : null}}
           ><WebmentionsInfoIcon className="las la-question-circle" /></WebmentionsInfo>
         </WebmentionsHeader>
-        <WebMentionsComments>
-          {webmentions.length > 0 ? (
-          webmentions.map((mention) => (
+
+        {webmentionsCount.count > 0 ? (
+
+        <>
+          <WebmentionsList>
+          {/* Comments */}
+          {webmentionComments.map((mention) => (
             <WebmentionComment>
               <WebmentionAuthor className="h-card" >
               <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
-                  <Image
-                    src={mention.author.photo}
-                    height="40"
-                    width="40"
-                    className="u-photo"
-                    alt={`Photo of ${mention.author.name}`}
-                    title={mention.author.name}
-                  />
-                </WebmentionAuthorImgWrapper>
+                <Image
+                  src={mention.author.photo}
+                  height="40"
+                  width="40"
+                  className="u-photo"
+                  alt={`Photo of ${mention.author.name}`}
+                  title={mention.author.name}
+                />
+              </WebmentionAuthorImgWrapper>
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
-                <WebmentionType href={mention.url} title={mention.url}> {GetWebMentionType(mention["wm-property"])} </WebmentionType>
                 <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
-
               </WebmentionAuthor>
               <WebmentionContent className="p-content">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
-          ))
-          ) : (
-          
-            <WebmentionComment><WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent></WebmentionComment>
-          )}
-        </WebMentionsComments>
+          ))}
+          {/* Likes */}
+          </WebmentionsList> 
+          <WebmentionsList>
+            <WebmentionsTitle>Likes</WebmentionsTitle>
+            {webmentionLikes.map((mention) => (
+              <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
+                <Image
+                  src={mention.author.photo}
+                  height="40"
+                  width="40"
+                  className="u-photo"
+                  alt={`Photo of ${mention.author.name}`}
+                  title={mention.author.name}
+                />
+              </WebmentionAuthorImgWrapper>
+            ))}
+            </WebmentionsList>
+        </>
+        ) : (
+          <WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent>
+        )}
+      
       </WebMentionsWrapper> 
     </>
 

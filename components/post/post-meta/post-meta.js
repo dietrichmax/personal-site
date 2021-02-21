@@ -20,7 +20,7 @@ export default function PostMeta({ postMetaData }) {
   
   return (
     <CardItemMeta>
-        <Date dateString={dateUpdated ? dateUpdated : date} />
+        <Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} />
         <Webmentions preview slug={`/articles/${slug}`}/>
     </CardItemMeta>
   )

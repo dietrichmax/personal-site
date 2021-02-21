@@ -56,6 +56,10 @@ class MyApp extends App {
             rel="pingback" 
             href="https://webmention.io/mxd.codes/xmlrpc" 
           />,
+          <link  
+            rel="me" 
+            href="https://www.reddit.com/user/DaTurboD" 
+          />
           {/* LineAwsome */}
           <link 
             rel="dns-prefetch" 
@@ -83,6 +87,21 @@ class MyApp extends App {
           <link 
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" 
+          />
+          
+          {/* Typekit Font */}
+          <link 
+            rel="dns-prefetch" 
+            href="https://use.typekit.net" 
+          />,
+          <link 
+            rel="preconnect" 
+            href="https://use.typekit.net" 
+            crossorigin 
+          />,
+          <link 
+            rel="stylesheet"
+            href="https://use.typekit.net/xhe6fwq.css" 
           />
         </Head>
         <GlobalStyle/>

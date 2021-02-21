@@ -1,5 +1,7 @@
 @font-face {
   font-family: Inter;
+      src: url('Inter-Light.ttf');
       src: url('Inter-Regular.ttf');
-      src: url('Inter-Bold.ttf');
+      src: url('Inter-Medium.ttf');
+    font-display: swap;
 }

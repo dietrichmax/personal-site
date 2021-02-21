@@ -20,9 +20,9 @@ export default function PostHeader({ postData }) {
     <>
       <PostHeaderWrapper>
         
-        <PostTitleWrapper>  
+        {/*<PostTitleWrapper>  
           <PostTitle className="p-name">{title}</PostTitle>   
-        </PostTitleWrapper> 
+        </PostTitleWrapper> */}
 
           <PostMeta postMetaData={postData} />
          

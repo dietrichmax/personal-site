@@ -7,7 +7,7 @@ const TagsWrapper = styled.div`
 `
 
 const TagItem = styled.a`
-  border-radius: 3px;
+  border-radius: var(--border-radius);
   display: inline-block;
   font-size: .875rem;
   margin-right: var(--space-sm);

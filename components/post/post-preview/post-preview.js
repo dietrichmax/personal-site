@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
 import PostMeta from "@/components/post/post-meta/post-meta"
+import PreviewImage from "@/components/post/post-image/post-image"
 
 const Card = styled.div`
   transition: 0.2s;
@@ -14,11 +15,8 @@ const Card = styled.div`
   `}
 `
 
-const CardItemWrapper = styled.section`
+const CardItemWrapper = styled.div`
   height: 100%;
-`;
-
-const CardItemImg = styled.div`
 `;
 
 const CardItemInfo = styled.div`
@@ -31,6 +29,7 @@ const CardItemInfo = styled.div`
 const CardItemTitle = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
 `;
 
 const CardItemDescription = styled.div`
@@ -41,23 +40,24 @@ const CardItemDescription = styled.div`
 `;
 
 
+
+
 export default function PostPreview({ postData }) {
   
-  const { title, excerpt, slug, tags } = postData
+  const { title, excerpt, slug, tags, coverImage } = postData
 
-  
+
   return (
-    <Card>
+    <Card className="h-entry">
       <CardItemWrapper>
-        <CardItemImg>
-        </CardItemImg>
+        <PreviewImage preview postData={postData}/>
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
-              <a title={title}>{title}</a>
+              <a className="p-name u-url" title={title}>{title}</a>
             </Link>
           </CardItemTitle>
-          <CardItemDescription>{excerpt}</CardItemDescription>
+          <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
           <PostMeta postMetaData={postData} />
           <PostTags tags={tags}/>
         </CardItemInfo>

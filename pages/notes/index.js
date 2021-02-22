@@ -10,37 +10,36 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import Image from "next/image"
 import { usePalette } from 'react-palette'
+import NoteBody from "@/components/note/note-body/note-body"
 
 const NotesWrapper = styled.section`
-  margin: 0 auto;
   max-width: 1200px;
+  margin: auto;
 `
 
 const NotesContainer = styled.ol`
+  margin: var(--space);
   position: relative;
-  margin: 0 auto var(--space-lg) var(--space);
   padding-inline-start: 0 !important;
   list-style-type: none;
-  :before {
-    content: '';
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  display: grid;
+  ${media.lessThan('1200px')`
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    margin: var(--space-sm);
+  `}
+  ${media.lessThan('small')`
     display: block;
-    width: 3px;
-    background-color: var(--gray-extra-light);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 2.5rem;
-  }
+  `}
 `
 
 
 const NotesItem = styled.li`
-  border-radius: var(--border-radius);
-  min-height: 100px;
-  max-width: 400px;
+  margin: 1px;
+  overflow: hidden;
   position: relative;
-  margin-bottom: var(--space-lg);
-  background-color: ${props => props.bgColor ? props.bgColor : 'var(--gray-light)'};
+  min-height: 350px;
+  height: 100%;
 `
 
 
@@ -55,15 +54,20 @@ const NotesMeta = styled.div`
 
 const NotesDate = styled.p`
   font-size: .875rem;
-  color: var(--gray-extra-light);
   font-style: italic;
   ${media.lessThan('medium')`
 `}
 `
 
+const NoteBodyWrapper = styled.div`
+  padding: var(--space-sm);
+  background-color: var(--gray-extra-light);
+  height: 100%;
+`
 
 const NotesContent = styled.div`
-  padding: var(--space-sm);
+
+  height: 100%;
   ${media.lessThan('medium')`
   `}
 `
@@ -88,14 +92,14 @@ export default function Notes({ allNotes }) {
               title="Notes"
               slug="notes"
             />
+            <PageTitle>Notes</PageTitle>
             <NotesWrapper>
 
-              <PageTitle>Notes</PageTitle>
               <NotesContainer >
 
                 {allNotes.map((note) => (
                   
-                  <NotesItem bgColor={note.photo ? (usePalette(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`).data.muted): "var(--gray-extra-light)"} className="h-entry">
+                  <NotesItem className="h-entry">
                     {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
                     {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
                     {note.inReplyTo ?  <a className="u-in-reply-to" href={ofUrl} /> : null}
@@ -103,7 +107,12 @@ export default function Notes({ allNotes }) {
                     {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
                     {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                     <NotesContent className="e-content p-name">
-                    {note.content ? note.content : 
+                    {note.content ? (
+                      <NoteBodyWrapper>
+                        <NoteBody content={note.content} /> 
+                        <NotesDate className="dt-published">{note.date}</NotesDate>
+                      </NoteBodyWrapper> 
+                    ): 
                       <Link
                         href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
                         passHref
@@ -112,8 +121,7 @@ export default function Notes({ allNotes }) {
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
                           alt={note.date} 
                           title={note.date}
-                          width="400"
-                          height="400"
+                          layout="fill"
                           className="u-photo" 
                           style={{cursor:'pointer'}}
                         /> 
@@ -126,8 +134,8 @@ export default function Notes({ allNotes }) {
                           <img className="u-photo" src="/assets/images/avatar2.jpg" alt={note.title} /> 
                           <strong className="p-name">Max Dietrich</strong>
                         </span>
+                        <NotesDate className="dt-published">{note.date}</NotesDate>
                       </Hidden>
-                      <NotesDate className="dt-published">{note.date}</NotesDate>
                     </NotesMeta>
                   </NotesItem>
                 ))}

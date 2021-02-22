@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
 import renderers from "@/lib/utils/renderers"
 
-const NoteContent = styled.section`
+const NoteContent = styled.div`
   position: relative;
 `
 

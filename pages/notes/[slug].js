@@ -53,7 +53,7 @@ export default function Note({ note }) {
             <SEO   
               title={note.title}
               description={note.description}
-              slug={`/notes/${note.slug}`}
+              slug={`/notes/${note.date}`}
               date={note.date}
               postSEO
             />
@@ -97,8 +97,8 @@ export default function Note({ note }) {
               </NotesItem>
       
 
-              <SocialShare slug={`/notes/${note.slug}`} /> 
-              <Webmentions slug={note.slug} />
+              <SocialShare slug={`/notes/${note.date}`} /> 
+              <Webmentions slug={`/notes/${note.date}`} />
             </NoteWrapper>
           </>
         )}
@@ -126,7 +126,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.slug}`) || [],
+    paths: notes?.map((note) => `/notes/${note.date}`) || [],
     fallback: true,
   }
 }

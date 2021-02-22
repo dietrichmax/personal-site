@@ -57,34 +57,34 @@ export default function Note({ note }) {
               postSEO
             />
             <NoteWrapper className="h-entry">
-            {note.photo ? 
-            <Link
-              href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-              passHref
-            >
-              <NoteImage
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                alt={`${note.title}/${note.date}`}
-                title={`${note.title}/${note.date}`}
-                width="800"
-                height="800"
-                className="u-photo" 
-              />   
-            </Link> 
-            : null}
-            <NotesItem>
-              <NoteTitle>{note.title}</NoteTitle>
-              <NoteMeta postMetaData={note} />
-              <NoteTags tags={note.tags} />
-              <NotesContent>
-                <NoteBody className="e-content" content={note.content} />
-              </NotesContent>
+              {note.photo ? 
+              <Link
+                href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                passHref
+              >
+                <NoteImage
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                  alt={`${note.title}/${note.date}`}
+                  title={`${note.title}/${note.date}`}
+                  width="800"
+                  height="800"
+                  className="u-photo" 
+                />   
+              </Link> 
+              : null}
+              <NotesItem>
+                <NoteTitle>{note.title}</NoteTitle>
+                <NoteMeta postMetaData={note} />
+                <NoteTags tags={note.tags} />
+                <NotesContent>
+                  <NoteBody className="p-summary" content={note.content} />
+                </NotesContent>
+
+              </NotesItem>
       
 
               <SocialShare slug={`/notes/${note.slug}`} /> 
               <Webmentions slug={note.slug} />
-
-            </NotesItem>
             </NoteWrapper>
           </>
         )}

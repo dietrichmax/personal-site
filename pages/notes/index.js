@@ -101,7 +101,7 @@ export default function Notes({ allNotes }) {
                   <NotesItem className="h-entry">
                     <NotesContent className="e-content p-name">
                       <Link
-                        href={`/notes/${note.date}`}
+                        href={`/notes/${note.slug}`}
                         passHref
                       >
                         <a>

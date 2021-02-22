@@ -53,7 +53,7 @@ export default function Note({ note }) {
             <SEO   
               title={note.title}
               description={note.description}
-              slug={`/notes/${note.date}`}
+              slug={`/notes/${note.slug}`}
               date={note.date}
               postSEO
             />
@@ -87,7 +87,11 @@ export default function Note({ note }) {
                 </Link> 
                 : null}
                 <NotesContent>
-                  <NoteBody className="p-summary" content={note.content} />
+                  <NoteBody 
+                    className="p-summary" 
+                    title={`${note.title}/${note.date}`}
+                    content={note.content} 
+                  />
                 </NotesContent>
 
               </NotesItem>
@@ -122,7 +126,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.date}`) || [],
+    paths: notes?.map((note) => `/notes/${note.slug}`) || [],
     fallback: true,
   }
 }

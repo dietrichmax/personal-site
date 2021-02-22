@@ -74,7 +74,7 @@ export default function Links({ allLinks }) {
               {allLinks.map((link) => (
                 <LinksItem className="h-entry">
                     <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-                    <LinksLink><span className="u-bookmark-of h-cite"href={link.link} title={link.title}>{link.link}</span></LinksLink>
+                    <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
                     <LinksContent className="e-content">{link.description}</LinksContent>
                     <PostTags tags={link.tags} />
 

@@ -41,10 +41,6 @@ const ImagePreviewPlaceholder = styled.div`
   width: 526px; 
   height: 205px;
   border-radius: var(--border-radius);
-  :hover {
-    background-color: #fff;
-    color: var(--primary-color);
-  }
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
@@ -79,15 +75,14 @@ const ImagePlaceholder = styled.div`
 
 export default function PostImage({ preview, postData }) {
 
-const { title, excerpt, slug, tags, coverImage } = postData
-
+const { title, slug, coverImage } = postData
 
   return (
     <> {preview ?
       coverImage.coverImage ? (
         <Link href={`/articles/${slug}`} aria-label={title}>
           <CardItemImg 
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.medium.url}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
             title={title} 
             width="544"

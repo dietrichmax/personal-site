@@ -69,7 +69,6 @@ const PostTitleWrapper = styled.div`
 
 export default function Post({ post, morePosts }) {  
 
-  const { title, excerpt, coverImage, date, slug, user, content } = post
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -86,13 +85,12 @@ export default function Post({ post, morePosts }) {
         ) : (
           <>
             <SEO   
-              title={title}
-              description={excerpt}
-              image="{`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.formats.small.url}`}"
-              slug={`articles/${slug}`}
-              date={date}
+              title={post.title}
+              description={post.excerpt}
+              image={post.coverImage.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
+              slug={`articles/${post.slug}`}
+              date={post.date}
               ogType="article"
-              author={user}
               postSEO
             />
             <article ref={target} className="h-entry">
@@ -101,7 +99,7 @@ export default function Post({ post, morePosts }) {
               <PostImgWrapper>
                 <PostImage postData={post} /> 
                 <PostTitleWrapper>  
-                  <PostTitle className="p-name">{title}</PostTitle>   
+                  <PostTitle className="p-name">{post.title}</PostTitle>   
                 </PostTitleWrapper> 
               </PostImgWrapper>
 
@@ -113,10 +111,10 @@ export default function Post({ post, morePosts }) {
                       <TableOfContents content={post.toc}/>
                     </TOCInPostWrapper>      */}
                     
-                    <PostBody className="e-content" content={content} />     
+                    <PostBody className="e-content" content={post.content} />     
 
-                    <SocialShare slug={`/articles/${slug}`} /> 
-                    <Webmentions slug={`/articles/${slug}`} />
+                    <SocialShare slug={`/articles/${post.slug}`} /> 
+                    <Webmentions slug={`/articles/${post.slug}`} />
 
                     {/*<PostComments postID={post.id}/>*/}  
 

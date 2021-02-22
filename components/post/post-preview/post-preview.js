@@ -44,7 +44,7 @@ const CardItemDescription = styled.div`
 
 export default function PostPreview({ postData }) {
   
-  const { title, excerpt, slug, tags, coverImage } = postData
+  const { title, excerpt, slug, tags } = postData
 
 
   return (

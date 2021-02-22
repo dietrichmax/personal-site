@@ -69,7 +69,7 @@ const PostTitleWrapper = styled.div`
 
 export default function Post({ post, morePosts }) {  
 
-  const { id, title, excerpt, coverImage, date, slug, user, content } = post
+  const { title, excerpt, coverImage, date, slug, user, content } = post
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {

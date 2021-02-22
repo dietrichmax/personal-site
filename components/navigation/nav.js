@@ -4,7 +4,7 @@ import ActiveLink from "@/components/navigation/active-link"
 
 
 const NavItems = styled.li`
-  flex: 50%;
+  flex: 40%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -16,7 +16,6 @@ const NavItems = styled.li`
 
 const NavItem = styled.a`
   transition: none;
-  margin-left: var(--space-sm);
   color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
   :hover { 
     color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
@@ -47,6 +46,7 @@ export default function Nav( color ) {
     { "name": "Articles", "link":  "/articles" },
     { "name": "Notes", "link":  "/notes" },
     { "name": "Links", "link":  "/links" },
+    { "name": "Data", "link":  "/site-stats" },
     { "name": "About", "link":  "/about" },
   ]
 

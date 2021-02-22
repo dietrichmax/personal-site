@@ -39,7 +39,6 @@ const NotesItem = styled.li`
   overflow: hidden;
   position: relative;
   min-height: 350px;
-  height: 100%;
 `
 
 
@@ -107,26 +106,29 @@ export default function Notes({ allNotes }) {
                     {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
                     {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                     <NotesContent className="e-content p-name">
-                    {note.content ? (
-                      <NoteBodyWrapper>
-                        <NoteBody content={note.content} /> 
-                        <NotesDate className="dt-published">{note.date}</NotesDate>
-                      </NoteBodyWrapper> 
-                    ): 
                       <Link
-                        href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                        href={`/notes/${note.date}`}
                         passHref
                       >
+                        <a>
+                      {note.content ? (
+                        <NoteBodyWrapper>
+                          <NoteBody content={note.content} /> 
+                          <NotesDate className="dt-published">{note.date}</NotesDate>
+                        </NoteBodyWrapper> 
+                      ): 
+                        
                         <Image 
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                          alt={note.date} 
-                          title={note.date}
+                          alt={`${note.title}/${note.date}`}
+                          title={`${note.title}/${note.date}`}
                           layout="fill"
                           className="u-photo" 
                           style={{cursor:'pointer'}}
                         /> 
+                      }
+                        </a>
                       </Link>
-                    }
                     </NotesContent>
                     <NotesMeta>
                       <Hidden>

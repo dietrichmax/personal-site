@@ -21,7 +21,21 @@ const renderers = {
 }
         
 const PostContent = styled.section`
-  margin: var(--space-sm) 0;
+  margin: var(--space) 0;
+`
+
+const EndOfPost = styled.div`
+  display: flex;
+`
+
+const Square = styled.span`
+  display: block;
+  content: "";
+  margin-right: var(--space-sm);
+  width: 10px;
+  height: 10px;
+  background-color: #191f45;
+  background-color: var(--primary-color);
 `
 
 export default function PostBody({ content }) {
@@ -35,6 +49,7 @@ export default function PostBody({ content }) {
           renderers,
         }}
       />
+    <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
     </PostContent>
   )
 }

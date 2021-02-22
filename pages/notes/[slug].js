@@ -11,10 +11,12 @@ import NoteTags from "@/components/tags/tags"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import SocialShare from "@/components/social/social-share/social-share"
 import NoteMeta from "@/components/post/post-meta/post-meta"
+import Image from "next/image"
+import Link from"next/link"
 
 const NoteWrapper = styled.div`
 max-width: 1200px;
-padding: var(--space);
+padding: 0 var(--space);
 margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
 ${media.lessThan('medium')`
   padding-left: var(--space-sm);
@@ -25,9 +27,13 @@ ${media.lessThan('medium')`
 const NotesItem = styled.div`
   margin-bottom: var(--space);
   border-radius: var(--space-sm);
-  cursor: pointer;
 `
 
+const NoteImage = styled(Image)`
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  object-fit: contain;
+`
 
 const NotesContent = styled.div`
   margin: var(--space) 0;
@@ -51,19 +57,32 @@ export default function Note({ note }) {
               postSEO
             />
             <NoteWrapper className="h-entry">
-              
-            <NoteTitle className="p-name">{note.title}</NoteTitle>
-          
-            <NoteMeta postMetaData={note} />
-            <NoteTags tags={note.tags} />
-            <NotesItem >
-                <NotesContent>
-                  <NoteBody className="e-content" content={note.content} />
-                </NotesContent>
+            {note.photo ? 
+            <Link
+              href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+              passHref
+            >
+              <NoteImage
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                alt={`${note.title}/${note.date}`}
+                title={`${note.title}/${note.date}`}
+                width="800"
+                height="800"
+                className="u-photo" 
+              />   
+            </Link> 
+            : null}
+            <NotesItem>
+              <NoteTitle>{note.title}</NoteTitle>
+              <NoteMeta postMetaData={note} />
+              <NoteTags tags={note.tags} />
+              <NotesContent>
+                <NoteBody className="e-content" content={note.content} />
+              </NotesContent>
       
 
-                <SocialShare slug={`/notes/${note.slug}`} /> 
-                <Webmentions slug={note.slug} />
+              <SocialShare slug={`/notes/${note.slug}`} /> 
+              <Webmentions slug={note.slug} />
 
             </NotesItem>
             </NoteWrapper>
@@ -91,7 +110,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.slug}`) || [],
+    paths: notes?.map((note) => `/notes/${note.date}`) || [],
     fallback: true,
   }
 }

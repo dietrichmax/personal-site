@@ -33,7 +33,6 @@ const CardItemTitle = styled.h2`
 `;
 
 const CardItemDescription = styled.div`
-  font-size: 1.125rem;
   line-height: 1.75rem;
   margin: 0.75rem 0;
   font-family: var(--secondary-font);

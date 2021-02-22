@@ -27,6 +27,7 @@ import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
+import { treemapSlice } from "d3"
 
 
 const StyledReactTooltip = styled(ReactTooltip)`
@@ -135,7 +136,7 @@ const BottomStatsGrid = styled.div`
     text-align: center;
     background-color: var(--gray-extra-light);
     border-radius: var(--space-sm); 
-    grid-column: span 1/span 1; 
+    grid-column: span 2/span 2; 
     ${media.lessThan('1000px')`
         grid-column: span 2/span 2;
     `}
@@ -419,7 +420,7 @@ export default function Recruiting({
                             <GeneralStats>
                                 <StatsGridMedium>
                                     <GridMediumTitle>SEO Stats</GridMediumTitle>
-                                        {seoStats.map((item, i) => (
+                                        {seoStats.slice(2,4).map((item, i) => (
                                             <BottomStatsGrid key={i}>
                                                 <GridStats>{item.rank}</GridStats>
                                                 <GridStatsDescription>{item.label}</GridStatsDescription>

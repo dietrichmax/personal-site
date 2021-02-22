@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
     --border-radius: 4px;
     --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --thirdy-font: 'Cousine', serif;
+    --thirdy-font: Happy-Times, serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
     --text-color: var(--primary-color);

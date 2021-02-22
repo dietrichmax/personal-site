@@ -6,8 +6,6 @@ import React, { useState } from "react"
 
 const Share = styled.div`
   max-width: var(--content-width);
-  border-top: 1px solid var(--primary-color);
-  padding-top: var(--space);
   margin-top: var(--space-sm);
 `
 

@@ -38,7 +38,9 @@ const Input = styled.input`
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid hsla(0,0%,90.2%,.95);
+    
+    border: 2px solid var(--gray-light);
+    background-color: var(--gray-extra-light);
     :invalid {
         border: 1px solid red;
     }

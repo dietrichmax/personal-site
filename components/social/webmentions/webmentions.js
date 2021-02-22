@@ -5,6 +5,10 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
+const webmention = require('send-webmention'),
+    concat = require('concat-stream');
+
+
 
 const ReactionsIcon = styled.i`
 `
@@ -89,11 +93,64 @@ const WebmentionContent = styled.p`
 `
 
 
+const SendWebmentions = styled.div`
+  margin: var(--space-sm) auto var(--space) auto;
+`
+
+const SendText = styled.p`
+`
+
+const Input = styled.input`
+  padding: .5rem 1rem; 
+  margin: var(--space-sm) auto .25rem auto;
+  width: 100%;
+  border: 2px solid var(--gray-light);
+  background-color: var(--gray-extra-light);
+  :invalid {
+    border: 1px solid red;
+  }
+`
+
+const Button = styled.button`
+  border: 2px solid var(--primary-color);
+  width: auto !important;
+  color: var(--gray-extra-light);
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+  text-align: center;
+  padding: .75rem 1.5rem;
+  width: 20%;
+  background: var(--primary-color);
+  :hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
+  }       
+`
 export default function Webmentions({ slug, preview }) {
   const [webmentionsCount, setWebmentionsCount] = useState(0)
   const [webmentions, setWebmentions] = useState([])
   const [webmentionComments, setWebmentionComments] = useState([])
+  const [webmentionReposts, setWebmentionReposts] = useState([])
   const [webmentionLikes, setWebmentionLikes] = useState([])
+  const [sourceUrl, setSourceUrl] = useState("")
+
+
+
+  const sendWebmention = () => {
+    webmention(sourceUrl, `${config.siteUrl}${slug}`, function(err, obj) {
+      if (err) throw err;
+
+      if (obj.success) {
+          obj.res.pipe(function(buf) {
+              console.log('Success! Got back response:', buf.toString());
+          });
+      } else {
+          console.log('Failure :(');
+      }
+    });
+  }
 
   useEffect(() => {
     // GET WebmentionCount
@@ -113,7 +170,8 @@ export default function Webmentions({ slug, preview }) {
   webmentions.length > 0 ?
     webmentions.map((mention) => (
       mention["wm-property"] == "like-of" ?
-        webmentionLikes.push(mention) : webmentionComments.push(mention)
+        webmentionLikes.push(mention) : 
+      mention["wm-property"] == "in-reply-to" ? webmentionComments.push(mention) : null
     ))
   : null
 
@@ -140,12 +198,33 @@ export default function Webmentions({ slug, preview }) {
           ><WebmentionsInfoIcon className="las la-question-circle" /></WebmentionsInfo>
         </WebmentionsHeader>
 
-        {webmentionsCount.count > 0 ? (
+        
+        <SendWebmentions>
+          <SendText>Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
+          <Input
+            type="webmention-source"
+            name="webmention-source"
+            id="webmention-source"
+            label="webmention-source-input"
+            placeholder="URL / permalink of your post"
+            onChange={(e) => setSourceUrl(e.target.value)}
+          />
+          <Button
+            type="button"
+            aria-label="Send Webmention"
+            onClick={() => sendWebmention()}
+            style={{ width: "100%" }}
+          >
+          Send Webmention
+          </Button>
+        </SendWebmentions>
 
+        {webmentionsCount.count > 0 ? (
         <>
           <WebmentionsList>
           {/* Comments */}
-          {webmentionComments.map((mention) => (
+          {webmentionComments.length > 0 ? (
+          webmentionComments.map((mention) => (
             <WebmentionComment>
               <WebmentionAuthor className="h-card" >
               <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
@@ -163,9 +242,12 @@ export default function Webmentions({ slug, preview }) {
               </WebmentionAuthor>
               <WebmentionContent className="p-content">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
-          ))}
-          {/* Likes */}
+          ))
+          ) : null}
           </WebmentionsList> 
+          {/* Likes */}
+          
+          {webmentionLikes.length > 0 ? (
           <WebmentionsList>
             <WebmentionsTitle>Likes</WebmentionsTitle>
             {webmentionLikes.map((mention) => (
@@ -181,6 +263,7 @@ export default function Webmentions({ slug, preview }) {
               </WebmentionAuthorImgWrapper>
             ))}
             </WebmentionsList>
+          ) : null }
         </>
         ) : (
           <WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent>

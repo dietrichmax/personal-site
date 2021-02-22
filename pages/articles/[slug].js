@@ -113,7 +113,7 @@ export default function Post({ post, morePosts }) {
                       <TableOfContents content={post.toc}/>
                     </TOCInPostWrapper>      */}
                     
-                    <PostBody className="e-content" content={post.content} />     
+                    <PostBody className="e-content" content={content} />     
 
                     <SocialShare slug={`/articles/${slug}`} /> 
                     <Webmentions slug={`/articles/${slug}`} />

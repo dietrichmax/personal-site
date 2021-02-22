@@ -403,7 +403,7 @@ export default function Recruiting({
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
                                         <GridStats><Link href="/notes" title="See all Notes">{notesCount}</Link></GridStats>
-                                        <GridStatsDescription>Notes written</GridStatsDescription>
+                                        <GridStatsDescription>Notes published</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
                                         <GridStats>{webmentionsCount}</GridStats>

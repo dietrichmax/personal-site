@@ -51,14 +51,20 @@ export default function Note({ note }) {
           <>
             <SEO   
               title={note.title}
-              description={`Note - ${note.content}`}
+              description={note.description}
               slug={`/notes/${note.date}`}
               date={note.date}
               postSEO
             />
             <NoteWrapper>
              
-              <NotesItem className="h-entry">
+              <NotesItem className="h-entry">          
+                {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+                {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+                {note.inReplyTo ?  <a className="u-in-reply-to" href={ofUrl} /> : null}
+                {note.likeOf ? <a class="u-like-of" href={ofUrl} /> : null}
+                {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
+                {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                 {note.photo ? 
                 <Link
                   href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
@@ -96,12 +102,14 @@ export default function Note({ note }) {
 export async function getStaticProps({ params }) {
   const data = await getNote(params.slug)
   const content = data?.notes[0]?.content || ''
+  const description = await markdownToHtml(data?.notes[0]?.content || '')
 
   return {
     props: {
       note: {
         ...data?.notes[0],
         content: content,
+        description,
       },
     },
   }

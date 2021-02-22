@@ -99,12 +99,6 @@ export default function Notes({ allNotes }) {
                 {allNotes.map((note) => (
                   
                   <NotesItem className="h-entry">
-                    {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-                    {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-                    {note.inReplyTo ?  <a className="u-in-reply-to" href={ofUrl} /> : null}
-                    {note.likeOf ? <a class="u-like-of" href={ofUrl} /> : null}
-                    {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
-                    {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                     <NotesContent className="e-content p-name">
                       <Link
                         href={`/notes/${note.date}`}

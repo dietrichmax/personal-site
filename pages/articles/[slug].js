@@ -69,7 +69,7 @@ const PostTitleWrapper = styled.div`
 
 export default function Post({ post, morePosts }) {  
 
-  const { title, excerpt, coverImage, date, slug, user, content } = post
+  const { id, title, excerpt, coverImage, date, slug, user, content } = post
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -115,8 +115,8 @@ export default function Post({ post, morePosts }) {
                     
                     <PostBody className="e-content" content={post.content} />     
 
-                    <SocialShare slug={`/articles/${post.slug}`} /> 
-                    <Webmentions slug={`/articles/${post.slug}`} />
+                    <SocialShare slug={`/articles/${slug}`} /> 
+                    <Webmentions slug={`/articles/${slug}`} />
 
                     {/*<PostComments postID={post.id}/>*/}  
 

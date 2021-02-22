@@ -56,23 +56,24 @@ export default function Note({ note }) {
               date={note.date}
               postSEO
             />
-            <NoteWrapper className="h-entry">
-              {note.photo ? 
-              <Link
-                href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                passHref
-              >
-                <NoteImage
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                  alt={`${note.title}/${note.date}`}
-                  title={`${note.title}/${note.date}`}
-                  width="800"
-                  height="800"
-                  className="u-photo" 
-                />   
-              </Link> 
-              : null}
-              <NotesItem>
+            <NoteWrapper>
+             
+              <NotesItem className="h-entry">
+                {note.photo ? 
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                  passHref
+                >
+                  <NoteImage
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
+                    alt={`${note.title}/${note.date}`}
+                    title={`${note.title}/${note.date}`}
+                    width="800"
+                    height="800"
+                    className="u-photo" 
+                  />   
+                </Link> 
+                : null}
                 <NoteTitle>{note.title}</NoteTitle>
                 <NoteMeta postMetaData={note} />
                 <NoteTags tags={note.tags} />

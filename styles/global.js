@@ -51,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: var(--body-bg);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     font-style: normal; 
     font-family: var(--primary-font);
@@ -78,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     --border-dark: var(--gray-dark);
     --border-radius: 4px;
     --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --secondary-font: ff-spinoza-web-pro, serif; 
+    --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: 'Cousine', serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);

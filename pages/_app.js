@@ -6,7 +6,7 @@ import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
 import "@/styles/prism.css"
 
-import "@/public/fonts/Inter/style.css"
+//import "@/public/fonts/Inter/style.css"
 import "@/public/fonts/Happy-Times/style.css"
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
@@ -74,7 +74,7 @@ class MyApp extends App {
             rel="stylesheet" 
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css"
           />,
-          {/* Google Font 
+          {/* Google Font  */}
           <link 
             rel="dns-prefetch" 
             href="https://fonts.gstatic.com" 
@@ -87,7 +87,7 @@ class MyApp extends App {
           <link 
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" 
-          />*/}
+          />
           
           {/* Typekit Font 
           <link 

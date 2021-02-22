@@ -66,6 +66,11 @@ export default function Note({ note }) {
                 {note.likeOf ? <a class="u-like-of" href={ofUrl} /> : null}
                 {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
                 {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
+                      
+                <NoteTitle>{note.title}</NoteTitle>
+                <NoteMeta postMetaData={note} />
+                <NoteTags tags={note.tags} />
+            
                 {note.photo ? 
                 <Link
                   href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
@@ -81,9 +86,6 @@ export default function Note({ note }) {
                   />   
                 </Link> 
                 : null}
-                <NoteTitle>{note.title}</NoteTitle>
-                <NoteMeta postMetaData={note} />
-                <NoteTags tags={note.tags} />
                 <NotesContent>
                   <NoteBody className="p-summary" content={note.content} />
                 </NotesContent>

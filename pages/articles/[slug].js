@@ -106,7 +106,7 @@ export default function Post({ post, morePosts }) {
               <PostWrapper>
                   <Content>
 
-                    <PostHeader postData={post} />    
+                    <PostHeader postData={post} slug={`/articles/${post.slug}`/>    
                     {/*<TOCInPostWrapper>
                       <TableOfContents content={post.toc}/>
                     </TOCInPostWrapper>      */}

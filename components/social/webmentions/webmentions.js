@@ -184,7 +184,8 @@ export default function Webmentions({ slug, preview }) {
     fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
       .then((response) => response.json())
       .then((result) => {
-        setWebmentions(getWebmentionsForUrl(result.children,url);
+        setWebmentions(getWebmentionsForUrl(result.children,url),
+        setWebmentionsCount(result.children.length) 
       });
     
     webmentions.length > 0 ?

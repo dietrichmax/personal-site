@@ -176,6 +176,7 @@ export default function Webmentions({ slug, preview }) {
           'content-type': 'application/x-www-form-urlencoded',
         },
       });
+      console.log(res)
     }
     sendData();
   }

@@ -10,6 +10,6 @@ const PostDate = styled.time`
 export default function Date({ dateString, ago }) {
   const date = parseISO(dateString)
   return (
-    <PostDate dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")}</PostDate>
+    <PostDate className="dt-published" dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")}</PostDate>
   )
 }

@@ -68,7 +68,7 @@ export default function Note({ note }) {
                 {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                       
                 <NoteTitle>{note.title}</NoteTitle>
-                <NoteMeta postMetaData={note} />
+                <NoteMeta postMetaData={note} slug={`/notes/${note.date}`}/>
                 <NoteTags tags={note.tags} />
             
                 {note.photo ? 

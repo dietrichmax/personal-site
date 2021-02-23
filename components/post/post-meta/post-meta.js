@@ -13,15 +13,15 @@ const CardItemMeta = styled.div`
 
 
 
-export default function PostMeta({ postMetaData }) {
+export default function PostMeta({ postMetaData, slug }) {
   
-  const { date, dateUpdated,  slug, content } = postMetaData
+  const { date, dateUpdated, content } = postMetaData
 
   
   return (
     <CardItemMeta>
         <Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} />
-        <Webmentions preview slug={`/articles/${slug}`}/>
+        <Webmentions preview slug={slug}/>
     </CardItemMeta>
   )
 }

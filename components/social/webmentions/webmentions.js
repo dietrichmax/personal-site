@@ -168,13 +168,16 @@ export default function Webmentions({ slug, preview }) {
   console.log(url)
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
-    const res = await fetch(endpoint, {
-      method: 'post',
-      body: `source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-    });
+    async function sendData() {
+      const res = await fetch(endpoint, {
+        method: 'post',
+        body: `source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`,
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+      });
+    }
+    sendData();
   }
   useEffect(() => {
     // GET all Webmentions

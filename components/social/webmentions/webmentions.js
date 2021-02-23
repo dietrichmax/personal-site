@@ -5,10 +5,6 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
-const webmention = require('send-webmention'),
-    concat = require('concat-stream');
-
-
 
 const ReactionsIcon = styled.i`
 `
@@ -135,17 +131,26 @@ export default function Webmentions({ slug, preview }) {
   const [webmentionReposts, setWebmentionReposts] = useState([])
   const [webmentionLikes, setWebmentionLikes] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
+  const [submitted, setSubmitted] = useState(false)
 
 
 
   const sendWebmention = () => {
-    webmention({
-        source: sourceUrl,
-        target: `${config.siteUrl}${slug}`,
-    },
-    function(err, obj) {
-        // Same thing
-    });
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch(`https://webmention.app/check/?url=${sourceUr}`, requestOptions)
+      .then(function(response) {
+        if (!response.ok) {
+          console.log(response.statusText);
+        } else {
+          setSubmitted(true)
+        }
+        }).catch(function(error) {
+            console.log(error);
+        });
   }
   useEffect(() => {
     // GET WebmentionCount

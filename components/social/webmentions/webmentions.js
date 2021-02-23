@@ -192,7 +192,7 @@ export default function Webmentions({ slug, preview }) {
 
   useEffect(() => {
     async function getData() {
-      fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
+      fetch(`https://webmention.io/api/mentions.jf2?target=${url}?per-page=1000&page=0`)
         .then((response) => response.json())
         .then((result) => {
           setWebmentions(getWebmentionsForUrl(result.children, url))

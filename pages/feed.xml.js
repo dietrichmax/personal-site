@@ -1,7 +1,7 @@
 import React from 'react';
 import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllPosts, getAllNotes, getAllLinks } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls } from '@/lib/data/api/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 
@@ -40,6 +40,7 @@ class Rss extends React.Component {
     const posts = (await getAllPosts()) || []
     const notes = (await getAllNotes()) || []
     const links = (await getAllLinks()) || []
+    const blogrolls = (await getAllBlogrolls()) || []
 
     const allContent = []
 
@@ -67,6 +68,15 @@ class Rss extends React.Component {
         slug: `${link.link}`,
         date: link.date,
         content: converter.makeHtml(link.description)
+      })
+    })
+
+    blogrolls.map((blogroll) => {
+      allContent.push({
+        title: blogroll.name,
+        slug: blogroll.websiteUrl,
+        date: new Date().toISOString(),
+        content: converter.makeHtml(blogroll.bio)
       })
     })
     

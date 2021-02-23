@@ -41,7 +41,7 @@ const CardItemDescription = styled.div`
 
 
 
-export default function PostPreview({ postData }) {
+export default function PostPreview({ postData, previewLarge }) {
   
   const { title, excerpt, slug, tags } = postData
 
@@ -49,7 +49,7 @@ export default function PostPreview({ postData }) {
   return (
     <Card className="h-entry">
       <CardItemWrapper>
-        <PreviewImage preview postData={postData}/>
+        <PreviewImage preview previewLarge postData={postData}/>
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>

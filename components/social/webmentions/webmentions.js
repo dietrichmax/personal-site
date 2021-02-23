@@ -125,45 +125,51 @@ const Button = styled.button`
   }       
 `
 export default function Webmentions({ slug, preview }) {
-  const [webmentionsCount, setWebmentionsCount] = useState(0)
   const [webmentions, setWebmentions] = useState([])
-  const [webmentionComments, setWebmentionComments] = useState([])
-  const [webmentionReposts, setWebmentionReposts] = useState([])
-  const [webmentionLikes, setWebmentionLikes] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState("")
 
   const url = config.siteUrl+slug
   
   const getWebmentionsForUrl = (webmentions, url) => {
-    const comments = ['mention-of', 'in-reply-to']
-    const likes = ['like-of', 'repost-of']
+    const commentsProperty = ['mention-of', 'in-reply-to']
+    const likesProperty = ['like-of']
+    const repostsProperty = ['repost-of']
 
     const hasRequiredFields = entry => {
         const { author, published, content } = entry
         return author.name && published && content
     }
-    /*const sanitize = entry => {
+    const sanitize = entry => {
         const { content } = entry
         if (content['content-type'] === 'text/html') {
             content.value = sanitizeHTML(content.value)
         }
         return entry
-    }*/
-
-    const getComments = (webmentions) => {
-      setWebmentionComments(webmentions
-        .filter(entry => entry['wm-target'] === url)
-        .filter(entry => comments.includes(entry['wm-property']))
-        .filter(hasRequiredFields))
-        */.map(sanitize)*/
     }
-    setWebmentionsCount(webmentions.length)
-    setWebmentionLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
-    setWebmentionComments(getComments(webmentions))
+
+    const count = webmentions.length
+    const comments = webmentions
+      .filter(entry => entry['wm-target'] === url)
+      .filter(entry => commentsProperty.includes(entry['wm-property']))
+      .filter(hasRequiredFields)
+      .map(sanitize)
+    const likes = webmentions
+      .filter(entry => entry['wm-target'] === url)
+      .filter(entry => likesProperty.includes(entry['wm-property']))
+    const reposts = webmentions
+      .filter(entry => entry['wm-target'] === url)
+      .filter(entry => repostsProperty.includes(entry['wm-property']))
+
+    return {
+      count: count,
+      comments: comments,
+      likes: likes,
+      reposts: reposts
+    }
   }
 
-
+console.log(webmentions)
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
     async function sendData() {
@@ -175,41 +181,56 @@ export default function Webmentions({ slug, preview }) {
         },
       });
       const json = await res.json()
-      if (json.errors) {
-        throw new Error('Failed to send webmention')
-        console.error(json.errors)
+      if (json.error) {
+        setStatus(json.error)
       }
-      setSubmitted(true)
-      console.log(json)
+      setStatus(json.statusText)
     }
     sendData();
   }
-  console.log(sourceUrl)
+
   useEffect(() => {
-    // GET all Webmentions
-    fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
-      .then((response) => response.json())
-      .then((result) => {
-        getWebmentionsForUrl(result.children, url)
-      });
+    async function getData() {
+      fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
+        .then((response) => response.json())
+        .then((result) => {
+          setWebmentions(getWebmentionsForUrl(result.children, url))
+        });
+      }
+      getData()
   }, []);
-    
+
+
+  const renderAuthorImg = (mention) => {
+    return (
+      <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
+        <Image
+          src={mention.author.photo}
+          height="40"
+          width="40"
+          className="u-photo"
+          alt={`Photo of ${mention.author.name}`}
+          title={mention.author.name}
+        />
+      </WebmentionAuthorImgWrapper>
+    )
+  }
 
   return (
     <>
     {preview ? (
     <>
-      <PreviewLikeCount aria-label={webmentionsCount.count} >
+      <PreviewLikeCount aria-label={webmentions.count} >
       <ReactionsIcon 
-        title={`${webmentionsCount.count} Reactions`}
+        title={`${webmentions.count} Reactions`}
         className="las la-heart"
-      /> {webmentionsCount.count}</PreviewLikeCount> 
+      /> {webmentions.count}</PreviewLikeCount> 
     </>
     ) : (
       <>
       <WebMentionsWrapper> 
         <WebmentionsHeader>
-          <WebmentionsTitle>{webmentionsCount.count} Webmentions</WebmentionsTitle>
+          <WebmentionsTitle>{webmentions.count} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
             href="https://indieweb.org/Webmention" 
             target="_blank" rel="noopener noreferrer" 
@@ -237,26 +258,18 @@ export default function Webmentions({ slug, preview }) {
           >
           Send Webmention
           </Button>
+          {status ? <span>{status}</span> : null}
         </SendWebmentions>
 
-        {webmentionsCount.count > 0 ? (
+        {webmentions.count > 0 ? (
         <>
           <WebmentionsList>
           {/* Comments */}
-          {webmentionComments.length > 0 ? (
-          webmentionComments.map((mention) => (
+          {webmentions.comments.length > 0 ? (
+          webmentions.comments.map((mention) => (
             <WebmentionComment>
               <WebmentionAuthor className="h-card" >
-              <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
-                <Image
-                  src={mention.author.photo}
-                  height="40"
-                  width="40"
-                  className="u-photo"
-                  alt={`Photo of ${mention.author.name}`}
-                  title={mention.author.name}
-                />
-              </WebmentionAuthorImgWrapper>
+                {renderAuthorImg(mention)}
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
                 <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
               </WebmentionAuthor>
@@ -267,20 +280,20 @@ export default function Webmentions({ slug, preview }) {
           </WebmentionsList> 
           {/* Likes */}
           
-          {webmentionLikes.length > 0 ? (
+          {webmentions.likes.length > 0 ? (
           <WebmentionsList>
             <WebmentionsTitle>Likes</WebmentionsTitle>
-            {webmentionLikes.map((mention) => (
-              <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
-                <Image
-                  src={mention.author.photo}
-                  height="40"
-                  width="40"
-                  className="u-photo"
-                  alt={`Photo of ${mention.author.name}`}
-                  title={mention.author.name}
-                />
-              </WebmentionAuthorImgWrapper>
+            {webmentions.likes.map((mention) => (
+              renderAuthorImg(mention)
+            ))}
+            </WebmentionsList>
+          ) : null }
+          {/* Reposts*/}
+          {webmentions.reposts.length > 0 ? (
+          <WebmentionsList>
+            <WebmentionsTitle>Reposts</WebmentionsTitle>
+            {webmentions.reposts.map((mention) => (
+              renderAuthorImg(mention)
             ))}
             </WebmentionsList>
           ) : null }

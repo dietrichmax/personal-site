@@ -34,6 +34,7 @@ const NoteImage = styled(Image)`
   cursor: pointer;
   border-radius: var(--border-radius);
   object-fit: contain;
+  margin: 0;
 `
 
 const NotesContent = styled.div`

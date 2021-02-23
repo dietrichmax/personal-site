@@ -72,7 +72,7 @@ const ImagePlaceholder = styled.div`
 `
 
 
-export default function PostImage({ preview, postData }) {
+export default function PostImage({ preview, previewLarge, postData }) {
 
 const { title, slug, coverImage } = postData
 
@@ -84,8 +84,8 @@ const { title, slug, coverImage } = postData
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
             title={title} 
-            width="350"
-            height="130"
+            width={previewLarge ? "550" : "350"}
+            height={previewLarge ? "150" : "130"}
           />
         </Link>
       ) : (

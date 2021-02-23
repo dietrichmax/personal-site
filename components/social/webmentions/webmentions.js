@@ -170,8 +170,9 @@ export default function Webmentions({ slug, preview }) {
   webmentions.length > 0 ?
     webmentions.map((mention) => (
       mention["wm-property"] == "like-of" ?
-        webmentionLikes.push(mention) : 
-      mention["wm-property"] == "in-reply-to" ? webmentionComments.push(mention) : null
+        setWebmentionLikes(mention) : 
+      mention["wm-property"] == "in-reply-to" ? 
+        setWebmentionComments(mention) : null
     ))
   : null
 

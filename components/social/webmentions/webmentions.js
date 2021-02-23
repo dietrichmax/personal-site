@@ -132,7 +132,8 @@ export default function Webmentions({ slug, preview }) {
   const [status, setStatus] = useState("")
 
   const url = config.siteUrl+slug
-  
+  const pageLimit = 1000
+
   const getWebmentionsForUrl = (webmentions, url) => {
     const commentsProperty = ['mention-of', 'in-reply-to']
     const likesProperty = ['like-of']
@@ -192,7 +193,7 @@ export default function Webmentions({ slug, preview }) {
 
   useEffect(() => {
     async function getData() {
-      fetch(`https://webmention.io/api/mentions.jf2?target=${url}?per-page=1000&page=0`)
+      fetch(`https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`)
         .then((response) => response.json())
         .then((result) => {
           setWebmentions(getWebmentionsForUrl(result.children, url))

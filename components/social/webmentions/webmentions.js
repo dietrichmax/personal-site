@@ -181,7 +181,7 @@ export default function Webmentions({ slug, preview }) {
     }
     sendData();
   }
-  onsole.log(sourceUrl)
+  console.log(sourceUrl)
   useEffect(() => {
     // GET all Webmentions
     fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)

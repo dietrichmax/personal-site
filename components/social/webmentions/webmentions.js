@@ -149,6 +149,7 @@ export default function Webmentions({ slug, preview }) {
   }
 
   useEffect(() => {
+      console.log(sourceUrl)
     // GET WebmentionCount
     fetch(`https://webmention.io/api/count.json?target=${config.siteUrl}${slug}`)
       .then((response) => response.json())

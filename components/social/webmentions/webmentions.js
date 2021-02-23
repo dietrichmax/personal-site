@@ -167,21 +167,14 @@ export default function Webmentions({ slug, preview }) {
 
   console.log(url)
   const sendWebmention = () => {
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
-    };
-    fetch(`https://webmention.app/check/?url=${sourceUrl}`, requestOptions)
-      .then(function(response) {
-        if (!response.ok) {
-          console.log(response.statusText);
-        } else {
-          setSubmitted(true)
-        }
-        }).catch(function(error) {
-            console.log(error);
-        });
+    const endpoint = "https://webmention.io/mxd.codes/webmention"
+    const res = await fetch(endpoint, {
+      method: 'post',
+      body: `source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`,
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    });
   }
   useEffect(() => {
     // GET all Webmentions

@@ -156,12 +156,15 @@ export default function Webmentions({ slug, preview }) {
         .filter(entry => entry['wm-target'] === url)
         .filter(entry => comments.includes(entry['wm-property']))
         .filter(hasRequiredFields))
-        /*.map(sanitize)*/
+        .*/map(sanitize)*/
     }
+    
+    setWebmentionsCount(webmentions.length),
     setWebmentionLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
-    setWebmentionComments(webmentions)
+    setWebmentionComments(getComments(webmentions))
   }
 
+  console.log(url)
   const sendWebmention = () => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -185,8 +188,6 @@ export default function Webmentions({ slug, preview }) {
       .then((response) => response.json())
       .then((result) => {
         getWebmentionsForUrl(result.children,url),
-        setWebmentionsCount(result.children.length),
-        console.log(result.children.length)
       });
   }, []);
     

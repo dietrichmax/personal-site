@@ -12,9 +12,9 @@ const PostTitleWrapper = styled.div`
 
 
 
-export default function PostHeader({ postData }) {
+export default function PostHeader({ postData, slug}) {
 
-  const { title, tags, slug} = postData
+  const { title, tags } = postData
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function PostHeader({ postData }) {
           <PostTitle className="p-name">{title}</PostTitle>   
         </PostTitleWrapper> */}
 
-          <PostMeta slug={`/articles/${slug}`} postMetaData={postData} />
+          <PostMeta slug={slug} postMetaData={postData} />
          
           <PostTags tags={tags}/>
           

@@ -7,7 +7,7 @@ const ListWrapper = styled.div`
   max-width: 1200px;
   padding-left: var(--space);
   padding-right: var(--space);
-  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
   gap: var(--space-lg);
   display: grid;
   ${media.lessThan('medium')`

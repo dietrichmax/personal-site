@@ -197,7 +197,7 @@ export default function Footer() {
               You can subscribe to the RSS feeds for all <FooterLink href="/feed.xml" passHref><a title="Feed">content</a></FooterLink> or to individual feeds for <FooterLink href="/articles/feed.xml" passHref><a title="Articles-Feed">articles</a></FooterLink>, <FooterLink href="/notes/feed.xml" passHref><a title="Notes-Feed">notes</a></FooterLink>, and <FooterLink href="/links/feed.xml" passHref><a title="Links-Feed">links</a></FooterLink>.
             </FooterColumnDescription>
             
-            <FooterSocials className="h-card">
+            <FooterSocials>
             <FooterColumnTitle>Connect</FooterColumnTitle>
             <FooterItemSocials  rel="me" href={config.socials.twitter} title="@mxdietrich on Twitter">
               <FooterIcons className="lab la-twitter"/>

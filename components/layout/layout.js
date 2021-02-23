@@ -15,10 +15,10 @@ export default function Layout({ children, color }) {
   }, []);
 
   return (
-    <>
+    <div className="h-feed">
       <Header color={color} />
         <Container>{children}</Container>
       <Footer />
-    </>
+    </div>
   )
 }

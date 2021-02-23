@@ -156,7 +156,7 @@ export default function Webmentions({ slug, preview }) {
         .filter(entry => entry['wm-target'] === url)
         .filter(entry => comments.includes(entry['wm-property']))
         .filter(hasRequiredFields))
-        .*/map(sanitize)*/
+        */.map(sanitize)*/
     }
     
     setWebmentionsCount(webmentions.length),

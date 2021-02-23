@@ -158,8 +158,8 @@ export default function Webmentions({ slug, preview }) {
         .filter(hasRequiredFields))
         /*.map(sanitize)*/
     }
-    getLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
-    getComments(webmentions)
+    setWebmentionLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
+    setWebmentionComments(webmentions)
   }
 
   const sendWebmention = () => {

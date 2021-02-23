@@ -6,8 +6,8 @@ import media from "styled-media-query"
 
 const CardItemImg = styled(Image)`
   cursor: pointer;
-  width: 526px; 
-  height: 205px;
+  width: 350px; 
+  height: 130px;
   object-fit: cover;
   border-radius: var(--border-radius);
   ${media.lessThan('large')`
@@ -84,8 +84,8 @@ const { title, slug, coverImage } = postData
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
             title={title} 
-            width="544"
-            height="201"
+            width="350"
+            height="130"
           />
         </Link>
       ) : (

@@ -4,7 +4,7 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
-import config from "@/lib/data/siteConfig"
+import config from "@/lib/data/siteConfig.js"
 import "@/styles/prism.css"
 
 //import "@/public/fonts/Inter/style.css"

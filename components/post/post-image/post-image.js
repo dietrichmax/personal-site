@@ -38,8 +38,7 @@ const ImagePreviewPlaceholder = styled.div`
   vertical-align: center;
   justify-content: space-around;
   cursor: pointer;
-  width: 526px; 
-  height: 205px;
+  width: 100%;
   border-radius: var(--border-radius);
   ${media.lessThan('large')`
     height: 200px;

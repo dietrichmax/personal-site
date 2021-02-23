@@ -65,6 +65,7 @@ const WebmentionAuthorImgWrapper = styled.a`
   height: 40px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
+  margin-bottom: calc(var(--space-sm)*.5);
   border-radius: var(--border-radius);
   border: 1px solid var(--gray-extra-light);
   background-color: var(--gray-extra-light);

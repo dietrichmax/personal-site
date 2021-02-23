@@ -456,6 +456,7 @@ module.exports = withPlugins([
       "underdark.files.wordpress.com",
       "matthiasott.com",
       "lisilinhart.info",
+      "tantek.com,
     ],
   }},
   {i18n: {

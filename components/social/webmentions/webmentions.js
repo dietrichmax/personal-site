@@ -187,7 +187,7 @@ export default function Webmentions({ slug, preview }) {
     fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
       .then((response) => response.json())
       .then((result) => {
-        getWebmentionsForUrl(result.children,url),
+        getWebmentionsForUrl(result.children, url)
       });
   }, []);
     

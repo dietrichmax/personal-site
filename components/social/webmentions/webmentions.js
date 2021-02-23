@@ -174,11 +174,14 @@ export default function Webmentions({ slug, preview }) {
           'content-type': 'application/x-www-form-urlencoded',
         },
       });
+      
+      console.log(sourceUrl)
       console.log(`source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`)
       console.log(res)
     }
     sendData();
   }
+  onsole.log(sourceUrl)
   useEffect(() => {
     // GET all Webmentions
     fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)

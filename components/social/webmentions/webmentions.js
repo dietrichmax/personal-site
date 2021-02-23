@@ -134,8 +134,10 @@ export default function Webmentions({ slug, preview }) {
   const [submitted, setSubmitted] = useState(false)
 
   const url = config.siteUrl+slug
+  
   const getWebmentionsForUrl = (webmentions, url) => {
-    const allowedTypes = ['mention-of', 'in-reply-to']
+    const comments = ['mention-of', 'in-reply-to']
+    const likes = ['like-of', 'repost-of']
 
     const hasRequiredFields = entry => {
         const { author, published, content } = entry
@@ -149,11 +151,19 @@ export default function Webmentions({ slug, preview }) {
         return entry
     }*/
 
-    return webmentions
+    const getComments = (webmentions) => {
+      setWebmentionComments(webmentions
         .filter(entry => entry['wm-target'] === url)
-        .filter(entry => allowedTypes.includes(entry['wm-property']))
-        .filter(hasRequiredFields)
+        .filter(entry => comments.includes(entry['wm-property']))
+        .filter(hasRequiredFields))
         /*.map(sanitize)*/
+    }
+    const getLikes = (webmentions) => {
+      setWebmentionComments(webmentions
+        .filter(entry => likes.includes(entry['wm-property'])))
+    }
+    getLikes(webmentions)
+    getComments(webmentions)
   }
 
   const sendWebmention = () => {
@@ -174,34 +184,16 @@ export default function Webmentions({ slug, preview }) {
         });
   }
   useEffect(() => {
-    // GET WebmentionCount
-    fetch(`https://webmention.io/api/count.json?target=${url}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setWebmentionsCount(result) 
-      });
     // GET all Webmentions
     fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
       .then((response) => response.json())
       .then((result) => {
-        setWebmentions(getWebmentionsForUrl(result.children,url),
+        getWebmentionsForUrl(result.children,url),
         setWebmentionsCount(result.children.length) 
       });
-    
-    webmentions.length > 0 ?
-      webmentions.map((mention) => (
-        mention["wm-property"] == "like-of" ?
-          webmentionLikes.push(mention) : 
-        mention["wm-property"] == "in-reply-to" ? 
-          webmentionComments.push(mention) : null
-      ))
-    : null
   }, []);
     
 
-
-
-  console.log(sourceUrl)
   return (
     <>
     {preview ? (

@@ -133,7 +133,28 @@ export default function Webmentions({ slug, preview }) {
   const [sourceUrl, setSourceUrl] = useState("")
   const [submitted, setSubmitted] = useState(false)
 
+  const url = config.siteUrl+slug
+  const getWebmentionsForUrl = (webmentions, url) => {
+    const allowedTypes = ['mention-of', 'in-reply-to']
 
+    const hasRequiredFields = entry => {
+        const { author, published, content } = entry
+        return author.name && published && content
+    }
+    /*const sanitize = entry => {
+        const { content } = entry
+        if (content['content-type'] === 'text/html') {
+            content.value = sanitizeHTML(content.value)
+        }
+        return entry
+    }*/
+
+    return webmentions
+        .filter(entry => entry['wm-target'] === url)
+        .filter(entry => allowedTypes.includes(entry['wm-property']))
+        .filter(hasRequiredFields)
+        /*.map(sanitize)*/
+  }
 
   const sendWebmention = () => {
     // POST request using fetch inside useEffect React hook
@@ -154,16 +175,16 @@ export default function Webmentions({ slug, preview }) {
   }
   useEffect(() => {
     // GET WebmentionCount
-    fetch(`https://webmention.io/api/count.json?target=${config.siteUrl}${slug}`)
+    fetch(`https://webmention.io/api/count.json?target=${url}`)
       .then((response) => response.json())
       .then((result) => {
         setWebmentionsCount(result) 
       });
     // GET all Webmentions
-    fetch(`https://webmention.io/api/mentions.jf2?target=${config.siteUrl}${slug}`)
+    fetch(`https://webmention.io/api/mentions.jf2?target=${url}`)
       .then((response) => response.json())
       .then((result) => {
-        setWebmentions(result.children);
+        setWebmentions(getWebmentionsForUrl(result.children,url);
       });
     
     webmentions.length > 0 ?

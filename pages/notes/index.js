@@ -94,15 +94,20 @@ export default function Notes({ allNotes }) {
             <PageTitle>Notes</PageTitle>
             <NotesWrapper>
 
-              <NotesContainer >
+              <NotesContainer className="h-feed">
 
                 {allNotes.map((note) => (
                   
                   <NotesItem className="h-entry">
+                  <Hidden className="relsyn">
+                    {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication" /></li> : null }
+                    {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication" /></li> : null }
+                  </Hidden>   
                     <NotesContent className="e-content p-name">
                       <Link
                         href={`/notes/${note.date}`}
                         passHref
+                        className="u-url"
                       >
                         <a>
                       {note.content ? (

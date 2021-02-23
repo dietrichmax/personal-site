@@ -141,7 +141,7 @@ export default function Webmentions({ slug, preview }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     };
-    fetch(`https://webmention.app/check/?url=${sourceUr}`, requestOptions)
+    fetch(`https://webmention.app/check/?url=${sourceUrl}`, requestOptions)
       .then(function(response) {
         if (!response.ok) {
           console.log(response.statusText);

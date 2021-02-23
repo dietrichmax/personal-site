@@ -158,14 +158,12 @@ export default function Webmentions({ slug, preview }) {
         .filter(hasRequiredFields))
         */.map(sanitize)*/
     }
-    console.log(webmentions.length)
-    console.log(setWebmentionsCount(webmentions.length))
     setWebmentionsCount(webmentions.length)
     setWebmentionLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
     setWebmentionComments(getComments(webmentions))
   }
 
-  console.log(url)
+
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
     async function sendData() {
@@ -176,6 +174,7 @@ export default function Webmentions({ slug, preview }) {
           'content-type': 'application/x-www-form-urlencoded',
         },
       });
+      console.log(`source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`)
       console.log(res)
     }
     sendData();

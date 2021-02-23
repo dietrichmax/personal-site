@@ -44,7 +44,6 @@ const LinksLink = styled.cite`
 
 const LinksContent = styled.p`
   margin: calc(var(--space-sm)*0.5) 0;
-  font-size: 1.125rem;
   line-height: 1.75rem;
   max-width: 700px;
   font-family: var(--secondary-font);

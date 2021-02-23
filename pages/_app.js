@@ -24,85 +24,35 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          {/* Matomo Optimization*/}
-          <link 
-            rel="dns-prefetch" 
-            href="https://analytics.mxd.codes" 
-          />,
-          <link 
-            rel="preload" 
-            href="https://analytics.mxd.codes/matomo.js" 
-            type="script"
-          />,
-          {/* Strapi Optimization*/}
-          <link 
-            rel="preconnect" 
-            href="https://api.mxd.codes"
-          />,
-          {/* webmentions */}
-          <link
-            rel="prefetch"
-            href="https://webmention.io"
-          />,
-          <link
-            rel="preconnect"
-            href="https://webmention.io"
-          />,
-          <link 
-            rel="webmention" 
-            href="https://webmention.io/mxd.codes/webmention" 
-          />,
-          <link 
-            rel="pingback" 
-            href="https://webmention.io/mxd.codes/xmlrpc" 
-          />,
-          <link  
-            rel="me" 
-            href="https://www.reddit.com/user/DaTurboD" 
-          />
-          {/* LineAwsome */}
-          <link 
-            rel="dns-prefetch" 
-            href="https://maxst.icons8.com" 
-          />,
-          <link 
-            rel="preconnect" 
-            href="https://maxst.icons8.com"
-            crossorigin 
-          />,
-          <link 
-            rel="stylesheet" 
-            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css"
-          />,
-          {/* Google Font  */}
-          <link 
-            rel="dns-prefetch" 
-            href="https://fonts.gstatic.com" 
-          />,
-          <link 
-            rel="preconnect" 
-            href="https://fonts.googleapis.com" 
-            crossorigin 
-          />,
-          <link 
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" 
-          />
+          {/* DNS Prefetch*/}
+          <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
+          <link rel="dns-prefetch" href="https://maxst.icons8.com" />,
+          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
+          {/* Preconnect */}
+          <link rel="preconnect" href="https://api.mxd.codes" crossorigin/>,
+          <link rel="preconnect" href="https://maxst.icons8.com" crossorigin />,
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
+          {/* Preload */}
+          <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
+          {/* ME */}
+          <link href={config.socials.mail} rel="me" />
+          <link href={config.socials.twitter} rel="me" />
+          <link href={config.socials.xing} rel="me" />
+          <link href={config.socials.linkedin} rel="me" />
+          <link href={config.socials.github} rel="me" />
+          <link href={config.socials.instagram} rel="me" />
+          <link href={config.socials.reddit} rel="me" />
+          {/* IndieCert */}
+          <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
+          <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
+          {/* Stylesheets */}
+          <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" />,
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
           
           {/* Typekit Font 
-          <link 
-            rel="dns-prefetch" 
-            href="https://use.typekit.net" 
-          />,
-          <link 
-            rel="preconnect" 
-            href="https://use.typekit.net" 
-            crossorigin 
-          />,
-          <link 
-            rel="stylesheet"
-            href="https://use.typekit.net/xhe6fwq.css" 
-          />*/}
+          <link rel="dns-prefetch" href="https://use.typekit.net" />,
+          <link rel="preconnect" href="https://use.typekit.net" crossorigin />,
+          <link rel="stylesheet" href="https://use.typekit.net/xhe6fwq.css" />*/}
         </Head>
         <GlobalStyle/>
         <Component {...pageProps} />

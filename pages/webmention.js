@@ -39,37 +39,34 @@ const WebmentionFormLabel = styled.label`
 `
 
 const WebmentionButton = styled.button`
-  transition: 0.2s;
-  cursor: pointer;
-  border-radius: 4px;
-  display: inline-block;
-  padding: 12px 20px 12px;
-  font-size: 17px;
-  font-weight: 700;
+  border: 2px solid var(--primary-color);
+  width: auto !important;
+  color: var(--gray-extra-light);
+  text-transform: uppercase;
   outline: none;
-  border: none;
-  color: #fff;
-  background-color: var(--primary-color);
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+  text-align: center;
+  padding: .75rem 1.5rem;
+  width: 20%;
+  background: var(--primary-color);
   :hover {
-    background-color: var(--thirdy-color);
-  }
-
-
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
+  } 
 `
 
 
 
 const WebmentionFormInput = styled.input`
+  padding: .5rem 1rem; 
+  margin: .25rem auto 1rem auto;
   width: 100%;
-  margin: 0.5rem 0;
-  border-radius: 0;
-  background: var(--gray-extra-light);
-  margin-bottom: .5em;
-  outline: 0;
-  font-size: 1.25rem;
-  transition: border .1s ease-out;
-  border: none;
-  border-bottom: 2px solid var(--gray-light);
+  border: 2px solid var(--gray-light);
+  background-color: var(--gray-extra-light);
+  :invalid {
+    border: 1px solid red;
+  }
 `
 
 const WebmentionInfo = styled.div`
@@ -80,7 +77,29 @@ const WebmentionInfo = styled.div`
 
 export default function WebmentionEndpoint({  }) {
   const router = useRouter()
+  const [sourceUrl, setSourceUrl] = useState("")
+  const [targetUrl, setTargetUrl] = useState("")
 
+  const sendWebmention = () => {
+    const endpoint = "https://webmention.io/mxd.codes/webmention"
+    async function sendData() {
+      const res = await fetch(endpoint, {
+        method: 'post',
+        body: `source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(targetUrl)}`,
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+      });
+      const json = await res.json()
+      if (json.error) {
+        setStatus(json.error)
+      }
+      console.log(json)
+    }
+    sendData();
+  }
+  console.log(sourceUrl)
+  console.log(targetUrl)
   return (
     <Layout>
         {router.isFallback ? (
@@ -94,20 +113,20 @@ export default function WebmentionEndpoint({  }) {
             />
 
             <Title>Webmention Endpoint</Title>
-
+            
             <PageWrapper>  
 
               <WebmentionContainer> 
                 <WebmentionForm> 
                   <WebmentionFormField>
                     <WebmentionFormLabel for="source">Source URL</WebmentionFormLabel>
-                    <WebmentionFormInput id="source" name="source" type="url" />
+                    <WebmentionFormInput id="source" name="source" type="url" onChange={(e) => setSourceUrl(e.target.value)}/>
                   </WebmentionFormField>
                   <WebmentionFormField>
                     <WebmentionFormLabel for="target">Target URL</WebmentionFormLabel>
-                    <WebmentionFormInput id="target" name="target" type="url" />
+                    <WebmentionFormInput id="target" name="target" type="url"onChange={(e) => setTargetUrl(e.target.value)} />
                   </WebmentionFormField>
-                  <WebmentionButton type="submit" >Send Webmention</WebmentionButton>
+                  <WebmentionButton type="submit" onClick={() => sendWebmention()}>Send Webmention</WebmentionButton>
                 </WebmentionForm> 
 
                 <WebmentionInfo> 

@@ -88,13 +88,7 @@ const { title, slug, coverImage } = postData
             height={previewLarge ? "150" : "130"}
           />
         </Link>
-      ) : (
-          <Link href={`/articles/${slug}`} aria-label={title}>
-            <ImagePreviewPlaceholder title={title}>
-              <FallbackPreviewTitle>{title}</FallbackPreviewTitle>
-            </ImagePreviewPlaceholder>
-          </Link>
-      ) : (
+      ) : ( null ) : (
         coverImage.coverImage ? (
           <PostImg 
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}

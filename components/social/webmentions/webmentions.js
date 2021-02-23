@@ -77,6 +77,7 @@ const WebmentionAuthorImgWrapper = styled.a`
 const WebmentionAuthorName = styled.span`
   font-weight: 600;  
   display: inline-block;
+  margin-right: calc(var(--space-sm)*.5);
 `
 
 const WebmentionDate = styled.cite`
@@ -169,7 +170,6 @@ export default function Webmentions({ slug, preview }) {
     }
   }
 
-console.log(webmentions)
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
     async function sendData() {
@@ -268,12 +268,12 @@ console.log(webmentions)
           {webmentions.comments.length > 0 ? (
           webmentions.comments.map((mention) => (
             <WebmentionComment>
-              <WebmentionAuthor className="h-card" >
+              <WebmentionAuthor className="h-card p-author" >
                 {renderAuthorImg(mention)}
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
                 <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
               </WebmentionAuthor>
-              <WebmentionContent className="p-content">{mention.content? mention.content.text : null}</WebmentionContent>
+              <WebmentionContent className="p-content u-comment">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
           ))
           ) : null}

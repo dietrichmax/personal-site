@@ -41,6 +41,13 @@ const NotesContent = styled.div`
   margin: var(--space) 0;
 `
 
+const SyndList = styled.ol`
+  list-style: none;
+  margin: var(--space-sm) 0;
+  padding-inline-start: 0;
+`
+
+
 
 export default function Note({ note }) {
   const router = useRouter()
@@ -68,8 +75,15 @@ export default function Note({ note }) {
                 {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
                 {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
                       
-                <NoteTitle>{note.title}</NoteTitle>
-                <NoteMeta postMetaData={note} slug={`/notes/${note.date}`}/>
+                <NoteTitle>{note.title}</NoteTitle>                
+                <SyndList className="relsyn">
+                  {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
+                  {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
+                </SyndList>   
+                <NoteMeta postMetaData={note} slug={`/notes/${note.date}`} />
+
+
+
                 <NoteTags tags={note.tags} />
             
                 {note.photo ? 

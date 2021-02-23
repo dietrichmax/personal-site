@@ -61,13 +61,11 @@ const BlogrollLink = styled.a`
 
 const BlogrollProfileLink = styled.cite`
   display: block;
-  font-size: 1rem;
   border-bottom: 1px solid var(--link-color);
   font-family: var(--secondary-font);
 `
 
 const BlogrollProfileDesc = styled.p`
-  font-size: 18px;
   font-family: var(--secondary-font);
 `
 

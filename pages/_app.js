@@ -4,7 +4,6 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 //import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
-import config from "@/lib/data/siteConfig.js"
 import "@/styles/prism.css"
 
 //import "@/public/fonts/Inter/style.css"
@@ -35,14 +34,6 @@ class MyApp extends App {
           <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
-          {/* ME */}
-          <link href={config.socials.mail} rel="me" />
-          <link href={config.socials.twitter} rel="me" />
-          <link href={config.socials.xing} rel="me" />
-          <link href={config.socials.linkedin} rel="me" />
-          <link href={config.socials.github} rel="me" />
-          <link href={config.socials.instagram} rel="me" />
-          <link href={config.socials.reddit} rel="me" />
           {/* IndieCert */}
           <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
           <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,

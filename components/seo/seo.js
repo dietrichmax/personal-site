@@ -130,9 +130,16 @@ const SEO = ({
       <meta name="twitter:site" content={config.socials.twitter} />
       <meta name="twitter:creator" content={config.socials.twitter} />
 
-
-      </Head>
-      )
+      {/* ME */}
+      <link href={config.socials.mail} rel="me" />
+      <link href={config.socials.twitter} rel="me" />
+      <link href={config.socials.xing} rel="me" />
+      <link href={config.socials.linkedin} rel="me" />
+      <link href={config.socials.github} rel="me" />
+      <link href={config.socials.instagram} rel="me" />
+      <link href={config.socials.reddit} rel="me" />
+    </Head>
+  )
 }
 
 

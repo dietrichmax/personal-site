@@ -24,7 +24,7 @@ export default function PostHeader({ postData }) {
           <PostTitle className="p-name">{title}</PostTitle>   
         </PostTitleWrapper> */}
 
-          <PostMeta postMetaData={postData} />
+          <PostMeta slug={`/articles/${note.date}`} postMetaData={postData} />
          
           <PostTags tags={tags}/>
           

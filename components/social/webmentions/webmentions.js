@@ -158,11 +158,7 @@ export default function Webmentions({ slug, preview }) {
         .filter(hasRequiredFields))
         /*.map(sanitize)*/
     }
-    const getLikes = (webmentions) => {
-      setWebmentionComments(webmentions
-        .filter(entry => likes.includes(entry['wm-property'])))
-    }
-    getLikes(webmentions)
+    getLikes(webmentions.filter(entry => likes.includes(entry['wm-property'])))
     getComments(webmentions)
   }
 
@@ -189,7 +185,8 @@ export default function Webmentions({ slug, preview }) {
       .then((response) => response.json())
       .then((result) => {
         getWebmentionsForUrl(result.children,url),
-        setWebmentionsCount(result.children.length) 
+        setWebmentionsCount(result.children.length),
+        console.log(result.children.length)
       });
   }, []);
     

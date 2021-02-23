@@ -139,16 +139,12 @@ export default function Webmentions({ slug, preview }) {
 
 
   const sendWebmention = () => {
-    webmention(sourceUrl, `${config.siteUrl}${slug}`, function(err, obj) {
-      if (err) throw err;
-
-      if (obj.success) {
-          obj.res.pipe(function(buf) {
-              console.log('Success! Got back response:', buf.toString());
-          });
-      } else {
-          console.log('Failure :(');
-      }
+    webmention({
+        source: sourceUrl,
+        target: `${config.siteUrl}${slug}`,
+    },
+    function(err, obj) {
+        // Same thing
     });
   }
 

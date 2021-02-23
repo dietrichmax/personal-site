@@ -174,10 +174,13 @@ export default function Webmentions({ slug, preview }) {
           'content-type': 'application/x-www-form-urlencoded',
         },
       });
-      
-      console.log(sourceUrl)
-      console.log(`source=${encodeURIComponent(sourceUrl)}&target=${encodeURIComponent(url)}`)
-      console.log(res)
+      const json = await res.json()
+      if (json.errors) {
+        throw new Error('Failed to send webmention')
+        console.error(json.errors)
+      }
+      setSubmitted(true)
+      console.log(json)
     }
     sendData();
   }

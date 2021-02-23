@@ -94,7 +94,7 @@ export default function Notes({ allNotes }) {
             <PageTitle>Notes</PageTitle>
             <NotesWrapper>
 
-              <NotesContainer>
+              <NotesContainer className="h-feed">
 
                 {allNotes.map((note) => (
                   

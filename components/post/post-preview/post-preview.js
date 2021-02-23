@@ -57,7 +57,7 @@ export default function PostPreview({ postData }) {
             </Link>
           </CardItemTitle>
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
-          <PostMeta postMetaData={postData} />
+          <PostMeta postMetaData={postData} slug={`/articles/${slug}`} />
           <PostTags tags={tags}/>
         </CardItemInfo>
       </CardItemWrapper>

@@ -1,6 +1,5 @@
 import Date from '@/components/date/date'
 import styled from 'styled-components';
-import Webmentions from "@/components/social/webmentions/webmentions"
 import getReadTime from "@/lib/utils/read-time"
 
 
@@ -21,7 +20,6 @@ export default function PostMeta({ postMetaData, slug }) {
   return (
     <CardItemMeta>
         <Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} />
-        <Webmentions preview slug={slug}/>
     </CardItemMeta>
   )
 }

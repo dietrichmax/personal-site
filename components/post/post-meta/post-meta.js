@@ -12,7 +12,7 @@ const CardItemMeta = styled.div`
 
 
 
-export default function PostMeta({ postMetaData, slug }) {
+export default function PostMeta({ postMetaData }) {
   
   const { date, dateUpdated, content } = postMetaData
 

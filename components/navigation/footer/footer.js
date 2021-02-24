@@ -3,7 +3,7 @@ import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
-import { getAllPosts } from "@/lib/data/api/cms"
+import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
 // styled components
 
@@ -93,6 +93,7 @@ const FooterColumnTitle = styled.p`
 
 const FooterColumnDescription = styled.p`
   margin-bottom: var(--space);
+  line-height: 24px;
 `
 
 const FooterSocials = styled.ol`
@@ -143,6 +144,17 @@ const FooterLink = styled.a`
 
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
+  const [about, setAbout] = useState([])
+
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+  fetch('https://api.mxd.codes/about', requestOptions)
+      .then(response => response.json())
+      .then(data => setAbout(data));
+
+
 
   useEffect(() => {
     const requestOptions = {
@@ -150,8 +162,11 @@ export default function Footer() {
         headers: { 'Content-Type': 'application/json' },
     };
     fetch('https://api.mxd.codes/posts', requestOptions)
-        .then(response => response.json())
-        .then(data => setRecentPosts(data.slice(0,4)));
+      .then(response => response.json())
+      .then(data => setRecentPosts(data.slice(0,4)));
+    fetch('https://api.mxd.codes/about', requestOptions)
+      .then(response => response.json())
+      .then(data => setAbout(data));
   }, []);
 
   const footerItems = [
@@ -213,10 +228,12 @@ export default function Footer() {
         <FooterColumnWrapper> 
 
           <FooterColumn>      
-            <FooterColumnTitle>I'm Max Dietrich.</FooterColumnTitle>
+            <FooterColumnTitle>{about.intro}</FooterColumnTitle>
             <FooterColumnDescription>
-            I currently work as a Geo-Data Manager at RIWA. I ride my mountain bike in the alps, code and design my website and publish new content whenever i can..
-            </FooterColumnDescription>
+            <ReactMarkdown
+              children={about.bioShort}
+            />
+          </FooterColumnDescription>
           </FooterColumn>
 
           <FooterColumn>

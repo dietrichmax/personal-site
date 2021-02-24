@@ -50,7 +50,9 @@ const WebmentionsList = styled.div`
 
 const WebmentionComment = styled.div`
   font-size: 1rem;
-  margin-bottom: var(--space);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--gray-extra-light);
   font-family: var(--secondary-font);
 `
 
@@ -224,7 +226,7 @@ export default function Webmentions({ slug, preview }) {
     <>
       <PreviewLikeCount aria-label={webmentions.count} >
       <ReactionsIcon 
-        title={`${webmentions.count} Reactions`}
+        title={`${webmentions.count} Webmentions`}
         className="las la-heart"
       /> {webmentions.count}</PreviewLikeCount> 
     </>

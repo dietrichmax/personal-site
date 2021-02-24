@@ -44,12 +44,12 @@ const NotesContent = styled.div`
 const NoteInfo = styled.div`
   display: flex;
   align-items: center;
-  margin-left: var(--space-sm);
 `
 
 const SyndList = styled.ol`
   list-style: none;
   padding-inline-start: 0;
+  margin-left: var(--space-sm);
 `
 
 const Hidden = styled.a`
@@ -96,7 +96,7 @@ export default function Note({ note }) {
                  
                 <NoteInfo>
                   <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark">
-                    <NoteMeta title={note.title} postMetaData={note} slug={`/notes/${note.date}`} />
+                    <NoteMeta title={note.title} postMetaData={note} />
                   </a>
                   <SyndList className="relsyn">
                     {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }

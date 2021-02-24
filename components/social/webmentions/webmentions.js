@@ -42,13 +42,13 @@ const WebmentionsInfoIcon = styled.i`
   font-size: 1.5rem;
 `
 
-const WebmentionsList = styled.div`
+const WebmentionsList = styled.ol`
   list-style: none;
   padding-inline-start: 0;
   margin-bottom: var(--space-sm);
 `
 
-const WebmentionComment = styled.div`
+const WebmentionComment = styled.li`
   font-size: 1rem;
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
@@ -83,7 +83,7 @@ const WebmentionAuthorName = styled.span`
   margin-right: calc(var(--space-sm)*.5);
 `
 
-const WebmentionDate = styled.cite`
+const WebmentionDate = styled.time`
   ${media.lessThan('small')`
     display: none;
   `}
@@ -271,12 +271,14 @@ export default function Webmentions({ slug, preview }) {
           {/* Comments */}
           {webmentions.comments.length > 0 ? (
           webmentions.comments.map((mention) => (
-            <WebmentionComment>
+            <WebmentionComment className="u-comment u-mention h-cite">
               <WebmentionAuthor className="h-card p-author" >
                 {renderAuthorImg(mention)}
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
-                <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
-              </WebmentionAuthor>
+                <a href={mention.url} title={mention.published}>
+                  <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
+                </a>
+                </WebmentionAuthor>
               <WebmentionContent className="p-content u-comment">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
           ))

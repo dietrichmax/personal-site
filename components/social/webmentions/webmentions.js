@@ -129,7 +129,7 @@ const Button = styled.button`
     box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
   }       
 `
-export default function Webmentions({ slug, preview }) {
+export default function Webmentions({ slug }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
   const [status, setStatus] = useState("")
@@ -223,16 +223,6 @@ export default function Webmentions({ slug, preview }) {
 
   return (
     <>
-    {preview ? (
-    <>
-      <PreviewLikeCount aria-label={webmentions.count} >
-      <ReactionsIcon 
-        title={`${webmentions.count} Webmentions`}
-        className="las la-heart"
-      /> {webmentions.count}</PreviewLikeCount> 
-    </>
-    ) : (
-      <>
       <WebMentionsWrapper> 
         <WebmentionsHeader>
           <WebmentionsTitle>{webmentions.count} Webmentions</WebmentionsTitle>
@@ -310,11 +300,6 @@ export default function Webmentions({ slug, preview }) {
         )}
       
       </WebMentionsWrapper> 
-    </>
-
-    ) 
-    
-    }
     </>
   )
 }

@@ -101,8 +101,9 @@ export default function Notes({ allNotes }) {
                   <NotesItem className="h-entry">
                   <Hidden>
                     <a className="relsyn">
-                    {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication" /></li> : null }
-                    {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication" /></li> : null }
+                    {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
+                    {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
+                    {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
                     </a>
                     <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark"></a>
                   </Hidden>   

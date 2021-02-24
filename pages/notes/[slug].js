@@ -70,15 +70,18 @@ export default function Note({ note }) {
               <NotesItem className="h-entry">          
                 {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
                 {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+                {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
                 {note.inReplyTo ?  <a className="u-in-reply-to" href={ofUrl} /> : null}
                 {note.likeOf ? <a class="u-like-of" href={ofUrl} /> : null}
                 {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
                 {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
+                {note.mentionOf ? <a class="u-mention-of" href={ofUrl} /> : null}
                       
                 <NoteTitle className="p-name">{note.title}</NoteTitle>                
                 <SyndList className="relsyn">
                   {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
                   {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
+                  {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
                 </SyndList>   
                 <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark"><NoteMeta postMetaData={note} slug={`/notes/${note.date}`} /></a>
 

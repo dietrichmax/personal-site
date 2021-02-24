@@ -124,15 +124,6 @@ export default function Notes({ allNotes }) {
                         </a>
                       </Link>
                     </NotesContent>
-                    <NotesMeta>
-                      <Hidden>
-                        <span className="note__author__link">
-                          <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
-                          <strong className="p-name">Max Dietrich</strong>
-                        </span>
-                        <NotesDate className="dt-published">{note.date}</NotesDate>
-                      </Hidden>
-                    </NotesMeta>
                   </NotesItem>
                 ))}
               </NotesContainer>

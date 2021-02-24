@@ -269,16 +269,16 @@ export default function Footer() {
           <FooterColumn>
             <FooterColumnTitle>RSS Feeds</FooterColumnTitle>
               <FooterItem>
-                <FooterItemLink href="/feed.xml" passHref><a title="All content Feed"><FooterIcons className="las la-rss"/> All content</a></FooterItemLink>
+                <a href="/feed.xml" title="All content Feed"><FooterIcons className="las la-rss"/> All content</a>
               </FooterItem>
               <FooterItem>
-                <FooterItemLink href="/articles/feed.xml" passHref><a title="Articles Feed"><FooterIcons className="las la-rss"/> Articles</a></FooterItemLink>
+                <a href="/articles/feed.xml" title="Articles Feed"><FooterIcons className="las la-rss"/> Articles</a>
               </FooterItem>
               <FooterItem>
-                <FooterItemLink href="/notes/feed.xml" passHref><a title="Notes Feed"><FooterIcons className="las la-rss"/> Notes</a></FooterItemLink>
+                <a href="/notes/feed.xml" title="Notes Feed"><FooterIcons className="las la-rss"/> Notes</a>
               </FooterItem>
               <FooterItem>
-                <FooterItemLink href="/links/feed.xml" passHref><a title="Links Feed"><FooterIcons className="las la-rss"/> Links</a></FooterItemLink>
+                <a href="/links/feed.xml" title="Links Feed"><FooterIcons className="las la-rss"/> Links</a>
               </FooterItem>
           </FooterColumn>
 

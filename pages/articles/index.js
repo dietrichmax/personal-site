@@ -51,6 +51,7 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allTags = (await getAllTags()) || []
   return {
+    revalidate:  86400,
     props: { allPosts, allTags },
   }
 }

@@ -1,12 +1,13 @@
 import PostPreview from '@/components/post/post-preview/post-preview'
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
+import { getAllPosts, getAllTags, getAllNotes, } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
+import NotePreview from "@/components/note/note-preview/note-preview"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -102,11 +103,27 @@ const MoreArticles = styled.p`
   }
 `
 
-export default function Index({ allPosts, allTags }) {
+const NotesContainer = styled.ol`
+  margin: var(--space);
+  position: relative;
+  padding-inline-start: 0 !important;
+  list-style-type: none;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  display: grid;
+  ${media.lessThan('1200px')`
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    margin: var(--space-sm);
+  `}
+  ${media.lessThan('small')`
+    display: block;
+  `}
+`
+
+export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
 
-  const posts = allPosts.slice(0, 2)
-
+  const posts = allPosts.slice(0,2)
+  const notes = allNotes.slice(0,6)
   return (
     <>
       <Layout color={`var(--gray-extra-light)`}>
@@ -128,9 +145,9 @@ export default function Index({ allPosts, allTags }) {
               </Hero>
             </HeroWrapper>
 
-            <IndexPageContainer>
+            <IndexPageContainer className="h-feed">
               <SubTitle>Selected Articles</SubTitle>
-              <PostContainer className="h-feed">
+              <PostContainer >
                 {posts.map((post) => (
                   <PostPreview
                     postData={post}
@@ -144,6 +161,18 @@ export default function Index({ allPosts, allTags }) {
                 </Link>
               </MoreContainer>
 
+              {/*<SubTitle>Recent Notes</SubTitle>
+              <NotesContainer >
+                {notes.map((note) => (
+                 <NotePreview note={note} />
+                ))}
+                
+              </NotesContainer>
+              <MoreContainer>
+                <Link href={`/notes`} passHref>
+                  <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
+                </Link>
+                </MoreContainer>*/}
             </IndexPageContainer>
 
           </>
@@ -156,10 +185,11 @@ export default function Index({ allPosts, allTags }) {
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allTags = (await getAllTags()) || []
+  const allNotes = (await getAllNotes()) || []
   
   return {
     revalidate:  86400,
-    props: { allPosts, allTags },
+    props: { allPosts, allTags, allNotes },
   }
 }
 

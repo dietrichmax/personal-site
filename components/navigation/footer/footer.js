@@ -154,7 +154,6 @@ export default function Footer() {
         .then(data => setRecentPosts(data.slice(0,4)));
   }, []);
 
-  console.log(recentPosts)
   const footerItems = [
     { 
       name: "Mailing",

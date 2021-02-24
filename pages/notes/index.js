@@ -3,14 +3,11 @@ import Layout from '@/components/layout/layout'
 import { getAllNotes } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
-import Link from 'next/link'
 import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
-import Image from "next/image"
-import { usePalette } from 'react-palette'
-import NoteBody from "@/components/note/note-body/note-body"
+import NotePreview from "@/components/note/note-preview/note-preview"
 
 const NotesWrapper = styled.section`
   max-width: 1200px;
@@ -31,48 +28,6 @@ const NotesContainer = styled.ol`
   ${media.lessThan('small')`
     display: block;
   `}
-`
-
-
-const NotesItem = styled.li`
-  margin: 1px;
-  overflow: hidden;
-  position: relative;
-  min-height: 350px;
-`
-
-
-const NotesMeta = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: var(--space-sm);
-  padding-left: var(--space-sm);
-`
-
-const NotesDate = styled.p`
-  font-size: .875rem;
-  font-style: italic;
-  ${media.lessThan('medium')`
-`}
-`
-
-const NoteBodyWrapper = styled.div`
-  padding: var(--space-sm);
-  background-color: var(--gray-extra-light);
-  height: 100%;
-`
-
-const NotesContent = styled.div`
-
-  height: 100%;
-  ${media.lessThan('medium')`
-  `}
-`
-
-const Hidden = styled.a`
-  display: none;
 `
 
 export default function Notes({ allNotes }) {
@@ -97,49 +52,9 @@ export default function Notes({ allNotes }) {
               <NotesContainer className="h-feed">
 
                 {allNotes.map((note) => (
-                  
-                  <NotesItem className="h-entry">
-
-                    <Hidden className="webmention meta">
-                      <ol className="relsyn">
-                        {note.syndicationLinks? 
-                          note.syndicationLinks.map((link) => {
-                            return (
-                              <li>
-                                <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                                  <span>View on </span>
-                                  <i className={`lab la-${link.name}`}/> {link.name}
-                                </a>
-                              </li>
-                            )         
-                          })  : null }
-                      </ol> 
-                    </Hidden>
-
-                    <a
-                      href={`/notes/${note.date}`}
-                      title={`${note.date}/${note.title}`}
-                      className="u-url"
-                    >
-                      <NotesContent className="e-content p-name">
-                        {note.content ? (
-                          <NoteBodyWrapper>
-                            <NoteBody content={note.content} /> 
-                            <NotesDate className="dt-published">{note.date}</NotesDate>
-                          </NoteBodyWrapper> 
-                        ): 
-                          <Image 
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
-                            alt={`cover medium of ${note.date}`}
-                            layout="fill"
-                            className="u-photo" 
-                            style={{cursor:'pointer'}}
-                          /> 
-                        }
-                      </NotesContent>
-                    </a>
-                  </NotesItem>
+                 <NotePreview note={note} />
                 ))}
+                
               </NotesContainer>
             </NotesWrapper>
           </>

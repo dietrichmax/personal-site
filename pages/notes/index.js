@@ -106,7 +106,6 @@ export default function Notes({ allNotes }) {
                         className="u-url"
                         rel="bookmark"
                       >
-                        <a>
                       {note.content ? (
                         <NoteBodyWrapper>
                           <NoteBody content={note.content} /> 
@@ -121,8 +120,7 @@ export default function Notes({ allNotes }) {
                           style={{cursor:'pointer'}}
                         /> 
                       }
-                        </a>
-                      </Link>
+                      </a>
                     </NotesContent>
                   </NotesItem>
                 ))}

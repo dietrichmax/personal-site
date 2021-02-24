@@ -35,8 +35,11 @@ class MyApp extends App {
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
           {/* POSSE POST DISCOVERY */}
-          <link rel="feed" href="https://mxd.codes/notes" type="text/html"></link>,
+          <link rel="feed" href="https://mxd.codes/notes" type="text/html" />,
           {/* IndieCert */}
+          <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+          <link rel="micropub" href="https://mxd.codes/micropub" />
+          <link rel="token_endpoint" href="https://mxd.codes/token" />
           <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
           <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
           {/* Stylesheets */}

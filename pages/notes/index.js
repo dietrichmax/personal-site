@@ -102,6 +102,7 @@ export default function Notes({ allNotes }) {
                     <NotesContent className="e-content p-name">
                       <a
                         href={`/notes/${note.date}`}
+                        title={`${note.title}/${note.date}`}
                         className="u-url"
                         rel="bookmark"
                       >
@@ -115,7 +116,6 @@ export default function Notes({ allNotes }) {
                         <Image 
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
                           alt={`${note.title}/${note.date}`}
-                          title={`${note.title}/${note.date}`}
                           layout="fill"
                           className="u-photo" 
                           style={{cursor:'pointer'}}

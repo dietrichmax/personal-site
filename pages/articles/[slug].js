@@ -94,6 +94,14 @@ export default function Post({ post, morePosts }) {
               postSEO
             />
             <article ref={target} className="h-entry">
+
+              <div className="webmention meta">
+                {post.syndicationLinks? (
+                  post.syndicationLinks.map((link) => {
+                    return (<a aria-label={link.name} title={link.name} className="u-syndication syn-link" href={link.slug} rel="syndication" />)
+                  })) : null }
+              </div>
+              
               <ReadingProgress target={target} />
 
               <PostImgWrapper>

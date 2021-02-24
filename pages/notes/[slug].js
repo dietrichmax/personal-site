@@ -80,11 +80,10 @@ export default function Note({ note }) {
                   {note.quoteOf ? <a class="h-cite u-quotation-of" href={note.ofUrl} /> : null}
                   {note.mentionOf ? <a class="u-mention-of" href={note.ofUrl} /> : null}
                   <Hidden>
-                  <span className="note__author__link">
-                  <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
-                  <strong className="p-name">Max Dietrich</strong>
-                  </span>
-                  <NotesDate className="dt-published">{note.date}</NotesDate>
+                    <span className="note__author__link">
+                      <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
+                      <strong className="p-name">Max Dietrich</strong>
+                    </span>
                   </Hidden>
                 </div>
 

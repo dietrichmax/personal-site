@@ -71,11 +71,11 @@ export default function Note({ note }) {
                 {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
                 {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
                 {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-                {note.inReplyTo ?  <a className="u-in-reply-to" href={ofUrl} /> : null}
-                {note.likeOf ? <a class="u-like-of" href={ofUrl} /> : null}
-                {note.repostOf ? <a class="u-repost-of" href={ofUrl} />  : null}
-                {note.quoteOf ? <a class="h-cite u-quotation-of" href={ofUrl} /> : null}
-                {note.mentionOf ? <a class="u-mention-of" href={ofUrl} /> : null}
+                {note.inReplyTo ?  <a className="u-in-reply-to" href={note.ofUrl} /> : null}
+                {note.likeOf ? <a class="u-like-of" href={note.ofUrl} /> : null}
+                {note.repostOf ? <a class="u-repost-of" href={note.ofUrl} />  : null}
+                {note.quoteOf ? <a class="h-cite u-quotation-of" href={note.ofUrl} /> : null}
+                {note.mentionOf ? <a class="u-mention-of" href={note.ofUrl} /> : null}
                       
                 <NoteTitle className="p-name">{note.title}</NoteTitle>                
                 <SyndList className="relsyn">

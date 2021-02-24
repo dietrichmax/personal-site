@@ -85,7 +85,7 @@ const { title, slug, coverImage } = postData
             alt={title} 
             title={title} 
             width={previewLarge ? "550" : "350"}
-            height={previewLarge ? "150" : "130"}
+            height={previewLarge ? "200" : "130"}
           />
         </Link>
       ) : ( null ) : (

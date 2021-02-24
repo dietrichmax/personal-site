@@ -55,7 +55,7 @@ export default function SocialShare({ slug }) {
       };
 
     return (
-      <Share>
+      <Share>{/*}
         <PostShareTitle>Share</PostShareTitle>
             <Link href={`https://twitter.com/share?url=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-twitter" title="Share on Twitter" /></a></Link>
             <Link href={`http://www.reddit.com/submit?url=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-reddit" title="Share on Reddit" /></a></Link>
@@ -63,7 +63,7 @@ export default function SocialShare({ slug }) {
             <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-linkedin" title="Share on Linkedin" /></a></Link>
             <Link href={`https://wa.me/?text=${config.siteUrl}${slug}`} passHref><a><Icons className="lab la-whatsapp" title="Share on Whatsapp" /></a></Link>
             <Icons onClick={copyToClipboard} className="las la-paste" title="Copy to Clipboard" /><Copied>{copied ? `Copied Link` : null}</Copied>
-      </Share>
+    */}</Share>
     )
   }
   

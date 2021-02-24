@@ -129,8 +129,8 @@ export default function Index({ allPosts, allTags }) {
             </HeroWrapper>
 
             <IndexPageContainer>
-              <SubTitle>The latest Articles</SubTitle>
-              <PostContainer>
+              <SubTitle>Selected Articles</SubTitle>
+              <PostContainer className="h-feed">
                 {posts.map((post) => (
                   <PostPreview
                     postData={post}

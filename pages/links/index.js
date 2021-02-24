@@ -65,7 +65,7 @@ export default function Links({ allLinks }) {
               title="Links"
               slug="links"
             />
-            <article className="b-links">
+            <article className="h-feed">
               <PageTitle>Links</PageTitle>
               <SubTitle>Awesome content on the web, in random order.</SubTitle>
               <LinksContainer >

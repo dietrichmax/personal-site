@@ -11,7 +11,6 @@ const TagItem = styled.a`
   display: inline-block;
   font-size: .875rem;
   margin-right: var(--space-sm);
-  margin-top: 0.5rem;
   padding: 3px 5px;
   background-color: var(--gray-extra-light);
   font-family: var(--secondary-font);

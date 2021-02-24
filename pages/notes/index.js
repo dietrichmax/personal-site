@@ -99,29 +99,45 @@ export default function Notes({ allNotes }) {
                 {allNotes.map((note) => (
                   
                   <NotesItem className="h-entry">
-                    <NotesContent className="e-content p-name">
-                      <a
-                        href={`/notes/${note.date}`}
-                        title={`${note.title}/${note.date}`}
-                        className="u-url"
-                        rel="bookmark"
-                      >
-                      {note.content ? (
-                        <NoteBodyWrapper>
-                          <NoteBody content={note.content} /> 
-                          <NotesDate className="dt-published">{note.date}</NotesDate>
-                        </NoteBodyWrapper> 
-                      ): 
-                        <Image 
-                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                          alt={`${note.title}/${note.date}`}
-                          layout="fill"
-                          className="u-photo" 
-                          style={{cursor:'pointer'}}
-                        /> 
-                      }
-                      </a>
-                    </NotesContent>
+
+                    <Hidden className="webmention meta">
+                      <ol className="relsyn">
+                        {note.syndicationLinks? 
+                          note.syndicationLinks.map((link) => {
+                            return (
+                              <li>
+                                <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
+                                  <span>View on </span>
+                                  <i className={`lab la-${link.name}`}/> {link.name}
+                                </a>
+                              </li>
+                            )         
+                          })  : null }
+                      </ol> 
+                    </Hidden>
+
+                    <a
+                      href={`/notes/${note.date}`}
+                      title={`${note.date}/${note.title}`}
+                      className="u-url"
+                    >
+                      <NotesContent className="e-content p-name">
+                        {note.content ? (
+                          <NoteBodyWrapper>
+                            <NoteBody content={note.content} /> 
+                            <NotesDate className="dt-published">{note.date}</NotesDate>
+                          </NoteBodyWrapper> 
+                        ): 
+                          <Image 
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
+                            alt={`cover medium of ${note.date}`}
+                            layout="fill"
+                            className="u-photo" 
+                            style={{cursor:'pointer'}}
+                          /> 
+                        }
+                      </NotesContent>
+                    </a>
                   </NotesItem>
                 ))}
               </NotesContainer>

@@ -10,10 +10,10 @@ import NoteTitle from "@/components/title/post-title"
 import NoteTags from "@/components/tags/tags"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import SocialShare from "@/components/social/social-share/social-share"
-import NoteMeta from "@/components/post/post-meta/post-meta"
 import Image from "next/image"
 import Link from"next/link"
 import markdownToHtml from '@/lib/utils/markdownToHtml'
+import Date from '@/components/date/date'
 
 const NoteWrapper = styled.div`
 max-width: 1200px;
@@ -30,6 +30,12 @@ const NotesItem = styled.div`
   border-radius: var(--space-sm);
 `
 
+const NoteMeta = styled.a`
+  font-size: .875rem;
+  margin-right: var(--space-sm);
+  font-family: var(--secondary-font);
+`
+
 const NoteImage = styled(Image)`
   cursor: pointer;
   border-radius: var(--border-radius);
@@ -44,12 +50,25 @@ const NotesContent = styled.div`
 const NoteInfo = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: calc(var(--space-sm)*.5);
 `
 
 const SyndList = styled.ol`
   list-style: none;
   padding-inline-start: 0;
-  margin-left: var(--space-sm);
+  font-size: .875rem;
+`
+
+const SyndItem = styled.a`
+  :hover {
+    color: var(--text-color);
+    border-bottom: 1px solid var(--link-color);
+    cursor: pointer;
+  }
+`
+
+const SyndPlattform = styled.span`
+  text-transform: capitalize;
 `
 
 const Hidden = styled.a`
@@ -75,6 +94,7 @@ export default function Note({ note }) {
             <NoteWrapper>
              
               <NotesItem className="h-entry"> 
+
                 <div className="webmentions meta">
                   {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
                   {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
@@ -95,40 +115,46 @@ export default function Note({ note }) {
                 <NoteTitle className="p-name">{note.title}</NoteTitle>                
                  
                 <NoteInfo>
-                  <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark">
-                    <NoteMeta title={note.title} postMetaData={note} />
-                  </a>
-                  <SyndList className="relsyn">
-                    {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
-                    {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
-                    {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
-                  </SyndList> 
-
+                  <NoteMeta className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.title}>
+                    <Date className="dt-published" dateString={note.date} />
+                  </NoteMeta>
                   <NoteTags tags={note.tags} />
                 </NoteInfo>
             
-                {note.photo ? 
-                <Link
-                  href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                  passHref
-                >
-                  <NoteImage
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.photo.url}`}
-                    alt={`${note.title}/${note.date}`}
-                    title={`${note.title}/${note.date}`}
-                    width="800"
-                    height="800"
-                    className="u-photo" 
-                  />   
-                </Link> 
-                : null}
+                {note.coverMedium ? 
+                  <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`} passHref >
+                    <NoteImage
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
+                      alt={`cover image of ${note.date}/${note.slug}`}
+                      title={`${note.date}/${note.slug}`}
+                      width="800"
+                      height="800"
+                      className="u-photo" 
+                    />   
+                  </Link> 
+                : null }
+
                 <NotesContent>
                   <NoteBody 
                     className="p-summary" 
-                    title={`${note.title}/${note.date}`}
                     content={note.content} 
                   />
                 </NotesContent>
+
+                <SyndList className="relsyn">
+                    {note.syndicationLinks? 
+                      note.syndicationLinks.map((link) => {
+                        return (
+                          <li>
+                            <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
+                              <span>View on </span>
+                              <i className={`lab la-${link.name}`}/> 
+                              <SyndPlattform> {link.name}</SyndPlattform>
+                            </SyndItem>
+                          </li>
+                        )         
+                      })  : null }
+                </SyndList> 
 
               </NotesItem>
       

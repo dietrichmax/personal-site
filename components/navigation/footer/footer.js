@@ -12,7 +12,6 @@ const FooterContainer = styled.footer`
   border-top: 1px solid var(--gray-light);
   margin: 0 auto;
   max-width: 1200px;
-
   ${media.lessThan('medium')`  
     flex-wrap: wrap;
     padding: var(--space-sm);
@@ -42,6 +41,11 @@ const FooterMainNav = styled.ul`
 const FooterMainNavItem = styled.li`
   margin-right: var(--space);
   display: inline-block;
+  transition: 0.2s;
+  :hover {
+    color: var(--thirdy-color);
+    cursor: pointer;
+  }
   ${media.lessThan('medium')` 
     margin: 0;
   `}
@@ -52,22 +56,33 @@ const FooterMainNavLink = styled.a`
 `
 
 const FooterColumnWrapper = styled.ul`
+  grid-column: span 4/span 4;
   list-style: none;
   padding-inline-start: 0;
-  grid-column: span 4/span 4;
   max-width: 1200px;
   margin-top: var(--space);
   font-size: .875rem;
-  grid-template-columns: repeat(4,minmax(0px,1fr));
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   ${media.lessThan('medium')`  
     display: block;
   `}
 `
 const FooterColumn = styled.li`
-  width: auto;
+  max-width: 25%;
+  line-height: 1.25rem;
   ${media.lessThan('medium')`  
     margin-bottom: var(--space);
+    max-width: 100%;
+  `}
+`
+
+const FooterColumnPosts = styled.li`
+  max-width: 30%;
+  line-height: 1.25rem;
+  ${media.lessThan('medium')`  
+    margin-bottom: var(--space);
+    max-width: 100%;
   `}
 `
 
@@ -80,21 +95,27 @@ const FooterColumnDescription = styled.p`
   margin-bottom: var(--space);
 `
 
-const FooterSocials = styled.div`
-margin-top: .75rem;
-margin-bottom: .5rem;
+const FooterSocials = styled.ol`
+  list-style: none;
+  padding-inline-start: 0;
+
 `
 
-const FooterItemSocials = styled.a`
-  display: inline-block;
-  cursor: pointer;
-  margin-right: var(--space-sm);
-  ${media.lessThan('medium')` 
-  `}
+const FooterItemSocials = styled.li`
+  margin-bottom: .5rem;
+  :hover {
+    color: var(--thirdy-color);
+    cursor: pointer;
+  }
 `
 
 const FooterItem = styled.p`
   margin-bottom: .5rem;
+  transition: 0.2s;
+  :hover {
+    color: var(--thirdy-color);
+    cursor: pointer;
+  }
   ${media.lessThan('medium')` 
   `}
 `
@@ -121,7 +142,19 @@ const FooterLink = styled.a`
 `
 
 export default function Footer() {
+  const [recentPosts, setRecentPosts] = useState([])
 
+  useEffect(() => {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+    fetch('https://api.mxd.codes/posts', requestOptions)
+        .then(response => response.json())
+        .then(data => setRecentPosts(data.slice(0,4)));
+  }, []);
+
+  console.log(recentPosts)
   const footerItems = [
     { 
       name: "Mailing",
@@ -180,8 +213,60 @@ export default function Footer() {
 
         <FooterColumnWrapper> 
 
+          <FooterColumn>      
+            <FooterColumnTitle>I'm Max Dietrich.</FooterColumnTitle>
+            <FooterColumnDescription>
+            I currently work as a Geo-Data Manager at RIWA. I ride my mountain bike in the alps, code and design my website and publish new content whenever i can..
+            </FooterColumnDescription>
+          </FooterColumn>
 
-        <FooterColumn>
+          <FooterColumn>
+            <FooterColumnTitle>Elswhere</FooterColumnTitle>
+            <FooterSocials>
+              <FooterItemSocials>
+                <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FooterIcons className="lab la-twitter"/> Twitter</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.instagram} title="_maxdietrich on Instagram"><FooterIcons className="lab la-instagram"/> Instagram</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.github} title="DaTurboD on GitHub"><FooterIcons className="lab la-github"/> Github</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FooterIcons className="lab la-linkedin"/> Linkedin</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.mail} title="Write me a Email"><FooterIcons className="las la-envelope"/> Mail</a>
+              </FooterItemSocials>
+            </FooterSocials>
+          </FooterColumn>
+        
+          <FooterColumnPosts>
+            <FooterColumnTitle>Recent Articles</FooterColumnTitle>
+            {recentPosts.map((post, i) => (
+              <FooterItem key={i}>
+                <FooterItemLink href={`articles/${post.slug}`} passHref><a title={post.title}>{post.title}</a></FooterItemLink>
+              </FooterItem>
+              ))}
+          </FooterColumnPosts>
+
+          <FooterColumn>
+            <FooterColumnTitle>RSS Feeds</FooterColumnTitle>
+              <FooterItem>
+                <FooterItemLink href="/feed.xml" passHref><a title="All content Feed"><FooterIcons className="las la-rss"/> All content</a></FooterItemLink>
+              </FooterItem>
+              <FooterItem>
+                <FooterItemLink href="/articles/feed.xml" passHref><a title="Articles Feed"><FooterIcons className="las la-rss"/> Articles</a></FooterItemLink>
+              </FooterItem>
+              <FooterItem>
+                <FooterItemLink href="/notes/feed.xml" passHref><a title="Notes Feed"><FooterIcons className="las la-rss"/> Notes</a></FooterItemLink>
+              </FooterItem>
+              <FooterItem>
+                <FooterItemLink href="/links/feed.xml" passHref><a title="Links Feed"><FooterIcons className="las la-rss"/> Links</a></FooterItemLink>
+              </FooterItem>
+          </FooterColumn>
+
+          <FooterColumn>
             <FooterColumnTitle>Good Stuff</FooterColumnTitle>
             {footerItems.map((item, i) => (
               <FooterItem key={i}>
@@ -191,29 +276,8 @@ export default function Footer() {
           </FooterColumn>
 
 
-          <FooterColumn style={{gridColumn: 'span 3/span 3'}}>      
-            <FooterColumnTitle>Subscribe</FooterColumnTitle>
-            <FooterColumnDescription>
-              You can subscribe to the RSS feeds for all <FooterLink href="/feed.xml" passHref><a title="Feed">content</a></FooterLink> or to individual feeds for <FooterLink href="/articles/feed.xml" passHref><a title="Articles-Feed">articles</a></FooterLink>, <FooterLink href="/notes/feed.xml" passHref><a title="Notes-Feed">notes</a></FooterLink>, and <FooterLink href="/links/feed.xml" passHref><a title="Links-Feed">links</a></FooterLink>.
-            </FooterColumnDescription>
-            
-            <FooterSocials>
-            <FooterColumnTitle>Connect</FooterColumnTitle>
-            <FooterItemSocials  rel="me" href={config.socials.twitter} title="@mxdietrich on Twitter">
-              <FooterIcons className="lab la-twitter"/>
-            </FooterItemSocials>
-            <FooterItemSocials  rel="me" href={config.socials.github} title={config.socials.github} >
-              <FooterIcons className="lab la-github" />
-            </FooterItemSocials >
-            <FooterItemSocials  rel="me" href={config.socials.mail} title="Write me a Mail" >
-              <FooterIcons className="las la-envelope" />
-            </FooterItemSocials >
-            <FooterItemSocials  href={config.siteRss} title="Subscribe via RSS/Atom">
-              <FooterIcons className="las la-rss" />
-            </FooterItemSocials >  
 
-            </FooterSocials>
-          </FooterColumn>
+
 
 
         </FooterColumnWrapper> 

@@ -23,7 +23,7 @@ export default function MoreStories({ posts}) {
 
   return (
     <section>
-      <ListWrapper>
+      <ListWrapper className="h-feed">
         {posts.map((post) => (
           <PostPreview
             postData={post}

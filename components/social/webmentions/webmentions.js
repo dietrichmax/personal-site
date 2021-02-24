@@ -29,7 +29,6 @@ const WebmentionsHeader = styled.div`
 const WebmentionsTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: var(--space-sm);
 `
 
 const WebmentionsInfo = styled.a`

@@ -41,9 +41,12 @@ const NotesContent = styled.div`
   margin: var(--space) 0;
 `
 
+const NoteInfo = styled.div`
+  display: flex;
+`
+
 const SyndList = styled.ol`
   list-style: none;
-  margin: var(--space-sm) 0;
   padding-inline-start: 0;
 `
 
@@ -88,16 +91,19 @@ export default function Note({ note }) {
                 </div>
 
                 <NoteTitle className="p-name">{note.title}</NoteTitle>                
-                <SyndList className="relsyn">
-                  {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
-                  {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
-                  {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
-                </SyndList>   
-                <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark">
-                  <NoteMeta postMetaData={note} slug={`/notes/${note.date}`} />
-                </a>
+                 
+                <NoteInfo>
+                  <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark">
+                    <NoteMeta postMetaData={note} slug={`/notes/${note.date}`} />
+                  </a>
+                  <SyndList className="relsyn">
+                    {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
+                    {note.syndLinkInstagram ? <li><a aria-label="instagram" title="See this post on Instagram" className="u-syndication syn-link" href={note.syndLinkInstagram} rel="syndication"><i className="lab la-instagram"/></a></li> : null }
+                    {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
+                  </SyndList> 
 
-                <NoteTags tags={note.tags} />
+                  <NoteTags tags={note.tags} />
+                </NoteInfo>
             
                 {note.photo ? 
                 <Link

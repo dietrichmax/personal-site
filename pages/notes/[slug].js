@@ -47,7 +47,9 @@ const SyndList = styled.ol`
   padding-inline-start: 0;
 `
 
-
+const Hidden = styled.a`
+  display: none;
+`
 
 export default function Note({ note }) {
   const router = useRouter()
@@ -67,16 +69,25 @@ export default function Note({ note }) {
             />
             <NoteWrapper>
              
-              <NotesItem className="h-entry">          
-                {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-                {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-                {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-                {note.inReplyTo ?  <a className="u-in-reply-to" href={note.ofUrl} /> : null}
-                {note.likeOf ? <a class="u-like-of" href={note.ofUrl} /> : null}
-                {note.repostOf ? <a class="u-repost-of" href={note.ofUrl} />  : null}
-                {note.quoteOf ? <a class="h-cite u-quotation-of" href={note.ofUrl} /> : null}
-                {note.mentionOf ? <a class="u-mention-of" href={note.ofUrl} /> : null}
-                      
+              <NotesItem className="h-entry"> 
+                <div className="webmentions meta">
+                  {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+                  {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+                  {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+                  {note.inReplyTo ?  <a className="u-in-reply-to" href={note.ofUrl} /> : null}
+                  {note.likeOf ? <a class="u-like-of" href={note.ofUrl} /> : null}
+                  {note.repostOf ? <a class="u-repost-of" href={note.ofUrl} />  : null}
+                  {note.quoteOf ? <a class="h-cite u-quotation-of" href={note.ofUrl} /> : null}
+                  {note.mentionOf ? <a class="u-mention-of" href={note.ofUrl} /> : null}
+                  <Hidden>
+                  <span className="note__author__link">
+                  <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
+                  <strong className="p-name">Max Dietrich</strong>
+                  </span>
+                  <NotesDate className="dt-published">{note.date}</NotesDate>
+                  </Hidden>
+                </div>
+
                 <NoteTitle className="p-name">{note.title}</NoteTitle>                
                 <SyndList className="relsyn">
                   {note.syndLinkTwitter ? <li><a aria-label="twitter" title="See this tweet on Twitter" className="u-syndication syn-link" href={note.syndLinkTwitter} rel="syndication"><i className="lab la-twitter"/></a></li> : null }
@@ -84,8 +95,6 @@ export default function Note({ note }) {
                   {note.syndLinkReddit? <li><a aria-label="reddit" title="See this post on Reddit" className="u-syndication syn-link" href={note.syndLinkReddit} rel="syndication"><i className="lab la-reddit"/></a></li> : null }
                 </SyndList>   
                 <a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} rel="bookmark"><NoteMeta postMetaData={note} slug={`/notes/${note.date}`} /></a>
-
-
 
                 <NoteTags tags={note.tags} />
             

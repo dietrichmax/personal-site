@@ -18,8 +18,6 @@ const NotesItem = styled.li`
   border-radius: var(--border-radius);
 `
 
-
-
 const NoteBodyWrapper = styled.div`
   height: 100%;
   font-size: .875rem;
@@ -38,7 +36,8 @@ const NotesDate = styled.p`
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: var(--space-sm);
+  background-color: rgba(245, 248, 250, 0.7);
+  padding: calc(var(--space-sm)*.5);
   ${media.lessThan('medium')`
 
   `}

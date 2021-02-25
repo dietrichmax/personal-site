@@ -95,19 +95,33 @@ export default function Note({ note }) {
              
               <NotesItem className="h-entry"> 
 
-                <div className="webmentions meta">
-                  {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-                  {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-                  {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-                  <Hidden>
-                    <span className="note__author__link">
-                      <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
-                      <strong className="p-name">Max Dietrich</strong>
-                    </span>
-                  </Hidden>
-                </div>
+                <Hidden>
+                  <div className="webmentions meta">
+                    {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+                    {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+                    {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+                    <SyndList className="relsyn">
+                        {note.syndicationLinks? 
+                          note.syndicationLinks.map((link) => {
+                            return (
+                              <li>
+                                <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
+                                  <span>View on </span>
+                                  <i className={`lab la-${link.name}`}/> 
+                                  <SyndPlattform> {link.name}</SyndPlattform>
+                                </SyndItem>
+                              </li>
+                            )         
+                          })  : null }
+                      </SyndList> 
+                      <span className="note__author__link">
+                        <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
+                        <strong className="p-name">Max Dietrich</strong>
+                      </span>
+                  </div>
+                </Hidden>
 
-                <NoteTitle className="p-name">{note.title}</NoteTitle>                
+                {/* <NoteTitle className="p-name">{note.title}</NoteTitle>                
                  
                 <NoteInfo>
                   <NoteMeta className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.title}>
@@ -115,6 +129,7 @@ export default function Note({ note }) {
                   </NoteMeta>
                   <NoteTags tags={note.tags} />
                 </NoteInfo>
+                */}
             
                 {note.coverMedium ? 
                   <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`} passHref >
@@ -128,28 +143,15 @@ export default function Note({ note }) {
                     />   
                   </Link> 
                 : null }
-
+    
+                {note.content ? 
                 <NotesContent>
                   <NoteBody 
                     className="p-summary" 
                     content={note.content} 
                   />
                 </NotesContent>
-
-                <SyndList className="relsyn">
-                    {note.syndicationLinks? 
-                      note.syndicationLinks.map((link) => {
-                        return (
-                          <li>
-                            <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                              <span>View on </span>
-                              <i className={`lab la-${link.name}`}/> 
-                              <SyndPlattform> {link.name}</SyndPlattform>
-                            </SyndItem>
-                          </li>
-                        )         
-                      })  : null }
-                </SyndList> 
+                : null }
 
               </NotesItem>
       

@@ -30,11 +30,13 @@ const FooterInnerContainer = styled.nav`
 const FooterMainNav = styled.ul`
   list-style: none;
   padding-inline-start: 0;
-  grid-column: span 4/span 4;
   font-size: 1rem;
+  width: 80%;
+  text-align: right;
   ${media.lessThan('medium')` 
     display: flex;
     justify-content: space-between;
+    margin-top: var(--space-sm);
   `}
 `
 
@@ -142,6 +144,23 @@ const FooterLink = styled.a`
   cursor: pointer;
 `
 
+const FooterBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  grid-column: span 4/span 4;
+  ${media.lessThan('medium')`  
+    display: block;
+  `}
+`
+
+const BackToTop = styled.a`
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    text-decoration: underline;
+  }
+`
+
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
   const [about, setAbout] = useState([])
@@ -216,14 +235,19 @@ export default function Footer() {
     <FooterContainer>
 
       <FooterInnerContainer>
+        <FooterBar>
 
-        <FooterMainNav>
-          {headerItems.map((item, i) => (
-            <FooterMainNavItem>
-              <FooterMainNavLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
-            </FooterMainNavItem>
-          ))}
-        </FooterMainNav>
+          <BackToTop onClick={() => window.scrollTo(0, 0)}><i class="las la-angle-double-up" /> Back to top of page</BackToTop>
+          <FooterMainNav>
+            {headerItems.map((item, i) => (
+              <FooterMainNavItem>
+                <FooterMainNavLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
+              </FooterMainNavItem>
+            ))}
+          </FooterMainNav>
+
+
+        </FooterBar>
 
         <FooterColumnWrapper> 
 

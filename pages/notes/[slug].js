@@ -18,26 +18,36 @@ import Date from '@/components/date/date'
 const NoteWrapper = styled.div`
   max-width: 1200px;
   padding: var(--space-sm) var(--space);
-  margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
+  margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
 `
 
+const NoteImageWrapper = styled.div``
+
 const NotesItem = styled.div`
-  max-width: var(--content-width);
-  min-height: 200px;
   background-color: var(--content-bg);
-  padding: var(--space-sm);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
-const NoteMeta = styled.a`
-  font-size: .875rem;
-  margin-right: var(--space-sm);
+const NoteMeta = styled.ol`
   font-family: var(--secondary-font);
+  font-size: 14px;
+  display: flex;
+  margin-top: var(--space-sm);
+  justify-content: space-between;
+  list-style: none;
+  padding-inline-start 0;
+`
+
+const MetaItem = styled.li`
+
 `
 
 const NoteImage = styled(Image)`
@@ -48,19 +58,15 @@ const NoteImage = styled(Image)`
 `
 
 const NotesContent = styled.div`
-  margin: var(--space) 0;
-`
-
-const NoteInfo = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: calc(var(--space-sm)*.5);
+  padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
 `
 
 const SyndList = styled.ol`
+  font-family: var(--secondary-font);
   list-style: none;
   padding-inline-start: 0;
   font-size: .875rem;
+  text-align: right;
 `
 
 const SyndItem = styled.a`
@@ -77,6 +83,19 @@ const SyndPlattform = styled.span`
 
 const Hidden = styled.a`
   display: none;
+`
+
+
+const MoreContainer = styled.div`
+  margin-top: var(--space);
+  text-align: right;
+  cursor: pointer;
+`
+const MoreArticles = styled.p`
+  transition: 0.2s;
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 export default function Note({ note }) {
@@ -104,65 +123,69 @@ export default function Note({ note }) {
                     {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
                     {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
                     {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-                    <SyndList className="relsyn">
-                        {note.syndicationLinks? 
-                          note.syndicationLinks.map((link) => {
-                            return (
-                              <li>
-                                <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                                  <span>View on </span>
-                                  <i className={`lab la-${link.name}`}/> 
-                                  <SyndPlattform> {link.name}</SyndPlattform>
-                                </SyndItem>
-                              </li>
-                            )         
-                          })  : null }
-                      </SyndList> 
-                      <span className="note__author__link">
+
+                      <span className="h-card">
                         <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteLogo}`}  /> 
                         <strong className="p-name">Max Dietrich</strong>
                       </span>
                   </div>
-                </Hidden>
-
-                {/* <NoteTitle className="p-name">{note.title}</NoteTitle>                
+                </Hidden>            
                  
-                <NoteInfo>
-                  <NoteMeta className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.title}>
-                    <Date className="dt-published" dateString={note.date} />
-                  </NoteMeta>
-                  <NoteTags tags={note.tags} />
-                </NoteInfo>
-                */}
-            
-                <NotesContent>
-                  {note.coverMedium ? 
-                    <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`} passHref >
-                      <NoteImage
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
-                        alt={`cover image of ${note.date}/${note.slug}`}
-                        title={`${note.date}/${note.slug}`}
-                        width="900px"
-                        height="900px"
-                        className="u-photo" 
-                      />   
-                    </Link> 
-                  : null }
+                
+                  {note.coverMedium ? note.coverMedium.map((note, i) => {
+                    return (
+                    <NoteImageWrapper> 
+                      <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
+                        <NoteImage
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}
+                          alt={`${i} cover image`}
+                          title={`${note.name}`}
+                          width="1200px"
+                          height="1200px"
+                          className="u-photo" 
+                        />   
+                      </Link> 
+                    </NoteImageWrapper> 
+                    )
+                  }): null }
 
+                <NotesContent>
                   {note.content ? 
                     <NoteBody 
                       className="p-summary" 
                       content={note.content} 
                     />
                   : null }
-    
-                </NotesContent>
 
+                  <SyndList className="relsyn">
+                    {note.syndicationLinks? 
+                      note.syndicationLinks.map((link) => {
+                        return (
+                          <li>
+                            <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
+                              <span>View on </span>
+                              <i className={`lab la-${link.name}`}/> 
+                              <SyndPlattform> {link.name}</SyndPlattform>
+                            </SyndItem>
+                          </li>
+                        )         
+                      })  : null }
+                    </SyndList> 
+                  <NoteMeta >
+                    <MetaItem><NoteTags tags={note.tags} /></MetaItem>
+                    <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.date} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
+                  </NoteMeta>
+                </NotesContent>
               </NotesItem>
       
 
-              <SocialShare slug={`/notes/${note.date}`} /> 
+              {/*<SocialShare slug={`/notes/${note.date}`} /> */}
               <Webmentions slug={`/notes/${note.date}`} />
+              <MoreContainer>
+                <Link href={`/notes`} passHref>
+                  <MoreArticles title="To all Notes">« View all Notes</MoreArticles>
+                </Link>
+              </MoreContainer>
             </NoteWrapper>
           </>
         )}

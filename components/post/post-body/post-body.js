@@ -1,27 +1,19 @@
 import markdownStyles from '@/styles/markdown-styles.module.css'
 import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
-//import renderers from "@/lib/utils/renderers"
-import Image from "next/image"
-import Link from "next/link"
+import renderers from "@/lib/utils/renderers"
+import TableOfContents from "@/components/post/post-toc/table-of-contents"
+import media from 'styled-media-query';
 
-const renderers = {
-  image: image => {
-    return <Image class="test" src={image.src} alt={image.alt} layout="responsive"/>
-  },
-  link: link => {
-    return ( 
-      link.href.startsWith("/") ?
-      <Link href={link.href} passHref> 
-        <a alt={link.alt} title={link.title}>{link.children}</a>
-      </Link> :
-      <a href={link.href} alt={link.alt} title={link.title}>{link.children}</a>
-    )
-  },
-}
         
 const PostContent = styled.section`
   margin: var(--space) 0;
+  grid-template-columns: repeat(8,minmax(0,1fr));
+  gap: var(--space-sm);
+  display: grid;
+  ${media.lessThan('large')`
+    display: block;
+  `}
 `
 
 const EndOfPost = styled.div`
@@ -38,18 +30,34 @@ const Square = styled.span`
   background-color: var(--primary-color);
 `
 
+const ContentWrapper = styled.div`
+  grid-column: span 6/span 6;
+`
+
+const TOCWrapper = styled.div`
+grid-column: span 2/span 2;
+
+`
+
 export default function PostBody({ content }) {
 
   return (
+    <>
     <PostContent>
-      <ReactMarkdown
-        className={markdownStyles['markdown']}
-        children={content}
-        renderers={{
-          renderers,
-        }}
-      />
-    <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
+      <ContentWrapper>
+        <ReactMarkdown
+          className={markdownStyles['markdown']}
+          children={content}
+          renderers={{
+            renderers
+          }}
+        />
+      </ContentWrapper>
+      <TOCWrapper>
+        <TableOfContents content={content} />
+      </TOCWrapper>
     </PostContent>
+    <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
+    </>
   )
 }

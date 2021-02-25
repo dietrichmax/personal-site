@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
-import PostMeta from "@/components/post/post-meta/post-meta"
+import Date from '@/components/date/date'
 import PreviewImage from "@/components/post/post-image/post-image"
 
 const Card = styled.li`
@@ -17,6 +17,9 @@ const Card = styled.li`
 
 const CardItemWrapper = styled.div`
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const CardItemInfo = styled.div`
@@ -40,11 +43,23 @@ const CardItemDescription = styled.div`
 `;
 
 
+const TagsWrapper = styled.div`
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+`
 
+const DateWrapper = styled.a`
+  padding-left: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  padding-right: var(--space-sm);
+  margin-top: .5rem;
+  text-align: right;
+  font-size: 12px;
+`
 
 export default function PostPreview({ postData, previewLarge }) {
   
-  const { title, excerpt, slug, tags } = postData
+  const { title, excerpt, slug, tags, dateUpdated, date } = postData
 
 
   return (
@@ -58,9 +73,9 @@ export default function PostPreview({ postData, previewLarge }) {
             </Link>
           </CardItemTitle>
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
-          <PostMeta postMetaData={postData} slug={`/articles/${slug}`} />
-          <PostTags tags={tags}/>
         </CardItemInfo>
+        <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
+        <DateWrapper><Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
       </CardItemWrapper>
     </Card>
   )

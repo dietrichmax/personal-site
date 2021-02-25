@@ -5,6 +5,7 @@ import renderers from "@/lib/utils/renderers"
 
 const NoteContent = styled.div`
   position: relative;
+  max-width: var(--content-width);
 `
 
 

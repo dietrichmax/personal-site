@@ -83,40 +83,6 @@ const PostContainer = styled.div`
 `
 
 
-const MoreContainer = styled.div`
-  margin: var(--space-sm) var(--space) var(--space) var(--space);
-  text-align: right;    
-  cursor: pointer;
-  font-weight: 600;
-  text-decoration: none;
-  ${media.lessThan('medium')`
-    margin: 0 var(--space-sm) var(--space-sm) 0;
-  `}
-`
-const MoreArticles = styled.p`
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-  :hover {
-    text-decoration: underline;
-  }
-  :after {
-    content: "→";
-  }
-`
-
-const NotesContainer = styled.ol`
-  grid-template-columns: repeat(2, minmax(0px, 1fr));
-  gap: var(--space-lg);
-  display: grid;
-  margin: 0 var(--space);
-  list-style: none;
-  ${media.lessThan('medium')`
-    margin: 0;
-    display: block;
-  `}
-`
-
 
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
@@ -154,11 +120,7 @@ export default function Index({ allPosts, allTags, allNotes }) {
                   />
                 ))}
               </PostContainer>
-              <MoreContainer>
-                <Link href={`/articles`} passHref>
-                  <MoreArticles title="All Articles">All Articles{' '}</MoreArticles>
-                </Link>
-              </MoreContainer>
+
 
               {/*<SubTitle>Recent Notes</SubTitle>
               <NotesContainer >

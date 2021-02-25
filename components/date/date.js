@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig"
 
 const DateContainer = styled.time`
-  position: relative;
-  display: block;
+  font-family: var(--secondary-font);
 `
 
 export default function Date({ dateString, ago }) {

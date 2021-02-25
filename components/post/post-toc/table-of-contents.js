@@ -2,38 +2,33 @@ import React from "react"
 //import { useScrollYPosition } from "react-use-scroll-position"
 //import AnchorLink from "react-anchor-link-smooth-scroll"
 import styled from 'styled-components';
-import media from 'styled-media-query';
-import markdownToHtml from '@/lib/utils/markdownToHtml'
+import ReactMarkdown from "react-markdown"
+import markdownStyles from '@/styles/markdown-styles.module.css'
 
 const TOCWrapper = styled.div`
-  margin: var(--space-sm) auto;
-  border: 1px solid var(--text-color);
-  border-radius: var(--space-sm);
+  position: sticky;
+  top: 0;
+  font-family: var(--secondary-font);
+  margin-left: var(--space);
 `
 
 const TOCContainer = styled.div`
-  padding: var(--space);
-  font-size: 0.6em;
 `
 
 const TOCTitle = styled.p`
-  margin-bottom: var(--space-sm);
-  text-transform: uppercase;
 `
 
-export default function TOC ( content ) {
+export default function TableOfContents ( content ) {
   //const size = useWindowSize()
   //const scrollY = useScrollYPosition()
-  const toc = content.content
-
-
+  //const test = toc(content.content).content
+  //console.log(test)
   return (
-    !toc ? null :
+    {/*}
     <TOCWrapper>
       <TOCContainer> 
       <TOCTitle>Table of contents</TOCTitle> 
-        <div dangerouslySetInnerHTML={{ __html: toc }} />
       </TOCContainer> 
-    </TOCWrapper>
+  </TOCWrapper>*/}
   )
 }

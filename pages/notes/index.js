@@ -8,6 +8,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import NotePreview from "@/components/note/note-preview/note-preview"
+import SubTitle from '@/components/title/sub-title'
 
 const NotesWrapper = styled.section`
   max-width: 1200px;
@@ -48,6 +49,7 @@ export default function Notes({ allNotes }) {
               slug="notes"
             />
             <PageTitle>Notes</PageTitle>
+            <SubTitle>Thoughts, pictures and reactions.</SubTitle>
             <NotesWrapper>
 
               <NotesContainer className="h-feed">

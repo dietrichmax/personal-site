@@ -119,7 +119,7 @@ export default function Note({ note }) {
                           })  : null }
                       </SyndList> 
                       <span className="note__author__link">
-                        <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
+                        <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteLogo}`}  /> 
                         <strong className="p-name">Max Dietrich</strong>
                       </span>
                   </div>

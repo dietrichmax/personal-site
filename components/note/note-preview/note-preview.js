@@ -58,6 +58,11 @@ export default function NotePreview({ note }) {
           <img className="u-photo" src={config.siteLogo} alt={config.siteTitle} /> 
           <strong className="p-name">{config.siteTitle}</strong>
         </span>
+        <span className="webmention type">
+          {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
+          {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
+          {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
+        </span>
         <ol className="relsyn">
           {note.syndicationLinks? 
             note.syndicationLinks.map((link) => {

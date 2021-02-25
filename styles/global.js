@@ -89,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;
-    --content-width: 650px;
+    --content-width: 900px;
     --space: 2rem;
     --space-sm: 1rem;
     --space-lg: 3rem;

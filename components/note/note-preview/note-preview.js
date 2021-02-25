@@ -11,7 +11,7 @@ const NotesItem = styled.li`
   position: relative;
   min-height: 250px;
   box-shadow: 0 2px 2px rgba(0,0,0,.09);
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   padding: var(--space-sm);
 `
 

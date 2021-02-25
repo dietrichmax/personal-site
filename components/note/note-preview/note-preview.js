@@ -9,7 +9,7 @@ const NotesItem = styled.li`
   margin: 1px;
   overflow: hidden;
   position: relative;
-  min-height: 350px;
+  min-height: 250px;
 `
 
 const NotesDate = styled.p`

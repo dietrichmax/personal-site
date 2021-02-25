@@ -142,8 +142,8 @@ export default function Note({ note }) {
                         src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
                         alt={`cover image of ${note.date}/${note.slug}`}
                         title={`${note.date}/${note.slug}`}
-                        width="var(--content-width)"
-                        height="var(--content-width)"
+                        width="900px"
+                        height="900px"
                         className="u-photo" 
                       />   
                     </Link> 

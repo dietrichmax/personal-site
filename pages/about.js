@@ -118,9 +118,9 @@ export default function About({ about }) {
 
             <ImageWrapper>
               <Image
-                src="https://api.mxd.codes/uploads/49335092_1413215778813731_4012934939283981891_n_784f4d9dd8.jpg?2617461"
-                width="670"
-                height="380"
+                src="/logos/windows10/SplashScreen.scale-100.png"
+                width="620"
+                height="300"
                 title={about.title}
                 alt={about.title}
               />

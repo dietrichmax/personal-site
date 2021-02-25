@@ -131,27 +131,28 @@ export default function Note({ note }) {
                 </NoteInfo>
                 */}
             
-                {note.coverMedium ? 
-                  <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`} passHref >
-                    <NoteImage
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
-                      alt={`cover image of ${note.date}/${note.slug}`}
-                      title={`${note.date}/${note.slug}`}
-                      width="800"
-                      height="800"
-                      className="u-photo" 
-                    />   
-                  </Link> 
-                : null }
-    
-                {note.content ? 
                 <NotesContent>
-                  <NoteBody 
-                    className="p-summary" 
-                    content={note.content} 
-                  />
+                  {note.coverMedium ? 
+                    <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`} passHref >
+                      <NoteImage
+                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
+                        alt={`cover image of ${note.date}/${note.slug}`}
+                        title={`${note.date}/${note.slug}`}
+                        width="800"
+                        height="800"
+                        className="u-photo" 
+                      />   
+                    </Link> 
+                  : null }
+
+                  {note.content ? 
+                    <NoteBody 
+                      className="p-summary" 
+                      content={note.content} 
+                    />
+                  : null }
+    
                 </NotesContent>
-                : null }
 
               </NotesItem>
       

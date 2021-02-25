@@ -29,6 +29,7 @@ const WebmentionsHeader = styled.div`
 const WebmentionsTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: var(--space-sm);
 `
 
 const WebmentionsInfo = styled.a`
@@ -50,9 +51,11 @@ const WebmentionsList = styled.ol`
 const WebmentionComment = styled.li`
   font-size: 1rem;
   margin-bottom: var(--space-sm);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--gray-extra-light);
   font-family: var(--secondary-font);
+  background-color: var(--body-bg);
+  padding: var(--space-sm);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
 `
 
 const WebmentionAuthor = styled.div`  

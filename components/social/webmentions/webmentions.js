@@ -52,7 +52,7 @@ const WebmentionComment = styled.li`
   font-size: 1rem;
   margin-bottom: var(--space-sm);
   font-family: var(--secondary-font);
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   padding: var(--space-sm);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);

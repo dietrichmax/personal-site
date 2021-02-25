@@ -105,7 +105,7 @@ const SendText = styled.p`
 const Input = styled.input`
   padding: .5rem 1rem; 
   margin: var(--space-sm) auto .25rem auto;
-  width: 100%;
+  width: 60%;
   border: 2px solid var(--gray-light);
   background-color: var(--gray-extra-light);
   :invalid {

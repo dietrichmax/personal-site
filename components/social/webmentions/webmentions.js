@@ -34,13 +34,11 @@ const WebmentionsTitle = styled.p`
 `
 
 const WebmentionsInfo = styled.a`
-  font-size: 1rem;
   display: flex;
   align-items: center;
 `
 
 const WebmentionsInfoIcon = styled.i`
-  font-size: 1.5rem;
 `
 
 const WebmentionsList = styled.ol`

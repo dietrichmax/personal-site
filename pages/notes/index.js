@@ -19,7 +19,7 @@ const NotesContainer = styled.ol`
   position: relative;
   padding-inline-start: 0 !important;
   list-style-type: none;
-  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   display: grid;
   ${media.lessThan('1200px')`
     grid-template-columns: repeat(2, minmax(0px, 1fr));

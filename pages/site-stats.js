@@ -121,13 +121,17 @@ const StatsLargeGrid = styled.div`
     background-color: var(--content-bg);
     grid-column: span 2/span 2;    
     border-radius: var(--space-sm);  
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
 `
 
 const StatsGridMedium = styled.div` 
     display: grid;
     gap: var(--space-sm);
     grid-template-columns: repeat(4,minmax(0,1fr));
-    grid-column: span 2/span 2;
+    grid-column: span 2/span 2;;  
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
 `
 const GridMediumTitle = styled.p`
     grid-column: span 4/span 4;
@@ -136,7 +140,9 @@ const BottomStatsGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
     border-radius: var(--space-sm); 
-    grid-column: span 2/span 2; 
+    grid-column: span 2/span 2; ;  
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
     ${media.lessThan('1000px')`
         grid-column: span 2/span 2;
     `}

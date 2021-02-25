@@ -16,18 +16,22 @@ import markdownToHtml from '@/lib/utils/markdownToHtml'
 import Date from '@/components/date/date'
 
 const NoteWrapper = styled.div`
-max-width: 1200px;
-padding: var(--space-sm) var(--space);
-margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
-${media.lessThan('medium')`
-  padding-left: var(--space-sm);
-  padding-right: var(--space-sm);
-`}
+  max-width: 1200px;
+  padding: var(--space-sm) var(--space);
+  margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  `}
 `
 
 const NotesItem = styled.div`
-  margin-bottom: var(--space);
-  border-radius: var(--space-sm);
+  max-width: 700px;
+  min-height: 200px;
+  background-color: var(--content-bg);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 `
 
 const NoteMeta = styled.a`

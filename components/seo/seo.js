@@ -172,7 +172,7 @@ const SEO = ({
       <link href="/chrome/installprocess-128-128.png" rel="icon" sizes="128x128" />
 
       {/*Others */}
-      <link href="favicon-16-16.ico" rel="shortcut icon" type="image/x-icon" />
+      <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
       {/*UC Browser  */}
       {/*<link href="images/icon-52x52.png" rel="apple-touch-icon-precomposed" sizes="57x57" />*/}

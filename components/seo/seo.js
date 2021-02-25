@@ -154,6 +154,7 @@ const SEO = ({
       <link href="logos/firefox/firefox-general-16-16.png" rel="icon" type="image/png" sizes="16x16" />
       <link href="logos/firefox/firefox-general-32-32.png" rel="icon" type="image/png" sizes="32x32" />
       <link href="logos/firefox/firefox-general-48-48.png" rel="icon" type="image/png" sizes="48x48" />
+      <link href="logos/firefox/firefox-marketplace-512-512.png" rel="icon" type="image/png" sizes="512x512" />
 
       {/*iOS  */}
       <link href="logos/apple/touch-icon-iphone.png" rel="apple-touch-icon" />

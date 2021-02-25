@@ -114,6 +114,7 @@ const StatsSmallGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
     border-radius: var(--space-sm);  
+    box-shadow: var(--box-shadow);
 `
 
 const StatsLargeGrid = styled.div`
@@ -130,7 +131,6 @@ const StatsGridMedium = styled.div`
     gap: var(--space-sm);
     grid-template-columns: repeat(4,minmax(0,1fr));
     grid-column: span 2/span 2;;  
-    box-shadow: var(--box-shadow);
     overflow: hidden;
 `
 const GridMediumTitle = styled.p`

@@ -31,7 +31,6 @@ const WebmentionsHeader = styled.div`
 const WebmentionsTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: var(--space-sm);
 `
 
 const WebmentionsInfo = styled.a`
@@ -283,7 +282,7 @@ export default function Webmentions({ slug }) {
           
           {webmentions.likes.length > 0 ? (
           <WebmentionsList>
-            <WebmentionsTitle>Likes</WebmentionsTitle>
+            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>Likes</WebmentionsTitle>
             {webmentions.likes.map((mention) => (
               renderAuthorImg(mention)
             ))}

@@ -24,7 +24,8 @@ export default function PostHeader({ postData, slug}) {
           <PostTitle className="p-name">{title}</PostTitle>   
         </PostTitleWrapper> */}
 
-          <PostMeta slug={slug} postMetaData={postData} />
+          
+          <PostMeta postMetaData={postData} />
          
           <PostTags tags={tags}/>
           

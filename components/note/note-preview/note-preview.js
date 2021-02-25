@@ -54,8 +54,8 @@ export default function NotePreview({ note }) {
       <Hidden className="webmention meta">
 
         <span className="note__author__link">
-          <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
-          <strong className="p-name">Max Dietrich</strong>
+          <img className="u-photo" src={config.siteLogo} alt={config.siteTitle} /> 
+          <strong className="p-name">{config.siteTitle}</strong>
         </span>
         <ol className="relsyn">
           {note.syndicationLinks? 

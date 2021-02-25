@@ -26,7 +26,7 @@ const NoteWrapper = styled.div`
 `
 
 const NotesItem = styled.div`
-  max-width: 700px;
+  max-width: var(--content-width);
   min-height: 200px;
   background-color: var(--content-bg);
   padding: var(--space-sm);

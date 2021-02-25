@@ -10,6 +10,9 @@ const NotesItem = styled.li`
   overflow: hidden;
   position: relative;
   min-height: 250px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.09);
+  background-color: var(--body-bg);
+  padding: var(--space-sm);
 `
 
 const NotesDate = styled.p`

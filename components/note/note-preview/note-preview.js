@@ -4,6 +4,7 @@ import media from "styled-media-query"
 import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
+import Date from "@/components/date/date"
 
 const NotesItem = styled.li`
   overflow: hidden;
@@ -24,6 +25,7 @@ const NoteBodyWrapper = styled.div`
   padding: var(--space-sm);
   background-color: var(--gray-extra-light);
   height: 100%;
+  font-size: .875rem;
 `
 
 const NotesContent = styled.div`
@@ -69,7 +71,7 @@ export default function NotePreview({ note }) {
           {note.content ? (
             <NoteBodyWrapper>
               <NoteBody content={note.content} /> 
-              <NotesDate className="dt-published">{note.date}</NotesDate>
+              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
             </NoteBodyWrapper> 
           ): 
             <Image 

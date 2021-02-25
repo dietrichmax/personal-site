@@ -75,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
     --content-bg: #fff;
     --bg-light: var(--gray-light);
     --bg-dark: var(--secondary-color);
+    --box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 2px;
     --border-light: var(--gray-light);
     --border-dark: var(--gray-dark);
     --border-radius: 4px;

@@ -25,7 +25,18 @@ const NoteWrapper = styled.div`
   `}
 `
 
-const NoteImageWrapper = styled.div``
+const NoteImageWrapper = styled.div`
+  position: relative;
+`
+
+
+const NoteImage = styled(Image)`
+  position: absolute;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  object-fit: contain;
+  margin: 0;
+`
 
 const NotesItem = styled.div`
   background-color: var(--content-bg);
@@ -50,12 +61,6 @@ const MetaItem = styled.li`
 
 `
 
-const NoteImage = styled(Image)`
-  cursor: pointer;
-  border-radius: var(--border-radius);
-  object-fit: contain;
-  margin: 0;
-`
 
 const NotesContent = styled.div`
   padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
@@ -133,6 +138,7 @@ export default function Note({ note }) {
                  
                 
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
+                    console.log(note)
                     return (
                     <NoteImageWrapper> 
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
@@ -140,9 +146,9 @@ export default function Note({ note }) {
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}
                           alt={`${i} cover image`}
                           title={`${note.name}`}
-                          width="1200px"
-                          height="1200px"
                           className="u-photo" 
+                          width={note.width}
+                          height={note.height}
                         />   
                       </Link> 
                     </NoteImageWrapper> 

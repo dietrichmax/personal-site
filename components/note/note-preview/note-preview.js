@@ -21,7 +21,6 @@ const NotesItem = styled.li`
 
 
 const NoteBodyWrapper = styled.div`
-  background-color: var(--gray-extra-light);
   height: 100%;
   font-size: .875rem;
 `

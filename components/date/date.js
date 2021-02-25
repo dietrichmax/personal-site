@@ -2,7 +2,7 @@ import { parseISO, format } from 'date-fns'
 import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig"
 
-const PostDate = styled.time`
+const DateContainer = styled.time`
   position: relative;
   display: block;
 `
@@ -10,6 +10,6 @@ const PostDate = styled.time`
 export default function Date({ dateString, ago }) {
   const date = parseISO(dateString)
   return (
-    <PostDate className="dt-published" dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")}</PostDate>
+    <DateContainer className="dt-published" dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")}</DateContainer>
   )
 }

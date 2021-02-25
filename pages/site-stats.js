@@ -112,13 +112,13 @@ const GridStatsDescription = styled.p`
 
 const StatsSmallGrid = styled.div`
     text-align: center;
-    background-color: var(--gray-extra-light);
+    background-color: var(--content-bg);
     border-radius: var(--space-sm);  
 `
 
 const StatsLargeGrid = styled.div`
     text-align: center;
-    background-color: var(--gray-extra-light);
+    background-color: var(--content-bg);
     grid-column: span 2/span 2;    
     border-radius: var(--space-sm);  
 `
@@ -134,7 +134,7 @@ const GridMediumTitle = styled.p`
 `
 const BottomStatsGrid = styled.div`
     text-align: center;
-    background-color: var(--gray-extra-light);
+    background-color: var(--content-bg);
     border-radius: var(--space-sm); 
     grid-column: span 2/span 2; 
     ${media.lessThan('1000px')`

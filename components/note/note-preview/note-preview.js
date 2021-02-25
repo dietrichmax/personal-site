@@ -40,6 +40,18 @@ export default function NotePreview({ note }) {
   return (
     <NotesItem className="h-entry">
       <Hidden className="webmention meta">
+        {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+        {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+        {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+        {note.inReplyTo ?  <a className="u-in-reply-to" href={note.ofUrl} /> : null}
+        {note.likeOf ? <a class="u-like-of" href={note.ofUrl} /> : null}
+        {note.repostOf ? <a class="u-repost-of" href={note.ofUrl} />  : null}
+        {note.quoteOf ? <a class="h-cite u-quotation-of" href={note.ofUrl} /> : null}
+        {note.mentionOf ? <a class="u-mention-of" href={note.ofUrl} /> : null}
+        <span className="note__author__link">
+          <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
+          <strong className="p-name">Max Dietrich</strong>
+        </span>
         <ol className="relsyn">
           {note.syndicationLinks? 
             note.syndicationLinks.map((link) => {

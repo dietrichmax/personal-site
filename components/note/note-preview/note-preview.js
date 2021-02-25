@@ -80,6 +80,7 @@ export default function NotePreview({ note }) {
           {note.content ? (
             <NoteBodyWrapper>
               <NoteBody content={note.content} /> 
+              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
             </NoteBodyWrapper> 
           ): 
             <NoteBodyWrapper>

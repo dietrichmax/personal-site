@@ -17,7 +17,7 @@ import Date from '@/components/date/date'
 
 const NoteWrapper = styled.div`
 max-width: 1200px;
-padding: 0 var(--space);
+padding: var(--space-sm) var(--space);
 margin: calc(var(--space-lg)*2.5) auto var(--space-lg) auto;
 ${media.lessThan('medium')`
   padding-left: var(--space-sm);

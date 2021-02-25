@@ -98,19 +98,89 @@ const SEO = ({
 
   return (
     <Head>
+    {/* META TAGS */}
       {/* General tags */}
       <title>{title} - {config.siteTitle}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/*<html lang="en" />*/}
-      
-      <link rel="manifest" href="/manifest.json" />
-      <link href="/logos/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16" />
-      <link href="/logos/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
-      <link rel="apple-touch-icon" href="/logos/android-chrome-192x192.png"/>
-      <meta name="theme-color" content={config.themeColor}/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+      {/* Android */}
+      <meta name="theme-color" content={config.themeColor} />
+      <meta name="mobile-web-app-capable" content="yes" />
+
+      {/* iOS */}
+      <meta name="apple-mobile-web-app-title" content={config.siteTitle} />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+      {/* Windows */}
+      <meta name="msapplication-navbutton-color" content={config.themeColor} />
+      <meta name="msapplication-TileColor" content={config.themeColor} />
+      <meta name="msapplication-TileImage" content="ms-icon-144x144.png" />
+      <meta name="msapplication-config" content="browserconfig.xml" />
+
+      {/* Pinned Sites */}
+      <meta name="application-name" content={config.siteTitle} />
+      <meta name="msapplication-tooltip" content={config.siteTitle} />
+      <meta name="msapplication-starturl" content="/" />
+
+      {/* Tap highlighting */}
+      <meta name="msapplication-tap-highlight" content="no" />
+
+      {/* UC Mobile Browser */}
+      <meta name="full-screen" content="yes" />
+      <meta name="browsermode" content="application" />
+
+      {/* Disable night mode for this page */}
+      <meta name="nightmode" content="enable/disable" />
+
+      {/* Fitscreen */}
+      <meta name="viewport" content="uc-fitscreen=yes"/>
+
+      {/* Layout mode */}
+      <meta name="layoutmode" content="fitscreen/standard" />
+
+      {/* imagemode - show image even in text only mode */}
+      <meta name="imagemode" content="force" />
+
+      {/* Orientation */}
+      <meta name="screen-orientation" content="portrait" />
+
+    {/* META TAGS */}
+      {/*Main Link Tags  */}
+      <link href="/firefox/firefox-general-16-16.png" rel="icon" type="image/png" sizes="16x16" />
+      <link href="/firefox/firefox-general-32-32.png" rel="icon" type="image/png" sizes="32x32" />
+      <link href="/firefox/firefox-general-48-48.png" rel="icon" type="image/png" sizes="48x48" />
+
+      {/*iOS  */}
+      <link href="touch-icon-iphone.png" rel="apple-touch-icon" />
+      {/*<link href="touch-icon-ipad.png" rel="apple-touch-icon" sizes="76x76" />*/}
+      <link href="/windows/windows-squarelogo-120-120.png" rel="apple-touch-icon" sizes="120x120" />
+      {/*<link href="touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />*/}
+
+      {/*Startup Image  */}
+      {/*<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image" />*/}
+
+      {/*Pinned Tab  */}
+      {/*<link href="path/to/icon.svg" rel="mask-icon" size="any" color="red" />*/}
+
+      {/*Android  */}
+      <link href="/android/android-launchericon-192-192.png" rel="icon" sizes="192x192" />
+      <link href="/chrome/installprocess-128-128.png" rel="icon" sizes="128x128" />
+
+      {/*Others */}
+      <link href="favicon-16-16.ico" rel="shortcut icon" type="image/x-icon" />
+
+      {/*UC Browser  */}
+      {/*<link href="images/icon-52x52.png" rel="apple-touch-icon-precomposed" sizes="57x57" />*/}
+      <link href="/android/android-launchericon-72-72.png" rel="apple-touch-icon" sizes="72x72" />
+
+      {/*Manifest.json  */}
+      <link href="/manifest.json" rel="manifest" />
+
       {/* Schema.org tags */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}/>
 

@@ -13,7 +13,7 @@ const NotesItem = styled.li`
   overflow: hidden;
   position: relative;
   min-height: 250px;
-  box-shadow: 0 2px 2px rgba(0,0,0,.09);
+  box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
 `
@@ -39,6 +39,7 @@ const NotesDate = styled.p`
   background-color: rgba(245, 248, 250, 0.7);
   padding: calc(var(--space-sm)*.5);
   font-size: 12px;
+  border-top-left-radius: var(--border-radius);
   ${media.lessThan('medium')`
 
   `}

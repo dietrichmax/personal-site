@@ -35,6 +35,9 @@ const NotesContent = styled.div`
 const NotesDate = styled.p`
   font-family: var(--secondary-font);
   text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   padding: var(--space-sm);
   ${media.lessThan('medium')`
 
@@ -77,16 +80,18 @@ export default function NotePreview({ note }) {
           {note.content ? (
             <NoteBodyWrapper>
               <NoteBody content={note.content} /> 
-              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
             </NoteBodyWrapper> 
           ): 
-            <Image 
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
-              alt={`cover medium of ${note.date}`}
-              layout="fill"
-              className="u-photo" 
-              style={{cursor:'pointer'}}
-            /> 
+            <NoteBodyWrapper>
+              <Image 
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium.url}`}
+                alt={`cover medium of ${note.date}`}
+                layout="fill"
+                className="u-photo" 
+                style={{cursor:'pointer'}}
+              /> 
+              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
+            </NoteBodyWrapper>
           }
           
           <Hidden>

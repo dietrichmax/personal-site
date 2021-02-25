@@ -7,6 +7,9 @@ import config from "@/lib/data/SiteConfig"
 import Date from "@/components/date/date"
 
 const NotesItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   position: relative;
   min-height: 250px;
@@ -14,24 +17,27 @@ const NotesItem = styled.li`
   background-color: var(--content-bg);
 `
 
-const NotesDate = styled.p`
-  font-size: .875rem;
-  font-style: italic;
-  ${media.lessThan('medium')`
-`}
-`
+
 
 const NoteBodyWrapper = styled.div`
-  padding: var(--space-sm);
   background-color: var(--gray-extra-light);
   height: 100%;
   font-size: .875rem;
 `
 
 const NotesContent = styled.div`
-
+  padding: var(--space-sm);
   height: 100%;
   ${media.lessThan('medium')`
+  `}
+`
+
+const NotesDate = styled.p`
+  font-family: var(--secondary-font);
+  text-align: right;
+  padding: var(--space-sm);
+  ${media.lessThan('medium')`
+
   `}
 `
 

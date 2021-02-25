@@ -125,10 +125,14 @@ export default function Note({ note }) {
 
                 <Hidden>
                   <div className="webmentions meta">
-                    {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-                    {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-                    {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-
+                      {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+                      {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+                      {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+                      <span className="webmention type">
+                        {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
+                        {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
+                        {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
+                      </span>
                       <span className="h-card">
                         <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteLogo}`}  /> 
                         <strong className="p-name">Max Dietrich</strong>

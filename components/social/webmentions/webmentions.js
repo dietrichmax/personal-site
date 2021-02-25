@@ -233,7 +233,7 @@ export default function Webmentions({ slug }) {
             target="_blank" rel="noopener noreferrer" 
             title="What's this?" 
             onClick={() => {!process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'WebMentionsInfo', 'Click on Info']) : null}}
-          ><WebmentionsInfoIcon className="las la-question-circle" /></WebmentionsInfo>
+          ><WebmentionsInfoIcon className="las la-question-circle" />What’s this?</WebmentionsInfo>
         </WebmentionsHeader>
 
         

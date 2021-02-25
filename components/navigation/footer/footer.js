@@ -161,7 +161,7 @@ export default function Footer() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
-    fetch('https://api.mxd.codes/posts', requestOptions)
+    fetch('https://api.mxd.codes/posts?_sort=date:DESC', requestOptions)
       .then(response => response.json())
       .then(data => setRecentPosts(data.slice(0,4)));
     fetch('https://api.mxd.codes/about', requestOptions)

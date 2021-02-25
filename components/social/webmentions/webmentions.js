@@ -86,7 +86,7 @@ const WebmentionAuthorName = styled.span`
 `
 
 const WebmentionDate = styled.time`
-  font-style: italic;
+  font-size: 14px;
   ${media.lessThan('small')`
     display: none;
   `}

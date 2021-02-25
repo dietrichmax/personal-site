@@ -13,9 +13,11 @@ const PreviewLikeCount = styled.span`
   margin-left: var(--space-sm);
 `
 
-const WebMentionsWrapper = styled.section`
-  margin-top: var(--space);
+const WebMentionsWrapper = styled.section`    
   max-width: 700px;
+  border-top: 0.1rem solid var(--gray-light);
+  margin-top: var(--space);
+  padding-top: var(--space);
 `
 
 const WebmentionsHeader = styled.div`

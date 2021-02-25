@@ -21,6 +21,7 @@ const LinksContainer = styled.ol`
 `
 
 const LinksItem = styled.li`
+  max-width: var(--content-width);
   margin-left: var(--space);
   margin-bottom: var(--space);
   background-color: rgb(255, 255, 255);

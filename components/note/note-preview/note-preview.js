@@ -38,6 +38,7 @@ const NotesDate = styled.p`
   right: 0;
   background-color: rgba(245, 248, 250, 0.7);
   padding: calc(var(--space-sm)*.5);
+  font-size: 12px;
   ${media.lessThan('medium')`
 
   `}

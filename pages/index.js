@@ -60,7 +60,7 @@ const HeroFont = styled.span`
   font-weight: 600;
 `
 const SubTitle = styled.p`
-  margin: var(--space);
+  margin: var(--space) var(--space) var(--space-sm) var(--space);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
@@ -84,7 +84,7 @@ const PostContainer = styled.div`
 
 
 const MoreContainer = styled.div`
-  margin: 0 var(--space) var(--space) var(--space);
+  margin: var(--space-sm) var(--space) var(--space) var(--space);
   text-align: right;    
   cursor: pointer;
   font-weight: 600;

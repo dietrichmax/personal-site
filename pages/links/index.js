@@ -9,22 +9,23 @@ import PageTitle from '@/components/title/page-title'
 import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
 
-const LinksContainer = styled.div`
+const LinksContainer = styled.ol`
   max-width: 1200px;
   position: relative;
   margin: 0 auto var(--space-lg) auto;
-  padding-inline-start: 0 !important;
-
+  padding-inline-start: 0;
+  list-style:none;
   ${media.lessThan('medium')`
     margin: var(--space-sm);
   `}
 `
 
-const LinksItem = styled.section`
+const LinksItem = styled.li`
   margin-left: var(--space);
   margin-bottom: var(--space);
-  padding-bottom: var(--space);
-  border-bottom: 2px dashed var(--gray-extra-light);
+  background-color: rgb(255, 255, 255);
+  padding: var(--space-sm);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 2px;
   ${media.lessThan('medium')`
     margin-left: 0;
 `}

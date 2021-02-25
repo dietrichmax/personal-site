@@ -16,7 +16,7 @@ import markdownToHtml from '@/lib/utils/markdownToHtml'
 import Date from '@/components/date/date'
 
 const NoteWrapper = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   padding: var(--space-sm) var(--space);
   margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
   ${media.lessThan('medium')`
@@ -138,7 +138,6 @@ export default function Note({ note }) {
                  
                 
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
-                    console.log(note)
                     return (
                     <NoteImageWrapper> 
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
@@ -147,8 +146,9 @@ export default function Note({ note }) {
                           alt={`${i} cover image`}
                           title={`${note.name}`}
                           className="u-photo" 
-                          width={note.width}
-                          height={note.height}
+                          width="1200"
+                          height={(1200/note.width)*note.height}
+                          layout="responsive"
                         />   
                       </Link> 
                     </NoteImageWrapper> 

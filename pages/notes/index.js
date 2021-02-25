@@ -20,6 +20,7 @@ const NotesContainer = styled.ol`
   padding-inline-start: 0 !important;
   list-style-type: none;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-sm);
   display: grid;
   ${media.lessThan('1200px')`
     grid-template-columns: repeat(2, minmax(0px, 1fr));

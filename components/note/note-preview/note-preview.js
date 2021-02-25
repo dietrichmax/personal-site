@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import media from "styled-media-query"
 import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
-
+import config from "@/lib/data/SiteConfig"
 
 const NotesItem = styled.li`
   margin: 1px;
@@ -40,9 +40,7 @@ export default function NotePreview({ note }) {
   return (
     <NotesItem className="h-entry">
       <Hidden className="webmention meta">
-        {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-        {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-        {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+
         <span className="note__author__link">
           <img className="u-photo" src={config.siteLogo} alt={note.title} /> 
           <strong className="p-name">Max Dietrich</strong>
@@ -81,6 +79,12 @@ export default function NotePreview({ note }) {
               style={{cursor:'pointer'}}
             /> 
           }
+          
+          <Hidden>
+            {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
+            {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
+            {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
+          </Hidden>
         </NotesContent>
       </a>
     </NotesItem>

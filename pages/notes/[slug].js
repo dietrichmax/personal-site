@@ -85,7 +85,7 @@ export default function Note({ note }) {
         ) : (
           <>
             <SEO   
-              title={note.title}
+              title={`${note.date}`}
               description={note.description}
               slug={`/notes/${note.date}`}
               date={note.date}

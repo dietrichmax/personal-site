@@ -5,11 +5,11 @@ import PostTags from "@/components/tags/tags"
 import PostMeta from "@/components/post/post-meta/post-meta"
 import PreviewImage from "@/components/post/post-image/post-image"
 
-const Card = styled.div`
+const Card = styled.li`
   transition: 0.2s;
   box-shadow: 0 2px 2px rgba(0,0,0,.09);
   background-color: var(--content-bg);
-  padding: var(--space-sm);
+  border-radius: var(--border-radius);
   ${media.lessThan('medium')`
     margin: 0 var(--space-sm) var(--space) var(--space-sm);
   `}
@@ -21,6 +21,7 @@ const CardItemWrapper = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
+  padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
   ${media.lessThan('medium')`
    margin: 0;
   `}

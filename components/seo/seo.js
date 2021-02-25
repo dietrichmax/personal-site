@@ -104,7 +104,7 @@ const SEO = ({
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      {/*<meta http-equiv="X-UA-Compatible" content="IE=edge" />*/}
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       {/* Android */}
@@ -120,7 +120,7 @@ const SEO = ({
       <meta name="msapplication-navbutton-color" content={config.themeColor} />
       <meta name="msapplication-TileColor" content={config.themeColor} />
       <meta name="msapplication-TileImage" content="ms-icon-144x144.png" />
-      <meta name="msapplication-config" content="browserconfig.xml" />
+      <meta name="msapplication-config" content="browserconfig.xml" /> 
 
       {/* Pinned Sites */}
       <meta name="application-name" content={config.siteTitle} />
@@ -137,8 +137,8 @@ const SEO = ({
       {/* Disable night mode for this page */}
       <meta name="nightmode" content="enable/disable" />
 
-      {/* Fitscreen */}
-      <meta name="viewport" content="uc-fitscreen=yes"/>
+      {/* Fitscreen 
+      <meta name="viewport" content="uc-fitscreen=yes"/>*/}
 
       {/* Layout mode */}
       <meta name="layoutmode" content="fitscreen/standard" />

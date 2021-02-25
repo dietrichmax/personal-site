@@ -7,9 +7,9 @@ import PreviewImage from "@/components/post/post-image/post-image"
 
 const Card = styled.div`
   transition: 0.2s;
-  margin-bottom: var(--space);
-  padding-bottom: var(--space);
-  border-bottom: 1px dashed var(--gray-extra-light);
+  box-shadow: 0 2px 2px rgba(0,0,0,.09);
+  background-color: var(--body-bg);
+  padding: var(--space-sm);
   ${media.lessThan('medium')`
     margin: 0 var(--space-sm) var(--space) var(--space-sm);
   `}

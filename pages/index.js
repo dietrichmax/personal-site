@@ -73,7 +73,9 @@ const PostContainer = styled.div`
   grid-template-columns: repeat(2, minmax(0px, 1fr));
   gap: var(--space-lg);
   display: grid;
+  gap: var(--gap);
   margin: 0 var(--space);
+  list-style: none;
   ${media.lessThan('medium')`
     margin: 0;
     display: block;
@@ -104,20 +106,17 @@ const MoreArticles = styled.p`
 `
 
 const NotesContainer = styled.ol`
-  margin: var(--space);
-  position: relative;
-  padding-inline-start: 0 !important;
-  list-style-type: none;
-  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  gap: var(--space-lg);
   display: grid;
-  ${media.lessThan('1200px')`
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
-    margin: var(--space-sm);
-  `}
-  ${media.lessThan('small')`
+  margin: 0 var(--space);
+  list-style: none;
+  ${media.lessThan('medium')`
+    margin: 0;
     display: block;
   `}
 `
+
 
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()

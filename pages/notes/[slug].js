@@ -27,6 +27,7 @@ const NoteWrapper = styled.div`
 
 const NoteImageWrapper = styled.div`
   position: relative;
+  margin-bottom: var(--space-sm);
 `
 
 

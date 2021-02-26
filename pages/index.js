@@ -11,7 +11,8 @@ import NotePreview from "@/components/note/note-preview/note-preview"
 
 const IndexPageContainer = styled.div`
   margin: auto;
-  max-width: 1200px;
+  max-width: 1200px; 
+  margin: 0 auto var(--space-lg) auto;
 `
 
 const HeroWrapper = styled.div`

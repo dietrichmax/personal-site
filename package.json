@@ -12,7 +12,9 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
+    "prebuild": "npm run count",
     "build": "next build",
+    "postbuild": "npm run webmention",
     "deploy": "npm run build && npm run start",
     "export": "next export",
     "generate-manifest": "node ./lib/manifest.js",

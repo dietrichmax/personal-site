@@ -101,11 +101,6 @@ export default function NotePreview({ note }) {
             </NoteBodyWrapper>
           }
           
-          <Hidden>
-            {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-            {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-            {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
-          </Hidden>
         </NotesContent>
       </a>
     </NotesItem>

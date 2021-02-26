@@ -125,9 +125,6 @@ export default function Note({ note }) {
 
                 <Hidden>
                   <div className="webmentions meta">
-                      {note.publishOnTwitter ? <a href="https://brid.gy/publish/twitter" /> : null}
-                      {note.publishOnInstagram ? <a href="https://brid.gy/publish/instagram" /> : null}
-                      {note.publishOnReddit ? <a href="https://brid.gy/publish/reddit" /> : null}
                       <span className="webmention type">
                         {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
                         {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }

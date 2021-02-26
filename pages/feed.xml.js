@@ -45,7 +45,7 @@ class Rss extends React.Component {
     
     const publishOn = (note) => {
       const platforms = []
-      note.publishOnTwitter ? platforms.push(`[](https://brid.gy/publish/twitter)`) :
+      note.publishOnTwitter ? platforms.push(`<a href="https://brid.gy/publish/twitter"></a>`) :
       note.publishOnInstagram ? platforms.push(`<a href="https://brid.gy/publish/instagram" />`) : 
       note.publishOnReddit ? platforms.push(`<a href="https://brid.gy/publish/reddit" />`) : null
       return platforms
@@ -69,7 +69,7 @@ class Rss extends React.Component {
         title: note.date,
         slug: `${config.siteUrl}/notes/${note.date}`,
         date: note.date,
-        content: converter.makeHtml(note.content + platforms)
+        content: converter.makeHtml(note.content) + platforms
       })
     })
 

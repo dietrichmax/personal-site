@@ -83,12 +83,8 @@ export default function NotePreview({ note }) {
         className="u-url"
       >
         <NotesContent className="e-content p-name">
-          {note.content ? (
-            <NoteBodyWrapper>
-              <NoteBody content={note.content} /> 
-              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
-            </NoteBodyWrapper> 
-          ): 
+          {note.coverMedium[0] ? (
+                
             <NoteBodyWrapper>
               <Image 
                 src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
@@ -99,6 +95,11 @@ export default function NotePreview({ note }) {
               /> 
               <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
             </NoteBodyWrapper>
+          ): 
+            <NoteBodyWrapper>
+              <NoteBody content={note.content} /> 
+              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
+            </NoteBodyWrapper> 
           }
           
 

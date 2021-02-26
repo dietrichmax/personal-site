@@ -62,6 +62,7 @@ const MetaItem = styled.li`
 
 `
 
+const ContentWrapper = styled.div``
 
 const NotesContent = styled.div`
   padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);

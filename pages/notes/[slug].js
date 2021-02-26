@@ -131,13 +131,14 @@ export default function Note({ note }) {
                         {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
                       </span>
                       <span className="h-card">
-                        <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteLogo}`}  /> 
+                        <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}  /> 
                         <strong className="p-name">Max Dietrich</strong>
                       </span>
                   </div>
                 </Hidden>            
                  
                 
+                <div  className="e-content">
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
                     return (
                     <NoteImageWrapper> 
@@ -183,6 +184,8 @@ export default function Note({ note }) {
                     <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.date} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
                   </NoteMeta>
                 </NotesContent>
+                </div>
+                
               </NotesItem>
       
 

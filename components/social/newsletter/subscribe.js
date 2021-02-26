@@ -154,7 +154,7 @@ export default function Subscribe ({ noLabel, cb }) {
           <ButtonWrapper>
             <Button
               type="button"
-              aria-label="Abonnieren"
+              aria-label="Subscribe to Mailinglist"
               onClick={() => handleSubmit()}
               style={{ width: "100%" }}
             >

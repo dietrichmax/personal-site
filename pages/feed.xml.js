@@ -54,7 +54,7 @@ class Rss extends React.Component {
       allContent.push({
         title: post.title,
         slug: `${config.siteUrl}/articles/${post.slug}`,
-        date: post.date,
+        date: post.updated_at ? post.updated_at : post.created_at,
         content: converter.makeHtml(post.content),
       })
     })

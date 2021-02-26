@@ -31,7 +31,6 @@ const FooterMainNav = styled.ul`
   list-style: none;
   padding-inline-start: 0;
   font-size: 1rem;
-  width: 80%;
   text-align: right;
   ${media.lessThan('medium')` 
     display: flex;
@@ -153,17 +152,41 @@ const FooterBar = styled.div`
   `}
 `
 
-const BackToTop = styled.a`
-  cursor: pointer;
-  transition: 0.2s;
+const SearchWrapper = styled.div`
+  font-family: var(--primary-font)
+`
+
+const SearchInput = styled.input`
+  padding-left: 0.25rem;
+  margin-right: 0.125rem;
+  border: 2px solid var(--gray-light);
+  background-color: var(--gray-extra-light);
+  :invalid {
+      border: 1px solid red;
+  }
+`
+
+const SearchButton = styled.button`
+  color: var(--body-bg);
+  border: 2px solid var(--primary-color);
+  position: relative;
+  outline: none;
+  overflow: hidden;
+  font-size: 12px;
+  padding: .125rem .5rem;
+  transition: all .2s ease-in-out;
+  text-align: center;
+  background: var(--primary-color);
   :hover {
-    text-decoration: underline;
+      cursor: pointer;
+      box-shadow: var(--box-shadow);
   }
 `
 
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
   const [about, setAbout] = useState([])
+  const [search, setSearch] = useState(`site:${config.domain}`)
 
   const requestOptions = {
     method: 'GET',
@@ -176,6 +199,7 @@ export default function Footer() {
 
 
   useEffect(() => {
+    console.log(search)
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -230,14 +254,28 @@ export default function Footer() {
       link: "/about" 
     },
   ]
-  
   return (
     <FooterContainer>
 
       <FooterInnerContainer>
         <FooterBar>
 
-          <BackToTop onClick={() => window.scrollTo(0, 0)}><i class="las la-angle-double-up" /> Back to top of page</BackToTop>
+          <SearchWrapper >
+            <SearchInput 
+              type="search" 
+              value={search}  
+              name="search"
+              id="search"
+              label="search-input"
+              onChange={(e) => setSearch(e.target.value)}
+            /> 
+            <SearchButton 
+              type="submit search"
+              aria-label="Search"
+              onClick={() => window.open(`https://duckduckgo.com/?q=${search}`)}
+            >
+            Search</SearchButton>
+          </SearchWrapper>
           <FooterMainNav>
             {headerItems.map((item, i) => (
               <FooterMainNavItem>

@@ -79,6 +79,7 @@ export default function WebmentionEndpoint({  }) {
   const router = useRouter()
   const [sourceUrl, setSourceUrl] = useState("")
   const [targetUrl, setTargetUrl] = useState("")
+  const [status, setStatus] = useState(false)
 
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
@@ -94,12 +95,13 @@ export default function WebmentionEndpoint({  }) {
       if (json.error) {
         setStatus(json.error)
       }
-      console.log(json)
+      setStatus(json.statusText)
     }
     sendData();
   }
-  console.log(sourceUrl)
-  console.log(targetUrl)
+
+  
+  
   return (
     <Layout>
         {router.isFallback ? (
@@ -120,13 +122,24 @@ export default function WebmentionEndpoint({  }) {
                 <WebmentionForm> 
                   <WebmentionFormField>
                     <WebmentionFormLabel for="source">Source URL</WebmentionFormLabel>
-                    <WebmentionFormInput id="source" name="source" type="url" onChange={(e) => setSourceUrl(e.target.value)}/>
+                    <WebmentionFormInput 
+                      id="source" 
+                      name="source" 
+                      type="url" 
+                      onChange={(e) => setSourceUrl(e.target.value)}
+                    />
                   </WebmentionFormField>
                   <WebmentionFormField>
                     <WebmentionFormLabel for="target">Target URL</WebmentionFormLabel>
-                    <WebmentionFormInput id="target" name="target" type="url"onChange={(e) => setTargetUrl(e.target.value)} />
+                    <WebmentionFormInput 
+                      id="target" 
+                      name="target" 
+                      type="url"
+                      onChange={(e) => setTargetUrl(e.target.value)} 
+                    />
                   </WebmentionFormField>
                   <WebmentionButton type="submit" onClick={() => sendWebmention()}>Send Webmention</WebmentionButton>
+                  {status ? <span>{status}</span> : null}
                 </WebmentionForm> 
 
                 <WebmentionInfo> 

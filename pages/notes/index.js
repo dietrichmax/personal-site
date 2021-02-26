@@ -55,7 +55,9 @@ export default function Notes({ allNotes }) {
               <NotesContainer className="h-feed">
 
                 {allNotes.map((note) => (
-                 <NotePreview note={note} />
+                 <NotePreview 
+                  note={note} 
+                />
                 ))}
                 
               </NotesContainer>
@@ -69,7 +71,7 @@ export default function Notes({ allNotes }) {
 
 export async function getStaticProps() {
   const allNotes = (await getAllNotes()) || []
-  
+
   return {
     revalidate:  86400,
     props: { allNotes },

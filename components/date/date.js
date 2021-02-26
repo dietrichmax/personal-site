@@ -6,9 +6,10 @@ const DateContainer = styled.time`
   font-family: var(--secondary-font);
 `
 
-export default function Date({ dateString, ago }) {
+export default function Date({ dateString, updated }) {
   const date = parseISO(dateString)
+
   return (
-    <DateContainer className="dt-published" dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")}</DateContainer>
+    <DateContainer className="dt-published" dateTime={dateString}> {format(date, config.dateFormat).replace("-"," ")} {updated ? "(Updated)" : null}</DateContainer>
   )
 }

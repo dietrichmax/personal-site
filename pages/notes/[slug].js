@@ -114,9 +114,9 @@ export default function Note({ note }) {
         ) : (
           <>
             <SEO   
-              title={`${note.date}`}
+              title={note.title}
               description={note.description}
-              slug={`/notes/${note.date}`}
+              slug={`/notes/${note.id}`}
               date={note.date}
               postSEO
             />
@@ -181,8 +181,6 @@ export default function Note({ note }) {
                     </SyndList> 
 
                   <NoteMeta >
-                    <MetaItem><NoteTags tags={note.tags} /></MetaItem>
-                    <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.date} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
                   </NoteMeta>
                 </NotesContent>
 
@@ -190,7 +188,7 @@ export default function Note({ note }) {
       
 
               {/*<SocialShare slug={`/notes/${note.date}`} /> */}
-              <Webmentions slug={`/notes/${note.date}`} />
+              <Webmentions slug={`/notes/${note.id}`} />
               <MoreContainer>
                 <Link href={`/notes`} passHref>
                   <MoreArticles title="To all Notes">« View all Notes</MoreArticles>
@@ -232,7 +230,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.date}`) || [],
+    paths: notes?.map((note) => `/notes/${note.id}`) || [],
     fallback: true,
   }
 }

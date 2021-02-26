@@ -56,7 +56,7 @@ const PostTitleWrapper = styled.div`
   bottom: 0;
   border-radius: var(--border-radius);
   z-index: 4;
-  mix-blend-mode: lighten;
+  mix-blend-mode: luminosity;
   background-color: var(--body-bg);
   ${media.lessThan('large')`
     position: relative;
@@ -87,8 +87,10 @@ const MoreArticles = styled.p`
     text-decoration: underline;
   }
 `
-export default function Post({ post, morePosts }) {  
+export default function Post({ post }) {  
 
+  const date = post.updated_at ? post.updated_at : post.created_at
+  const updated = post.updated_at ? true : false
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -132,7 +134,7 @@ export default function Post({ post, morePosts }) {
               </PostImgWrapper>
 
               <PostWrapper>
-                <DateWrapper><Date className="dt-published" dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
+                <DateWrapper><Date className="dt-published" updated dateString={date} /></DateWrapper>
                 <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
 
                 <Content>

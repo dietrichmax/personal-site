@@ -24,7 +24,6 @@ const CardItemWrapper = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
-  height: 100%;
   padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
   ${media.lessThan('medium')`
    margin: 0;
@@ -58,15 +57,15 @@ const DateWrapper = styled.a`
   font-size: 12px;
 `
 
-export default function PostPreview({ postData, previewLarge }) {
+export default function PostPreview({ postData, preview }) {
   
-  const { title, excerpt, slug, tags, dateUpdated, date } = postData
+  const { title, excerpt, slug, tags, updated_at, created_at } = postData
 
 
   return (
     <Card className="h-entry">
       <CardItemWrapper>
-        <PreviewImage preview previewLarge postData={postData}/>
+        { preview ? <PreviewImage postData={postData}/> : null}
         <CardItemInfo>
           <CardItemTitle>
             <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
@@ -76,7 +75,7 @@ export default function PostPreview({ postData, previewLarge }) {
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
         </CardItemInfo>
         <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-        <DateWrapper><Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
+        <DateWrapper><Date className="dt-published" dateString={updated_at ? updated_at : created_at} /></DateWrapper>
       </CardItemWrapper>
     </Card>
   )

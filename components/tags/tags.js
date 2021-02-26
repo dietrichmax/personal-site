@@ -10,7 +10,8 @@ const TagItem = styled.a`
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: .875rem;
-  margin-right: var(--space-sm);
+  margin-right: var(--space-sm);    
+  margin-top: .25rem;
   padding: 3px 5px;
   background-color: var(--gray-extra-light);
   font-family: var(--secondary-font);

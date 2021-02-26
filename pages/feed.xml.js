@@ -63,9 +63,9 @@ class Rss extends React.Component {
     notes.map((note) => {
       const endpoints = publishOn(note)
       allContent.push({
-        title: note.date,
-        slug: `${config.siteUrl}/notes/${note.date}`,
-        date: note.date,
+        title: note.title,
+        slug: `${config.siteUrl}/notes/${note.id}`,
+        date: note.created_at,
         content: converter.makeHtml(note.content+endpoints)
       })
     })

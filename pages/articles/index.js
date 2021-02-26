@@ -10,7 +10,7 @@ import PageTitle from '@/components/title/page-title'
 const BlogPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3em;
+  margin-bottom: var(--space-lg);
   max-width: 1200px;
 `
 

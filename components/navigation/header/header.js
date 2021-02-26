@@ -80,7 +80,7 @@ export default function Header( color ) {
               <a className="u-url" rel="me" title={config.siteTitle}>
                 <LogoName className="p-name" >{config.siteTitle}</LogoName>
                 <br/>
-                <LogoDescription>GeoData-Manager</LogoDescription>
+                <LogoDescription>{config.siteSubtitle}</LogoDescription>
               </a>
             </Link>
           </Logo>

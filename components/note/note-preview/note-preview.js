@@ -5,6 +5,7 @@ import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
 import { parseISO, format } from 'date-fns'
+const slugify = require('slugify')
 
 const NotesItem = styled.li`
   display: flex;
@@ -40,6 +41,7 @@ const NotesDate = styled.p`
   padding: 0.125rem;
   font-size: 12px;
   width: 100%;
+  background-color: var(--gray-light);
   mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
 
@@ -50,6 +52,7 @@ const Hidden = styled.a`
   display: none;
 `
 export default function NotePreview({ note }) {
+
 
   return (
     <NotesItem className="h-entry">
@@ -79,8 +82,8 @@ export default function NotePreview({ note }) {
         </ol> 
       </Hidden>
       <a
-        href={`/notes/${note.date}`}
-        title={`${note.date}/${note.title}`}
+        href={`/notes/${note.id}`}
+        title={note.title}
         className="u-url"
       >
         <NotesContent className="e-content p-name">
@@ -89,21 +92,21 @@ export default function NotePreview({ note }) {
             <NoteBodyWrapper>
               <Image 
                 src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
-                alt={`cover medium of ${note.date}`}
+                alt={`Cover medium of note ${note.id}`}
                 layout="fill"
                 className="u-photo" 
                 style={{cursor:'pointer'}}
               /> 
               <NotesDate>
-                <time className="dt-published" dateTime={note.date}>
-                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
+                <time className="dt-published" dateTime={note.created_at}>
+                  {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
                  </time>
               </NotesDate>
             </NoteBodyWrapper>
           ): 
             <NoteBodyWrapper>
               <NoteBody content={note.content} /> 
-              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
+              <NotesDate><Date className="dt-published" dateString={note.created_at} /></NotesDate>
             </NoteBodyWrapper> 
           }
           

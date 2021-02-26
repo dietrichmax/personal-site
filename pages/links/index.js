@@ -9,21 +9,30 @@ import PageTitle from '@/components/title/page-title'
 import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
 
-const LinksContainer = styled.ol`
+const LinksContainer = styled.div`
+  margin: 0 auto;
   max-width: 1200px;
-  position: relative;
-  margin: 0 auto var(--space-lg) auto;
+`
+
+const LinksGrid = styled.ol`
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-sm);
+  display: grid;
+  list-style: none;
+  margin-left: var(--space);
+  margin-right: var(--space);
+  margin-bottom: var(--space-lg);
   padding-inline-start: 0;
-  list-style:none;
   ${media.lessThan('medium')`
-    margin: var(--space-sm);
+    padding: 0;
+    display: block;
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
   `}
 `
 
 const LinksItem = styled.li`
   max-width: var(--content-width);
-  margin-left: var(--space);
-  margin-bottom: var(--space);
   background-color: rgb(255, 255, 255);
   padding: var(--space-sm);
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 2px;
@@ -73,17 +82,19 @@ export default function Links({ allLinks }) {
               <SubTitle>Awesome content on the web, in random order.</SubTitle>
               <LinksContainer >
 
-              {allLinks.map((link) => (
-                <LinksItem className="h-entry">
-                    <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-                    <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
-                    <LinksContent className="e-content">{link.description}</LinksContent>
-                    <PostTags tags={link.tags} />
+                <LinksGrid>
 
-                </LinksItem>
-              ))}
+                {allLinks.map((link) => (
+                  <LinksItem className="h-entry">
+                      <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
+                      <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
+                      <LinksContent className="e-content">{link.description}</LinksContent>
+                      <PostTags tags={link.tags} />
 
-                
+                  </LinksItem>
+                ))}
+
+                </LinksGrid>
 
               </LinksContainer>
             </article>

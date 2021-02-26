@@ -9,7 +9,8 @@ const CardItemImg = styled(Image)`
   width: ${props => props.width ? `${props.width}px` : '350px'};
   height: ${props => props.height ? `${props.height}px` : '130px'};
   object-fit: cover;
-  border-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
@@ -22,34 +23,12 @@ const PostImg = styled(Image)`
   object-fit: cover;
   max-width: 1300px;
   height: 450px;
-  border-radius: var(--border-radius);
-  ${media.lessThan('large')`
-    height: 200px;
-    object-fit: cover;
-  `}
-`
-
-const ImagePreviewPlaceholder = styled.div`
-  background-color: var(--primary-color);
-  transition: 0.2s;
-  color: var(--gray-extra-light);
-  font-family: var(--secondary-font);
-  display: flex;
-  vertical-align: center;
-  justify-content: space-around;
   cursor: pointer;
-  width: 100%;
   border-radius: var(--border-radius);
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
   `}
-`
-
-const FallbackPreviewTitle = styled.p`
-  font-size: 1.5rem;
-  margin: auto;
-  padding: var(--space-sm);
 `
 
 const ImagePlaceholder = styled.div`
@@ -64,7 +43,8 @@ const ImagePlaceholder = styled.div`
   cursor: pointer;
   width: 1300px; 
   height: 450px;
-  border-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
@@ -79,13 +59,13 @@ const { title, slug, coverImage } = postData
   return (
     <> {preview ?
       coverImage.coverImage ? (
-        <Link href={`/articles/${slug}`} aria-label={title}>
+        <Link href={`/articles/${slug}`} aria-label={title} passHref>
           <CardItemImg 
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
             title={title} 
-            width={previewLarge ? "550" : "350"}
-            height={previewLarge ? "200" : "130"}
+            width="350"
+            height="130"
           />
         </Link>
       ) : ( null ) : (

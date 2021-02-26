@@ -2,6 +2,7 @@ import React from 'react';
 import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
 import { getAllNotes, } from '@/lib/data/api/cms'
+const slugify = require('slugify')
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 
@@ -41,12 +42,11 @@ class Rss extends React.Component {
 
     const allContent = []
 
-
     notes.map((note) => {
       allContent.push({
-        title: note.date,
-        slug: `${config.siteUrl}/notes/${note.date}`,
-        date: note.date,
+        title: note.title,
+        slug: `${config.siteUrl}/notes/${note.id}`,
+        date: note.created_at,
         content: converter.makeHtml(note.content)
       })
     })

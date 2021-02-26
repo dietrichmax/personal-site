@@ -117,7 +117,7 @@ export default function Index({ allPosts, allTags, allNotes }) {
                 {posts.map((post) => (
                   <PostPreview
                     postData={post}
-                    previewLarge
+                    preview
                   />
                 ))}
               </PostContainer>

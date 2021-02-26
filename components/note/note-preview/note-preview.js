@@ -36,10 +36,11 @@ const NotesDate = styled.p`
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: rgba(245, 248, 250, 0.7);
-  padding: calc(var(--space-sm)*.5);
   font-size: 12px;
-  border-top-left-radius: var(--border-radius);
+  padding: 0.125rem;
+  font-size: 12px;
+  width: 100%;
+  mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
 
   `}

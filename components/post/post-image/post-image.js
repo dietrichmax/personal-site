@@ -6,8 +6,8 @@ import media from "styled-media-query"
 
 const CardItemImg = styled(Image)`
   cursor: pointer;
-  width: ${props => props.width ? ${props.width}px : '350px'};
-  height: ${props => props.height ? ${props.height}px : '130px'};
+  width: ${props => props.width ? `${props.width}px` : '350px'};
+  height: ${props => props.height ? `${props.height}px` : '130px'};
   object-fit: cover;
   border-radius: var(--border-radius);
   ${media.lessThan('large')`

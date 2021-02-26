@@ -59,7 +59,7 @@ const DateWrapper = styled.a`
 
 export default function PostPreview({ postData, preview }) {
   
-  const { title, excerpt, slug, tags, updated_at, created_at } = postData
+  const { title, excerpt, slug, tags, date, dateUpdated } = postData
 
 
   return (
@@ -75,7 +75,7 @@ export default function PostPreview({ postData, preview }) {
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
         </CardItemInfo>
         <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-        <DateWrapper><Date className="dt-published" dateString={updated_at ? updated_at : created_at} /></DateWrapper>
+        <DateWrapper><Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
       </CardItemWrapper>
     </Card>
   )

@@ -89,14 +89,10 @@ const MoreArticles = styled.p`
 `
 export default function Post({ post }) {  
 
-  const date = post.updated_at ? post.updated_at : post.created_at
-  const updated = post.updated_at ? true : false
-
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-
 
   const target = React.createRef()
 
@@ -111,7 +107,7 @@ export default function Post({ post }) {
               description={post.excerpt}
               image={post.coverImage.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
               slug={`articles/${post.slug}`}
-              date={post.date}
+              date={post.dateUpdated ? post.dateUpdated : post.date}
               ogType="article"
               postSEO
             />
@@ -134,7 +130,7 @@ export default function Post({ post }) {
               </PostImgWrapper>
 
               <PostWrapper>
-                <DateWrapper><Date className="dt-published" updated dateString={date} /></DateWrapper>
+                <DateWrapper><Date className="dt-published" updated={post.dateUpdated} dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
                 <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
 
                 <Content>

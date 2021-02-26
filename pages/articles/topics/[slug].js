@@ -10,7 +10,7 @@ import SEO from '@/components/seo/seo'
 
 const TagContainer = styled.div`
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto var(--space) auto;
 `
 
 

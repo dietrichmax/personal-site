@@ -17,7 +17,6 @@ const BlogPageContainer = styled.div`
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
   
-
   const posts = allPosts
 
   return (

@@ -13,7 +13,6 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "postbuild": "npm run webmention",
     "deploy": "git pull && npm run build && pm2 restart mxd-codes-frontend",
     "export": "next export",
     "generate-manifest": "node ./lib/manifest.js",

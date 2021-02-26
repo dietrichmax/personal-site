@@ -45,9 +45,9 @@ class Rss extends React.Component {
     
     const publishOn = (note) => {
       const platforms = []
-      note.publishOnTwitter ? platforms.push(<a href="https://brid.gy/publish/twitter"></a>) :
-      note.publishOnInstagram ? platforms.push(<a href="https://brid.gy/publish/instagram" />) : 
-      note.publishOnReddit ? platforms.push(<a href="https://brid.gy/publish/reddit" />) : null
+      note.publishOnTwitter ? platforms.push(`<a href="https://brid.gy/publish/twitter"></a>`) :
+      note.publishOnInstagram ? platforms.push(`<a href="https://brid.gy/publish/instagram" />`) : 
+      note.publishOnReddit ? platforms.push(`<a href="https://brid.gy/publish/reddit" />`) : null
       return platforms
     }
 

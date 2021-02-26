@@ -44,9 +44,7 @@ class Rss extends React.Component {
 
     const publishOn = (note) => {
       const endpoints = []
-      note.publishOnTwitter ? endpoints.push(`[](https://brid.gy/publish/twitter)`) :
-      note.publishOnInstagram ? endpoints.push(`<a href="https://brid.gy/publish/instagram" />`) : 
-      note.publishOnReddit ? endpoints.push(`<a href="https://brid.gy/publish/reddit" />`) : null
+      note.publishOnTwitter ? endpoints.push(`[](https://brid.gy/publish/twitter)`) : null
       return endpoints
     }
 

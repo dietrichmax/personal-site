@@ -138,7 +138,7 @@ export default function Note({ note }) {
                   </div>
                 </Hidden>            
                  
-                              
+                <ContentWrapper className="e-content">
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
                     return (
                     <NoteImageWrapper> 
@@ -157,7 +157,7 @@ export default function Note({ note }) {
                     )
                   }): null }
 
-                <NotesContent className="e-content">
+                <NotesContent>
                   {note.content ? 
                     <NoteBody 
                       className="p-summary" 
@@ -184,6 +184,7 @@ export default function Note({ note }) {
                   </NoteMeta>
                 </NotesContent>
 
+                </ContentWrapper>
               </NotesItem>
       
 

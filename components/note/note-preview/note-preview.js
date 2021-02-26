@@ -93,8 +93,10 @@ export default function NotePreview({ note }) {
                 className="u-photo" 
                 style={{cursor:'pointer'}}
               /> 
-              <NotesDate><Date className="dt-published" dateTime={dateString}>
-                {format(note.date, "dd MMMM yyy 'at' HH:mm OOOO").replace("-"," ")}
+              <NotesDate>
+                <time className="dt-published" dateTime={note.date}>
+                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm OOOO").replace("-"," ")}
+                 </time>
               </NotesDate>
             </NoteBodyWrapper>
           ): 

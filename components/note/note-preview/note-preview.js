@@ -95,7 +95,7 @@ export default function NotePreview({ note }) {
               /> 
               <NotesDate>
                 <time className="dt-published" dateTime={note.date}>
-                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm OOOO")}
+                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
                  </time>
               </NotesDate>
             </NoteBodyWrapper>

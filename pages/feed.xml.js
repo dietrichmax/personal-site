@@ -69,7 +69,7 @@ class Rss extends React.Component {
         title: note.date,
         slug: `${config.siteUrl}/notes/${note.date}`,
         date: note.date,
-        content: converter.makeHtml(note.content) + platforms
+        content: converter.makeHtml(note.content + platforms)
       })
     })
 

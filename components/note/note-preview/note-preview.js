@@ -4,7 +4,7 @@ import media from "styled-media-query"
 import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
-import Date from "@/components/date/date"
+import { parseISO, format } from 'date-fns'
 
 const NotesItem = styled.li`
   display: flex;
@@ -93,7 +93,7 @@ export default function NotePreview({ note }) {
                 className="u-photo" 
                 style={{cursor:'pointer'}}
               /> 
-              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
+              <NotesDate><Date className="dt-published" dateTime={dateString}> {format(note.date, "dd MMMM yyy 'at' HH:mm OOOO").replace("-"," ")}</Date></NotesDate>
             </NoteBodyWrapper>
           ): 
             <NoteBodyWrapper>

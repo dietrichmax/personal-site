@@ -101,6 +101,7 @@ export default function NotePreview({ note }) {
             </NoteBodyWrapper>
           }
           
+
         </NotesContent>
       </a>
     </NotesItem>

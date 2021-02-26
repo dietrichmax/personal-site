@@ -137,8 +137,7 @@ export default function Note({ note }) {
                   </div>
                 </Hidden>            
                  
-                
-                <div  className="e-content">
+                              
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
                     return (
                     <NoteImageWrapper> 
@@ -157,7 +156,7 @@ export default function Note({ note }) {
                     )
                   }): null }
 
-                <NotesContent>
+                <NotesContent className="e-content">
                   {note.content ? 
                     <NoteBody 
                       className="p-summary" 
@@ -179,13 +178,13 @@ export default function Note({ note }) {
                         )         
                       })  : null }
                     </SyndList> 
+
                   <NoteMeta >
                     <MetaItem><NoteTags tags={note.tags} /></MetaItem>
                     <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.date} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
                   </NoteMeta>
                 </NotesContent>
-                </div>
-                
+
               </NotesItem>
       
 

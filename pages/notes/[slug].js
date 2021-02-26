@@ -93,17 +93,6 @@ const Hidden = styled.a`
 `
 
 
-const MoreContainer = styled.div`
-  margin-top: var(--space);
-  text-align: right;
-  cursor: pointer;
-`
-const MoreArticles = styled.p`
-  transition: 0.2s;
-  :hover {
-    text-decoration: underline;
-  }
-`
 
 export default function Note({ note }) {
   const router = useRouter()
@@ -191,11 +180,7 @@ export default function Note({ note }) {
 
               {/*<SocialShare slug={`/notes/${note.date}`} /> */}
               <Webmentions slug={`/notes/${note.id}`} />
-              <MoreContainer>
-                <Link href={`/notes`} passHref>
-                  <MoreArticles title="To all Notes">« View all Notes</MoreArticles>
-                </Link>
-              </MoreContainer>
+
             </NoteWrapper>
           </>
         )}

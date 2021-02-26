@@ -76,17 +76,7 @@ const DateWrapper = styled.div`
   font-size: 12px;
 `
 
-const MoreContainer = styled.div`
-  margin-top: var(--space);
-  text-align: right;
-  cursor: pointer;
-`
-const MoreArticles = styled.p`
-  transition: 0.2s;
-  :hover {
-    text-decoration: underline;
-  }
-`
+
 export default function Post({ post }) {  
 
   const router = useRouter()
@@ -141,11 +131,6 @@ export default function Post({ post }) {
                   <Webmentions slug={`/articles/${post.slug}`} />
                   {/*<PostComments postID={post.id}/>*/}  
 
-                  <MoreContainer>
-                    <Link href={`/articles`} passHref>
-                      <MoreArticles title="To all Articles">« View all Articles</MoreArticles>
-                    </Link>
-                  </MoreContainer>
                 </Content>
 
               </PostWrapper>

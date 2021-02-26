@@ -75,7 +75,7 @@ export default function PostPreview({ postData, preview }) {
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
         </CardItemInfo>
         <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-        <DateWrapper><Date className="dt-published" dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
+        <DateWrapper><Date className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
       </CardItemWrapper>
     </Card>
   )

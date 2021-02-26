@@ -7,7 +7,6 @@ import media from 'styled-media-query';
 
         
 const PostContent = styled.section`
-  margin: var(--space) 0;
   grid-template-columns: repeat(8,minmax(0,1fr));
   gap: var(--space-sm);
   display: grid;

@@ -59,7 +59,6 @@ const { title, slug, coverImage } = postData
   return (
     <> {preview ?
       coverImage.coverImage ? (
-        <Link href={`/articles/${slug}`} aria-label={title} passHref>
           <CardItemImg 
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
@@ -67,9 +66,9 @@ const { title, slug, coverImage } = postData
             width="350"
             height="130"
           />
-        </Link>
       ) : ( null ) : (
         coverImage.coverImage ? (
+          <Link href={`/articles/${slug}`} aria-label={title} passHref>
           <PostImg 
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
@@ -77,6 +76,7 @@ const { title, slug, coverImage } = postData
             width="1300"
             height="450"
           /> 
+          </Link>
         ) : (
             <Link as={`/articles/${slug}`} href="/articles/[slug]" aria-label={title} passHref>
               <ImagePlaceholder title={title} />

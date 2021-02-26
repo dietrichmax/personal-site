@@ -54,9 +54,10 @@ const PostTitleWrapper = styled.div`
   padding: var(--space-sm) var(--space);
   position:absolute;
   bottom: 0;
-  background-color: #ffffffd7;
   border-radius: var(--border-radius);
   z-index: 4;
+  mix-blend-mode: lighten;
+  background-color: var(--body-bg);
   ${media.lessThan('large')`
     position: relative;
     margin: var(--space-sm) var(--space);

@@ -42,7 +42,14 @@ class Rss extends React.Component {
     const links = (await getAllLinks()) || []
     const blogrolls = (await getAllBlogrolls()) || []
 
-  
+    const publishOn = (note) => {
+      const endpoints = []
+      note.publishOnTwitter ? endpoints.push(`[](https://brid.gy/publish/twitter)`) :
+      note.publishOnInstagram ? endpoints.push(`<a href="https://brid.gy/publish/instagram" />`) : 
+      note.publishOnReddit ? endpoints.push(`<a href="https://brid.gy/publish/reddit" />`) : null
+      return endpoints
+    }
+
     const allContent = []
 
     posts.map((post) => {
@@ -56,11 +63,12 @@ class Rss extends React.Component {
 
 
     notes.map((note) => {
+      const endpoints = publishOn(note)
       allContent.push({
         title: note.date,
         slug: `${config.siteUrl}/notes/${note.date}`,
         date: note.date,
-        content: converter.makeHtml(note.content)
+        content: converter.makeHtml(note.content+endooints)
       })
     })
 

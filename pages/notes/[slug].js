@@ -206,24 +206,22 @@ export async function getStaticProps({ params }) {
   const data = await getNote(params.slug)
   const note =  data?.notes[0]
   const content = note.content || '' 
-  const description = await markdownToHtml(note.content || '')
 
   const publishOn = (note) => {
-    const platforms = []
-    note.publishOnTwitter ? platforms.push(`[](https://brid.gy/publish/twitter)`) :
-    note.publishOnInstagram ? platforms.push(`<a href="https://brid.gy/publish/instagram" />`) : 
-    note.publishOnReddit ? platforms.push(`<a href="https://brid.gy/publish/reddit" />`) : null
-    return platforms
+    const endpoints = []
+    note.publishOnTwitter ? endpoints.push(`[](https://brid.gy/publish/twitter)`) :
+    note.publishOnInstagram ? endpoints.push(`<a href="https://brid.gy/publish/instagram" />`) : 
+    note.publishOnReddit ? endpoints.push(`<a href="https://brid.gy/publish/reddit" />`) : null
+    return endpoints
   }
-  const platforms = publishOn(note)
+  const endpoints = publishOn(note)
 
   
   return {
     props: {
       note: {
         ...data?.notes[0],
-        content: content + platforms,
-        description,
+        content: content + endpoints,
       },
     },
   }

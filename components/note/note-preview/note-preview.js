@@ -13,6 +13,7 @@ const NotesItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
   min-height: 250px;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
@@ -53,68 +54,70 @@ const Hidden = styled.a`
 `
 export default function NotePreview({ note }) {
 
-console.log(note)
   return (
-    <NotesItem className="h-entry">
-      {/*
-      <Hidden className="webmention meta">
+    <Link
+      href={`/notes/${note.date}`}
+      className="p-name"
+      passHref
+    >
+      <NotesItem className="h-entry" title={note.title}>
+        <Hidden className="webmention meta">
 
-        <span className="note__author__link">
-          <img className="u-photo" src={config.siteLogo} alt={config.siteTitle} /> 
-          <strong className="p-name">{config.siteTitle}</strong>
-        </span>
-        <span className="webmention type">
-          {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
-          {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
-          {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
-        </span>
-        <ol className="relsyn">
-          {note.syndicationLinks? 
-            note.syndicationLinks.map((link) => {
-              return (
-                <li>
-                  <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                    <span>View on </span>
-                    <i className={`lab la-${link.name}`}/> {link.name}
+          <span className="note__author__link">
+            <img className="u-photo" src={config.siteLogo} alt={config.siteTitle} /> 
+            <strong className="p-name">{config.siteTitle}</strong>
+          </span>
+          <span className="webmention type">
+            {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
+            {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
+            {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
+          </span>
+          <ol className="relsyn">
+            {note.syndicationLinks? 
+              note.syndicationLinks.map((link) => {
+                return (
+                  <li>
+                    <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
+                      <span>View on </span>
+                      <i className={`lab la-${link.name}`}/> {link.name}
+                    </a>
+                  </li>
+                )         
+            })  : null }
+          </ol> 
+        </Hidden>
+
+          <NotesContent className="e-content">
+            {note.coverMedium[0] ? (
+                  
+              <NoteBodyWrapper>
+                <Image 
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
+                  alt={`Cover medium of note ${note.date}`}
+                  layout="fill"
+                  className="u-photo" 
+                  style={{cursor:'pointer'}}
+                /> 
+                <NotesDate>
+                  <time className="dt-published" dateTime={note.date}>
+                    {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
+                  </time>
+                </NotesDate>
+              </NoteBodyWrapper>
+            ): 
+              <NoteBodyWrapper>
+                <NoteBody content={note.content} /> 
+                <NotesDate>
+                  <a title={note.title} href={`${config.siteUrl}/notes/${note.date}`} className="u-url">
+                    <Date className="dt-published" dateString={note.date} />
                   </a>
-                </li>
-              )         
-           })  : null }
-        </ol> 
-      </Hidden>
-      */}
-      <a
-        href={`/notes/${note.date}`}
-        title={note.title}
-        className="u-url t p-name"
-      >
-        <NotesContent className="e-content">
-          {note.coverMedium[0] ? (
-                
-            <NoteBodyWrapper>
-              <Image 
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
-                alt={`Cover medium of note ${note.date}`}
-                layout="fill"
-                className="u-photo" 
-                style={{cursor:'pointer'}}
-              /> 
-              <NotesDate>
-                <time className="dt-published" dateTime={note.date}>
-                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
-                 </time>
-              </NotesDate>
-            </NoteBodyWrapper>
-          ): 
-            <NoteBodyWrapper>
-              <NoteBody content={note.content} /> 
-              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
-            </NoteBodyWrapper> 
-          }
-          
+                </NotesDate>
+              </NoteBodyWrapper> 
+            }
+            
 
-        </NotesContent>
-      </a>
-    </NotesItem>
+          </NotesContent>
+      </NotesItem>
+    </Link>
   )
 }

@@ -64,8 +64,8 @@ const WebmentionAuthor = styled.div`
 const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
   margin-bottom: calc(var(--space-sm)*.5);
@@ -218,8 +218,8 @@ export default function Webmentions({ slug }) {
         <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
           <Image
             src={mention.author.photo}
-            height="40"
-            width="40"
+            height="50"
+            width="50"
             className="u-photo"
             alt={`Photo of ${mention.author.name}`}
             title={mention.author.name}

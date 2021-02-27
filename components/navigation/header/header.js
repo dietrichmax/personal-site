@@ -40,14 +40,16 @@ const MainNav = styled.ul`
   text-align: justify;
   list-style-type: none;
   padding-inline-start: 0;
-  display: flex;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: var(--space-sm);
+  display: grid;
   ${media.lessThan('medium')`
     display: block;
   `}
 `
 
 const Logo = styled.li`
-  flex: 60%;
+  grid-column: span 2 / span 2;
   display: inline-block;
   :hover {
     color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}

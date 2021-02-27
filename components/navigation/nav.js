@@ -4,7 +4,7 @@ import ActiveLink from "@/components/navigation/active-link"
 
 
 const NavItems = styled.li`
-  flex: 40%;
+  grid-column: span 1 / span 1;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

@@ -107,7 +107,7 @@ export default function Note({ note }) {
               title={note.title}
               description={note.description}
               slug={`/notes/${note.id}`}
-              date={note.date}
+              date={note.created_at}
               postSEO
             />
             <NoteWrapper>
@@ -170,7 +170,9 @@ export default function Note({ note }) {
                       })  : null }
                     </SyndList> 
 
-                  <NoteMeta >
+                    <NoteMeta >
+                      <MetaItem><NoteTags tags={note.tags} /></MetaItem>
+                      <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.id}`} title={note.created_at} ><Date className="dt-published" dateString={note.created_at} /></a></MetaItem>
                   </NoteMeta>
                 </NotesContent>
 

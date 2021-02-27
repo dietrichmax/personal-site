@@ -33,11 +33,14 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
+  background: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--gray-extra-light) 350%);
+      background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0 var(--space);
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
   line-height: 1.15;
-  color: var(--thirdy-color);
   font-family: var(--thirdy-font);
   ${media.lessThan('medium')`
     font-size: 1.5em;
@@ -49,7 +52,7 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
+  background-image: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--gray-extra-light) 150%);
   background-size: 100% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;

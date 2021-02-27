@@ -46,6 +46,7 @@ const CardItemDescription = styled.div`
 const TagsWrapper = styled.div`
   padding-left: var(--space-sm);
   padding-right: var(--space-sm);
+  margin-top: auto;
 `
 
 const DateWrapper = styled.a`

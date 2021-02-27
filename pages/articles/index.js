@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
+import SubTitle from '@/components/title/sub-title'
 
 const BlogPageContainer = styled.div`
   margin-left: auto;
@@ -33,6 +34,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
+            <SubTitle>Long form content?</SubTitle>
 
             <BlogPageContainer >
 

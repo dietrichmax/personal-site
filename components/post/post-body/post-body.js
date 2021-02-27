@@ -9,6 +9,7 @@ import media from 'styled-media-query';
 const PostContent = styled.section`
   grid-template-columns: repeat(8,minmax(0,1fr));
   gap: var(--space-sm);
+  margin-top: var(--space-sm);
   display: grid;
   ${media.lessThan('large')`
     display: block;

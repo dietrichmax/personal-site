@@ -199,7 +199,6 @@ export default function Footer() {
 
 
   useEffect(() => {
-    console.log(search)
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },

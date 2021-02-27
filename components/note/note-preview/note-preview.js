@@ -55,12 +55,13 @@ const Hidden = styled.a`
 export default function NotePreview({ note }) {
 
   return (
-    <Link
-      href={`/notes/${note.date}`}
-      className="p-name"
-      passHref
-    >
-      <NotesItem className="h-entry" title={note.title}>
+    <NotesItem className="h-entry" >
+      <Link
+        href={`/notes/${note.id}`}
+        className="p-name"
+        passHref
+      >
+        <a title={note.title}>
         <Hidden className="webmention meta">
 
           <span className="note__author__link">
@@ -108,7 +109,7 @@ export default function NotePreview({ note }) {
               <NoteBodyWrapper>
                 <NoteBody content={note.content} /> 
                 <NotesDate>
-                  <a title={note.title} href={`${config.siteUrl}/notes/${note.date}`} className="u-url">
+                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url">
                     <Date className="dt-published" dateString={note.date} />
                   </a>
                 </NotesDate>
@@ -117,7 +118,8 @@ export default function NotePreview({ note }) {
             
 
           </NotesContent>
+          </a>
+        </Link>
       </NotesItem>
-    </Link>
   )
 }

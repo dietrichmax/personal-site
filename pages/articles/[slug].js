@@ -72,7 +72,6 @@ const TagsWrapper = styled.div`
 `
 
 const DateWrapper = styled.div`
-  margin-bottom: var(--space-sm);
   font-size: 12px;
 `
 

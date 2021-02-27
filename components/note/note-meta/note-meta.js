@@ -59,9 +59,9 @@ export default function NoteMeta({ note }) {
 
   return (
     <MetaWrapper>
-      <Title>{format(parseISO(note.created_at), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
+      <Title>{format(parseISO(note.date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
       <MetaOuterWrapper>
-        <Time>{format(parseISO(note.created_at), "hh:mm O").replace("-"," ")}</Time>
+        <Time>{format(parseISO(note.date), "hh:mm O").replace("-"," ")}</Time>
 
         <MetaInnerWrapper>
           <MetaItem><Location className="p-location" title="View this location in OpenStreetMap" href={`http://www.openstreetmap.org/?mlat=${note.lat}&mlon=${note.lon}&zoom=12`}><i class="las la-map-marker"></i></Location></MetaItem>
@@ -75,7 +75,7 @@ export default function NoteMeta({ note }) {
             </Weather>
             : null}
           </MetaItem>
-          <MetaItem>{note.temperature ? <Temperature>{note.temperature.toFixed(0)}°C</Temperature> : null}</MetaItem>
+          <MetaItem>{note.temperature ? <Temperature title={`${note.temperature.toFixed(0)}°Celsius`}>{note.temperature.toFixed(0)}°C</Temperature> : null}</MetaItem>
           <MetaItem>
           <Tags>
             {note.tags.map((tag) => {

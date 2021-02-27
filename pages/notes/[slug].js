@@ -106,8 +106,8 @@ export default function Note({ note }) {
             <SEO   
               title={note.title}
               description={note.description}
-              slug={`/notes/${note.id}`}
-              date={note.created_at}
+              slug={`/notes/${note.date}`}
+              date={note.date}
               postSEO
             />
             <NoteWrapper>
@@ -135,7 +135,7 @@ export default function Note({ note }) {
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
                         <NoteImage
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}
-                          alt={`${i} cover image`}
+                          alt={`${i}. cover image`}
                           title={`${note.name}`}
                           className="u-photo" 
                           width="1200"
@@ -172,7 +172,7 @@ export default function Note({ note }) {
 
                     <NoteMeta >
                       <MetaItem><NoteTags tags={note.tags} /></MetaItem>
-                      <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.id}`} title={note.created_at} ><Date className="dt-published" dateString={note.created_at} /></a></MetaItem>
+                      <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.date}`} title={note.title} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
                   </NoteMeta>
                 </NotesContent>
 
@@ -181,7 +181,7 @@ export default function Note({ note }) {
       
 
               {/*<SocialShare slug={`/notes/${note.date}`} /> */}
-              <Webmentions slug={`/notes/${note.id}`} />
+              <Webmentions slug={`/notes/${note.date}`} />
 
             </NoteWrapper>
           </>
@@ -219,7 +219,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.id}`) || [],
+    paths: notes?.map((note) => `/notes/${note.date}`) || [],
     fallback: true,
   }
 }

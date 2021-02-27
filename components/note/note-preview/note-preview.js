@@ -53,9 +53,10 @@ const Hidden = styled.a`
 `
 export default function NotePreview({ note }) {
 
-
+console.log(note)
   return (
     <NotesItem className="h-entry">
+      {/*
       <Hidden className="webmention meta">
 
         <span className="note__author__link">
@@ -81,8 +82,9 @@ export default function NotePreview({ note }) {
            })  : null }
         </ol> 
       </Hidden>
+      */}
       <a
-        href={`/notes/${note.id}`}
+        href={`/notes/${note.date}`}
         title={note.title}
         className="u-url t p-name"
       >
@@ -92,21 +94,21 @@ export default function NotePreview({ note }) {
             <NoteBodyWrapper>
               <Image 
                 src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
-                alt={`Cover medium of note ${note.id}`}
+                alt={`Cover medium of note ${note.date}`}
                 layout="fill"
                 className="u-photo" 
                 style={{cursor:'pointer'}}
               /> 
               <NotesDate>
-                <time className="dt-published" dateTime={note.created_at}>
-                  {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
+                <time className="dt-published" dateTime={note.date}>
+                  {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
                  </time>
               </NotesDate>
             </NoteBodyWrapper>
           ): 
             <NoteBodyWrapper>
               <NoteBody content={note.content} /> 
-              <NotesDate><Date className="dt-published" dateString={note.created_at} /></NotesDate>
+              <NotesDate><Date className="dt-published" dateString={note.date} /></NotesDate>
             </NoteBodyWrapper> 
           }
           

@@ -84,9 +84,9 @@ export default function NotePreview({ note }) {
       <a
         href={`/notes/${note.id}`}
         title={note.title}
-        className="u-url"
+        className="u-url t p-name"
       >
-        <NotesContent className="e-content p-name">
+        <NotesContent className="e-content">
           {note.coverMedium[0] ? (
                 
             <NoteBodyWrapper>

@@ -9,7 +9,7 @@ import media from 'styled-media-query';
 const PostContent = styled.section`
   grid-template-columns: repeat(8,minmax(0,1fr));
   gap: var(--space-sm);
-  margin-top: var(--space-sm);
+  margin: var(--space-sm) 0;
   display: grid;
   ${media.lessThan('large')`
     display: block;
@@ -35,7 +35,7 @@ const ContentWrapper = styled.div`
 `
 
 const TOCWrapper = styled.div`
-grid-column: span 2/span 2;
+  grid-column: span 2/span 2;
 
 `
 

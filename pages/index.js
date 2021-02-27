@@ -111,7 +111,7 @@ export default function Index({ allPosts, allTags, allNotes }) {
               </Hero>
             </HeroWrapper>
 
-            <IndexPageContainer className="h-feed">
+            <IndexPageContainer>
               <SubTitle>Selected Articles</SubTitle>
               <PostContainer >
                 {posts.map((post) => (

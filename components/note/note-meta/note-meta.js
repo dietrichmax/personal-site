@@ -46,8 +46,14 @@ const Temperature = styled.span``
 
 const Tags = styled.div`
   margin-left: auto;
+  font-size: .825rem;
 `
 
+const Tag = styled.a`
+  :before {
+    content: "# "
+  }
+`
 
 export default function NoteMeta({ note }) {
 
@@ -74,7 +80,7 @@ export default function NoteMeta({ note }) {
           <Tags>
             {note.tags.map((tag) => {
               return (
-              <a href={`/topics/${tag.slug}`}>{tag.name}</a>
+              <Tag href={`/topics/${tag.slug}`} title={tag.name}>{tag.name}</Tag>
             )})}
           </Tags>
           </MetaItem>

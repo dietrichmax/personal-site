@@ -16,8 +16,7 @@ const TagItem = styled.a`
   background-color: var(--gray-extra-light);
   font-family: var(--secondary-font);
   :before {
-    content: "#";
-    margin-right: 2px;
+    content: "# ";
     color: ${props => props.color ? props.color : '#798ad0'};
   }
   :hover {

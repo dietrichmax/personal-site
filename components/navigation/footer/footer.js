@@ -32,6 +32,9 @@ const FooterMainNav = styled.ul`
   padding-inline-start: 0;
   font-size: 1rem;
   text-align: right;
+  grid-column: span 1 / span 1;
+  display: flex;
+  justify-content: space-around;
   ${media.lessThan('medium')` 
     display: flex;
     justify-content: space-between;
@@ -40,7 +43,6 @@ const FooterMainNav = styled.ul`
 `
 
 const FooterMainNavItem = styled.li`
-  margin-right: var(--space);
   display: inline-block;
   transition: 0.2s;
   :hover {
@@ -144,8 +146,9 @@ const FooterLink = styled.a`
 `
 
 const FooterBar = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: var(--space-sm);
   grid-column: span 4/span 4;
   ${media.lessThan('medium')`  
     display: block;
@@ -153,14 +156,15 @@ const FooterBar = styled.div`
 `
 
 const SearchWrapper = styled.div`
-  font-family: var(--primary-font)
+  font-family: var(--primary-font);
+  grid-column: span 2 / span 2;
 `
 
 const SearchInput = styled.input`
   padding-left: 0.25rem;
   margin-right: 0.125rem;
   border: 2px solid var(--gray-light);
-  background-color: var(--gray-extra-light);
+  background-color: var(--body-bg);
   :invalid {
       border: 1px solid red;
   }

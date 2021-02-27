@@ -56,7 +56,12 @@ const MetaItem = styled.li`
 
 `
 
-const ContentWrapper = styled.div``
+const ContentWrapper = styled.div`
+  margin-top: var(--space);
+  background-color: var(--content-bg);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+`
 
 const NotesContent = styled.div`
 `

@@ -7,17 +7,14 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig";
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
-import NoteTags from "@/components/tags/tags"
 import Webmentions from "@/components/social/webmentions/webmentions"
-import SocialShare from "@/components/social/social-share/social-share"
 import Image from "next/image"
 import Link from"next/link"
-import markdownToHtml from '@/lib/utils/markdownToHtml'
-import Date from '@/components/date/date'
+import NoteMeta from "@/components/note/note-meta/note-meta"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);
-  padding: var(--space-sm) var(--space);
+  padding: 0 var(--space);
   margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
@@ -40,15 +37,12 @@ const NoteImage = styled(Image)`
 `
 
 const NotesItem = styled.div`
-  background-color: var(--content-bg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `
 
-const NoteMeta = styled.ol`
+const NoteDiv = styled.ol`
   font-family: var(--secondary-font);
   font-size: 14px;
   display: flex;
@@ -65,7 +59,6 @@ const MetaItem = styled.li`
 const ContentWrapper = styled.div``
 
 const NotesContent = styled.div`
-  padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
 `
 
 const SyndList = styled.ol`
@@ -113,7 +106,7 @@ export default function Note({ note }) {
             <NoteWrapper>
              
               <NotesItem className="h-entry"> 
-
+              <NoteMeta  note={note} />
                 <Hidden>
                   <div className="webmentions meta">
                       <span className="webmention type">
@@ -170,17 +163,11 @@ export default function Note({ note }) {
                       })  : null }
                     </SyndList> 
 
-                    <NoteMeta >
-                      <MetaItem><NoteTags tags={note.tags} /></MetaItem>
-                      <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.id}`} title={note.title} ><Date className="dt-published" dateString={note.date} /></a></MetaItem>
-                  </NoteMeta>
                 </NotesContent>
 
                 </ContentWrapper>
               </NotesItem>
       
-
-              {/*<SocialShare slug={`/notes/${note.date}`} /> */}
               <Webmentions slug={`/notes/${note.id}`} />
 
             </NoteWrapper>

@@ -458,6 +458,7 @@ module.exports = withPlugins([
       "lisilinhart.info",
       "tantek.com",
       "snarfed.org",
+      "openweathermap.org",
     ],
   }},
   {i18n: {

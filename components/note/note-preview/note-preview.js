@@ -13,7 +13,6 @@ const NotesItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
   min-height: 250px;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);

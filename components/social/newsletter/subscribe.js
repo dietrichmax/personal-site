@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import { Emojione } from "react-emoji-render"
+import media from 'styled-media-query';
 
 const NewsletterWrapper = styled.label`
     display: flex;
@@ -8,9 +9,12 @@ const NewsletterWrapper = styled.label`
     flex-direction: row;
     flex-wrap: wrap;
     box-sizing: border-box;
-    max-width: 720px;
-    padding: var(--space-sm);
+    max-width: 1200px;
+    padding: var(--space);
     margin: 0 auto var(--space-lg) auto;
+    ${media.lessThan('medium')`
+      padding: var(--space-sm);
+    `}
 `
 const DescriptionWrapper = styled.div`
     flex-grow: 0;    

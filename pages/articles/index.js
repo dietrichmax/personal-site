@@ -34,7 +34,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
-            <SubTitle>Long form content?</SubTitle>
+            <SubTitle>Mostly well thought out content</SubTitle>
 
             <BlogPageContainer >
 

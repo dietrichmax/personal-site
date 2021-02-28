@@ -11,7 +11,7 @@ const Card = styled.li`
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
   ${media.lessThan('medium')`
-    margin: 0 var(--space-sm) var(--space) var(--space-sm);
+    margin: var(--space-sm);
   `}
 `
 

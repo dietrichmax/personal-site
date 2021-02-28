@@ -124,6 +124,7 @@ const Button = styled.button`
   text-align: center;
   padding: .75rem 1.5rem;
   width: 20%;
+  border-radius: var(--border-radius);
   background: var(--primary-color);
   :hover {
     cursor: pointer;

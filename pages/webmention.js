@@ -48,6 +48,7 @@ const WebmentionButton = styled.button`
   transition: all .2s ease-in-out;
   text-align: center;
   padding: .75rem 1.5rem;
+  border-radius: var(--border-radius);
   width: 20%;
   background: var(--primary-color);
   :hover {

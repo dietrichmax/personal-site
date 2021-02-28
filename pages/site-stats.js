@@ -27,7 +27,6 @@ import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
-import { treemapSlice } from "d3"
 
 
 const StyledReactTooltip = styled(ReactTooltip)`

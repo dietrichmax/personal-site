@@ -1,7 +1,5 @@
 import { parseISO, format } from 'date-fns'
 import styled from 'styled-components';
-import config from "@/lib/data/SiteConfig"
-import markdownToHtml from '@/lib/utils/markdownToHtml'
 import NoteTags from "@/components/tags/tags"
 import Image from "next/image"
 import Title from '@/components/title/post-title'
@@ -78,6 +76,8 @@ export default function NoteMeta({ note }) {
                   src={`http://openweathermap.org/img/wn/${note.weather_icon}.png`}
                   width="24"
                   height="24"
+                  title={note.weather_description}
+                  alt="Icon displaying weather"
                 />
               </Weather>
               : null}

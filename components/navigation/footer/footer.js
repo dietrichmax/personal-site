@@ -177,7 +177,8 @@ const SearchButton = styled.button`
   outline: none;
   overflow: hidden;
   font-size: 12px;
-  padding: .125rem .5rem;
+  padding: .125rem .5rem;   
+  border-radius: var(--border-radius);
   transition: all .2s ease-in-out;
   text-align: center;
   background: var(--primary-color);
@@ -238,6 +239,11 @@ export default function Footer() {
     { 
       name: "Home",
       link: "/" 
+
+    },
+    { 
+      name: "Now",
+      link: "/now" 
 
     },
     { 

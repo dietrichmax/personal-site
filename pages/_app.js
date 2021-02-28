@@ -5,7 +5,7 @@ import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import "@/styles/prism.css"
 
-//import "@/public/fonts/CM-Sans-Serif-2012/style.css"
+import "@/public/fonts/Clarity-City/style.css"
 import "@/public/fonts/Happy-Times/style.css"
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;

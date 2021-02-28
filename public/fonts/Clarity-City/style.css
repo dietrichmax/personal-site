@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Clarity City';
+    src: url('WOFF/ClarityCity-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  /*font-family: 'Clarity City';
+    src: url('WOFF/ClarityCity-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  src: url('WOFF/ClarityCity-SemiBold.woff');
+
+  src: url('WOFF/ClarityCity-Bold.woff');
+
+  src: url('WOFF/ClarityCity-Black.woff');
+  src: url('WOFF/ClarityCity-BlackItalic.woff');
+  src: url('WOFF/ClarityCity-Bold.woff');
+  src: url('WOFF/ClarityCity-BoldItalic.woff');
+  src: url('WOFF/ClarityCity-ExtraBold.woff');
+  src: url('WOFF/ClarityCity-ExtraBoldItalic.woff');
+  src: url('WOFF/ClarityCity-ExtraLight.woff');
+  src: url('WOFF/ClarityCity-ExtraLightItalic.woff');
+  src: url('WOFF/ClarityCity-Light.woff');
+  src: url('WOFF/ClarityCity-LightItalic.woff');
+  src: url('WOFF/ClarityCity-Medium.woff');
+  src: url('WOFF/ClarityCity-MediumItalic.woff');*/
+  /*src: url('WOFF/ClarityCity-RegularItalic.woff');
+  src: url('WOFF/ClarityCity-SemiBold.woff');
+  src: url('WOFF/ClarityCity-SemiBoldItalic.woff');
+  src: url('WOFF/ClarityCity-Thin.woff');
+  src: url('WOFF/ClarityCity-ThinItalic.woff');*/
+  font-display: swap;
+}

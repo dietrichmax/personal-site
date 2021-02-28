@@ -49,7 +49,7 @@ export default function Notes({ allNotes }) {
               slug="notes"
             />
             <PageTitle>Notes</PageTitle>
-            <SubTitle>What's keeping me busy.</SubTitle>
+            <SubTitle>What's going on.</SubTitle>
             <NotesWrapper>
 
               <NotesContainer className="h-feed">

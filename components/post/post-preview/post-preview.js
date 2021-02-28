@@ -37,7 +37,7 @@ const CardItemTitle = styled.h2`
 `;
 
 const CardItemDescription = styled.div`
-  line-height: 1.75rem;
+  line-height: 1.5;
   margin: 0.75rem 0;
   font-family: var(--secondary-font);
 `;

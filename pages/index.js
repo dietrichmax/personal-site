@@ -48,7 +48,7 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  background-image: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--thirdy-color) 150%);
+  background-image: -webkit-linear-gradient(45deg, var(--body-bg), var(--body-bg) 150%);
   background-size: 100% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;

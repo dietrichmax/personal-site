@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
   }
   h1, h2, h3, h4, h5, h6 {
-    color: #191f45;
+    color: var(--primary-color);
   }
   body {
     color: var(--text-color);
@@ -54,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
     font-style: normal; 
+    line-height: 1.25;
     font-family: var(--primary-font);
     word-break: break-word;
     hyphens: auto;

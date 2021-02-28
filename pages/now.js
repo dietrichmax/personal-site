@@ -10,7 +10,7 @@ import SubTitle from '@/components/title/sub-title'
 import axios from 'axios';
 import Image from "next/image"
 import { parseISO, format } from 'date-fns'
-import PostBody from '@/components/note/note-body/note-body'
+import TextBody from '@/components/note/note-body/note-body'
 
 const Container = styled.div`
   max-width: 1200px;
@@ -23,14 +23,20 @@ const Container = styled.div`
   `}
 `
 
-const Data = styled.p`
-  line-height: 28px;
-  margin-bottom: var(--space-sm);
+const LiveDataWrapper = styled.div`
 `
 
-const ContentWrapper = styled.div``
+
+const Data = styled.p`
+  line-height: 1.75;
+`
+
+const TextWrapper  = styled.div`
+  margin: var(--space-sm) 0;
+`
 
 const Disclaimer = styled.p`
+  font-size: 0.75rem;
 `
 
 const WeatherImg = styled(Image)`
@@ -82,14 +88,13 @@ export default function Now({ location, weather, adress, content }) {
   const clouds = (all) => {
     switch (all) {
       case all = 0:
-        return "no"
+        return "is not even one cloud"
       case all = 1:
-        return "one"
+        return "is just one cloud"
       case all > 1:
-        return all
+        return `are ${all} clouds`
     }
   };
-
 
   return (
     <>
@@ -108,23 +113,27 @@ export default function Now({ location, weather, adress, content }) {
             <SubTitle>Right now i am in {`${adress.address.town}, ${adress.address.state}, ${adress.address.country}`}</SubTitle>
 
             <Container >
-              <Data>
-                It is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {weather.clouds.all > 1 ? "are" : "is just" } {clouds(weather.clouds.all)} cloud.
-                <WeatherImg
-                  src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
-                  title={weather.weather[0].description}
-                  alt="Icon displaying weather"
-                  width="30"
-                  height="30"
-                />
-              </Data>
-              <Data>My phone's battery level is {location.batt}% <i class={`las la-battery-${batteryLevel(location.batt)}`} title={`${location.batt}% Battery Level`}/> and it is currently {batteryStatus(location.bs)}.</Data>
-              
 
-              <PostBody className="e-content" content={content} /> 
+              <LiveDataWrapper>
+                <Data>
+                  It is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)}.
+                  <WeatherImg
+                    src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                    title={weather.weather[0].description}
+                    alt="Icon displaying weather"
+                    width="30"
+                    height="30"
+                  />
+                </Data>
+                {location.batt && location.bs ? <Data>My phone's battery level is {location.batt}% <i class={`las la-battery-${batteryLevel(location.batt)}`} title={`${location.batt}% Battery Level`}/> and it is currently {batteryStatus(location.bs)}.</Data> : null}
+              </LiveDataWrapper>
 
+              <TextWrapper> 
+                <TextBody className="e-content" content={content} /> 
+              </TextWrapper> 
 
-              <Data>Last updated on {format(parseISO(location.created_at), "hh:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Data>
+              <Disclaimer>Last updated on {format(parseISO(location.created_at), "hh:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
+
             </Container >
           </>
         )}
@@ -139,14 +148,14 @@ export async function getServerSideProps() {
   const location = locationData[0]
 
   const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
-  const adress = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lon}&format=json`)
+  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lon}&format=json`)
 
   return {
     props: { 
       location: location,
       weather: weather.data,
-      adress: adress.data,
-      content: content
+      adress: address.data,
+      content: content.content
     }
   }
 }

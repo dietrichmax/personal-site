@@ -96,7 +96,7 @@ const FooterColumnTitle = styled.p`
 
 const FooterColumnDescription = styled.p`
   margin-bottom: var(--space);
-  line-height: 24px;
+  line-height: 1.75;
 `
 
 const FooterSocials = styled.ol`

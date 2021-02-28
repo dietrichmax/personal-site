@@ -58,12 +58,13 @@ const MetaItem = styled.li`
 
 const ContentWrapper = styled.div`
   margin-top: var(--space-sm);
-  background-color: var(--content-bg);
-  padding: var(--space-sm);
   border-radius: var(--border-radius);
 `
 
 const NotesContent = styled.div`
+  padding: var(--space-sm);
+  background-color: var(--content-bg);
+  box-shadow: var(--box-shadow);
 `
 
 const SyndList = styled.ol`

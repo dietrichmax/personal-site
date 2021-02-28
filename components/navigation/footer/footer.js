@@ -271,8 +271,7 @@ export default function Footer() {
 
           <SearchWrapper >
             <SearchInput 
-              type="search" 
-              value={search}  
+              type="search"   
               name="search"
               id="search"
               label="search-input"
@@ -281,7 +280,7 @@ export default function Footer() {
             <SearchButton 
               type="submit search"
               aria-label="Search"
-              onClick={() => window.open(`https://duckduckgo.com/?q=${search}`)}
+              onClick={() => window.open(`https://duckduckgo.com/?q=site:mxd.codes+${search}`)}
             >
             Search</SearchButton>
           </SearchWrapper>

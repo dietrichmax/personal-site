@@ -242,11 +242,6 @@ export default function Footer() {
 
     },
     { 
-      name: "Now",
-      link: "/now" 
-
-    },
-    { 
       name: "Articles",
       link: "/articles" 
     },
@@ -257,6 +252,11 @@ export default function Footer() {
     { 
       name: "Links",
       link: "/links" 
+    },
+    { 
+      name: "Now",
+      link: "/now" 
+
     },
     { 
       name: "About",

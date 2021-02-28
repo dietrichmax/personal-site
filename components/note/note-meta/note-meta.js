@@ -47,18 +47,6 @@ const Temperature = styled.span`
 
 `
 
-const Tags = styled.div`
-text-align: right;
-  margin-left: auto;
-  font-size: .825rem;
-  color var(--text-color);
-`
-
-const Tag = styled.a`
-  :before {
-    content: "# "
-  }
-`
 
 export default function NoteMeta({ note }) {
 

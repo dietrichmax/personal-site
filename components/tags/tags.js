@@ -13,7 +13,7 @@ const TagItem = styled.a`
   margin-right: var(--space-sm);    
   margin-top: .25rem;
   padding: 3px 5px;
-  background-color: var(--gray-extra-light);
+  background-color: var(--body-bg);
   font-family: var(--secondary-font);
   :before {
     content: "# ";

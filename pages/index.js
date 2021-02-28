@@ -18,11 +18,10 @@ const IndexPageContainer = styled.div`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  background-color: var(--primary-color);
+  background-color: ${props => (props.color ? `${props.color}`  : "var(--primary-color)")};
 `
 const Hero = styled.div`   
   display: flex;
-  color: var(--thirdy-color);
   max-width: 1200px;
   padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
@@ -33,10 +32,7 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
-  background: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--gray-extra-light) 350%);
-      background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--body-bg);
   margin: 0 var(--space);
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
@@ -52,7 +48,7 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  background-image: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--gray-extra-light) 150%);
+  background-image: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--thirdy-color) 150%);
   background-size: 100% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -86,7 +82,14 @@ const PostContainer = styled.div`
   `}
 `
 
-
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
@@ -105,7 +108,7 @@ export default function Index({ allPosts, allTags, allNotes }) {
               title="Home"
               slug=""
             />
-             <HeroWrapper>
+             <HeroWrapper color={getRandomColor()}>
               <Hero>
                 <HeroDescription>
                 <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.socials.mail}title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from Rosenheim, Germany. <br/>

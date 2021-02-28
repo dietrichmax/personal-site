@@ -71,7 +71,7 @@ const SyndList = styled.ol`
   font-family: var(--secondary-font);
   list-style: none;
   padding-inline-start: 0;
-  font-size: .875rem;
+  font-size: 12px;
   text-align: right;
 `
 

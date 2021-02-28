@@ -88,7 +88,7 @@ const BioToggle = styled.button`
 
 export default function About({ about }) {
   const router = useRouter()
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(2);
 
   const renderBio = () => {
     switch (selected) {
@@ -133,7 +133,7 @@ export default function About({ about }) {
               <Intro>{about.intro}</Intro>
 
               <BioContainer>
-                <BioTitle>How much do you want to know?</BioTitle>
+                {/*<BioTitle>How much do you want to know?</BioTitle>
                 <BioWrapper>
                   <BioDescription>Not much</BioDescription>
                   {[0, 1, 2].map((item) => (
@@ -146,9 +146,9 @@ export default function About({ about }) {
                     />
                   ))}
                   <BioDescription>Everything</BioDescription>
-                </BioWrapper>
+                </BioWrapper>*/}
                 <Content content={renderBio()} />
-            </BioContainer>
+                  </BioContainer>
 
             </PageWrapper>
           </>

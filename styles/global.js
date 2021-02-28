@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     transition: 0.2s;
   }
+
+  p {
+    margin-bottom: .5rem;
+  }
   ::selection {
     background: var(--primary-color);
     color: var(--gray-extra-light);

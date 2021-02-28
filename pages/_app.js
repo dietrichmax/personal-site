@@ -3,10 +3,9 @@ import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
-//import CookieBanner from '@/components/cookies/cookie-banner' not used due to no cookies
 import "@/styles/prism.css"
 
-//import "@/public/fonts/Inter/style.css"
+//import "@/public/fonts/CM-Sans-Serif-2012/style.css"
 import "@/public/fonts/Happy-Times/style.css"
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;

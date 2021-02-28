@@ -34,6 +34,7 @@ const NotesContent = styled.div`
 
 const NotesDate = styled.p`
   font-family: var(--secondary-font);
+  margin-bottom: 0;
   text-align: right;
   position: absolute;
   bottom: 0;

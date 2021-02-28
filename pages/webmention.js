@@ -15,26 +15,30 @@ const PageWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
   padding: 0 var(--space) var(--space-lg) var(--space);
-  ${media.lessThan('large')`
-    padding: var(--space) 0;
+  ${media.lessThan('medium')`
+    padding: var(--space-sm);
   `}
 `
 
 
 const WebmentionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: var(--space-sm);
+  display: grid;
+  ${media.lessThan('medium')`
+    display: block;
+  `}
 `
 
 
 const WebmentionFormField = styled.div``
 
 const WebmentionForm = styled.form`
-  width: 70%; 
+  grid-column: span 2/span 2;
+  margin-bottom: var(--space-sm);
 `
 
 const WebmentionFormLabel = styled.label`
-  font-size: 1rem;
   font-weight: 700;
 `
 
@@ -71,9 +75,24 @@ const WebmentionFormInput = styled.input`
 `
 
 const WebmentionInfo = styled.div`
-  padding: 0 var(--space-sm);
-  margin: 0 var(--space-sm);
+  grid-column: span 1/span 1;
 `
+
+const WebmentionTitle = styled.h2`
+  margin-bottom: var(--space-sm);
+`
+
+const WebmentionDescription = styled.p``
+
+const WebmentionLink = styled.a`
+  color: var(--text-color);
+  border-bottom: 1px solid var(--link-color);
+  cursor: pointer;
+  :hover {
+    color: var(--link-color-hover);
+  }
+`
+
 
 
 export default function WebmentionEndpoint({  }) {
@@ -127,6 +146,7 @@ export default function WebmentionEndpoint({  }) {
                       id="source" 
                       name="source" 
                       type="url" 
+                      placeholder="Your URL"
                       onChange={(e) => setSourceUrl(e.target.value)}
                     />
                   </WebmentionFormField>
@@ -136,6 +156,7 @@ export default function WebmentionEndpoint({  }) {
                       id="target" 
                       name="target" 
                       type="url"
+                      placeholder="My URL"
                       onChange={(e) => setTargetUrl(e.target.value)} 
                     />
                   </WebmentionFormField>
@@ -144,7 +165,18 @@ export default function WebmentionEndpoint({  }) {
                 </WebmentionForm> 
 
                 <WebmentionInfo> 
-                About Webmention
+                <WebmentionTitle>About Webmention</WebmentionTitle>
+                <WebmentionDescription>
+                  <WebmentionDescription>Webmention is a modern alternative to pingback.</WebmentionDescription>
+                  <WebmentionDescription>If a site links back to any content, you can send a Webmention to for that URL.</WebmentionDescription>
+                  <WebmentionDescription>That means if you create content which links to any of my articles, you can send a webmention for that url 
+                    and it will be shown at the bottom of the article with a backlink to you.</WebmentionDescription>
+                </WebmentionDescription>
+
+                <WebmentionDescription>
+                  You can read more about Webmention on the 
+                  <WebmentionLink  href="https://indieweb.org/Webmention" title="Webmention"> IndieWebCamp wiki</WebmentionLink >.
+                </WebmentionDescription>
                 </WebmentionInfo> 
 
               </WebmentionContainer> 

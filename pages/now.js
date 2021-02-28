@@ -24,11 +24,11 @@ const Container = styled.div`
 `
 
 const LiveDataWrapper = styled.div`
+  font-family: var(--secondary-font);
 `
 
 
 const Data = styled.p`
-  line-height: 1.75;
 `
 
 const TextWrapper  = styled.div`
@@ -132,7 +132,7 @@ export default function Now({ location, weather, adress, content }) {
                 <TextBody className="e-content" content={content} /> 
               </TextWrapper> 
 
-              <Disclaimer>Last updated on {format(parseISO(location.created_at), "hh:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
+              <Disclaimer>Last updated on {format(parseISO(location.created_at), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
 
             </Container >
           </>

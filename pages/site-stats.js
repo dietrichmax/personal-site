@@ -21,7 +21,7 @@ import {
     getTagsCount,
     getSubscribersCount,
     getNotesCount,
-    getLinksCount,
+    getLocationsCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
@@ -304,7 +304,7 @@ export default function Recruiting({
     visitDuration,
     allWebmentions,
     notesCount,
-    linksCount,
+    locationsCount
 }) {
     const [liveViews, setLiveViews] = useState(0);
     const router = useRouter()
@@ -416,8 +416,8 @@ export default function Recruiting({
                                         <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{linksCount}</GridStats>
-                                        <GridStatsDescription>Links published</GridStatsDescription>
+                                        <GridStats>{locationsCount}</GridStats>
+                                        <GridStatsDescription>Locations tracked</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>
                             </GeneralStats>
@@ -650,7 +650,7 @@ export async function getStaticProps() {
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const notesCount = (await getNotesCount()) || []
-    const linksCount = (await getLinksCount()) || []
+    const locationsCount = (await getLocationsCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
@@ -674,7 +674,7 @@ export async function getStaticProps() {
             visitDuration,
             allWebmentions,
             notesCount,
-            linksCount,
+            locationsCount
         },
     }
 }

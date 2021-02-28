@@ -116,7 +116,7 @@ export default function Now({ location, weather, adress, content }) {
 
               <LiveDataWrapper>
                 <Data>
-                  It is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)}.
+                  It is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)} in the sky.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}

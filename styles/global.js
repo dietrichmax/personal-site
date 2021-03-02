@@ -96,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Happy-Times, serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
-    --text-color: #28303c;
+    --text-color: #323540;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;

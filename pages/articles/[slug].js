@@ -69,6 +69,7 @@ const PostTitleWrapper = styled.div`
 `
 
 const TagsWrapper = styled.div`
+  margin: var(--space-sm) 0;
 `
 
 const DateWrapper = styled.div`

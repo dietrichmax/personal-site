@@ -20,7 +20,7 @@ const InnerHeader = styled.div`
   height: 80px;
   ${media.lessThan('medium')`
     padding: var(--space-sm);
-    margin: calc(var(--space-sm)*0.5) auto var(--space) auto;
+    margin: 0 auto var(--space) auto;
   `}
 `
 
@@ -53,6 +53,7 @@ const Logo = styled.li`
   display: inline-block;
   color: ${props => (props.color ? `${props.color}`  : "var(--primary-color)")};
   line-height: 1.25;
+  margin: 0;
   :hover {
     color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
   }

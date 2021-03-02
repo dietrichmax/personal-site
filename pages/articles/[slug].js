@@ -75,7 +75,9 @@ const TagsWrapper = styled.div`
 const DateWrapper = styled.div`
   font-size: 12px;
 `
-
+const Hidden = styled.div`
+  display: none;
+`
 
 export default function Post({ post }) {  
 
@@ -122,6 +124,13 @@ export default function Post({ post }) {
               <PostWrapper>
                 <DateWrapper><Date className="dt-published" updated={post.dateUpdated} dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
                 <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
+
+                <Hidden>  
+                  <span className="h-card">
+                    <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}  /> 
+                    <strong className="p-name">Max Dietrich</strong>
+                  </span>
+                </Hidden> 
 
                 <Content>
     

@@ -56,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
   }
   strong {
     font-weight: bold;
+    var(--primary-color);
   }
   table {
     border-collapse: collapse;

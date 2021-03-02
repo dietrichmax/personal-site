@@ -16,7 +16,7 @@
   color: var(--link-color-hover);
 }
 
-.markdown p, .markdown blockquote, .markdown dl, .markdown ol, .markdown ul {
+.markdown p, .markdown dl, .markdown ol, .markdown ul {
   margin-bottom: 1.125rem;
   margin-top: 1.125rem;
 }
@@ -61,4 +61,5 @@
   padding: var(--space-sm) var(--space);
   margin: var(--space) 0;
   background: var(--gray-extra-light); 
+  font-style: italic;
 }

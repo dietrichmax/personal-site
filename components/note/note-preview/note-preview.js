@@ -95,14 +95,14 @@ export default function NotePreview({ note }) {
               <NoteBodyWrapper>
                 <Image 
                   src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
-                  alt={`Cover medium of note ${note.date}`}
+                  alt={`Cover medium of note ${note.created_at}`}
                   layout="fill"
                   className="u-photo" 
                   style={{cursor:'pointer'}}
                 /> 
                 <NotesDate>
-                  <time className="dt-published" dateTime={note.date}>
-                    {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
+                  <time className="dt-published" dateTime={note.created_at}>
+                    {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
                   </time>
                 </NotesDate>
               </NoteBodyWrapper>
@@ -110,8 +110,10 @@ export default function NotePreview({ note }) {
               <NoteBodyWrapper>
                 <NoteBody content={note.content} /> 
                 <NotesDate>
-                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url">
-                    <Date className="dt-published" dateString={note.date} />
+                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url">                  
+                    <time className="dt-published" dateTime={note.created_at}>
+                      {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
+                    </time>
                   </a>
                 </NotesDate>
               </NoteBodyWrapper> 

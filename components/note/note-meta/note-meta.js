@@ -27,7 +27,7 @@ const MetaInnerWrapper = styled.ol`
   font-size: 14px;
   color: #fff;
   background-color: var(--primary-color);
-  padding: .25rem var(--space-sm);
+  padding: 0 var(--space-sm);
   border-radius:var(--border-radius);
 `
 

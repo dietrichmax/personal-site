@@ -48,7 +48,7 @@ const LinksTitle = styled.h2`
 `
 
 const LinksLink = styled.cite`
-  font-size: 1rem;
+  font-size: 14px;
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
   font-family: var(--secondary-font);

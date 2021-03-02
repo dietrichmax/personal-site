@@ -51,6 +51,8 @@ const MainNav = styled.ul`
 const Logo = styled.li`
   grid-column: span 2 / span 2;
   display: inline-block;
+  color: var(--primary-color);
+  line-height: 1.25;
   :hover {
     color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
   }

@@ -51,7 +51,6 @@ export default function Now({ location, weather, address, content }) {
 
   const batteryLevel = location.batt*100
 
-  console.log(location)
 
   const movement = (vel) => {
     return (

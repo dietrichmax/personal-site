@@ -40,6 +40,12 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
   }
+  h2 {
+    line-height: 1.5;
+  }
+  h3, h4, h5, h6 {
+    line-height: 1.25;
+  }
   body {
     color: var(--text-color);
   }
@@ -58,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
     font-style: normal; 
-    line-height: 1.25;
+    line-height: 1.75;
     font-family: var(--primary-font);
     word-break: break-word;
     hyphens: auto;
@@ -71,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #f4f6f9; 
     --gray-light: #c9d1d9;  
-    --gray: #485055;
+    --gray: #28303c;
     --gray-dark: #3a3d4d;
     --primary-color: #0c132b;
     --secondary-color: #191f45;
@@ -86,11 +92,11 @@ const GlobalStyle = createGlobalStyle`
     --border-dark: var(--gray-dark);
     --border-radius: 4px;
     --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --secondary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Happy-Times, serif;
     --link-color: var(--thirdy-color);
     --link-color-hover: var(--gray);
-    --text-color: var(--primary-color);
+    --text-color: #28303c;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;

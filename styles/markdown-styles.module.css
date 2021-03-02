@@ -28,14 +28,14 @@
 
 .markdown h2 {
   font-size: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
   font-family: var(--primary-font);
 }
 
 .markdown h3 {
   font-size: 1.75rem;
-  margin-top: 3rem;
+  margin-top: 2.75rem;
   margin-bottom: 1.75rem;
   font-family: var(--primary-font);
 }

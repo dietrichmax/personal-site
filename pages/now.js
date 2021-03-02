@@ -29,6 +29,7 @@ const LiveDataWrapper = styled.div`
 
 
 const Data = styled.p`
+  margin-bottom: 0;
 `
 
 const TextWrapper  = styled.div`
@@ -92,7 +93,7 @@ export default function Now({ location, weather, address, content }) {
     }
   };
 
-  console.log(location.batt*100)
+
   return (
     <>
       <Layout>

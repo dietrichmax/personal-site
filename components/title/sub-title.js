@@ -9,7 +9,7 @@ const Title = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--gray);
+  color: var(--text-color);
   ${media.lessThan('medium')`
     margin: var(--space-sm);
     font-size: 1rem;

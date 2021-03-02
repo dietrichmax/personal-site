@@ -17,7 +17,7 @@
 }
 
 .markdown p, .markdown blockquote, .markdown dl, .markdown ol, .markdown ul {
-  margin: 0 0 1.125rem;
+  margin-bottom: 1.125rem;
 }
 
 .markdown ul, .markdown ol {

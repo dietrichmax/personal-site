@@ -29,7 +29,7 @@ const LiveDataWrapper = styled.div`
 
 
 const Data = styled.p`
-  margin-bottom: 0;
+  margin: 0;
 `
 
 const TextWrapper  = styled.div`

@@ -9,7 +9,7 @@ import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import axios from 'axios';
 import Image from "next/image"
-import { parseISO, format } from 'date-fns'
+import { format, fromUnixTime} from 'date-fns'
 import TextBody from '@/components/note/note-body/note-body'
 
 const Container = styled.div`
@@ -136,7 +136,7 @@ export default function Now({ weather, address, content, now  }) {
                 <TextBody className="e-content" content={content} /> 
               </TextWrapper> 
 
-              {/*<Disclaimer>Last updated on {format(parseISO(now.created_at), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>*/}
+              <Disclaimer>Last updated on {format(fromUnixTime(now.timestamp), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
           
           </Container >
           </>
@@ -163,7 +163,7 @@ export async function getServerSideProps() {
       now: {
         batt: locationData[0].batt,
         bs: locationData[0].bs,
-        created_at: locationData[0].created_at
+        timestamp: locationData[0].tst
       }
     }
   }

@@ -98,7 +98,7 @@ const WebmentionContent = styled.p`
 
 
 const SendWebmentions = styled.div`
-  margin: var(--space-sm) auto var(--space) auto;
+  margin: var(--space-sm) auto;
   font-family: var(--secondary-font);
 `
 
@@ -107,7 +107,7 @@ const SendText = styled.p`
 
 const Input = styled.input`
   padding: .5rem 1rem; 
-  margin: var(--space-sm) auto .25rem auto;
+  margin: var(--space-sm) auto
   width: 60%;
   border: 2px solid var(--gray-light);
   background-color: var(--gray-extra-light);

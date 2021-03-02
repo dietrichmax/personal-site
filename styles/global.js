@@ -27,7 +27,12 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin-bottom: .5rem;
+    margin-top: .5rem;
   }
+  li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
   ::selection {
     background: var(--primary-color);
     color: var(--gray-extra-light);

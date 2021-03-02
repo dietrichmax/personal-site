@@ -48,10 +48,9 @@ const WeatherImg = styled(Image)`
 
 
 
-export default function Now({ location, weather, address, content }) {
+export default function Now({ weather, address, content, now  }) {
   const router = useRouter()
 
-  const batteryLevel = location.batt*100
 
 
   const movement = (vel) => {
@@ -62,10 +61,14 @@ export default function Now({ location, weather, address, content }) {
 
   const batteryStatus = (bs) => {
     switch (bs) {
-      case false:
+      case 0:
+        return 
+      case 1:
         return "unplugged"
-      case true:
+      case 2:
         return "charging"
+      case 3:
+        return "full"
     }
   };
 
@@ -95,6 +98,8 @@ export default function Now({ location, weather, address, content }) {
   };
 
 
+
+
   return (
     <>
       <Layout>
@@ -109,7 +114,7 @@ export default function Now({ location, weather, address, content }) {
             />
             
             <PageTitle>Now</PageTitle>
-           <SubTitle>Right now i am in {`${address.address.town}, ${address.address.state}, ${address.address.country}`}</SubTitle>
+            <SubTitle>Right now i am in {`${address.address.town}, ${address.address.state}, ${address.address.country}`}</SubTitle>
 
             <Container >
 
@@ -124,16 +129,16 @@ export default function Now({ location, weather, address, content }) {
                     height="30"
                   />
                 </Data>
-                {batteryLevel ? <Data>My phone's battery level is {batteryLevel}% <i class={`las la-battery-${getBatteryLevelIcon(batteryLevel)}`} title={`${batteryLevel}% Battery Level`}/> and it is currently {batteryStatus(location.bs)}.</Data> : null}
+                {now.batt ? <Data>My phone's battery level is {now.batt}% <i class={`las la-battery-${getBatteryLevelIcon(now.batt)}`} title={`${now.batt}% Battery Level`}/> and it is currently {batteryStatus(now.bs)}.</Data> : null}
               </LiveDataWrapper>
 
               <TextWrapper> 
                 <TextBody className="e-content" content={content} /> 
               </TextWrapper> 
 
-              <Disclaimer>Last updated on {format(parseISO(location.created_at), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
+              {/*<Disclaimer>Last updated on {format(parseISO(now.created_at), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>*/}
           
-            </Container >
+          </Container >
           </>
         )}
       </Layout>
@@ -144,25 +149,22 @@ export default function Now({ location, weather, address, content }) {
 export async function getServerSideProps() {
   const locationData = (await getLocationData()) || []
   const content = (await getNowData()) || []
-  const dataLength = locationData[0].locations.length - 1
-  const coordinates = locationData[0].locations[dataLength].geometry.coordinates
-  const properties = locationData[0].locations[dataLength].properties
 
 
-  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
-  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${coordinates[1]}&lon=${coordinates[0]}&format=json`)
+  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[1].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
+  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[1].lon}&format=json`)
 
 
   return {
     props: { 
-      location: {
-        created_at: properties.timestamp,
-        batt: properties.battery_level,
-        bs: properties.battery_state
-      },
       weather: weather.data,
       address: address.data,
       content: content.content,
+      now: {
+        batt: locationData[0].batt,
+        bs: locationData[0].bs,
+        created_at: locationData[0].created_at
+      }
     }
   }
 }

@@ -1,59 +1,36 @@
 import React from "react"
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet-universal";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import hash from 'object-hash';
-import 'leaflet/dist/leaflet.css';
 
-class LeafletMap extends React.Component {    
-    constructor() {
-    super();
-    this.state = {
-      markers: [[51.8, 9.0]],
-      center: [51.8, 9.0],
-      zoom: 5,
-      color: '#3f51b5',
-      weight: 5,
-      opacity: 0.65,
-    };
-  }
+const Map = (data) => {
 
-  render() {
+  console.log(data.data[2].locations)
 
-    const Style = {
-      color: this.state.color,
-      weight: this.state.weight,
-      opacity: this.state.opacity,
-    };
+  const Style = {
+    color: '#3f51b5',
+    weight: 5,
+    opacity: 0.65
+  };
 
-    return (
-        <MapContainer 
-          center={this.state.center} 
-          zoom={this.state.zoom} 
-          attribution="false"
-          style={{
-            height: '400px',
-            width: '100%'
-          }}
-        >
-        <TileLayer
+  return (
+    <MapContainer
+      center={[51.8, 9.0]}
+      zoom={4}
+      scrollWheelZoom={false}
+      style={{ height: "800px", width: "1500px" }}
+    >
+      <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
           url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <GeoJSON key={hash(getGeoJson())} data={getGeoJson()} style={Style}/>
-          {this.state.markers.map((position) => 
-            <Marker 
-              position={position}
-            >
-              <Popup>
-                <pre>{position}</pre>
-              </Popup>
-            </Marker>
-          )}
-        </MapContainer>
-    );
-  }
-}
 
-export default LeafletMap;
+      <GeoJSON key={hash(getGeoJson())} data={data.data[2].locations} style={Style}/>
+    </MapContainer>
+  );
+};
+
+export default Map;
+
 
 function getGeoJson() {
   return {

@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
     font-style: normal; 
-    line-height: 1.75;
+    line-height: 1.5;
     font-family: var(--primary-font);
     word-break: break-word;
     hyphens: auto;
@@ -83,7 +83,7 @@ const GlobalStyle = createGlobalStyle`
   :root { 
     --gray-extra-light: #f4f6f9; 
     --gray-light: #c9d1d9;  
-    --gray: #28303c;
+    --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
     --primary-color: #0c132b;
     --secondary-color: #191f45;

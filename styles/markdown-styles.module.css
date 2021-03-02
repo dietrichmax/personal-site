@@ -24,6 +24,16 @@
 
 .markdown ul, .markdown ol {
   padding-inline-start: 1.5rem;
+  list-style: none; 
+}
+
+.markdown ul li::before, .markdown ol li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--gray); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1rem; /* Also needed for space (tweak if needed) */
+  margin-left: -1rem; /* Also needed for space (tweak if needed) */
 }
 
 .markdown h2 {
@@ -58,8 +68,12 @@
 
 .markdown blockquote {
   border-left: 2px solid var(--thirdy-color);
-  padding: var(--space-sm) var(--space);
+  padding: calc(var(--space-sm)*0.5) var(--space);
   margin: var(--space) 0;
   background: var(--gray-extra-light); 
   font-style: italic;
+}
+
+.markdown blockqoute > p {
+  margin: 0;
 }

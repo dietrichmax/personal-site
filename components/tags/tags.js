@@ -12,7 +12,7 @@ const TagItem = styled.a`
   font-size: .875rem;
   margin-right: var(--space-sm);    
   margin-top: .25rem;
-  padding: 3px 5px;
+  padding: 0 calc(var(--space-sm)*0.5);
   background-color: var(--content-bg);
   font-family: var(--secondary-font);
   :before {

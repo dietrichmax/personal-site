@@ -38,6 +38,7 @@ const TextWrapper  = styled.div`
 
 const Disclaimer = styled.p`
   font-size: 0.75rem;
+  margin: 0;
 `
 
 const WeatherImg = styled(Image)`

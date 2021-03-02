@@ -18,7 +18,9 @@
 
 .markdown p, .markdown blockquote, .markdown dl, .markdown ol, .markdown ul {
   margin-bottom: 1.125rem;
+  margin-top: 1.125rem;
 }
+
 
 .markdown ul, .markdown ol {
   padding-inline-start: 1.5rem;

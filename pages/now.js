@@ -46,32 +46,29 @@ const WeatherImg = styled(Image)`
 
 
 
-export default function Now({ location, weather, adress, content }) {
+export default function Now({ location, weather, address, content }) {
   const router = useRouter()
 
+  const batteryLevel = location.batt*100
 
-
+  console.log(location)
 
   const movement = (vel) => {
     return (
       vel > 0 ? `moving with ${vel} km/h` : "not moving"
     )
-  };
+  }
 
   const batteryStatus = (bs) => {
     switch (bs) {
-      case 0:
-        return "unknown"
-      case 1:
+      case false:
         return "unplugged"
-      case 2:
+      case true:
         return "charging"
-      case 3:
-          return "full"
     }
   };
 
-  const batteryLevel = (batt) => {
+  const getBatteryLevelIcon = (batt) => {
     if (batt == 0) {
       return "empty"
     } else if (batt > 0 && batt < 37) {
@@ -96,6 +93,7 @@ export default function Now({ location, weather, adress, content }) {
     }
   };
 
+  console.log(location.batt*100)
   return (
     <>
       <Layout>
@@ -110,7 +108,7 @@ export default function Now({ location, weather, adress, content }) {
             />
             
             <PageTitle>Now</PageTitle>
-            <SubTitle>Right now i am in {`${adress.address.town}, ${adress.address.state}, ${adress.address.country}`}</SubTitle>
+           <SubTitle>Right now i am in {`${address.address.town}, ${address.address.state}, ${address.address.country}`}</SubTitle>
 
             <Container >
 
@@ -125,7 +123,7 @@ export default function Now({ location, weather, adress, content }) {
                     height="30"
                   />
                 </Data>
-                {location.batt && location.bs ? <Data>My phone's battery level is {location.batt}% <i class={`las la-battery-${batteryLevel(location.batt)}`} title={`${location.batt}% Battery Level`}/> and it is currently {batteryStatus(location.bs)}.</Data> : null}
+                {batteryLevel ? <Data>My phone's battery level is {batteryLevel}% <i class={`las la-battery-${getBatteryLevelIcon(batteryLevel)}`} title={`${batteryLevel}% Battery Level`}/> and it is currently {batteryStatus(location.bs)}.</Data> : null}
               </LiveDataWrapper>
 
               <TextWrapper> 
@@ -133,7 +131,7 @@ export default function Now({ location, weather, adress, content }) {
               </TextWrapper> 
 
               <Disclaimer>Last updated on {format(parseISO(location.created_at), "H:mm, dd'th' MMMM yyyy '('O')'").replace("-"," ")}.</Disclaimer>
-
+          
             </Container >
           </>
         )}
@@ -145,17 +143,25 @@ export default function Now({ location, weather, adress, content }) {
 export async function getServerSideProps() {
   const locationData = (await getLocationData()) || []
   const content = (await getNowData()) || []
-  const location = locationData[0]
+  const dataLength = locationData[0].locations.length - 1
+  const coordinates = locationData[0].locations[dataLength].geometry.coordinates
+  const properties = locationData[0].locations[dataLength].properties
 
-  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
-  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lon}&format=json`)
+
+  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
+  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${coordinates[1]}&lon=${coordinates[0]}&format=json`)
+
 
   return {
     props: { 
-      location: location,
+      location: {
+        created_at: properties.timestamp,
+        batt: properties.battery_level,
+        bs: properties.battery_state
+      },
       weather: weather.data,
-      adress: address.data,
-      content: content.content
+      address: address.data,
+      content: content.content,
     }
   }
 }

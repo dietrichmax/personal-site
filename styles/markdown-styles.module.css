@@ -17,8 +17,7 @@
 }
 
 .markdown p, .markdown dl, .markdown ol, .markdown ul {
-  margin-bottom: 1.125rem;
-  margin-top: 1.125rem;
+  padding-bottom: 28px;
 }
 
 

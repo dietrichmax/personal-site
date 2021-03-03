@@ -23,13 +23,14 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
           {/* DNS Prefetch*/} 
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
           <link rel="dns-prefetch" href="https://maxst.icons8.com" />,
+          <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
           <link rel="preconnect" href="https://api.mxd.codes" crossorigin/>,
+          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>,
           <link rel="preconnect" href="https://maxst.icons8.com" crossorigin />,
           <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
           {/* Preload */}
@@ -43,6 +44,7 @@ class MyApp extends App {
           <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
           <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
           {/* Stylesheets */}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
           <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" />,
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
           

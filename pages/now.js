@@ -138,7 +138,7 @@ export default function Now({ weather, address, content, now  }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const locationData = (await getLocationData()) || []
   const content = (await getNowData()) || []
 

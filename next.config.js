@@ -1,4 +1,3 @@
-// next.config.js
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
 // redirects
@@ -460,5 +459,5 @@ module.exports = withPlugins([
       "snarfed.org",
       "openweathermap.org",
     ],
-  }},
+  }}
 ]);

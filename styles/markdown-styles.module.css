@@ -17,7 +17,7 @@
 }
 
 .markdown p, .markdown dl, .markdown ol, .markdown ul {
-  padding-bottom: 28px;
+  padding-bottom: 26px;
 }
 
 
@@ -41,7 +41,7 @@
 
 .markdown h2 {
   font-size: 2rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   font-family: var(--primary-font);
 }

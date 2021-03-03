@@ -30,8 +30,7 @@ const GlobalStyle = createGlobalStyle`
     margin-top: .5rem;
   }
   li {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
   ::selection {
     background: var(--primary-color);

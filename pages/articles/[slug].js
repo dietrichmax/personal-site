@@ -11,12 +11,9 @@ import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig";
 import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
 import media from 'styled-media-query';
-import Link from 'next/link'
-import RelatedPosts from '@/components/post/post-preview/related-posts'
 import Webmentions from "@/components/social/webmentions/webmentions"
 //import PostComments from "@/components/post/post-comments/post-comments"
 import getReadTime from "@/lib/utils/read-time"
-import SocialShare from "@/components/social/social-share/social-share"
 import PostImage from "@/components/post/post-image/post-image"
 import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'

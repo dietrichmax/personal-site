@@ -3,33 +3,16 @@ import Layout from '@/components/layout/layout'
 import { getAllNotes } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
-import media from "styled-media-query"
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import SubTitle from '@/components/title/sub-title'
+import Grid from '@/components/grid/grid'
 
 const NotesWrapper = styled.section`
   max-width: 1200px;
   margin: auto;
-`
-
-const NotesContainer = styled.ol`
-  margin: var(--space);
-  position: relative;
-  padding-inline-start: 0 !important;
-  list-style-type: none;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-sm);
-  display: grid;
-  ${media.lessThan('1200px')`
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
-    margin: var(--space-sm);
-  `}
-  ${media.lessThan('small')`
-    display: block;
-  `}
 `
 
 export default function Notes({ allNotes }) {
@@ -52,15 +35,14 @@ export default function Notes({ allNotes }) {
             <SubTitle>What's going on.</SubTitle>
             <NotesWrapper>
 
-              <NotesContainer className="h-feed">
-
+              <Grid>
                 {allNotes.map((note) => (
                  <NotePreview 
                   note={note} 
                 />
                 ))}
-                
-              </NotesContainer>
+              </Grid>
+
             </NotesWrapper>
           </>
         )}

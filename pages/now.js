@@ -12,6 +12,8 @@ import Image from "next/image"
 import { format, fromUnixTime} from 'date-fns'
 import TextBody from '@/components/note/note-body/note-body'
 
+
+
 const Container = styled.div`
   max-width: 1200px;
   margin: var(--space) auto;
@@ -52,7 +54,6 @@ export default function Now({ weather, address, content, now  }) {
   const router = useRouter()
 
 
-
   const movement = (vel) => {
     return (
       vel > 0 ? `moving with ${vel} km/h` : "not moving"
@@ -86,16 +87,6 @@ export default function Now({ weather, address, content, now  }) {
     } 
   };
 
-  const clouds = (all) => {
-    switch (all) {
-      case all = 0:
-        return "is not even one cloud"
-      case all = 1:
-        return "is just one cloud"
-      case all > 1:
-        return `are ${all} clouds`
-    }
-  };
 
 
 
@@ -118,9 +109,10 @@ export default function Now({ weather, address, content, now  }) {
 
             <Container >
 
+
               <LiveDataWrapper>
                 <Data>
-                  It is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)} in the sky.
+                  At my current location it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}
@@ -163,7 +155,7 @@ export async function getServerSideProps() {
       now: {
         batt: locationData[0].batt,
         bs: locationData[0].bs,
-        timestamp: locationData[0].tst
+        timestamp: locationData[0].tst,
       }
     }
   }

@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import MoreStories from '@/components/post/post-preview/more-stories'
+import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
 import { getTag, getAllTags } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/tag-title'
 import config from "../../../lib/data/SiteConfig";
 import styled from 'styled-components';
+import SubTitle from '@/components/title/sub-title'
 import SEO from '@/components/seo/seo'
+import PostPreview from '@/components/post/post-preview/post-preview'
 
 const TagContainer = styled.div`
   max-width: 1200px;
@@ -37,9 +39,16 @@ export default function Tags({ tag }) {
               slug={`articles/topics/${tag.slug}`}
             />
             <PageTitle color={tag.color}>{tag.name}</PageTitle>
+            <SubTitle>{tag.description}</SubTitle>
             <TagContainer>
               <TagPostsContainer>
-                {tag.posts.length > 0 && <MoreStories posts={tag.posts} />}
+              <Grid>
+                {tag.posts.map((post) => (
+                  <PostPreview
+                    postData={post}
+                  />
+                ))}
+                </Grid> 
               </TagPostsContainer>
             </TagContainer>
           </>

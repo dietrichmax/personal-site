@@ -8,28 +8,13 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
+import Grid from '@/components/grid/grid'
 
 const LinksContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
 `
 
-const LinksGrid = styled.ol`
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-sm);
-  display: grid;
-  list-style: none;
-  margin-left: var(--space);
-  margin-right: var(--space);
-  margin-bottom: var(--space-lg);
-  padding-inline-start: 0;
-  ${media.lessThan('medium')`
-    padding: 0;
-    display: block;
-    margin-left: var(--space-sm);
-    margin-right: var(--space-sm);
-  `}
-`
 
 const LinksItem = styled.li`
   max-width: var(--content-width);
@@ -77,12 +62,11 @@ export default function Links({ allLinks }) {
               title="Links"
               slug="links"
             />
-            <article className="h-feed">
               <PageTitle>Links</PageTitle>
               <SubTitle>Awesome content on the web, in random order.</SubTitle>
               <LinksContainer >
 
-                <LinksGrid>
+                <Grid>
 
                 {allLinks.map((link) => (
                   <LinksItem className="h-entry">
@@ -94,10 +78,9 @@ export default function Links({ allLinks }) {
                   </LinksItem>
                 ))}
 
-                </LinksGrid>
+                </Grid>
 
               </LinksContainer>
-            </article>
           </>
         )}
       </Layout>

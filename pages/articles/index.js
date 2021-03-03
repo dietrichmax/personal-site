@@ -1,4 +1,4 @@
-import MoreStories from '@/components/post/post-preview/more-stories'
+import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig";
@@ -7,6 +7,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
+import PostPreview from '@/components/post/post-preview/post-preview'
 
 const BlogPageContainer = styled.div`
   margin-left: auto;
@@ -38,7 +39,13 @@ export default function Blog({ allPosts, allTags }) {
 
             <BlogPageContainer >
 
-              <MoreStories posts={posts}/>
+              <Grid>
+                {posts.map((post) => (
+                  <PostPreview
+                    postData={post}
+                  />
+                ))}
+              </Grid>
 
             </BlogPageContainer>
           </>

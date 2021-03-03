@@ -8,6 +8,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import NotePreview from "@/components/note/note-preview/note-preview"
+import Grid from '@/components/grid/grid'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -73,26 +74,12 @@ const SubTitle = styled.p`
   `}
 `
 
-const PostContainer = styled.div`
-  grid-template-columns: repeat(2, minmax(0px, 1fr));
-  gap: var(--space-lg);
-  display: grid;
-  gap: var(--gap);
-  margin: 0 var(--space);
-  list-style: none;
-  ${media.lessThan('medium')`
-    margin: 0;
-    display: block;
-  `}
-`
-
-
-
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
 
   const posts = allPosts.slice(0,2)
   const notes = allNotes.slice(0,6)
+
   return (
     <>
       <Layout color={`var(--gray-extra-light)`}>
@@ -113,17 +100,16 @@ export default function Index({ allPosts, allTags, allNotes }) {
                 </HeroDescription>
               </Hero>
             </HeroWrapper>
-
             <IndexPageContainer>
               <SubTitle>Selected Articles</SubTitle>
-              <PostContainer >
+              <Grid>
                 {posts.map((post) => (
                   <PostPreview
                     postData={post}
                     preview
                   />
                 ))}
-              </PostContainer>
+              </Grid>
 
 
               {/*<SubTitle>Recent Notes</SubTitle>

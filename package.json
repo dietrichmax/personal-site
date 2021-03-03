@@ -39,7 +39,8 @@
     "next": "^10.0.7",
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
-    "object-hash": "^2.1.1",
+    "ol": "^6.5.0",
+    "openlayers": "^4.6.5",
     "preact": "^10.5.12",
     "preact-compat": "^3.19.0",
     "preact-render-to-string": "^5.1.12",
@@ -60,6 +61,7 @@
     "slugify": "^1.4.6",
     "styled-components": "5.2.1",
     "styled-media-query": "^2.1.2",
+    "swr": "^0.4.2",
     "topojson-client": "^3.1.0",
     "webpack": "4.6.0"
   },

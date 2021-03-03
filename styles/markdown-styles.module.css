@@ -26,8 +26,12 @@
   list-style: none; 
 }
 
-.markdown li, .markdown li ul  {
+.markdown li {
   margin-bottom: 0.75rem;
+}
+
+.markdown li ul, .markdown li ol {
+  margin-top: 0.75rem;
 }
 
 .markdown ul li::before, .markdown ol li::before {

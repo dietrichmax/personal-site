@@ -1,4 +1,4 @@
-import React from "react"
+/*import React from "react"
 import { MapContainer, TileLayer, Circle } from "react-leaflet";
 
 
@@ -44,4 +44,4 @@ const Map = (data) => {
   );
 };
 
-export default Map;
+export default Map;*/

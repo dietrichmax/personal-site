@@ -1,4 +1,4 @@
-import { useState } from "react"
+/*import { useState } from "react"
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
@@ -47,4 +47,4 @@ export async function getServerSideProps() {
       }
     }
   }
-  
+  */

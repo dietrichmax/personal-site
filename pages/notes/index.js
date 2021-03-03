@@ -36,8 +36,9 @@ export default function Notes({ allNotes }) {
             <NotesWrapper>
 
               <Grid>
-                {allNotes.map((note) => (
+                {allNotes.map((note,i) => (
                  <NotePreview 
+                  key={i}
                   note={note} 
                 />
                 ))}

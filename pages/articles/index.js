@@ -40,8 +40,9 @@ export default function Blog({ allPosts, allTags }) {
             <BlogPageContainer >
 
               <Grid>
-                {posts.map((post) => (
+                {posts.map((post,i) => (
                   <PostPreview
+                    key={i} 
                     postData={post}
                   />
                 ))}

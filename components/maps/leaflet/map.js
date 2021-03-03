@@ -1,11 +1,8 @@
-/*import React from "react"
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON, Circle, latLngBound } from "react-leaflet";
-//import locations from "./locations.json"
+import React from "react"
+import { MapContainer, TileLayer, Circle } from "react-leaflet";
 
 
 const Map = (data) => {
-      
-
   
   const bounds = []
 
@@ -47,4 +44,4 @@ const Map = (data) => {
   );
 };
 
-export default Map;*/
+export default Map;

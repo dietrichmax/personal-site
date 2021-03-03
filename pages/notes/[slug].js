@@ -130,7 +130,7 @@ export default function Note({ note }) {
                 <ContentWrapper className="e-content">
                   {note.coverMedium ? note.coverMedium.map((note, i) => {
                     return (
-                    <NoteImageWrapper> 
+                    <NoteImageWrapper key={i}> 
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
                         <NoteImage
                           src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}

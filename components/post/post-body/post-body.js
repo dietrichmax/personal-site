@@ -53,9 +53,9 @@ export default function PostBody({ content }) {
           }}
         />
       </ContentWrapper>
-      <TOCWrapper>
+      {/*<TOCWrapper>
         <TableOfContents content={content} />
-      </TOCWrapper>
+      </TOCWrapper>*/}
     </PostContent>
     <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
     </>

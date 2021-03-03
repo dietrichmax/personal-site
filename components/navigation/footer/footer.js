@@ -287,7 +287,7 @@ export default function Footer() {
           </SearchWrapper>
           <FooterMainNav>
             {headerItems.map((item, i) => (
-              <FooterMainNavItem>
+              <FooterMainNavItem key={i}>
                 <FooterMainNavLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
               </FooterMainNavItem>
             ))}

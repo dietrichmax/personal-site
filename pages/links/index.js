@@ -68,8 +68,8 @@ export default function Links({ allLinks }) {
 
                 <Grid>
 
-                {allLinks.map((link) => (
-                  <LinksItem className="h-entry">
+                {allLinks.map((link,i) => (
+                  <LinksItem key={i} className="h-entry">
                       <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
                       <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
                       <LinksContent className="e-content">{link.description}</LinksContent>

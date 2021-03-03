@@ -76,9 +76,9 @@ export default function NotePreview({ note }) {
           </span>
           <ol className="relsyn">
             {note.syndicationLinks? 
-              note.syndicationLinks.map((link) => {
+              note.syndicationLinks.map((link,i) => {
                 return (
-                  <li>
+                  <li key={i}>
                     <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
                       <span>View on </span>
                       <i className={`lab la-${link.name}`}/> {link.name}

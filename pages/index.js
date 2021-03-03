@@ -103,8 +103,9 @@ export default function Index({ allPosts, allTags, allNotes }) {
             <IndexPageContainer>
               <SubTitle>Selected Articles</SubTitle>
               <Grid>
-                {posts.map((post) => (
+                {posts.map((post,i) => (
                   <PostPreview
+                    key={i}
                     postData={post}
                     preview
                   />

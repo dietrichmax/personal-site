@@ -43,8 +43,9 @@ export default function Tags({ tag }) {
             <TagContainer>
               <TagPostsContainer>
               <Grid>
-                {tag.posts.map((post) => (
+                {tag.posts.map((post,i) => (
                   <PostPreview
+                    key={i}
                     postData={post}
                   />
                 ))}

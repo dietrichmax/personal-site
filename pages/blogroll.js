@@ -91,8 +91,8 @@ export default function Blogroll({ allBlogrolls }) {
 
             <BlogrollContainer >
 
-            {allBlogrolls.map((blogroll) => (
-              <BlogrollLink href={blogroll.websiteUrl} title={blogroll.name} >
+            {allBlogrolls.map((blogroll,i) => (
+              <BlogrollLink key={i} href={blogroll.websiteUrl} title={blogroll.name} >
                 <BlogrollItem >
                   <BlogrollProfile>
                     {blogroll.profilePictureUrl ? (

@@ -104,8 +104,8 @@ export default function Post({ post }) {
 
               <div className="webmention meta">
                 {post.syndicationLinks? (
-                  post.syndicationLinks.map((link) => {
-                    return (<a aria-label={link.name} title={link.name} className="u-syndication syn-link" href={link.slug} rel="syndication" />)
+                  post.syndicationLinks.map((link,i) => {
+                    return (<a key={i} aria-label={link.name} title={link.name} className="u-syndication syn-link" href={link.slug} rel="syndication" />)
                   })) : null }
               </div>
               
@@ -133,9 +133,9 @@ export default function Post({ post }) {
     
                   <PostBody className="e-content" content={post.content} />   
                   
-                  {/*<SocialShare slug={`/articles/${post.slug}`} /> */} 
-                  <Webmentions slug={`/articles/${post.slug}`} />
-                  {/*<PostComments postID={post.id}/>*/}  
+   
+                  {/*<Webmentions slug={`/articles/${post.slug}`} />*/} 
+
 
                 </Content>
 

@@ -467,11 +467,6 @@ export default function Recruiting({
 
 
                             <TripleStatsGrid>
-                            
-
-                                {/*<MapWrapper>
-                                    <WorldMap />
-                                </MapWrapper>*/}
 
                                 <GitHubWrapper>
                                     <Title>

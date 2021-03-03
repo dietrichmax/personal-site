@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
+const withPreact = require('next-plugin-preact')
 // redirects
 const redirects = {async redirects() {
   return [
@@ -439,6 +440,7 @@ const redirects = {async redirects() {
 }};
 
 module.exports = withPlugins([
+  withPreact(),
   redirects,
   withFonts({
     webpack(config, options) {

@@ -57,11 +57,6 @@
   font-family: var(--primary-font);
 }
 
-.markdown img {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .markdown code {
   overflow: auto;
   background: #f4f6f9;

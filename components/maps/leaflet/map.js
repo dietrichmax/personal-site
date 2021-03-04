@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react"
-import { MapContainer, TileLayer, Circle } from "react-leaflet";
+import { MapContainer, TileLayer, Circle, Polyline } from "react-leaflet";
 import { getLocationData } from '@/lib/data/api/cms'
 
 
 const Map = (data) => {
   const [locations, setLocations] = useState([])
-  
   const bounds = []
+  
+  data ? data.data.map((position,i) => {
+    bounds.push([position.lat, position.lon])
+  })
 
+  const line =
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
       return 0.1
@@ -36,6 +40,11 @@ const Map = (data) => {
     getData()
   }, []);*/
 
+  const style = { 
+    color: '#ffdc1c',
+    weight: 0
+  }
+
   return (
     <MapContainer
       scrollWheelZoom={true}
@@ -46,10 +55,8 @@ const Map = (data) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
-        {data ? data.data.map((position,i) => {
-          bounds.push([position.lat, position.lon])
-          return (
-            <Circle center={[position.lat, position.lon]} radius={5} color="#ffdc1c" fillOpacity={getVel(position.vel)} weight={0}/>
+        {data ? return (
+          <Polyline pathOptions={style} positions={bounds} />
          )
         }):null}
     </MapContainer>

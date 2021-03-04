@@ -416,7 +416,7 @@ export default function Recruiting({
                                         <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{(locationsCount).toFixed(0)}</GridStats>
+                                        <GridStats>{(locationsCount/1000000).toFixed(2)} M</GridStats>
                                         <GridStatsDescription>Locations tracked</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>

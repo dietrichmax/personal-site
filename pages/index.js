@@ -91,6 +91,7 @@ export default function Index({ allPosts, allTags, allNotes }) {
             <SEO   
               title="Home"
               slug=""
+              description={config.siteDescription}
             />
              <HeroWrapper>
               <Hero>

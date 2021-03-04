@@ -11,7 +11,6 @@ const Map = (data) => {
     bounds.push([position.lat, position.lon])
   })
 
-  const line =
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
       return 0.1

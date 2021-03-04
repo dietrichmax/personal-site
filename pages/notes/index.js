@@ -10,7 +10,7 @@ import NotePreview from "@/components/note/note-preview/note-preview"
 import SubTitle from '@/components/title/sub-title'
 import Grid from '@/components/grid/grid'
 
-const NotesWrapper = styled.section`
+const NotesWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
 `

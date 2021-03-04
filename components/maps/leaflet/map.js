@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { MapContainer, TileLayer, Circle } from "react-leaflet";
+import { MapContainer, TileLayer, Circle, Polyline } from "react-leaflet";
 import { getLocationData } from '@/lib/data/api/cms'
 
 
@@ -8,6 +8,10 @@ const Map = (data) => {
   
   const bounds = []
 
+  data ? data.data.map((position,i) => {
+    bounds.push([position.lat, position.lon])
+   
+  }):null
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
       return 0.1
@@ -26,7 +30,7 @@ const Map = (data) => {
     } 
   };
 
-  
+  const limeOptions = { color: 'lime' }
   /*useEffect(() => {
     async function getData() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations?_limit=1000&_sort=id:desc`)
@@ -46,12 +50,7 @@ const Map = (data) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
-        {data ? data.data.map((position,i) => {
-          bounds.push([position.lat, position.lon])
-          return (
-            <Circle center={[position.lat, position.lon]} radius={5} color="#ffdc1c" fillOpacity={getVel(position.vel)} weight={0}/>
-         )
-        }):null}
+        <Polyline pathOptions={limeOptions} positions={bounds} />
     </MapContainer>
   );
 };

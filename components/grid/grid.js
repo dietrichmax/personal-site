@@ -7,10 +7,12 @@ const GridContainer = styled.ol`
   padding-right: var(--space);
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space);
+  margin-bottom: var(--space-lg);
   display: grid;
   list-style: none;
   ${media.lessThan('medium')`
-    padding: 0;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
     display: block;
 `}
 `;

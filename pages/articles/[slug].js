@@ -18,6 +18,7 @@ import PostImage from "@/components/post/post-image/post-image"
 import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'
 import Date from "@/components/date/date"
+import Comments from "@/components/comments/comments"
 
 // components for posts
 
@@ -133,8 +134,8 @@ export default function Post({ post }) {
     
                   <PostBody className="e-content" content={post.content} />   
                   
-   
-                  {/*<Webmentions slug={`/articles/${post.slug}`} />*/} 
+                  {/*<Comments slug={post.slug} />*/}
+                  <Webmentions slug={`/articles/${post.slug}`} />
 
 
                 </Content>

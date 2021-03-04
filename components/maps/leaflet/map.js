@@ -26,19 +26,19 @@ const Map = (data) => {
     } 
   };
 
-  /*
-  useEffect(() => {
+  
+  /*useEffect(() => {
     async function getData() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations?_limit=1000&_sort=id:desc`)
-      const json = await setLocations(res.json())
-      console.log(locations)
+      const json = setLocations(await res.json())
+      console.log(json)
     }
     getData()
   }, []);*/
 
   return (
     <MapContainer
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       style={{ height: "500px", width: "100%" }}
       bounds={bounds}
     >

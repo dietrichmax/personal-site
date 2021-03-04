@@ -54,9 +54,7 @@ const Map = (data) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
-        {data ? return (
-          <Polyline pathOptions={style} positions={bounds} />
-         ) :null}
+        <Polyline pathOptions={style} positions={bounds} />
     </MapContainer>
   );
 };

@@ -9,7 +9,7 @@ const Map = (data) => {
   
   data ? data.data.map((position,i) => {
     bounds.push([position.lat, position.lon])
-  })
+  }) : null
 
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
@@ -56,8 +56,7 @@ const Map = (data) => {
         />
         {data ? return (
           <Polyline pathOptions={style} positions={bounds} />
-         )
-        }):null}
+         ) :null}
     </MapContainer>
   );
 };

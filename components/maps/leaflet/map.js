@@ -10,19 +10,19 @@ const Map = (data) => {
 
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
-      return "white"
+      return 0.1
     } else if (vel > 1 && vel < 15) {
-      return "#FFFFB7"
+      return 0.2
     } else if (vel > 15 && vel < 30) {
-      return "#FFF192"
+      return 0.4
     } else if (vel > 30 && vel < 50) {
-      return "#FFEA61"
+      return 0.6
     } else if (vel > 50 && vel < 60) {
-      return "#FFDD3C"
+      return 0.8
     } else if (vel > 60 && vel < 70) {
-      return "#FFD400"
+      return 0.9
     } else if (vel > 70 ) {
-      return "yellow"
+      return 1
     } 
   };
 
@@ -49,7 +49,7 @@ const Map = (data) => {
         {data ? data.data.map((position,i) => {
           bounds.push([position.lat, position.lon])
           return (
-            <Circle center={[position.lat, position.lon]} radius={5} color={getVel(position.vel)} fillOpacity={.8} weight={0}/>
+            <Circle center={[position.lat, position.lon]} radius={5} color="#ffdc1c" fillOpacity=getVel(position.vel) weight={0}/>
          )
         }):null}
     </MapContainer>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
+import { getNowData } from "@/lib/data/api/cms";
 // styled components
 
 const FooterContainer = styled.footer`
@@ -191,20 +192,11 @@ const SearchButton = styled.button`
 
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
+  const [loadedData, setLoadedData] = useState([])
   const [about, setAbout] = useState([])
   const [search, setSearch] = useState(`site:${config.domain}`)
 
-  const requestOptions = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  };
-  fetch('https://api.mxd.codes/about', requestOptions)
-      .then(response => response.json())
-      .then(data => setAbout(data));
-
-
-
-  useEffect(() => {
+  const getData = () => {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -215,6 +207,13 @@ export default function Footer() {
     fetch('https://api.mxd.codes/about', requestOptions)
       .then(response => response.json())
       .then(data => setAbout(data));
+    setLoadedData(true)
+  }
+
+  useEffect(() => {
+    loadedData == false ?
+    getData() : null
+
   }, []);
 
   const footerItems = [

@@ -4,12 +4,16 @@ import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import dynamic from "next/dynamic";
 import styled from 'styled-components';
-import { getAllLocationData } from '@/lib/data/api/cms'
+import { getRecentLocationData } from '@/lib/data/api/cms'
+import media from 'styled-media-query';
 
 const MapContainer = styled.div`
   margin: auto;
-  width: 1200px;
+  max-width: 1200px;
   padding: var(--space);
+  ${media.lessThan('medium')`
+    padding: var(--space-sm);
+  `}
 `
 
 export default function Map({ locations }) {
@@ -38,7 +42,7 @@ export default function Map({ locations }) {
 }
 
 export async function getServerSideProps() {
-    const locations = (await getAllLocationData()) || []
+    const locations = (await getRecentLocationData()) || []
 
     return {
       props: { 

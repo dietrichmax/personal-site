@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { MapContainer, TileLayer, Circle } from "react-leaflet";
+import { getLocationData } from '@/lib/data/api/cms'
 
 
 const Map = (data) => {
+  const [locations, setLocations] = useState([])
   
   const bounds = []
 
@@ -24,22 +26,32 @@ const Map = (data) => {
     } 
   };
 
+  /*
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations?_limit=1000&_sort=id:desc`)
+      const json = await setLocations(res.json())
+      console.log(locations)
+    }
+    getData()
+  }, []);*/
+
   return (
     <MapContainer
       scrollWheelZoom={false}
-      style={{ height: "500px", width: "1200px" }}
+      style={{ height: "500px", width: "100%" }}
       bounds={bounds}
     >
       <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
-        {data.data.map((position,i) => {
+        {data ? data.data.map((position,i) => {
           bounds.push([position.lat, position.lon])
           return (
             <Circle center={[position.lat, position.lon]} radius={5} color={getVel(position.vel)} fillOpacity={.8} weight={0}/>
          )
-        })}
+        }):null}
     </MapContainer>
   );
 };

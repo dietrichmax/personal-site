@@ -112,7 +112,7 @@ export default function Now({ weather, address, content, now  }) {
 
               <LiveDataWrapper>
                 <Data>
-                  At my current location it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C.
+                  In {address.address.town} it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and the weather is.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}

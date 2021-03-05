@@ -218,6 +218,10 @@ export default function Footer() {
 
   const footerItems = [
     { 
+      name: "About",
+      link: "/about" 
+    },
+    { 
       name: "Mailing",
       link: "/mailinglist" 
     },
@@ -239,7 +243,10 @@ export default function Footer() {
     { 
       name: "Home",
       link: "/" 
-
+    },
+    { 
+      name: "Now",
+      link: "/now" 
     },
     { 
       name: "Articles",
@@ -252,15 +259,6 @@ export default function Footer() {
     { 
       name: "Links",
       link: "/links" 
-    },
-    { 
-      name: "Now",
-      link: "/now" 
-
-    },
-    { 
-      name: "About",
-      link: "/about" 
     },
   ]
   return (

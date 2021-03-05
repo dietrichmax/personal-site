@@ -3,6 +3,7 @@ import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
+import config from "@/lib/data/SiteConfig"
 import "@/styles/prism.css"
 
 import "@/public/fonts/Clarity-City/style.css"

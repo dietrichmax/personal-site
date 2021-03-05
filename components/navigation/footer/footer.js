@@ -275,6 +275,7 @@ export default function Footer() {
                 type="search"   
                 name="search"
                 id="search"
+                value={search}
                 label="search-input"
                 onChange={(e) => setSearch(e.target.value)}
               /> 
@@ -282,7 +283,7 @@ export default function Footer() {
             <SearchButton 
               type="submit search"
               aria-label="Search"
-              onClick={() => window.open(`https://duckduckgo.com/?q=site:mxd.codes+${search}`)}
+              onClick={() => window.open(`https://www.ecosia.org/search?q=${search}`)}
             >
             Search</SearchButton>
           </SearchWrapper>

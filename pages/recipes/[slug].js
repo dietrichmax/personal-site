@@ -24,11 +24,9 @@ const RecipeWrapper = styled.div`
 const RecipeImage = styled.div`
   margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
   position: relative;
-  box-shadow: 0 20px 30px rgba(0,0,0,0.1);
   position: relative;
   object-fit: cover;
   max-width: 1300px;
-  height: 450px;
   cursor: pointer;
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -62,7 +60,8 @@ const SubTitle = styled.h3`
   margin-bottom: 1rem;
 `
 
-
+const Duration = styled.time``
+const Yield = styled.data``
 
 export default function Recipe({ recipe }) {
   const router = useRouter()
@@ -72,35 +71,37 @@ export default function Recipe({ recipe }) {
         {router.isFallback ? (
           <Title>{config.loading}</Title>
         ) : (
-          <>  
+          <div className="h-recipe">  
               <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
                 <RecipeImage>
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
                     alt={recipe.title} 
                     title={recipe.title} 
+                    className="u-photo"
                     width="1300"
                     height="450"
                   /> 
                 </RecipeImage>
               </Link>
-              <TitleWrapper><Title>{recipe.title}</Title></TitleWrapper>
+              <TitleWrapper><Title classname="p-name">{recipe.title}</Title></TitleWrapper>
               <RecipeWrapper>
               <SubLine>{recipe.subtitle}</SubLine>
-                Overall {recipe.duration} min preparation time.
-                <SubTitle>Ingredients</SubTitle>
+              <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
+              and serves <Yield className="p-yield" value={recipe.yield}>{recipe.yield}</Yield> people.
+                <SubTitle>Ingredients</SubTitle></p>
                 <Ingredients>
                   {recipe.ingredients.map((ingredient,i) => {
                     return (
-                      <Ingredient key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
+                      <Ingredient classname="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
                     )
                   })}
                 </Ingredients>
                 <SubTitle>Preparation</SubTitle>
-                <RecipeContent content={recipe.description}/>
+                <RecipeContent className="e-instructions" content={recipe.description}/>
                 <Webmentions slug={`/recipes/${recipe.slug}`} />
               </RecipeWrapper>
-          </>
+          </div>
         )}
     </Layout>
   )

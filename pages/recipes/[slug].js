@@ -84,7 +84,7 @@ export default function Recipe({ recipe }) {
                   /> 
                 </RecipeImage>
               </Link>
-              <TitleWrapper><Title classname="p-name">{recipe.title}</Title></TitleWrapper>
+              <TitleWrapper><Title className="p-name">{recipe.title}</Title></TitleWrapper>
               <RecipeWrapper>
               <SubLine>{recipe.subtitle}</SubLine>
               <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
@@ -93,7 +93,7 @@ export default function Recipe({ recipe }) {
                 <Ingredients>
                   {recipe.ingredients.map((ingredient,i) => {
                     return (
-                      <Ingredient classname="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
+                      <Ingredient className="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
                     )
                   })}
                 </Ingredients>

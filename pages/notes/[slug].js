@@ -95,7 +95,7 @@ const Hidden = styled.a`
 
 export default function Note({ note }) {
   const router = useRouter()
-
+console.log(note)
   return (
     <Layout>
         {router.isFallback ? (

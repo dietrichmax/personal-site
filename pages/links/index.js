@@ -29,7 +29,7 @@ const LinksItem = styled.li`
 `
 
 const LinksTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: calc(var(--space-sm)*0.5);
 `
 

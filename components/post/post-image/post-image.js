@@ -18,13 +18,13 @@ const CardItemImg = styled(Image)`
 `
 
 const PostImg = styled(Image)`
-  box-shadow: 0 20px 30px rgba(0,0,0,0.1);
   position: relative;
   object-fit: cover;
   max-width: 1300px;
   height: 450px;
   cursor: pointer;
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
@@ -33,7 +33,7 @@ const PostImg = styled(Image)`
 
 const ImagePlaceholder = styled.div`
   background-color: var(--primary-color);
-  box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+  box-shadow: var(--box-shadow);
   transition: 0.2s;
   color: #fff;
   font-family: var(--secondary-font);

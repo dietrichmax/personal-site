@@ -31,7 +31,7 @@ const CardItemInfo = styled.div`
 `;
 
 const CardItemTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
   margin-top: 0.75rem;
 `;

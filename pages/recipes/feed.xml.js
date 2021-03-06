@@ -1,7 +1,7 @@
 import React from 'react';
 import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllNotes, } from '@/lib/data/api/cms'
+import { getAllRecipes, } from '@/lib/data/api/cms'
 const slugify = require('slugify')
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
@@ -38,16 +38,16 @@ const createRssFeed = ( allContent ) =>
 
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
-    const notes = (await getAllNotes()) || []
+    const recipes = (await getAllRecipes()) || []
 
     const allContent = []
 
-    notes.map((note) => {
+    recipes.map((recipe) => {
       allContent.push({
-        title: note.title,
-        slug: `${config.siteUrl}/notes/${note.id}`,
-        date: note.created_at,
-        content: converter.makeHtml( note.content)
+        title: recipe.title,
+        slug: `${config.siteUrl}/recipes/${recipe.slug}`,
+        date: recipe.created_at,
+        content: converter.makeHtml(recipe.description)
       })
     })
 

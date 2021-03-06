@@ -94,7 +94,7 @@ class Rss extends React.Component {
         title: recipe.title,
         slug: `${config.siteUrl}/recipes/${recipe.slug}`,
         date: recipe.created_at,
-        content: converter.makeHtml(recipe.content)
+        content: converter.makeHtml(recipe.description)
       })
     })
 

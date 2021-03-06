@@ -359,6 +359,9 @@ export default function Footer() {
               <FooterItem>
                 <a href="/links/feed.xml" title="Links Feed"><FooterIcons className="las la-rss"/> Links</a>
               </FooterItem>
+              <FooterItem>
+                <a href="/recipes/feed.xml" title="Recipes Feed"><FooterIcons className="las la-rss"/> Recipes</a>
+              </FooterItem>
           </FooterColumn>
 
           <FooterColumn>

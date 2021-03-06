@@ -1,12 +1,12 @@
 import React from 'react';
 import { format } from 'date-fns'
-import { getAllPosts, getAllPages, getAllTags, getAllNotes } from '@/lib/data/api/cms'
+import { getAllPosts, getAllPages, getAllTags, getAllNotes, getAllRecipes } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig"
 
 const globby = require('globby');
 
 
-const createSitemap = (posts, tags, pages, notes, morePages) => 
+const createSitemap = (posts, tags, pages, notes, morePages, recipes) => 
 
 `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
@@ -14,7 +14,7 @@ const createSitemap = (posts, tags, pages, notes, morePages) =>
           return `
               <url>
                   <loc>${`${config.siteUrl}/articles/${post.slug}`}</loc>
-                  <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
+                  <lastmod>${post.updated_at ? post.updated_at : post.created_at}</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.5</priority>
                </url>
@@ -25,7 +25,7 @@ const createSitemap = (posts, tags, pages, notes, morePages) =>
             return `
                 <url>
                     <loc>${`${config.siteUrl}/${page.slug}`}</loc>
-                    <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
+                    <lastmod>${page.updated_at ? page.updated_at : page.created_at}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
@@ -63,7 +63,18 @@ const createSitemap = (posts, tags, pages, notes, morePages) =>
             return `
                 <url>
                     <loc>${`${config.siteUrl}/notes/${note.slug}`}</loc>
-                    <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
+                    <lastmod>${note.updated_at ? note.updated_at : note.created_at}</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                 </url>
+            `;
+          })
+          .join('')}
+          ${recipes.map((recipe) => {
+            return `
+                <url>
+                    <loc>${`${config.siteUrl}/recipes/${recipe.slug}`}</loc>
+                    <lastmod>${recipe.updated_at ? recipe.updated_at : recipe.created_at}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
@@ -79,6 +90,7 @@ class Sitemap extends React.Component {
     const getTags = (await getAllTags()) || []
     const getPages = (await getAllPages()) || []
     const getNote = (await getAllNotes()) || []
+    const getRecipes = (await getAllRecipes()) || []
     const morePages = await globby([
         'pages/**/*{.js,.mdx}',
         '!pages/**/*[*.js',
@@ -93,9 +105,10 @@ class Sitemap extends React.Component {
     const pages = getPages
     const tags = getTags
     const notes = getNote
+    const recipes = getRecipes
     
     res.setHeader('Content-Type', 'text/xml');
-    res.write(createSitemap(posts, tags, pages, notes, morePages));
+    res.write(createSitemap(posts, tags, pages, notes, morePages, recipes));
     res.end();
   }
 }

@@ -87,7 +87,7 @@ export default function Blogroll({ allBlogrolls }) {
             />
             
             <PageTitle>Blogroll</PageTitle>
-            <SubTitle>Awesome people on the web, in random order.</SubTitle>
+            <SubTitle>List of all personal blogs i am reading.</SubTitle>
 
             <BlogrollContainer >
 

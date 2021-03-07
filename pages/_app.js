@@ -55,10 +55,10 @@ class MyApp extends App {
           <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" />,
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
           
-          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`config.siteUrl}/feed.xml`} />
-          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`config.siteUrl}/articles/feed.xml`} />
-          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Notes`} href={`config.siteUrl}/notes/feed.xml`} />
-          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Links`} href={`config.siteUrl}/links/feed.xml`} />
+          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
+          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`${config.siteUrl}/articles/feed.xml`} />
+          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Notes`} href={`${config.siteUrl}/notes/feed.xml`} />
+          <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Links`} href={`${config.siteUrl}/links/feed.xml`} />
           {/* Typekit Font 
           <link rel="dns-prefetch" href="https://use.typekit.net" />,
           <link rel="preconnect" href="https://use.typekit.net" crossorigin />,

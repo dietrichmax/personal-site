@@ -33,7 +33,7 @@ const FooterMainNav = styled.ul`
   padding-inline-start: 0;
   font-size: 1rem;
   text-align: right;
-  grid-column: span 2 / span 2;
+  grid-column: span 1 / span 1;
   display: flex;
   justify-content: space-around;
   ${media.lessThan('medium')` 
@@ -159,7 +159,7 @@ const FooterBar = styled.div`
 
 const SearchWrapper = styled.div`
   font-family: var(--primary-font);
-  grid-column: span 1 / span 1;
+  grid-column: span 2 / span 2;
 `
 
 const SearchInput = styled.input`
@@ -260,14 +260,6 @@ export default function Footer() {
       name: "Links",
       link: "/links" 
     },
-    { 
-      name: "Recipes",
-      link: "/recipes" 
-    },
-    { 
-      name: "Routes",
-      link: "#" 
-    },
   ]
   return (
     <FooterContainer>
@@ -345,7 +337,7 @@ export default function Footer() {
               ))}
           </FooterColumnPosts>
 
-          <FooterColumn>
+          {/*<FooterColumn>
             <FooterColumnTitle>RSS Feeds</FooterColumnTitle>
               <FooterItem>
                 <a href="/feed.xml" title="All content Feed"><FooterIcons className="las la-rss"/> All content</a>
@@ -362,7 +354,7 @@ export default function Footer() {
               <FooterItem>
                 <a href="/recipes/feed.xml" title="Recipes Feed"><FooterIcons className="las la-rss"/> Recipes</a>
               </FooterItem>
-          </FooterColumn>
+          </FooterColumn>*/}
 
           <FooterColumn>
             <FooterColumnTitle>Good Stuff</FooterColumnTitle>

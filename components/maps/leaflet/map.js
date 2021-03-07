@@ -42,7 +42,8 @@ const Map = (data) => {
 
   return (
     <MapContainer
-      scrollWheelZoom={true}
+      scrollWheelZoom={false}
+      dragging={false}
       style={{ height: "500px", width: "100%" }}
       bounds={bounds}
     >

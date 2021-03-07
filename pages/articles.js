@@ -35,7 +35,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
-            <SubTitle>Mostly well thought out content</SubTitle>
+            <SubTitle> </SubTitle>
 
             <BlogPageContainer >
 

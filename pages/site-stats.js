@@ -22,6 +22,7 @@ import {
     getSubscribersCount,
     getNotesCount,
     getLocationsCount,
+    getRecipesCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
@@ -139,7 +140,7 @@ const BottomStatsGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
     border-radius: var(--space-sm); 
-    grid-column: span 2/span 2; ;  
+    grid-column: span 1/span 1; ;  
     box-shadow: var(--box-shadow);
     overflow: hidden;
     ${media.lessThan('1000px')`
@@ -304,7 +305,8 @@ export default function Recruiting({
     visitDuration,
     allWebmentions,
     notesCount,
-    locationsCount
+    locationsCount,
+    recipesCount
 }) {
     const [liveViews, setLiveViews] = useState(0);
     const router = useRouter()
@@ -363,7 +365,10 @@ export default function Recruiting({
                     <PageTitle>{config.loading}</PageTitle>
                 ) : (
                     <>
-                        <SEO title="Site Stats" slug="site-stats" />
+                        <SEO 
+                            title="Site Stats"
+                            slug="site-stats" 
+                        />
                         <StyledReactTooltip />
                         <PageTitle>Site statistics</PageTitle>
                         <SubTitle>Stats from Matomo, Strapi and Webmentions</SubTitle>
@@ -398,33 +403,52 @@ export default function Recruiting({
 
                                 
                                 <StatsGrid>
-                                    <GridTitle>Even More Stats</GridTitle>
-                                    <StatsLargeGrid>
-                                        <GridStats><Link href="/articles" title="See all Articles">{postsCount}</Link></GridStats>
-                                        <GridStatsDescription>Articles Written</GridStatsDescription>
-                                    </StatsLargeGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats><Link href="/topics" title="See all Topics">{tagsCount}</Link></GridStats>
-                                        <GridStatsDescription>Different Topics</GridStatsDescription>
-                                    </StatsSmallGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats><Link href="/notes" title="See all Notes">{notesCount}</Link></GridStats>
-                                        <GridStatsDescription>Notes published</GridStatsDescription>
-                                    </StatsSmallGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats>{webmentionsCount}</GridStats>
-                                        <GridStatsDescription>Webmentions</GridStatsDescription>
-                                    </StatsSmallGrid>
-                                    <StatsSmallGrid>
-                                        <GridStats>{(locationsCount/1000000).toFixed(2)} M</GridStats>
-                                        <GridStatsDescription>Locations tracked</GridStatsDescription>
-                                    </StatsSmallGrid>
+                                    <GridTitle>Content Stats</GridTitle>
+                                    <Link href="/articles" passHref>
+                                        <StatsLargeGrid  title="See all Articles">
+                                            <GridStats>{postsCount}</GridStats>
+                                            <GridStatsDescription>Articles Written</GridStatsDescription>
+                                        </StatsLargeGrid>
+                                    </Link>
+                                    <Link href="/notes" passHref>
+                                        <StatsSmallGrid title="See all Notes">
+                                            <GridStats>{notesCount}</GridStats>
+                                            <GridStatsDescription>Notes published</GridStatsDescription>
+                                        </StatsSmallGrid>
+                                    </Link>
+                                    <Link href="/routes" passHref>
+                                        <StatsSmallGrid title="See all Routes">
+                                            <GridStats>0</GridStats>
+                                            <GridStatsDescription>Routes published</GridStatsDescription>
+                                        </StatsSmallGrid>
+                                    </Link>
+                                    <Link href="/recipes" passHref>
+                                        <StatsSmallGrid title="See all Recipes">
+                                            <GridStats>{recipesCount}</GridStats>
+                                            <GridStatsDescription>Recipes published</GridStatsDescription>
+                                        </StatsSmallGrid>
+                                    </Link>
+                                    <Link href="/topics">
+                                        <StatsSmallGrid title="See all Topics">
+                                            <GridStats>{tagsCount}</GridStats>
+                                            <GridStatsDescription>Different Topics</GridStatsDescription>
+                                        </StatsSmallGrid>
+                                    </Link>
                                 </StatsGrid>
                             </GeneralStats>
                                 
                             <GeneralStats>
                                 <StatsGridMedium>
-                                    <GridMediumTitle>SEO Stats</GridMediumTitle>
+                                    <GridMediumTitle>Evenmore Stats</GridMediumTitle>
+                                    
+                                        <BottomStatsGrid>
+                                            <GridStats>{webmentionsCount}</GridStats>
+                                            <GridStatsDescription>Webmentions</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{(locationsCount/1000000).toFixed(2)} M</GridStats>
+                                            <GridStatsDescription>Locations tracked</GridStatsDescription>
+                                        </BottomStatsGrid>
                                         {seoStats.slice(2,4).map((item, i) => (
                                             <BottomStatsGrid key={i}>
                                                 <GridStats>{item.rank}</GridStats>
@@ -646,6 +670,7 @@ export async function getStaticProps() {
     const tagsCount = (await getTagsCount()) || []
     const notesCount = (await getNotesCount()) || []
     const locationsCount = (await getLocationsCount()) || []
+    const recipesCount = (await getRecipesCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
@@ -669,6 +694,7 @@ export async function getStaticProps() {
             visitDuration,
             allWebmentions,
             notesCount,
+            recipesCount,
             locationsCount
         },
     }

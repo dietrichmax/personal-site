@@ -71,8 +71,13 @@ export default function Recipe({ recipe }) {
         {router.isFallback ? (
           <Title>{config.loading}</Title>
         ) : (
+          <>
+          <SEO   
+            title={recipe.title}
+            slug={`recipes/${recipe.slug}`}
+          />
           <div className="h-recipe">  
-              <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
+            <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
                 <RecipeImage>
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
@@ -102,6 +107,7 @@ export default function Recipe({ recipe }) {
                 <Webmentions slug={`/recipes/${recipe.slug}`} />
               </RecipeWrapper>
           </div>
+          </>
         )}
     </Layout>
   )

@@ -17,10 +17,9 @@ const LinksContainer = styled.div`
 
 
 const LinksItem = styled.li`
-  max-width: var(--content-width);
-  background-color: rgb(255, 255, 255);
+  background-color: var(--content-bg);
   padding: var(--space-sm);
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 2px;
+  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   ${media.lessThan('medium')`
     margin-left: 0;

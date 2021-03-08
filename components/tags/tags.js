@@ -13,20 +13,17 @@ const TagItem = styled.a`
   margin-right: var(--space-sm);    
   margin-top: .25rem;
   padding: 3px calc(var(--space-sm)*0.5);
-  background-color: var(--content-bg);
+  background-color: ${props => props.color ? props.color : '#798ad0'};
+  color: var(--content-bg);
   font-family: var(--secondary-font);
-  :before {
-    content: "# ";
-    color: ${props => props.color ? props.color : '#798ad0'};
-  }
   :hover {
     color: ${props => props.color ? props.color : '#798ad0'};
+    background-color: var(--content-bg);
   }
 `
 
 export default function PostTags( tags, post) {
   const postTags = tags.tags
-
   return (
     <>
         <TagsWrapper layout={post}>

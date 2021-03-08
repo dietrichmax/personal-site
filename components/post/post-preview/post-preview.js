@@ -10,6 +10,7 @@ const Card = styled.li`
   box-shadow: 0 2px 2px rgba(0,0,0,.09);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
+  margin-bottom: var(--space);
   ${media.lessThan('medium')`
     margin-bottom: var(--space-sm);
   `}
@@ -44,19 +45,29 @@ const CardItemDescription = styled.div`
 
 
 const TagsWrapper = styled.div`
-  padding-left: var(--space-sm);
-  padding-right: var(--space-sm);
-  margin-top: auto;
+  width: 70%;
+  display: inline-block;
+  ${media.lessThan('medium')`
+   width: 60%;
+  `}
 `
 
 const DateWrapper = styled.a`
-  padding-left: var(--space-sm);
-  padding-bottom: var(--space-sm);
-  padding-right: var(--space-sm);
-  margin-top: .5rem;
-  text-align: right;
   font-size: 12px;
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+  ${media.lessThan('medium')`
+   width: 40%;
+  `}
 `
+
+const CardMeta = styled.div`
+  padding-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+`
+
 
 export default function PostPreview({ postData, preview }) {
   
@@ -75,8 +86,10 @@ export default function PostPreview({ postData, preview }) {
           </CardItemTitle>
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
         </CardItemInfo>
-        <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-        <DateWrapper><Date className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
+        <CardMeta>
+          <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
+          <DateWrapper><Date className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
+        </CardMeta>
       </CardItemWrapper>
     </Card>
   )

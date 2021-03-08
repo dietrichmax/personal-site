@@ -21,6 +21,7 @@ const LinksItem = styled.li`
   padding: var(--space-sm);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
+  margin-bottom: var(--space);
   ${media.lessThan('medium')`
     margin-left: 0;
     margin-bottom: var(--space-sm);

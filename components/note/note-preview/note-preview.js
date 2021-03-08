@@ -13,10 +13,11 @@ const NotesItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
   position: relative;
-  min-height: 250px;
+  min-height: 300px;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
+  margin-bottom: var(--space);
   ${media.lessThan('medium')`
     margin-bottom: var(--space-sm);
   `}
@@ -48,6 +49,10 @@ const NotesDate = styled.p`
   ${media.lessThan('medium')`
 
   `}
+`
+
+const NoteImage= styled(Image)`
+  object-fit: cover;
 `
 
 const Hidden = styled.a`
@@ -93,12 +98,11 @@ export default function NotePreview({ note }) {
             {note.coverMedium[0] ? (
                   
               <NoteBodyWrapper>
-                <Image 
+                <NoteImage
                   src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
                   alt={`Cover medium of note ${note.created_at}`}
                   layout="fill"
                   className="u-photo" 
-                  style={{cursor:'pointer'}}
                 /> 
                 <NotesDate>
                   <time className="dt-published" dateTime={note.created_at}>

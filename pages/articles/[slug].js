@@ -120,8 +120,9 @@ export default function Post({ post }) {
               </PostImgWrapper>
 
               <PostWrapper>
+              <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
                 <DateWrapper><Date className="dt-published" updated={post.dateUpdated} dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
-                <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
+
 
                 <Hidden>  
                   <span className="h-card">

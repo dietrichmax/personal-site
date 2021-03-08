@@ -8,6 +8,7 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
+import Link from "next/link"
 
 const BlogrollContainer = styled.ol`
   max-width: 1200px;
@@ -55,10 +56,6 @@ const BlogrollProfileName = styled.span`
   font-size: 1.5rem;
 `
 
-const BlogrollLink = styled.a`
-  outline: none;
-`
-
 const BlogrollProfileLink = styled.cite`
   display: block;
   border-bottom: 1px solid var(--link-color);
@@ -92,8 +89,7 @@ export default function Blogroll({ allBlogrolls }) {
             <BlogrollContainer >
 
             {allBlogrolls.map((blogroll,i) => (
-              <BlogrollLink key={i} href={blogroll.websiteUrl} title={blogroll.name} >
-                <BlogrollItem >
+                <BlogrollItem key={i}>
                   <BlogrollProfile>
                     {blogroll.profilePictureUrl ? (
                     <BlogrollProfileImgWrapper>
@@ -105,14 +101,16 @@ export default function Blogroll({ allBlogrolls }) {
                       /> 
                       </BlogrollProfileImgWrapper>
                     ) : null }
-                  <div>
-                    <BlogrollProfileName>{blogroll.name}</BlogrollProfileName>
-                    <BlogrollProfileLink>{blogroll.websiteUrl}</BlogrollProfileLink>
-                  </div>
+                  
+                    <Link href={blogroll.websiteUrl} passHref>
+                      <a title={blogroll.name}>
+                        <BlogrollProfileName>{blogroll.name}</BlogrollProfileName>
+                        <BlogrollProfileLink>{blogroll.websiteUrl}</BlogrollProfileLink>
+                      </a>
+                    </Link>
                   </BlogrollProfile>
                   <BlogrollProfileDesc>{blogroll.bio}</BlogrollProfileDesc>
                 </BlogrollItem>
-              </BlogrollLink>
             ))}
 
               

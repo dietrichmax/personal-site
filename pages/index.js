@@ -7,8 +7,6 @@ import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import NotePreview from "@/components/note/note-preview/note-preview"
-import Grid from '@/components/grid/grid'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -74,6 +72,23 @@ const SubTitle = styled.p`
   `}
 `
 
+const Grid = styled.ol`
+  max-width: 1200px;
+  padding-left: var(--space);
+  padding-right: var(--space);
+  margin-bottom: var(--space);
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space);
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  `}
+`
+
+
+
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
 
@@ -108,7 +123,6 @@ export default function Index({ allPosts, allTags, allNotes }) {
                   <PostPreview
                     key={i}
                     postData={post}
-                    preview
                   />
                 ))}
               </Grid>

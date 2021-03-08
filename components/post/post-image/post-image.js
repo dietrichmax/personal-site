@@ -65,6 +65,7 @@ const { title, slug, coverImage } = postData
             title={title} 
             width="350"
             height="130"
+            className="u-photo"
           />
       ) : ( null ) : (
         coverImage.coverImage ? (
@@ -73,6 +74,7 @@ const { title, slug, coverImage } = postData
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
             alt={title} 
             title={title} 
+            className="u-photo"
             width="1300"
             height="450"
           /> 

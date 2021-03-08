@@ -65,6 +65,7 @@ export default function NotePreview({ note }) {
       <Link
         href={`/notes/${note.id}`}
         className="p-name"
+        rel="bookmark"
         passHref
       >
         <a title={note.title}>
@@ -114,7 +115,7 @@ export default function NotePreview({ note }) {
               <NoteBodyWrapper>
                 <NoteBody content={note.content} /> 
                 <NotesDate>
-                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url">                  
+                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">                  
                     <time className="dt-published" dateTime={note.created_at}>
                       {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
                     </time>

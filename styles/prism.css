@@ -44,7 +44,7 @@ pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
-	background: #f4f6f9;
+	background: var(--gray-light);
 	border-radius: var(--border-radius);
 	scrollbar-color: var(--gray-light) #f4f6f9;
 }

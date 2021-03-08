@@ -434,6 +434,11 @@ const redirects = {async redirects() {
       destination: '/articles/',
       permanent: true
     },
+    {
+      source: '/stellenmarkt',
+      destination: '/',
+      permanent: true
+    },
     
   ]
 }};

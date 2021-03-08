@@ -29,7 +29,7 @@ export default function PostTags( tags, post) {
         <TagsWrapper layout={post}>
           {postTags.map((tag, i) => (
             <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
-              <TagItem className="p-category" color={tag.color} title={tag.name}>{tag.name}</TagItem>
+              <TagItem rel="tag" className="p-category" color={tag.color} title={tag.name}>{tag.name}</TagItem>
             </Link>
           ))}
         </TagsWrapper>

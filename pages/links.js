@@ -9,6 +9,7 @@ import PageTitle from '@/components/title/page-title'
 import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
 import Grid from '@/components/grid/grid'
+import HCard from "@/components/microformats/h-card"
 
 const LinksContainer = styled.div`
   margin: 0 auto;
@@ -70,7 +71,8 @@ export default function Links({ allLinks }) {
                 <Grid>
 
                 {allLinks.map((link,i) => (
-                  <LinksItem key={i} className="h-entry">
+                  <LinksItem key={i} className="h-entry">           
+                      <HCard /> 
                       <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
                       <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
                       <LinksContent className="e-content">{link.description}</LinksContent>

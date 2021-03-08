@@ -19,6 +19,7 @@ import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'
 import Date from "@/components/date/date"
 import Comments from "@/components/comments/comments"
+import HCard from "@/components/microformats/h-card"
 
 // components for posts
 
@@ -73,9 +74,7 @@ const TagsWrapper = styled.div`
 const DateWrapper = styled.div`
   font-size: 12px;
 `
-const Hidden = styled.div`
-  display: none;
-`
+
 
 export default function Post({ post }) {  
 
@@ -108,14 +107,15 @@ export default function Post({ post }) {
                   post.syndicationLinks.map((link,i) => {
                     return (<a key={i} aria-label={link.name} title={link.name} className="u-syndication syn-link" href={link.slug} rel="syndication" />)
                   })) : null }
-              </div>
+              </div>                
+              <HCard /> 
               
               <ReadingProgress target={target} />
 
               <PostImgWrapper>
                 <PostImage postData={post} /> 
                 <PostTitleWrapper>  
-                  <PostTitle className="p-name">{post.title}</PostTitle>
+                  <PostTitle className="p-name" >{post.title}</PostTitle>
                 </PostTitleWrapper> 
               </PostImgWrapper>
 
@@ -123,13 +123,6 @@ export default function Post({ post }) {
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
                 <DateWrapper><Date className="dt-published" updated={post.dateUpdated} dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
 
-
-                <Hidden>  
-                  <span className="h-card">
-                    <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}  /> 
-                    <strong className="p-name">Max Dietrich</strong>
-                  </span>
-                </Hidden> 
 
                 <Content>
     

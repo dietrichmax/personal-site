@@ -10,6 +10,7 @@ import NoteTitle from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import Image from "next/image"
 import Link from"next/link"
+import HCard from "@/components/microformats/h-card"
 import NoteMeta from "@/components/note/note-meta/note-meta"
 
 const NoteWrapper = styled.div`
@@ -120,10 +121,8 @@ export default function Note({ note }) {
                         {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
                         {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
                       </span>
-                      <span className="h-card">
-                        <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}  /> 
-                        <strong className="p-name">Max Dietrich</strong>
-                      </span>
+                      
+                      <HCard /> 
                   </div>
                 </Hidden>            
                  

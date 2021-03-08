@@ -10,6 +10,7 @@ import Title from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import Link from"next/link"
 import Image from "next/image" 
+import HCard from "@/components/microformats/h-card"
 
 const RecipeWrapper = styled.div`
   max-width: var(--width-container);
@@ -76,7 +77,8 @@ export default function Recipe({ recipe }) {
             title={recipe.title}
             slug={`recipes/${recipe.slug}`}
           />
-          <div className="h-recipe">  
+          <div className="h-recipe">             
+            <HCard /> 
             <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
                 <RecipeImage>
                   <Image
@@ -90,7 +92,7 @@ export default function Recipe({ recipe }) {
                 </RecipeImage>
               </Link>
               <TitleWrapper><Title className="p-name">{recipe.title}</Title></TitleWrapper>
-              <RecipeWrapper>
+              <RecipeWrapper>    
               <SubLine>{recipe.subtitle}</SubLine>
               <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
               and serves <Yield className="p-yield" value={recipe.yield}>{recipe.yield}</Yield> people.

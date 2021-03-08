@@ -6,6 +6,7 @@ import RecipeBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
 import { parseISO, format } from 'date-fns'
 const slugify = require('slugify')
+import HCard from "@/components/microformats/h-card"
 
 const RecipeItem = styled.li`
   overflow: hidden;
@@ -61,6 +62,7 @@ export default function RecipePreview({ recipe }) {
         /> : null }
         <DescriptionWrapper>
           <Title className="p-name">{recipe.title}</Title>
+          <HCard/>
           <SubLine>{recipe.subtitle}</SubLine>
           <Meta>
             <Duration className="dt-duration">{recipe.duration} min</Duration>

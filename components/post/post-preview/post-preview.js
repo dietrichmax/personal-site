@@ -4,6 +4,7 @@ import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
 import Date from '@/components/date/date'
 import PreviewImage from "@/components/post/post-image/post-image"
+import HCard from "@/components/microformats/h-card"
 
 const Card = styled.li`
   transition: 0.2s;
@@ -83,6 +84,7 @@ export default function PostPreview({ postData, preview }) {
             <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
               <a className="p-name u-url" rel="bookmark" title={title}>{title}</a>
             </Link>
+            <HCard /> 
           </CardItemTitle>
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
         </CardItemInfo>

@@ -5,6 +5,7 @@ import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
 import { parseISO, format } from 'date-fns'
+import HCard from "@/components/microformats/h-card"
 const slugify = require('slugify')
 
 const NotesItem = styled.li`
@@ -70,11 +71,7 @@ export default function NotePreview({ note }) {
       >
         <a title={note.title}>
         <Hidden className="webmention meta">
-
-          <span className="note__author__link">
-            <img className="u-photo" src={config.siteLogo} alt={config.siteTitle} /> 
-            <strong className="p-name">{config.siteTitle}</strong>
-          </span>
+          <HCard /> 
           <span className="webmention type">
             {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
             {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }

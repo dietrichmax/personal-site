@@ -54,7 +54,8 @@ class MyApp extends App {
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
           <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" />,
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
-      <meta name="purpleads-verification" content="16f33146720f5a746f5023e8" /> 
+      
+      <script src="https://cdn.purpleads.io/load.js?publisherId=1c5a04eb3e67a89f46175dea6d694988:41cb18978f35cfac510772db128deb6a1f75831c8958e1f2cc994a11a5482ed29c0a1687bed29dc0e5480f4151f92fc947e67654bfecec255b7618b00144eb3c" id="purpleads-client" /> 
           
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`${config.siteUrl}/articles/feed.xml`} />

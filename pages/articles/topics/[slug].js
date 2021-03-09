@@ -19,7 +19,11 @@ const TagContainer = styled.div`
 const TagPostsContainer = styled.div`
 `
 
-
+const PostsGrid = styled.ol`
+  grid-column: span 6/span 6;
+  list-style: none;
+  padding-inline-start: 0;
+`
 
 export default function Tags({ tag }) {
   const router = useRouter()
@@ -43,12 +47,14 @@ export default function Tags({ tag }) {
             <TagContainer>
               <TagPostsContainer>
               <Grid>
-                {tag.posts.map((post,i) => (
-                  <PostPreview
-                    key={i}
-                    postData={post}
-                  />
-                ))}
+                <PostsGrid>
+                  {tag.posts.map((post,i) => (
+                    <PostPreview
+                      key={i}
+                      postData={post}
+                    />
+                  ))}
+                  </PostsGrid>
                 </Grid> 
               </TagPostsContainer>
             </TagContainer>

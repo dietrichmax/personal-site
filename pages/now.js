@@ -88,7 +88,7 @@ export default function Now({ weather, address, content, now  }) {
   };
 
 
-
+  const town = address.address.town ? address.address.town : address.address.village
 
 
   return (
@@ -105,14 +105,14 @@ export default function Now({ weather, address, content, now  }) {
             />
             
             <PageTitle>Now</PageTitle>
-            <SubTitle>Right now i am in {`${address.address.town}, ${address.address.state}, ${address.address.country}`}</SubTitle>
+            <SubTitle>Right now i am in {`${town}, ${address.address.state}, ${address.address.country}`}</SubTitle>
 
             <Container >
 
 
               <LiveDataWrapper>
                 <Data>
-                  In {address.address.town} it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C.
+                  In {town} it is {weather.main.temp}°C.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}

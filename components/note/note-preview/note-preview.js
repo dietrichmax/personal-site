@@ -14,11 +14,10 @@ const NotesItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
   position: relative;
-  min-height: 300px;
+  height: 260px;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
-  margin-bottom: var(--space);
   ${media.lessThan('medium')`
     margin-bottom: var(--space-sm);
   `}

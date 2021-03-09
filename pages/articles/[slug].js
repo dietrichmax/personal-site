@@ -114,8 +114,8 @@ export default function Post({ post }) {
 
               <PostImgWrapper>
                 <PostImage postData={post} /> 
-                <PostTitleWrapper>  
-                  <PostTitle className="p-name" >{post.title}</PostTitle>
+                <PostTitleWrapper className="p-name" >  
+                  <PostTitle >{post.title}</PostTitle>
                 </PostTitleWrapper> 
               </PostImgWrapper>
 

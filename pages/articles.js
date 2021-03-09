@@ -1,4 +1,3 @@
-import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig";
@@ -6,8 +5,11 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
+import Grid from '@/components/grid/grid';
 import SubTitle from '@/components/title/sub-title'
 import PostPreview from '@/components/post/post-preview/post-preview'
+import Tags from "@/components/tags/tags"
+
 
 const BlogPageContainer = styled.div`
   margin-left: auto;
@@ -16,6 +18,22 @@ const BlogPageContainer = styled.div`
   max-width: 1200px;
 `
 
+const PostsGrid = styled.ol`
+  grid-column: span 6/span 6;
+  list-style: none;
+  padding-inline-start: 0;
+`
+
+const TagsGrid = styled.ol`
+  grid-column: span 2/span 2;
+  position: sticky;
+  padding-top: -2rem;
+`
+
+const Sticky = styled.div`
+  position: sticky;
+  top: var(--space);
+`
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
   
@@ -39,13 +57,20 @@ export default function Blog({ allPosts, allTags }) {
 
             <BlogPageContainer >
 
-              <Grid>
-                {posts.map((post,i) => (
-                  <PostPreview
-                    key={i} 
-                    postData={post}
-                  />
-                ))}
+              <Grid>         
+                <PostsGrid>
+                  {posts.map((post,i) => (
+                    <PostPreview
+                      key={i} 
+                      postData={post}
+                    />
+                  ))}
+                </PostsGrid>
+                <TagsGrid>
+                  <Sticky>
+                    <Tags tags={allTags} block />
+                  </Sticky>
+                </TagsGrid>
               </Grid>
 
             </BlogPageContainer>

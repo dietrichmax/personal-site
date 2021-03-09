@@ -48,6 +48,11 @@ const LinksContent = styled.p`
   font-family: var(--secondary-font);
 `
 
+const LinksGrid = styled.ol`
+  grid-column: span 6/span 6;
+  list-style: none;
+  padding-inline-start: 0;
+`
 
 export default function Links({ allLinks }) {
   const router = useRouter()
@@ -70,16 +75,18 @@ export default function Links({ allLinks }) {
 
                 <Grid>
 
-                {allLinks.map((link,i) => (
-                  <LinksItem key={i} className="h-entry">           
-                      <HCard /> 
-                      <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-                      <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
-                      <LinksContent className="e-content">{link.description}</LinksContent>
-                      <PostTags tags={link.tags} />
+                  <LinksGrid>
+                    {allLinks.map((link,i) => (
+                      <LinksItem key={i} className="h-entry">           
+                          <HCard /> 
+                          <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
+                          <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
+                          <LinksContent className="e-content">{link.description}</LinksContent>
+                          <PostTags tags={link.tags} />
 
-                  </LinksItem>
-                ))}
+                      </LinksItem>
+                    ))}
+                  </LinksGrid>
 
                 </Grid>
 

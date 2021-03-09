@@ -26,7 +26,7 @@ export default function Tags({ tag }) {
   if (!router.isFallback && !tag?.slug) {
     return <ErrorPage statusCode={404} />
   }
-  
+
   return (
     <Layout>
         {router.isFallback ? (
@@ -38,7 +38,7 @@ export default function Tags({ tag }) {
               description={tag.description}
               slug={`articles/topics/${tag.slug}`}
             />
-            <PageTitle color={tag.color}>{tag.name}</PageTitle>
+            <PageTitle color={tag.backgroundColor}>{tag.name}</PageTitle>
             <SubTitle>Posts tagged with {tag.name}</SubTitle>
             <TagContainer>
               <TagPostsContainer>

@@ -8,11 +8,27 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import SubTitle from '@/components/title/sub-title'
-import Grid from '@/components/grid/grid'
+import media from 'styled-media-query';
 
 const NotesWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
+`
+
+const Grid = styled.ol`
+  max-width: var(--width-container);
+  padding-left: var(--space);
+  padding-right: var(--space);
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: var(--space);
+  display: grid;
+  min-height: 250px;
+  margin-bottom: var(--space-lg);
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    display: block;
+  `}
 `
 
 export default function Notes({ allNotes }) {
@@ -36,12 +52,12 @@ export default function Notes({ allNotes }) {
             <NotesWrapper>
 
               <Grid>
-                {allNotes.map((note,i) => (
-                 <NotePreview 
-                  key={i}
-                  note={note} 
-                />
-                ))}
+                  {allNotes.map((note,i) => (
+                  <NotePreview 
+                    key={i}
+                    note={note} 
+                  />
+                  ))}
               </Grid>
 
             </NotesWrapper>

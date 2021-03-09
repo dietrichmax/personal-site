@@ -13,23 +13,24 @@ const TagItem = styled.a`
   margin-right: var(--space-sm);    
   margin-top: .25rem;
   padding: 3px calc(var(--space-sm)*0.5);
-  background-color: ${props => props.color ? props.color : '#798ad0'};
+  background-color: var(--primary-color);
   color: var(--content-bg);
   font-family: var(--secondary-font);
   :hover {
-    color: ${props => props.color ? props.color : '#798ad0'};
-    background-color: var(--content-bg);
+    color: ${props => props.color ? props.color : 'var(--primary-color'};
+    background-color: ${props => props.bgColor ? props.bgColor : '#798ad0'};
   }
 `
 
-export default function PostTags( tags, post) {
+export default function PostTags( tags ) {
   const postTags = tags.tags
+
   return (
     <>
-        <TagsWrapper layout={post}>
+        <TagsWrapper>
           {postTags.map((tag, i) => (
             <Link key={i} href={`/articles/topics/${tag.slug}`} passHref>
-              <TagItem rel="tag" className="p-category" color={tag.color} title={tag.name}>{tag.name}</TagItem>
+              <TagItem rel="tag" className="p-category" color={tag.color} bgColor={tag.backgroundColor} title={tag.name}>{tag.name}</TagItem>
             </Link>
           ))}
         </TagsWrapper>

@@ -36,9 +36,6 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
   }
-  h2 {
-    line-height: 1.5;
-  }
   body {
     color: var(--text-color);
   }
@@ -70,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
   }
   :root { 
     --gray-extra-light: #f4f6f9; 
-    --gray-light: #c9d1d9;  
+    --gray-light: #e2ebf5;  
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
     --primary-color: #0c132b;

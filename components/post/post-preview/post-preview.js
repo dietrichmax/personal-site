@@ -54,7 +54,7 @@ const TagsWrapper = styled.div`
 `
 
 const DateWrapper = styled.a`
-  font-size: 12px;
+  font-size: .75rem;
   display: inline-block;
   width: 30%;
   text-align: right;

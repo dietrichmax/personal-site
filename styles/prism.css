@@ -41,12 +41,12 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
+	padding: 1rem;
 	overflow: auto;
 	background: var(--gray-light);
 	border-radius: var(--border-radius);
 	scrollbar-color: var(--gray-light) #f4f6f9;
+	margin-bottom: 26px;
 }
 
 /* Inline code */

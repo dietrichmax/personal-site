@@ -39,7 +39,7 @@ export default function Tags({ tag }) {
               slug={`articles/topics/${tag.slug}`}
             />
             <PageTitle color={tag.color}>{tag.name}</PageTitle>
-            <SubTitle>{tag.description}</SubTitle>
+            <SubTitle>Posts tagged with {tag.name}</SubTitle>
             <TagContainer>
               <TagPostsContainer>
               <Grid>

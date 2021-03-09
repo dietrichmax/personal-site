@@ -18,7 +18,21 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
   
-  let schemaOrgJSONLD = []
+  let schemaOrgJSONLD = [
+    { 
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        url: config.siteUrl,
+        name: config.siteTitle,
+        alternateName: config.siteTitleAlt
+      },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": config.siteUrl,
+      "logo": config.siteLogo,
+    }
+  ]
 
   if (postSEO) {
       schemaOrgJSONLD = {
@@ -86,15 +100,7 @@ const SEO = ({
           }
         }  
     }
-  } else { 
-      schemaOrgJSONLD = {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        url: config.siteUrl,
-        name: config.siteTitle,
-        alternateName: config.siteTitleAlt
-      }
-   } 
+  }
 
   return (
     <Head>

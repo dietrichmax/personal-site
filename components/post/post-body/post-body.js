@@ -43,7 +43,7 @@ export default function PostBody({ content }) {
 
   return (
     <>
-    <PostContent>
+    <PostContent className="e-content" >
       <ContentWrapper>
         <ReactMarkdown
           className={markdownStyles['markdown']}

@@ -52,11 +52,11 @@ export default function NoteMeta({ note }) {
 
   return (
     <MetaWrapper>
-      <Title>{format(parseISO(note.date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
+      <Title className="p-name">{format(parseISO(note.date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
       <MetaOuterWrapper>
 
         <MetaInnerWrapper>
-          <MetaItem><Time>{format(parseISO(note.created_at), "hh:mm O").replace("-"," ")}</Time></MetaItem>
+          <MetaItem><Time className="dt-published">{format(parseISO(note.created_at), "hh:mm O").replace("-"," ")}</Time></MetaItem>
             <MetaItem> | <Location className="p-location" title="View this location in OpenStreetMap" href={`http://www.openstreetmap.org/?mlat=${note.lat}&mlon=${note.lon}&zoom=12`}><i class="las la-map-marker"></i></Location> | </MetaItem>
             <MetaItem>{note.weather_icon ? 
               <Weather title={note.weather_description}>

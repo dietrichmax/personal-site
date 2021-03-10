@@ -52,7 +52,7 @@ export default function NoteMeta({ note }) {
 
   return (
     <MetaWrapper>
-      <Title className="p-name">{format(parseISO(note.date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
+      <Title>{format(parseISO(note.date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
       <MetaOuterWrapper>
 
         <MetaInnerWrapper>

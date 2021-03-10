@@ -32,7 +32,7 @@ export default function Page({ page }) {
         {router.isFallback ? (
           <PageTitle>{config.loading}</PageTitle>
         ) : (
-          <>
+          <article className="h-entry">
             <SEO   
               title={page.title}
               description={page.description}
@@ -43,7 +43,7 @@ export default function Page({ page }) {
             <PageWrapper>
               <PageBody content={page.content} />
             </PageWrapper>
-          </>
+          </article>
         )}
     </Layout>
   )

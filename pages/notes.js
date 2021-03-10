@@ -19,10 +19,9 @@ const Grid = styled.ol`
   max-width: var(--width-container);
   padding-left: var(--space);
   padding-right: var(--space);
-  grid-template-columns: repeat(4,minmax(0,1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: var(--space);
   display: grid;
-  min-height: 250px;
   margin-bottom: var(--space-lg);
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);

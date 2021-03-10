@@ -23,7 +23,7 @@ const Title = styled.h1`
 export default function PageTitle({ children, color }) {
   return (
     <TitleWrapper>
-        <Title>{children}</Title>
+        <Title className="p-name">{children}</Title>
     </TitleWrapper>
   )
 }

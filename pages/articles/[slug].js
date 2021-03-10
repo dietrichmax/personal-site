@@ -126,7 +126,7 @@ export default function Post({ post }) {
 
                 <Content>
     
-                  <PostBody className="e-content" content={post.content} />   
+                  <PostBody content={post.content} />   
                   
                   {/*<Comments slug={post.slug} />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />

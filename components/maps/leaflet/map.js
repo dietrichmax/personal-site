@@ -8,10 +8,6 @@ const Map = (data) => {
   
   const bounds = []
 
-  data ? data.data.map((position,i) => {
-    bounds.push([position.lat, position.lon])
-   
-  }):null
   const getVel = (vel) => {
     if (vel == 0 && vel < 1) {
       return 0.1
@@ -51,7 +47,10 @@ const Map = (data) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
-        <Polyline pathOptions={limeOptions} positions={bounds} />
+        {data ? data.data.map((position,i) => {
+          bounds.push([position.lat, position.lon]
+          <Circle center={[position.lat, position.lon]} radius={5} color="lime" fillOpacity={getVel(position.vel)} weight={0}/>
+        })}
     </MapContainer>
   );
 };

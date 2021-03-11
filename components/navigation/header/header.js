@@ -81,7 +81,7 @@ export default function Header( color ) {
         <MainNav>
 
           <Logo color={color.color}>
-            <Link href="/" passHref>
+            <Link rel="home" href="/" passHref>
               <a className="u-url" rel="me" title={config.siteTitle}>
                 <LogoName className="p-name" >{config.siteTitle}</LogoName>
                 <br/>

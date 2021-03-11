@@ -92,7 +92,7 @@ export default function Now({ weather, address, content, now  }) {
   };
 
   const town = address.address.town ? address.address.town : address.address.village
-console.log(weather.clouds.all)
+
 
   return (
     <>

@@ -18,9 +18,6 @@ const NotesItem = styled.li`
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
-  ${media.lessThan('medium')`
-    margin-bottom: var(--space-sm);
-  `}
 `
 
 const NoteBodyWrapper = styled.div`

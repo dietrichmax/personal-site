@@ -9,7 +9,7 @@ import Grid from '@/components/grid/grid';
 import SubTitle from '@/components/title/sub-title'
 import PostPreview from '@/components/post/post-preview/post-preview'
 import Tags from "@/components/tags/tags"
-
+import media from 'styled-media-query';
 
 const BlogPageContainer = styled.div`
   margin-left: auto;
@@ -19,16 +19,20 @@ const BlogPageContainer = styled.div`
 `
 
 const PostsGrid = styled.ol`
-  grid-column: span 6/span 6;
+  grid-column: span 2/span 2;
   list-style: none;
   padding-inline-start: 0;
   display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(1,minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  ${media.lessThan('large')`
+    padding-left: 0;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+`}
 `
 
 const TagsGrid = styled.div`
-  grid-column: span 2/span 2;
+  grid-column: span 1/span 1;
   position: sticky;
   margin-bottom: var(--space);
   padding: var(--space-sm);
@@ -57,7 +61,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
-            <SubTitle> </SubTitle>
+            <SubTitle>Tutorials, Guides and my thoughts</SubTitle>
 
             <BlogPageContainer >
 

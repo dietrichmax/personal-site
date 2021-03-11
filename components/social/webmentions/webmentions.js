@@ -254,7 +254,7 @@ export default function Webmentions({ slug }) {
             name="webmention-source"
             id="webmention-source"
             label="webmention-source-input"
-            placeholder="URL / permalink of your post"
+            placeholder="URL / permalink of your response"
             onChange={(e) => setSourceUrl(e.target.value)}
           />
           <Button

@@ -80,6 +80,7 @@ const Grid = styled.ol`
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+    grid-template-columns: repeat(1,minmax(0,1fr));
   `}
 `
 

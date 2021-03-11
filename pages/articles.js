@@ -27,13 +27,13 @@ const PostsGrid = styled.ol`
 const TagsGrid = styled.div`
   grid-column: span 2/span 2;
   position: sticky;
-  padding-top: -2rem;
+  margin-bottom: var(--space);
+  padding: var(--space-sm);
 `
 
 const Sticky = styled.div`
   position: sticky;
   top: var(--space);
-  margin-bottom: var(--space);
 `
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()

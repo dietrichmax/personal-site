@@ -37,6 +37,7 @@ const CardItemTitle = styled.h2`
 const CardItemDescription = styled.div`
   line-height: 1.5;
   margin: 0.75rem 0;
+  font-size: .875rem;
   font-family: var(--secondary-font);
 `;
 
@@ -91,8 +92,8 @@ export default function PostPreview({ postData, preview }) {
             </Link>
             <HCard /> 
           </CardItemTitle>
-          <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
-          <Link href={`/articles/${slug}`} passHref><CardReadMoreRead title={title}>Continue reading...</CardReadMoreRead></Link>
+          <CardItemDescription className="p-summary">{excerpt} <Link href={`/articles/${slug}`} passHref><CardReadMoreRead title={title}>Continue reading...</CardReadMoreRead></Link>
+          </CardItemDescription>
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper><PostTags tags={tags}/></TagsWrapper>

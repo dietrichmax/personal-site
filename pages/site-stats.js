@@ -164,7 +164,6 @@ const RecentViewsContainer = styled.div`
 
 
 const ColumnWrapper = styled.div`
-    cursor: pointer;
     position: relative;
     margin-right: calc(var(--space-sm) * 0.3);
     width: 100%;
@@ -276,7 +275,6 @@ const LanguageBar = styled.div`
     margin-bottom: var(--space);
 `
 const LanguageBarChild = styled.div`
-    cursor: pointer;
     background-color: ${props =>
         props.color ? `${props.color}` : "var(--gray)"};
     height: 1.5rem;

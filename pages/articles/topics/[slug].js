@@ -20,9 +20,15 @@ const TagPostsContainer = styled.div`
 `
 
 const PostsGrid = styled.ol`
-  grid-column: span 6/span 6;
+  grid-column: span 3/span 3;
   list-style: none;
   padding-inline-start: 0;
+  gap: var(--space);
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  ${media.lessThan('large')`
+    padding-left: 0;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  `}
 `
 
 export default function Tags({ tag }) {

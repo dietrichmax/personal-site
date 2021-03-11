@@ -25,7 +25,7 @@ const PostsGrid = styled.ol`
   display: grid;
   gap: var(--space);
   grid-template-columns: repeat(2, minmax(0px, 1fr));
-  ${media.lessThan('large')`
+  ${media.lessThan('medium')`
     padding-left: 0;
     grid-template-columns: repeat(1, minmax(0px, 1fr));
 `}
@@ -61,7 +61,7 @@ export default function Blog({ allPosts, allTags }) {
             />
             
             <PageTitle>Articles</PageTitle>
-            <SubTitle>Tutorials, Guides and my thoughts</SubTitle>
+            <SubTitle>Tutorials, Guides and thoughts</SubTitle>
 
             <BlogPageContainer >
 

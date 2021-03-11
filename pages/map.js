@@ -41,11 +41,12 @@ export default function Map({ locations }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const locations = (await getRecentLocationData()) || []
 
     return {
-      props: { 
+      revalidate:  43200,
+      props: {
         locations
       }
     }

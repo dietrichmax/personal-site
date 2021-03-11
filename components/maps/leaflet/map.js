@@ -46,7 +46,7 @@ const Map = (data) => {
           url='https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
         />
         {data ? data.data.map((position,i) => {
-          bounds.push([position.lat, position.lon]),
+          bounds.push([position.lat, position.lon]);
           return (
             <Circle center={[position.lat, position.lon]} radius={5} color="lime" fillOpacity={getVel(position.vel)} weight={0}/>
          )

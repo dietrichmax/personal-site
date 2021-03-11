@@ -89,14 +89,14 @@ class Rss extends React.Component {
       })
     })
     
-    recipes.map((recipe) => {
+    /*recipes.map((recipe) => {
       allContent.push({
         title: recipe.title,
         slug: `${config.siteUrl}/recipes/${recipe.slug}`,
         date: recipe.created_at,
         content: converter.makeHtml(recipe.description)
       })
-    })
+    })*/
 
     res.setHeader('Content-Type', 'text/xml');
     res.write(createRssFeed( allContent ));

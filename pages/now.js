@@ -54,12 +54,6 @@ export default function Now({ weather, address, content, now  }) {
   const router = useRouter()
 
 
-  const movement = (vel) => {
-    return (
-      vel > 0 ? `moving with ${vel} km/h` : "not moving"
-    )
-  }
-
   const batteryStatus = (bs) => {
     switch (bs) {
       case 0:
@@ -87,9 +81,18 @@ export default function Now({ weather, address, content, now  }) {
     } 
   };
 
+  const clouds = (all) => {
+    if (all == 0) {
+      return "is not even one cloud"
+    } else if (all == 1) {
+      return "is just one cloud"
+    } else if (all > 1) {
+      return `are about ${all} clouds`
+    }
+  };
 
   const town = address.address.town ? address.address.town : address.address.village
-
+console.log(weather.clouds.all)
 
   return (
     <>
@@ -112,7 +115,7 @@ export default function Now({ weather, address, content, now  }) {
 
               <LiveDataWrapper>
                 <Data>
-                  In {town} it is {weather.main.temp}°C.
+                  In {town} it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)} in the sky.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}

@@ -7,7 +7,7 @@ import config from "@/lib/data/SiteConfig"
 import "@/styles/prism.css"
 
 import "@/public/fonts/Clarity-City/style.css"
-import "@/public/fonts/Happy-Times/style.css"
+import "@/public/fonts/Cormorant_Garamond/style.css"
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;

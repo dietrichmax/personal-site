@@ -22,6 +22,9 @@ const PostsGrid = styled.ol`
   grid-column: span 6/span 6;
   list-style: none;
   padding-inline-start: 0;
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: repeat(1,minmax(0,1fr));
 `
 
 const TagsGrid = styled.div`

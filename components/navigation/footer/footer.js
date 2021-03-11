@@ -17,7 +17,7 @@ const FooterContainer = styled.footer`
   `}
 `;
 
-const FooterInnerContainer = styled.nav`    
+const FooterInnerContainer = styled.div`    
   grid-template-columns: repeat(4,minmax(0px,1fr));
   display: grid;
   margin: 0px auto;
@@ -61,7 +61,7 @@ const FooterMainNavLink = styled.a`
   padding: var(--space-sm) 0;
 `
 
-const FooterColumnWrapper = styled.ul`
+const FooterColumnWrapper = styled.div`
   grid-column: span 4/span 4;
   list-style: none;
   padding-inline-start: 0;
@@ -74,7 +74,7 @@ const FooterColumnWrapper = styled.ul`
     display: block;
   `}
 `
-const FooterColumn = styled.li`
+const FooterColumn = styled.nav`
   max-width: 25%;
   line-height: 1.25rem;
   ${media.lessThan('medium')`  
@@ -83,7 +83,7 @@ const FooterColumn = styled.li`
   `}
 `
 
-const FooterColumnPosts = styled.li`
+const FooterColumnPosts = styled.nav`
   max-width: 30%;
   line-height: 1.25rem;
   ${media.lessThan('medium')`  
@@ -98,7 +98,7 @@ const FooterColumnTitle = styled.p`
   color: var(--primary-color);
 `
 
-const FooterColumnDescription = styled.p`
+const FooterColumnDescription = styled.div`
   margin-bottom: var(--space);
   line-height: 1.75;
 `
@@ -176,19 +176,19 @@ const SearchInput = styled.input`
 
 const SearchButton = styled.button`
   color: var(--body-bg);
-  border: 2px solid var(--primary-color);
   position: relative;
+  border: none;
   outline: none;
   overflow: hidden;
   font-size: 12px;
-  padding: .125rem .5rem;   
-  border-radius: var(--border-radius);
-  transition: all .2s ease-in-out;
+  padding: .25rem .75rem;   
+  transition: .2s;
   text-align: center;
   background: var(--primary-color);
   :hover {
       cursor: pointer;
-      box-shadow: var(--box-shadow);
+      color: var(--primary-color);
+      background-color: var(--content-bg);
   }
 `
 
@@ -284,6 +284,7 @@ export default function Footer() {
               type="submit search"
               aria-label="Search"
               onClick={() => window.open(`https://www.ecosia.org/search?q=${search}`)}
+              title="Search"
             >
             Search</SearchButton>
           </SearchWrapper>
@@ -339,7 +340,7 @@ export default function Footer() {
               ))}
           </FooterColumnPosts>
 
-          {/*<FooterColumn>
+          <FooterColumn>
             <FooterColumnTitle>RSS Feeds</FooterColumnTitle>
               <FooterItem>
                 <a href="/feed.xml" title="All content Feed"><FooterIcons className="las la-rss"/> All content</a>
@@ -353,10 +354,10 @@ export default function Footer() {
               <FooterItem>
                 <a href="/links/feed.xml" title="Links Feed"><FooterIcons className="las la-rss"/> Links</a>
               </FooterItem>
-              <FooterItem>
+              {/*<FooterItem>
                 <a href="/recipes/feed.xml" title="Recipes Feed"><FooterIcons className="las la-rss"/> Recipes</a>
-              </FooterItem>
-          </FooterColumn>*/}
+              </FooterItem>*/}
+          </FooterColumn>
 
           <FooterColumn>
             <FooterColumnTitle>Good Stuff</FooterColumnTitle>

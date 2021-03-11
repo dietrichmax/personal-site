@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import Link from "next/link"
+import TextBody from "@/components/note/note-body/note-body"
 
 const BlogrollContainer = styled.ol`
   max-width: 1200px;
@@ -57,9 +58,9 @@ const BlogrollProfileName = styled.span`
 `
 
 const BlogrollProfileLink = styled.cite`
-  display: block;
   border-bottom: 1px solid var(--link-color);
   font-family: var(--secondary-font);
+  display: block;
 `
 
 const BlogrollProfileDesc = styled.p`
@@ -86,10 +87,10 @@ export default function Blogroll({ allBlogrolls }) {
             <PageTitle>Blogroll</PageTitle>
             <SubTitle>List of all personal blogs i am reading.</SubTitle>
 
-            <BlogrollContainer >
+            <BlogrollContainer className="h-feed" >
 
             {allBlogrolls.map((blogroll,i) => (
-                <BlogrollItem key={i}>
+                <BlogrollItem key={i} className="h-entry">
                   <BlogrollProfile>
                     {blogroll.profilePictureUrl ? (
                     <BlogrollProfileImgWrapper>
@@ -98,18 +99,21 @@ export default function Blogroll({ allBlogrolls }) {
                         width="70"
                         height="70"
                         alt={blogroll.name}
+                        className="p-photo"
                       /> 
                       </BlogrollProfileImgWrapper>
                     ) : null }
                   
                     <Link href={blogroll.websiteUrl} passHref>
-                      <a title={blogroll.name}>
-                        <BlogrollProfileName>{blogroll.name}</BlogrollProfileName>
-                        <BlogrollProfileLink>{blogroll.websiteUrl}</BlogrollProfileLink>
+                      <a rel="bookmark" title={blogroll.name}>
+                        <BlogrollProfileName className="p-name">{blogroll.name}</BlogrollProfileName>
+                        <BlogrollProfileLink className="u-url">{blogroll.websiteUrl}</BlogrollProfileLink>
                       </a>
                     </Link>
                   </BlogrollProfile>
-                  <BlogrollProfileDesc>{blogroll.bio}</BlogrollProfileDesc>
+                  <BlogrollProfileDesc className="p-summary">
+                    <TextBody content={blogroll.bio} />
+                  </BlogrollProfileDesc>
                 </BlogrollItem>
             ))}
 

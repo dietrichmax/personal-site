@@ -151,8 +151,7 @@ export async function getStaticProps({ params }) {
   const readingTime = getReadTime(content); 
 
 
-  const morePosts = data?.morePosts || ''
-  console.log(morePosts)
+
 
   return {
     revalidate:  86400,

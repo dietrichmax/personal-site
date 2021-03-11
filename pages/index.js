@@ -3,7 +3,6 @@ import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllTags, getAllNotes, } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
-import Link from 'next/link'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
@@ -32,10 +31,7 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
-  background: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--body-bg) 350%);
-      background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--thirdy-color);
   margin: 0 var(--space);
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
@@ -51,7 +47,7 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  background-image: -webkit-linear-gradient(45deg, var(--thirdy-color), var(--body-bg) 350%);
+  background-color: var(--thirdy-color), var(--body-bg) 350%);
   background-size: 100% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -79,7 +75,7 @@ const Grid = styled.ol`
   margin-bottom: var(--space);
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: var(--space);
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
@@ -92,7 +88,7 @@ const Grid = styled.ol`
 export default function Index({ allPosts, allTags, allNotes }) {
   const router = useRouter()
 
-  const posts = allPosts.slice(0,2)
+  const posts = allPosts.slice(0,4)
   const notes = allNotes.slice(0,6)
 
   return (

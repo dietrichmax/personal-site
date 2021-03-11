@@ -11,10 +11,6 @@ const Card = styled.li`
   box-shadow: 0 2px 2px rgba(0,0,0,.09);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
-  margin-bottom: var(--space);
-  ${media.lessThan('medium')`
-    margin-bottom: var(--space-sm);
-  `}
 `
 
 const CardItemWrapper = styled.div`
@@ -46,7 +42,7 @@ const CardItemDescription = styled.div`
 
 
 const TagsWrapper = styled.div`
-  width: 70%;
+  width: 60%;
   display: inline-block;
   ${media.lessThan('medium')`
    width: 60%;
@@ -56,7 +52,7 @@ const TagsWrapper = styled.div`
 const DateWrapper = styled.a`
   font-size: .75rem;
   display: inline-block;
-  width: 30%;
+  width: 40%;
   text-align: right;
   ${media.lessThan('medium')`
    width: 40%;
@@ -69,6 +65,15 @@ const CardMeta = styled.div`
   padding-right: var(--space-sm);
 `
 
+const CardReadMoreRead = styled.a`
+  color: var(--text-color);
+  display: inline-block;
+  border-bottom: 1px solid var(--link-color);
+  cursor: pointer;
+  :hover {
+    color: var(--link-color-hover);
+  }
+`
 
 export default function PostPreview({ postData, preview }) {
   
@@ -87,6 +92,7 @@ export default function PostPreview({ postData, preview }) {
             <HCard /> 
           </CardItemTitle>
           <CardItemDescription className="p-summary">{excerpt}</CardItemDescription>
+          <Link href={`/articles/${slug}`} passHref><CardReadMoreRead title={title}>Continue reading...</CardReadMoreRead></Link>
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper><PostTags tags={tags}/></TagsWrapper>

@@ -229,7 +229,6 @@ const GitHubDescription = styled.p`
 
 const GitHubButton = styled.button`
     transition: 0.2s;
-    border-radius: 0.25rem;
     background-color: var(--thirdy-color);
     cursor: pointer;
     max-width: 28rem;
@@ -437,7 +436,7 @@ export default function Recruiting({
                                 
                             <GeneralStats>
                                 <StatsGridMedium>
-                                    <GridMediumTitle>Evenmore Stats</GridMediumTitle>
+                                    <GridMediumTitle>Even more Stats</GridMediumTitle>
                                     
                                         <BottomStatsGrid>
                                             <GridStats>{webmentionsCount}</GridStats>

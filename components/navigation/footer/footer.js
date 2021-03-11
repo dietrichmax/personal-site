@@ -9,10 +9,8 @@ import { getNowData } from "@/lib/data/api/cms";
 // styled components
 
 const FooterContainer = styled.footer`
-  padding: var(--space-sm) var(--space);
-  border-top: 1px solid var(--gray-light);
-  margin: 0 auto;
-  max-width: 1200px;
+  padding: var(--space-sm) 0;
+  background-color: var(--content-bg);
   ${media.lessThan('medium')`  
     flex-wrap: wrap;
     padding: var(--space-sm);
@@ -22,6 +20,10 @@ const FooterContainer = styled.footer`
 const FooterInnerContainer = styled.nav`    
   grid-template-columns: repeat(4,minmax(0px,1fr));
   display: grid;
+  margin: 0px auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
+  max-width: 1200px;
   ${media.lessThan('medium')`
     padding: 0;
     display: block;

@@ -9,9 +9,8 @@ const TagsWrapper = styled.div`
 const TagItem = styled.a`
   border-radius: var(--border-radius);
   display: inline-block;
-  font-size: .75rem;
-  margin-right: var(--space-sm);    
-  margin-top: .25rem;
+  font-size: .75rem;  
+  margin: .25rem .5rem .25rem 0;
   padding: 3px calc(var(--space-sm)*0.5);
   background-color: var(--primary-color);
   color: var(--content-bg);

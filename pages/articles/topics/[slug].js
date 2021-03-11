@@ -8,6 +8,7 @@ import config from "../../../lib/data/SiteConfig";
 import styled from 'styled-components';
 import SubTitle from '@/components/title/sub-title'
 import SEO from '@/components/seo/seo'
+import media from 'styled-media-query';
 import PostPreview from '@/components/post/post-preview/post-preview'
 
 const TagContainer = styled.div`
@@ -23,10 +24,14 @@ const PostsGrid = styled.ol`
   grid-column: span 3/span 3;
   list-style: none;
   padding-inline-start: 0;
+  display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
   ${media.lessThan('large')`
     padding-left: 0;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  `}
+  ${media.lessThan('medium')`
     grid-template-columns: repeat(1, minmax(0px, 1fr));
   `}
 `

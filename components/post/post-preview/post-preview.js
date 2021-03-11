@@ -42,7 +42,7 @@ const CardItemDescription = styled.div`
 
 
 const TagsWrapper = styled.div`
-  width: 60%;
+  width: 50%;
   display: inline-block;
   ${media.lessThan('medium')`
    width: 60%;
@@ -52,7 +52,7 @@ const TagsWrapper = styled.div`
 const DateWrapper = styled.a`
   font-size: .75rem;
   display: inline-block;
-  width: 40%;
+  width: 50%;
   text-align: right;
   ${media.lessThan('medium')`
    width: 40%;

@@ -4,7 +4,7 @@ import ErrorPage from 'next/error'
 import PostBody from '@/components/post/post-body/post-body'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
-import { getAllPosts, getPostAndMorePosts, getPostById, } from '@/lib/data/api/cms'
+import { getAllPosts, getPostAndMorePosts } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
@@ -146,13 +146,13 @@ export default function Post({ post }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const postId = data?.posts[0]?.id || ''
-  //const nextPost = await getPostById(parseInt(postId)+1)
-  //const previousPost = await getPostById(parseInt(postId)-1)
   const content = data?.posts[0]?.content || ''
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
   const readingTime = getReadTime(content); 
 
+
+  const morePosts = data?.morePosts || ''
+  console.log(morePosts)
 
   return {
     revalidate:  86400,

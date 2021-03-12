@@ -34,7 +34,6 @@ const PostsGrid = styled.ol`
 const TagsGrid = styled.div`
   grid-column: span 1/span 1;
   position: sticky;
-  margin-bottom: var(--space);
   padding: var(--space-sm);
 `
 

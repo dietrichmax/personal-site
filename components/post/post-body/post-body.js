@@ -40,7 +40,7 @@ const TOCWrapper = styled.div`
 `
 
 export default function PostBody( content ) {
-  console.log(content)
+
   return (
     <>
     <PostContent className="e-content" >

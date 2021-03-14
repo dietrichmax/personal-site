@@ -87,7 +87,7 @@ export default function PostPreview({ postData, preview }) {
         { preview ? <PreviewImage postData={postData}/> : null}
         <CardItemInfo>
           <CardItemTitle>
-            <Link as={`/articles/${slug}`} href="/articles/[slug]" passHref>
+            <Link href={`/articles/${slug}`} passHref>
               <a className="p-name u-url" rel="bookmark" title={title}>{title}</a>
             </Link>
             <HCard /> 

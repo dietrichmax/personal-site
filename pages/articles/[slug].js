@@ -20,8 +20,7 @@ import PostTags from '@/components/tags/tags'
 import Date from "@/components/date/date"
 import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
-import renderToString from 'next-mdx-remote/render-to-string'
-import hydrate from 'next-mdx-remote/hydrate'
+
 // components for posts
 
 const PostWrapper = styled.div`
@@ -76,7 +75,6 @@ const DateWrapper = styled.div`
   font-size: 12px;
 `
 
-const components = { }
 
 export default function Post({ post }) {  
 
@@ -86,8 +84,7 @@ export default function Post({ post }) {
   }
 
   const target = React.createRef()
-  //const content = hydrate(post.content, { components })
-  
+
   return (
     <Layout>
         {router.isFallback ? (
@@ -129,7 +126,7 @@ export default function Post({ post }) {
 
                 <Content>
     
-                  <PostBody>{post.content}</PostBody>
+                  <PostBody content={post.content} />   
                   
                   {/*<Comments slug={post.slug} />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />
@@ -150,12 +147,12 @@ export default function Post({ post }) {
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
   const content = data?.posts[0]?.content || ''
-  //const mdxSource = await renderToString(content, { components })
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
   const readingTime = getReadTime(content); 
 
-  //console.log(mdxSource)
 
+  //const morePosts = data?.morePosts || ''
+  //console.log(morePosts)
 
   return {
     revalidate:  86400,

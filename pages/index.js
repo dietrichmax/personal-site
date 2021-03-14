@@ -169,7 +169,7 @@ export async function getStaticProps() {
   allPosts.map((post) => {
     allContent.push({
       title: post.title,
-      slug: `${config.siteUrl}/articles/${post.slug}`,
+      slug: post.slug,
       date: post.date,
       content: post.content,
       excerpt: post.excerpt,
@@ -183,7 +183,7 @@ export async function getStaticProps() {
     allContent.push({
       id: note.id,
       title: note.title,
-      slug: `${config.siteUrl}/notes/${note.id}`,
+      slug: note.id,
       coverMedium: note.coverMedium,
       date: note.date,
       content: note.content,

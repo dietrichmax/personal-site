@@ -39,19 +39,25 @@ const TOCWrapper = styled.div`
 
 `
 
-export default function PostBody( content ) {
+export default function PostBody({ content }) {
 
   return (
     <>
-    <PostContent className="e-content" >
-      <ContentWrapper className="markdown">
-        {content}
-      </ContentWrapper>
-      {/*<TOCWrapper>
-        <TableOfContents content={content} />
-      </TOCWrapper>*/}
-    </PostContent>
-    <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
+      <PostContent>
+        <ContentWrapper>
+          <ReactMarkdown
+            className={markdownStyles['markdown']}
+            children={content}
+            renderers={{
+              renderers
+            }}
+          />
+        </ContentWrapper>
+        {/*<TOCWrapper>
+          <TableOfContents content={content} />
+        </TOCWrapper>*/}
+      </PostContent>
+      <EndOfPost><Square title="🦄"/><Square title="😄"/></EndOfPost>
     </>
   )
 }

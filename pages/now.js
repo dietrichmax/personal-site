@@ -93,7 +93,6 @@ export default function Now({ weather, address, content, now  }) {
 
   const town = address.address.town ? address.address.town : address.address.village
 
-
   return (
     <>
       <Layout>
@@ -115,7 +114,7 @@ export default function Now({ weather, address, content, now  }) {
 
               <LiveDataWrapper>
                 <Data>
-                  In {town} it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and i think there {clouds(weather.clouds.all)} in the sky.
+                  In {town} it is {weather.main.temp}°C which feels more like {weather.main.feels_like}°C and the weather is 
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}
@@ -147,7 +146,7 @@ export async function getStaticProps() {
 
 
   const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[1].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
-  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[1].lon}&format=json`)
+  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[1].lon}&format=json&zoom=10`)
 
 
   return {

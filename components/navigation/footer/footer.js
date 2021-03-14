@@ -109,6 +109,11 @@ const FooterSocials = styled.ol`
 
 `
 
+const List = styled.ol`
+  list-style: none;
+  padding-inline-start: 0;
+`
+
 const FooterItemSocials = styled.li`
   margin-bottom: .5rem;
   :hover {
@@ -117,7 +122,7 @@ const FooterItemSocials = styled.li`
   }
 `
 
-const FooterItem = styled.p`
+const FooterItem = styled.li`
   margin-bottom: .5rem;
   transition: 0.2s;
   :hover {
@@ -233,7 +238,7 @@ export default function Footer() {
     },
     { 
       name: "Data",
-      link: "/site-stats" 
+      link: "/stats" 
     },
     { 
       name: "Webmention Endpoint",
@@ -311,7 +316,7 @@ export default function Footer() {
           </FooterColumn>
 
           <FooterColumn>
-            <FooterColumnTitle>Elswhere</FooterColumnTitle>
+            <FooterColumnTitle>Connect</FooterColumnTitle>
             <FooterSocials>
               <FooterItemSocials>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FooterIcons className="lab la-twitter"/> Twitter</a>
@@ -328,44 +333,33 @@ export default function Footer() {
               <FooterItemSocials>
                 <a href={config.socials.mail} title="Write me a Email"><FooterIcons className="las la-envelope"/> Mail</a>
               </FooterItemSocials>
+              <FooterItemSocials>
+                <a href="/feed.xml" title="Subscribe to Feed"><FooterIcons className="las la-rss"/> Feed</a>
+              </FooterItemSocials>
             </FooterSocials>
           </FooterColumn>
         
           <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
-            {recentPosts.map((post, i) => (
-              <FooterItem key={i}>
-                <FooterItemLink href={`articles/${post.slug}`} passHref><a title={post.title}>{post.title}</a></FooterItemLink>
-              </FooterItem>
-              ))}
+            <List>
+              {recentPosts.map((post, i) => (
+                <FooterItem key={i}>
+                  <FooterItemLink href={`articles/${post.slug}`} passHref><a title={post.title}>{post.title}</a></FooterItemLink>
+                </FooterItem>
+                ))}
+            </List>
           </FooterColumnPosts>
 
-          <FooterColumn>
-            <FooterColumnTitle>RSS Feeds</FooterColumnTitle>
-              <FooterItem>
-                <a href="/feed.xml" title="All content Feed"><FooterIcons className="las la-rss"/> All content</a>
-              </FooterItem>
-              <FooterItem>
-                <a href="/articles/feed.xml" title="Articles Feed"><FooterIcons className="las la-rss"/> Articles</a>
-              </FooterItem>
-              <FooterItem>
-                <a href="/notes/feed.xml" title="Notes Feed"><FooterIcons className="las la-rss"/> Notes</a>
-              </FooterItem>
-              <FooterItem>
-                <a href="/links/feed.xml" title="Links Feed"><FooterIcons className="las la-rss"/> Links</a>
-              </FooterItem>
-              {/*<FooterItem>
-                <a href="/recipes/feed.xml" title="Recipes Feed"><FooterIcons className="las la-rss"/> Recipes</a>
-              </FooterItem>*/}
-          </FooterColumn>
 
           <FooterColumn>
             <FooterColumnTitle>Good Stuff</FooterColumnTitle>
-            {footerItems.map((item, i) => (
-              <FooterItem key={i}>
-                <FooterItemLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterItemLink>
-              </FooterItem>
-              ))}
+            <List>
+              {footerItems.map((item, i) => (
+                <FooterItem key={i}>
+                  <FooterItemLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterItemLink>
+                </FooterItem>
+                ))}
+              </List>
           </FooterColumn>
 
 

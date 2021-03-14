@@ -4,7 +4,7 @@ import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
 import { getTag, getAllTags } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/tag-title'
-import config from "../../../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SubTitle from '@/components/title/sub-title'
 import SEO from '@/components/seo/seo'
@@ -91,7 +91,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const allTags = await getAllTags()
   return {
-    paths: allTags?.map((tag) => `/articles/topics/${tag.slug}`) || [],
+    paths: allTags?.map((tag) => `/topics/${tag.slug}`) || [],
     fallback: true,
   }
 }

@@ -363,11 +363,11 @@ export default function Recruiting({
                 ) : (
                     <>
                         <SEO 
-                            title="Site Stats"
-                            slug="site-stats" 
+                            title="Statistics"
+                            slug="stats" 
                         />
                         <StyledReactTooltip />
-                        <PageTitle>Site statistics</PageTitle>
+                        <PageTitle>Statistics</PageTitle>
                         <SubTitle>Stats from Matomo, Strapi and Webmentions</SubTitle>
                         <Container>
                             <GeneralStats>

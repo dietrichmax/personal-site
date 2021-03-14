@@ -9,47 +9,15 @@ import PageTitle from '@/components/title/page-title'
 import PostTags from "@/components/tags/tags"
 import SubTitle from '@/components/title/sub-title'
 import Grid from '@/components/grid/grid'
-import HCard from "@/components/microformats/h-card"
+import LinkPreview from "@/components/link/link-preview/link-preview"
 
 const LinksContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
 `
 
-
-const LinksItem = styled.li`
-  background-color: var(--content-bg);
-  padding: var(--space-sm);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
-  margin-bottom: var(--space);
-  ${media.lessThan('medium')`
-    margin-left: 0;
-    margin-bottom: var(--space-sm);
-`}
-`
-
-const LinksTitle = styled.h2`
-  font-size: 1.25rem;
-  margin-bottom: calc(var(--space-sm)*0.5);
-`
-
-const LinksLink = styled.cite`
-  font-size: 14px;
-  border-bottom: 1px solid var(--link-color);
-  cursor: pointer;
-  font-family: var(--secondary-font);
-`
-
-const LinksContent = styled.p`
-  margin: calc(var(--space-sm)*0.5) 0;
-  line-height: 1.75rem;
-  max-width: 700px;
-  font-family: var(--secondary-font);
-`
-
 const LinksGrid = styled.ol`
-  grid-column: span 6/span 6;
+  grid-column: span 3/span 3;
   list-style: none;
   padding-inline-start: 0;
 `
@@ -75,18 +43,9 @@ export default function Links({ allLinks }) {
 
                 <Grid>
 
-                  <LinksGrid>
                     {allLinks.map((link,i) => (
-                      <LinksItem key={i} className="h-entry">           
-                          <HCard /> 
-                          <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-                          <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
-                          <LinksContent className="e-content">{link.description}</LinksContent>
-                          <PostTags tags={link.tags} />
-
-                      </LinksItem>
+                      <LinkPreview link={link} />
                     ))}
-                  </LinksGrid>
 
                 </Grid>
 

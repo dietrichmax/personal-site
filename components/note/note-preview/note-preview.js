@@ -14,7 +14,7 @@ const NotesItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
   position: relative;
-  min-height: 300px;
+  height: 100%;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
@@ -26,7 +26,6 @@ const NoteBodyWrapper = styled.div`
 `
 
 const NotesContent = styled.div`
-  padding: var(--space-sm);
   height: 100%;
 `
 
@@ -54,6 +53,11 @@ const NoteImage= styled(Image)`
 
 const Hidden = styled.a`
   display: none;
+`
+
+const NoteImageWrapper = styled.div`
+  width: 300px;
+  height: 300px;
 `
 export default function NotePreview({ note }) {
 
@@ -92,15 +96,17 @@ export default function NotePreview({ note }) {
             {note.coverMedium[0] ? (
                   
               <NoteBodyWrapper>
-                <NoteImage
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
-                  alt={`Cover medium of note ${note.created_at}`}
-                  layout="fill"
-                  className="u-photo" 
-                /> 
+                <NoteImageWrapper>
+                  <NoteImage
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
+                    alt={`Cover medium of note ${note.date}`}
+                    layout="fill"
+                    className="u-photo" 
+                  /> 
+                </NoteImageWrapper>
                 <NotesDate>
-                  <time className="dt-published" dateTime={note.created_at}>
-                    {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
+                  <time className="dt-published" dateTime={note.date}>
+                    {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
                   </time>
                 </NotesDate>
               </NoteBodyWrapper>
@@ -109,8 +115,8 @@ export default function NotePreview({ note }) {
                 <NoteBody content={note.content} /> 
                 <NotesDate>
                   <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">                  
-                    <time className="dt-published" dateTime={note.created_at}>
-                      {format(parseISO(note.created_at), "dd MMMM yyy 'at' HH:mm O")}
+                    <time className="dt-published" dateTime={note.date}>
+                      {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
                     </time>
                   </a>
                 </NotesDate>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-const GridContainer = styled.div`
+const GridContainer = styled.ol`
   max-width: var(--width-container);
   padding-left: var(--space);
   padding-right: var(--space);

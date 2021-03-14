@@ -31,12 +31,14 @@ pre > code[class*="language-"] {
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	background: #C1DEF1;
+	background-color: var(--primary-color);
+	color: var(--content-bg);
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	background: #C1DEF1;
+	background-color: var(--primary-color);
+	color: var(--content-bg);
 }
 
 /* Code blocks */

@@ -1,6 +1,8 @@
 import PostPreview from '@/components/post/post-preview/post-preview'
+import NotePreview from "@/components/note/note-preview/note-preview"
+import LinkPreview from "@/components/link/link-preview/link-preview"
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllTags, getAllNotes, } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes } from '@/lib/data/api/cms'
 import config from "../lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
@@ -10,7 +12,7 @@ import { useRouter } from 'next/router'
 const IndexPageContainer = styled.div`
   margin: auto;
   max-width: 1200px; 
-  margin: 0 auto var(--space-lg) auto;
+  margin: var(--space) auto;
 `
 
 const HeroWrapper = styled.div`
@@ -31,13 +33,13 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
-  color: var(--thirdy-color);
+  color: var(--gray-light);
   margin: 0 var(--space);
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
   line-height: 1.15;
   font-family: var(--thirdy-font);
-  ${media.lessThan('medium')`
+  ${media.lessThan('small')`
     font-size: 1.5em;
   `}
   ${media.lessThan('medium')`
@@ -47,16 +49,15 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  background-color: var(--thirdy-color), var(--body-bg) 350%);
-  background-size: 100% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
+  border-bottom: 2px solid var(--thirdy-color);
+  color: var(--thirdy-color);
   font-family: var(--primary-font);
 `
 
 const HeroFont = styled.span`
   font-family: var(--primary-font);
   font-weight: 600;
+  color: var(--thirdy-color);
 `
 const SubTitle = styled.p`
   margin: var(--space) var(--space) var(--space-sm) var(--space);
@@ -75,7 +76,7 @@ const Grid = styled.ol`
   margin-bottom: var(--space);
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: var(--space);
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
@@ -86,11 +87,11 @@ const Grid = styled.ol`
 
 
 
-export default function Index({ allPosts, allTags, allNotes }) {
+export default function Index({ allContent }) {
   const router = useRouter()
 
-  const posts = allPosts.slice(0,4)
-  const notes = allNotes.slice(0,6)
+  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+
 
   return (
     <>
@@ -112,13 +113,24 @@ export default function Index({ allPosts, allTags, allNotes }) {
               </Hero>
             </HeroWrapper>
             <IndexPageContainer>
-              <SubTitle>Selected Articles</SubTitle>
               <Grid>
-                {posts.map((post,i) => (
-                  <PostPreview
+                {sortedContent.map((content,i) => (
+                  content.type === "post" ? (
+                    <PostPreview
+                      key={i}
+                      postData={content}
+                    />
+                  ) : content.type === "note" ? (
+                    <NotePreview 
+                      key={i}
+                      note={content} 
+                    />
+                ) : content.type === "link" ? (
+                  <LinkPreview
                     key={i}
-                    postData={post}
+                    link={content} 
                   />
+              ) : null
                 ))}
               </Grid>
 
@@ -146,12 +158,66 @@ export default function Index({ allPosts, allTags, allNotes }) {
 
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
-  const allTags = (await getAllTags()) || []
   const allNotes = (await getAllNotes()) || []
+  const allLinks = (await getAllLinks()) || []
+  const allRecipes = (await getAllRecipes()) || []
+
+
+
+  const allContent = []
+
+  allPosts.map((post) => {
+    allContent.push({
+      title: post.title,
+      slug: `${config.siteUrl}/articles/${post.slug}`,
+      date: post.date,
+      content: post.content,
+      excerpt: post.excerpt,
+      tags: post.tags,
+      type: "post"
+    })
+  })
+
+
+  allNotes.map((note) => {
+    allContent.push({
+      id: note.id,
+      title: note.title,
+      slug: `${config.siteUrl}/notes/${note.id}`,
+      coverMedium: note.coverMedium,
+      date: note.date,
+      content: note.content,
+      category: note.category,
+      ofUrl: note.ofUrl,
+      syndicationLinks: note.syndicationLinks,
+      type: "note"
+    })
+  })
+
+  allLinks.map((link) => {
+    allContent.push({
+      title: link.title,
+      slug: `${link.link}`,
+      date: link.date,
+      description: link.description,
+      link: link.link,
+      tags: link.tags,
+      type: "link"
+    })
+  })
   
+  /*recipes.map((recipe) => {
+    allContent.push({
+      title: recipe.title,
+      slug: `${config.siteUrl}/recipes/${recipe.slug}`,
+      date: recipe.created_at,
+      content: recipe.description
+    })
+  })*/
+
   return {
     revalidate:  86400,
-    props: { allPosts, allTags, allNotes },
+    props: { allPosts, allNotes, allContent },
   }
 }
 

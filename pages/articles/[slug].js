@@ -86,7 +86,8 @@ export default function Post({ post }) {
   }
 
   const target = React.createRef()
-  const content = hydrate(post.content, { components })
+  //const content = hydrate(post.content, { components })
+  
   return (
     <Layout>
         {router.isFallback ? (

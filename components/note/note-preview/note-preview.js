@@ -39,7 +39,7 @@ const NotesDate = styled.p`
   font-size: 12px;
   font-size: 12px;
   width: 100%;
-  padding: 0.125rem 0.25rem;
+  padding: 0.125rem 0.5rem;
   background-color: var(--gray-light);
   mix-blend-mode: luminosity;
   ${media.lessThan('medium')`

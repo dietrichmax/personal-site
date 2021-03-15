@@ -443,7 +443,7 @@ export default function Dashboard({
                                             <GridStatsDescription>Webmentions</GridStatsDescription>
                                         </BottomStatsGrid>
                                         <BottomStatsGrid>
-                                            <GridStats>{(locationsCount/1000000).toFixed(2)} M</GridStats>
+                                            <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                             <GridStatsDescription>Locations tracked</GridStatsDescription>
                                         </BottomStatsGrid>
                                         {seoStats.slice(2,4).map((item, i) => (

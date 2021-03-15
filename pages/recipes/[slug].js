@@ -75,6 +75,7 @@ export default function Recipe({ recipe }) {
           <>
           <SEO   
             title={recipe.title}
+            description={recipe.description}
             slug={`recipes/${recipe.slug}`}
           />
           <div className="h-recipe">             

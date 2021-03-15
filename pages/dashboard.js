@@ -23,6 +23,7 @@ import {
     getNotesCount,
     getLocationsCount,
     getRecipesCount,
+    getLinksCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
@@ -303,7 +304,8 @@ export default function Dashboard({
     allWebmentions,
     notesCount,
     locationsCount,
-    recipesCount
+    recipesCount,
+    linksCount
 }) {
     const [liveViews, setLiveViews] = useState(0);
     const router = useRouter()
@@ -350,7 +352,6 @@ export default function Dashboard({
     )
     const normalisedMax = Math.max.apply(Math, normalisedViews)
 
-    
 
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
@@ -413,10 +414,10 @@ export default function Dashboard({
                                             <GridStatsDescription>Notes published</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
-                                    <Link href="/routes" passHref>
-                                        <StatsSmallGrid title="See all Routes">
-                                            <GridStats>0</GridStats>
-                                            <GridStatsDescription>Routes published</GridStatsDescription>
+                                    <Link href="/links" passHref>
+                                        <StatsSmallGrid title="See Links">
+                                            <GridStats>{linksCount}</GridStats>
+                                            <GridStatsDescription>Links bookmarked</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
                                     <Link href="/recipes" passHref>
@@ -442,10 +443,12 @@ export default function Dashboard({
                                             <GridStats>{webmentionsCount}</GridStats>
                                             <GridStatsDescription>Webmentions</GridStatsDescription>
                                         </BottomStatsGrid>
-                                        <BottomStatsGrid>
-                                            <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
-                                            <GridStatsDescription>Locations tracked</GridStatsDescription>
-                                        </BottomStatsGrid>
+                                        <Link href="/map" passHref>
+                                            <BottomStatsGrid>
+                                                <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                                <GridStatsDescription>Locations tracked</GridStatsDescription>
+                                            </BottomStatsGrid>
+                                        </Link>
                                         {seoStats.slice(2,4).map((item, i) => (
                                             <BottomStatsGrid key={i}>
                                                 <GridStats>{item.rank}</GridStats>
@@ -666,6 +669,7 @@ export async function getStaticProps() {
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const notesCount = (await getNotesCount()) || []
+    const linksCount = (await getLinksCount()) || []
     const locationsCount = (await getLocationsCount()) || []
     const recipesCount = (await getRecipesCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
@@ -690,7 +694,8 @@ export async function getStaticProps() {
             allWebmentions,
             notesCount,
             recipesCount,
-            locationsCount
+            locationsCount,
+            linksCount
         },
     }
 }

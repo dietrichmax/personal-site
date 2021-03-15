@@ -137,10 +137,15 @@ const WebmentionLike = styled.li`
   display: inline-block;
 `
 
+const Status = styled.div`
+  font-size: 14px;
+  color: ${props => props.color ? props.color : 'var(--text-color)'};
+`
+
 export default function Webmentions({ slug }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState({})
 
   const url = config.siteUrl+slug
   const pageLimit = 1000
@@ -195,9 +200,16 @@ export default function Webmentions({ slug }) {
       });
       const json = await res.json()
       if (json.error) {
-        setStatus(json.error)
+        setStatus({
+          text: json.error_description,
+          color: "red"
+        })
+      } else {
+        setStatus({
+          text: json.summary + ". Refresh in a minute to see your Webmention",
+          color: "green"
+        })
       }
-      setStatus(json.statusText)
     }
     sendData();
   }
@@ -263,7 +275,7 @@ export default function Webmentions({ slug }) {
           >
           Send Webmention
           </Button>
-          {status ? <span>{status}</span> : null}
+          <Status color={status.color}>{status.text}</Status>
         </SendWebmentions>
 
         {webmentions.count > 0 ? (

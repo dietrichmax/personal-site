@@ -20,9 +20,11 @@ import PostTags from '@/components/tags/tags'
 import Date from "@/components/date/date"
 import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
+import Likes from "@/components/social/favorites/favorites"
+import WebActions from "@/components/social/web-actions/web-actions"
+
 
 // components for posts
-
 const PostWrapper = styled.div`
   max-width: 1200px;
   padding: 0 var(--space);
@@ -128,7 +130,9 @@ export default function Post({ post }) {
     
                   <PostBody content={post.content} />   
                   
-                  {/*<Comments slug={post.slug} />*/}
+                  {/*<Comments slug={post.slug} />
+                  <WebActions slug={`/articles/${post.slug}`} />
+                  <Likes />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />
 
 

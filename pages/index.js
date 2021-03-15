@@ -101,6 +101,7 @@ export default function Index({ allContent }) {
             
           <>
             <SEO   
+              title="Home"
               description={config.siteDescription}
             />
              <HeroWrapper>

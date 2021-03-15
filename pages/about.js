@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig";
+import Link from "next/link"
 
 const PageWrapper = styled.div`
   max-width: 1200px;
@@ -53,37 +54,6 @@ const Intro = styled.p`
 const BioContainer = styled.section`
 font-family: var(--secondary-font);
 `
-
-const BioTitle = styled.p`
-  font-size: .875rem;
-  margin-bottom: .5rem;
-  color: var(--gray);
-`
-
-const BioWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: var(--space-sm);
-`
-
-const BioDescription = styled.p`
-  font-size: .875rem;
-  margin-right: .75rem;
-  color: var(--gray);
-`
-
-const BioToggle = styled.button`        
-  height: 25px;
-  width: 25px;
-  background-color: ${props => props.checked ? 'var(--thirdy-color)' : 'var(--color-bg)'};
-  border: 4px solid ${props => props.checked ? 'var(--gray-light)' : 'var(--gray-light)'};
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: .5rem;
-  background-image: ${props => props.checked ? `url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3E%3C/svg%3E")` : 'none'};
-
-  `
 
 
 export default function About({ about }) {
@@ -131,24 +101,9 @@ export default function About({ about }) {
 
               <Title>{about.title}</Title>
               <Intro>{about.intro}</Intro>
-
               <BioContainer>
-                {/*<BioTitle>How much do you want to know?</BioTitle>
-                <BioWrapper>
-                  <BioDescription>Not much</BioDescription>
-                  {[0, 1, 2].map((item) => (
-                    <BioToggle
-                      key={"checkbox:" + item}
-                      type="checkbox"
-                      checked={selected === item}
-                      onClick={() => setSelected(item)}
-                      className="form-checkbox cursor-pointer h-6 w-6 md:h-8 md:w-8 rounded-full  bg-default  transition duration-150 ease-in-out mr-3 border-4 border-accent"
-                    />
-                  ))}
-                  <BioDescription>Everything</BioDescription>
-                </BioWrapper>*/}
                 <Content content={renderBio()} />
-                  </BioContainer>
+              </BioContainer>
 
             </PageWrapper>
           </>

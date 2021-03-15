@@ -42,6 +42,9 @@ class MyApp extends App {
           <link rel="token_endpoint" href="https://mxd.codes/token" />
           <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
           <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
+          {/* Web Actions 
+          <script type="text/javascript" src="/scripts/indieconfig.js" /> 
+          <script type="text/javascript" src="/scripts/webaction.js" />*/}
           {/* Me */}
           <link rel="me" href={config.socials.mail} />
           <link rel="me" href={config.socials.github} />

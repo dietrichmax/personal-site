@@ -93,13 +93,16 @@ const WebmentionLink = styled.a`
   }
 `
 
-
+const Status = styled.div`
+  font-size: 14px;
+  color: ${props => props.color ? props.color : 'var(--text-color)'};
+`
 
 export default function WebmentionEndpoint({  }) {
   const router = useRouter()
   const [sourceUrl, setSourceUrl] = useState("")
   const [targetUrl, setTargetUrl] = useState("")
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState({})
 
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
@@ -113,9 +116,16 @@ export default function WebmentionEndpoint({  }) {
       });
       const json = await res.json()
       if (json.error) {
-        setStatus(json.error)
+        setStatus({
+          text: json.error_description,
+          color: "red"
+        })
+      } else {
+        setStatus({
+          text: json.summary + ". Refresh in a minute to see your Webmention",
+          color: "green"
+        })
       }
-      setStatus(json.statusText)
     }
     sendData();
   }
@@ -131,7 +141,7 @@ export default function WebmentionEndpoint({  }) {
             <SEO   
               title="Webmention Endpoint"
               description=""
-              slug="/webmention"
+              slug="webmention"
             />
 
             <Title>Webmention Endpoint</Title>
@@ -161,7 +171,7 @@ export default function WebmentionEndpoint({  }) {
                     />
                   </WebmentionFormField>
                   <WebmentionButton type="submit" onClick={() => sendWebmention()}>Send Webmention</WebmentionButton>
-                  {status ? <span>{status}</span> : null}
+                  <Status color={status.color}>{status.text}</Status>
                 </WebmentionForm> 
 
                 <WebmentionInfo> 

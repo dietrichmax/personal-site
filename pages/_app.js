@@ -36,8 +36,6 @@ class MyApp extends App {
           <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
-          {/* POSSE POST DISCOVERY */}
-          <link rel="feed" href="https://mxd.codes/notes" type="text/html" />,
           {/* IndieCert */}
           <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
           <link rel="micropub" href="https://mxd.codes/micropub" />

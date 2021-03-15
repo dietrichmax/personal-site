@@ -229,16 +229,16 @@ export default function Footer() {
       link: "/about" 
     },
     { 
+      name: "Dashboard",
+      link: "/dashboard" 
+    },
+    { 
       name: "Mailing",
       link: "/mailinglist" 
     },
     { 
       name: "Blogroll",
       link: "/blogroll" 
-    },
-    { 
-      name: "Data",
-      link: "/stats" 
     },
     { 
       name: "Webmention Endpoint",

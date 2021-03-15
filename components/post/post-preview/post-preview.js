@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
-import Date from '@/components/date/date'
+import PostDate from '@/components/date/date'
 import PreviewImage from "@/components/post/post-image/post-image"
 import HCard from "@/components/microformats/h-card"
 
@@ -50,7 +50,7 @@ const TagsWrapper = styled.div`
   `}
 `
 
-const DateWrapper = styled.a`
+const PostDateWrapper = styled.a`
   font-size: .75rem;
   display: inline-block;
   width: 50%;
@@ -80,7 +80,6 @@ export default function PostPreview({ postData, preview }) {
   
   const { title, excerpt, slug, tags, date, dateUpdated } = postData
 
-
   return (
     <Card className="h-entry">
       <CardItemWrapper>
@@ -97,7 +96,7 @@ export default function PostPreview({ postData, preview }) {
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-          <DateWrapper><Date className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></DateWrapper>
+          <PostDateWrapper><PostDate className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></PostDateWrapper>
         </CardMeta>
       </CardItemWrapper>
     </Card>

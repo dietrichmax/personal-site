@@ -77,19 +77,6 @@ export default function NotePreview({ note }) {
             {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
             {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
           </span>
-          <ol className="relsyn">
-            {note.syndicationLinks? 
-              note.syndicationLinks.map((link,i) => {
-                return (
-                  <li key={i}>
-                    <a aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                      <span>View on </span>
-                      <i className={`lab la-${link.name}`}/> {link.name}
-                    </a>
-                  </li>
-                )         
-            })  : null }
-          </ol> 
         </Hidden>
 
           <NotesContent className="e-content">

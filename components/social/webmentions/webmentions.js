@@ -49,7 +49,6 @@ const WebmentionsList = styled.ol`
 `
 
 const WebmentionComment = styled.li`
-  font-size: 1rem;
   margin-bottom: var(--space-sm);
   font-family: var(--secondary-font);
   background-color: var(--content-bg);
@@ -65,15 +64,14 @@ const WebmentionAuthor = styled.div`
 const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
   margin-bottom: calc(var(--space-sm)*.5);
   border-radius: var(--border-radius);
-  border: 1px solid var(--gray-extra-light);
   background-color: var(--gray-extra-light);
-  box-shadow: none;
+  border: 2px solid var(--gray-light);
   :hover {
     display: cursor;
   }
@@ -222,8 +220,8 @@ export default function Webmentions({ slug }) {
         <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="nofollow">
           <Image
             src={mention.author.photo}
-            height="50"
-            width="50"
+            height="48"
+            width="48"
             className="u-photo"
             alt={`Photo of ${mention.author.name}`}
             title={mention.author.name}
@@ -237,7 +235,7 @@ export default function Webmentions({ slug }) {
     <>
       <WebMentionsWrapper> 
         <WebmentionsHeader>
-          <WebmentionsTitle>{webmentions.count} Webmentions</WebmentionsTitle>
+          <WebmentionsTitle>{webmentions.count ? webmentions.count : "0"} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
             href="/webmention" 
             target="_blank" rel="noopener noreferrer" 

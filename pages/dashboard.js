@@ -290,7 +290,7 @@ const LanguageDot = styled.span`
 `
 
 
-export default function Recruiting({
+export default function Dashboard({
     lastViews,
     actions,
     postsCount,
@@ -363,12 +363,12 @@ export default function Recruiting({
                 ) : (
                     <>
                         <SEO 
-                            title="Statistics"
-                            slug="stats" 
+                            title="Dashboard"
+                            slug="dashboard" 
                         />
                         <StyledReactTooltip />
-                        <PageTitle>Statistics</PageTitle>
-                        <SubTitle>Stats from Matomo, Strapi and Webmentions</SubTitle>
+                        <PageTitle>Dashboard</PageTitle>
+                        <SubTitle>Stats from Matomo, Strapi, Webmentions and more</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>
@@ -674,8 +674,6 @@ export async function getStaticProps() {
     const allVisits = (await getMatomoAllVisits()) || []
     const visitDuration = (await getMatomoSumVisitDuration()) || []
     const allWebmentions = (await fetchWebmentions()) || []
-
-    
 
     return {
         revalidate:  86400,

@@ -3,7 +3,7 @@ import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
 import Layout from '@/components/layout/layout'
 import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes } from '@/lib/data/api/cms'
-import config from "../lib/data/SiteConfig";
+import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
@@ -92,7 +92,6 @@ export default function Index({ allContent }) {
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
-
   return (
     <>
       <Layout color={`var(--gray-extra-light)`}>
@@ -115,7 +114,7 @@ export default function Index({ allContent }) {
             <IndexPageContainer>
               <Grid>
                 {sortedContent.map((content,i) => (
-                  content.type === "post" ? (
+                  content.type === "article" ? (
                     <PostPreview
                       key={i}
                       postData={content}
@@ -174,7 +173,7 @@ export async function getStaticProps() {
       content: post.content,
       excerpt: post.excerpt,
       tags: post.tags,
-      type: "post"
+      type: "article"
     })
   })
 

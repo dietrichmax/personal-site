@@ -219,7 +219,7 @@ export default function Webmentions({ slug }) {
   const renderAuthorImg = (mention) => {
     return (
       <WebmentionLike>
-        <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url}>
+        <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="nofollow">
           <Image
             src={mention.author.photo}
             height="50"
@@ -278,7 +278,7 @@ export default function Webmentions({ slug }) {
               <WebmentionAuthor className="h-card p-author" >
                 {renderAuthorImg(mention)}
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
-                <a href={mention.url} title={mention.published}>
+                <a href={mention.url} rel="nofollow" title={mention.published}>
                   <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
                 </a>
                 </WebmentionAuthor>

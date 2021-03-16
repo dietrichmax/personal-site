@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
+import server from "@/lib/utils/server"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -162,8 +163,10 @@ export async function getStaticProps() {
   const allLinks = (await getAllLinks()) || []
   const allRecipes = (await getAllRecipes()) || []
 
-
-
+  const res = await fetch(`${server}/api/posts`)
+  const data = await res.json()
+  console.log(data)
+  
   const allContent = []
 
   allPosts.map((post) => {

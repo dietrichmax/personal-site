@@ -2,7 +2,6 @@ import PostPreview from '@/components/post/post-preview/post-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes } from '@/lib/data/api/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
@@ -91,7 +90,7 @@ const Grid = styled.ol`
 export default function Index({ posts }) {
   const router = useRouter()
 
-  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sortedContent = posts.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return (
     <>

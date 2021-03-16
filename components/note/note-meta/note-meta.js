@@ -41,9 +41,12 @@ const Location = styled.a`
 
 const Weather = styled.div`
   height: 24px;
+  display: inline-block;
+  vertical-align: middle;
 `
 
 const Temperature = styled.span`
+  vertical-align: middle;
 
 `
 

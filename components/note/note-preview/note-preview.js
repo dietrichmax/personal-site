@@ -65,7 +65,7 @@ export default function NotePreview({ note }) {
     <NotesItem className="h-entry" >
       <Link
         href={`/notes/${note.id}`}
-        className="p-name"
+        className="u-url"
         rel="bookmark"
         passHref
       >

@@ -5,6 +5,11 @@ const withFonts = require('next-fonts');
 const redirects = {async redirects() {
   return [
     {
+      source: '/fernerkundung-satellitenbilder-downloaden',
+      destination: '/articles/satellite-imagery-download-high-resolution',
+      permanent: true
+    },
+    {
       source: '/geodaten/fernerkundung-satellitenbilder-downloaden',
       destination: '/articles/satellite-imagery-download-high-resolution',
       permanent: true

@@ -97,10 +97,8 @@ export default function NotePreview({ note }) {
               <NoteBodyWrapper>
                 <NoteBody content={note.content} /> 
                 <NotesDate>
-                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">                  
-                    <time className="dt-published" dateTime={note.date}>
-                      <Date dateString={note.date} />
-                    </time>
+                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">        
+                    <Date dateString={note.updated_at ? note.updated_at : note.published_at} />
                   </a>
                 </NotesDate>
               </NoteBodyWrapper> 

@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import server from "@/lib/utils/server"
+import { server } from "@/lib/utils/server"
 
 const IndexPageContainer = styled.div`
   margin: auto;

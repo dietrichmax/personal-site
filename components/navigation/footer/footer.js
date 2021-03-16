@@ -277,7 +277,7 @@ export default function Footer() {
           <SearchWrapper >
             <label>
               <SearchInput 
-                type="search"   
+                type="text"   
                 name="search"
                 id="search"
                 value={search}

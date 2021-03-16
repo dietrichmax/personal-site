@@ -68,9 +68,9 @@ export default function NoteMeta({ note }) {
                   alt="Icon displaying weather"
                 />
               </Weather>
-              : null}
-            </MetaItem>
-          <MetaItem>{note.temperature ? <Temperature title={`${note.temperature.toFixed(0)}°Celsius`}> | {note.temperature.toFixed(0)}°C</Temperature> : null}</MetaItem>
+              {note.temperature ? <Temperature title={`${note.temperature.toFixed(0)}°Celsius`}> {note.temperature.toFixed(0)}°C</Temperature> : null}
+            : null}
+          </MetaItem>
         </MetaInnerWrapper>
         
         <NoteTags tags={note.tags} />

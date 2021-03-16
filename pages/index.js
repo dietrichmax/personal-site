@@ -88,7 +88,7 @@ const Grid = styled.ol`
 
 
 
-export default function Index({ allContent }) {
+export default function Index({ posts }) {
   const router = useRouter()
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
@@ -158,69 +158,13 @@ export default function Index({ allContent }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = (await getAllPosts()) || []
-  const allNotes = (await getAllNotes()) || []
-  const allLinks = (await getAllLinks()) || []
-  const allRecipes = (await getAllRecipes()) || []
-
   const res = await fetch(`${server}/api/posts`)
-  const data = await res.json()
-  console.log(data)
+  const posts = await res.json()
+
   
-  const allContent = []
-
-  allPosts.map((post) => {
-    allContent.push({
-      title: post.title,
-      slug: post.slug,
-      date: post.date,
-      content: post.content,
-      excerpt: post.excerpt,
-      tags: post.tags,
-      type: "article"
-    })
-  })
-
-
-  allNotes.map((note) => {
-    allContent.push({
-      id: note.id,
-      title: note.title,
-      slug: note.id,
-      coverMedium: note.coverMedium,
-      date: note.date,
-      content: note.content,
-      category: note.category,
-      ofUrl: note.ofUrl,
-      syndicationLinks: note.syndicationLinks,
-      type: "note"
-    })
-  })
-
-  allLinks.map((link) => {
-    allContent.push({
-      title: link.title,
-      slug: `${link.link}`,
-      date: link.date,
-      description: link.description,
-      link: link.link,
-      tags: link.tags,
-      type: "link"
-    })
-  })
-  
-  /*recipes.map((recipe) => {
-    allContent.push({
-      title: recipe.title,
-      slug: `${config.siteUrl}/recipes/${recipe.slug}`,
-      date: recipe.created_at,
-      content: recipe.description
-    })
-  })*/
-
   return {
     revalidate:  86400,
-    props: { allPosts, allNotes, allContent },
+    props: { posts },
   }
 }
 

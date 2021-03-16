@@ -91,11 +91,6 @@ export default function NotePreview({ note }) {
                     className="u-photo" 
                   /> 
                 </NoteImageWrapper>
-                <NotesDate>
-                  <time className="dt-published" dateTime={note.date}>
-                    {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
-                  </time>
-                </NotesDate>
               </NoteBodyWrapper>
             ): 
               <NoteBodyWrapper>

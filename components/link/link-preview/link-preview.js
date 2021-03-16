@@ -70,7 +70,7 @@ export default function LinkPreview({ link }) {
       <PostTags tags={link.tags} />
       <NotesDate>
         <a title={link.title} href={`${config.siteUrl}/links/${link.id}`} className="u-url" rel="bookmark nofollow">                  
-          <Date dateString={link.date} />
+          <Date dateString={link.updated_at ? link.updated_at : link.published_at} />
         </a>
       </NotesDate>
     </LinksItem>

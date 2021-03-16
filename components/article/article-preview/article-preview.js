@@ -107,7 +107,7 @@ export default function PostPreview({ postData, preview }) {
       </CardItemWrapper>
       <NotesDate>
         <a title={title} href={`${config.siteUrl}/articles/${slug}`} className="u-url" rel="bookmark nofollow">           
-          <Date dateString={dateUpdated ? dateUpdated : date} />
+          <Date dateString={updated_at ? updated_at : published_at} />
         </a>
       </NotesDate>
     </Card>

@@ -98,7 +98,7 @@ export default function Post({ post }) {
               description={post.excerpt}
               image={post.coverImage.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
               slug={`articles/${post.slug}`}
-              date={post.updated_at ? post.updated_at : post.created_at}
+              date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"
               postSEO
             />
@@ -123,7 +123,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper><Date className="dt-published"  dateString={post.updated_at ? post.updated_at : post.created_at} /></DateWrapper>
+                <DateWrapper><Date className="dt-published"  dateString={post.updated_at ? post.updated_at : post.published_at} /></DateWrapper>
 
 
                 <Content>

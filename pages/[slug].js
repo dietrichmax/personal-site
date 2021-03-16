@@ -1,7 +1,7 @@
 import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import PageBody from '@/components/post/post-body/post-body'
+import PageBody from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
 import { getAllPages, getPage } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'

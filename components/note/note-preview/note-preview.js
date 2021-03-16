@@ -61,6 +61,7 @@ const NoteImageWrapper = styled.div`
 `
 export default function NotePreview({ note }) {
 
+
   return (
     <NotesItem className="h-entry" >
       <Link
@@ -98,7 +99,7 @@ export default function NotePreview({ note }) {
                 <NotesDate>
                   <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">                  
                     <time className="dt-published" dateTime={note.date}>
-                      {format(parseISO(note.date), "dd MMMM yyy 'at' HH:mm O")}
+                      <Date dateString={note.date} />
                     </time>
                   </a>
                 </NotesDate>

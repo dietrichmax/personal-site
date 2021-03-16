@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Image from "next/image"
-import Content from '@/components/post/post-body/post-body'
+import Content from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
 import { getAbout } from '@/lib/data/api/cms'
 import PageTitle from '@/components/title/page-title'

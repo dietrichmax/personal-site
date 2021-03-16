@@ -2,7 +2,7 @@ import markdownStyles from '@/styles/markdown-styles.module.css'
 import styled from 'styled-components';
 import ReactMarkdown from "react-markdown"
 import renderers from "@/lib/utils/renderers"
-import TableOfContents from "@/components/post/post-toc/table-of-contents"
+import TableOfContents from "@/components/article/article-toc/table-of-contents"
 import media from 'styled-media-query';
 
         

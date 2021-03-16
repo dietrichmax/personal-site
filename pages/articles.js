@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import Grid from '@/components/grid/grid';
 import SubTitle from '@/components/title/sub-title'
-import PostPreview from '@/components/post/post-preview/post-preview'
+import PostPreview from '@/components/article/article-preview/article-preview'
 import Tags from "@/components/tags/tags"
 import media from 'styled-media-query';
 
@@ -45,6 +45,7 @@ export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
   
   const posts = allPosts
+
 
   return (
     <>

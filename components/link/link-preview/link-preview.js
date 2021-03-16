@@ -2,9 +2,9 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
-import Date from '@/components/date/date'
-import PreviewImage from "@/components/post/post-image/post-image"
+import Date from "@/components/date/date"
 import HCard from "@/components/microformats/h-card"
+import config from "@/lib/data/SiteConfig"
 
 const LinksContainer = styled.div`
   margin: 0 auto;
@@ -18,6 +18,7 @@ const LinksItem = styled.li`
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   list-style: none;
+  position: relative;
 `
 
 const LinksTitle = styled.h2`
@@ -39,16 +40,39 @@ const LinksContent = styled.p`
   font-size: .875rem;
 `
 
+const NotesDate = styled.p`
+  font-family: var(--secondary-font);
+  margin-bottom: 0;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-size: 12px;
+  width: 100%;
+  padding: 0.125rem 0.5rem;
+  background-color: var(--gray-light);
+  mix-blend-mode: luminosity;
+  ${media.lessThan('medium')`
+
+  `}
+`
 
 export default function LinkPreview({ link }) {
+
   
-  return (
-    <LinksItem className="h-entry">           
-        <HCard /> 
-        <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-        <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
-        <LinksContent className="e-content">{link.description}</LinksContent>
-        <PostTags tags={link.tags} />
+  return ( 
+    <LinksItem title={link.title} className="h-entry">           
+      <HCard /> 
+      <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
+      <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
+      <LinksContent className="e-content">{link.description}</LinksContent>
+      <PostTags tags={link.tags} />
+      <NotesDate>
+        <a title={link.title} href={`${config.siteUrl}/links/${link.id}`} className="u-url" rel="bookmark nofollow">                  
+          <Date dateString={link.date} />
+        </a>
+      </NotesDate>
     </LinksItem>
   )
 }

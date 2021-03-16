@@ -4,8 +4,9 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/SiteConfig"
-import "@/styles/prism.css"
 
+import styled from 'styled-components';
+import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
 import "@/public/fonts/Cormorant_Garamond/style.css"
 
@@ -26,13 +27,11 @@ class MyApp extends App {
         <Head>
           {/* DNS Prefetch*/} 
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
-          <link rel="dns-prefetch" href="https://maxst.icons8.com" />,
           <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
           <link rel="preconnect" href="https://api.mxd.codes" crossorigin/>,
           <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>,
-          <link rel="preconnect" href="https://maxst.icons8.com" crossorigin />,
           <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
@@ -53,7 +52,6 @@ class MyApp extends App {
           <link rel="me" href={config.socials.instagram} />
           {/* Stylesheets */}
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
-          <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/css/line-awesome.min.css" />,
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
         
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />

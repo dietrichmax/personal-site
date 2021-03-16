@@ -5,13 +5,8 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
+import { FaRegQuestionCircle } from 'react-icons/fa';
 
-const ReactionsIcon = styled.i`
-`
-
-const PreviewLikeCount = styled.span`   
-  margin-left: var(--space-sm);
-`
 
 const WebMentionsWrapper = styled.section`   
   border-top: 0.1rem solid var(--gray-light);
@@ -252,7 +247,8 @@ export default function Webmentions({ slug }) {
             target="_blank" rel="noopener noreferrer" 
             title="What's this?" 
             onClick={() => {!process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'WebMentionsInfo', 'Click on Info']) : null}}
-          ><WebmentionsInfoIcon className="las la-question-circle" />What’s this?</WebmentionsInfo>
+            >
+            <FaRegQuestionCircle /> What’s this?</WebmentionsInfo>
         </WebmentionsHeader>
 
         

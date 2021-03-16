@@ -7,6 +7,7 @@ const DateContainer = styled.time`
 `
 
 export default function Date({ dateString, updated }) {
+
   const date = parseISO(dateString)
 
   return (

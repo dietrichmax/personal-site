@@ -1,7 +1,7 @@
 import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import PostBody from '@/components/post/post-body/post-body'
+import PostBody from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import { getAllPosts, getPostAndMorePosts } from '@/lib/data/api/cms'
@@ -9,12 +9,12 @@ import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig";
-import ReadingProgress from "@/components/post/post-reading-progress/reading-progress.js"
+import ReadingProgress from "@/components/reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"
-//import PostComments from "@/components/post/post-comments/post-comments"
+//import PostComments from "@/components/article/post-comments/post-comments"
 import getReadTime from "@/lib/utils/read-time"
-import PostImage from "@/components/post/post-image/post-image"
+import PostImage from "@/components/article/article-image/article-image"
 import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'
 import Date from "@/components/date/date"
@@ -98,7 +98,7 @@ export default function Post({ post }) {
               description={post.excerpt}
               image={post.coverImage.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
               slug={`articles/${post.slug}`}
-              date={post.dateUpdated ? post.dateUpdated : post.date}
+              date={post.updated_at ? post.updated_at : post.created_at}
               ogType="article"
               postSEO
             />
@@ -123,7 +123,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper><Date className="dt-published" updated={post.dateUpdated} dateString={post.dateUpdated ? post.dateUpdated : post.date} /></DateWrapper>
+                <DateWrapper><Date className="dt-published"  dateString={post.updated_at ? post.updated_at : post.created_at} /></DateWrapper>
 
 
                 <Content>

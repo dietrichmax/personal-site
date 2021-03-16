@@ -2,11 +2,14 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
-import PostDate from '@/components/date/date'
-import PreviewImage from "@/components/post/post-image/post-image"
+import { parseISO, format } from 'date-fns'
+import config from "@/lib/data/SiteConfig";
+import Date from '@/components/date/date'
+import PreviewImage from "@/components/article/article-image/article-image"
 import HCard from "@/components/microformats/h-card"
 
 const Card = styled.li`
+  position: relative;
   transition: 0.2s;
   box-shadow: 0 2px 2px rgba(0,0,0,.09);
   background-color: var(--content-bg);
@@ -43,22 +46,9 @@ const CardItemDescription = styled.div`
 
 
 const TagsWrapper = styled.div`
-  width: 50%;
-  display: inline-block;
-  ${media.lessThan('medium')`
-   width: 60%;
-  `}
+
 `
 
-const PostDateWrapper = styled.a`
-  font-size: .75rem;
-  display: inline-block;
-  width: 50%;
-  text-align: right;
-  ${media.lessThan('medium')`
-   width: 40%;
-  `}
-`
 
 const CardMeta = styled.div`
   padding-bottom: var(--space-sm);
@@ -69,16 +59,33 @@ const CardMeta = styled.div`
 const CardReadMoreRead = styled.a`
   color: var(--text-color);
   display: inline-block;
-  border-bottom: 1px solid var(--link-color);
+  border-bottom: 1px solid var(--post-color);
   cursor: pointer;
   :hover {
-    color: var(--link-color-hover);
+    color: var(--post-color-hover);
   }
 `
 
+const NotesDate = styled.p`
+  font-family: var(--secondary-font);
+  margin-bottom: 0;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-size: 12px;
+  width: 100%;
+  padding: 0.125rem 0.5rem;
+  background-color: var(--gray-light);
+  mix-blend-mode: luminosity;
+  ${media.lessThan('medium')`
+
+  `}
+`
 export default function PostPreview({ postData, preview }) {
   
-  const { title, excerpt, slug, tags, date, dateUpdated } = postData
+  const { title, excerpt, slug, tags, dateUpdated, date, published_at, updated_at } = postData
 
   return (
     <Card className="h-entry">
@@ -96,9 +103,13 @@ export default function PostPreview({ postData, preview }) {
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
-          <PostDateWrapper><PostDate className="dt-published" updated={dateUpdated} dateString={dateUpdated ? dateUpdated : date} /></PostDateWrapper>
         </CardMeta>
       </CardItemWrapper>
+      <NotesDate>
+        <a title={title} href={`${config.siteUrl}/articles/${slug}`} className="u-url" rel="bookmark nofollow">           
+          <Date dateString={dateUpdated ? dateUpdated : date} />
+        </a>
+      </NotesDate>
     </Card>
   )
 }

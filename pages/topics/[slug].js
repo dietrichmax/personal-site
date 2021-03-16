@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import SubTitle from '@/components/title/sub-title'
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import PostPreview from '@/components/post/post-preview/post-preview'
+import PostPreview from '@/components/article/article-preview/article-preview'
 
 const TagContainer = styled.div`
   max-width: 1200px;

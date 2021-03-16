@@ -4,6 +4,7 @@ const _ = require("lodash");
 
 const TagsWrapper = styled.div`
   display: block;
+  padding-bottom: var(--space-sm);
 `
 
 const TagItem = styled.a`

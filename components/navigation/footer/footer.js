@@ -6,6 +6,7 @@ import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
 import { getNowData } from "@/lib/data/api/cms";
+import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 // styled components
 
 const FooterContainer = styled.footer`
@@ -319,22 +320,22 @@ export default function Footer() {
             <FooterColumnTitle>Connect</FooterColumnTitle>
             <FooterSocials>
               <FooterItemSocials>
-                <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FooterIcons className="lab la-twitter"/> Twitter</a>
+                <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FaTwitter/> Twitter</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.instagram} title="_maxdietrich on Instagram"><FooterIcons className="lab la-instagram"/> Instagram</a>
+                <a href={config.socials.instagram} title="_maxdietrich on Instagram"><FaInstagram/> Instagram</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.github} title="DaTurboD on GitHub"><FooterIcons className="lab la-github"/> Github</a>
+                <a href={config.socials.github} title="DaTurboD on GitHub"><FaGithub/> Github</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FooterIcons className="lab la-linkedin"/> Linkedin</a>
+                <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.mail} title="Write me a Email"><FooterIcons className="las la-envelope"/> Mail</a>
+                <a href={config.socials.mail} title="Write me a Email"><FaEnvelope/> Mail</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href="/feed.xml" title="Subscribe to Feed"><FooterIcons className="las la-rss"/> Feed</a>
+                <a href="/feed.xml" title="Subscribe to Feed"><FaRss/> Feed</a>
               </FooterItemSocials>
             </FooterSocials>
           </FooterColumn>
@@ -344,7 +345,7 @@ export default function Footer() {
             <List>
               {recentPosts.map((post, i) => (
                 <FooterItem key={i}>
-                  <FooterItemLink href={`articles/${post.slug}`} passHref><a title={post.title}>{post.title}</a></FooterItemLink>
+                  <FooterItemLink href={`/articles/${post.slug}`} passHref><a title={post.title}>{post.title}</a></FooterItemLink>
                 </FooterItem>
                 ))}
             </List>

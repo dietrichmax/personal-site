@@ -12,6 +12,7 @@ import Image from "next/image"
 import Link from"next/link"
 import HCard from "@/components/microformats/h-card"
 import NoteMeta from "@/components/note/note-meta/note-meta"
+import SyndicationLinks from "@/components/microformats/syndication-links"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);
@@ -68,25 +69,6 @@ const NotesContent = styled.div`
   box-shadow: var(--box-shadow);
 `
 
-const SyndList = styled.ol`
-  font-family: var(--secondary-font);
-  list-style: none;
-  padding-inline-start: 0;
-  font-size: 12px;
-  text-align: right;
-`
-
-const SyndItem = styled.a`
-  :hover {
-    color: var(--text-color);
-    border-bottom: 1px solid var(--link-color);
-    cursor: pointer;
-  }
-`
-
-const SyndPlattform = styled.span`
-  text-transform: capitalize;
-`
 
 const Hidden = styled.a`
   display: none;
@@ -153,20 +135,7 @@ export default function Note({ note }) {
                     />
                   : null }
 
-                  <SyndList className="relsyn">
-                    {note.syndicationLinks? 
-                      note.syndicationLinks.map((link) => {
-                        return (
-                          <li>
-                            <SyndItem aria-label={link.name} title={link.slug} className="u-syndication syn-link" href={link.slug} rel="syndication" >
-                              <span>View on </span>
-                              <i className={`lab la-${link.name}`}/> 
-                              <SyndPlattform> {link.name}</SyndPlattform>
-                            </SyndItem>
-                          </li>
-                        )         
-                      })  : null }
-                    </SyndList> 
+                  <SyndicationLinks syndicationLinks={note.syndicationLinks} />
 
                 </NotesContent>
 

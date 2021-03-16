@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig";
-import RecipeContent from "@/components/post/post-body/post-body"
+import RecipeContent from "@/components/article/article-body/article-body"
 import Title from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import Link from"next/link"

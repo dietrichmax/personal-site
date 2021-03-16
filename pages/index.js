@@ -1,4 +1,4 @@
-import PostPreview from '@/components/post/post-preview/post-preview'
+import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
 import Layout from '@/components/layout/layout'
@@ -90,8 +90,6 @@ const Grid = styled.ol`
 export default function Index({ posts }) {
   const router = useRouter()
 
-  const sortedContent = posts.sort((a, b) => (a.date < b.date ? 1 : -1))
-
   return (
     <>
       <Layout color={`var(--gray-extra-light)`}>
@@ -114,7 +112,7 @@ export default function Index({ posts }) {
             </HeroWrapper>
             <IndexPageContainer>
               <Grid>
-                {sortedContent.map((content,i) => (
+                {posts.map((content,i) => (
                   content.type === "article" ? (
                     <PostPreview
                       key={i}
@@ -160,7 +158,8 @@ export async function getStaticProps() {
   const res = await fetch(`${server}/api/posts`)
   const posts = await res.json()
 
-  
+
+
   return {
     revalidate:  86400,
     props: { posts },

@@ -5,6 +5,11 @@ const withFonts = require('next-fonts');
 const redirects = {async redirects() {
   return [
     {
+      source: '/software/gis-software/liste-gis-software',
+      destination: '/articles/gis-software-options-free-open-source-and-proprietary',
+      permanent: true
+    },
+    {
       source: '/fernerkundung-satellitenbilder-downloaden',
       destination: '/articles/satellite-imagery-download-high-resolution',
       permanent: true

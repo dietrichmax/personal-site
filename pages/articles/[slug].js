@@ -17,7 +17,7 @@ import getReadTime from "@/lib/utils/read-time"
 import PostImage from "@/components/article/article-image/article-image"
 import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'
-import Date from "@/components/date/date"
+import { parseISO, format } from 'date-fns'
 import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
 import Likes from "@/components/social/favorites/favorites"
@@ -123,7 +123,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper><Date className="dt-published"  dateString={post.updated_at ? post.updated_at : post.published_at} /></DateWrapper>
+                <DateWrapper className="dt-published">{format(post.updated_at ? post.updated_at : post.published_at, "yyy'-'MMMM'-'dd")</DateWrapper>
 
 
                 <Content>

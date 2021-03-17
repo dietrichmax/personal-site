@@ -123,7 +123,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper className="dt-published">{format(post.updated_at ? post.updated_at : post.published_at, "yyy")</DateWrapper>
+                <DateWrapper className="dt-published">{format(post.updated_at ? post.updated_at : post.published_at, "yyy")}</DateWrapper>
 
 
                 <Content>

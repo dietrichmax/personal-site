@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
+
 // redirects
 const redirects = {async redirects() {
   return [
@@ -453,6 +454,16 @@ const redirects = {async redirects() {
   ]
 }};
 
+// rewrites
+const rewrites = {async rewrites() {
+  return [
+      {
+        source: ':slug*',
+        destination: '/news/:slug*', // Matched parameters can be used in the destination
+      },
+  ]
+},
+                  
 module.exports = withPlugins([
   redirects,
   withFonts({

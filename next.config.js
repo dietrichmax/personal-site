@@ -454,7 +454,7 @@ const redirects = {async redirects() {
   ]
 }};
 
-// rewrites
+/*/ rewrites
 const rewrites = {async rewrites() {
   return [
       {
@@ -462,7 +462,7 @@ const rewrites = {async rewrites() {
         destination: '/news/:slug*', // Matched parameters can be used in the destination
       },
   ]
-}},
+}},*/
                   
 module.exports = withPlugins([
   redirects,

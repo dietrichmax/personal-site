@@ -289,12 +289,13 @@ export default function Webmentions({ slug, preview }) {
             <FaRegQuestionCircle /> What’s this?</WebmentionsInfo>
         </WebmentionsHeader>
             
-          <WebmentionsCount>
-            {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
-            {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
-            {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
-          </WebmentionsCount >
-
+          {webmentions.count > 0 ? 
+            <WebmentionsCount>
+              {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
+              {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
+              {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+            </WebmentionsCount >
+          : null}
         
         <SendWebmentions>
           <SendText>Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>

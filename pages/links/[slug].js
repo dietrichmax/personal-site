@@ -9,6 +9,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Image from "next/image"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
+import WebActions from "@/components/social/web-actions/web-actions"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -59,6 +60,7 @@ export default function Note({ link }) {
             <PageWrapper>
               <PageBody className="e-content" content={link.description} />
 
+              <WebActions slug={`/links/${link.id}`} />
               <Webmentions slug={`/links/${link.id}`} />
             </PageWrapper>
           </article>

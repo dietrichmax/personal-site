@@ -28,7 +28,6 @@ const MetaInnerWrapper = styled.ol`
   list-style: none;
   align-items: center;
   font-size: 14px;
-  padding: 0 var(--space-sm);
   border-radius:var(--border-radius);
 `
 

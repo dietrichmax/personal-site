@@ -130,9 +130,9 @@ export default function Post({ post }) {
     
                   <PostBody content={post.content} />   
                   
-                  {/*<Comments slug={post.slug} />
+                  {/*<Comments slug={post.slug} />*/}
                   <WebActions slug={`/articles/${post.slug}`} />
-                  <Likes />*/}
+                  {/*<Likes />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />
 
 

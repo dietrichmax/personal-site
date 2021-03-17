@@ -11,6 +11,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Link from"next/link"
 import Image from "next/image" 
 import HCard from "@/components/microformats/h-card"
+import WebActions from "@/components/social/web-actions/web-actions"
 
 const RecipeWrapper = styled.div`
   max-width: var(--width-container);
@@ -107,6 +108,7 @@ export default function Recipe({ recipe }) {
                 </Ingredients>
                 <SubTitle>Preparation</SubTitle>
                 <RecipeContent className="e-instructions" content={recipe.description}/>
+                <WebActions slug={`/recipes/${recipe.slug}`} />
                 <Webmentions slug={`/recipes/${recipe.slug}`} />
               </RecipeWrapper>
           </div>

@@ -18,7 +18,6 @@ export default function NoteBody({ content }) {
         className={markdownStyles['markdown']}
         children={content}
         renderers={renderers}
-        style={{paddingBottom:'var(--space-sm)'}}
       />
     </NoteContent>
   )

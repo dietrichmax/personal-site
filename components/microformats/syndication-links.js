@@ -28,12 +28,18 @@ export default function SyndicationLinks({syndicationLinks}) {
     }
 
     return (
-        <SyndList className="relsyn">
+        <SyndList className="syndications">
             {syndicationLinks? 
               syndicationLinks.map((link) => {
                 return (
                 <li>
-                  <SyndItem aria-label={link.name} title={`See this post on ${link.name}`} className="u-syndication syn-link" href={link.slug} rel="syndication no-follow " >
+                  <SyndItem 
+                    aria-label={link.name} 
+                    title={`See this post on ${link.name}`} 
+                    className="u-syndication syndication" 
+                    href={link.slug} 
+                    rel="syndication no-follow" 
+                  >
                     {getEndpoint(link.name)}
                   </SyndItem>
                 </li>

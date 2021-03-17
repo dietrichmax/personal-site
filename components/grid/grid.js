@@ -5,13 +5,10 @@ const GridContainer = styled.ol`
   max-width: var(--width-container);
   padding-left: var(--space);
   padding-right: var(--space);
-  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: var(--space);
   display: grid;
   margin-bottom: var(--space-lg);
-  ${media.lessThan('large')`
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  `}
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);

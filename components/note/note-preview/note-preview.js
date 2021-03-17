@@ -57,7 +57,7 @@ const Hidden = styled.a`
 `
 
 const NoteImageWrapper = styled.div`
-  width: 300px;
+  width: 552px;
   height: 300px;
 `
 export default function NotePreview({ note }) {

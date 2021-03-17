@@ -85,7 +85,7 @@ export default function Blogroll({ allBlogrolls }) {
             />
             
             <PageTitle>Blogroll</PageTitle>
-            <SubTitle>List of all personal blogs i am reading.</SubTitle>
+            <SubTitle>List of all personal blogs i am reading in random order.</SubTitle>
 
             <BlogrollContainer className="h-feed" >
 

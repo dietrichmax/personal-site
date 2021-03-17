@@ -26,7 +26,10 @@ const Actions = styled.li`
 
 export default function SocialShare({ slug, syndicationLinks }) {
   const [copied, setCopied] = useState("")
-  const [tweetID, setTweetID] = useState("")
+  const [tweetID, setTweetID] = useState("")  
+  const [likes, setLikes] = useState(0)
+  const [incremented, setIncremented] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
   
   const url = `${config.siteUrl}${slug}`
 
@@ -50,6 +53,52 @@ export default function SocialShare({ slug, syndicationLinks }) {
   getTweetID(syndicationLinks)
 
 
+  /*useEffect(() => {
+
+    // get CMS Reactions
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/likes`, requestOptions)
+        .then(response => response.json())
+        .then(function(data) {
+          setLikes(data.count)
+        })
+  }, []);
+  
+  const sendIncrement = (value) => {
+    console.log(value)
+    const requestOptions = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        count: value,
+      })
+    };
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/likes`, requestOptions)
+      .then(function(response) {
+        if (!response.ok) {
+          console.log(response.statusText);
+        } else {
+          setSubmitted(true)
+          !process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'Like Reaction', 'Like Reaction Click']) : null
+        }
+        }).catch(function(error) {
+            console.log(error);
+        });
+  }
+
+  const sendLike = () => {
+    if (!incremented) {
+      setLikes(likes+1),
+      setIncremented(true),
+      !submitted ? sendIncrement(likes+1) : null
+    } else {  
+      setLikes(likes-1),
+      setIncremented(false)
+    }
+  }*/
   return (
     <WebActions className="indie-actions">
       <Actions do="share" with={url}>
@@ -71,7 +120,8 @@ export default function SocialShare({ slug, syndicationLinks }) {
             </a>
           </Actions>
         </>
-      : null }
+      : null
+      }
       <Actions className="action copy" title="Copy this post's permalink" onClick={() => copyToClipboard()}><FaRegCopy/> Copy</Actions>
     </WebActions>
   )

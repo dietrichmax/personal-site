@@ -5,7 +5,8 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
-import { FaRegQuestionCircle, FaStar, FaRetweet, FaComment, FaEye } from 'react-icons/fa';
+import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
+import { BsStar } from 'react-icons/bs';
 
 
 const WebMentionsWrapper = styled.section`   
@@ -140,7 +141,6 @@ const WebmentionsCount = styled.ol`
   display: inline-block;
   padding-inline-start: 0;
   list-style: none;
-  margin-bottom: var(--space-sm);
 `
 
 const WebmentionsPreview = styled.ol`
@@ -239,14 +239,14 @@ export default function Webmentions({ slug, preview }) {
         });
     }
     getData()
-    async function getViews() {
+    /*async function getViews() {
       fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
       .then((response) => response.json())
       .then((result) => {
-        setViews(getWebmentionsForUrl(result[0].nb_visits))
+        setViews(result[0].nb_visits)
       });
     }
-    getViews()
+    getViews()*/
   }, []);
 
 
@@ -272,19 +272,12 @@ export default function Webmentions({ slug, preview }) {
     <>
     {preview ? (
       <WebmentionsPreview>
-        {views > 0 ? <WebmentionPreviewCount><FaEye/> {views} {views == 1 ? "view" : "views"}</WebmentionPreviewCount> : null }
-        {webmentions.likesCount > 0 ? <WebmentionPreviewCount><FaStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
+        {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
         {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
-        {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+        {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
       </WebmentionsPreview>
     ):( 
       <WebMentionsWrapper> 
-        <WebmentionsCount>
-          {views > 0 ? <WebmentionPreviewCount><FaEye/> {views} {views == 1 ? "view" : "views"}</WebmentionPreviewCount> : null }
-          {webmentions.likesCount > 0 ? <WebmentionPreviewCount><FaStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
-          {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
-          {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
-        </WebmentionsCount >
         <WebmentionsHeader>
           <WebmentionsTitle>{webmentions.count ? webmentions.count : "0"} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
@@ -295,6 +288,12 @@ export default function Webmentions({ slug, preview }) {
             >
             <FaRegQuestionCircle /> What’s this?</WebmentionsInfo>
         </WebmentionsHeader>
+            
+          <WebmentionsCount>
+            {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
+            {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
+            {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+          </WebmentionsCount >
 
         
         <SendWebmentions>

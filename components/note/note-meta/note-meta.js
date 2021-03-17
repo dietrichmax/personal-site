@@ -1,14 +1,16 @@
-import { parseISO, format } from 'date-fns'
 import styled from 'styled-components';
-import NoteTags from "@/components/tags/tags"
 import Image from "next/image"
-import Title from '@/components/title/post-title'
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { parseISO, format } from 'date-fns'
+import config from "@/lib/data/SiteConfig"
 
 const MetaWrapper = styled.div`
-
+  display: inline-block;
 `
-
+const Title = styled.h1`
+  font-weight: 400;
+  display: inline-block;
+`
 
 const Time = styled.time`
 `
@@ -26,8 +28,6 @@ const MetaInnerWrapper = styled.ol`
   list-style: none;
   align-items: center;
   font-size: 14px;
-  color: #fff;
-  background-color: var(--primary-color);
   padding: 0 var(--space-sm);
   border-radius:var(--border-radius);
 `
@@ -58,10 +58,10 @@ export default function NoteMeta({ note }) {
 
   return (
     <MetaWrapper>
-      <Title>{format(parseISO(date), "MMMM dd'th', yyyy").replace("-"," ")}</Title>
       <MetaOuterWrapper>
 
         <MetaInnerWrapper>
+            <MetaItem><Title><Time>{format(parseISO(note.date), config.dateFormat)}</Time></Title> |</MetaItem>
             <MetaItem><Location className="p-location" title="View this location in OpenStreetMap" href={`http://www.openstreetmap.org/?mlat=${note.lat}&mlon=${note.lon}&zoom=12`}><FaMapMarkerAlt /></Location> | </MetaItem>
             <MetaItem>{note.weather_icon ? 
               <Weather title={note.weather_description}>
@@ -77,8 +77,6 @@ export default function NoteMeta({ note }) {
             {note.temperature ? <Temperature title={`${note.temperature.toFixed(0)}°Celsius`}> {note.temperature.toFixed(0)}°C</Temperature> : null }
           </MetaItem>
         </MetaInnerWrapper>
-        
-        <NoteTags tags={note.tags} />
 
 
       </MetaOuterWrapper>

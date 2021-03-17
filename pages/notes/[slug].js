@@ -11,6 +11,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Image from "next/image"
 import Link from"next/link"
 import HCard from "@/components/microformats/h-card"
+import NoteTags from "@/components/tags/tags"
 import NoteMeta from "@/components/note/note-meta/note-meta"
 import SyndicationLinks from "@/components/microformats/syndication-links"
 
@@ -69,7 +70,12 @@ const NotesContent = styled.div`
   box-shadow: var(--box-shadow);
 `
 
-
+const MetaWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+`
 const Hidden = styled.a`
   display: none;
 `
@@ -95,7 +101,6 @@ export default function Note({ note }) {
             <NoteWrapper>
              
               <NotesItem className="h-entry"> 
-              <NoteMeta  note={note} />
                 <Hidden>
                   <div className="webmentions meta">
                       <span className="webmention type">
@@ -134,9 +139,14 @@ export default function Note({ note }) {
                       content={note.content} 
                     />
                   : null }
+                  
+                  <NoteTags tags={note.tags} />
+                  <MetaWrapper>
+                    <NoteMeta  note={note} />
+                    <SyndicationLinks syndicationLinks={note.syndicationLinks} />
+                  </MetaWrapper>
 
-                  <SyndicationLinks syndicationLinks={note.syndicationLinks} />
-
+                  
                 </NotesContent>
 
                 </ContentWrapper>

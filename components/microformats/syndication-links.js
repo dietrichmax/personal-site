@@ -9,6 +9,7 @@ const SyndList = styled.ol`
   padding-inline-start: 0;
   font-size: 12px;
   text-align: right;
+  display: inline-block;
 `
 
 const SyndItem = styled.a`

@@ -49,6 +49,7 @@ const NotesDate = styled.p`
 
 const NoteImage= styled(Image)`
   object-fit: cover;
+  object-position: bottom;
 `
 
 const Hidden = styled.a`

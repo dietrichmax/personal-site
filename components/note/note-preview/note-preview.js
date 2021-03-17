@@ -61,7 +61,7 @@ const NoteImageWrapper = styled.div`
   height: 300px;
 `
 export default function NotePreview({ note }) {
-
+  console.log(note.published_at)
 
   return (
     <NotesItem className="h-entry" >

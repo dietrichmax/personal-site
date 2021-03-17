@@ -4,7 +4,7 @@ import media from "styled-media-query"
 import Image from "next/image"
 import NoteBody from "@/components/note/note-body/note-body"
 import config from "@/lib/data/SiteConfig"
-import { parseISO, format } from 'date-fns'
+import PostMeta from '@/components/post/post-meta/post-meta'
 import HCard from "@/components/microformats/h-card"
 const slugify = require('slugify')
 
@@ -61,12 +61,13 @@ const NoteImageWrapper = styled.div`
   height: 300px;
 `
 export default function NotePreview({ note }) {
-  console.log(note.published_at)
+
+  const slug= `/notes/${note.id}`
 
   return (
     <NotesItem className="h-entry" >
       <Link
-        href={`/notes/${note.id}`}
+        href={slug}
         className="u-url"
         rel="bookmark"
         passHref
@@ -94,15 +95,12 @@ export default function NotePreview({ note }) {
                     className="u-photo" 
                   /> 
                 </NoteImageWrapper>
+                <PostMeta post={note} slug={slug}/>
               </NoteBodyWrapper>
             ): 
               <NoteBodyWrapper>
                 <NoteBody content={note.content} /> 
-                <NotesDate>
-                  <a title={note.title} href={`${config.siteUrl}/notes/${note.id}`} className="u-url" rel="bookmark">        
-                    <Date dateString={note.updated_at ? note.updated_at : note.published_at} />
-                  </a>
-                </NotesDate>
+                <PostMeta post={note} slug={slug}/>
               </NoteBodyWrapper> 
             }
             

@@ -12,14 +12,6 @@ export default async (_, res) => {
     return endpoints
   }
 
-  async function getViews(slug) {
-    const url = `${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=https://mxd.codes/${slug}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
-
-    const response = await fetch(url, {});
-    const json = await response.json();
-    return await json[0].nb_visits
-  }
-
   const allContent = []
 
   allPosts.map((post) => {
@@ -33,7 +25,6 @@ export default async (_, res) => {
       content: post.content,
       excerpt: post.excerpt,
       tags: post.tags,
-      views: getViews(`articles/${post.slug}`),
       type: "article"
     })
   })

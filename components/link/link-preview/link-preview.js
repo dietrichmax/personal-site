@@ -5,6 +5,7 @@ import PostTags from "@/components/tags/tags"
 import Date from "@/components/date/date"
 import HCard from "@/components/microformats/h-card"
 import config from "@/lib/data/SiteConfig"
+import PostMeta from '@/components/post/post-meta/post-meta'
 
 const LinksContainer = styled.div`
   margin: 0 auto;
@@ -60,7 +61,8 @@ const NotesDate = styled.p`
 
 export default function LinkPreview({ link }) {
 
-  
+  const slug = `/links/${link.id}`
+
   return ( 
     <LinksItem title={link.title} className="h-entry">           
       <HCard /> 
@@ -68,11 +70,7 @@ export default function LinkPreview({ link }) {
       <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
       <LinksContent className="e-content">{link.description}</LinksContent>
       <PostTags tags={link.tags} />
-      <NotesDate>
-        <a title={link.title} href={`${config.siteUrl}/links/${link.id}`} className="u-url" rel="bookmark nofollow">                  
-          <Date dateString={link.updated_at ? link.updated_at : link.published_at} />
-        </a>
-      </NotesDate>
+      <PostMeta post={link} slug={slug}/>
     </LinksItem>
   )
 }

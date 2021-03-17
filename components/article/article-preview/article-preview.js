@@ -7,6 +7,7 @@ import config from "@/lib/data/SiteConfig";
 import Date from '@/components/date/date'
 import PreviewImage from "@/components/article/article-image/article-image"
 import HCard from "@/components/microformats/h-card"
+import PostMeta from '@/components/post/post-meta/post-meta'
 
 const Card = styled.li`
   position: relative;
@@ -85,7 +86,9 @@ const NotesDate = styled.p`
 `
 export default function PostPreview({ postData, preview }) {
   
-  const { title, excerpt, slug, tags, dateUpdated, date, published_at, updated_at } = postData
+  const { title, excerpt, tags, dateUpdated, date, published_at, updated_at } = postData
+
+  const slug = `/articles/${postData.slug}`
 
   return (
     <Card className="h-entry">
@@ -93,23 +96,19 @@ export default function PostPreview({ postData, preview }) {
         { preview ? <PreviewImage postData={postData}/> : null}
         <CardItemInfo>
           <CardItemTitle>
-            <Link href={`/articles/${slug}`} passHref>
+            <Link href={slug} passHref>
               <a className="p-name u-url" rel="bookmark" title={title}>{title}</a>
             </Link>
             <HCard /> 
           </CardItemTitle>
-          <CardItemDescription className="p-summary">{excerpt} <Link href={`/articles/${slug}`} passHref><CardReadMoreRead title={title}>Continue reading...</CardReadMoreRead></Link>
+          <CardItemDescription className="p-summary">{excerpt} <Link href={slug} passHref><CardReadMoreRead>Continue reading...</CardReadMoreRead></Link>
           </CardItemDescription>
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper><PostTags tags={tags}/></TagsWrapper>
         </CardMeta>
       </CardItemWrapper>
-      <NotesDate>
-        <a title={title} href={`${config.siteUrl}/articles/${slug}`} className="u-url" rel="bookmark nofollow">           
-          <Date dateString={updated_at ? updated_at : published_at} />
-        </a>
-      </NotesDate>
+      <PostMeta post={postData} slug={slug}/>
     </Card>
   )
 }

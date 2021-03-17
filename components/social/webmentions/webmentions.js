@@ -5,7 +5,7 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
-import { FaRegQuestionCircle } from 'react-icons/fa';
+import { FaRegQuestionCircle, FaStar, FaRetweet, FaComment, FaEye } from 'react-icons/fa';
 
 
 const WebMentionsWrapper = styled.section`   
@@ -136,9 +136,28 @@ const Status = styled.div`
   color: ${props => props.color ? props.color : 'var(--text-color)'};
 `
 
-export default function Webmentions({ slug }) {
+const WebmentionsCount = styled.ol`
+  display: inline-block;
+  padding-inline-start: 0;
+  list-style: none;
+  margin-bottom: var(--space-sm);
+`
+
+const WebmentionsPreview = styled.ol`
+  display: inline-block;
+  padding-inline-start: 0;
+  list-style: none;
+`
+
+const WebmentionPreviewCount = styled.li`
+  display: inline-block;
+  margin-right: 0.5rem;
+`
+
+export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
+  const [views, setViews] = useState(0)
   const [status, setStatus] = useState({})
 
   const url = config.siteUrl+slug
@@ -177,8 +196,11 @@ export default function Webmentions({ slug }) {
     return {
       count: count,
       comments: comments,
+      commentsCount: comments.length,
       likes: likes,
-      reposts: reposts
+      likesCount: likes.length,
+      reposts: reposts,
+      repostsCount: reposts.length
     }
   }
 
@@ -215,8 +237,16 @@ export default function Webmentions({ slug }) {
         .then((result) => {
           setWebmentions(getWebmentionsForUrl(result.children, url))
         });
-      }
-      getData()
+    }
+    getData()
+    async function getViews() {
+      fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setViews(getWebmentionsForUrl(result[0].nb_visits))
+      });
+    }
+    getViews()
   }, []);
 
 
@@ -237,9 +267,24 @@ export default function Webmentions({ slug }) {
     )
   }
 
+  
   return (
     <>
+    {preview ? (
+      <WebmentionsPreview>
+        {views > 0 ? <WebmentionPreviewCount><FaEye/> {views} {views == 1 ? "view" : "views"}</WebmentionPreviewCount> : null }
+        {webmentions.likesCount > 0 ? <WebmentionPreviewCount><FaStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
+        {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
+        {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+      </WebmentionsPreview>
+    ):( 
       <WebMentionsWrapper> 
+        <WebmentionsCount>
+          {views > 0 ? <WebmentionPreviewCount><FaEye/> {views} {views == 1 ? "view" : "views"}</WebmentionPreviewCount> : null }
+          {webmentions.likesCount > 0 ? <WebmentionPreviewCount><FaStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
+          {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
+          {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+        </WebmentionsCount >
         <WebmentionsHeader>
           <WebmentionsTitle>{webmentions.count ? webmentions.count : "0"} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
@@ -317,6 +362,7 @@ export default function Webmentions({ slug }) {
         )}
       
       </WebMentionsWrapper> 
+      )}
     </>
   )
 }

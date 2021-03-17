@@ -60,6 +60,10 @@ const NoteImageWrapper = styled.div`
   width: 552px;
   height: 300px;
 `
+
+const NoteBodyContainer = styled.div`
+  padding: var(--space-sm);
+`
 export default function NotePreview({ note }) {
 
   const slug= `/notes/${note.id}`
@@ -99,7 +103,7 @@ export default function NotePreview({ note }) {
               </NoteBodyWrapper>
             ): 
               <NoteBodyWrapper>
-                <NoteBody content={note.content} /> 
+                <NoteBodyContainer><NoteBody content={note.content} /></NoteBodyContainer>
                 <PostMeta post={note} slug={slug}/>
               </NoteBodyWrapper> 
             }

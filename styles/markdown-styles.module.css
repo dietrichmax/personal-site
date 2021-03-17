@@ -4,6 +4,7 @@
   line-height: 1.65;
   word-break: break-word;
   hyphens: auto;
+  padding-bottom: var(--space-sm);
 }
 
 .markdown a {

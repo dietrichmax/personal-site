@@ -288,14 +288,6 @@ export default function Webmentions({ slug, preview }) {
             >
             <FaRegQuestionCircle /> What’s this?</WebmentionsInfo>
         </WebmentionsHeader>
-            
-          {webmentions.count > 0 ? 
-            <WebmentionsCount>
-              {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
-              {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
-              {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
-            </WebmentionsCount >
-          : null}
         
         <SendWebmentions>
           <SendText>Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
@@ -320,10 +312,11 @@ export default function Webmentions({ slug, preview }) {
 
         {webmentions.count > 0 ? (
         <>
-          <WebmentionsList>
-          {/* Comments */}
+        {/* Comments */}
           {webmentions.comments.length > 0 ? (
-          webmentions.comments.map((mention) => (
+          <WebmentionsList>
+            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>{webmentions.comments.length} {webmentions.comments.length == 1 ? "Reply" : "Replies"}</WebmentionsTitle>
+          {webmentions.comments.map((mention) => (
             <WebmentionComment className="u-comment u-mention h-cite">
               <WebmentionAuthor className="h-card p-author" >
                 {renderAuthorImg(mention)}
@@ -334,14 +327,14 @@ export default function Webmentions({ slug, preview }) {
                 </WebmentionAuthor>
               <WebmentionContent className="p-content u-comment">{mention.content? mention.content.text : null}</WebmentionContent>
             </WebmentionComment>
-          ))
-          ) : null}
+          ))}
           </WebmentionsList> 
+          ) : null}
           {/* Likes */}
           
           {webmentions.likes.length > 0 ? (
           <WebmentionsList>
-            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>Likes</WebmentionsTitle>
+            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>{webmentions.likes.length} {webmentions.likes.length == 1 ? "Like" : "Likes"}</WebmentionsTitle>
             {webmentions.likes.map((mention) => (
               renderAuthorImg(mention)
             ))}
@@ -350,7 +343,7 @@ export default function Webmentions({ slug, preview }) {
           {/* Reposts*/}
           {webmentions.reposts.length > 0 ? (
           <WebmentionsList>
-            <WebmentionsTitle>Reposts</WebmentionsTitle>
+            <WebmentionsTitle>{webmentions.reposts.length} {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}</WebmentionsTitle>
             {webmentions.reposts.map((mention) => (
               renderAuthorImg(mention)
             ))}

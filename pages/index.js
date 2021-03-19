@@ -109,7 +109,7 @@ export default function Index({ posts }) {
                   I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
                 </HeroDescription>
               </Hero>
-            </HeroWrapper>
+             </HeroWrapper>
             <IndexPageContainer>
               <Grid>
                 {posts.map((content,i) => (

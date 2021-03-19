@@ -13,14 +13,13 @@ const Meta = styled.div`
   bottom: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   font-size: 12px;
   font-size: 12px;
   width: 100%;
   padding: 0.125rem 0.5rem;
   background-color: var(--gray-light);
   mix-blend-mode: luminosity;
-  align-items: center;
   ${media.lessThan('medium')`
 
   `}
@@ -40,9 +39,9 @@ export default function PostMeta({ post, slug }) {
 
   return ( 
     <Meta>
-      <Socials>
+      {/*<Socials>
         <Webmentions slug={slug} preview/>
-      </Socials>
+      </Socials>*/}
 
       <Date title={permaUrl} href={permaUrl} className="u-url" rel="bookmark nofollow">                  
         <time className="dt-published" dateTime={date}>

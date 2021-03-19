@@ -22,6 +22,7 @@ import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
 import Likes from "@/components/social/favorites/favorites"
 import WebActions from "@/components/social/web-actions/web-actions"
+import SyndicationLinks from "@/components/microformats/syndication-links"
 
 
 // components for posts
@@ -77,6 +78,11 @@ const DateWrapper = styled.div`
   font-size: 12px;
 `
 
+const SyndicationLinksWrapper = styled.div`
+  text-align: right;
+  display: inline-block;
+`
+
 
 export default function Post({ post }) {  
 
@@ -103,13 +109,7 @@ export default function Post({ post }) {
               postSEO
             />
             <article ref={target} className="h-entry">
-
-              <div className="webmention meta">
-                {post.syndicationLinks? (
-                  post.syndicationLinks.map((link,i) => {
-                    return (<a key={i} aria-label={link.name} title={link.name} className="u-syndication syn-link" href={link.slug} rel="syndication" />)
-                  })) : null }
-              </div>                
+             
               <HCard /> 
               
               <ReadingProgress target={target} />
@@ -129,7 +129,11 @@ export default function Post({ post }) {
                 <Content>
     
                   <PostBody content={post.content} />   
+
                   
+                  <SyndicationLinksWrapper>
+                    <SyndicationLinks syndicationLinks={post.syndicationLinks} />
+                  </SyndicationLinksWrapper>
                   {/*<Comments slug={post.slug} />*/}
                   <WebActions slug={`/articles/${post.slug}`} />
                   {/*<Likes />*/}

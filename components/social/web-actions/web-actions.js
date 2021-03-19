@@ -102,7 +102,7 @@ export default function SocialShare({ slug, syndicationLinks }) {
   return (
     <WebActions className="indie-actions">
       <Actions do="share" with={url}>
-        <a className="action share" title="Share this post" target="_blank" href={`https://twitter.com/intent/tweet?url=${url}`} rel="nofollow">
+        <a className="action share" title="Share this post" target="_blank" href={`https://twitter.com/intent/tweet?url=${url}`} rel="nofollow noopener">
           <FaRetweet/> Share
         </a>
       </Actions>
@@ -110,12 +110,12 @@ export default function SocialShare({ slug, syndicationLinks }) {
       {tweetID ? 
         <>
           <Actions do="like" with={url}>
-            <a className="action like" title="Like this post" target="_blank" href={`https://twitter.com/intent/favorite?tweet_id=${tweetID}`} rel="nofollow">
+            <a className="action like" title="Like this post" target="_blank" href={`https://twitter.com/intent/favorite?tweet_id=${tweetID}`} rel="nofollow noopener">
               <BsStar/> Like
             </a>
           </Actions>
           <Actions do="reply" with={url}>
-            <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow">
+            <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">
               <FaRegComment/> Reply
             </a>
           </Actions>

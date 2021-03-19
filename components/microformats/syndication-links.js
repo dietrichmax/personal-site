@@ -1,4 +1,4 @@
-import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaReddit } from 'react-icons/fa';
 import styled from 'styled-components';
 import config from "@/lib/data/SiteConfig";
 
@@ -7,7 +7,6 @@ const SyndList = styled.ol`
   font-family: var(--secondary-font);
   list-style: none;
   padding-inline-start: 0;
-  font-size: 12px;
   text-align: right;
   display: inline-block;
 `
@@ -25,7 +24,9 @@ export default function SyndicationLinks({syndicationLinks}) {
             return <FaTwitter/> 
         } else if (name == "instagram") {
             return <FaInstagram/> 
-        }
+        } else if (name == "reddit") {
+          return <FaReddit/> 
+      }
     }
 
     return (

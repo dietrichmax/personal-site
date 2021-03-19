@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
 import { getNowData } from "@/lib/data/api/cms";
 import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { SiGarmin } from 'react-icons/si';
 // styled components
 
 const FooterContainer = styled.footer`
@@ -317,7 +318,7 @@ export default function Footer() {
           </FooterColumn>
 
           <FooterColumn>
-            <FooterColumnTitle>Connect</FooterColumnTitle>
+            <FooterColumnTitle>Elsewhere</FooterColumnTitle>
             <FooterSocials>
               <FooterItemSocials>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FaTwitter/> Twitter</a>
@@ -329,13 +330,13 @@ export default function Footer() {
                 <a href={config.socials.github} title="DaTurboD on GitHub"><FaGithub/> Github</a>
               </FooterItemSocials>
               <FooterItemSocials>
+                <a href={config.socials.garmin_connect} title="DaTurboD on GitHub"><SiGarmin/> Garmin Connect</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
               </FooterItemSocials>
               <FooterItemSocials>
                 <a href={config.socials.mail} title="Write me a Email"><FaEnvelope/> Mail</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
-                <a href="/feed.xml" title="Subscribe to Feed"><FaRss/> Feed</a>
               </FooterItemSocials>
             </FooterSocials>
           </FooterColumn>

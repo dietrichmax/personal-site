@@ -19,7 +19,7 @@ import PostMeta from '@/components/post/post-meta/post-meta'
 import dynamic from "next/dynamic";
 import { MdDirectionsBike } from 'react-icons/md';
 
-const ActivityMap = dynamic(() => import("@/components/maps/leaflet/activitymap"), {
+const ActivityMap = dynamic(() => import("@/components/maps/leaflet/largeActivityMap"), {
     ssr: false
 });
 

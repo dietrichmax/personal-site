@@ -13,7 +13,7 @@ const Map = (data) => {
   const bounds = [[geo.maxLat, geo.maxLon], [geo.minLat, geo.minLon]]
   return (
     <MapContainer
-      style={{ height: "250px", width: "100%" }}
+      style={{ height: "200px", width: "100%" }}
       bounds={bounds}       
       scrollWheelZoom={false}
     >
@@ -27,7 +27,7 @@ const Map = (data) => {
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Esri World Imagery">
           <TileLayer
-            attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP'
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
           />
         </LayersControl.BaseLayer>

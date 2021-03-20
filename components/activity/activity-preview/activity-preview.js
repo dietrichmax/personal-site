@@ -7,7 +7,7 @@ import HCard from "@/components/microformats/h-card"
 import dynamic from "next/dynamic";
 import { MdDirectionsBike } from 'react-icons/md';
 
-const ActivityMap = dynamic(() => import("@/components/maps/leaflet/activitymap"), {
+const ActivityMap = dynamic(() => import("@/components/maps/leaflet/smallActivityMap"), {
     ssr: false
 });
 

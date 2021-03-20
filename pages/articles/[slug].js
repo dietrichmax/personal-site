@@ -106,7 +106,7 @@ export default function Post({ post }) {
               slug={`articles/${post.slug}`}
               date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"
-              postSEO
+              articleSchema
             />
             <article ref={target} className="h-entry">
              

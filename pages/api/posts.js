@@ -1,9 +1,10 @@
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from '@/lib/data/api/cms'
 
 export default async (_, res) => {
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
+  const allActivities = (await getAllActivities()) || []
   const allRecipes = (await getAllRecipes()) || []
 
   const publishOn = (note) => {
@@ -16,15 +17,7 @@ export default async (_, res) => {
 
   allPosts.map((post) => {
     allContent.push({
-      id: post.id,
-      published_at: post.published_at,
-      updated_at: post.updated_at,
-      title: post.title,
-      slug: post.slug,
-      date: post.date,
-      content: post.content,
-      excerpt: post.excerpt,
-      tags: post.tags,
+      post: post,
       type: "article"
     })
   })
@@ -33,17 +26,7 @@ export default async (_, res) => {
   allNotes.map((note) => {
     const endpoints = publishOn(note)
     allContent.push({
-      id: note.id,
-      published_at: note.published_at,
-      updated_at: note.updated_at,
-      title: note.title,
-      slug: note.id,
-      coverMedium: note.coverMedium,
-      date: note.date,
-      content: note.content,
-      category: note.category,
-      ofUrl: note.ofUrl,
-      syndicationLinks: note.syndicationLinks,
+      note: note,
       endpoints: endpoints,
       type: "note"
     })
@@ -51,16 +34,15 @@ export default async (_, res) => {
 
   allLinks.map((link) => {
     allContent.push({
-      id: link.id,
-      published_at: link.published_at,
-      updated_at: link.updated_at,
-      title: link.title,
-      slug: `${link.link}`,
-      date: link.date,
-      description: link.description,
-      link: link.link,
-      tags: link.tags,
+      link: link,
       type: "link"
+    })
+  })
+
+  allActivities.map((activity) => {
+    allContent.push({
+      activity: activity,
+      type: "activity"
     })
   })
   

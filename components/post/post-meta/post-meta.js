@@ -34,7 +34,7 @@ const Socials = styled.div``
 
 export default function PostMeta({ post, slug }) {
 
-  const date = post.updated_at ? post.updated_at  : post.created_at
+  const date = post.updated_at ? post.updated_at  : post.published_at ? post.published_at :post.created_at
   const permaUrl = `${config.siteUrl}${slug}`
 
   return ( 

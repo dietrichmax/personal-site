@@ -18,7 +18,7 @@ const MapContainer = styled.div`
 
 export default function Map({ locations }) {
 
-   const Map = dynamic(() => import("@/components/maps/leaflet/map"), {
+   const Map = dynamic(() => import("@/components/maps/leaflet/livemap"), {
         ssr: false
       });
 

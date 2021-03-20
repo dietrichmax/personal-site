@@ -12,6 +12,8 @@ import config from "@/lib/data/SiteConfig";
 import ReactMarkdown from "react-markdown"
 import markdownStyles from '@/styles/markdown-styles.module.css'
 import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
+import { isExists } from "date-fns"
+import { data } from "remark"
 
 
 
@@ -222,8 +224,7 @@ export default function Resume({ cv }) {
               }}
             >
               Download CV
-            </button>
-          </ResumeWrapper>
+            </button> </ResumeWrapper>
         </>
       )}
     </Layout>

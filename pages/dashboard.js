@@ -22,7 +22,7 @@ import {
     getSubscribersCount,
     getNotesCount,
     getLocationsCount,
-    getRecipesCount,
+    getActivitiesCount,
     getLinksCount,
 } from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
@@ -304,7 +304,7 @@ export default function Dashboard({
     allWebmentions,
     notesCount,
     locationsCount,
-    recipesCount,
+    activitiesCount,
     linksCount
 }) {
     const [liveViews, setLiveViews] = useState(0);
@@ -420,10 +420,10 @@ export default function Dashboard({
                                             <GridStatsDescription>Links bookmarked</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
-                                    <Link href="/recipes" passHref>
-                                        <StatsSmallGrid title="See all Recipes">
-                                            <GridStats>{recipesCount}</GridStats>
-                                            <GridStatsDescription>Recipes published</GridStatsDescription>
+                                    <Link href="/activities" passHref>
+                                        <StatsSmallGrid title="See all Activities">
+                                            <GridStats>{activitiesCount}</GridStats>
+                                            <GridStatsDescription>Activities tracked</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
                                     <Link href="/topics">
@@ -671,7 +671,7 @@ export async function getStaticProps() {
     const notesCount = (await getNotesCount()) || []
     const linksCount = (await getLinksCount()) || []
     const locationsCount = (await getLocationsCount()) || []
-    const recipesCount = (await getRecipesCount()) || []
+    const activitiesCount = await getActivitiesCount()
     const subscribersCount = (await getSubscribersCount()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
@@ -693,7 +693,7 @@ export async function getStaticProps() {
             visitDuration,
             allWebmentions,
             notesCount,
-            recipesCount,
+            activitiesCount,
             locationsCount,
             linksCount
         },

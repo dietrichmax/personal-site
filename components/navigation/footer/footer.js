@@ -250,10 +250,6 @@ export default function Footer() {
 
   const headerItems = [
     { 
-      name: "Home",
-      link: "/" 
-    },
-    { 
       name: "Now",
       link: "/now" 
     },
@@ -264,6 +260,10 @@ export default function Footer() {
     { 
       name: "Notes",
       link: "/notes" 
+    },
+    { 
+      name: "Activities",
+      link: "/activities" 
     },
     { 
       name: "Links",

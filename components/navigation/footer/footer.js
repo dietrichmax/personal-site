@@ -199,6 +199,12 @@ const SearchButton = styled.button`
   }
 `
 
+const AboutMeLink = styled.a`
+  border-bottom: 1px solid var(--link-color);
+  cursor: pointer;
+`
+
+
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
   const [loadedData, setLoadedData] = useState([])
@@ -227,28 +233,28 @@ export default function Footer() {
 
   const footerItems = [
     { 
-      name: "About",
-      link: "/about" 
+      name: "Contact",
+      link: "/contact" 
+    },   
+    { 
+      name: "About this site",
+      link: "/about-this site" 
     },
     { 
       name: "Dashboard",
       link: "/dashboard" 
     },
     { 
-      name: "Mailing",
-      link: "/mailinglist" 
-    },
-    { 
       name: "Feeds",
       link: "/feeds" 
     },
     { 
-      name: "Blogroll",
-      link: "/blogroll" 
+      name: "Mailing",
+      link: "/mailinglist" 
     },
     { 
-      name: "Webmention Endpoint",
-      link: "/webmention" 
+      name: "Blogroll",
+      link: "/blogroll" 
     },
   ]
 
@@ -319,6 +325,7 @@ export default function Footer() {
             <ReactMarkdown
               children={about.bioShort}
             />
+           <Link href="/about" passHref><AboutMeLink title="About me">Read more.</AboutMeLink></Link>
           </FooterColumnDescription>
           </FooterColumn>
 
@@ -345,7 +352,7 @@ export default function Footer() {
             </FooterSocials>
           </FooterColumn>
         
-          {/*<FooterColumnPosts>
+          <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
               {recentPosts.map((post, i) => (
@@ -354,7 +361,7 @@ export default function Footer() {
                 </FooterItem>
                 ))}
             </List>
-              </FooterColumnPosts>*/}
+              </FooterColumnPosts>
 
 
           <FooterColumn>

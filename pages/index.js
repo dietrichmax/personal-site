@@ -113,6 +113,10 @@ const PostDD = styled.dd`
   display: inline-block;
 `
 
+const AboutMeLink = styled.a`
+  border-bottom: 1px solid var(--link-color);
+  cursor: pointer;
+`
 export default function Index({ posts, count }) {
   const router = useRouter()
 
@@ -133,6 +137,7 @@ export default function Index({ posts, count }) {
                 <HeroDescription>
                 <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from Rosenheim, Germany. <br/>
                   I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
+                  <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 <PostTypes>
                   <PostType><Link href="/articles"><a title="See all articles"><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>

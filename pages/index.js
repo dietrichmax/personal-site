@@ -29,8 +29,9 @@ const Hero = styled.div`
   padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
   ${media.lessThan('medium')`
-  padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
+    padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
     width: 100%;
+    display: block;
   `}
 `
 
@@ -88,13 +89,15 @@ const Grid = styled.ol`
   `}
 `
 
-const PostTypes = styled.section`
+const PostTypes = styled.div`
   padding-left: var(--space);
   padding-right: var(--space);
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   ${media.lessThan('medium')`
+    display: inline-block;
+    margin-top: var(--space);
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
@@ -140,10 +143,10 @@ export default function Index({ posts, count }) {
                   <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 <PostTypes>
-                  <PostType><Link href="/articles"><a title="See all articles"><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
-                  <PostType><Link href="/notes"><a title="See all notes"><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
-                  <PostType><Link href="/activities"><a title="See all activities"><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
-                  <PostType><Link href="/links"><a title="See all links"><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
+                  <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
+                  <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
+                  <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
+                  <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
                 </PostTypes>
               </Hero>
              </HeroWrapper>

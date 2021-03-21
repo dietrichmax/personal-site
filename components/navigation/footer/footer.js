@@ -238,7 +238,7 @@ export default function Footer() {
     },   
     { 
       name: "About this site",
-      link: "/about-this site" 
+      link: "/about-this-site" 
     },
     { 
       name: "Dashboard",

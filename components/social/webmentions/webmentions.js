@@ -103,7 +103,7 @@ const Input = styled.input`
   margin: var(--space-sm) auto;
   width: 60%;
   border: 2px solid var(--gray-light);
-  background-color: var(--gray-extra-light);
+  background-color: var(--content-bg);
   :invalid {
     border: 1px solid red;
   }

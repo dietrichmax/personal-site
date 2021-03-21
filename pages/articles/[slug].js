@@ -102,7 +102,7 @@ export default function Post({ post }) {
             <SEO   
               title={post.title}
               description={post.excerpt}
-              image={post.coverImage.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
+              image={post.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.coverImage.url}` : ""}
               slug={`articles/${post.slug}`}
               date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"

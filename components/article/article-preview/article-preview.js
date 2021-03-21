@@ -60,10 +60,10 @@ const CardMeta = styled.div`
 const CardReadMoreRead = styled.a`
   color: var(--text-color);
   display: inline-block;
-  border-bottom: 1px solid var(--post-color);
+  border-bottom: 1px solid var(--link-color);
   cursor: pointer;
   :hover {
-    color: var(--post-color-hover);
+    color: var(--link-color-hover);
   }
 `
 
@@ -101,7 +101,7 @@ export default function PostPreview({ postData, preview }) {
             </Link>
             <HCard /> 
           </CardItemTitle>
-          <CardItemDescription className="p-summary">{excerpt} <Link href={slug} passHref><CardReadMoreRead>Continue reading...</CardReadMoreRead></Link>
+          <CardItemDescription className="p-summary">{excerpt} <Link href={slug} passHref><CardReadMoreRead title={title}>Continue reading...</CardReadMoreRead></Link>
           </CardItemDescription>
         </CardItemInfo>
         <CardMeta>

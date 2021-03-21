@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown"
 import renderers from "@/lib/utils/renderers"
 import TableOfContents from "@/components/article/article-toc/table-of-contents"
 import media from 'styled-media-query';
-
+import Link from "next/link"
         
 const PostContent = styled.section`
   grid-template-columns: repeat(8,minmax(0,1fr));
@@ -48,9 +48,7 @@ export default function PostBody({ content }) {
           <ReactMarkdown
             className={markdownStyles['markdown']}
             children={content}
-            renderers={{
-              renderers
-            }}
+            renderers={renderers}
           />
         </ContentWrapper>
         {/*<TOCWrapper>

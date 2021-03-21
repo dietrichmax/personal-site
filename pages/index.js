@@ -1,7 +1,6 @@
 import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
-import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import Layout from '@/components/layout/layout'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
@@ -71,7 +70,7 @@ const SubTitle = styled.p`
 `
 
 const Grid = styled.ol`
-  max-width: var(--width-container);
+  max-width: 1200px;
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space);
@@ -82,12 +81,13 @@ const Grid = styled.ol`
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+    grid-template-columns: repeat(1,minmax(0,1fr));
   `}
 `
 
 
 
-export default function Index({ posts  }) {
+export default function Index({ posts }) {
   const router = useRouter()
 
   return (
@@ -116,25 +116,20 @@ export default function Index({ posts  }) {
                   content.type === "article" ? (
                     <PostPreview
                       key={i}
-                      postData={content.post}
+                      postData={content}
                     />
                   ) : content.type === "note" ? (
                     <NotePreview 
                       key={i}
-                      note={content.note} 
+                      note={content} 
                     />
                   ) : content.type === "link" ? (
                     <LinkPreview
                       key={i}
-                      link={content.link} 
-                    />
-                  ) : content.type === "activity" ? (
-                    <ActivityPreview
-                      key={i}
-                      activity={content.activity} 
+                      link={content} 
                     />
                   ) : null
-                  ))}
+                ))}
               </Grid>
 
 
@@ -160,20 +155,11 @@ export default function Index({ posts  }) {
 }
 
 export async function getStaticProps() {
-
-  const res = await fetch(`${server}/api/posts`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    
+  const res = await fetch(`${server}/api/posts`)
   const posts = await res.json()
-  if (posts.errors) {
-    console.error(posts.errors)
-    throw new Error('Failed to fetch API')
-  }
-  
+
+
+
   return {
     revalidate:  86400,
     props: { posts },

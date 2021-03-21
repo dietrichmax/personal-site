@@ -38,7 +38,7 @@ export default function Notes({ allNotes }) {
               slug="notes"
             />
             <PageTitle>Notes</PageTitle>
-            <SubTitle>Status updates and short notes. <Feed><FaRss/></Feed></SubTitle>
+            <SubTitle>Status updates and short notes.</SubTitle>
             <NotesWrapper>
 
               <Grid>

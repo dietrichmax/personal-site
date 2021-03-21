@@ -156,7 +156,7 @@ export default function Index({ posts  }) {
 
 export async function getStaticProps() {
 
-  const res = await fetch(`http://localhost:3000/api/posts`, {
+  const res = await fetch(`${server}/api/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

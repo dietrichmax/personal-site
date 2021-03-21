@@ -80,7 +80,6 @@ const DateWrapper = styled.div`
 
 const SyndicationLinksWrapper = styled.div`
   text-align: right;
-  display: inline-block;
 `
 
 

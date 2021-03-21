@@ -8,12 +8,15 @@ const SyndList = styled.ol`
   list-style: none;
   padding-inline-start: 0;
   text-align: right;
+`
+
+const SyndLi = styled.li`
   display: inline-block;
 `
 
 const SyndItem = styled.a`
-    cursor: pointer;
-    margin-right: 0.25rem;
+  cursor: pointer;
+  margin-right: 0.25rem;
 `
 
 
@@ -34,7 +37,7 @@ export default function SyndicationLinks({syndicationLinks}) {
             {syndicationLinks? 
               syndicationLinks.map((link) => {
                 return (
-                <li>
+                <SyndLi>
                   <SyndItem 
                     aria-label={link.name} 
                     title={`See this post on ${link.name}`} 
@@ -44,7 +47,7 @@ export default function SyndicationLinks({syndicationLinks}) {
                   >
                     {getEndpoint(link.name)}
                   </SyndItem>
-                </li>
+                </SyndLi>
                 )         
             })  : null }
         </SyndList> 

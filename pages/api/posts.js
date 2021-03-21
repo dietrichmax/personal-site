@@ -42,7 +42,7 @@ export default async (_, res) => {
     })
   })
 
-  /*allActivities.map((activity) => {
+  allActivities.map((activity) => {
     allContent.push({
       activity: activity,
       date: activity.created_at,
@@ -50,7 +50,7 @@ export default async (_, res) => {
     })
   })
   
-  recipes.map((recipe) => {
+  /*recipes.map((recipe) => {
     allContent.push({
       title: recipe.title,
       slug: `${config.siteUrl}/recipes/${recipe.slug}`,

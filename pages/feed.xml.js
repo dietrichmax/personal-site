@@ -23,7 +23,7 @@ const createRssFeed = ( allContent ) =>
             <entry>
               <title>${content.title}</title>
               <link href="${content.slug}"/>
-              <updated>${parseISO(content.date).toISOString()}</updated>
+              <updated>${content.date}</updated>
               <id>${content.slug}/</id>
               <content type="html">
                 <![CDATA[${content.content}]]>
@@ -54,7 +54,7 @@ class Rss extends React.Component {
       allContent.push({
         title: post.title,
         slug: `${config.siteUrl}/articles/${post.slug}`,
-        date: post.dateUpdated ? post.dateUpdated  : post.date,
+        date: post.dateUpdated ? post.dateUpdated  : post.published_at,
         content: converter.makeHtml(post.content),
       })
     })
@@ -65,7 +65,7 @@ class Rss extends React.Component {
       allContent.push({
         title: note.title,
         slug: `${config.siteUrl}/notes/${note.id}`,
-        date: note.created_at,
+        date: note.published_at,
         content: converter.makeHtml(note.content+endpoints)
       })
     })
@@ -74,7 +74,7 @@ class Rss extends React.Component {
       allContent.push({
         title: link.title,
         slug: `${link.link}`,
-        date: link.date,
+        date: link.published_at,
         content: converter.makeHtml(link.description)
       })
     })

@@ -128,6 +128,11 @@ export default function Index({ posts  }) {
                       key={i}
                       link={content.link} 
                     />
+                  ) : content.type === "activity" ? (
+                    <ActivityPreview
+                      key={i}
+                      activity={content.activity} 
+                    />
                   ) : null
                   ))}
               </Grid>
@@ -168,7 +173,7 @@ export async function getStaticProps() {
     console.error(posts.errors)
     throw new Error('Failed to fetch API')
   }
-
+  
   return {
     revalidate:  86400,
     props: { posts },

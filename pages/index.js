@@ -87,7 +87,7 @@ const Grid = styled.ol`
 
 
 
-export default function Index({ posts }) {
+export default function Index({  }) {
   const router = useRouter()
 
   return (
@@ -112,7 +112,7 @@ export default function Index({ posts }) {
              </HeroWrapper>
             <IndexPageContainer>
               <Grid>
-                {posts.map((content,i) => (
+                {/*{posts.map((content,i) => (
                   content.type === "article" ? (
                     <PostPreview
                       key={i}
@@ -129,11 +129,11 @@ export default function Index({ posts }) {
                       link={content} 
                     />
                   ) : null
-                ))}
+                ))}*/}
               </Grid>
 
 
-              {/*<SubTitle>Recent Notes</SubTitle>
+              {/*{<SubTitle>Recent Notes</SubTitle>
               <NotesContainer >
                 {notes.map((note) => (
                  <NotePreview note={note} />
@@ -154,7 +154,7 @@ export default function Index({ posts }) {
   )
 }
 
-export async function getStaticProps() {
+/*export async function getStaticProps() {
   const res = await fetch(`${server}/api/posts`)
   const posts = await res.json()
 
@@ -164,4 +164,4 @@ export async function getStaticProps() {
     revalidate:  86400,
     props: { posts },
   }
-}
+}*/

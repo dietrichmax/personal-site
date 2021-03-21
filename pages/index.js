@@ -120,7 +120,7 @@ const AboutMeLink = styled.a`
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
 `
-export default function Index({ posts, count }) {
+export default function Index({ posts, /*count*/ }) {
   const router = useRouter()
 
   return (
@@ -143,11 +143,11 @@ export default function Index({ posts, count }) {
                   <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 <PostTypes>
-                  <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
+                  {/*<PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
                   <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
                   <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
                   <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
-                </PostTypes>
+          */}</PostTypes>
               </Hero>
              </HeroWrapper>
             <IndexPageContainer>
@@ -203,14 +203,14 @@ export default function Index({ posts, count }) {
 export async function getStaticProps() {
   const resPosts = await fetch(`${server}/api/posts`)
   const posts = await resPosts.json()
-  const resStats = await fetch(`${server}/api/stats`)
-  const stats = await resStats.json()
+  /*const resStats = await fetch(`${server}/api/stats`)
+  const stats = await resStats.json()*/
 
   return {
     revalidate:  86400,
     props: { 
       posts,
-      count: stats.posts.count
+      //count: stats.posts.count
     },
   }
 }

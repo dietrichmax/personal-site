@@ -18,6 +18,7 @@ export default async (_, res) => {
   allPosts.map((post) => {
     allContent.push({
       post: post,
+      date: post.published_at,
       type: "article"
     })
   })
@@ -27,6 +28,7 @@ export default async (_, res) => {
     const endpoints = publishOn(note)
     allContent.push({
       note: note,
+      date: note.published_at,
       endpoints: endpoints,
       type: "note"
     })
@@ -35,18 +37,20 @@ export default async (_, res) => {
   allLinks.map((link) => {
     allContent.push({
       link: link,
+      date: link.published_at,
       type: "link"
     })
   })
 
-  allActivities.map((activity) => {
+  /*allActivities.map((activity) => {
     allContent.push({
       activity: activity,
+      date: activity.created_at,
       type: "activity"
     })
   })
   
-  /*recipes.map((recipe) => {
+  recipes.map((recipe) => {
     allContent.push({
       title: recipe.title,
       slug: `${config.siteUrl}/recipes/${recipe.slug}`,

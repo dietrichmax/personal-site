@@ -87,7 +87,7 @@ const Grid = styled.ol`
 
 
 
-export default function Index({ posts }) {
+export default function Index({ posts  }) {
   const router = useRouter()
 
   return (
@@ -128,13 +128,8 @@ export default function Index({ posts }) {
                       key={i}
                       link={content.link} 
                     />
-                  ) : content.type === "activity" ? (
-                    <ActivityPreview
-                      key={i}
-                      activity={content.activity} 
-                    />
                   ) : null
-                ))}
+                  ))}
               </Grid>
 
 
@@ -160,12 +155,22 @@ export default function Index({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/api/posts`)
+
+  const res = await fetch(`${server}/api/posts`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    
   const posts = await res.json()
+  if (posts.errors) {
+    console.error(posts.errors)
+    throw new Error('Failed to fetch API')
+  }
 
   return {
     revalidate:  86400,
     props: { posts },
   }
 }
-

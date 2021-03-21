@@ -94,8 +94,7 @@ export default function NotePreview({ note }) {
                   <NoteImage
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
                     alt={`Cover medium of note ${note.date}`}
-                    width="552"
-                    height="300"
+                    layout="fill"
                     className="u-photo" 
                   /> 
                 </NoteImageWrapper>

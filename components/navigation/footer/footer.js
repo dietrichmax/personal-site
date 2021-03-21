@@ -383,8 +383,7 @@ export default function Footer() {
           <Link href="/site-notice">
             <FooterLink title="Site Notice">Site Notice</FooterLink>
           </Link>
-          <span> • </span>
-          Made with <a href="https://nextjs.org/" title="Next.js">Next.js</a> and <a href="https://strapi.io/" title="Strapi">Strapi</a>.</FooterNotice>
+        </FooterNotice>
       </FooterInnerContainer>
     </FooterContainer>
   )

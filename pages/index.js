@@ -1,6 +1,7 @@
 import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
+import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import Layout from '@/components/layout/layout'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
@@ -87,7 +88,7 @@ const Grid = styled.ol`
 
 
 
-export default function Index({  }) {
+export default function Index({ posts }) {
   const router = useRouter()
 
   return (
@@ -112,24 +113,29 @@ export default function Index({  }) {
              </HeroWrapper>
             <IndexPageContainer>
               <Grid>
-                {/*{posts.map((content,i) => (
-                  content.type === "article" ? (
+                {posts.map((post,i) => (
+                  post.type === "article" ? (
                     <PostPreview
                       key={i}
-                      postData={content}
+                      postData={post.post}
                     />
-                  ) : content.type === "note" ? (
+                  ) : post.type === "note" ? (
                     <NotePreview 
                       key={i}
-                      note={content} 
+                      note={post.note} 
                     />
-                  ) : content.type === "link" ? (
+                  ) : post.type === "link" ? (
                     <LinkPreview
                       key={i}
-                      link={content} 
+                      link={post.link} 
+                    />
+                  ) : post.type === "activity" ? (
+                    <ActivityPreview
+                      key={i}
+                      activity={post.activity} 
                     />
                   ) : null
-                ))}*/}
+                ))}
               </Grid>
 
 
@@ -154,7 +160,7 @@ export default function Index({  }) {
   )
 }
 
-/*export async function getStaticProps() {
+export async function getStaticProps() {
   const res = await fetch(`${server}/api/posts`)
   const posts = await res.json()
 
@@ -164,4 +170,4 @@ export default function Index({  }) {
     revalidate:  86400,
     props: { posts },
   }
-}*/
+}

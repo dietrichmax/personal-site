@@ -16,19 +16,11 @@ import {
     getMatomoSumVisitDuration,
 } from "@/lib/data/api/analytics"
 import { fetchWebmentions } from "@/lib/data/api/webmentions"
-import {
-    getPostsCount,
-    getTagsCount,
-    getSubscribersCount,
-    getNotesCount,
-    getLocationsCount,
-    getActivitiesCount,
-    getLinksCount,
-} from "@/lib/data/api/cms"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
+import { server } from "@/lib/utils/server"
 
 
 const StyledReactTooltip = styled(ReactTooltip)`
@@ -664,15 +656,10 @@ export default function Dashboard({
 }
 
 export async function getStaticProps() {
+    const resStats = await fetch(`${server}/api/stats`)
+    const stats = await resStats.json()
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
-    const postsCount = (await getPostsCount()) || []
-    const tagsCount = (await getTagsCount()) || []
-    const notesCount = (await getNotesCount()) || []
-    const linksCount = (await getLinksCount()) || []
-    const locationsCount = (await getLocationsCount()) || []
-    const activitiesCount = await getActivitiesCount()
-    const subscribersCount = (await getSubscribersCount()) || []
     const githubStats = (await getGitHubStats()) || []
     const seoStats = (await getMatomoSEOStats()) || []
     const allVisits = (await getMatomoAllVisits()) || []
@@ -684,18 +671,18 @@ export async function getStaticProps() {
         props: {
             lastViews,
             actions,
-            postsCount,
-            tagsCount,
-            subscribersCount,
+            postsCount: stats.posts.count.posts,
+            tagsCount: stats.posts.count.tags,
+            subscribersCount: stats.posts.count.subscribers,
+            notesCount: stats.posts.count.notes,
+            activitiesCount: stats.posts.count.activities,
+            locationsCount: stats.posts.count.locations,
+            linksCount: stats.posts.count.links,
             githubStats,
             seoStats,
             allVisits,
             visitDuration,
             allWebmentions,
-            notesCount,
-            activitiesCount,
-            locationsCount,
-            linksCount
         },
     }
 }

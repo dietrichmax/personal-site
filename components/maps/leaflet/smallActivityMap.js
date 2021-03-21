@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Marker, MapContainer, TileLayer, LayersControl, Polyline } from "react-leaflet";
-import { getLocationData } from '@/lib/data/api/cms'
 
+/*import { divIcon } from 'leaflet';
+import { renderToStaticMarkup } from 'react-dom/server';
+const iconEnd = divIcon({
+  html: renderToStaticMarkup(<FaFlagCheckered />),
+});*/
 
 const Map = (data) => {
   const geo = data.data

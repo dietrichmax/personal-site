@@ -5,7 +5,9 @@ import { fromUnixTime, format, parseISO } from 'date-fns'
 import PostMeta from '@/components/post/post-meta/post-meta'
 import HCard from "@/components/microformats/h-card"
 import dynamic from "next/dynamic";
-import { MdDirectionsBike } from 'react-icons/md';
+import { FaRunning, FaBiking, FaClock } from 'react-icons/fa';
+import { CgArrowsH, CgAlarm } from 'react-icons/cg';
+
 
 const ActivityMap = dynamic(() => import("@/components/maps/leaflet/smallActivityMap"), {
     ssr: false
@@ -32,6 +34,9 @@ const Title = styled.h2`
 const Date = styled.time`
   font-size: 1rem;
   font-weight: 400;
+  ${media.lessThan('large')`
+    display: block;
+  `}
 `
 
 const Icon = styled.span`
@@ -39,12 +44,19 @@ const Icon = styled.span`
 `
 
 const Data = styled.div`
+  font-size: .875rem;
+  ${media.lessThan('small')`
+    display: flex;
+    justify-content: space-between;
+  `}
 `
 
-const DataItem = styled.div`
+const DataItem = styled.dl`
   display: inline-block;
   margin: var(--space-sm) var(--space) var(--space-sm) 0;
-  ${media.lessThan('large')`
+  ${media.lessThan('small')`
+
+    margin: var(--space-sm) 0;
   `}
 `
 
@@ -66,19 +78,27 @@ export default function ActivityPreview({ activity }) {
 
   const getTypeIcon = activity => {
     if (activity.activityType.typeId == 5) {
-        return <MdDirectionsBike/>
-    }
+        return <FaBiking/>
+    } else if (activity.activityType.typeId == 15) {
+      return <FaRunning/>
+  }
 
   }
 
-
+  const secondsToHms = (s) => {
+    const hours = (((s - s % 3600) / 3600) % 60)
+    const minutes = (((s - s % 60) / 60) % 60)  
+    const seconds = (s % 60)  
+    return (`${hours}h ${minutes}min ${seconds}s`)
+  }
+  
   return (
     <Item className="h-entry" >
         
         <Link href={slug} passHref>
           <a className="p-name u-url" title={activity.activityName}>
             <Title>
-                <Icon>{getTypeIcon(activity)}</Icon>{` `}
+                <Icon title={activity.activityType.typeKey}>{getTypeIcon(activity)}</Icon>{` `}
                 {activity.activityName}{` `}
                 <Date>({format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")})</Date>
             </Title>
@@ -86,12 +106,12 @@ export default function ActivityPreview({ activity }) {
         </Link>
         <Data className="e-content">
           <DataItem>
-            <DataItemLabel>Distance</DataItemLabel>
+            <DataItemLabel><CgArrowsH /> Distance</DataItemLabel>
             <DataItemValue>{(activity.distance/1000).toFixed(2)} km</DataItemValue>
           </DataItem>
           <DataItem>
-            <DataItemLabel>Duration</DataItemLabel>
-            <DataItemValue>{activity.duration} s</DataItemValue>
+            <DataItemLabel><CgAlarm /> Duration</DataItemLabel>
+            <DataItemValue>{secondsToHms(activity.duration)}</DataItemValue>
           </DataItem>
           <DataItem>
             <DataItemLabel>Ø Speed</DataItemLabel>

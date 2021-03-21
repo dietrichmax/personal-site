@@ -239,6 +239,10 @@ export default function Footer() {
       link: "/mailinglist" 
     },
     { 
+      name: "Feeds",
+      link: "/feeds" 
+    },
+    { 
       name: "Blogroll",
       link: "/blogroll" 
     },
@@ -295,6 +299,7 @@ export default function Footer() {
             >
             Search</SearchButton>
           </SearchWrapper>
+
           <FooterMainNav>
             {headerItems.map((item, i) => (
               <FooterMainNavItem key={i}>
@@ -318,7 +323,6 @@ export default function Footer() {
           </FooterColumn>
 
           <FooterColumn>
-            <FooterColumnTitle>Elsewhere</FooterColumnTitle>
             <FooterSocials>
               <FooterItemSocials>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FaTwitter/> Twitter</a>
@@ -341,7 +345,7 @@ export default function Footer() {
             </FooterSocials>
           </FooterColumn>
         
-          <FooterColumnPosts>
+          {/*<FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
               {recentPosts.map((post, i) => (
@@ -350,11 +354,10 @@ export default function Footer() {
                 </FooterItem>
                 ))}
             </List>
-          </FooterColumnPosts>
+              </FooterColumnPosts>*/}
 
 
           <FooterColumn>
-            <FooterColumnTitle>Good Stuff</FooterColumnTitle>
             <List>
               {footerItems.map((item, i) => (
                 <FooterItem key={i}>

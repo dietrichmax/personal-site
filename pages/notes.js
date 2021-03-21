@@ -10,10 +10,15 @@ import NotePreview from "@/components/note/note-preview/note-preview"
 import SubTitle from '@/components/title/sub-title'
 import media from 'styled-media-query';
 import Grid from '@/components/grid/grid'
+import { FaRss } from 'react-icons/fa';
 
 const NotesWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
+`
+
+const Feed = styled.span`
+display: inline-block;
 `
 
 export default function Notes({ allNotes }) {
@@ -33,7 +38,7 @@ export default function Notes({ allNotes }) {
               slug="notes"
             />
             <PageTitle>Notes</PageTitle>
-            <SubTitle>What's going on.</SubTitle>
+            <SubTitle>Status updates and short notes. <Feed><FaRss/></Feed></SubTitle>
             <NotesWrapper>
 
               <Grid>

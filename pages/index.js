@@ -9,6 +9,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import { server } from "@/lib/utils/server"
+import Link from "next/link"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -39,6 +40,7 @@ const HeroDescription = styled.h3`
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
   line-height: 1.15;
+  width: 80%;
   font-family: var(--thirdy-font);
   ${media.lessThan('small')`
     font-size: 1.5em;
@@ -86,9 +88,32 @@ const Grid = styled.ol`
   `}
 `
 
+const PostTypes = styled.section`
+  padding-left: var(--space);
+  padding-right: var(--space);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  `}
+`
 
+const PostType = styled.dl`
+  border-bottom: 1px solid var(--link-color);
+  cursor: pointer;
+`
 
-export default function Index({ posts }) {
+const PostDT = styled.dt`
+  display: inline-block;
+  color: var(--gray-light);
+`
+const PostDD = styled.dd`
+  display: inline-block;
+`
+
+export default function Index({ posts, count }) {
   const router = useRouter()
 
   return (
@@ -106,12 +131,19 @@ export default function Index({ posts }) {
              <HeroWrapper>
               <Hero>
                 <HeroDescription>
-                <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.socials.mail}title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from Rosenheim, Germany. <br/>
+                <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from Rosenheim, Germany. <br/>
                   I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
                 </HeroDescription>
+                <PostTypes>
+                  <PostType><Link href="/articles"><a title="See all articles"><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
+                  <PostType><Link href="/notes"><a title="See all notes"><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
+                  <PostType><Link href="/activities"><a title="See all activities"><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
+                  <PostType><Link href="/links"><a title="See all links"><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
+                </PostTypes>
               </Hero>
              </HeroWrapper>
             <IndexPageContainer>
+
               <Grid>
                 {posts.map((post,i) => (
                   post.type === "article" ? (
@@ -161,13 +193,16 @@ export default function Index({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/api/posts`)
-  const posts = await res.json()
-
-
+  const resPosts = await fetch(`${server}/api/posts`)
+  const posts = await resPosts.json()
+  const resStats = await fetch(`${server}/api/stats`)
+  const stats = await resStats.json()
 
   return {
     revalidate:  86400,
-    props: { posts },
+    props: { 
+      posts,
+      count: stats.posts.count
+    },
   }
 }

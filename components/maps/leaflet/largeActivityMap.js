@@ -16,6 +16,7 @@ const Map = (data) => {
       style={{ height: "500px", width: "100%" }}
       bounds={bounds}       
       scrollWheelZoom={false}
+      fullscreenControl={true}
     >
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.BaseLayer checked name="Topo">

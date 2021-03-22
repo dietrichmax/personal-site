@@ -451,6 +451,13 @@ const redirects = {async redirects() {
       permanent: true
     },
     
+    /* Social Redirects */
+    {
+      source: '/github/:slug',
+      destination: 'https://github.com/:slug',
+      permanent: true
+    },
+    
   ]
 }};
 

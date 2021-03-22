@@ -330,6 +330,7 @@ export default function Footer() {
           </FooterColumn>
 
           <FooterColumn>
+            <FooterColumnTitle>Elsewhere</FooterColumnTitle>
             <FooterSocials>
               <FooterItemSocials>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FaTwitter/> Twitter</a>
@@ -345,9 +346,6 @@ export default function Footer() {
               </FooterItemSocials>
               <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
-                <a href={config.socials.mail} title="Write me a Email"><FaEnvelope/> Mail</a>
               </FooterItemSocials>
             </FooterSocials>
           </FooterColumn>

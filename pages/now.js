@@ -104,7 +104,7 @@ export default function Now({ weather, address, content, now  }) {
             <SEO   
               title="Now"
               slug="Now"
-              descrption="This page describes what i am focused on at this point in my life."
+              description="This page describes what i am focused on at this point in my life."
             />
             
             <PageTitle>Now</PageTitle>

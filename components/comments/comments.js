@@ -8,7 +8,7 @@ import { parseISO, formatDistance } from 'date-fns'
 
 export default function PostComments({ slug }) {
   const [comments, setComments] = useState([])
-
+console.log(comments)
 
   useEffect(() => {
     async function fetchStrapiAPI(query, { variables } = {}) {
@@ -54,18 +54,20 @@ export default function PostComments({ slug }) {
 
 
   return (
-    <Comments> 
-      <CommentsTitle>Comments</CommentsTitle>
-      {comments.length > 0 ? comments.map((comment,i) => (
-        <Comment key={i} authorName={comment.name} className="u-comment">
-          <CommentAuthor className="h-card p-author" >
-            <CommentAuthorName className="p-name">{comment.name}</CommentAuthorName>
-              <CommentDate className="dt-published">{comment.created_at ? `${formatDistance(parseISO(comment.created_at), new Date())} ago` : null}</CommentDate>
-            </CommentAuthor>
-            <CommentContent className="p-content u-comment">{comment.text? comment.text : null}</CommentContent>
-        </Comment>
-      )): "-" }
-    </Comments>
+    comments.length > 0 ?
+      <Comments> 
+        <CommentsTitle>Comments</CommentsTitle>
+        {comments.map((comment,i) => (
+          <Comment key={i} authorName={comment.name} className="p-comment h-cite comment">
+            <CommentAuthor className="p-author h-card author" >
+              <CommentAuthorName className="p-name u-url">{comment.name}</CommentAuthorName>
+                <CommentDate className="dt-published">{comment.created_at ? `${formatDistance(parseISO(comment.created_at), new Date())} ago` : null}</CommentDate>
+              </CommentAuthor>
+              <CommentContent className="e-content comment-content">{comment.text? comment.text : null}</CommentContent>
+          </Comment>
+        ))}
+      </Comments>
+    : null
   )
 }
 
@@ -98,7 +100,7 @@ const CommentAuthor = styled.div`
 `
 
 
-const CommentAuthorName = styled.span`
+const CommentAuthorName = styled.a`
   font-weight: 600;  
   display: inline-block;
   margin-right: calc(var(--space-sm)*.5);

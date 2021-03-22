@@ -7,7 +7,7 @@ import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
 import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
 import { BsStar } from 'react-icons/bs';
-
+import Comments from "@/components/comments/comments"
 
 const WebMentionsWrapper = styled.section`   
   border-top: 0.1rem solid var(--gray-light);
@@ -154,6 +154,12 @@ const WebmentionPreviewCount = styled.li`
   margin-right: 0.5rem;
 `
 
+const WebmentionPreviewLabel = styled.span`
+  ${media.lessThan('medium')`
+  display: none;
+  `}
+`
+
 export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
@@ -272,9 +278,9 @@ export default function Webmentions({ slug, preview }) {
     <>
     {preview ? (
       <WebmentionsPreview>
-        {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} {webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewCount> : null }
-        {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} {webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewCount>  : null }
-        {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} {webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewCount>  : null }
+        {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} <WebmentionPreviewLabel>{webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewLabel></WebmentionPreviewCount> : null }
+        {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} <WebmentionPreviewLabel>{webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewLabel></WebmentionPreviewCount>  : null }
+        {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} <WebmentionPreviewLabel>{webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewLabel></WebmentionPreviewCount>  : null }
       </WebmentionsPreview>
     ):( 
       <WebMentionsWrapper> 
@@ -353,7 +359,7 @@ export default function Webmentions({ slug, preview }) {
         ) : (
           <WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent>
         )}
-      
+        <Comments slug={slug} />
       </WebMentionsWrapper> 
       )}
     </>

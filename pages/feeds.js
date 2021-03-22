@@ -33,7 +33,10 @@ const FeedsList = styled.ul`
   padding-right: var(--space);
 `
 
-const FeedItem = styled.li``
+const FeedItem = styled.li`
+  color: var(--text-color);
+  border-bottom: 1px solid var(--link-color);
+`
 
 
 

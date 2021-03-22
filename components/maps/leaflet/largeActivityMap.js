@@ -18,14 +18,13 @@ const Map = (data) => {
       scrollWheelZoom={false}
     >
     <LayersControl position="topright" collapsed={false}>
-      <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
+      <LayersControl.BaseLayer checked name="Topo">
         <TileLayer 
-          url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
-          attribution ='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-
-        />
-        </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Esri World Imagery">
+        url='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
+        attribution ='Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      />
+      </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Satellite">
           <TileLayer
             attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP'
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"

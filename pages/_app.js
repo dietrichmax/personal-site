@@ -51,6 +51,7 @@ class MyApp extends App {
           <link rel="me" href={config.socials.linkedin} />
           <link rel="me" href={config.socials.instagram} />
           {/* Leaflet-UI*/}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
           <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" />
           <script src="https://unpkg.com/leaflet-ui@0.5.0/dist/leaflet-ui.js" />
       

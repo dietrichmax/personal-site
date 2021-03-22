@@ -1,5 +1,5 @@
 import React from "react"
-import { Marker, MapContainer, TileLayer, LayersControl, Polyline } from "react-leaflet";
+import { Marker, MapContainer, TileLayer, LayersControl, Polyline, AttributionControl } from "react-leaflet";
 
 /*import { divIcon } from 'leaflet';
 import { renderToStaticMarkup } from 'react-dom/server';

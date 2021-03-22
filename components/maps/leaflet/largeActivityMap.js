@@ -17,7 +17,7 @@ const Map = (data) => {
       bounds={bounds}       
       scrollWheelZoom={false}
     >
-    <LayersControl position="topright">
+    <LayersControl position="topright" collapsed={false}>
       <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
         <TileLayer 
           url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'

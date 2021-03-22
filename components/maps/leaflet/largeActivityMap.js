@@ -18,7 +18,6 @@ const Map = (data) => {
       scrollWheelZoom={false}
       fullscreenControl={true}
     >
-    <AttributionControl position="leaflet-bottom leaflet-left" />
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.BaseLayer checked name="Topo">
         <TileLayer 
@@ -36,6 +35,8 @@ const Map = (data) => {
         <Marker id="start" position={geo.startPoint}/>
         <Polyline pathOptions={style} positions={geo.polyline} />
         <Marker id="end" position={geo.endPoint}/>
+    
+        <AttributionControl position="bottomrleft" prefix={false} />
 
       </LayersControl>
     </MapContainer>

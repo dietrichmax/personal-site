@@ -22,9 +22,9 @@ const Map = (data) => {
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.BaseLayer checked name="Topo">
         <TileLayer 
-        url='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
-        attribution ='Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-      />
+          url='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
+          attribution ='Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        />
         <AttributionControl position="bottomleft" prefix={false} />
       </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Satellite">
@@ -32,6 +32,7 @@ const Map = (data) => {
             attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP'
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
           />
+          <AttributionControl position="bottomleft" prefix={false} />
         </LayersControl.BaseLayer>
 
         <Marker id="start" position={geo.startPoint}/>

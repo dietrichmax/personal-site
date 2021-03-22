@@ -20,6 +20,7 @@ const Map = (data) => {
       style={{ height: "200px", width: "100%" }}
       bounds={bounds}       
       scrollWheelZoom={false}
+      zoomControl={false}
     >
       <TileLayer 
         url='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'

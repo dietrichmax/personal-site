@@ -343,7 +343,7 @@ export default function Webmentions({ slug, preview }) {
           {/* Reposts*/}
           {webmentions.reposts.length > 0 ? (
           <WebmentionsList>
-            <WebmentionsTitle>{webmentions.reposts.length} {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}</WebmentionsTitle>
+            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>{webmentions.reposts.length} {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}</WebmentionsTitle>
             {webmentions.reposts.map((mention) => (
               renderAuthorImg(mention)
             ))}

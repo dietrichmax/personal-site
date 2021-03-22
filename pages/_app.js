@@ -50,8 +50,11 @@ class MyApp extends App {
           <link rel="me" href={config.socials.twitter} />
           <link rel="me" href={config.socials.linkedin} />
           <link rel="me" href={config.socials.instagram} />
+          {/* Leaflet-UI*/}
+          <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" />
+          <script src="https://unpkg.com/leaflet-ui@0.5.0/dist/leaflet-ui.js" />
+      
           {/* Stylesheets */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
         
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />

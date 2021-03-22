@@ -40,6 +40,7 @@ const Map = (data) => {
     <MapContainer
       style={{ height: "500px", width: "100%" }}
       bounds={bounds}
+      preferCanvas={true}
     >
       <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

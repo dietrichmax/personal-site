@@ -22,7 +22,7 @@ const Map = (data) => {
       scrollWheelZoom={false}
     >
       <TileLayer 
-        url='https://a.tile.opentopomap.org/${z}/${x}/${y}.png'
+        url='https://b.tile.opentopomap.org/${z}/${x}/${y}.png'
         attribution='Kartendaten: <a href=//openstreetmap.org/copyright>OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: <a href=//opentopomap.org>OpenTopoMap (CC-BY-SA)</a>'
       />
 

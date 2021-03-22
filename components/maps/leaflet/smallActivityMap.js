@@ -21,6 +21,7 @@ const Map = (data) => {
       bounds={bounds}       
       scrollWheelZoom={false}
       zoomControl={false}
+      attributionControl={false}
     >
       <TileLayer 
         url='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'

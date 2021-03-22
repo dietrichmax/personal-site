@@ -78,3 +78,7 @@
 .markdown blockqoute > p {
   margin: 0;
 }
+
+.markdown img {
+ padding: 26px 0; 
+}

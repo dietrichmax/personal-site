@@ -21,26 +21,15 @@ const Map = (data) => {
       bounds={bounds}       
       scrollWheelZoom={false}
     >
-    <LayersControl position="topright">
-      <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
-        <TileLayer 
-          url='https://a.tile.opentopomap.org/${z}/${x}/${y}.png'
-          attribution='Kartendaten: <a href=//openstreetmap.org/copyright>OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: <a href=//opentopomap.org>OpenTopoMap (CC-BY-SA)</a>'
+      <TileLayer 
+        url='https://a.tile.opentopomap.org/${z}/${x}/${y}.png'
+        attribution='Kartendaten: <a href=//openstreetmap.org/copyright>OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: <a href=//opentopomap.org>OpenTopoMap (CC-BY-SA)</a>'
+      />
 
-        />
-        </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Esri World Imagery">
-          <TileLayer
-            attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP'
-            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-          />
-        </LayersControl.BaseLayer>
+      <Marker id="start" position={geo.startPoint}/>
+      <Polyline pathOptions={style} positions={geo.polyline} />
+      <Marker id="end" position={geo.endPoint}/>
 
-        <Marker id="start" position={geo.startPoint}/>
-        <Polyline pathOptions={style} positions={geo.polyline} />
-        <Marker id="end" position={geo.endPoint}/>
-
-      </LayersControl>
     </MapContainer>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Marker, MapContainer, TileLayer, LayersControl, Polyline } from "react-leaflet";
+import { Marker, MapContainer, TileLayer, LayersControl, Polyline, AttributionControl } from "react-leaflet";
 import { getLocationData } from '@/lib/data/api/cms'
 
 
@@ -18,6 +18,7 @@ const Map = (data) => {
       scrollWheelZoom={false}
       fullscreenControl={true}
     >
+    <AttributionControl position="leaflet-bottom leaflet-left" />
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.BaseLayer checked name="Topo">
         <TileLayer 

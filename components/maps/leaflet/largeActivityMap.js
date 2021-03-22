@@ -32,7 +32,6 @@ const Map = (data) => {
             attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP'
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
           />
-          <AttributionControl position="bottomleft" prefix={false} />
         </LayersControl.BaseLayer>
 
         <Marker id="start" position={geo.startPoint}/>

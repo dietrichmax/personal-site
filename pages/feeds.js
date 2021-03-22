@@ -34,11 +34,12 @@ const FeedsList = styled.ul`
 `
 
 const FeedItem = styled.li`
+`
+
+const Link = styled.a`
   color: var(--text-color);
   border-bottom: 1px solid var(--link-color);
 `
-
-
 
 export default function Feeds({ }) {
   const router = useRouter()
@@ -63,11 +64,11 @@ export default function Feeds({ }) {
             <Container >
 
               <FeedsList>
-                <FeedItem><a href="/feed.xml" title="All content">All content</a></FeedItem>
-                <FeedItem><a href="/articles/feed.xml" title="Articles">Articles</a></FeedItem>
-                <FeedItem><a href="/notes/feed.xml" title="Notes">Notes</a></FeedItem>
-                <FeedItem><a href="/activities/feed.xml" title="Activities">Activities</a></FeedItem>
-                <FeedItem><a href="/links/feed.xml" title="Links">Links</a></FeedItem>
+                <FeedItem><Link href="/feed.xml" title="All content">All content</Link></FeedItem>
+                <FeedItem><Link href="/articles/feed.xml" title="Articles">Articles</Link></FeedItem>
+                <FeedItem><Link href="/notes/feed.xml" title="Notes">Notes</Link></FeedItem>
+                <FeedItem><Link href="/activities/feed.xml" title="Activities">Activities</Link></FeedItem>
+                <FeedItem><Link href="/links/feed.xml" title="Links">Links</Link></FeedItem>
 
               </FeedsList>
 

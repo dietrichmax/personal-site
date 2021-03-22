@@ -22,8 +22,8 @@ const Map = (data) => {
       scrollWheelZoom={false}
     >
       <TileLayer 
-        url='https://c.tile.opentopomap.org/${z}/${x}/${y}.png'
-        attribution='Kartendaten: <a href=//openstreetmap.org/copyright>OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: <a href=//opentopomap.org>OpenTopoMap (CC-BY-SA)</a>'
+        url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+        attribution ='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
       />
 
       <Marker id="start" position={geo.startPoint}/>

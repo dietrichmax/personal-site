@@ -450,11 +450,31 @@ const redirects = {async redirects() {
       destination: '/',
       permanent: true
     },
-    
+
     /* Social Redirects */
     {
       source: '/github/:slug',
       destination: 'https://github.com/:slug',
+      permanent: true
+    },
+    {
+      source: '/twitter/:slug',
+      destination: 'https://twitter.com/:slug',
+      permanent: true
+    },
+    {
+      source: '/linkedin/:slug',
+      destination: 'https://linkedin.com/:slug',
+      permanent: true
+    },
+    {
+      source: '/instagram/:slug',
+      destination: 'https://instagram.com/:slug',
+      permanent: true
+    },
+    {
+      source: '/instagram/:slug',
+      destination: 'https://connect.garmin.com/:slug',
       permanent: true
     },
     

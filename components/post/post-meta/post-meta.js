@@ -28,6 +28,7 @@ const Meta = styled.div`
 
 const Date = styled.a`
   margin-left: auto;
+  text-decoration: underline;
 `
 
 const Socials = styled.div``

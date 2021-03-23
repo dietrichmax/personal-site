@@ -28,10 +28,13 @@ const Meta = styled.div`
 
 const Date = styled.a`
   margin-left: auto;
+  margin-right: var(--space-sm);
   text-decoration: underline;
 `
 
-const Socials = styled.div``
+const Socials = styled.div`
+  margin-left: var(--space-sm);
+`
 
 const Breadcrumb = styled.div``
 

@@ -68,7 +68,7 @@ const WebmentionFormInput = styled.input`
   margin: .25rem auto 1rem auto;
   width: 100%;
   border: 2px solid var(--gray-light);
-  background-color: var(--gray-extra-light);
+  background-color: var(--content-bg);
   :invalid {
     border: 1px solid red;
   }

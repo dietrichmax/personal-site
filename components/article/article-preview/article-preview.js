@@ -12,7 +12,7 @@ import PostMeta from '@/components/post/post-meta/post-meta'
 const Card = styled.li`
   position: relative;
   transition: 0.2s;
-  box-shadow: 0 2px 2px rgba(0,0,0,.09);
+  box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
 `

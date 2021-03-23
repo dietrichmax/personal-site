@@ -89,7 +89,6 @@ const DataItemValue = styled.dd`
 `
 
 const MapContainer = styled.div`
-  margin-bottom: var(--space-sm);
 `
 
 

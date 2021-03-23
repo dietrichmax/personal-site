@@ -26,7 +26,9 @@ const Meta = styled.div`
 `
 
 
-const Date = styled.a``
+const Date = styled.a`
+  margin-left: auto;
+`
 
 const Socials = styled.div``
 

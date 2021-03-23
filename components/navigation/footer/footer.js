@@ -175,14 +175,14 @@ const SearchInput = styled.input`
   padding-left: 0.25rem;
   margin-right: 0.125rem;
   border: 2px solid var(--gray-light);
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   :invalid {
       border: 1px solid red;
   }
 `
 
 const SearchButton = styled.button`
-  color: var(--body-bg);
+  color: var(--primary-color);
   position: relative;
   border: none;
   outline: none;
@@ -191,11 +191,10 @@ const SearchButton = styled.button`
   padding: .25rem .75rem;   
   transition: .2s;
   text-align: center;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   :hover {
       cursor: pointer;
-      color: var(--primary-color);
-      background-color: var(--content-bg);
+      color: var(--content-bg);
   }
 `
 

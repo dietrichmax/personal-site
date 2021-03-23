@@ -82,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
-    --link-color: var(--thirdy-color);
+    --link-color: var(--secondary-color);
     --link-color-hover: var(--gray);
     --text-color: #323540;
     --text-light: var(--gray-light);

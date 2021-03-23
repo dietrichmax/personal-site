@@ -110,9 +110,9 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
-  border: 2px solid var(--primary-color);
+  border: none;
   width: auto !important;
-  color: var(--gray-extra-light);
+  color: var(--primary-color);
   text-transform: uppercase;
   outline: none;
   overflow: hidden;
@@ -121,11 +121,11 @@ const Button = styled.button`
   padding: .75rem 1.5rem;
   width: 20%;
   border-radius: var(--border-radius);
-  background: var(--primary-color);
+  background: var(--secondary-color);
+  cursor: pointer; 
   :hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
-  }       
+      color: var(--content-bg);
+  }
 `
 
 const WebmentionLike = styled.li`

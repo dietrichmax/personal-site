@@ -69,7 +69,7 @@
 }
 
 .markdown blockquote {
-  border-left: 2px solid var(--thirdy-color);
+  border-left: 2px solid var(--secondary-color);
   padding: calc(var(--space-sm)*0.5) var(--space);
   margin-bottom: 28px;
   background: var(--gray-extra-light); 

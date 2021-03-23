@@ -60,7 +60,7 @@ const CardMeta = styled.div`
 const CardReadMoreRead = styled.a`
   display: inline-block;
   color: var(--text-color);
-  border-bottom: 1px solid var(--thirdy-color);
+  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
   :hover {
     border-bottom: 1px solid transparent;

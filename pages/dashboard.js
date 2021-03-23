@@ -168,7 +168,7 @@ const Column = styled.div`
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     height: ${props => (props.height ? `${props.height}px !important` : "0px")};
     border-top-right-radius: calc(var(--space-sm) * 0.5);
     border-top-left-radius: calc(var(--space-sm) * 0.5);
@@ -222,17 +222,16 @@ const GitHubDescription = styled.p`
 
 const GitHubButton = styled.button`
     transition: 0.2s;
-    background-color: var(--thirdy-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     cursor: pointer;
     max-width: 28rem;
     padding: 0.725rem;
     border: none;
-    color: #fff;
     outline: none;
     font-size: 1rem;
     :hover {
-        background-color: var(--gray-extra-light);
-        color: var(--thirdy-color);
+        color: var(--content-bg);
     }
 `
 const LanguageContainer = styled.div`

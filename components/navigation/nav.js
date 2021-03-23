@@ -19,7 +19,7 @@ const NavItem = styled.a`
   color: ${props => (props.color ? `${props.color}`  : "color: var(--gray);")};
   :hover { 
     text-decoration: none;
-    background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
+    background-image: linear-gradient(var(--secondary-color),var(--secondary-color));
     background-size: 100% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;

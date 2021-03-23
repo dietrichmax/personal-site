@@ -117,7 +117,7 @@ const PostDD = styled.dd`
 `
 
 const AboutMeLink = styled.a`
-  border-bottom: 2px solid var(--link-color);
+  border-bottom: 2px solid var(--primary-color);
   cursor: pointer;
   :hover {
     border-bottom: 2px solid transparent;

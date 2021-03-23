@@ -16,9 +16,8 @@ const NavItems = styled.li`
 
 const NavItem = styled.a`
   transition: none;
-  color: ${props => (props.color ? `#fff`  : "color: var(--gray);")};
+  color: ${props => (props.color ? `${props.color}`  : "color: var(--gray);")};
   :hover { 
-    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")};
     text-decoration: none;
     background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
     background-size: 100% 1px;
@@ -40,6 +39,7 @@ const NavItem = styled.a`
 
 
 export default function Nav({ color }) {
+
 
   const headerItems = [
     { "name": "Now", "link":  "/now" },

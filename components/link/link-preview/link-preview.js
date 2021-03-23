@@ -32,6 +32,9 @@ const LinksLink = styled.cite`
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
   font-family: var(--secondary-font);
+  :hover {
+    border-bottom: 1px solid transparent;
+  }
 `
 
 const LinksContent = styled.p`

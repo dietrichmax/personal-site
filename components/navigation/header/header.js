@@ -43,7 +43,7 @@ const MainNav = styled.ul`
   grid-template-columns: repeat(3, minmax(0px, 1fr));
   gap: var(--space-sm);
   display: grid;
-  ${media.lessThan('medium')`
+  ${media.lessThan('900px')`
     display: block;
   `}
 `

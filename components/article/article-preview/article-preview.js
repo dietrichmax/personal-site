@@ -58,12 +58,12 @@ const CardMeta = styled.div`
 `
 
 const CardReadMoreRead = styled.a`
-  color: var(--text-color);
   display: inline-block;
-  border-bottom: 1px solid var(--link-color);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--thirdy-color);
   cursor: pointer;
   :hover {
-    color: var(--link-color-hover);
+    border-bottom: 1px solid transparent;
   }
 `
 

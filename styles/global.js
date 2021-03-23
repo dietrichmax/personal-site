@@ -21,9 +21,6 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     overflow-wrap: break-word;
   }
-  a {
-    transition: 0.2s;
-  }
   ::selection {
     background: var(--primary-color);
     color: var(--gray-extra-light);
@@ -71,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
     --primary-color: #0c132b;
-    --secondary-color: #191f45;
+    --secondary-color: #739dd9;
     --thirdy-color: #c85517;
     --body-bg: #f5f8fa; 
     --content-bg: #fff;

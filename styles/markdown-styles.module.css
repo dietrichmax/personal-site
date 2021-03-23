@@ -14,7 +14,8 @@
 }
 
 .markdown a:hover {
-  color: var(--link-color-hover);
+  color: var(--primary-color);
+  border-bottom: 2px solid transparent;
 }
 
 .markdown p, .markdown dl, .markdown ol, .markdown ul {

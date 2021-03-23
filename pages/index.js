@@ -9,7 +9,9 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
 import { server } from "@/lib/utils/server"
+import { getAbout } from '@/lib/data/api/cms'
 import Link from "next/link"
+import Image from "next/image"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -20,11 +22,10 @@ const IndexPageContainer = styled.div`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 `
 const Hero = styled.div`   
   display: flex;
-  color: var(--thirdy-color);
   max-width: 1200px;
   padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
@@ -36,12 +37,10 @@ const Hero = styled.div`
 `
 
 const HeroDescription = styled.h3`
-  color: var(--gray-light);
   margin: 0 var(--space);
   font-size: calc(.9rem + 2vw);
   font-weight: 300;
   line-height: 1.15;
-  width: 80%;
   font-family: var(--thirdy-font);
   ${media.lessThan('small')`
     font-size: 1.5em;
@@ -54,14 +53,15 @@ const HeroDescription = styled.h3`
 const HeroLinks = styled.a`
   font-weight: 600;
   border-bottom: 2px solid var(--thirdy-color);
-  color: var(--thirdy-color);
   font-family: var(--primary-font);
+  :hover {
+    border-bottom: 2px solid transparent;
+  }
 `
 
 const HeroFont = styled.span`
   font-family: var(--primary-font);
   font-weight: 600;
-  color: var(--thirdy-color);
 `
 const SubTitle = styled.p`
   margin: var(--space) var(--space) var(--space-sm) var(--space);
@@ -95,6 +95,7 @@ const PostTypes = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  color: var(--primary-color);
   ${media.lessThan('medium')`
     display: inline-block;
     margin-top: var(--space);
@@ -110,22 +111,39 @@ const PostType = styled.dl`
 
 const PostDT = styled.dt`
   display: inline-block;
-  color: var(--gray-light);
 `
 const PostDD = styled.dd`
   display: inline-block;
 `
 
 const AboutMeLink = styled.a`
-  border-bottom: 1px solid var(--link-color);
+  border-bottom: 2px solid var(--link-color);
   cursor: pointer;
+  :hover {
+    border-bottom: 2px solid transparent;
+  }
 `
-export default function Index({ posts, count }) {
+
+const IntroImg = styled.div`
+  float: right;
+  margin-left: var(--space);
+  ${media.lessThan('medium')`
+    margin-left: var(--space-sm);
+  `}
+  ${media.lessThan('small')`
+    width: 100%;
+    display: block;
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  `}
+`
+export default function Index({ posts, count, about }) {
   const router = useRouter()
 
   return (
     <>
-      <Layout color={`var(--gray-extra-light)`}>
+      <Layout color="var(--primary-color)">
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -133,21 +151,28 @@ export default function Index({ posts, count }) {
           <>
             <SEO   
               title="Home"
-              description={config.siteDescription}
+              description="I currently work as a GeoData-Manager at RIWA] where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
             />
              <HeroWrapper>
               <Hero>
                 <HeroDescription>
+                <IntroImg>
+                  <Image 
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`} 
+                    width="275"
+                    height="275"
+                  />
+                </IntroImg>
                 <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from Rosenheim, Germany. <br/>
                   I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
                   <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
-                <PostTypes>
+                {/*<PostTypes>
                   <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
                   <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
                   <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
                   <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
-                </PostTypes>
+                </PostTypes>*/}
               </Hero>
              </HeroWrapper>
             <IndexPageContainer>
@@ -201,6 +226,7 @@ export default function Index({ posts, count }) {
 }
 
 export async function getStaticProps() {
+  const about = await getAbout()
   const resPosts = await fetch(`${server}/api/posts`)
   const posts = await resPosts.json()
   const resStats = await fetch(`${server}/api/stats`)
@@ -210,7 +236,8 @@ export async function getStaticProps() {
     revalidate:  86400,
     props: { 
       posts,
-      count: stats.posts.count
+      count: stats.posts.count,
+      about: about.about,
     },
   }
 }

@@ -16,9 +16,9 @@ const NavItems = styled.li`
 
 const NavItem = styled.a`
   transition: none;
-  color: ${props => (props.color ? `#fff`  : "color: var(--gray);")}
+  color: ${props => (props.color ? `#fff`  : "color: var(--gray);")};
   :hover { 
-    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
+    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")};
     text-decoration: none;
     background-image: linear-gradient(var(--thirdy-color),var(--thirdy-color));
     background-size: 100% 1px;
@@ -39,8 +39,7 @@ const NavItem = styled.a`
 `
 
 
-export default function Nav( color ) {
-
+export default function Nav({ color }) {
 
   const headerItems = [
     { "name": "Now", "link":  "/now" },
@@ -54,7 +53,7 @@ export default function Nav( color ) {
   return (
     <NavItems>
         {headerItems.map((item, i) => (
-            <NavItem key={i} color={color.color}>
+            <NavItem key={i} color={color}>
                 <ActiveLink activeClassName={`active`} href={item.link} passHref>
                     <a title={item.name}>{item.name}</a>
                 </ActiveLink> 

@@ -54,9 +54,6 @@ const Logo = styled.li`
   color: ${props => (props.color ? `${props.color}`  : "var(--primary-color)")};
   line-height: 1.25;
   margin: 0;
-  :hover {
-    color: ${props => (props.color ? `#fff`  : "var(--text-color-hover)")}
-  }
   ${media.lessThan('small')`
     font-size: 1rem;
   `}
@@ -69,18 +66,18 @@ const LogoDescription = styled.span`
 `
 
 
-export default function Header( color ) {
+export default function Header({ color }) {
 
   
   return (
     <HeaderWrapper>
       
       <InnerHeader>
-        <Navigation itemtype="https://schema.org/SiteNavigationElement" color={color.color}>
+        <Navigation itemtype="https://schema.org/SiteNavigationElement" color={color}>
 
         <MainNav>
 
-          <Logo color={color.color}>
+          <Logo color={color}>
             <Link rel="home" href="/" passHref>
               <a className="u-url" rel="me" title={config.siteTitle}>
                 <LogoName className="p-name" >{config.siteTitle}</LogoName>
@@ -90,7 +87,7 @@ export default function Header( color ) {
             </Link>
           </Logo>
 
-          <Nav color={color.color} />
+          <Nav color={color} />
         
         </MainNav>
 

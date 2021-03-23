@@ -30,6 +30,9 @@ const Date = styled.a`
   margin-left: auto;
   margin-right: var(--space-sm);
   text-decoration: underline;
+  :hover {
+    text-decoration: none;
+  }
 `
 
 const Socials = styled.div`

@@ -20,6 +20,10 @@ const LinksItem = styled.li`
   border-radius: var(--border-radius);
   list-style: none;
   position: relative;
+  transition: .5s;
+  :hover {
+    transform: var(--transform);
+  }
 `
 
 const LinksTitle = styled.h2`

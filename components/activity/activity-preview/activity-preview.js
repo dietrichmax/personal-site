@@ -24,6 +24,10 @@ const Item = styled.li`
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
+  transition: .5s;
+  :hover {
+    transform: var(--transform);
+  }
 `
 
 const Title = styled.h2`

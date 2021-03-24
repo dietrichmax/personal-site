@@ -93,7 +93,7 @@ export default function NotePreview({ note }) {
           <NotesContent className="e-content">
             {note.coverMedium[0] ? (
                   
-              <NoteBodyWrapper style={{minHeight:'600px'}}>
+              <NoteBodyWrapper>
                 <NoteImageWrapper>
                   <NoteImage
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}

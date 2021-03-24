@@ -161,6 +161,8 @@ export default function Index({ posts, count, about }) {
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`} 
                     width="275"
                     height="275"
+                    alt={`Image of ${config.siteTitle}`}
+                    title={`Image of ${config.siteTitle}`}
                   />
                 </IntroImg>
                 <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>

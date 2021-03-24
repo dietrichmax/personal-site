@@ -151,7 +151,7 @@ export default function Index({ posts, count, about }) {
           <>
             <SEO   
               title="Home"
-              description="I currently work as a GeoData-Manager at RIWA] where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
+              description="I currently work as a GeoData-Manager at RIWA where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
             />
              <HeroWrapper>
               <Hero>

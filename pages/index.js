@@ -80,11 +80,12 @@ const Grid = styled.ol`
   margin-bottom: var(--space);
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(1,minmax(0,1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
   gap: var(--space);
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
   `}
 `
 

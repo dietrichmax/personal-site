@@ -20,7 +20,7 @@ const NotesItem = styled.li`
   border-radius: var(--border-radius);
   transition: .5s;
   :hover {
-    transform: scale(1.05);
+    transform: var(--transform);
   }
 `
 

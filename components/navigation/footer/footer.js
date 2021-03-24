@@ -154,6 +154,9 @@ const FooterLink = styled.a`
   color: var(--text-color);
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
+  :hover {
+    border-bottom: 1px solid transparent;
+  }
 `
 
 const FooterBar = styled.div`
@@ -201,6 +204,9 @@ const SearchButton = styled.button`
 const AboutMeLink = styled.a`
   border-bottom: 1px solid var(--link-color);
   cursor: pointer;
+  :hover {
+    border-bottom: 1px solid transparent;
+  }
 `
 
 

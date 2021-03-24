@@ -18,6 +18,9 @@ const NotesItem = styled.li`
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
+  :hover {
+    transform: scale(1.05);
+  }
 `
 
 const NoteBodyWrapper = styled.div`

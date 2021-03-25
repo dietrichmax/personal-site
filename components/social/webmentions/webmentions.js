@@ -67,6 +67,7 @@ const WebmentionAuthorImgWrapper = styled.a`
   margin-bottom: calc(var(--space-sm)*.5);
   border-radius: var(--border-radius);
   background-color: var(--gray-extra-light);
+  box-shadow: var(--box-shadow);
   :hover {
     display: cursor;
   }

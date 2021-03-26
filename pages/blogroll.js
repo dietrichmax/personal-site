@@ -87,7 +87,7 @@ export default function Blogroll({ allBlogrolls }) {
             <PageTitle>Blogroll</PageTitle>
             <SubTitle>List of all personal blogs i am reading in random order.</SubTitle>
 
-            <BlogrollContainer className="h-feed" >
+            <BlogrollContainer>
 
             {allBlogrolls.map((blogroll,i) => (
                 <BlogrollItem key={i} className="h-entry">

@@ -109,7 +109,7 @@ export default function Activity({ activity, slug }) {
     const hours = (((s - s % 3600) / 3600) % 60)
     const minutes = (((s - s % 60) / 60) % 60)  
     const seconds = (s % 60)  
-    return (`${hours}h ${minutes}min ${seconds}s`)
+    return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
 
   return (
@@ -149,27 +149,27 @@ export default function Activity({ activity, slug }) {
                   </DataItem>
                   <DataItem>
                     <DataItemLabel>Ø Speed</DataItemLabel>
-                    <DataItemValue>{activity.averageSpeed} km/h</DataItemValue>
+                    <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><IoMdSpeedometer /> Max Speed</DataItemLabel>
-                    <DataItemValue>{activity.maxSpeed} km/h</DataItemValue>
+                    <DataItemValue>{activity.maxSpeed.toFixed(2)} km/h</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><CgArrowTopRight /> Uphill</DataItemLabel>
-                    <DataItemValue>{activity.elevationGain} m</DataItemValue>
+                    <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><CgArrowBottomRight /> Downhill</DataItemLabel>
-                    <DataItemValue>{activity.elevationLoss} m</DataItemValue>
+                    <DataItemValue>{activity.elevationLoss.toFixed(0)} m</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><GiValley/> Min Elevation</DataItemLabel>
-                    <DataItemValue>{activity.minElevation.toFixed(2)} m</DataItemValue>
+                    <DataItemValue>{(activity.minElevation / 100).toFixed(0)} m</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><GiSummits/> Max Elevation</DataItemLabel>
-                    <DataItemValue>{activity.maxElevation.toFixed(2)} m</DataItemValue>
+                    <DataItemValue>{(activity.maxElevation / 100).toFixed(0)} m</DataItemValue>
                   </DataItem>
                 </Data>
                 <HCard />

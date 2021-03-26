@@ -38,7 +38,7 @@ const Map = (data) => {
 
   return (
     <MapContainer
-      style={{ height: "500px", width: "100%" }}
+      style={{ height: "700px", width: "100%" }}
       bounds={bounds}
       preferCanvas={true}
     >
@@ -49,7 +49,7 @@ const Map = (data) => {
         {data ? data.data.map((position,i) => {
           bounds.push([position.lat, position.lon]);
           return (
-            <Circle center={[position.lat, position.lon]} radius={3} color="lime" fillOpacity={getVel(position.vel)} weight={0}/>
+            <Circle center={[position.lat, position.lon]} radius={2} color="#ffdc3b" fillOpacity={getVel(position.vel)} weight={0}/>
          )
         }) : null }
     </MapContainer>

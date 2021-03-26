@@ -93,7 +93,7 @@ export default function ActivityPreview({ activity }) {
     const hours = (((s - s % 3600) / 3600) % 60)
     const minutes = (((s - s % 60) / 60) % 60)  
     const seconds = (s % 60)  
-    return (`${hours}h ${minutes}min ${seconds}s`)
+    return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
   
   return (
@@ -119,7 +119,7 @@ export default function ActivityPreview({ activity }) {
           </DataItem>
           <DataItem>
             <DataItemLabel>Ø Speed</DataItemLabel>
-            <DataItemValue>{activity.averageSpeed} km/h</DataItemValue>
+            <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
           </DataItem>
         </Data>
         <HCard />

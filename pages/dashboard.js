@@ -324,29 +324,33 @@ export default function Dashboard({
     const B = 200
     let pageViews = []
     let normalisedViews = []
+    let recentViews = 0
+
     Object.entries(lastViews).forEach(value => (
-            pageViews.push({
-                date: value[0],
-                dateShort: value[0].substring(8),
-                views: isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews,
-                normalisedViews:
-                    (1 - α) * isNaN(value[1].nb_pageviews)
-                        ? 0
-                        : value[1].nb_pageviews + α * B,
-            }),
-            normalisedViews.push(
+        recentViews = recentViews + value[1].nb_pageviews,
+        pageViews.push({
+            date: value[0],
+            dateShort: value[0].substring(8),
+            views: isNaN(value[1].nb_pageviews) ? 0 : value[1].nb_pageviews,
+            normalisedViews:
                 (1 - α) * isNaN(value[1].nb_pageviews)
                     ? 0
-                    : value[1].nb_pageviews + α * B
-            )
+                    : value[1].nb_pageviews + α * B,
+        }),
+        normalisedViews.push(
+            (1 - α) * isNaN(value[1].nb_pageviews)
+                ? 0
+                : value[1].nb_pageviews + α * B
         )
-    )
+     )
+)
     const normalisedMax = Math.max.apply(Math, normalisedViews)
 
 
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
+    console.log(recentViews)
     return (
         <>
             <Layout>
@@ -451,7 +455,7 @@ export default function Dashboard({
 
                             <ViewsContainer>
                                 <Title>
-                                    Views in the past 30 days
+                                    {recentViews} page views in the past 30 days
                                 </Title>
                                 <RecentViewsContainer>
                                     {pageViews.map((item, i) => (

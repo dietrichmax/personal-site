@@ -76,7 +76,7 @@ const MapContainer = styled.div`
 
 export default function ActivityPreview({ activity }) {
 
-  const date = format(parseISO(activity.created_at), "yyyy-MM-dd-kk-mm")
+  const date = format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")
   const slug = `/activities/${date}`
 
 
@@ -115,7 +115,7 @@ export default function ActivityPreview({ activity }) {
           </DataItem>
           <DataItem>
             <DataItemLabel><CgAlarm /> Duration</DataItemLabel>
-            <DataItemValue>{secondsToHms(activity.duration)}</DataItemValue>
+            <DataItemValue>{secondsToHms(activity.movingDuration)}</DataItemValue>
           </DataItem>
           <DataItem>
             <DataItemLabel>Ø Speed</DataItemLabel>

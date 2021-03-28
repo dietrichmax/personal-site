@@ -145,7 +145,7 @@ export default function Activity({ activity, slug }) {
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><CgAlarm /> Duration</DataItemLabel>
-                    <DataItemValue>{secondsToHms(activity.duration)}</DataItemValue>
+                    <DataItemValue>{secondsToHms(activity.movingDuration)}</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel>Ø Speed</DataItemLabel>
@@ -209,6 +209,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const allActivities = await getAllActivities()
+
   return {
     paths: allActivities?.map((activity) => `/activities/${format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")}`) || [],
     fallback: true,

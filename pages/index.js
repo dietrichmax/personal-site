@@ -196,11 +196,6 @@ export default function Index({ posts, count, about }) {
                       key={i}
                       link={post.link} 
                     />
-                  ) : post.type === "activity" ? (
-                    <ActivityPreview
-                      key={i}
-                      activity={post.activity} 
-                    />
                   ) : null
                 ))}
               </Grid>

@@ -138,7 +138,7 @@ const IntroImg = styled.div`
     margin-bottom: var(--space-sm);
   `}
 `
-export default function Index({  count, about }) {
+export default function Index({ posts, count, about }) {
   const router = useRouter()
 
   return (
@@ -179,7 +179,26 @@ export default function Index({  count, about }) {
              </HeroWrapper>
             <IndexPageContainer>
 
-
+              <Grid>
+                {posts.map((post,i) => (
+                  post.type === "article" ? (
+                    <PostPreview
+                      key={i}
+                      postData={post.post}
+                    />
+                  ) : post.type === "note" ? (
+                    <NotePreview 
+                      key={i}
+                      note={post.note} 
+                    />
+                  ) : post.type === "link" ? (
+                    <LinkPreview
+                      key={i}
+                      link={post.link} 
+                    />
+                  ) : null
+                ))}
+              </Grid>
 
 
               {/*{<SubTitle>Recent Notes</SubTitle>
@@ -205,14 +224,15 @@ export default function Index({  count, about }) {
 
 export async function getStaticProps() {
   const about = await getAbout()
-  /*const resPosts = await fetch(`${server}/api/posts`)
-  const posts = await resPosts.json()*/
+  const resPosts = await fetch(`${server}/api/posts`)
+  const posts = await resPosts.json()
   const resStats = await fetch(`${server}/api/stats`)
   const stats = await resStats.json()
 
   return {
     revalidate:  86400,
     props: { 
+      posts,
       count: stats.posts.count,
       about: about.about,
     },

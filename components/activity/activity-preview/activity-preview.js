@@ -7,6 +7,7 @@ import HCard from "@/components/microformats/h-card"
 import dynamic from "next/dynamic";
 import { FaRunning, FaBiking, FaClock } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm } from 'react-icons/cg';
+import { GiWeightLiftingDown } from 'react-icons/gi';
 
 
 const ActivityMap = dynamic(() => import("@/components/maps/leaflet/smallActivityMap"), {
@@ -74,6 +75,32 @@ const MapContainer = styled.div`
   margin-bottom: var(--space-sm);
 `
 
+const Dot = styled.span`
+  height: 12px;
+  width: 12px;
+  background-color: ${props => props.color ? props.color : "var(--primary-color)"};
+  border-radius: 50%;
+  display: inline-block;
+`
+
+const getFlow = (flow) => {
+  if (flow < 1) 
+    return <Dot color="#72ea24"/>
+  else if (flow > 1 && flow < 20)
+    return <Dot color="#d6ff32"/>
+  else if (flow > 20)
+    return <Dot color="#ff0035"/>
+}
+
+const getGrit = (grit) => {
+  if (grit < 20) 
+    return <Dot color="#72ea24"/>
+  else if (grit > 20 && grit < 40)
+    return <Dot color="#11A9ED"/>
+  else if (grit > 40)
+    return <Dot color="#632D5C"/>
+}
+
 export default function ActivityPreview({ activity }) {
 
   const date = format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")
@@ -121,6 +148,17 @@ export default function ActivityPreview({ activity }) {
             <DataItemLabel>Ø Speed</DataItemLabel>
             <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
           </DataItem>
+          
+          {activity.flow ?
+          <DataItem>
+            <DataItemLabel>{getFlow(activity.flow)} Flow</DataItemLabel>
+            <DataItemValue>{activity.flow.toFixed(2)}</DataItemValue>
+          </DataItem> : null }
+          {activity.grit ?
+          <DataItem>
+            <DataItemLabel>{getGrit(activity.grit)} Grit</DataItemLabel>
+            <DataItemValue>{activity.grit.toFixed(2)}</DataItemValue>
+          </DataItem> : null }
         </Data>
         <HCard />
         <MapContainer>

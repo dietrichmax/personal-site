@@ -6,8 +6,8 @@ import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
 import { getNowData } from "@/lib/data/api/cms";
-import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin } from 'react-icons/fa';
-import { SiGarmin } from 'react-icons/si';
+import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle } from 'react-icons/fa';
+import { SiGarmin, SiStrava } from 'react-icons/si';
 // styled components
 
 const FooterContainer = styled.footer`
@@ -347,7 +347,13 @@ export default function Footer() {
                 <a href={config.socials.github} title="DaTurboD on GitHub"><FaGithub/> Github</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.garmin_connect} title="DaTurboD on GitHub"><SiGarmin/> Garmin Connect</a>
+                <a href={config.socials.strava} title="Max Dietrich on Strava"><SiStrava/> Strava</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.komoot} title="Max Dietrich on Komoot"><FaBicycle/> Komoot</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.garmin_connect} title="Max Dietrich on Garmin Connect"><SiGarmin/> Garmin Connect</a>
               </FooterItemSocials>
               <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>

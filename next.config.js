@@ -479,6 +479,16 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
+      source: '/strava/:slug*',
+      destination: 'https://www.strava.com/:slug*',
+      permanent: true
+    },
+    {
+      source: '/komoot/:slug*',
+      destination: 'https://www.komoot.de/:slug*',
+      permanent: true
+    },
+    {
       source: '/reddit/:slug*',
       destination: 'https://reddit.com/:slug*',
       permanent: true
@@ -678,9 +688,7 @@ module.exports = withPlugins([
       "sld.codes",
       "mxb.dev",
       "rusingh.com",
-      "underdark.files.wordpress.com",
       "matthiasott.com",
-      "lisilinhart.info",
       "tantek.com",
       "snarfed.org",
       "openweathermap.org",

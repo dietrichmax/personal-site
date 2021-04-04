@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
-import { getActivityBySlug, getAllActivities } from '@/lib/data/api/cms'
+import { getActivity, getAllActivities } from '@/lib/data/api/cms'
 import { fromUnixTime, format } from 'date-fns'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
@@ -194,7 +194,7 @@ export default function Activity({ activity, slug }) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getActivityBySlug(params.id)
+  const data = await getActivity(params.id)
 
   return {
     revalidate:  86400,

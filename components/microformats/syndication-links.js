@@ -43,7 +43,7 @@ export default function SyndicationLinks({syndicationLinks}) {
                     title={`See this post on ${link.name}`} 
                     className="u-syndication syndication" 
                     href={link.slug} 
-                    rel="syndication no-follow" 
+                    rel="u-syndication syndication no-follow" 
                   >
                     {getEndpoint(link.name)}
                   </SyndItem>

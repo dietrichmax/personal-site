@@ -6,7 +6,7 @@ import PostMeta from '@/components/post/post-meta/post-meta'
 import HCard from "@/components/microformats/h-card"
 import dynamic from "next/dynamic";
 import { FaRunning, FaBiking, FaClock } from 'react-icons/fa';
-import { CgArrowsH, CgAlarm } from 'react-icons/cg';
+import { CgArrowsH, CgAlarm, CgArrowsVAlt } from 'react-icons/cg';
 import { GiWeightLiftingDown } from 'react-icons/gi';
 
 
@@ -148,17 +148,16 @@ export default function ActivityPreview({ activity }) {
             <DataItemLabel>Ø Speed</DataItemLabel>
             <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
           </DataItem>
-          
-          {activity.flow ?
           <DataItem>
-            <DataItemLabel>{getFlow(activity.flow)} Flow</DataItemLabel>
-            <DataItemValue>{activity.flow.toFixed(2)}</DataItemValue>
-          </DataItem> : null }
-          {activity.grit ?
+            <DataItemLabel><CgArrowsVAlt /> Elevation</DataItemLabel>
+            <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
+          </DataItem>
+
+          {/*activity.grit ?
           <DataItem>
             <DataItemLabel>{getGrit(activity.grit)} Grit</DataItemLabel>
             <DataItemValue>{activity.grit.toFixed(2)}</DataItemValue>
-          </DataItem> : null }
+          </DataItem> : null */}
         </Data>
         <HCard />
         <MapContainer>

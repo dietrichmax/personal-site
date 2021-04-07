@@ -459,11 +459,6 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
-      source: '/twitter/:slug*',
-      destination: 'https://twitter.com/:slug*',
-      permanent: true
-    },
-    {
       source: '/twitter',
       destination: 'https://twitter.com/mxdietrich',
       permanent: true

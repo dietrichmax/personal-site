@@ -464,6 +464,16 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
+      source: '/twitter',
+      destination: 'https://twitter.com/mxdietrich',
+      permanent: true
+    },
+    {
+      source: '/instagram',
+      destination: 'https://www.instagram.com/_maxdietrich/',
+      permanent: true
+    },
+    {
       source: '/linkedin/:slug*',
       destination: 'https://linkedin.com/:slug*',
       permanent: true

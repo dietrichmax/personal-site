@@ -60,8 +60,8 @@ const WebmentionAuthor = styled.div`
 const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   overflow: hidden;
   margin-right: calc(var(--space-sm)*.5);
   margin-bottom: calc(var(--space-sm)*.5);
@@ -263,8 +263,8 @@ export default function Webmentions({ slug, preview }) {
         <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="nofollow">
           <Image
             src={mention.author.photo}
-            height="48"
-            width="48"
+            height="64"
+            width="64"
             className="u-photo"
             alt={`Photo of ${mention.author.name}`}
             title={mention.author.name}

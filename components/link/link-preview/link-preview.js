@@ -74,7 +74,7 @@ export default function LinkPreview({ link }) {
     <LinksItem title={link.title} className="h-entry">           
       <HCard /> 
       <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
-      <LinksLink><a className="u-bookmark-of h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
+      <LinksLink><a className="u-bookmark-of bookmark-of bookmark h-cite" href={link.link} title={link.title}>{link.link}</a></LinksLink>
       <LinksContent className="e-content">{link.description}</LinksContent>
       <PostTags tags={link.tags} />
       <PostMeta post={link} slug={slug}/>

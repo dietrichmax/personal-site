@@ -141,7 +141,7 @@ export default function Resume({ cv }) {
           
           <PageTitle>Resume</PageTitle>
 
-          <ResumeWrapper> 
+          <ResumeWrapper className="h-resume resume"> 
 
             <Paper>
               <Title>{cv.title}</Title>

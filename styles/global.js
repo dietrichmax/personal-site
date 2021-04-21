@@ -85,7 +85,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Cormorant Garamond, serif;
     --link-color: var(--secondary-color);
     --link-color-hover: var(--gray);
-    --text-color: #323540;
+    --text-color: #14151a;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;

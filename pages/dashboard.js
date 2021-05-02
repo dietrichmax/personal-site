@@ -125,6 +125,7 @@ const StatsGridMedium = styled.div`
     grid-template-columns: repeat(4,minmax(0,1fr));
     grid-column: span 2/span 2;;  
     overflow: hidden;
+    padding-bottom: 2rem;
 `
 const GridMediumTitle = styled.p`
     grid-column: span 4/span 4;

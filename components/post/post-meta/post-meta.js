@@ -14,8 +14,7 @@ const Meta = styled.div`
   right: 0;
   display: flex;
   justify-content: end;
-  font-size: 12px;
-  font-size: 12px;
+  font-size: 11px;
   width: 100%;
   padding: 0.125rem 0.5rem;
   background-color: var(--gray-extra-light);

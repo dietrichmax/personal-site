@@ -38,7 +38,7 @@ const Map = (data) => {
 
   return (
     <MapContainer
-      style={{ height: "700px", width: "100%" }}
+      style={{ height: "80%", width: "100%" }}
       bounds={bounds}
       preferCanvas={true}
     >

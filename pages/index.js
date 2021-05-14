@@ -156,18 +156,18 @@ export default function Index({ posts, count, about }) {
              <HeroWrapper>
               <Hero>
                 <HeroDescription>
-                <IntroImg>
-                  <Image 
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`} 
-                    width="275"
-                    height="275"
-                    alt={`Image of ${config.siteTitle}`}
-                    title={`Image of ${config.siteTitle}`}
-                  />
-                </IntroImg>
-                <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
-                  I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
-                  <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
+                  {/*<IntroImg>
+                    <Image 
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`} 
+                      width="275"
+                      height="275"
+                      alt={`Image of ${config.siteTitle}`}
+                      title={`Image of ${config.siteTitle}`}
+                    />
+                  </IntroImg>*/}
+                  <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
+                    I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
+                    <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 {/*<PostTypes>
                   <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>

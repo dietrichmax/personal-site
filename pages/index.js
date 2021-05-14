@@ -56,6 +56,7 @@ const HeroLinks = styled.a`
   font-family: var(--primary-font);
   :hover {
     border-bottom: 2px solid transparent;
+    color: var(--thirdy-color);
   }
 `
 

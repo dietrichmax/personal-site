@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
     --primary-color: #9bd6f9;
-    --secondary-color: #739dd9;
+    --secondary-color: #14151a;
     --thirdy-color: #c85517;
     --body-bg: #f5f8fa; 
     --content-bg: #fff;
@@ -85,7 +85,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Cormorant Garamond, serif;
     --link-color: var(--secondary-color);
     --link-color-hover: var(--gray);
-    --text-color: #14151a;
+    --text-color: #323540;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;

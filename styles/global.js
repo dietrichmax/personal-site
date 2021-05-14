@@ -67,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-light: #e2ebf5;  
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
-    --primary-color: #0c132b;
+    --primary-color: #9bd6f9;
     --secondary-color: #739dd9;
     --thirdy-color: #c85517;
     --body-bg: #f5f8fa; 
@@ -89,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;
-    --content-width: 650px;
+    --content-width: 720px;
     --space: 2rem;
     --space-sm: 1rem;
     --space-lg: 3rem;

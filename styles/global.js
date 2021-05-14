@@ -67,8 +67,8 @@ const GlobalStyle = createGlobalStyle`
     --gray-light: #e2ebf5;  
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
-    --primary-color: #9bd6f9;
-    --secondary-color: #14151a;
+    --primary-color: #0c132b;
+    --secondary-color: #9bd6f9;
     --thirdy-color: #c85517;
     --body-bg: #f5f8fa; 
     --content-bg: #fff;
@@ -85,7 +85,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Cormorant Garamond, serif;
     --link-color: var(--secondary-color);
     --link-color-hover: var(--gray);
-    --text-color: #323540;
+    --text-color: #14151a;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);
     --width-container: 1200px;

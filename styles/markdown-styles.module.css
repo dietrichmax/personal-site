@@ -8,18 +8,16 @@
 }
 
 .markdown a {
-  color: var(--text-color);
-  border-bottom: 1px solid var(--link-color);
+  color: var(--link-color);
   cursor: pointer;
 }
 
 .markdown a:hover {
-  color: var(--primary-color);
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid var(--link-color);
 }
 
 .markdown p, .markdown dl, .markdown ol, .markdown ul {
-  padding-bottom: 26px;
+  margin-bottom: 2rem;
 }
 
 
@@ -71,7 +69,7 @@
 .markdown blockquote {
   border-left: 2px solid var(--secondary-color);
   padding: calc(var(--space-sm)*0.5) var(--space);
-  margin-bottom: 28px;
+  margin-bottom: 2rem;
   background: var(--gray-extra-light); 
   font-style: italic;
 }

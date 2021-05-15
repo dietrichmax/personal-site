@@ -149,7 +149,7 @@ export default function ActivityPreview({ activity }) {
             <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
           </DataItem>
           <DataItem>
-            <DataItemLabel><CgArrowsVAlt /> Elevation</DataItemLabel>
+            <DataItemLabel><CgArrowsVAlt /> Elevation gain</DataItemLabel>
             <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
           </DataItem>
 

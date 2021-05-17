@@ -19,6 +19,11 @@ const SyndItem = styled.a`
   margin-right: 0.25rem;
 `
 
+const SyndTitle = styled.span`
+  margin-right: var(--space-sm);
+  vertical-align: text-bottom;
+`
+
 
 export default function SyndicationLinks({syndicationLinks}) {
 
@@ -34,6 +39,7 @@ export default function SyndicationLinks({syndicationLinks}) {
 
     return (
         <SyndList className="syndications">
+          <SyndTitle>Also posted on:</SyndTitle>
             {syndicationLinks? 
               syndicationLinks.map((link) => {
                 return (

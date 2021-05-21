@@ -454,11 +454,6 @@ const redirects = {async redirects() {
 
     /* Social Redirects */
     {
-      source: '/github/:slug*',
-      destination: 'https://github.com/:slug*',
-      permanent: true
-    },
-    {
       source: '/twitter',
       destination: 'https://twitter.com/mxdietrich',
       permanent: true
@@ -469,200 +464,35 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
-      source: '/linkedin/:slug*',
+      source: '/github',
+      destination: 'https://github.com/DaTurboD',
+      permanent: true
+    },
+    {
+      source: '/strava',
+      destination: 'https://www.strava.com/athletes/80974572',
+      permanent: true,
+    },
+    {
+      source: '/komoot',
+      destination: 'https://www.komoot.de/user/1824127161375',
+      permanent: true
+    },
+    {
+      source: '/linkedin',
       destination: 'https://linkedin.com/:slug*',
       permanent: true
     },
     {
-      source: '/instagram/:slug*',
-      destination: 'https://instagram.com/:slug*',
+      source: '/reddit',
+      destination: 'https://www.reddit.com/user/DaTurboD',
       permanent: true
     },
     {
-      source: '/garmin-connect/:slug*',
-      destination: 'https://connect.garmin.com/:slug*',
+      source: '/indieweb',
+      destination: 'https://indieweb.org/User:Mxd.codes',
       permanent: true
-    },
-    {
-      source: '/strava/:slug*',
-      destination: 'https://www.strava.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/komoot/:slug*',
-      destination: 'https://www.komoot.de/:slug*',
-      permanent: true
-    },
-    {
-      source: '/reddit/:slug*',
-      destination: 'https://reddit.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/indieweb/:slug*',
-      destination: 'https://indieweb.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/developer-garmin/:slug*',
-      destination: 'https://developer.garmin.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/strapi/:slug*',
-      destination: 'https://strapi.io/:slug*',
-      permanent: true
-    },
-    {
-      source: '/komoot/:slug*',
-      destination: 'https://www.komoot.de/:slug*',
-      permanent: true
-    },
-    {
-      source: '/react-leaflet/:slug*',
-      destination: 'https://react-leaflet.js.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/digital-ocean/:slug*',
-      destination: 'https://www.digitalocean.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/cloud-google/:slug*',
-      destination: 'https://cloud.google.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/firebase-google/:slug*',
-      destination: 'https://firebase.google.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/react-icons-github/:slug*',
-      destination: 'https://react-icons.github.io/:slug*',
-      permanent: true
-    },
-    {
-      source: '/leaflet-extras-github/:slug*',
-      destination: 'https://leaflet-extras.github.io/:slug*',
-      permanent: true
-    },
-    {
-      source: '/developer-github/:slug*',
-      destination: 'https://developer.github.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/esa/:slug*',
-      destination: 'http://www.esa.int/:slug*',
-      permanent: true
-    },
-    {
-      source: '/creativecommons/:slug*',
-      destination: 'https://creativecommons.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/pillow/:slug*',
-      destination: 'https://pillow.readthedocs.io/:slug*',
-      permanent: true
-    },
-    {
-      source: '/wikipedia/:slug*',
-      destination: 'https://de.wikipedia.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/wikipedia/:slug*',
-      destination: 'https://de.wikipedia.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/scihub-copernicus/:slug*',
-      destination: 'https://scihub.copernicus.eu/:slug*',
-      permanent: true
-    },
-    {
-      source: '/wikipedia/:slug*',
-      destination: 'https://de.wikipedia.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/d-copernicus/:slug*',
-      destination: 'https://www.d-copernicus.de/:slug*',
-      permanent: true
-    },
-    {
-      source: '/arcgis-pro/:slug*',
-      destination: 'https://pro.arcgis.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/safe/:slug*',
-      destination: 'https://www.safe.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/knowledge-safe/:slug*',
-      destination: 'https://knowledge.safe.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/gis-stackexchange/:slug*',
-      destination: 'https://gis.stackexchange.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/stackexchange/:slug*',
-      destination: 'https://stackexchange.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/aws/:slug*',
-      destination: 'https://aws.amazon.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/gatsby/:slug*',
-      destination: 'https://www.gatsbyjs.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/nextjs/:slug*',
-      destination: 'https://nextjs.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/google/:slug*',
-      destination: 'https://www.google.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/support-google/:slug*',
-      destination: 'https://support.google.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/support-google/:slug*',
-      destination: 'https://support.google.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/oracle/:slug*',
-      destination: 'https://www.oracle.com/:slug*',
-      permanent: true
-    },
-    {
-      source: '/sqlite/:slug*',
-      destination: 'https://www.sqlite.org/:slug*',
-      permanent: true
-    },
-    {
-      source: '/osm/:slug*',
-      destination: 'https://www.openstreetmap.de/:slug*',
-      permanent: true
-    },
+    }
     
     
   ]

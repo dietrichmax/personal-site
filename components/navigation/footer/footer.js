@@ -353,9 +353,6 @@ export default function Footer() {
                 <a href={config.socials.komoot} title="Max Dietrich on Komoot"><FaBicycle/> Komoot</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.garmin_connect} title="Max Dietrich on Garmin Connect"><SiGarmin/> Garmin Connect</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
               </FooterItemSocials>
             </FooterSocials>

@@ -40,7 +40,6 @@ export default function SyndicationLinks({syndicationLinks}) {
     return (
         <SyndList className="syndications">
             {syndicationLinks? 
-              <SyndTitle>Also posted on:</SyndTitle>
               syndicationLinks.map((link) => {
                 return (
                 <SyndLi>

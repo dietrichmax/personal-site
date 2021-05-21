@@ -11,7 +11,6 @@ import {
     getMatomoActions,
     getMatomoLiveCounter,
     getMatomoPageViews,
-    getMatomoSEOStats,
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
 } from "@/lib/data/api/analytics"
@@ -21,7 +20,7 @@ import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { server } from "@/lib/utils/server"
-
+import { formatDistance } from "date-fns"
 
 const StyledReactTooltip = styled(ReactTooltip)`
   background-color: var(--gray-extra-light);
@@ -309,6 +308,7 @@ export default function Dashboard({
         };
         fetchLiveData();
     }, []);
+
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
     const githubUrl = "https://github.com/DaTurboD/"
@@ -351,7 +351,6 @@ export default function Dashboard({
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
-    console.log(recentViews)
     return (
         <>
             <Layout>
@@ -445,12 +444,10 @@ export default function Dashboard({
                                                 <GridStatsDescription>Locations tracked</GridStatsDescription>
                                             </BottomStatsGrid>
                                         </Link>
-                                        {seoStats.slice(2,4).map((item, i) => (
-                                            <BottomStatsGrid key={i}>
-                                                <GridStats>{item.rank}</GridStats>
-                                                <GridStatsDescription>{item.label}</GridStatsDescription>
-                                            </BottomStatsGrid>
-                                        ))}
+                                        <BottomStatsGrid >
+                                            <GridStats>{formatDistance(1986, 3, 4, 10, 32, 0),new Date()}</GridStats>
+                                            <GridStatsDescription>Domain Age</GridStatsDescription>
+                                        </BottomStatsGrid>
                                 </StatsGridMedium>
                             </GeneralStats>
 
@@ -665,7 +662,6 @@ export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const githubStats = (await getGitHubStats()) || []
-    const seoStats = (await getMatomoSEOStats()) || []
     const allVisits = (await getMatomoAllVisits()) || []
     const visitDuration = (await getMatomoSumVisitDuration()) || []
     const allWebmentions = (await fetchWebmentions()) || []
@@ -683,7 +679,6 @@ export async function getStaticProps() {
             locationsCount: stats.posts.count.locations,
             linksCount: stats.posts.count.links,
             githubStats,
-            seoStats,
             allVisits,
             visitDuration,
             allWebmentions,

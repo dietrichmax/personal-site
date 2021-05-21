@@ -444,8 +444,12 @@ export default function Dashboard({
                                                 <GridStatsDescription>Locations tracked</GridStatsDescription>
                                             </BottomStatsGrid>
                                         </Link>
-                                        <BottomStatsGrid >
-                                            <GridStats>{formatDistance(1986, 3, 4, 10, 32, 0),new Date()}</GridStats>
+                                        <BottomStatsGrid>
+                                            <GridStats>1,131,667</GridStats>
+                                            <GridStatsDescription>Alexa Rank</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>- days</GridStats>
                                             <GridStatsDescription>Domain Age</GridStatsDescription>
                                         </BottomStatsGrid>
                                 </StatsGridMedium>

@@ -34,14 +34,14 @@ export default function Map({ locations }) {
       <Title>Map</Title>
       
       <MapContainer>
-        <Map data={locations} />
+        {/*<Map data={locations} />*/}
       </MapContainer>
       
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+/*export async function getStaticProps() {
     const locations = (await getRecentLocationData()) || []
 
     return {
@@ -50,5 +50,5 @@ export async function getStaticProps() {
         locations
       }
     }
-  }
+  }*/
   

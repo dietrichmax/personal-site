@@ -20,7 +20,7 @@ import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { server } from "@/lib/utils/server"
-import { formatDistance } from "date-fns"
+import { formatDistance } from 'date-fns'
 
 const StyledReactTooltip = styled(ReactTooltip)`
   background-color: var(--gray-extra-light);
@@ -444,10 +444,12 @@ export default function Dashboard({
                                                 <GridStatsDescription>Locations tracked</GridStatsDescription>
                                             </BottomStatsGrid>
                                         </Link>
-                                        <BottomStatsGrid>
-                                            <GridStats>1,131,667</GridStats>
-                                            <GridStatsDescription>Alexa Rank</GridStatsDescription>
-                                        </BottomStatsGrid>
+                                        <Link href="https://www.alexa.com/siteinfo/mxd.codes" passHref>
+                                            <BottomStatsGrid>
+                                                <GridStats>1,024,896</GridStats>
+                                                <GridStatsDescription>Alexa Rank</GridStatsDescription>
+                                            </BottomStatsGrid>
+                                        </Link>
                                         <BottomStatsGrid>
                                             <GridStats>- days</GridStats>
                                             <GridStatsDescription>Domain Age</GridStatsDescription>

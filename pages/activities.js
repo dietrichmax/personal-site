@@ -54,7 +54,7 @@ export default function Blog({ allActivities }) {
             />
             
             <PageTitle>Activities</PageTitle>
-            <SubTitle>Bike rides and runs</SubTitle>
+            <SubTitle>Bike rides, walks and more</SubTitle>
 
             <ActivityPageContainer >
 

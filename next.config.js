@@ -484,17 +484,10 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
-      source: '/reddit',
-      destination: 'https://www.reddit.com/user/DaTurboD',
-      permanent: true
-    },
-    {
       source: '/indieweb',
       destination: 'https://indieweb.org/User:Mxd.codes',
       permanent: true
     }
-    
-    
   ]
 }};
 

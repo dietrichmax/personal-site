@@ -446,7 +446,7 @@ export default function Dashboard({
                                         </Link>
                                         <Link href="https://www.alexa.com/siteinfo/mxd.codes" passHref>
                                             <BottomStatsGrid>
-                                                <GridStats>1,024,896</GridStats>
+                                                <GridStats>981,688</GridStats>
                                                 <GridStatsDescription>Alexa Rank</GridStatsDescription>
                                             </BottomStatsGrid>
                                         </Link>

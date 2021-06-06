@@ -283,7 +283,7 @@ const LanguageDot = styled.span`
 
 
 export default function Dashboard({
-    /*lastViews,
+    lastViews,
     actions,
     postsCount,
     tagsCount,
@@ -296,10 +296,10 @@ export default function Dashboard({
     notesCount,
     locationsCount,
     activitiesCount,
-    linksCount*/
+    linksCount
 }) {
     const router = useRouter()
-    /*const [liveViews, setLiveViews] = useState(0);
+    const [liveViews, setLiveViews] = useState(0);
 
     useEffect(() => {
         async function fetchLiveData() {
@@ -350,7 +350,7 @@ export default function Dashboard({
 
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
-    */
+    
     return (
         <>
             <Layout>
@@ -365,7 +365,7 @@ export default function Dashboard({
                         <StyledReactTooltip />
                         <PageTitle>Dashboard</PageTitle>
                         <SubTitle>Stats from Matomo, Strapi, Webmentions and more</SubTitle>
-                        <Container>{/*
+                        <Container>
                             <GeneralStats>
                                 <StatsGrid>
                                     <GridTitle>Site Stats</GridTitle>
@@ -653,8 +653,8 @@ export default function Dashboard({
                                         </LanguageColumn>
                                     </LanguageWrapper>
                                 </LanguageContainer>
-                        {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>
-                        */}</Container>
+                        {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
+                        </Container>
                     </>
                 )}
             </Layout>

@@ -522,9 +522,5 @@ module.exports = withPlugins([
       "openweathermap.org",
       "aaronparecki.com",
     ],
-  }},
-  {i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US'
-  }},
+  }}
 ]);

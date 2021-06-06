@@ -283,7 +283,7 @@ const LanguageDot = styled.span`
 
 
 export default function Dashboard({
-    lastViews,
+    /*lastViews,
     actions,
     postsCount,
     tagsCount,
@@ -296,10 +296,10 @@ export default function Dashboard({
     notesCount,
     locationsCount,
     activitiesCount,
-    linksCount
+    linksCount*/
 }) {
-    const [liveViews, setLiveViews] = useState(0);
     const router = useRouter()
+    /*const [liveViews, setLiveViews] = useState(0);
 
     useEffect(() => {
         async function fetchLiveData() {
@@ -350,7 +350,7 @@ export default function Dashboard({
 
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
-    
+    */
     return (
         <>
             <Layout>

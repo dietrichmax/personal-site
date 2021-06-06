@@ -227,14 +227,14 @@ export async function getStaticProps() {
   const about = await getAbout()
   const resPosts = await fetch(`${server}/api/posts`)
   const posts = await resPosts.json()
-  const resStats = await fetch(`${server}/api/stats`)
-  const stats = await resStats.json()
+  /*const resStats = await fetch(`${server}/api/stats`)
+  const stats = await resStats.json()*/
 
   return {
     revalidate:  86400,
     props: { 
       posts,
-      count: stats.posts.count,
+      //count: stats.posts.count,
       about: about.about,
     },
   }

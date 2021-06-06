@@ -276,10 +276,10 @@ export default function Footer() {
       name: "Notes",
       link: "/notes" 
     },
-    { 
+    /*{ 
       name: "Activities",
       link: "/activities" 
-    },
+    },*/
     { 
       name: "Links",
       link: "/links" 

@@ -661,7 +661,7 @@ export default function Dashboard({
         </>
     )
 }
-
+/*
 export async function getStaticProps() {
     const resStats = await fetch(`${server}/api/stats`)
     const stats = await resStats.json()
@@ -690,4 +690,4 @@ export async function getStaticProps() {
             allWebmentions,
         },
     }
-}
+}*/

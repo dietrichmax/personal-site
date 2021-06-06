@@ -365,7 +365,7 @@ export default function Dashboard({
                         <StyledReactTooltip />
                         <PageTitle>Dashboard</PageTitle>
                         <SubTitle>Stats from Matomo, Strapi, Webmentions and more</SubTitle>
-                        <Container>
+                        <Container>{/*
                             <GeneralStats>
                                 <StatsGrid>
                                     <GridTitle>Site Stats</GridTitle>
@@ -653,8 +653,8 @@ export default function Dashboard({
                                         </LanguageColumn>
                                     </LanguageWrapper>
                                 </LanguageContainer>
-                        {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
-                        </Container>
+                        {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>
+                        */}</Container>
                     </>
                 )}
             </Layout>

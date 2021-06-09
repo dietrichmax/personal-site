@@ -49,7 +49,7 @@ const Map = (data) => {
         {data ? data.data.map((position,i) => {
           bounds.push([position.lat, position.lon]);
           return (
-            <Circle center={[position.lat, position.lon]} radius={2} color="#00f700" fillOpacity={getVel(position.vel)} weight={0}/>
+            <Circle center={[position.lat, position.lon]} radius={2} color="#c85517" fillOpacity={getVel(position.vel)} weight={0}/>
          )
         }) : null }
     </MapContainer>

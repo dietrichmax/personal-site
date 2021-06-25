@@ -58,7 +58,7 @@ export default function Blog({ allActivities }) {
 
             <ActivityPageContainer >
 
-              <ActivitiesMap data={allActivities} />
+              {/*<ActivitiesMap activities={allActivities} />*/}
 
             </ActivityPageContainer>
           </>

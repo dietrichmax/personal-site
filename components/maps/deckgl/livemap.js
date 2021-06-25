@@ -38,7 +38,7 @@ export default function Livemap({
           id: 'scatter-plot',
           data,
           opacity: 0.7,
-          stroked: true,
+          stroked: false,
           filled: true,
           radiusScale: 6,
           radiusMinPixels: 0.25,

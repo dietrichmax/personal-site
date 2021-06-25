@@ -500,7 +500,8 @@ const rewrites = {async rewrites() {
       },
   ]
 }},*/
-                  
+        
+
 module.exports = withPlugins([
   redirects,
   withFonts({
@@ -523,4 +524,8 @@ module.exports = withPlugins([
       "aaronparecki.com",
     ],
   }}
-]);
+],{webpack (config, options) {
+  config.resolve.alias['mapbox-gl'] = 'maplibre-gl'
+  return config
+}
+})

@@ -14,7 +14,7 @@ import HCard from "@/components/microformats/h-card"
 import NoteTags from "@/components/tags/tags"
 import NoteMeta from "@/components/note/note-meta/note-meta"
 import SyndicationLinks from "@/components/microformats/syndication-links"
-import WebActions from "@/components/social/web-actions/web-actions"
+import WebActions from "@/components/social/feedback/feedback"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);

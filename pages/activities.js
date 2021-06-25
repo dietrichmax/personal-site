@@ -8,6 +8,8 @@ import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import media from 'styled-media-query';
+import ActivitiesMap from "@/components/maps/deckgl/activities"
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 const ActivityPageContainer = styled.div`
   margin-left: auto;
@@ -37,8 +39,6 @@ const Grid = styled.ol`
 export default function Blog({ allActivities }) {
   const router = useRouter()
 
-
-
   return (
     <>
       <Layout>
@@ -58,14 +58,7 @@ export default function Blog({ allActivities }) {
 
             <ActivityPageContainer >
 
-              <Grid className="h-feed">         
-                {allActivities.map((activity,i) => (
-                  <ActivityPreview
-                    key={i} 
-                    activity={activity}
-                  />
-                ))}
-              </Grid>
+              <ActivitiesMap data={allActivities} />
 
             </ActivityPageContainer>
           </>
@@ -77,7 +70,6 @@ export default function Blog({ allActivities }) {
 
 export async function getStaticProps() {
   const allActivities = (await getAllActivities()) || []
-
 
   return {
     revalidate:  86400,

@@ -13,7 +13,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
 import Likes from "@/components/social/favorites/favorites"
-import WebActions from "@/components/social/web-actions/web-actions"
+import WebActions from "@/components/social/feedback/feedback"
 import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import PostMeta from '@/components/post/post-meta/post-meta'
 import dynamic from "next/dynamic";

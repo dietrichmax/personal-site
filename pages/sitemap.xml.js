@@ -14,7 +14,7 @@ const createSitemap = (posts, tags, pages, notes, morePages, recipes) =>
           return `
               <url>
                   <loc>${`${config.siteUrl}/articles/${post.slug}`}</loc>
-                  <lastmod>${post.updated_at ? post.updated_at : post.created_at}</lastmod>
+                  <lastmod>${post.updated_at ? post.updated_at : post.published_at}</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.5</priority>
                </url>

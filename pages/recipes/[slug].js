@@ -11,7 +11,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Link from"next/link"
 import Image from "next/image" 
 import HCard from "@/components/microformats/h-card"
-import WebActions from "@/components/social/web-actions/web-actions"
+import WebActions from "@/components/social/feedback/feedback"
 
 const RecipeWrapper = styled.div`
   max-width: var(--width-container);

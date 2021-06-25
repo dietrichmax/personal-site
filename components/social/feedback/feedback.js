@@ -65,7 +65,7 @@ export default function SocialShare({ slug, syndicationLinks }) {
         .then(function(data) {
           setLikes(data.count)
         })
-  }, []);
+  }, []);*/
   
   const sendIncrement = (value) => {
     console.log(value)
@@ -75,8 +75,8 @@ export default function SocialShare({ slug, syndicationLinks }) {
       body: JSON.stringify({ 
         count: value,
       })
-    };
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/likes`, requestOptions)
+    };/*
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/reactions`, requestOptions)
       .then(function(response) {
         if (!response.ok) {
           console.log(response.statusText);
@@ -86,7 +86,7 @@ export default function SocialShare({ slug, syndicationLinks }) {
         }
         }).catch(function(error) {
             console.log(error);
-        });
+        });*/
   }
 
   const sendLike = () => {
@@ -98,7 +98,8 @@ export default function SocialShare({ slug, syndicationLinks }) {
       setLikes(likes-1),
       setIncremented(false)
     }
-  }*/
+  }
+
   return (
     <WebActions className="indie-actions">
       <Actions do="share" with={url}>
@@ -106,22 +107,16 @@ export default function SocialShare({ slug, syndicationLinks }) {
           <FaRetweet/> Share
         </a>
       </Actions>
-      
-      {tweetID ? 
-        <>
-          <Actions do="like" with={url}>
-            <a className="action like" title="Like this post" target="_blank" href={`https://twitter.com/intent/favorite?tweet_id=${tweetID}`} rel="nofollow noopener">
-              <BsStar/> Like
-            </a>
-          </Actions>
-          <Actions do="reply" with={url}>
-            <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">
-              <FaRegComment/> Reply
-            </a>
-          </Actions>
-        </>
-      : null
-      }
+      <Actions do="like" with={url}>
+        <a className="action like" title="Like this post" onclick={sendLike()} >
+          <BsStar/> Like
+        </a>
+      </Actions>
+      <Actions do="reply" with={url}>
+        <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">
+          <FaRegComment/> Reply
+        </a>
+        </Actions>
       <Actions className="action copy" title="Copy this post's permalink" onClick={() => copyToClipboard()}><FaRegCopy/> Copy</Actions>
     </WebActions>
   )

@@ -1,11 +1,11 @@
-import { useState } from "react"
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import dynamic from "next/dynamic";
 import styled from 'styled-components';
-import { getRecentLocationData } from '@/lib/data/api/cms'
 import media from 'styled-media-query';
+import { getRecentLocationData } from '@/lib/data/api/cms'
+import Livemap from "@/components/maps/deckgl/livemap"
 
 const MapContainer = styled.div`
   margin: auto;
@@ -18,11 +18,6 @@ const MapContainer = styled.div`
 
 export default function Map({ locations }) {
 
-   const Map = dynamic(() => import("@/components/maps/leaflet/livemap"), {
-        ssr: false
-      });
-
-
       
   return (
     <Layout>
@@ -34,7 +29,7 @@ export default function Map({ locations }) {
       <Title>Map</Title>
       
       <MapContainer>
-        <Map data={locations} />
+        <Livemap data={locations} />
       </MapContainer>
       
     </Layout>
@@ -42,7 +37,7 @@ export default function Map({ locations }) {
 }
 
 export async function getStaticProps() {
-    const locations = (await getRecentLocationData()) || []
+  const locations = (await getRecentLocationData()) || []
 
     return {
       revalidate:  86400,

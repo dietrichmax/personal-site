@@ -9,7 +9,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Image from "next/image"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
-import WebActions from "@/components/social/web-actions/web-actions"
+import WebActions from "@/components/social/feedback/feedback"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);

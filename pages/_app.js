@@ -5,10 +5,10 @@ import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/SiteConfig"
 
-import styled from 'styled-components';
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
 import "@/public/fonts/Cormorant_Garamond/style.css"
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
@@ -57,6 +57,7 @@ class MyApp extends App {
       
           {/* Stylesheets */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+          <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
         
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`${config.siteUrl}/articles/feed.xml`} />

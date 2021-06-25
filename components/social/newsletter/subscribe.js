@@ -44,7 +44,6 @@ const Input = styled.input`
     box-sizing: border-box;
     
     border: 2px solid var(--gray-light);
-    background-color: var(--gray-extra-light);
     :invalid {
         border: 1px solid red;
     }

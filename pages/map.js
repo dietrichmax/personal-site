@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { getRecentLocationData } from '@/lib/data/api/cms'
 import Livemap from "@/components/maps/deckgl/livemap"
-import prisma from '@/lib/data/prisma'
 
 const MapContainer = styled.div`
   margin: auto;

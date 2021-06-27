@@ -4,9 +4,11 @@ import Title from '@/components/title/page-title'
 import dynamic from "next/dynamic";
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { getRecentLocationData } from '@/lib/data/api/cms'
-import prisma from '@/lib/utils/prisma'
 import Livemap from "@/components/maps/deckgl/livemap"
+//import { getRecentLocationData } from '@/lib/data/api/cms'
+import { PrismaClient } from "@prisma/client";
+
+
 
 const MapContainer = styled.div`
   margin: auto;
@@ -18,7 +20,8 @@ const MapContainer = styled.div`
 `
 
 export default function Map({ locations }) {
-
+  
+  prisma = new PrismaClient()
       
   return (
     <Layout>

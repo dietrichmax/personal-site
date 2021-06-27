@@ -151,9 +151,9 @@ export default function Resume({ cv }) {
                 <Col1>
 
                   <Col1Item>
-                    {cv.skills.map((item) => {
+                    {cv.skills.map((item,i) => {
                       return (
-                        <Education>
+                        <Education key={i}>
                             <>
                               <ColTitle>{item.name}</ColTitle>
                                 <SkillGrid>
@@ -171,9 +171,9 @@ export default function Resume({ cv }) {
 
                   <Col1Item>
                   <ColTitle>Education</ColTitle>
-                  {cv.education.map((item) => {
+                  {cv.education.map((item,i) => {
                     return (
-                      <Education>
+                      <Education key={i}>
                         <strong>{item.type} - {item.location}</strong>
                         <p>{item.date}</p>
                         <p>{item.description}</p>
@@ -184,9 +184,9 @@ export default function Resume({ cv }) {
 
                   <Col1Item>
                   <ColTitle>Interests</ColTitle>
-                  {cv.interests.map((item) => {
+                  {cv.interests.map((item,i) => {
                     return (
-                      <Interests>
+                      <Interests key={i}>
                         <strong>{item.title}</strong>
                         <p style={{fontWeight:'500'}}>{item.description}</p>
                       </Interests>
@@ -198,9 +198,9 @@ export default function Resume({ cv }) {
                 </Col1>
                 <Col2>
                   <ColTitle>Experience</ColTitle>
-                  {cv.timeline.map((role) => {
+                  {cv.timeline.map((role,i) => {
                     return(
-                      <TimelineItem>
+                      <TimelineItem key={i}>
                         <TimelineTitle>{role.role}</TimelineTitle>
                         <TimelineCompany>{role.company} | {role.date}</TimelineCompany>
                         <TimelineLongDescription>

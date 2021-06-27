@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { server } from "@/lib/utils/server"
 import { getAbout } from '@/lib/data/api/cms'
 import Link from "next/link"
-import Image from "next/image"
+import axios from 'axios';
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -225,15 +225,14 @@ export default function Index({ posts, count, about }) {
 
 export async function getStaticProps() {
   const about = await getAbout()
-  const resPosts = await fetch(`${server}/api/posts`)
-  const posts = await resPosts.json()
+  const posts = await axios.get(`${server}/api/posts`)
   /*const resStats = await fetch(`${server}/api/stats`)
   const stats = await resStats.json()*/
 
   return {
     revalidate:  86400,
     props: { 
-      posts,
+      posts: posts.data,
       //count: stats.posts.count,
       about: about.about,
     },

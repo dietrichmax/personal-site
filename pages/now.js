@@ -124,7 +124,7 @@ export default function Now({ weather, address, content, now  }) {
                     height="30"
                   />
                 </Data>
-                {now.batt ? <Data>My phone's battery level is {now.batt}% <i class={`las la-battery-${getBatteryLevelIcon(now.batt)}`} title={`${now.batt}% Battery Level`}/> and it is currently {batteryStatus(now.bs)}.</Data> : null}
+                {now.batt ? <Data>My phone's battery level is {now.batt}% <i className={`las la-battery-${getBatteryLevelIcon(now.batt)}`} title={`${now.batt}% Battery Level`}/> and it is currently {batteryStatus(now.bs)}.</Data> : null}
               </LiveDataWrapper>
 
               <TextWrapper> 

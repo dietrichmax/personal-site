@@ -20,7 +20,9 @@ import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { server } from "@/lib/utils/server"
+import axios from 'axios';
 import { formatDistance } from 'date-fns'
+import { getAllExtensions } from "showdown"
 
 const StyledReactTooltip = styled(ReactTooltip)`
   background-color: var(--gray-extra-light);
@@ -663,8 +665,7 @@ export default function Dashboard({
 }
 
 export async function getStaticProps() {
-    const resStats = await fetch(`${server}/api/stats`)
-    const stats = await resStats.json()
+    const stats = await axios.get(`${server}/api/stats`)
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const githubStats = (await getGitHubStats()) || []
@@ -677,13 +678,13 @@ export async function getStaticProps() {
         props: {
             lastViews,
             actions,
-            postsCount: stats.posts.count.posts,
-            tagsCount: stats.posts.count.tags,
-            subscribersCount: stats.posts.count.subscribers,
-            notesCount: stats.posts.count.notes,
-            activitiesCount: stats.posts.count.activities,
-            locationsCount: stats.posts.count.locations,
-            linksCount: stats.posts.count.links,
+            postsCount: stats.data.posts.count.posts,
+            tagsCount: stats.data.posts.count.tags,
+            subscribersCount: stats.data.posts.count.subscribers,
+            notesCount: stats.data.posts.count.notes,
+            activitiesCount: stats.data.posts.count.activities,
+            locationsCount: stats.data.posts.count.locations,
+            linksCount: stats.data.posts.count.links,
             githubStats,
             allVisits,
             visitDuration,

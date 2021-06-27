@@ -108,7 +108,7 @@ export default function SocialShare({ slug, syndicationLinks }) {
         </a>
       </Actions>
       <Actions do="like" with={url}>
-        <a className="action like" title="Like this post" onclick={sendLike()} >
+        <a className="action like" title="Like this post" onClick={sendLike()} >
           <BsStar/> Like
         </a>
       </Actions>

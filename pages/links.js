@@ -44,7 +44,7 @@ export default function Links({ allLinks }) {
                 <Grid>
 
                     {allLinks.map((link,i) => (
-                      <LinkPreview link={link} />
+                      <LinkPreview key={i} link={link} />
                     ))}
 
                 </Grid>

@@ -157,7 +157,7 @@ const SEO = ({
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
       {/* Android */}
       <meta name="theme-color" content={config.themeColor} />

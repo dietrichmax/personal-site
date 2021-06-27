@@ -7,7 +7,7 @@ import Livemap from "@/components/maps/deckgl/livemap"
 //import { getRecentLocationData } from '@/lib/data/api/cms'
 import prisma from '@/lib/utils/prisma'
 import { server } from "@/lib/utils/server"
-import Link from "next/link"
+import axios from 'axios';
 
 const MapContainer = styled.div`
   margin: auto;
@@ -61,8 +61,8 @@ export default function Map({ locations, locationsCount } ) {
 }
 
 export async function getStaticProps() {
-  const resStats = await fetch(`${server}/api/stats`)
-  const stats = await resStats.json()
+  const stats = await axios.get(`${server}/api/stats`)
+
   const locations = await prisma.locations.findMany({
     select: {
       lat: true,
@@ -76,7 +76,7 @@ export async function getStaticProps() {
     revalidate:  86400,
     props: {
       locations,
-      locationsCount: stats.posts.count.locations
+      locationsCount: stats.data.posts.count.locations
     }
   }
 }

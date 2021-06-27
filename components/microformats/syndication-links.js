@@ -40,9 +40,9 @@ export default function SyndicationLinks({syndicationLinks}) {
     return (
         <SyndList className="syndications">
             {syndicationLinks? 
-              syndicationLinks.map((link) => {
+              syndicationLinks.map((link,i) => {
                 return (
-                <SyndLi>
+                <SyndLi key={i}>
                   <SyndItem 
                     aria-label={link.name} 
                     title={`See this post on ${link.name}`} 

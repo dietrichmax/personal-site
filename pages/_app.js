@@ -32,9 +32,9 @@ class MyApp extends App {
           <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
-          <link rel="preconnect" href="https://api.mxd.codes" crossorigin/>,
-          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>,
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
+          <link rel="preconnect" href="https://api.mxd.codes" crossOrigin="true"/>,
+          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="true"/>,
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />,
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
           {/* IndieCert */}
@@ -53,7 +53,7 @@ class MyApp extends App {
           <link rel="me" href={config.socials.linkedin} />
           <link rel="me" href={config.socials.instagram} />
           {/* Leaflet*/}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossorigin/>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>
       
           {/* Stylesheets */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
@@ -65,7 +65,7 @@ class MyApp extends App {
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Links`} href={`${config.siteUrl}/links/feed.xml`} />
           {/* Typekit Font 
           <link rel="dns-prefetch" href="https://use.typekit.net" />,
-          <link rel="preconnect" href="https://use.typekit.net" crossorigin />,
+          <link rel="preconnect" href="https://use.typekit.net" crossOrigin="true" />,
           <link rel="stylesheet" href="https://use.typekit.net/xhe6fwq.css" />*/}
         </Head>
         <GlobalStyle/>

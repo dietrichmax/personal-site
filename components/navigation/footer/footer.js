@@ -257,10 +257,6 @@ export default function Footer() {
       name: "Mailing",
       link: "/mailinglist" 
     },
-    { 
-      name: "Blogroll",
-      link: "/blogroll" 
-    },
   ]
 
   const headerItems = [

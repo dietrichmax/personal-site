@@ -16,7 +16,6 @@ import Likes from "@/components/social/favorites/favorites"
 import WebActions from "@/components/social/feedback/feedback"
 import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import PostMeta from '@/components/post/post-meta/post-meta'
-import dynamic from "next/dynamic";
 import { FaRunning, FaBiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
@@ -24,9 +23,6 @@ import { GiValley, GiSummits } from 'react-icons/gi';
 
 
 
-const ActivityMap = dynamic(() => import("@/components/maps/leaflet/largeActivityMap"), {
-    ssr: false
-});
 
 const ActivityWrapper = styled.article`
   max-width: 1200px;
@@ -174,7 +170,7 @@ export default function Activity({ activity, slug }) {
                 </Data>
                 <HCard />
                 <MapContainer>
-                    <ActivityMap data={activity.details.geoPolylineDTO} />
+                    {/*<ActivityMap data={activity.details.geoPolylineDTO} />*/}
                 </MapContainer>
 
               </ActivityContainer>

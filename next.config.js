@@ -1,7 +1,6 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
-const { SiFirebase } = require('react-icons/si');
 
 // redirects
 const redirects = {async redirects() {
@@ -504,11 +503,7 @@ const rewrites = {async rewrites() {
 
 module.exports = withPlugins([
   redirects,
-  withFonts({
-    webpack(config, options) {
-      return config;
-    }
-  }),
+  withFonts,
   {images: {
     domains: [
       "api.mxd.codes",
@@ -525,18 +520,18 @@ module.exports = withPlugins([
     ],
   }}
 ],{webpack (config, { dev, isServer }) {
-    config.resolve.alias['mapbox-gl'] = 'maplibre-gl';
-    config.node = {
-      fs: 'empty',
-    };
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
+        'mapbox-gl': 'maplibre-gl'
       });
     }
+    /*if (isServer) {
+      require('./lib/utils/generate-sitemap');
+    }*/
   return config
 }, typescript: {
   ignoreBuildErrors: true,

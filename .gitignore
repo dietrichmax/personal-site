@@ -36,6 +36,3 @@ yarn-error.log*
 
 # sitemap
 /public/sitemap.xml
-
-# prisma
-/prisma

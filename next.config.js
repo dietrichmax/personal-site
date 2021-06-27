@@ -524,8 +524,16 @@ module.exports = withPlugins([
       "aaronparecki.com",
     ],
   }}
-],{webpack (config, options) {
-  config.resolve.alias['mapbox-gl'] = 'maplibre-gl'
+],{webpack (config, { dev, isServer }) {
+    config.resolve.alias['mapbox-gl'] = 'maplibre-gl';
+    // Replace React with Preact only in client production build
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      });
+    }
   return config
 }
 })

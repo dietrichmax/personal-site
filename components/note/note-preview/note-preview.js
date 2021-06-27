@@ -84,9 +84,9 @@ export default function NotePreview({ note }) {
         <Hidden className="webmention meta">
           <HCard /> 
           <span className="webmention type">
-            {note.ofUrl && note.category == "Like" ? <a class="u-like-of" href={note.ofUrl} /> : null }
-            {note.ofUrl && note.category == "Reply" ? <a class="u-in-reply-to" href={note.ofUrl} /> : null }
-            {note.ofUrl && note.category == "Repost" ? <a class="u-repost-of" href={note.ofUrl} /> : null }
+            {note.ofUrl && note.category == "Like" ? <a className="u-like-of" href={note.ofUrl} /> : null }
+            {note.ofUrl && note.category == "Reply" ? <a className="u-in-reply-to" href={note.ofUrl} /> : null }
+            {note.ofUrl && note.category == "Repost" ? <a className="u-repost-of" href={note.ofUrl} /> : null }
           </span>
         </Hidden>
 
@@ -101,6 +101,8 @@ export default function NotePreview({ note }) {
                     width="552"
                     height="300"
                     className="u-photo" 
+                    placeholder="blur"
+                    blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
                   /> 
                 </NoteImageWrapper>
                 <PostMeta post={note} slug={slug}/>

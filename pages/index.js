@@ -167,7 +167,7 @@ export default function Index({ posts, count, about }) {
                     />
                   </IntroImg>*/}
                   <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
-                    I am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community.
+                    I' am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinks href="/map" title="Location tracking">tracking my location</HeroLinks> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 {/*<PostTypes>

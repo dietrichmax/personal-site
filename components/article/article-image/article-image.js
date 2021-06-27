@@ -66,6 +66,8 @@ const { title, slug, coverImage } = postData
             width="350"
             height="130"
             className="u-photo"
+            placeholder="blur"
+            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
           />
       ) : ( null ) : (
         coverImage.coverImage ? (
@@ -77,6 +79,8 @@ const { title, slug, coverImage } = postData
             className="u-photo"
             width="1300"
             height="450"
+            placeholder="blur"
+            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
           /> 
           </Link>
         ) : (

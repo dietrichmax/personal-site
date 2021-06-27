@@ -4,7 +4,7 @@ import media from 'styled-media-query';
 const Title = styled.h1`
   margin: 0 auto var(--space-sm) 0;
   font-size: 3rem;
-  max-width: 720px;
+  max-width: 900px;
   font-weight: 700;
   ${media.lessThan('medium')`
     font-size: 2rem;

@@ -18,9 +18,9 @@ import PostImage from "@/components/article/article-image/article-image"
 import PostTitle from '@/components/title/post-title'
 import PostTags from '@/components/tags/tags'
 import { parseISO, format } from 'date-fns'
-import Comments from "@/components/comments/comments"
+//import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
-import Likes from "@/components/social/favorites/favorites"
+//import Likes from "@/components/social/favorites/favorites"
 import WebActions from "@/components/social/feedback/feedback"
 import SyndicationLinks from "@/components/microformats/syndication-links"
 
@@ -51,15 +51,9 @@ const Content = styled.div`
 `
 
 const PostTitleWrapper = styled.div`
-  max-width: 800px;
-  margin: var(--space-sm) auto var(--space-lg) 50px;
-  padding: var(--space-sm) var(--space);
-  position:absolute;
+  max-width: 1200px;
+  margin: var(--space-sm) auto var(--space-lg) 5rem;
   bottom: 0;
-  border-radius: var(--border-radius);
-  z-index: 4;
-  mix-blend-mode: luminosity;
-  background-color: var(--body-bg);
   ${media.lessThan('large')`
     position: relative;
     margin: var(--space-sm) var(--space);

@@ -90,14 +90,14 @@ export default function SocialShare({ slug, syndicationLinks }) {
   }
 
   const sendLike = () => {
-    if (!incremented) {
+    /*if (!incremented) {
       setLikes(likes+1),
       setIncremented(true),
       !submitted ? sendIncrement(likes+1) : null
     } else {  
       setLikes(likes-1),
       setIncremented(false)
-    }
+    }*/
   }
 
   return (

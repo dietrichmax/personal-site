@@ -9,16 +9,18 @@ const MapContainer = styled.div`
     height: 600px;
 `
 
+
 export default function Livemap({
   data,
 }) {
     const [viewport, setViewport] = useState({
-        longitude: 12.1115692,
-        latitude: 47.829808,
-        zoom: 11,
+        longitude: data.slice(-1)[0].lon,
+        latitude: data.slice(-1)[0].lat,
+        zoom: 12,
         bearing: 0,
         pitch: 0,
     });
+
 
     const layers = [
         new ScatterplotLayer({

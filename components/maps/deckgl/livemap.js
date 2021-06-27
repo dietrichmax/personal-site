@@ -28,7 +28,7 @@ export default function Livemap({
           stroked: false,
           filled: true,
           radiusScale: 3,
-          radiusMinPixels: 0.25,
+          radiusMinPixels: 0.65,
           getPosition: d => [d.lon, d.lat, 0 /*d.alt*/],
           getFillColor: [200, 85, 23],
         })

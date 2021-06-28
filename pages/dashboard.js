@@ -14,6 +14,15 @@ import {
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
 } from "@/lib/data/api/analytics"
+import {
+  getPostsCount,
+  getTagsCount,
+  getSubscribersCount,
+  getNotesCount,
+  getLocationsCount,
+  getActivitiesCount,
+  getLinksCount,
+} from "@/lib/data/api/cms"
 import { fetchWebmentions } from "@/lib/data/api/webmentions"
 import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
@@ -665,7 +674,13 @@ export default function Dashboard({
 }
 
 export async function getStaticProps() {
-    const stats = await axios.get(`${server}/api/stats`)
+    const postsCount = (await getPostsCount()) || []
+    const tagsCount = (await getTagsCount,()) || []
+    const subscribersCount = (await getSubscribersCount()) || []
+    const notesCount = (await getNotesCount()) || []
+    const activitiesCount = await getActivitiesCount()
+    const locationsCount = (await getLocationsCount()) || []
+    const linksCount = (await getLinksCount()) || []
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const githubStats = (await getGitHubStats()) || []
@@ -678,13 +693,13 @@ export async function getStaticProps() {
         props: {
             lastViews,
             actions,
-            postsCount: stats.data.posts.count.posts,
-            tagsCount: stats.data.posts.count.tags,
-            subscribersCount: stats.data.posts.count.subscribers,
-            notesCount: stats.data.posts.count.notes,
-            activitiesCount: stats.data.posts.count.activities,
-            locationsCount: stats.data.posts.count.locations,
-            linksCount: stats.data.posts.count.links,
+            postsCount,
+            tagsCount,
+            subscribersCount,
+            notesCount,
+            activitiesCount,
+            locationsCount,
+            linksCount,
             githubStats,
             allVisits,
             visitDuration,

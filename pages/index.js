@@ -225,12 +225,12 @@ export default function Index({ posts, count, about }) {
 }
 
 export async function getStaticProps() {
+  const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
   const allActivities = (await getAllActivities()) || []
   const allRecipes = (await getAllRecipes()) || []
-
   const allContent = []
 
   allPosts.map((post) => {

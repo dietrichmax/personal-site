@@ -362,8 +362,8 @@ export default function Dashboard({
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
-    const domainAge = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {addSuffix: true})
-    console.log(domainAge)
+    /*const domainAge = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {addSuffix: true})
+    console.log(domainAge)*/
     return (
         <>
             <Layout>

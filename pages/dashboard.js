@@ -675,7 +675,7 @@ export default function Dashboard({
 
 export async function getStaticProps() {
     const postsCount = (await getPostsCount()) || []
-    const tagsCount = (await getTagsCount,()) || []
+    const tagsCount = (await getTagsCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
     const notesCount = (await getNotesCount()) || []
     const activitiesCount = await getActivitiesCount()

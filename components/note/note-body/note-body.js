@@ -16,7 +16,7 @@ export default function NoteBody({ content }) {
       <ReactMarkdown
         className={markdownStyles['markdown']}
         children={content}
-        renderers={renderers}
+        components={renderers}
       />
     </NoteContent>
   )

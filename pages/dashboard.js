@@ -30,7 +30,7 @@ import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { server } from "@/lib/utils/server"
 import axios from 'axios';
-import { formatDistance } from 'date-fns'
+import { intervalToDuration, formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"
 
 const StyledReactTooltip = styled(ReactTooltip)`
@@ -462,7 +462,7 @@ export default function Dashboard({
                                             </BottomStatsGrid>
                                         </Link>
                                         <BottomStatsGrid>
-                                            <GridStats>- days</GridStats>
+                                            <GridStats>{formatDistance(new Date('2020-10-18T00:00:00.000Z'),new Date(),{ addSuffix: true })}</GridStats>
                                             <GridStatsDescription>Domain Age</GridStatsDescription>
                                         </BottomStatsGrid>
                                 </StatsGridMedium>

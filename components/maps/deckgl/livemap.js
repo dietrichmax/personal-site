@@ -43,7 +43,7 @@ export default function Livemap({
             <DeckGL layers={layers} initialViewState={viewport} controller={true}>
                 <StaticMap 
                     reuseMaps 
-                    mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json" 
+                    mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json" 
                     preventStyleDiffing={true} 
                     attributionControl={false}
                 />

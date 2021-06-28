@@ -362,6 +362,8 @@ export default function Dashboard({
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
+    const domainAge = intervalToDuration({start: new Date(),end: new Date("18 Oct 2020")}).days
+    
     return (
         <>
             <Layout>
@@ -462,7 +464,7 @@ export default function Dashboard({
                                             </BottomStatsGrid>
                                         </Link>
                                         <BottomStatsGrid>
-                                            <GridStats>{intervalToDuration({start: new Date(),end: new Date("18 Oct 2020")})}</GridStats>
+                                            <GridStats>{domainAge}</GridStats>
                                             <GridStatsDescription>Domain Age</GridStatsDescription>
                                         </BottomStatsGrid>
                                 </StatsGridMedium>

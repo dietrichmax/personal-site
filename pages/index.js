@@ -12,6 +12,7 @@ import { server } from "@/lib/utils/server"
 import { getAbout } from '@/lib/data/api/cms'
 import Link from "next/link"
 import axios from 'axios';
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from '@/lib/data/api/cms'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -224,15 +225,53 @@ export default function Index({ posts, count, about }) {
 }
 
 export async function getStaticProps() {
-  const about = await getAbout()
-  const posts = await axios.get(`${server}/api/posts`)
-  /*const resStats = await fetch(`${server}/api/stats`)
-  const stats = await resStats.json()*/
+  const allPosts = (await getAllPosts()) || []
+  const allNotes = (await getAllNotes()) || []
+  const allLinks = (await getAllLinks()) || []
+  const allActivities = (await getAllActivities()) || []
+  const allRecipes = (await getAllRecipes()) || []
 
+  const allContent = []
+
+  allPosts.map((post) => {
+    allContent.push({
+      post: post,
+      date: post.published_at,
+      type: "article"
+    })
+  })
+
+
+  allNotes.map((note) => {
+    allContent.push({
+      note: note,
+      date: note.published_at,
+      type: "note"
+    })
+  })
+
+  allLinks.map((link) => {
+    allContent.push({
+      link: link,
+      date: link.published_at,
+      type: "link"
+    })
+  })
+
+  allActivities.map((activity) => {
+    allContent.push({
+      activity: activity,
+      date: activity.created_at,
+      type: "activity"
+    })
+  })
+
+  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+  
   return {
     revalidate:  86400,
     props: { 
-      posts: posts.data,
+      posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
     },

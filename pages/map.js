@@ -18,7 +18,7 @@ const MapContainer = styled.div`
   `}
 `
 
-const Description = styled.div`
+const Description = styled.p`
   max-width: 1200px;
   margin: auto;
   padding: 0 var(--space) var(--space) var(--space);
@@ -54,8 +54,10 @@ export default function Map({ locations, locationsCount } ) {
       </MapContainer>
       <Description>
         Since 2021-03-02 i am tracking my current location. Right now there are {locationsCount} locations displayed on the map and the map is always centered at my last known position.
-        If you are curious how that works have a look at the article <InternalLink href="/articles/how-i-track-my-location-and-display-the-data-on-my-website" title="How i track my location and display the data on my website">How i track my location and display the data on my website</InternalLink> where i am describing the details behind it.
       </Description>
+      <Description>
+        If you are curious how that works have a look at the article <InternalLink href="/articles/how-i-track-my-location-and-display-the-data-on-my-website" title="How i track my location and display the data on my website">How i track my location and display the data on my website</InternalLink> where i am describing the details behind it.
+      </Description>    
     </Layout>
   )
 }

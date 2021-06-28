@@ -346,9 +346,6 @@ export default function Footer() {
                 <a href={config.socials.strava} title="Max Dietrich on Strava"><SiStrava/> Strava</a>
               </FooterItemSocials>
               <FooterItemSocials>
-                <a href={config.socials.komoot} title="Max Dietrich on Komoot"><FaBicycle/> Komoot</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
               </FooterItemSocials>
             </FooterSocials>

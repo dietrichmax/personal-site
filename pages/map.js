@@ -75,7 +75,7 @@ export async function getStaticProps() {
   });
 
   return {
-    revalidate:  86400,
+    revalidate:  1800,
     props: {
       locations,
       locationsCount

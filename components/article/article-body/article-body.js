@@ -48,7 +48,7 @@ export default function PostBody({ content }) {
           <ReactMarkdown
             className={markdownStyles['markdown']}
             children={content}
-            renderers={renderers}
+            components={renderers}
           />
         </ContentWrapper>
         <Sidebar>

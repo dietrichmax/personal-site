@@ -30,7 +30,7 @@ import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { server } from "@/lib/utils/server"
 import axios from 'axios';
-import { intervalToDuration } from 'date-fns'
+import { formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"
 
 const StyledReactTooltip = styled(ReactTooltip)`
@@ -362,8 +362,8 @@ export default function Dashboard({
     const visits = Object.entries(allVisits)[0].toString().replace("value,","")
     const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
     
-    const domainAge = intervalToDuration({start: new Date(),end: new Date("18 Oct 2020")}).days
-    
+    const domainAge = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {addSuffix: true})
+    console.log(domainAge)
     return (
         <>
             <Layout>
@@ -464,7 +464,7 @@ export default function Dashboard({
                                             </BottomStatsGrid>
                                         </Link>
                                         <BottomStatsGrid>
-                                            <GridStats>{domainAge}</GridStats>
+                                            <GridStats>domainAge</GridStats>
                                             <GridStatsDescription>Domain Age</GridStatsDescription>
                                         </BottomStatsGrid>
                                 </StatsGridMedium>

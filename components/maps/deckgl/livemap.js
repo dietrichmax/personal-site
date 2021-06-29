@@ -45,7 +45,7 @@ export default function Livemap({
                     reuseMaps 
                     mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json" 
                     preventStyleDiffing={true} 
-                    attributionControl={false}
+    
                 />
             </DeckGL>
         </MapContainer>

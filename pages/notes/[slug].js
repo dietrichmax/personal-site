@@ -124,9 +124,7 @@ export default function Note({ note }) {
                           alt={`${i}. cover image`}
                           title={`${note.name}`}
                           className="u-photo" 
-                          width="1200"
-                          height={(1200/note.width)*note.height}
-                          layout="responsive"
+                          layout="fill"
                         />   
                       </Link> 
                     </NoteImageWrapper> 

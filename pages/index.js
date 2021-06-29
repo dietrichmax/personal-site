@@ -271,7 +271,7 @@ export async function getStaticProps() {
   return {
     revalidate:  86400,
     props: { 
-      posts: sortedContent.slice(0,6),
+      posts: sortedContent.slice(0,3),
       //count: stats.posts.count,
       about: about.about,
     },

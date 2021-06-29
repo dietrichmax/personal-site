@@ -266,7 +266,7 @@ export async function getStaticProps() {
     })
   })
 
-  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0,6)
   
   return {
     revalidate:  86400,

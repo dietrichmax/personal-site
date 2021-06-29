@@ -519,23 +519,26 @@ module.exports = withPlugins([
       "aaronparecki.com",
     ],
   }}
-],{webpack (config, { dev, isServer }) {
-    // Replace React with Preact only in client production build
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        'react': 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-        'mapbox-gl': 'maplibre-gl'
-      });
-    }
-    /*if (isServer) {
-      require('./lib/utils/generate-sitemap');
-    }*/
-  return config
-}, typescript: {
-  ignoreBuildErrors: true,
-},  eslint: {
-  ignoreDuringBuilds: true,
-},
+  ],{webpack (config, { dev, isServer }) {
+      // Replace React with Preact only in client production build
+      if (!dev && !isServer) {
+        Object.assign(config.resolve.alias, {
+          'react': 'preact/compat',
+          'react-dom/test-utils': 'preact/test-utils',
+          'react-dom': 'preact/compat',
+          'mapbox-gl': 'maplibre-gl'
+        });
+      }
+      /*if (isServer) {
+        require('./lib/utils/generate-sitemap');
+      }*/
+    return config
+  }, typescript: {
+    ignoreBuildErrors: true,
+  },  eslint: {
+    ignoreDuringBuilds: true,
+  }, i18n: {
+      locales: ['en'],
+      defaultLocale: 'en'
+  }
 })

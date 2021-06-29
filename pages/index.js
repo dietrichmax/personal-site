@@ -266,12 +266,12 @@ export async function getStaticProps() {
     })
   })
 
-  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0,6)
+  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
   
   return {
     revalidate:  86400,
     props: { 
-      posts: sortedContent,
+      posts: sortedContent.slice(0,6),
       //count: stats.posts.count,
       about: about.about,
     },

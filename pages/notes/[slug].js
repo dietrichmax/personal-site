@@ -152,7 +152,7 @@ export default function Note({ note }) {
                 </ContentWrapper>
               </NotesItem>
       
-              <WebActions slug={`/notes/${note.id}`} syndicationLinks={note.syndicationLinks} />
+              <WebActions slug={`/notes/${note.id}`} />
               <Webmentions slug={`/notes/${note.id}`} />
 
             </NoteWrapper>

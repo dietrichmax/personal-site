@@ -15,6 +15,7 @@ const NotesItem = styled.li`
   overflow: hidden;
   position: relative;
   height: 100%;
+  max-width: 357px;
   box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
@@ -98,7 +99,7 @@ export default function NotePreview({ note }) {
                   <NoteImage
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
                     alt={`Cover medium of note ${note.date}`}
-                    width="552"
+                    width="357"
                     height="300"
                     className="u-photo" 
                     placeholder="blur"

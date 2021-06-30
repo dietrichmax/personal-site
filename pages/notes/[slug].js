@@ -57,7 +57,6 @@ const NoteDiv = styled.ol`
 `
 
 const MetaItem = styled.li`
-
 `
 
 const ContentWrapper = styled.div`
@@ -124,7 +123,9 @@ export default function Note({ note }) {
                           alt={`${i}. cover image`}
                           title={`${note.name}`}
                           className="u-photo" 
-                          layout="fill"
+                          width="1200"
+                          height={(1200/note.width)*note.height}
+                          layout="responsive"
                         />   
                       </Link> 
                     </NoteImageWrapper> 
@@ -151,7 +152,7 @@ export default function Note({ note }) {
                 </ContentWrapper>
               </NotesItem>
       
-              <WebActions slug={`/notes/${note.id}`} />
+              <WebActions slug={`/notes/${note.id}`} syndicationLinks={note.syndicationLinks} />
               <Webmentions slug={`/notes/${note.id}`} />
 
             </NoteWrapper>

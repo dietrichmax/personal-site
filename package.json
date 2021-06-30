@@ -64,6 +64,7 @@
     "slugify": "^1.5.3",
     "styled-components": "5.3.0",
     "styled-media-query": "^2.1.2",
+    "swr": "^0.5.6",
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {

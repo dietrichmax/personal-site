@@ -28,8 +28,6 @@ import { getGitHubStats } from "@/lib/data/api/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
-import { server } from "@/lib/utils/server"
-import axios from 'axios';
 import { formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"
 

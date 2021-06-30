@@ -64,7 +64,7 @@ export default async (_, res) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=30'
+    'public, s-maxage=120, stale-while-revalidate=60'
   );
 
   return res.status(200).json(

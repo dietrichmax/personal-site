@@ -69,7 +69,7 @@ export async function getStaticProps() {
     select: {
       lat: true,
       lon: true,
-      alt: false,
+      alt: true,
       vel: false,
     },
   });

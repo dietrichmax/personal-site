@@ -14,8 +14,8 @@ export default function Livemap({
   data,
 }) {
     const [viewport, setViewport] = useState({
-        longitude: data.slice(-1).lon,
-        latitude: data.slice(-1).lat,
+        longitude: data.slice(-1)[0].lon,
+        latitude: data.slice(-1)[0].lat,
         zoom: 12,
         bearing: 0,
         pitch: 0,

@@ -61,6 +61,15 @@ const HeroLinks = styled.a`
   }
 `
 
+const HeroLinksNormal = styled.a`
+  border-bottom: 2px solid var(--thirdy-color);
+  font-family: var(--primary-font);
+  :hover {
+    border-bottom: 2px solid transparent;
+    color: var(--thirdy-color);
+  }
+`
+
 const HeroFont = styled.span`
   font-family: var(--primary-font);
   font-weight: 600;
@@ -168,7 +177,7 @@ export default function Index({ posts, count, about }) {
                     />
                   </IntroImg>*/}
                   <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
-                    I' am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinks href="/map" title="Location tracking">tracking my location</HeroLinks> since 2021.
+                    I' am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
                 {/*<PostTypes>

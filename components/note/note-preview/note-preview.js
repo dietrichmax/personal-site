@@ -57,7 +57,7 @@ const NoteImage= styled(Image)`
   object-position: bottom;
 `
 
-const Hidden = styled.a`
+const Hidden = styled.div`
   display: none;
 `
 

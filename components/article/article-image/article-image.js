@@ -54,33 +54,33 @@ const ImagePlaceholder = styled.div`
 
 export default function PostImage({ preview, previewLarge, postData }) {
 
-const { title, slug, coverImage } = postData
+  const { title, slug, coverImage } = postData
 
   return (
     <> {preview ?
-      coverImage.coverImage ? (
+      coverImage ? (
           <CardItemImg 
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
             alt={title} 
             title={title} 
             width="350"
             height="130"
             className="u-photo"
             placeholder="blur"
-            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
+            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
           />
       ) : ( null ) : (
-        coverImage.coverImage ? (
+        coverImage ? (
           <Link href={`/articles/${slug}`} aria-label={title} passHref>
           <PostImg 
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
             alt={title} 
             title={title} 
             className="u-photo"
             width="1300"
             height="450"
             placeholder="blur"
-            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.coverImage.url}`}
+            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
           /> 
           </Link>
         ) : (

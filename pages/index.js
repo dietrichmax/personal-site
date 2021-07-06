@@ -235,7 +235,7 @@ export default function Index({ posts, count, about }) {
 
 export async function getStaticProps() {
   const locationData = (await getLocationData()) || []
-  const staticMap = await axios.get(`https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${locationData[0].lon,${locationData[0].lat},14,0,50/1280x645?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`)
+  const staticMap = await axios.get(`https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${locationData[0].lon},${locationData[0].lat},14,0,50/1280x645?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`)
   console.log(staticMap)
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []

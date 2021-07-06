@@ -502,7 +502,7 @@ const rewrites = {async rewrites() {
         
 
 module.exports = withPlugins([
-  redirects,
+  //redirects,
   withFonts,
   {images: {
     domains: [

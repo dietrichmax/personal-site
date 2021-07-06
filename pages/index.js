@@ -12,7 +12,7 @@ import { server } from "@/lib/utils/server"
 import { getAbout } from '@/lib/data/api/cms'
 import Link from "next/link"
 import axios from 'axios';
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities, getLocationData } from '@/lib/data/api/cms'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -234,6 +234,9 @@ export default function Index({ posts, count, about }) {
 }
 
 export async function getStaticProps() {
+  const locationData = (await getLocationData()) || []
+  const staticMap = await axios.get(`https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${locationData[0].lon,${locationData[0].lat},14,0,50/1280x645?access_token=${process.env.MAPBOX_API_TOKEN`)
+  console.log(staticMap)
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
@@ -282,6 +285,7 @@ export async function getStaticProps() {
     props: { 
       posts: sortedContent,
       //count: stats.posts.count,
+      https://api.mapbox.com/styles/v1/mapbox/light-v10/static/url-https%3A%2F%2Fdocs.mapbox.com%2Fapi%2Fimg%2Fcustom-marker.png(-76.9,38.9)/-76.9,38.9,15/500x300?access_token=pk.eyJ1IjoiZGF0dXJib2QiLCJhIjoiY2twemlqOGc2MG44NjJ3bzY1dnVpazJ0YSJ9._XL--dcUu17gHypMgL0dzQ
       about: about.about,
     },
   }

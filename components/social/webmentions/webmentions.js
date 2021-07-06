@@ -293,7 +293,7 @@ export default function Webmentions({ slug, preview }) {
             title="What's this?" 
             onClick={() => {!process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'WebMentionsInfo', 'Click on Info']) : null}}
             >
-            <FaRegQuestionCircle /> What’s this?</WebmentionsInfo>
+            <FaRegQuestionCircle />{/* What’s this?*/}</WebmentionsInfo>
         </WebmentionsHeader>
         
         <SendWebmentions>

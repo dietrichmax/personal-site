@@ -507,6 +507,7 @@ module.exports = withPlugins([
   {images: {
     domains: [
       "api.mxd.codes",
+      "api.mapbox.com",
       "source.unsplash.com",
       "webmention.io",
       "sld.codes",

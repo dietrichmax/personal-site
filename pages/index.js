@@ -1,18 +1,18 @@
 import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
-import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
+//import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import Layout from '@/components/layout/layout'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import { server } from "@/lib/utils/server"
 import { getAbout } from '@/lib/data/api/cms'
 import Link from "next/link"
-import axios from 'axios';
+//import axios from 'axios';
 import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities, getLocationData } from '@/lib/data/api/cms'
+import Image from 'next/image'
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -24,7 +24,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
   background-color: var(--secondary-color);
-`
+  `
 const Hero = styled.div`   
   display: flex;
   max-width: 1200px;
@@ -135,23 +135,18 @@ const AboutMeLink = styled.a`
   }
 `
 
-const IntroImg = styled.div`
-  float: right;
-  margin-left: var(--space);
-  ${media.lessThan('medium')`
-    margin-left: var(--space-sm);
-  `}
-  ${media.lessThan('small')`
-    width: 100%;
-    display: block;
-    margin-left: 0;
-    text-align: center;
-    margin-bottom: var(--space-sm);
-  `}
+const HeroImgWrapper = styled.div`
+  position: fixed;
+  overflow: hidden;
+  width: 100%;    
+  height: 100%;
+  z-index: -1;
 `
-export default function Index({ posts, count, about }) {
+export default function Index({ posts, count, about, location }) {
   const router = useRouter()
 
+  const staticMapApiUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${location.lon},${location.lat},12,0,50/1280x645?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`
+  
   return (
     <>
       <Layout color="var(--primary-color)">
@@ -164,18 +159,18 @@ export default function Index({ posts, count, about }) {
               title="Home"
               description="I currently work as a GeoData-Manager at RIWA where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
             />
-             <HeroWrapper>
+             <HeroWrapper location={location}>
+                  <HeroImgWrapper>
+                    <Image 
+                      alt=""
+                      src={staticMapApiUrl}
+                      layout="fill"
+                      objectFit="cover"
+                      quality={100}
+                    />
+                  </HeroImgWrapper>
               <Hero>
                 <HeroDescription>
-                  {/*<IntroImg>
-                    <Image 
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`} 
-                      width="275"
-                      height="275"
-                      alt={`Image of ${config.siteTitle}`}
-                      title={`Image of ${config.siteTitle}`}
-                    />
-                  </IntroImg>*/}
                   <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
                     I' am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
@@ -235,8 +230,6 @@ export default function Index({ posts, count, about }) {
 
 export async function getStaticProps() {
   const locationData = (await getLocationData()) || []
-  const staticMap = await axios.get(`https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${locationData[0].lon},${locationData[0].lat},14,0,50/1280x645?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`)
-  console.log(staticMap)
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
@@ -286,6 +279,7 @@ export async function getStaticProps() {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
+      location: locationData[0]
     },
   }
 }

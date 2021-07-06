@@ -146,8 +146,8 @@ export async function getStaticProps() {
   const content = (await getNowData()) || []
 
 
-  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[1].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
-  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[1].lon}&format=json&zoom=10`)
+  const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
+  const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[0].lon}&format=json&zoom=10`)
 
 
   return {

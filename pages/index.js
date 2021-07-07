@@ -145,8 +145,6 @@ const HeroImgWrapper = styled.div`
 export default function Index({ posts, count, about, location }) {
   const router = useRouter()
 
-  const staticMapApiUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v8/static/${location.lon},${location.lat},12,0,50/1280x645?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`
-  
   return (
     <>
       <Layout color="var(--primary-color)">
@@ -160,15 +158,6 @@ export default function Index({ posts, count, about, location }) {
               description="I currently work as a GeoData-Manager at RIWA where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
             />
              <HeroWrapper location={location}>
-                  <HeroImgWrapper>
-                    <Image 
-                      alt=""
-                      src={staticMapApiUrl}
-                      layout="fill"
-                      objectFit="cover"
-                      quality={100}
-                    />
-                  </HeroImgWrapper>
               <Hero>
                 <HeroDescription>
                   <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>

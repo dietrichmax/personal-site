@@ -13,6 +13,8 @@ import {
     getMatomoPageViews,
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
+    getMatomoSEOStats,
+    getMatomoVisitsSummary
 } from "@/lib/data/api/analytics"
 import {
   getPostsCount,
@@ -305,7 +307,8 @@ export default function Dashboard({
     notesCount,
     locationsCount,
     activitiesCount,
-    linksCount
+    linksCount,
+    visitsSummary
 }) {
     const router = useRouter()
     const [liveViews, setLiveViews] = useState(0);
@@ -356,12 +359,13 @@ export default function Dashboard({
 )
     const normalisedMax = Math.max.apply(Math, normalisedViews)
 
+    const getTimeOnSite = (time) => {   
+        const minutes = Math.floor(time / 60);
+        const seconds = time - minutes * 60;
+        const timeOnSite = `${minutes} min ${seconds} s`
+        return timeOnSite
+    }
 
-    const visits = Object.entries(allVisits)[0].toString().replace("value,","")
-    const visitTime = (Object.entries(visitDuration)[0]).toString().replace("value,","")
-    
-    /*const domainAge = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {addSuffix: true})
-    console.log(domainAge)*/
     return (
         <>
             <Layout>
@@ -392,16 +396,24 @@ export default function Dashboard({
                                         <GridStatsDescription>Page Views</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{visits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStats>{visitsSummary.nb_visits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Sessions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{(visitTime/60).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStats>{getTimeOnSite(visitsSummary.avg_time_on_site)}</GridStats>
+                                        <GridStatsDescription>Avg time on site</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{visitsSummary.bounce_rate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStatsDescription>Bounce Rate</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <StatsSmallGrid>
+                                        <GridStats>{(visitsSummary.sum_visit_length/60).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Min Visit duration</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{subscribersCount}</GridStats>
-                                        <GridStatsDescription>Newsletter Subscribers</GridStatsDescription>
+                                        <GridStats>{webmentionsCount}</GridStats>
+                                        <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
                                 </StatsGrid>
 
@@ -438,33 +450,28 @@ export default function Dashboard({
                                             <GridStatsDescription>Different Topics</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
+                                    <StatsSmallGrid>
+                                        <GridStats>{subscribersCount}</GridStats>
+                                        <GridStatsDescription>Newsletter Subscribers</GridStatsDescription>
+                                    </StatsSmallGrid>
+                                    <Link href="/map" passHref>
+                                        <StatsSmallGrid>
+                                            <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                            <GridStatsDescription>Locations tracked</GridStatsDescription>
+                                        </StatsSmallGrid>
+                                    </Link>
                                 </StatsGrid>
                             </GeneralStats>
                                 
                             <GeneralStats>
                                 <StatsGridMedium>
-                                    <GridMediumTitle>Even more Stats</GridMediumTitle>
-                                    
-                                        <BottomStatsGrid>
-                                            <GridStats>{webmentionsCount}</GridStats>
-                                            <GridStatsDescription>Webmentions</GridStatsDescription>
+                                    <GridMediumTitle>SEO Stats</GridMediumTitle>
+                                    {seoStats.map((seo,i) => (
+                                        <BottomStatsGrid key={i}>
+                                            <GridStats>{seo.rank}</GridStats>
+                                            <GridStatsDescription>{seo.label}</GridStatsDescription>
                                         </BottomStatsGrid>
-                                        <Link href="/map" passHref>
-                                            <BottomStatsGrid>
-                                                <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
-                                                <GridStatsDescription>Locations tracked</GridStatsDescription>
-                                            </BottomStatsGrid>
-                                        </Link>
-                                        <Link href="https://www.alexa.com/siteinfo/mxd.codes" passHref>
-                                            <BottomStatsGrid>
-                                                <GridStats>981,688</GridStats>
-                                                <GridStatsDescription>Alexa Rank</GridStatsDescription>
-                                            </BottomStatsGrid>
-                                        </Link>
-                                        <BottomStatsGrid>
-                                            <GridStats>domainAge</GridStats>
-                                            <GridStatsDescription>Domain Age</GridStatsDescription>
-                                        </BottomStatsGrid>
+                                    ))}
                                 </StatsGridMedium>
                             </GeneralStats>
 
@@ -687,7 +694,9 @@ export async function getStaticProps() {
     const allVisits = (await getMatomoAllVisits()) || []
     const visitDuration = (await getMatomoSumVisitDuration()) || []
     const allWebmentions = (await fetchWebmentions()) || []
-
+    const seoStats = (await getMatomoSEOStats()) || []
+    const visitsSummary = (await getMatomoVisitsSummary()) || []
+    
     return {
         revalidate:  86400,
         props: {
@@ -704,6 +713,8 @@ export async function getStaticProps() {
             allVisits,
             visitDuration,
             allWebmentions,
+            seoStats,
+            visitsSummary
         },
     }
 }

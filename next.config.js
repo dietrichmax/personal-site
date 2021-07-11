@@ -510,14 +510,7 @@ module.exports = withPlugins([
       "api.mapbox.com",
       "source.unsplash.com",
       "webmention.io",
-      "sld.codes",
-      "mxb.dev",
-      "rusingh.com",
-      "matthiasott.com",
-      "tantek.com",
-      "snarfed.org",
       "openweathermap.org",
-      "aaronparecki.com",
     ],
   }}
   ],{webpack (config, { dev, isServer }) {

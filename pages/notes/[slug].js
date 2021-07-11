@@ -119,7 +119,7 @@ export default function Note({ note }) {
                     <NoteImageWrapper key={i}> 
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
                         <NoteImage
-                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.formats.large.url}`}
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}
                           alt={`${i}. cover image`}
                           title={`${note.name}`}
                           className="u-photo" 

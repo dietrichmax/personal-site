@@ -48,7 +48,6 @@ const NotesDate = styled.p`
   background-color: var(--gray-light);
   mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
-
   `}
 `
 
@@ -93,17 +92,16 @@ export default function NotePreview({ note }) {
 
           <NotesContent className="e-content">
             {note.coverMedium[0] ? (
-                  
               <NoteBodyWrapper>
                 <NoteImageWrapper>
                   <NoteImage
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].formats.small.url}`}
                     alt={`Cover medium of note ${note.date}`}
                     width="357"
                     height="300"
                     className="u-photo" 
                     placeholder="blur"
-                    blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].url}`}
+                    blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.coverMedium[0].formats.small.url}`}
                   /> 
                 </NoteImageWrapper>
                 <PostMeta post={note} slug={slug}/>

@@ -14,9 +14,10 @@ const NavItems = styled.li`
 `
 
 
-const NavItem = styled.a`
+const NavItem = styled.ul`
   transition: none;
   color: ${props => (props.color ? `${props.color}`  : "color: var(--gray);")};
+  padding-left: 0;
   :hover { 
     text-decoration: none;
     background-image: linear-gradient(var(--secondary-color),var(--secondary-color));

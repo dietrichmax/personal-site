@@ -24,30 +24,30 @@
     "test": "npx next lint"
   },
   "dependencies": {
-    "@prisma/client": "2.25.0",
+    "@prisma/client": "2.26.0",
     "@remy/webmention": "^1.4.5",
     "@socialgouv/matomo-next": "^1.2.2",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "cloc": "^2.8.0",
     "date-fns": "2.22.1",
-    "deck.gl": "^8.4.18",
+    "deck.gl": "^8.4.20",
     "form-data": "^4.0.0",
     "garmin-connect": "^1.4.0",
     "globby": "^11.0.4",
     "leaflet": "^1.7.1",
     "mapbox-gl": "@1.x",
-    "maplibre-gl": "^1.14.1-rc.2",
+    "maplibre-gl": "^1.15.1",
     "next": "^11.0.1",
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
     "object-hash": "^2.2.0",
-    "preact": "^10.5.13",
+    "preact": "^10.5.14",
     "preact-compat": "^3.19.0",
     "preact-render-to-string": "^5.1.19",
     "prettier": "2.3.2",
-    "prisma": "2.25.0",
-    "prismjs": "^1.23.0",
+    "prisma": "2.26.0",
+    "prismjs": "^1.24.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-emoji-render": "^1.2.4",
@@ -68,7 +68,7 @@
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",
     "eslint-config-nextjs": "1.0.7",
@@ -80,6 +80,6 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "pretty-quick": "^3.1.1",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   }
 }

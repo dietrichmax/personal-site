@@ -379,11 +379,11 @@ export default function Dashboard({
                         />
                         <StyledReactTooltip />
                         <PageTitle>Dashboard</PageTitle>
-                        <SubTitle>Stats from Matomo, Strapi, Webmentions and more</SubTitle>
+                        <SubTitle>Statistics from Matomo, Strapi, Webmentions and more</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>
-                                    <GridTitle>Site Stats</GridTitle>
+                                    <GridTitle>Web Analytics</GridTitle>
                                     <StatsLargeGrid>
                                         {liveViews > 1 ? 
                                             <GridStats>{liveViews} people</GridStats> :

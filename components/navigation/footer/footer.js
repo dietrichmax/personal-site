@@ -6,7 +6,7 @@ import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
 import { getNowData } from "@/lib/data/api/cms";
-import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle, FaSteam } from 'react-icons/fa';
 import { SiGarmin, SiStrava } from 'react-icons/si';
 // styled components
 
@@ -344,6 +344,9 @@ export default function Footer() {
               </FooterItemSocials>
               <FooterItemSocials>
                 <a href={config.socials.strava} title="Max Dietrich on Strava"><SiStrava/> Strava</a>
+              </FooterItemSocials>
+              <FooterItemSocials>
+                <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
               </FooterItemSocials>
               <FooterItemSocials>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>

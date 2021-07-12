@@ -79,7 +79,7 @@ export default function Header({ color }) {
 
           <Logo color={color}>
             <Link rel="home" href="/" passHref>
-              <a className="u-url" rel="me" title={config.siteTitle}>
+              <a className="u-url" rel="me" title={config.siteTitleAlt}>
                 <LogoName className="p-name" >{config.siteTitle}</LogoName>
                 <br/>
                 <LogoDescription>{config.siteSubtitle}</LogoDescription>

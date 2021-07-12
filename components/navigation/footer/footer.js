@@ -214,7 +214,7 @@ export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
   const [loadedData, setLoadedData] = useState([])
   const [about, setAbout] = useState([])
-  const [search, setSearch] = useState(`site:${config.domain}`)
+  const [search, setSearch] = useState("")
 
   const getData = () => {
     const requestOptions = {
@@ -301,7 +301,7 @@ export default function Footer() {
             <SearchButton 
               type="submit search"
               aria-label="Search"
-              onClick={() => window.open(`https://www.ecosia.org/search?q=${search}`)}
+              onClick={() => window.open(`https://www.ecosia.org/search?q=site:${config.domain}+${search}`)}
               title="Search"
             >
             Search</SearchButton>

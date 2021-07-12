@@ -82,7 +82,9 @@ const WebmentionTitle = styled.h2`
   margin-bottom: var(--space-sm);
 `
 
-const WebmentionDescription = styled.p``
+const WebmentionDescription = styled.p`   
+  margin-bottom: var(--space-sm);
+`
 
 const WebmentionLink = styled.a`
   color: var(--text-color);

@@ -11,7 +11,7 @@ export default function hCard() {
         <Hidden> 
           <div className="h-card p-author">
             <img className="u-photo" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}  /> 
-            <a className="p-name u-url" href="https://mxd.codes">Max Dietrich</a>
+            <a className="p-name u-url" href={config.siteUrl}>{config.siteTitleAlt}</a>
           </div>
         </Hidden> 
     )

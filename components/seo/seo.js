@@ -12,7 +12,6 @@ const SEO = ({
   aboutSchema
 }) => {
 
-  title = title ? title : config.siteTitle
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl
   image = image ? `${image.startsWith("/") ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ""}${image}` : `${config.siteUrl}${config.siteLogo}`
@@ -153,7 +152,7 @@ const SEO = ({
     <Head>
     {/* META TAGS */}
       {/* General tags */}
-      <title>{title} - {config.siteTitle}</title>
+      <title>{title ? `${title} - {config.siteTitle}` : config.siteTitle}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

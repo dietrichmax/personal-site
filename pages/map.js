@@ -6,7 +6,7 @@ import media from 'styled-media-query';
 import Livemap from "@/components/maps/deckgl/livemap"
 import { getLocationsCount } from "@/lib/data/api/cms"
 import prisma from '@/lib/utils/prisma'
-import { server } from "@/lib/utils/server"
+import { server } from "@/lib/utils/providers"
 import axios from 'axios';
 
 const MapContainer = styled.div`

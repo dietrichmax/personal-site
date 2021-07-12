@@ -94,7 +94,7 @@ const GridTitle = styled.p`
 const GridStats = styled.p`
     padding-top: var(--space);
     display: block;
-    color: var(--thirdy-color);
+    color: var(--secondary-color);
     font-weight: 700;
     font-size: 1.5rem;
     text-transform: capitalize;

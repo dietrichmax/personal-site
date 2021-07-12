@@ -3,7 +3,6 @@ import Link from 'next/link'
 import config from "@/lib/data/SiteConfig";
 import media from 'styled-media-query';
 import React, { useEffect }  from "react";
-//import ThemePicker from "@/components/themes/themePicker";
 import Nav from "@/components/navigation/nav"
 
 const HeaderWrapper = styled.header`
@@ -88,7 +87,7 @@ export default function Header({ color }) {
           </Logo>
 
           <Nav color={color} />
-        
+
         </MainNav>
 
         </Navigation>

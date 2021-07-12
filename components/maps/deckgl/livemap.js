@@ -32,7 +32,7 @@ export default function Livemap({
           radiusScale: 3,
           radiusMinPixels: 0.65,
           getPosition: d => [d.lon, d.lat, 0 /*d.alt*/],
-          getFillColor: [200, 85, 23],
+          getFillColor: d => [Math.sqrt(d.vel*20), 184, 50],
         })
     ];
 

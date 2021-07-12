@@ -67,9 +67,9 @@ const GlobalStyle = createGlobalStyle`
     --gray-light: #e2ebf5;  
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
-    --primary-color: #0c132b;
-    --secondary-color: #5EA9D4;
-    --thirdy-color: #c85517;
+    --primary-color: #051129;
+    --secondary-color: #5BB832;
+    --thirdy-color: #c2c7c1;
     --body-bg: #f5f8fa; 
     --content-bg: #fff;
     --bg-light: var(--gray-light);
@@ -83,8 +83,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-font: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
-    --link-color: #1674ac;
-    --link-color-hover: var(--gray);
+    --link-color: var(--primary-color);
+    --link-color-hover: var(--thirdy-color);
     --text-color: #14151a;
     --text-light: var(--gray-light);
     --text-dark: var(--gray-dark);

@@ -26,7 +26,7 @@ const HeroWrapper = styled.div`
   background-color: var(--secondary-color);
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: ${props => props.location ? `url("https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/${props.location.lon},${props.location.lat}/1280x700?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN})` : ""} ;
+  background-image: ${props => props.location ? url(`https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/${props.location.lon},${props.location.lat}/1280x700?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`) : ""};
   background-blend-mode: overlay;
   `
 const Hero = styled.div`   

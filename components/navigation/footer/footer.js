@@ -97,7 +97,7 @@ const FooterColumnPosts = styled.nav`
 const FooterColumnTitle = styled.p`
   font-weight: 600;
   margin-bottom: .5rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 `
 
 const FooterColumnDescription = styled.div`

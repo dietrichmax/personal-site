@@ -5,9 +5,9 @@ const themes = {
       thirdyColor: '#37364d',
     },
     dark: {
-        primaryColor: '#d6d8ec',
-        secondaryColor: '#673a6d',
-        thirdyColor: '#37364d',
+      primaryColor: '#d6d8ec',
+      secondaryColor: '#673a6d',
+      thirdyColor: '#37364d',
     },
   }
   

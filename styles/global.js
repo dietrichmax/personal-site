@@ -78,8 +78,8 @@ const GlobalStyle = createGlobalStyle`
     --gray-light: #e2ebf5;  
     --gray: #aeb3b9;
     --gray-dark: #3a3d4d;
-    --primary-color: #A1B4EC;
-    --secondary-color: #5BB832;
+    --primary-color: #051129;
+    --secondary-color: #A1B4EC;
     --thirdy-color: #c2c7c1;
     --body-bg: #f5f8fa; 
     --content-bg: #fff;

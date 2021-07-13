@@ -6,7 +6,7 @@ import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/SiteConfig"
 import { ThemeProvider } from 'styled-components'
 import { themes } from '@/styles/themes'
-import useDarkMode from 'use-dark-mode'
+i//mport useDarkMode from 'use-dark-mode'
 
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
@@ -75,10 +75,10 @@ class MyApp extends App {
           <link rel="preconnect" href="https://use.typekit.net" crossOrigin="true" />,
           <link rel="stylesheet" href="https://use.typekit.net/xhe6fwq.css" />*/}
         </Head>
-        <ThemeProvider theme={themes}>
+        {/*<ThemeProvider theme={themes}>*/}
           <GlobalStyle/>
           <Component {...pageProps} />
-        </ThemeProvider>
+        {/*</ThemeProvider>*/}
       </>
     )
   }

@@ -50,17 +50,28 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: var(--body-bg);
     font-size: 16px;
-    font-weight: 400;
-    font-style: normal; 
     line-height: 1.5;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
     font-family: var(--primary-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     word-break: break-word;
+    letter-spacing: normal;
     hyphens: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
   }
   img {
     display: block;
     max-width: 100%;
     height: auto;
+  }
+  img[src*=base64\\,] {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
   }
   :root { 
     --gray-extra-light: #f4f6f9; 

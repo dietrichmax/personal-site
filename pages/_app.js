@@ -6,7 +6,7 @@ import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/SiteConfig"
 import { ThemeProvider } from 'styled-components'
 import { themes } from '@/styles/themes'
-i//mport useDarkMode from 'use-dark-mode'
+//import useDarkMode from 'use-dark-mode'
 
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"

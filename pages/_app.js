@@ -4,6 +4,9 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/SiteConfig"
+import { ThemeProvider } from 'styled-components'
+import { themes } from '@/styles/themes'
+import useDarkMode from 'use-dark-mode'
 
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
@@ -14,12 +17,16 @@ const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 class MyApp extends App {
+  const darkMode = useDarkMode(true)
+  const theme = darkMode.value ? darkTheme : lightTheme
+  
   componentDidMount() {
     if (window.location.href.includes("mxd.codes")) {
       init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID }), 
       window._paq.push(['enableHeartBeatTimer']);
     }
   }
+  
   render() {
     const { Component, pageProps } = this.props;
     return (
@@ -68,8 +75,10 @@ class MyApp extends App {
           <link rel="preconnect" href="https://use.typekit.net" crossOrigin="true" />,
           <link rel="stylesheet" href="https://use.typekit.net/xhe6fwq.css" />*/}
         </Head>
-        <GlobalStyle/>
-        <Component {...pageProps} />
+        <ThemeProvider theme={themes}>
+          <GlobalStyle/>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </>
     )
   }

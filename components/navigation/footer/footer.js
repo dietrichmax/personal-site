@@ -97,7 +97,7 @@ const FooterColumnPosts = styled.nav`
 const FooterColumnTitle = styled.p`
   font-weight: 600;
   margin-bottom: .5rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 `
 
 const FooterColumnDescription = styled.div`
@@ -152,7 +152,7 @@ const FooterNotice = styled.p`
 
 const FooterLink = styled.a`
   color: var(--text-color);
-  border-bottom: 1px solid var(--link-color);
+  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
   :hover {
     border-bottom: 1px solid transparent;

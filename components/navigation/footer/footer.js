@@ -136,7 +136,7 @@ const FooterItem = styled.li`
 `
 const FooterItemLink = styled(Link)`
   :hover { 
-    color: var(--gray-extra-light);
+    color: var(--secondary-color);
   }
 `
 

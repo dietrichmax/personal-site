@@ -6,7 +6,7 @@ const GridContainer = styled.ol`
   padding-left: var(--space);
   padding-right: var(--space);
   grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: var(--space);
+  gap: var(--space-lg);
   display: grid;
   margin-bottom: var(--space-lg);
   ${media.lessThan('medium')`

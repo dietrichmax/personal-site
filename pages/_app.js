@@ -36,11 +36,9 @@ class MyApp extends App {
 
           {/* DNS Prefetch*/} 
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
-          <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
           <link rel="preconnect" href="https://api.mxd.codes" crossOrigin="true"/>,
-          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="true"/>,
           <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />,
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
@@ -50,30 +48,24 @@ class MyApp extends App {
           <link rel="token_endpoint" href="https://mxd.codes/token" />
           <link rel="webmention" href="https://webmention.io/mxd.codes/webmention" />,
           <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
-          {/* Web Actions 
-          <script type="text/javascript" src="/scripts/indieconfig.js" /> 
-          <script type="text/javascript" src="/scripts/webaction.js" />*/}
+
           {/* Me */}
           <link rel="me" href={config.socials.mail} />
           <link rel="me" href={config.socials.github} />
           <link rel="me" href={config.socials.twitter} />
           <link rel="me" href={config.socials.linkedin} />
           <link rel="me" href={config.socials.instagram} />
-          {/* Leaflet*/}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>
       
           {/* Stylesheets */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
           <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css' rel='stylesheet' />
+          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>*/}
         
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`${config.siteUrl}/articles/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Notes`} href={`${config.siteUrl}/notes/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Links`} href={`${config.siteUrl}/links/feed.xml`} />
-          {/* Typekit Font 
-          <link rel="dns-prefetch" href="https://use.typekit.net" />,
-          <link rel="preconnect" href="https://use.typekit.net" crossOrigin="true" />,
-          <link rel="stylesheet" href="https://use.typekit.net/xhe6fwq.css" />*/}
+
         </Head>
         {/*<ThemeProvider theme={themes}>*/}
           <GlobalStyle/>

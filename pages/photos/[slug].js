@@ -7,6 +7,7 @@ import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig";
 import Webmentions from "@/components/social/webmentions/webmentions"
 import Image from "next/image"
+import Link from "next/link"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"

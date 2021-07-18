@@ -30,9 +30,6 @@ const GlobalStyle = createGlobalStyle`
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
-  }
   body {
     color: var(--text-color);
   }

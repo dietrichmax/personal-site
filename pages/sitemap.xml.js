@@ -1,7 +1,7 @@
 import React from 'react';
 import { format } from 'date-fns'
 import { getAllPosts, getAllPages, getAllTags, getAllNotes, getAllRecipes, getAllPhotos } from '@/lib/data/external/cms'
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 
 //const globby = require('globby');
 

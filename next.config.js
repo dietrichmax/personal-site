@@ -504,6 +504,10 @@ const rewrites = {async rewrites() {
 module.exports = withPlugins([
   redirects,
   withFonts,
+  {i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US'
+  }},
   {images: {
     domains: [
       "api.mxd.codes",

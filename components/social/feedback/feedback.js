@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import Link from "next/link"
 import React, { useState } from "react"
@@ -108,9 +108,9 @@ export default function SocialShare({ slug, syndicationLinks }) {
         </a>
       </Actions>
       <Actions do="like" with={url}>
-        <a className="action like" title="Like this post" onClick={sendLike()} >
+        <div className="action like" title="Like this post" onClick={sendLike()} >
           <BsStar/> Like
-        </a>
+        </div>
       </Actions>
       <Actions do="reply" with={url}>
         <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">

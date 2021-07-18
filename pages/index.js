@@ -3,7 +3,7 @@ import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
 import PhotoPreview from '@/components/photo/photo-preview'
 import Layout from '@/components/layout/layout'
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';

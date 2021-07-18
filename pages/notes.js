@@ -1,7 +1,7 @@
 
 import Layout from '@/components/layout/layout'
 import { getAllNotes } from '@/lib/data/external/cms'
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'

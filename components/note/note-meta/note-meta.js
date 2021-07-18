@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Image from "next/image"
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { parseISO, format } from 'date-fns'
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 
 const MetaWrapper = styled.div`
   display: inline-block;

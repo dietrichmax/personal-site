@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
 import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
@@ -297,12 +297,12 @@ export default function Webmentions({ slug, preview }) {
         </WebmentionsHeader>
         
         <SendWebmentions>
-          <SendText>Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
+          <SendText for="webmention">Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
           <Input
-            type="webmention-source"
-            name="webmention-source"
-            id="webmention-source"
-            label="webmention-source-input"
+            type="webmention"
+            name="webmention"
+            id="webmention"
+            label="webmention-input"
             placeholder="URL / permalink of your response"
             onChange={(e) => setSourceUrl(e.target.value)}
           />

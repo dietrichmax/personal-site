@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image'
 import Link from 'next/link'
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 
 const AuthorWrapper = styled.div`
   display: flex;

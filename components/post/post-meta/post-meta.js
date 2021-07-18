@@ -4,7 +4,7 @@ import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
 import { parseISO, format } from 'date-fns'
 import HCard from "@/components/microformats/h-card"
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import Webmentions from "@/components/social/webmentions/webmentions"
 
 const Meta = styled.div`

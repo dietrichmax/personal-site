@@ -4,7 +4,7 @@ import media from "styled-media-query"
 import PostTags from "@/components/tags/tags"
 import Date from "@/components/date/date"
 import HCard from "@/components/microformats/h-card"
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import PostMeta from '@/components/post/post-meta/post-meta'
 import { Card } from "@/styles/templates/card"
 

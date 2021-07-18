@@ -1,6 +1,6 @@
 import { FaTwitter, FaInstagram, FaReddit } from 'react-icons/fa';
 import styled from 'styled-components';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 
 
 const SyndList = styled.ol`

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import React, { useEffect }  from "react";
 import Nav from "@/components/navigation/nav"

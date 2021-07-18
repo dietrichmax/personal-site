@@ -8,7 +8,7 @@ import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import ReactMarkdown from "react-markdown"
 import markdownStyles from '@/styles/markdown-styles.module.css'
 import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';

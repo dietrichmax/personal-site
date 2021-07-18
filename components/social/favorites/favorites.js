@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
 

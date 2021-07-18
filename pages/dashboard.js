@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Layout from "@/components/layout/layout"
-import config from "../lib/data/SiteConfig"
+import config from "../lib/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "@/components/seo/seo"
 import { useRouter } from "next/router"

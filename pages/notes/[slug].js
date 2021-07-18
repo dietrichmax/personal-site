@@ -4,7 +4,7 @@ import { getAllNotes, getNote } from '@/lib/data/external/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"

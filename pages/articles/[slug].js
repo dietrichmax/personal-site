@@ -8,7 +8,7 @@ import { getAllPosts, getPostAndMorePosts } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/page-title'
 import markdownToHtml from '@/lib/utils/markdownToHtml'
 import styled from 'styled-components';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import ReadingProgress from "@/components/reading-progress/reading-progress.js"
 import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"

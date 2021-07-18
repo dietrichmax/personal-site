@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import media from "styled-media-query"
 import Image from "next/image"
 import RecipeBody from "@/components/note/note-body/note-body"
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import { parseISO, format } from 'date-fns'
 const slugify = require('slugify')
 import HCard from "@/components/microformats/h-card"

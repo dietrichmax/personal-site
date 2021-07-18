@@ -4,7 +4,7 @@ import { getAllRecipes, getRecipe } from '@/lib/data/external/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import RecipeContent from "@/components/article/article-body/article-body"
 import Title from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"

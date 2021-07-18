@@ -4,7 +4,7 @@ import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
 import { getTag, getAllTags } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/tag-title'
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import styled from 'styled-components';
 import SubTitle from '@/components/title/sub-title'
 import SEO from '@/components/seo/seo'

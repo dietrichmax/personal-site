@@ -3,11 +3,12 @@ import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import { ThemeProvider } from 'styled-components'
 import { themes } from '@/styles/themes'
 //import useDarkMode from 'use-dark-mode'
 
+import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
 import "@/public/fonts/Cormorant_Garamond/style.css"
@@ -58,7 +59,7 @@ class MyApp extends App {
       
           {/* Stylesheets */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-          <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css' rel='stylesheet' />
+          {/*<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css'  />*/}
           {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>*/}
         
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />

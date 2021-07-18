@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
@@ -262,32 +262,32 @@ export default function Footer() {
         <FooterBar>
 
           <SearchWrapper >
-            <label>
+            <label for="search-website">
               <Input 
                 type="text"   
-                name="search"
-                id="search"
+                name="search-website"
+                id="search-website"
                 value={search}
                 label="search-input"
                 onChange={(e) => setSearch(e.target.value)}
               /> 
             </label>
             <Button 
-              type="submit search"
-              aria-label="Search"
+              type="button"
+              name="search"
+              id="search"
+              aria-label="search"
               onClick={() => window.open(`https://www.ecosia.org/search?q=site:${config.domain}+${search}`)}
-              title="Search"
+              title="search"
             >
             Search</Button>
           </SearchWrapper>
 
-          <FooterMainNav>
+          {/*<FooterMainNav>
             {headerItems.map((item, i) => (
-              <FooterMainNavItem key={i}>
-                <FooterMainNavLink href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
-              </FooterMainNavItem>
+              <FooterMainNavLink key={i}href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
             ))}
-          </FooterMainNav>
+            </FooterMainNav>*/}
 
 
         </FooterBar>

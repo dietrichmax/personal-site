@@ -1,5 +1,5 @@
 import React from 'react';
-import config from "@/lib/data/SiteConfig"
+import config from "@/lib/data/internal/SiteConfig"
 import { getAllPhotos } from '@/lib/data/external/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()

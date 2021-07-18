@@ -24,6 +24,9 @@ const PageWrapper = styled.div`
 const LinksLink = styled.p`
   cursor: pointer;
   font-family: var(--secondary-font);
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-color);
+  font-style: italic;
   max-width: 1200px;
   margin: var(--space-lg) auto;
   padding-left: var(--space);
@@ -56,7 +59,7 @@ export default function Note({ link }) {
               date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
-            <a href={link.link} rel="nofollow"><LinksLink title={link.title}className="u-bookmark-of h-cite">{link.link}</LinksLink></a>
+            <LinksLink href={link.link} rel="nofollow" title={link.title}className="u-bookmark-of h-cite">{link.link}</LinksLink>
             <PageWrapper>
               <PageBody className="e-content" content={link.description} />
 

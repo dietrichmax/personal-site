@@ -54,14 +54,16 @@ export default function Photo({ photo }) {
                 {photo.photo ? photo.photo.map((photo,i) => {
                   return (
                     <PhotoItem key={i}>
-                      <Image
-                        key={photo.id}
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
-                        alt={photo.title}
-                        width="1136"
-                        height={parseInt((1136/photo.width)*photo.height)}
-                        className="u-photo" 
-                      /> 
+                      <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`} passHref>
+                        <Image
+                          key={photo.id}
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
+                          alt={photo.title}
+                          width="1136"
+                          height={parseInt((1136/photo.width)*photo.height)}
+                          className="u-photo" 
+                        /> 
+                      </Link>
                     </PhotoItem> 
                   )
                 }) : console.log("no images found")}

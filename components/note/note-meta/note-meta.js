@@ -53,14 +53,14 @@ const Temperature = styled.span`
 
 export default function NoteMeta({ note }) {
 
-  const date = note.updated_at ? note.updated_at : note.created_at
+  const date = note.updated_at ? note.updated_at : note.published_at
 
   return (
     <MetaWrapper>
       <MetaOuterWrapper>
 
         <MetaInnerWrapper>
-            <MetaItem><Title><Time>{format(parseISO(note.date), config.dateFormat)}</Time></Title> |</MetaItem>
+            <MetaItem><Title><Time>{format(parseISO(date), config.dateFormat)}</Time></Title> |</MetaItem>
             <MetaItem><Location className="p-location" title="View this location in OpenStreetMap" href={`http://www.openstreetmap.org/?mlat=${note.lat}&mlon=${note.lon}&zoom=12`}><FaMapMarkerAlt /></Location> | </MetaItem>
             <MetaItem>{note.weather_icon ? 
               <Weather title={note.weather_description}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllPosts, getAllNotes, getAllLinks, getAllRecipes } from '@/lib/data/api/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllRecipes } from '@/lib/data/external/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 

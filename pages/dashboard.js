@@ -15,7 +15,7 @@ import {
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
     getMatomoVisitsSummary
-} from "@/lib/data/api/analytics"
+} from "@/lib/data/external/analytics"
 import {
   getPostsCount,
   getTagsCount,
@@ -24,9 +24,10 @@ import {
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
-} from "@/lib/data/api/cms"
-import { fetchWebmentions } from "@/lib/data/api/webmentions"
-import { getGitHubStats } from "@/lib/data/api/github"
+  getPhotosCount,
+} from "@/lib/data/external/cms"
+import { fetchWebmentions } from "@/lib/data/external/webmentions"
+import { getGitHubStats } from "@/lib/data/external/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/lib/data/count_total.json"
 import SubTitle from '@/components/title/sub-title'
@@ -301,14 +302,13 @@ export default function Dashboard({
     subscribersCount,
     githubStats,
     seoStats,
-    allVisits,
-    visitDuration,
     allWebmentions,
     notesCount,
     locationsCount,
     activitiesCount,
     linksCount,
-    visitsSummary
+    visitsSummary,
+    photosCount
 }) {
     const router = useRouter()
     const [liveViews, setLiveViews] = useState(0);
@@ -685,6 +685,7 @@ export async function getStaticProps() {
     const tagsCount = (await getTagsCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
     const notesCount = (await getNotesCount()) || []
+    const photosCount = (await getPhotosCount()) || []
     const activitiesCount = await getActivitiesCount()
     const locationsCount = (await getLocationsCount()) || []
     const linksCount = (await getLinksCount()) || []
@@ -714,7 +715,8 @@ export async function getStaticProps() {
             visitDuration,
             allWebmentions,
             seoStats,
-            visitsSummary
+            visitsSummary,
+            photosCount
         },
     }
 }

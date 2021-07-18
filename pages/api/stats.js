@@ -6,7 +6,7 @@ import {
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
-} from "@/lib/data/api/cms"
+} from "@/lib/data/external/cms"
 
 export default async (_, res) => {
   const postsCount = (await getPostsCount()) || []

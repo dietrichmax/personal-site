@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
-import { getAllNotes, getNote } from '@/lib/data/api/cms'
+import { getAllNotes, getNote } from '@/lib/data/external/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
@@ -8,8 +8,6 @@ import config from "@/lib/data/SiteConfig";
 import NoteBody from "@/components/note/note-body/note-body"
 import NoteTitle from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"
-import Image from "next/image"
-import Link from"next/link"
 import HCard from "@/components/microformats/h-card"
 import NoteTags from "@/components/tags/tags"
 import NoteMeta from "@/components/note/note-meta/note-meta"
@@ -26,19 +24,6 @@ const NoteWrapper = styled.div`
   `}
 `
 
-const NoteImageWrapper = styled.div`
-  position: relative;
-  margin-bottom: var(--space-sm);
-`
-
-
-const NoteImage = styled(Image)`
-  position: absolute;
-  cursor: pointer;
-  border-radius: var(--border-radius);
-  object-fit: contain;
-  margin: 0;
-`
 
 const NotesItem = styled.div`
   display: flex;
@@ -46,18 +31,6 @@ const NotesItem = styled.div`
   justify-content: space-between;
 `
 
-const NoteDiv = styled.ol`
-  font-family: var(--secondary-font);
-  font-size: 14px;
-  display: flex;
-  margin-top: var(--space-sm);
-  justify-content: space-between;
-  list-style: none;
-  padding-inline-start 0;
-`
-
-const MetaItem = styled.li`
-`
 
 const ContentWrapper = styled.div`
   margin-top: var(--space-sm);
@@ -95,7 +68,7 @@ export default function Note({ note }) {
               title={note.title}
               description={note.description}
               slug={`/notes/${note.id}`}
-              date={note.date}
+              date={note.updated_at ? note.updated_at : note.published_at}
               postSEO
             />
             <NoteWrapper>
@@ -114,23 +87,6 @@ export default function Note({ note }) {
                 </Hidden>            
                  
                 <ContentWrapper className="e-content">
-                  {note.coverMedium ? note.coverMedium.map((note, i) => {
-                    return (
-                    <NoteImageWrapper key={i}> 
-                      <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`} passHref >
-                        <NoteImage
-                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${note.url}`}
-                          alt={`${i}. cover image`}
-                          title={`${note.name}`}
-                          className="u-photo" 
-                          width="1200"
-                          height={(1200/note.width)*note.height}
-                          layout="responsive"
-                        />   
-                      </Link> 
-                    </NoteImageWrapper> 
-                    )
-                  }): null }
 
                 <NotesContent>
                   {note.content ? 

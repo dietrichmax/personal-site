@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/layout'
-import { getAllLinks } from '@/lib/data/external/cms'
+import { getAllPhotos } from '@/lib/data/external/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
@@ -7,20 +7,14 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import Grid from '@/components/grid/grid'
-import LinkPreview from "@/components/link/link-preview/link-preview"
+import PhotosPreview from "@/components/photo/photo-preview"
 
-const LinksContainer = styled.div`
+const PhotosContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
 `
 
-const LinksGrid = styled.ol`
-  grid-column: span 3/span 3;
-  list-style: none;
-  padding-inline-start: 0;
-`
-
-export default function Links({ allLinks }) {
+export default function Photos({ allPhotos }) {
   const router = useRouter()
 
   return (
@@ -32,22 +26,21 @@ export default function Links({ allLinks }) {
             
           <>
             <SEO   
-              title="Links"
-              slug="links"
+              title="Photos"
+              slug="Photos"
             />
-              <PageTitle>Links</PageTitle>
-              <SubTitle>Awesome content on the web, in random order.</SubTitle>
-              <LinksContainer >
+              <PageTitle>Photos</PageTitle>
+              <SubTitle>.</SubTitle>
+              <PhotosContainer >
 
                 <Grid>
-
-                    {allLinks.map((link,i) => (
-                      <LinkPreview key={i} link={link} />
+                    {allPhotos.map((photo,i) => (
+                      <PhotosPreview key={i} photo={photo} />
                     ))}
 
                 </Grid>
 
-              </LinksContainer>
+              </PhotosContainer>
           </>
         )}
       </Layout>
@@ -56,10 +49,10 @@ export default function Links({ allLinks }) {
 }
 
 export async function getStaticProps() {
-  const allLinks = (await getAllLinks()) || []
+  const allPhotos = (await getAllPhotos()) || []
   
   return {
     revalidate:  86400,
-    props: { allLinks },
+    props: { allPhotos },
   }
 }

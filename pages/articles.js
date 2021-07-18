@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllTags } from '@/lib/data/api/cms'
+import { getAllPosts, getAllTags } from '@/lib/data/external/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'

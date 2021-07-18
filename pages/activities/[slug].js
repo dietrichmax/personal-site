@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
-import { getActivity, getAllActivities } from '@/lib/data/api/cms'
+import { getActivity, getAllActivities } from '@/lib/data/external/cms'
 import { fromUnixTime, format } from 'date-fns'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
@@ -90,8 +90,10 @@ const MapContainer = styled.div`
 
 
 
-export default function Activity({ activity, slug }) {  
+export default function Activity({ activity }) {  
   const router = useRouter()
+
+  const slug = `/activities/${activity.activityId}`
 
   const getTypeIcon = activity => {
     if (activity.activityType.typeId == 5) {
@@ -118,7 +120,7 @@ export default function Activity({ activity, slug }) {
               title={`${activity.activityName}-${format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")}`}
               description={`${activity.activityName}`}
               slug={slug}
-              date={activity.updated_at ? activity.updated_at : activity.published_at}
+              date={activity.updated_at ? activity.updated_at : activity.created_at}
               ogType="activity"
             />
             <ActivityWrapper>
@@ -189,25 +191,23 @@ export default function Activity({ activity, slug }) {
   )
 }
 
-export async function getStaticProps({ params }) {
-  const data = await getActivity(params.id)
-
+export async function getStaticProps({ params }) {  
+  const data = await getActivity(params.activityId)
+  
   return {
-    revalidate:  86400,
     props: {
       activity: {
-        ...data?.activities[0]
+        ...data?.activities[0],
       },
-      slug: `/activities/${format(fromUnixTime(data.activities[0].beginTimestamp.substring(0, data.activities[0].beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")}`
     },
   }
 }
 
 export async function getStaticPaths() {
-  const allActivities = await getAllActivities()
-
+  const activities = await getAllActivities()
+  
   return {
-    paths: allActivities?.map((activity) => `/activities/${format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")}`) || [],
+    paths: activities?.map((activity) => `/activities/${activity.activityId}`) || [],
     fallback: true,
   }
 }

@@ -1,18 +1,18 @@
 import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
-//import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
+import PhotoPreview from '@/components/photo/photo-preview'
 import Layout from '@/components/layout/layout'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import { getAbout } from '@/lib/data/api/cms'
+import { getAbout } from '@/lib/data/external/cms'
 import Link from "next/link"
 //import axios from 'axios';
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities, getLocationData } from '@/lib/data/api/cms'
-import Image from 'next/image'
+import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData } from '@/lib/data/external/cms'
+import Grid from "@/components/grid/grid"
 
 const IndexPageContainer = styled.div`
   margin: auto;
@@ -24,10 +24,6 @@ const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
   background-color: var(--secondary-color);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: ${props => props.location ? `url("https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/${props.location.lon},${props.location.lat},12/1280x700?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}")` : ""};
-  background-blend-mode: screen;
   `
 const Hero = styled.div`   
   display: flex;
@@ -78,58 +74,7 @@ const HeroFont = styled.span`
   font-family: var(--primary-font);
   font-weight: 600;
 `
-const SubTitle = styled.p`
-  margin: var(--space) var(--space) var(--space-sm) var(--space);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-  ${media.lessThan('medium')`
-    margin: var(--space-sm);
-  `}
-`
 
-const Grid = styled.ol`
-  max-width: 1200px;
-  padding-left: var(--space);
-  padding-right: var(--space);
-  margin-bottom: var(--space);
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: var(--space);
-  ${media.lessThan('medium')`
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
-    grid-template-columns: repeat(1, minmax(0px, 1fr));
-  `}
-`
-
-const PostTypes = styled.div`
-  padding-left: var(--space);
-  padding-right: var(--space);
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  color: var(--primary-color);
-  ${media.lessThan('medium')`
-    display: inline-block;
-    margin-top: var(--space);
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
-  `}
-`
-
-const PostType = styled.dl`
-  border-bottom: 1px solid var(--link-color);
-  cursor: pointer;
-`
-
-const PostDT = styled.dt`
-  display: inline-block;
-`
-const PostDD = styled.dd`
-  display: inline-block;
-`
 
 const AboutMeLink = styled.a`
   border-bottom: 2px solid var(--primary-color);
@@ -139,15 +84,10 @@ const AboutMeLink = styled.a`
   }
 `
 
-const HeroImgWrapper = styled.div`
-  position: fixed;
-  overflow: hidden;
-  width: 100%;    
-  height: 100%;
-  z-index: -1;
-`
-export default function Index({ posts, count, about, location }) {
+export default function Index({ posts }) {
   const router = useRouter()
+
+  const content = posts.slice(0,9)
 
   return (
     <>
@@ -160,7 +100,7 @@ export default function Index({ posts, count, about, location }) {
             <SEO   
               description="Hi, I'm Max. I currently work as a GeoData-Manager at RIWA where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
             />
-             <HeroWrapper location={location}>
+             <HeroWrapper>
               <Hero>
                 <HeroDescription>
                   <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
@@ -178,7 +118,7 @@ export default function Index({ posts, count, about, location }) {
             <IndexPageContainer>
 
               <Grid>
-                {posts.map((post,i) => (
+                {content.map((post,i) => (
                   post.type === "article" ? (
                     <PostPreview
                       key={i}
@@ -193,6 +133,11 @@ export default function Index({ posts, count, about, location }) {
                     <LinkPreview
                       key={i}
                       link={post.link} 
+                    />
+                  ) : post.type === "photo" ? (
+                    <PhotoPreview
+                      key={i}
+                      photo={post.photo} 
                     />
                   ) : null
                 ))}
@@ -226,8 +171,8 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
-  const allActivities = (await getAllActivities()) || []
-  const allRecipes = (await getAllRecipes()) || []
+  //const allActivities = (await getAllActivities()) || []
+  const allPhotos = (await getAllPhotos()) || []
   const allContent = []
 
   allPosts.map((post) => {
@@ -255,11 +200,11 @@ export async function getStaticProps() {
     })
   })
 
-  allActivities.map((activity) => {
+  allPhotos.map((photo) => {
     allContent.push({
-      activity: activity,
-      date: activity.created_at,
-      type: "activity"
+      photo: photo,
+      date: photo.created_at,
+      type: "photo"
     })
   })
 

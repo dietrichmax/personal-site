@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { MapContainer, TileLayer, Circle, Polyline } from "react-leaflet";
-import { getLocationData } from '@/lib/data/api/cms'
+import { getLocationData } from '@/lib/data/external/cms'
 
 
 const Map = (data) => {

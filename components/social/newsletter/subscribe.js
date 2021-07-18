@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import { Emojione } from "react-emoji-render"
 import media from 'styled-media-query';
+import { Input } from "@/styles/templates/input"
+import { Button } from "@/styles/templates/button"
 
 const NewsletterWrapper = styled.label`
     display: flex;
@@ -36,18 +38,6 @@ const InputWrapper = styled.div`
     max-width: 66.66667%;
 `
 
-const Input = styled.input`
-    padding-top: 15px!important;
-    padding-bottom: 15px!important;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    
-    border: 2px solid var(--gray-light);
-    :invalid {
-        border: 1px solid red;
-    }
-`
 
 const ButtonWrapper = styled.div`
     flex-direction: column;
@@ -59,26 +49,6 @@ const ButtonWrapper = styled.div`
     max-width: 33.33333%;
 `
 
-const Button = styled.button`
-    box-sizing: border-box;
-    border: 2px solid var(--primary-color);
-    color: white;
-    text-transform: uppercase;
-    position: relative;
-    padding-top: 15px!important;
-    padding-bottom: 15px!important;
-    outline: none;
-    overflow: hidden;
-    width: 100%;
-    transition: all .2s ease-in-out;
-    text-align: center;
-    background: var(--primary-color);
-    :hover {
-        cursor: pointer;
-        box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
-    }
-        
-`
 
 const Emoji = styled(Emojione)`
     display: inline-block;

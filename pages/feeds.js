@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/layout'
-import { getLocationData, getNowData} from '@/lib/data/api/cms'
+import { getLocationData, getNowData} from '@/lib/data/external/cms'
 import config from "../lib/data/SiteConfig";
 import SEO from '@/components/seo/seo'
 import media from "styled-media-query"
@@ -55,7 +55,7 @@ export default function Feeds({ }) {
             <SEO   
               title="Feeds"
               slug="feeds"
-              description="You can subscribe to all content, articles, notes, links and activities."
+              description="You can subscribe to all content, articles, notes, links photos and activities."
             />
             
             <PageTitle>Feeds</PageTitle>
@@ -67,8 +67,9 @@ export default function Feeds({ }) {
                 <FeedItem><Link href="/feed.xml" title="All content">All content</Link></FeedItem>
                 <FeedItem><Link href="/articles/feed.xml" title="Articles">Articles</Link></FeedItem>
                 <FeedItem><Link href="/notes/feed.xml" title="Notes">Notes</Link></FeedItem>
-                <FeedItem><Link href="/activities/feed.xml" title="Activities">Activities</Link></FeedItem>
                 <FeedItem><Link href="/links/feed.xml" title="Links">Links</Link></FeedItem>
+                <FeedItem><Link href="/photos/feed.xml" title="Photos">Photos</Link></FeedItem>
+                <FeedItem><Link href="/activities/feed.xml" title="Activities">Activities</Link></FeedItem>
 
               </FeedsList>
 

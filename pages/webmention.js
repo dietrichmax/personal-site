@@ -3,13 +3,14 @@ import { useRouter } from 'next/router'
 import Image from "next/image"
 import Content from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
-import { getAbout } from '@/lib/data/api/cms'
+import { getAbout } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import config from "@/lib/data/SiteConfig";
 import Title from "@/components/title/page-title"
+import { Button } from "@/styles/templates/button"
 
 const PageWrapper = styled.div`
   max-width: 1200px;
@@ -31,7 +32,10 @@ const WebmentionContainer = styled.div`
 `
 
 
-const WebmentionFormField = styled.div``
+const WebmentionFormField = styled.div`
+  margin-bottom: var(--space);
+  height: var(--space);
+`
 
 const WebmentionForm = styled.form`
   grid-column: span 2/span 2;
@@ -40,37 +44,18 @@ const WebmentionForm = styled.form`
 
 const WebmentionFormLabel = styled.label`
   font-weight: 700;
+  margin-right: var(--space-sm);
 `
 
-const WebmentionButton = styled.button`
-  border: 2px solid var(--primary-color);
-  width: auto !important;
-  color: var(--gray-extra-light);
-  text-transform: uppercase;
-  outline: none;
-  overflow: hidden;
-  transition: all .2s ease-in-out;
-  text-align: center;
-  padding: .75rem 1.5rem;
-  border-radius: var(--border-radius);
-  width: 20%;
-  background: var(--primary-color);
-  :hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 16px 0px;
-  } 
-`
-
-
-
-const WebmentionFormInput = styled.input`
-  padding: .5rem 1rem; 
-  margin: .25rem auto 1rem auto;
+const Input = styled.input`
+  height: 100%;
   width: 100%;
-  border: 2px solid var(--gray-light);
+  padding-left: var(--space-sm);
+  margin-right: var(--space-sm);
+  border: 2px solid var(--body-bg);
   background-color: var(--content-bg);
   :invalid {
-    border: 1px solid red;
+      border: 1px solid red;
   }
 `
 
@@ -154,7 +139,7 @@ export default function WebmentionEndpoint({  }) {
                 <WebmentionForm> 
                   <WebmentionFormField>
                     <WebmentionFormLabel for="source">Source URL</WebmentionFormLabel>
-                    <WebmentionFormInput 
+                    <Input 
                       id="source" 
                       name="source" 
                       type="url" 
@@ -164,7 +149,7 @@ export default function WebmentionEndpoint({  }) {
                   </WebmentionFormField>
                   <WebmentionFormField>
                     <WebmentionFormLabel for="target">Target URL</WebmentionFormLabel>
-                    <WebmentionFormInput 
+                    <Input 
                       id="target" 
                       name="target" 
                       type="url"
@@ -172,7 +157,7 @@ export default function WebmentionEndpoint({  }) {
                       onChange={(e) => setTargetUrl(e.target.value)} 
                     />
                   </WebmentionFormField>
-                  <WebmentionButton type="submit" onClick={() => sendWebmention()}>Send Webmention</WebmentionButton>
+                  <Button type="submit" onClick={() => sendWebmention()}>Send Webmention</Button>
                   <Status color={status.color}>{status.text}</Status>
                 </WebmentionForm> 
 

@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import image from "next/image"
 
 const GridContainer = styled.ol`
   max-width: var(--width-container);
+  display: grid;
   padding-left: var(--space);
   padding-right: var(--space);
+  margin-bottom: var(--space-lg);
   grid-template-columns: repeat(3,minmax(0,1fr));
   gap: var(--space-lg);
-  display: grid;
-  margin-bottom: var(--space-lg);
+  list-style: none;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);

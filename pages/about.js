@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Image from "next/image"
 import Content from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
-import { getAbout } from '@/lib/data/api/cms'
+import { getAbout } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'

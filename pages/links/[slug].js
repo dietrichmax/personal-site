@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
-import { getAllLinks, getLink } from '@/lib/data/api/cms'
+import { getAllLinks, getLink } from '@/lib/data/external/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
@@ -53,7 +53,7 @@ export default function Note({ link }) {
               title={link.title}
               description={link.description}
               slug={`/links/${link.id}`}
-              date={link.date}
+              date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
             <a href={link.link} rel="nofollow"><LinksLink title={link.title}className="u-bookmark-of h-cite">{link.link}</LinksLink></a>

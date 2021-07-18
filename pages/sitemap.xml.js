@@ -1,12 +1,12 @@
 import React from 'react';
 import { format } from 'date-fns'
-import { getAllPosts, getAllPages, getAllTags, getAllNotes, getAllRecipes } from '@/lib/data/api/cms'
+import { getAllPosts, getAllPages, getAllTags, getAllNotes, getAllRecipes, getAllPhotos } from '@/lib/data/external/cms'
 import config from "@/lib/data/SiteConfig"
 
 //const globby = require('globby');
 
 
-const createSitemap = (posts, tags, pages, notes, /*morePages,*/ recipes) => 
+const createSitemap = (posts, tags, pages, notes, photos, /*morePages,*/ recipes) => 
 
 `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
@@ -54,6 +54,17 @@ const createSitemap = (posts, tags, pages, notes, /*morePages,*/ recipes) =>
             `;
           })
           .join('')}
+          ${photos.map((photo) => {
+            return `
+                <url>
+                    <loc>${`${config.siteUrl}/photos/${photo.slug}`}</loc>
+                    <lastmod>${photo.updated_at ? photo.updated_at : photo.created_at}</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                 </url>
+            `;
+          })
+          .join('')}
           ${recipes.map((recipe) => {
             return `
                 <url>
@@ -75,6 +86,7 @@ class Sitemap extends React.Component {
     const getPages = (await getAllPages()) || []
     const getNote = (await getAllNotes()) || []
     const getRecipes = (await getAllRecipes()) || []
+    const getPhotos = (await getAllPhotos()) || []
     //const morePages = await globby([
     //    'pages/**/*{.js,.mdx}',
     //    '!pages/**/*[*.js',
@@ -90,9 +102,10 @@ class Sitemap extends React.Component {
     const tags = getTags
     const notes = getNote
     const recipes = getRecipes
+    const photos = getPhotos
     
     res.setHeader('Content-Type', 'text/xml');
-    res.write(createSitemap(posts, tags, pages, notes, /*morePages,*/ recipes));
+    res.write(createSitemap(posts, tags, pages, notes, photos, /*morePages,*/ recipes));
     res.end();
   }
 }

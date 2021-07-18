@@ -16,8 +16,9 @@ const Meta = styled.div`
   justify-content: end;
   font-size: 11px;
   width: 100%;
-  padding: 0.125rem 0.5rem;
-  background-color: var(--gray-extra-light);
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--body-bg);
   mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
 
@@ -41,9 +42,11 @@ const Breadcrumb = styled.div``
 
 export default function PostMeta({ post, slug }) {
 
+  const env = process.env.NODE_ENV
   const date = post.updated_at ? post.updated_at  : post.published_at ? post.published_at :post.created_at
-  const permaUrl = `${config.siteUrl}${slug}`
-
+  const permaUrl = env == "development" ? `http://localhost:3000${slug}` : `${config.siteUrl}${slug}`
+  
+  
   return ( 
     <Meta>
       <Breadcrumb>

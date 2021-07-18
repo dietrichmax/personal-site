@@ -5,9 +5,11 @@ import Link from 'next/link'
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
 import { format } from 'date-fns'
-import { getNowData } from "@/lib/data/api/cms";
+import { getNowData } from "@/lib/data/external/cms";
 import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle, FaSteam } from 'react-icons/fa';
 import { SiGarmin, SiStrava } from 'react-icons/si';
+import { Input } from "@/styles/templates/input"
+import { Button } from "@/styles/templates/button"
 // styled components
 
 const FooterContainer = styled.footer`
@@ -140,9 +142,6 @@ const FooterItemLink = styled(Link)`
   }
 `
 
-const FooterIcons = styled.i`  
-  font-size: 1rem;
-`
 
 const FooterNotice = styled.p`
   font-size:.75rem;
@@ -172,34 +171,9 @@ const FooterBar = styled.div`
 const SearchWrapper = styled.div`
   font-family: var(--primary-font);
   grid-column: span 2 / span 2;
+  height: var(--space);
 `
 
-const SearchInput = styled.input`
-  padding-left: 0.25rem;
-  margin-right: 0.125rem;
-  border: 2px solid var(--gray-light);
-  background-color: var(--content-bg);
-  :invalid {
-      border: 1px solid red;
-  }
-`
-
-const SearchButton = styled.button`
-  color: var(--primary-color);
-  position: relative;
-  border: none;
-  outline: none;
-  overflow: hidden;
-  font-size: 12px;
-  padding: .25rem .75rem;   
-  transition: .2s;
-  text-align: center;
-  background: var(--secondary-color);
-  :hover {
-      cursor: pointer;
-      color: var(--content-bg);
-  }
-`
 
 const AboutMeLink = styled.a`
   border-bottom: 1px solid var(--link-color);
@@ -272,10 +246,10 @@ export default function Footer() {
       name: "Notes",
       link: "/notes" 
     },
-    /*{ 
-      name: "Activities",
-      link: "/activities" 
-    },*/
+    { 
+      name: "Photos",
+      link: "/photos" 
+    },
     { 
       name: "Links",
       link: "/links" 
@@ -289,7 +263,7 @@ export default function Footer() {
 
           <SearchWrapper >
             <label>
-              <SearchInput 
+              <Input 
                 type="text"   
                 name="search"
                 id="search"
@@ -298,13 +272,13 @@ export default function Footer() {
                 onChange={(e) => setSearch(e.target.value)}
               /> 
             </label>
-            <SearchButton 
+            <Button 
               type="submit search"
               aria-label="Search"
               onClick={() => window.open(`https://www.ecosia.org/search?q=site:${config.domain}+${search}`)}
               title="Search"
             >
-            Search</SearchButton>
+            Search</Button>
           </SearchWrapper>
 
           <FooterMainNav>

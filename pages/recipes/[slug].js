@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Layout from '@/components/layout/layout'
-import { getAllRecipes, getRecipe } from '@/lib/data/api/cms'
+import { getAllRecipes, getRecipe } from '@/lib/data/external/cms'
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const Card = styled.li`
+const Card = styled.li`    
   position: relative;
-  transition: 0.2s;
-  box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
+  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  transition: .5s;
+  list-style: outside none none;
+  transition: all 0.5s ease 0s;
   :hover {
     transform: var(--transform);
   }

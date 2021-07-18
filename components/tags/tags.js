@@ -11,7 +11,7 @@ const TagItem = styled.a`
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: .75rem;  
-  margin: .25rem .5rem .25rem 0;
+  margin: .25rem .5rem .5rem 0;
   padding: 3px calc(var(--space-sm)*0.5);
   background-color: var(--secondary-color);
   color: var(--primary-color);

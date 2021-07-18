@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/layout'
-import { getLocationData, getNowData} from '@/lib/data/api/cms'
+import { getLocationData, getNowData} from '@/lib/data/external/cms'
 import config from "../lib/data/SiteConfig";
 import SEO from '@/components/seo/seo'
 import media from "styled-media-query"

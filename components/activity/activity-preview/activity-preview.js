@@ -10,10 +10,6 @@ import { CgArrowsH, CgAlarm, CgArrowsVAlt } from 'react-icons/cg';
 import { GiWeightLiftingDown } from 'react-icons/gi';
 
 
-const ActivityMap = dynamic(() => import("@/components/maps/leaflet/smallActivityMap"), {
-    ssr: false
-});
-
 const Item = styled.li`
   display: flex;
   flex-direction: column;
@@ -104,7 +100,7 @@ const getGrit = (grit) => {
 export default function ActivityPreview({ activity }) {
 
   const date = format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")
-  const slug = `/activities/${date}`
+  const slug = `/activities/${activity.activityId}`
 
 
   const getTypeIcon = activity => {
@@ -161,7 +157,7 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-            <ActivityMap data={activity.details.geoPolylineDTO} />
+            {/*<ActivityMap data={activity.details.geoPolylineDTO} />*/}
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

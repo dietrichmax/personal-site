@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Grid from '@/components/grid/grid'
 import Layout from '@/components/layout/layout'
-import { getTag, getAllTags } from '@/lib/data/api/cms'
+import { getTag, getAllTags } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/tag-title'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';

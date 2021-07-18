@@ -1,6 +1,6 @@
 
 import Layout from '@/components/layout/layout'
-import { getAllNotes } from '@/lib/data/api/cms'
+import { getAllNotes } from '@/lib/data/external/cms'
 import config from "@/lib/data/SiteConfig";
 import styled from 'styled-components';
 import SEO from '@/components/seo/seo'

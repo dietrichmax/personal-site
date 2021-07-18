@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { getComments } from '@/lib/data/api/cms'
+import { getComments } from '@/lib/data/external/cms'
 import { parseISO, formatDistance } from 'date-fns'
 
 

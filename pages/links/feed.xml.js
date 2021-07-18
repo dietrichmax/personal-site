@@ -1,7 +1,6 @@
 import React from 'react';
-import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllLinks } from '@/lib/data/api/cms'
+import { getAllLinks } from '@/lib/data/external/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 
@@ -26,7 +25,7 @@ const createRssFeed = ( allContent ) =>
               <updated>${content.date}</updated>
               <id>${content.slug}/</id>
               <content type="html">
-                <![CDATA[${content.content}]]>
+                <![CDATA[${content.content} Link: <a href=${content.link}>${content.link}</a>]]>
               </content>
             </entry>
           `;
@@ -44,9 +43,10 @@ class Rss extends React.Component {
     links.map((link) => {
       allContent.push({
         title: link.title,
-        slug: `${link.link}`,
+        slug: `${config.siteUrl}/links/${link.link}`,
         date: link.published_at,
-        content: converter.makeHtml(link.description)
+        content: converter.makeHtml(link.description),
+        link: link.link
       })
     })
 

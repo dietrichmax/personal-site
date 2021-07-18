@@ -1,7 +1,6 @@
 import React from 'react';
-import { parseISO } from 'date-fns'
 import config from "@/lib/data/SiteConfig"
-import { getAllRecipes } from '@/lib/data/external/cms'
+import { getAllPhotos } from '@/lib/data/external/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 
@@ -26,7 +25,10 @@ const createRssFeed = ( allContent ) =>
               <updated>${content.date}</updated>
               <id>${content.slug}/</id>
               <content type="html">
-                <![CDATA[${content.content}]]>
+                <![CDATA[${content.content} Photo: ${content.photo ? content.photo.map((photo,i) => {
+                  <img src={process.env.NEXT_PUBLIC_STRAPI_API_URL+photo.url} alt={photo.title} />
+                 }) : null }
+                ]]>
               </content>
             </entry>
           `;
@@ -37,18 +39,20 @@ const createRssFeed = ( allContent ) =>
 
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
-    const recipes = (await getAllRecipes()) || []
+    const photos = (await getAllPhotos()) || []
 
     const allContent = []
-    
-    recipes.map((recipe) => {
+
+    photos.map((photo) => {
       allContent.push({
-        title: recipe.title,
-        slug: `${config.siteUrl}/recipes/${recipe.slug}`,
-        date: recipe.created_at,
-        content: converter.makeHtml(recipe.description)
+        title: photo.title,
+        slug: `${config.siteUrl}/photos/${photo.slug}`,
+        date: photo.published_at,
+        content: converter.makeHtml(photo.description),
+        photo: photo.photo
       })
     })
+
 
     res.setHeader('Content-Type', 'text/xml');
     res.write(createRssFeed( allContent ));

@@ -29,7 +29,7 @@ import {
 import { fetchWebmentions } from "@/lib/data/external/webmentions"
 import { getGitHubStats } from "@/lib/data/external/github"
 import PageTitle from "@/components/title/page-title"
-import codeStats from "@/lib/data/count_total.json"
+import codeStats from "@/lib/data/internal/count_total.json"
 import SubTitle from '@/components/title/sub-title'
 import { formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"

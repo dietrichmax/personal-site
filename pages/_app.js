@@ -62,12 +62,29 @@ class MyApp extends App {
           {/*<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css'  />*/}
           {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>*/}
         
+          {/* RSS */}
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Articles`} href={`${config.siteUrl}/articles/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Notes`} href={`${config.siteUrl}/notes/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Links`} href={`${config.siteUrl}/links/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Photos`} href={`${config.siteUrl}/photos/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Activities`} href={`${config.siteUrl}/activities/feed.xml`} />
+          
+          {/* Android */}
+          <meta name="theme-color" content={config.themeColor} />
+          <meta name="mobile-web-app-capable" content="yes" />
+
+          {/* iOS */}
+          <meta name="apple-mobile-web-app-title" content={config.siteTitle} />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <link href="images/icon-52x52.png" rel="apple-touch-icon-precomposed" sizes="57x57" />
+
+          {/*Others */}
+          <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+          {/*Manifest.json  */}
+          <link href="/manifest.json" rel="manifest" />
 
         </Head>
         {/*<ThemeProvider theme={themes}>*/}

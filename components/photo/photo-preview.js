@@ -31,8 +31,8 @@ const Photo= styled(Image)`
 
 const PhotoWrapper = styled.div`
   position: relative;
-  width: 100%;
   height: 200px;
+  width: 50%;
 `
 
 export default function PhotoPreview({ photo }) {

@@ -105,6 +105,7 @@ const Input = styled.input`
   width: 60%;
   border: 2px solid var(--gray-light);
   background-color: var(--content-bg);
+  color: var(--text-color);
   :invalid {
     border: 1px solid red;
   }

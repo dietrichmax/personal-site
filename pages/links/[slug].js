@@ -59,7 +59,7 @@ export default function Note({ link }) {
               date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
-            <LinksLink href={link.link} title={link.title}className="u-bookmark-of h-cite">{link.link}</LinksLink>
+            <LinksLink href={link.link} title={link.title}c lassName="u-bookmark-of h-cite">{link.link}</LinksLink>
             <PageWrapper>
               <PageBody className="e-content" content={link.description} />
 

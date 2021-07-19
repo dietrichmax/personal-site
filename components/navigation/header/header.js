@@ -10,6 +10,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
   top: 0;
   left: 0;
+  color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
 `
 
 const InnerHeader = styled.div`
@@ -32,7 +33,6 @@ const Navigation = styled.nav`
   font-size: 1rem;
   text-align: right;
   border-bottom-style: none;
-  color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
 `
 
 const MainNav = styled.ul`
@@ -50,7 +50,6 @@ const MainNav = styled.ul`
 const Logo = styled.li`
   grid-column: span 2 / span 2;
   display: inline-block;
-  color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
   line-height: 1.25;
   margin: 0;
   ${media.lessThan('small')`
@@ -69,14 +68,14 @@ export default function Header({ color }) {
 
   
   return (
-    <HeaderWrapper>
+    <HeaderWrapper color={color}>
       
       <InnerHeader>
-        <Navigation itemtype="https://schema.org/SiteNavigationElement" color={color}>
+        <Navigation itemtype="https://schema.org/SiteNavigationElement">
 
         <MainNav>
 
-          <Logo color={color}>
+          <Logo>
             <Link rel="home" href="/" passHref>
               <a className="u-url" rel="me" title={config.siteTitle}>
                 <LogoName className="p-name" >{config.siteTitleAlt}</LogoName>

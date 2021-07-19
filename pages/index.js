@@ -55,6 +55,7 @@ const HeroLinks = styled.a`
   font-weight: 600;
   border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
+  color: var(--secondary-color);
   :hover {
     border-bottom: 2px solid transparent;
     color: var(--thirdy-color);
@@ -64,6 +65,7 @@ const HeroLinks = styled.a`
 const HeroLinksNormal = styled.a`
   border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
+  color: var(--secondary-color);
   :hover {
     border-bottom: 2px solid transparent;
     color: var(--thirdy-color);
@@ -77,7 +79,7 @@ const HeroFont = styled.span`
 
 
 const AboutMeLink = styled.a`
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--text-color);
   cursor: pointer;
   :hover {
     border-bottom: 2px solid transparent;

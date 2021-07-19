@@ -26,8 +26,7 @@ const Square = styled.span`
   margin-right: var(--space-sm);
   width: 10px;
   height: 10px;
-  background-color: #191f45;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 `
 
 const ContentWrapper = styled.div`

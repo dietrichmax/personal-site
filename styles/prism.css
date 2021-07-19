@@ -5,7 +5,6 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #393A34;
 	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 	direction: ltr;
 	text-align: left;
@@ -73,7 +72,7 @@ pre[class*="language-"] {
 }
 
 .token.string {
-	color: #A31515;
+	color: #df4a4a;
 }
 
 .token.punctuation,

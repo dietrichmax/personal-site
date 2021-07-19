@@ -107,16 +107,18 @@ export default function SocialShare({ slug, syndicationLinks }) {
           <FaRetweet/> Share
         </a>
       </Actions>
-      <Actions do="like" with={url}>
-        <div className="action like" title="Like this post" onClick={sendLike()} >
-          <BsStar/> Like
-        </div>
-      </Actions>
-      <Actions do="reply" with={url}>
-        <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">
-          <FaRegComment/> Reply
-        </a>
+      {tweetID ? 
+        <Actions do="like" with={url}>
+          <div className="action like" title="Like this post" onClick={sendLike()} >
+            <BsStar/> Like
+          </div>
         </Actions>
+        <Actions do="reply" with={url}>
+          <a className="action reply" title="Reply to this post" target="_blank" href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`} rel="nofollow noopener">
+            <FaRegComment/> Reply
+          </a>
+        </Actions>
+      : null }
       <Actions className="action copy" title="Copy this post's permalink" onClick={() => copyToClipboard()}><FaRegCopy/> Copy</Actions>
     </WebActions>
   )

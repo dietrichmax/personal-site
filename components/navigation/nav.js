@@ -27,7 +27,6 @@ const NavItem = styled.ul`
   }
   .active {
     font-weight: 600;
-    color: var(--primary-color);;
   }
   ${media.lessThan('medium')`
     margin-left: 0;

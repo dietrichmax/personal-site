@@ -74,8 +74,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-color: #051129;
     --secondary-color: #A1B4EC;
     --thirdy-color: #c2c7c1;
-    --body-bg: #f5f8fa; 
-    --content-bg: #fff;
+    --body-bg: #0d1117; 
+    --content-bg: #1b2026;
     --box-shadow: 0 6px 40px -6px rgb(79 86 91 / 29%);
     --gap: var(--space-sm);
     --border: var(--thirdy-coor);
@@ -84,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: var(--primary-color);
-    --text-color: #051129;
+    --text-color: rgb(201, 209, 217);
     --width-container: 1200px;
     --content-width: 720px;
     --space: 2rem;

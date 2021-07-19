@@ -10,7 +10,7 @@ import { BsStar } from 'react-icons/bs';
 import Comments from "@/components/comments/comments"
 
 const WebMentionsWrapper = styled.section`   
-  border-top: 0.1rem solid var(--gray-light);
+  border-top: 0.1rem solid var(--content-bg);
   margin: var(--space) 0;
   padding-top: var(--space-sm);
 `

@@ -17,8 +17,8 @@ const Meta = styled.div`
   font-size: 11px;
   width: 100%;
   margin-top: 0.25rem;
-  padding: 0.25rem 0.5rem;
   background-color: var(--body-bg);
+  padding-top: 0.25rem;
   mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
 
@@ -35,7 +35,6 @@ const Date = styled.a`
 `
 
 const Socials = styled.div`
-  margin-left: var(--space-sm);
 `
 
 const Breadcrumb = styled.div``

@@ -8,7 +8,7 @@ const Card = styled.li`
   list-style: outside none none;
   transition: all 0.5s ease 0s;
   :hover {
-    transform: var(--transform);
+    transform: translate3d(0,-2%,0);
   }
 `
 

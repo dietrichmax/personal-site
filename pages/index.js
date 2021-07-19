@@ -89,7 +89,7 @@ const AboutMeLink = styled.a`
 export default function Index({ posts }) {
   const router = useRouter()
 
-  const content = posts.slice(0,9)
+  const content = posts.slice(0,20)
 
   return (
     <>

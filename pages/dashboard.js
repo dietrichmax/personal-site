@@ -235,7 +235,6 @@ const GitHubDescription = styled.p`
 const GitHubButton = styled.button`
     transition: 0.2s;
     background-color: var(--secondary-color);
-    color: var(--primary-color);
     cursor: pointer;
     max-width: 28rem;
     padding: 0.725rem;

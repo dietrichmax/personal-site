@@ -24,13 +24,11 @@ const FooterInnerContainer = styled.div`
   grid-template-columns: repeat(4,minmax(0px,1fr));
   display: grid;
   margin: 0px auto;
-  padding-left: var(--space);
-  padding-right: var(--space);
+  padding: var(--space) var(--space) 0 var(--space);
   max-width: 1200px;
   border-top: 1px solid rgb(48, 54, 61);
-  padding-top: var(--space);
   ${media.lessThan('medium')`
-    padding: 0;
+    padding: var(--space) 0 0 0;
     display: block;
   `}
 `

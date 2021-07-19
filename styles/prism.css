@@ -31,23 +31,23 @@ pre > code[class*="language-"] {
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	background-color: var(--primary-color);
+	background-color: var(--content-bg);
 	color: var(--content-bg);
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	background-color: var(--primary-color);
-	color: var(--content-bg);
+	background-color: var(--content-bg);
+	color: var(--text-color);
 }
 
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1rem;
 	overflow: auto;
-	background: var(--gray-light);
+	background: var(--content-bg);
 	border-radius: var(--border-radius);
-	scrollbar-color: var(--gray-light) #f4f6f9;
+	scrollbar-color: var(--content-bg); #f4f6f9;
 	margin-bottom: 26px;
 }
 
@@ -78,7 +78,7 @@ pre[class*="language-"] {
 
 .token.punctuation,
 .token.operator {
-	color: #393A34; /* no highlight */
+	/*color: #393A34;  no highlight */
 }
 
 .token.url,
@@ -102,7 +102,7 @@ code[class*="language-css"] {
 }
 
 .token.function {
-	color: #393A34;
+	color: #c0df21;
 }
 
 .token.deleted,

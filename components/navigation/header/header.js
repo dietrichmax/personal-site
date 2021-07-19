@@ -50,7 +50,7 @@ const MainNav = styled.ul`
 const Logo = styled.li`
   grid-column: span 2 / span 2;
   display: inline-block;
-  color: ${props => (props.color ? `${props.color}`  : "var(--primary-color)")};
+  color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
   line-height: 1.25;
   margin: 0;
   ${media.lessThan('small')`

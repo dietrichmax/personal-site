@@ -97,7 +97,7 @@ pre[class*="language-"] {
 .language-json .token.boolean,
 .language-json .token.number,
 code[class*="language-css"] {
-	color: #0000ff;
+	color: #8e8eff;
 }
 
 .token.function {

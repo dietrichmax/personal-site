@@ -19,7 +19,6 @@ const Hidden = styled.div`
 `
 
 const NoteBodyContainer = styled.div`
-  padding: var(--space-sm);
 `
 export default function NotePreview({ note }) {
 

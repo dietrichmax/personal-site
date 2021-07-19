@@ -23,7 +23,7 @@ const IndexPageContainer = styled.div`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  background-color: var(--content-bg);
+  background-color: var(--primary-color);
   `
 const Hero = styled.div`   
   display: flex;

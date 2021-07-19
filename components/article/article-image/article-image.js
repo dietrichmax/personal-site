@@ -24,7 +24,6 @@ const PostImg = styled(Image)`
   height: 450px;
   cursor: pointer;
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   ${media.lessThan('large')`
     height: 200px;
     object-fit: cover;
@@ -33,7 +32,6 @@ const PostImg = styled(Image)`
 
 const ImagePlaceholder = styled.div`
   background-color: var(--primary-color);
-  box-shadow: var(--box-shadow);
   transition: 0.2s;
   color: #fff;
   font-family: var(--secondary-font);

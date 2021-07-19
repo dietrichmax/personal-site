@@ -75,7 +75,6 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-color: #c2c7c1;
     --body-bg: #0d1117; 
     --content-bg: #1b2026;
-    --box-shadow: 0 6px 40px -6px rgb(79 86 91 / 29%);
     --gap: var(--space-sm);
     --border: var(--thirdy-coor);
     --border-radius: 4px;

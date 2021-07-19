@@ -90,7 +90,6 @@ const Comment = styled.li`
   background-color: var(--content-bg);
   border-bottom: ${props => (props.authorName == "Max" ? "2px solid var(--thirdy-color)"  : "none")};
   padding: var(--space-sm);
-  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
 `
 

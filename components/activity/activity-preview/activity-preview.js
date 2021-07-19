@@ -18,7 +18,6 @@ const Item = styled.li`
   position: relative;
   height: 100%;
   padding: var(--space-sm);
-  box-shadow: var(--box-shadow);
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
   transition: .5s;

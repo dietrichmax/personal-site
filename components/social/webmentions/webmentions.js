@@ -49,7 +49,6 @@ const WebmentionComment = styled.li`
   font-family: var(--secondary-font);
   background-color: var(--content-bg);
   padding: var(--space-sm);
-  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
 `
 
@@ -67,7 +66,6 @@ const WebmentionAuthorImgWrapper = styled.a`
   margin-bottom: calc(var(--space-sm)*.5);
   border-radius: var(--border-radius);
   background-color: var(--gray-extra-light);
-  box-shadow: var(--box-shadow);
   :hover {
     display: cursor;
   }

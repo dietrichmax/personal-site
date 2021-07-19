@@ -118,7 +118,6 @@ const StatsSmallGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
     border-radius: var(--space-sm);  
-    box-shadow: var(--box-shadow);
 `
 
 const StatsLargeGrid = styled.div`
@@ -126,7 +125,6 @@ const StatsLargeGrid = styled.div`
     background-color: var(--content-bg);
     grid-column: span 2/span 2;    
     border-radius: var(--space-sm);  
-    box-shadow: var(--box-shadow);
     overflow: hidden;
 `
 
@@ -146,7 +144,6 @@ const BottomStatsGrid = styled.div`
     background-color: var(--content-bg);
     border-radius: var(--space-sm); 
     grid-column: span 1/span 1; ;  
-    box-shadow: var(--box-shadow);
     overflow: hidden;
     ${media.lessThan('1000px')`
         grid-column: span 2/span 2;

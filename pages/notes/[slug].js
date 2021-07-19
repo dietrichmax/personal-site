@@ -40,7 +40,6 @@ const ContentWrapper = styled.div`
 const NotesContent = styled.div`
   padding: var(--space-sm);
   background-color: var(--content-bg);
-  box-shadow: var(--box-shadow);
 `
 
 const MetaWrapper = styled.div`

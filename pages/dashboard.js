@@ -261,8 +261,9 @@ const LanguageColumn = styled.div`
     margin-bottom: var(--space);
 `
 
-const LanguageTitle = styled.strong`
+const LanguageTitle = styled.p`
     display: block;
+    font-weight: bold;
     font-size: 1rem;
 `
 const LanguageMoreStats = styled.a`

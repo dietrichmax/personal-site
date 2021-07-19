@@ -17,7 +17,6 @@ const CardItemWrapper = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
-  padding: 0 var(--space-sm) var(--space-sm) var(--space-sm);
   ${media.lessThan('medium')`
    margin: 0;
   `}
@@ -44,8 +43,6 @@ const TagsWrapper = styled.div`
 
 const CardMeta = styled.div`
   padding-bottom: var(--space-sm);
-  padding-left: var(--space-sm);
-  padding-right: var(--space-sm);
 `
 
 const CardReadMoreRead = styled.a`

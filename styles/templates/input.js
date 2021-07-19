@@ -6,6 +6,7 @@ const Input = styled.input`
   margin-right: var(--space-sm);
   border: 2px solid var(--body-bg);
   background-color: var(--content-bg);
+  color: var(--text-color);
   :invalid {
       border: 1px solid red;
   }

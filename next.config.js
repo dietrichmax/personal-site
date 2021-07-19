@@ -450,6 +450,16 @@ const redirects = {async redirects() {
       destination: '/',
       permanent: true
     },
+    {
+      source: '/leaflet-maps',
+      destination: '/articles/first-steps-with-leaflet-and-react',
+      permanent: true
+    },
+    {
+      source: '/en/privacy-policy',
+      destination: '/privacy-policy',
+      permanent: true
+    },
 
     /* Social Redirects */
     {

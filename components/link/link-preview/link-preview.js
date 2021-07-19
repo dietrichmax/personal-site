@@ -39,7 +39,7 @@ export default function LinkPreview({ link }) {
     <Card title={link.title} className="h-entry">    
       <LinkContainer> 
         <HCard /> 
-        <LinksTitle className="p-name"><a href={link.link} title={link.title}>{link.title}</a></LinksTitle>
+        <LinksTitle className="p-name"><Link href={slug} title={link.title}>{link.title}</Link></LinksTitle>
         <LinkLink className="u-bookmark-of bookmark-of bookmark h-cite" href={link.link} title={link.title}>{link.link}</LinkLink>
         <LinksContent className="e-content">{link.description}</LinksContent>
         <PostTags tags={link.tags} />

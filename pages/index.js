@@ -23,7 +23,7 @@ const IndexPageContainer = styled.div`
 const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
-  background-color: var(--secondary-color);
+  background-color: var(--content-bg);
   `
 const Hero = styled.div`   
   display: flex;
@@ -91,7 +91,7 @@ export default function Index({ posts }) {
 
   return (
     <>
-      <Layout color="var(--primary-color)">
+      <Layout color="var(--text-color)">
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (

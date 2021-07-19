@@ -176,7 +176,7 @@ const SearchWrapper = styled.div`
 
 
 const AboutMeLink = styled.a`
-  border-bottom: 1px solid var(--link-color);
+  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
   :hover {
     border-bottom: 1px solid transparent;

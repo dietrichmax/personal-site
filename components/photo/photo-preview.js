@@ -8,6 +8,7 @@ import Link from 'next/link'
 
 const PhotoContainer = styled.div`
   padding: calc(var(--space-sm)*0.5) var(--space-sm);
+  width: 50%;
 `
 
 

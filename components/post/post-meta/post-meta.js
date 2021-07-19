@@ -19,7 +19,6 @@ const Meta = styled.div`
   margin-top: 0.25rem;
   background-color: var(--body-bg);
   padding-top: 0.25rem;
-  mix-blend-mode: luminosity;
   ${media.lessThan('medium')`
 
   `}

@@ -14,6 +14,9 @@ const LinkContainer = styled.div`
 const LinksTitle = styled.h2`
   font-size: 1.25rem;
   margin-bottom: calc(var(--space-sm)*0.5);
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 const LinksContent = styled.p`

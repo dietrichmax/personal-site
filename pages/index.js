@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { getAbout } from '@/lib/data/external/cms'
 import Link from "next/link"
 //import axios from 'axios';
-import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData } from '@/lib/data/external/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData, getCV } from '@/lib/data/external/cms'
 import Grid from "@/components/grid/grid"
 
 const IndexPageContainer = styled.div`
@@ -86,7 +86,7 @@ const AboutMeLink = styled.a`
   }
 `
 
-export default function Index({ posts }) {
+export default function Index({ posts, cv }) {
   const router = useRouter()
 
   const content = posts.slice(0,20)
@@ -100,12 +100,12 @@ export default function Index({ posts }) {
             
           <>
             <SEO   
-              description="Hi, I'm Max. I currently work as a GeoData-Manager at RIWA where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can."
+              description={`Hi, I'm ${cv.title}. I currently work as a ${cv.timeline[0].role} at ${cv.timeline[0].company} where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
             />
              <HeroWrapper>
               <Hero>
                 <HeroDescription>
-                  <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, GeoData-Manager and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
+                  <HeroFont>Hi, I’m </HeroFont><HeroLinks href={config.siteUrl} title={config.siteTitle}>{cv.title}</HeroLinks>, {cv.timeline[0].role} and Web-Developer from <a href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
                     I' am also a proud member of the <HeroLinks href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>
@@ -175,6 +175,8 @@ export async function getStaticProps() {
   const allLinks = (await getAllLinks()) || []
   //const allActivities = (await getAllActivities()) || []
   const allPhotos = (await getAllPhotos()) || []
+  const cv = (await getCV()) || []
+
   const allContent = []
 
   allPosts.map((post) => {
@@ -218,7 +220,8 @@ export async function getStaticProps() {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
-      location: locationData[0]
+      location: locationData[0],
+      cv
     },
   }
 }

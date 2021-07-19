@@ -4,6 +4,8 @@ import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import React, { useEffect }  from "react";
 import Nav from "@/components/navigation/nav"
+import useSWR from 'swr'
+import fetcher from "@/lib/utils/fetcher"
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -66,7 +68,11 @@ const LogoDescription = styled.span`
 
 export default function Header({ color }) {
 
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
   
+  if (error) return console.log("error")
+  if (!data) return <div>loading...</div>
+
   return (
     <HeaderWrapper color={color}>
       
@@ -77,10 +83,10 @@ export default function Header({ color }) {
 
           <Logo>
             <Link rel="home" href="/" passHref>
-              <a className="u-url" rel="me" title={config.siteTitle}>
-                <LogoName className="p-name" >{config.siteTitleAlt}</LogoName>
+              <a className="u-url" rel="me" title={data.title}>
+                <LogoName className="p-name" >{data.title}</LogoName>
                 <br/>
-                <LogoDescription>{config.siteSubtitle}</LogoDescription>
+                <LogoDescription>{data.timeline[0].role}</LogoDescription>
               </a>
             </Link>
           </Logo>

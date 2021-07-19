@@ -37,6 +37,7 @@ const PhotoItem = styled.li`;
 export default function Photo({ photo }) {
   const router = useRouter()
 
+
   return (
     <Layout>
         {router.isFallback ? (
@@ -58,12 +59,12 @@ export default function Photo({ photo }) {
                       <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`} passHref>
                         <Image
                           key={photo.id}
-                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.formats.content ? photo.formats.content.url : photo.url }`}
                           alt={photo.title}
                           width="1136"
                           height={parseInt((1136/photo.width)*photo.height)}
                           className="u-photo" 
-                        /> 
+                        />
                       </Link>
                     </PhotoItem> 
                   )

@@ -1,5 +1,7 @@
 import Head from "next/head"
-import config, { dateFormat } from "../../lib/data/internal/SiteConfig";
+import config, { dateFormat } from "@/lib/data/internal/SiteConfig";
+import useSWR from 'swr'
+import fetcher from "@/lib/utils/fetcher"
 
 const SEO = ({ 
   title,
@@ -11,6 +13,10 @@ const SEO = ({
   postSchema,
   aboutSchema
 }) => {
+  
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
+  if (error) return console.log("error")
+  if (!data) return <div>loading...</div>
 
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl
@@ -18,6 +24,10 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
   
+
+  
+
+
   let schemaOrgJSONLD = [
     { 
         "@context": "http://schema.org",
@@ -50,7 +60,7 @@ const SEO = ({
         "dateModified": date,
         "author": {
           "@type": "Person",
-          "name": config.siteTitle,
+          "name": data.title,
           "nationality": "German",
           "address": {
             "@type": "PostalAddress",
@@ -66,15 +76,11 @@ const SEO = ({
             }
           ],
           "gender": "Male",
-          "jobTitle": "GeoData Manager",
+          "jobTitle": data.timeline[0].role,
           "worksFor": [
             {
               "@type": "Organization",
-              "name": "RIWA GmbH Gesellschaft für Geoinformationen",
-              "sameAs": [
-                "http://www.riwa-gis.de/",
-                "http://www.riwa.de/"
-              ]
+              "name": data.timeline[0].company,
             }
           ],
           "nationality": "German",
@@ -86,9 +92,12 @@ const SEO = ({
             config.socials.instagram,
           ],
           "knowsAbout": [
-            "GIS",
-            "Web-Development",
-            "Technical drawing"
+            data.skills[0].skillName.map((skill) => {
+              skill.name
+            }),
+            data.skills[1].skillName.map((skill) => {
+              skill.name
+            }),
           ],
         },
         "publisher": {
@@ -121,15 +130,11 @@ const SEO = ({
         }
       ],
       "gender": "Male",
-      "jobTitle": "GeoData Manager",
+      "jobTitle": data.timeline[0].role,
       "worksFor": [
         {
           "@type": "Organization",
-          "name": "RIWA GmbH Gesellschaft für Geoinformationen",
-          "sameAs": [
-            "http://www.riwa-gis.de/",
-            "http://www.riwa.de/"
-          ]
+          "jobTitle": data.timeline[0].company,
         }
       ],
       "nationality": "German",
@@ -141,9 +146,12 @@ const SEO = ({
         config.socials.instagram,
       ],
       "knowsAbout": [
-        "GIS",
-        "Web-Development",
-        "Technical drawing"
+        data.skills[0].skillName.map((skill) => {
+          skill.name
+        }),
+        data.skills[1].skillName.map((skill) => {
+          skill.name
+        }),
       ],
     }
 } 
@@ -152,7 +160,7 @@ const SEO = ({
     <Head>
     {/* META TAGS */}
       {/* General tags */}
-      <title>{title ? `${title} - ${config.siteTitle}` : config.siteTitle}</title>
+      <title>{title ? `${title} • ${data.title} - ${data.timeline[0].role}` : `${data.title} - ${data.timeline[0].role}`}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

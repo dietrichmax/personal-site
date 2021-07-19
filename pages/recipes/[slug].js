@@ -82,38 +82,38 @@ export default function Recipe({ recipe }) {
           <div className="h-recipe">             
             <HCard /> 
             <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
-                <RecipeImage>
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
-                    alt={recipe.title} 
-                    title={recipe.title} 
-                    className="u-photo"
-                    width="1300"
-                    height="450"
-                  /> 
-                </RecipeImage>
-              </Link>
-              <TitleWrapper><Title className="p-name">{recipe.title}</Title></TitleWrapper>
-              <RecipeWrapper>    
-              <SubLine>{recipe.subtitle}</SubLine>
-              <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
-              and serves <Yield className="p-yield" value={recipe.yield}>{recipe.yield}</Yield> people.
-                <SubTitle>Ingredients</SubTitle></p>
-                <Ingredients>
-                  {recipe.ingredients.map((ingredient,i) => {
-                    return (
-                      <Ingredient className="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
-                    )
-                  })}
-                </Ingredients>
-                <SubTitle>Preparation</SubTitle>
-                <RecipeContent className="e-instructions" content={recipe.description}/>
-                <WebActions slug={`/recipes/${recipe.slug}`} />
-                <Webmentions slug={`/recipes/${recipe.slug}`} />
-              </RecipeWrapper>
+              <RecipeImage>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.formats.large.url}`}
+                  alt={recipe.title} 
+                  title={recipe.title} 
+                  className="u-photo"
+                  width="1300"
+                  height="450"
+                /> 
+              </RecipeImage>
+            </Link>
+            <TitleWrapper><Title className="p-name">{recipe.title}</Title></TitleWrapper>
+            <RecipeWrapper>    
+            <SubLine>{recipe.subtitle}</SubLine>
+            <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
+            and serves <Yield className="p-yield" value={recipe.yield}>{recipe.yield}</Yield> people.
+              <SubTitle>Ingredients</SubTitle></p>
+              <Ingredients>
+                {recipe.ingredients.map((ingredient,i) => {
+                  (
+                    <Ingredient className="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
+                  )
+                })}
+              </Ingredients>
+              <SubTitle>Preparation</SubTitle>
+              <RecipeContent className="e-instructions" content={recipe.description}/>
+              <WebActions slug={`/recipes/${recipe.slug}`} />
+              <Webmentions slug={`/recipes/${recipe.slug}`} />
+            </RecipeWrapper>
           </div>
-          </>
-        )}
+        </>
+      )}
     </Layout>
   )
 }

@@ -7,7 +7,7 @@ import Image from "next/image"
 import Link from 'next/link'
 
 const PhotoContainer = styled.div`
-  padding: calc(var(--space-sm)*0.5) var(--space-sm);
+  padding: 0 var(--space-sm);
   width: 50%;
 `
 
@@ -16,6 +16,9 @@ const PhotosTitle = styled.h2`
   font-size: 1.25rem;
   margin-bottom: var(--space-sm);
   cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 const PhotosContent = styled.p`
@@ -32,6 +35,7 @@ const Photo= styled(Image)`
 
 const PhotoWrapper = styled.div`
   position: relative;
+  cursor: pointer;
   height: 200px;
   width: 50%;
 `
@@ -49,7 +53,7 @@ export default function PhotoPreview({ photo }) {
         <HCard /> 
         <PhotoWrapper>
             <Photo
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.small.url}`}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
                 alt={`Cover medium of photo ${photo.date}`}
                 layout="fill"
                 className="u-photo" 

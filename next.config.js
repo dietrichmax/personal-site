@@ -525,6 +525,7 @@ module.exports = withPlugins([
       "source.unsplash.com",
       "webmention.io",
       "openweathermap.org",
+      "aujtzahimq.cloudimg.io"
     ],
   }}
   ],{webpack (config, { dev, isServer }) {

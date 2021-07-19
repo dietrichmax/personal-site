@@ -9,19 +9,24 @@ const slugify = require('slugify')
 import HCard from "@/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
 
-const ImageWrapepr = styled.div`
-
+const RecipeContainer = styled.div`
+  display: flex;
 `
 
 const DescriptionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   padding: 0 var(--space-sm);
-  height: 120px;
+  width: 50%
+`
+
+const ImageWrapper = styled.div`
+  width: 50%;
 `
 
 const Title = styled.h2`
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 const SubLine = styled.p`
@@ -42,21 +47,25 @@ export default function RecipePreview({ recipe }) {
   return (
       <Card title={recipe.title} className="h-recipe" >
         <Link href={`/recipes/${recipe.slug}`} passHref>
-          {recipe.coverImage ? 
-          <Image 
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
-            className="u-photo"
-            width="360"
-            height="140"
-          /> : null }
-          <DescriptionWrapper>
-            <Title className="p-name">{recipe.title}</Title>
-            <HCard/>
-            <SubLine>{recipe.subtitle}</SubLine>
-            <Meta>
-              <Duration className="dt-duration">{recipe.duration} min</Duration>
-            </Meta>
-          </DescriptionWrapper>
+          <RecipeContainer>
+            <ImageWrapper>
+              {recipe.coverImage ? 
+              <Image 
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
+                className="u-photo"
+                width="360"
+                height="140"
+              /> : null }
+            </ImageWrapper>
+            <DescriptionWrapper>
+              <Title className="p-name">{recipe.title}</Title>
+              <HCard/>
+              <SubLine>{recipe.subtitle}</SubLine>
+              <Meta>
+                <Duration className="dt-duration">{recipe.duration} min</Duration>
+              </Meta>
+            </DescriptionWrapper>
+          </RecipeContainer>
         </Link>
       </Card >
   )

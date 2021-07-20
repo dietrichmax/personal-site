@@ -15,19 +15,22 @@ const createManifest = () =>
     "orientation": "portrait",
     "icons": [
         {
-            "src": "/logos/android/android-launchericon-192-192.png",
-            "type": "image/png",
-            "sizes": "192x192"
+          "src": "/logos/android/android-launchericon-192-192.png",
+          "type": "image/png",
+          "sizes": "192x192",
+          "purpose": "any maskable"
         },
         {
           "src": "/logos/android/android-launchericon-192-192.png",
           "type": "image/png",
-          "sizes": "384x384"
+          "sizes": "384x384",
+          "purpose": "any maskable"
         },
         {
-            "src": "/logos/android/android-launchericon-512-512.png",
-            "type": "image/png",
-            "sizes": "512x512"
+          "src": "/logos/android/android-launchericon-512-512.png",
+          "type": "image/png",
+          "sizes": "512x512",
+          "purpose": "any maskable"
         }
     ]
 }`;

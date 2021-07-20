@@ -108,7 +108,7 @@ const TimelineItem = styled.div`
 
 const TimelineTitle = styled.h4`
   font-weight: 700;
-  font-style: italic
+  font-style: italic;
   font-size: 1rem;
 `
 

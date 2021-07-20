@@ -147,7 +147,6 @@ const Col1Item = styled.div`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid var(--thirdy-color);
-
 `
 
 const Education = styled.div`

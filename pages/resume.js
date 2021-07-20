@@ -47,7 +47,7 @@ const SubTitle = styled.h2`
 const SmallBio = styled.p`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
 `
 
 const Grid = styled.div`

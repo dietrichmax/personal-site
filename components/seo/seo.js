@@ -16,7 +16,7 @@ const SEO = ({
   
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
   if (error) return console.log("error")
-  if (!data) return <div>loading...</div>
+  if (!data) return console.log("loading")
 
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl

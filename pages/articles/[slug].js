@@ -98,7 +98,7 @@ export default function Post({ post }) {
               title={post.title}
               description={post.excerpt}
               image={post.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.url}` : ""}
-              slug={slug}
+              slug={`/articles/${post.slug}`}
               date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"
               articleSchema
@@ -118,7 +118,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper className="dt-published"><a className="u-url" href={`$config.siteUrl}${slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
+                <DateWrapper className="dt-published"><a className="u-url" href={`$config.siteUrl}/articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
 
                 <Content>
@@ -129,10 +129,10 @@ export default function Post({ post }) {
                   <SyndicationLinksWrapper>
                     <SyndicationLinks syndicationLinks={post.syndicationLinks} />
                   </SyndicationLinksWrapper>
-                  {/*<Comments slug={slug} />*/}
-                  <WebActions slug={slug} />
+                  {/*<Comments slug={`/articles/${post.slug}`} />*/}
+                  <WebActions slug={`/articles/${post.slug}`} />
                   {/*<Likes />*/}
-                  <Webmentions slug={slug} />
+                  <Webmentions slug={`/articles/${post.slug}`} />
 
 
                 </Content>

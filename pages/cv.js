@@ -57,6 +57,22 @@ const Grid = styled.div`
   font-size: 14px;
 `
 
+const CVHeader = styled.div`
+  display: flex;
+`
+
+const CVTitle = styled.div`
+  flex-direction: column;
+  display: flex;
+`
+
+const CVImage = styled.div`
+  margin-right: 0;
+  margin-left: auto;
+  width: 125px;
+`
+
+
 const Col1 = styled.div`
   grid-column: span 1/span 1;
 
@@ -149,9 +165,16 @@ export default function CV({ cv }) {
           <ResumeWrapper className="h-cv cv"> 
 
             <Paper>
-              <Title>{cv.title}</Title>
-              <SubTitle>{cv.subtitle}</SubTitle>
-              <SmallBio>{cv.smallBio}</SmallBio>
+              <CVHeader>
+                <CVTitle>
+                  <Title>{cv.title}</Title>
+                  <SubTitle>{cv.subtitle}</SubTitle>
+                  <SmallBio>{cv.smallBio}</SmallBio>
+                </CVTitle>
+                <CVImage>
+                  <Image src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cv.profile.formats.small.url}`} width="125px" height="125px" alt={`Image of ${cv.title}`}/>
+                </CVImage>
+              </CVHeader>
               <Grid>
                 <Col1>
 

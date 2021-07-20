@@ -33,7 +33,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
 
           {/* DNS Prefetch*/} 
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
@@ -70,18 +70,31 @@ class MyApp extends App {
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Photos`} href={`${config.siteUrl}/photos/feed.xml`} />
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle} - Activities`} href={`${config.siteUrl}/activities/feed.xml`} />
           
-          {/* Android */}
-          <meta name="theme-color" content={config.themeColor} />
-          <meta name="mobile-web-app-capable" content="yes" />
+          {/* Apple */}
+          <meta name='application-name' content={config.siteTitle} />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+          <meta name='apple-mobile-web-app-title' content={config.siteTitle} />
+          <meta name='description' content={config.siteDescription} />
+          <meta name='format-detection' content='telephone=no' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='msapplication-config' content='/logos/browserconfig.xml' />
+          <meta name='msapplication-TileColor' content={config.themeColor} />
+          <meta name='msapplication-tap-highlight' content='no' />
+          <meta name='theme-color' content='#000000' />
 
-          {/* iOS */}
-          <meta name="apple-mobile-web-app-title" content={config.siteTitle} />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <link href="images/icon-52x52.png" rel="apple-touch-icon-precomposed" sizes="57x57" />
+          <link rel='apple-touch-icon' href='/logos/apple/apple-touch-icon.png' />
+          <link rel='apple-touch-icon' sizes='152x152' href='/logos/apple/apple-touch-icon.png' />
+          <link rel='apple-touch-icon' sizes='180x180' href='/logos/apple/apple-touch-icon.png' />
+          <link rel='apple-touch-icon' sizes='167x167' href='/logos/apple/apple-touch-icon.png' />
+
+
 
           {/*Others */}
-          <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />          
+          {/*<link rel='icon' type='image/png' sizes='32x32' href='/static/icons/favicon-32x32.png' />*/}
+          {/*<link rel='icon' type='image/png' sizes='16x16' href='/static/icons/favicon-16x16.png' />*/}
+          {/*<link rel='mask-icon' href='/static/icons/safari-pinned-tab.svg' color='#5bbad5' />*/}
 
           {/*Manifest.json  */}
           <link href="/manifest.json" rel="manifest" />

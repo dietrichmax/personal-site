@@ -1,22 +1,31 @@
 import React from 'react';
 import config from "@/lib/data/internal/SiteConfig"
+import useSWR from 'swr'
+import fetcher from "@/lib/utils/fetcher"
+
 
 const createManifest = () => 
 `{
     "name": "${config.siteTitle}",
     "short_name": "${config.siteTitleShort}",
+    "theme_color": "${config.themeColor}",
+    "background_color": "${config.backgroundColor}",
     "start_url": "${config.homePath}",
     "display": "standalone",
-    "background_color": "${config.backgroundColor}",
-    "theme_color": "${config.themeColor}",
+    "orientation": "portrait",
     "icons": [
         {
-            "src": "/logos/android-chrome-192x192.png",
+            "src": "/logos/android/android-launchericon-192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/logos/android-chrome-512x512.png",
+          "src": "/logos/android/android-launchericon-192x192.png",
+          "type": "image/png",
+          "sizes": "384x384"
+        },
+        {
+            "src": "/logos/android/android-launchericon-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

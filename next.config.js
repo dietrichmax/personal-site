@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
+const withPWA = require('next-pwa')
 
 // redirects
 const redirects = {async redirects() {
@@ -517,6 +518,9 @@ module.exports = withPlugins([
   {i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US'
+  }},
+  {pwa: {
+    dest: 'public',
   }},
   {images: {
     domains: [

@@ -513,14 +513,20 @@ const rewrites = {async rewrites() {
         
 
 module.exports = withPlugins([
+  [withPWA, {
+    pwa: {
+    dest: 'public',
+  }}],
   redirects,
   withFonts,
   {i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US'
   }},
-  {pwa: {
-    dest: 'public',
+  {withPWA: {
+    pwa: {
+      dest: 'public'
+    },
   }},
   {images: {
     domains: [
@@ -552,5 +558,5 @@ module.exports = withPlugins([
     ignoreBuildErrors: true,
   },  eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 })

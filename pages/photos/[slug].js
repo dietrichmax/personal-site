@@ -39,6 +39,7 @@ const MetaWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
+  margin-top: var(--space-sm);
 `
 
 export default function Photo({ photo }) {

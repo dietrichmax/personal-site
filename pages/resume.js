@@ -115,6 +115,10 @@ const Education = styled.div`
   margin-bottom: var(--space-sm);
 `
 
+const EducationTitle = styled.p`
+  font-weight: 600;
+`
+
 const Interests = styled.div`
   margin-bottom: var(--space-sm);
 `
@@ -175,7 +179,7 @@ export default function Resume({ cv }) {
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>
-                        <strong>{item.type} - {item.location}</strong>
+                        <EducationTitle>{item.type} - {item.location}</EducationTitle>
                         <p>{item.date}</p>
                         <p>{item.description}</p>
                       </Education>

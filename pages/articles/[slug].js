@@ -85,6 +85,8 @@ export default function Post({ post }) {
   }
 
   const target = React.createRef()
+  
+  const slug = `/articles/${post.slug}`
 
   return (
     <Layout>
@@ -96,7 +98,7 @@ export default function Post({ post }) {
               title={post.title}
               description={post.excerpt}
               image={post.coverImage ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.url}` : ""}
-              slug={`articles/${post.slug}`}
+              slug={slug}
               date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"
               articleSchema
@@ -127,10 +129,11 @@ export default function Post({ post }) {
                   <SyndicationLinksWrapper>
                     <SyndicationLinks syndicationLinks={post.syndicationLinks} />
                   </SyndicationLinksWrapper>
-                  {/*<Comments slug={post.slug} />*/}
-                  <WebActions slug={`/articles/${post.slug}`} />
+                  {/*<Comments slug={slug} />*/}
+                  <WebActions slug={slug} />
+                  <PostMeta post={post} slug={slug}/>
                   {/*<Likes />*/}
-                  <Webmentions slug={`/articles/${post.slug}`} />
+                  <Webmentions slug={slug} />
 
 
                 </Content>

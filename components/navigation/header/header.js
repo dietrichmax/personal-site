@@ -71,7 +71,6 @@ export default function Header({ color }) {
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
   
   if (error) return console.log("error")
-  if (!data) return <div>loading...</div>
 
   return (
     <HeaderWrapper color={color}>

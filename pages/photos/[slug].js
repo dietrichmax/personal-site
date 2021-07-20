@@ -13,6 +13,8 @@ import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"
 import SyndicationLinks from "@/components/microformats/syndication-links"
 import PhotoMeta from "@/components/note/note-meta/note-meta"
+import HCard from "@/components/microformats/h-card"
+import PhotoTags from '@/components/tags/tags'
 
 const PageWrapper = styled.div`
 position: relative;
@@ -33,6 +35,11 @@ const PhotoList = styled.ol`;
 const PhotoItem = styled.li`;
 
 `
+
+const TagsWrapper = styled.div`
+  margin: var(--space-sm) 0;
+`
+
 
 const MetaWrapper = styled.div`
   display: flex;
@@ -59,7 +66,8 @@ export default function Photo({ photo }) {
               date={photo.updated_at ? photo.updated_at : photo.published_at}
             />
             <PageTitle className="p-name">{photo.title}</PageTitle>
-            <PageWrapper> 
+            <PageWrapper>  
+              <HCard /> 
               <PhotoList>
                 {photo.photo ? photo.photo.map((photo,i) => {
                   return (
@@ -80,6 +88,7 @@ export default function Photo({ photo }) {
                   
                 </PhotoList>
               <PageBody className="e-content" content={photo.description} />
+              <TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> 
               
               <MetaWrapper>
                 <PhotoMeta note={photo} />

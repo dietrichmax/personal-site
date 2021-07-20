@@ -233,7 +233,7 @@ export default function CV({ cv }) {
                     return(
                       <TimelineItem key={i}>
                         <TimelineTitle className="summary experience-summary">{role.role}</TimelineTitle>
-                        <TimelineCompany className"experience">{role.company} | {role.date}</TimelineCompany>
+                        <TimelineCompany className="experience">{role.company} | {role.date}</TimelineCompany>
                         <TimelineLongDescription>
                           <ReactMarkdown
                             children={role.longDescription}

@@ -81,7 +81,7 @@ class MyApp extends App {
           <link href="images/icon-52x52.png" rel="apple-touch-icon-precomposed" sizes="57x57" />
 
           {/*Others */}
-          <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+          <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
           {/*Manifest.json  */}
           <link href="/manifest.json" rel="manifest" />

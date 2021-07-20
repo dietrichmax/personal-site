@@ -33,14 +33,9 @@ const SEO = ({
         "@type": "WebSite",
         url: config.siteUrl,
         name: config.siteTitle,
-        alternateName: config.siteTitleAlt
+        alternateName: config.siteTitleAlt,
+        "logo": config.siteLogo,
       },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": config.siteUrl,
-      "logo": config.siteLogo,
-    }
   ]
 
   if (postSchema) {

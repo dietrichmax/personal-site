@@ -64,6 +64,8 @@ const CVHeader = styled.div`
 const CVTitle = styled.div`
   flex-direction: column;
   display: flex;
+  width: 75%;
+  margin-right: var(--space-lg);
 `
 
 const CVImage = styled.div`

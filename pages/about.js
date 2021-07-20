@@ -95,6 +95,7 @@ export default function About({ about }) {
                 height="300"
                 title={about.title}
                 alt={about.title}
+                className="profile u-photo"
               />
             </ImageWrapper>
 

@@ -36,3 +36,6 @@ yarn-error.log*
 
 # sitemap
 /public/sitemap.xml
+
+# service worker
+/sw.js

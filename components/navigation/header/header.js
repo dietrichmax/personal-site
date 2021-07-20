@@ -83,8 +83,8 @@ export default function Header({ color }) {
 
           <Logo>
             <Link rel="home" href="/" passHref>
-              <a className="u-url" rel="me" title={data.title}>
-                <LogoName className="p-name" >{!data ? "Max Dietrich" : data.title}</LogoName>
+              <a className="u-url" rel="me" title="Max Dietrich">
+                <LogoName className="p-name" >Max Dietrich</LogoName>
                 <br/>
                 <LogoDescription>{!data ? "" : data.timeline[0].role}</LogoDescription>
               </a>

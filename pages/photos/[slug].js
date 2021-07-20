@@ -81,7 +81,7 @@ export default function Photo({ photo }) {
               <PageBody className="e-content" content={photo.description} />
               
               <MetaWrapper>
-                <NoteMeta note={photo} />
+                <PhotoMeta note={photo} />
                 <SyndicationLinks syndicationLinks={photo.syndicationLinks} />
               </MetaWrapper>
               

@@ -15,7 +15,7 @@ const Button = styled.button`
   background: var(--secondary-color);
   cursor: pointer; 
   :hover {
-      color: var(--content-bg);
+      color: var(--text-color);
   }
 `
 

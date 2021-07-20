@@ -97,7 +97,7 @@ const FooterColumnPosts = styled.nav`
 
 const FooterColumnTitle = styled.p`
   font-weight: 600;
-  margin-bottom: .5rem;
+  margin-bottom: var(--space-sm);
 `
 
 const FooterColumnDescription = styled.div`
@@ -105,41 +105,26 @@ const FooterColumnDescription = styled.div`
   line-height: 1.75;
 `
 
-const FooterSocials = styled.ol`
-  list-style: none;
-  padding-inline-start: 0;
-
-`
-
 const List = styled.ol`
   list-style: none;
   padding-inline-start: 0;
 `
 
-const FooterItemSocials = styled.li`
-  margin-bottom: .5rem;
-  :hover {
-    color: var(--thirdy-color);
-    cursor: pointer;
-  }
-`
 
 const FooterItem = styled.li`
-  margin-bottom: .5rem;
+  margin-bottom: var(--space-sm);
   transition: 0.2s;
   :hover {
     color: var(--thirdy-color);
     cursor: pointer;
   }
-  ${media.lessThan('medium')` 
-  `}
 `
+
 const FooterItemLink = styled(Link)`
   :hover { 
     color: var(--secondary-color);
   }
 `
-
 
 const FooterNotice = styled.p`
   font-size:.75rem;
@@ -273,7 +258,7 @@ export default function Footer() {
               type="button"
               name="search"
               id="search"
-              aria-label="search"
+              aria-label="Search"
               onClick={() => window.open(`https://www.ecosia.org/search?q=site:${config.domain}+${search}`)}
               title="search"
             >
@@ -303,26 +288,26 @@ export default function Footer() {
 
           <FooterColumn>
             <FooterColumnTitle>Elsewhere</FooterColumnTitle>
-            <FooterSocials>
-              <FooterItemSocials>
+            <List>
+              <FooterItem>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter"><FaTwitter/> Twitter</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
+              </FooterItem>
+              <FooterItem>
                 <a href={config.socials.instagram} title="_maxdietrich on Instagram"><FaInstagram/> Instagram</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
+              </FooterItem>
+              <FooterItem>
                 <a href={config.socials.github} title="DaTurboD on GitHub"><FaGithub/> Github</a>
-              </FooterItemSocials>
-              <FooterItemSocials>
+              </FooterItem>
+              <FooterItem>
                 <a href={config.socials.strava} title="Max Dietrich on Strava"><SiStrava/> Strava</a>
-              </FooterItemSocials>
-              {/*<FooterItemSocials>
+              </FooterItem>
+              {/*<FooterItem>
                 <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
-              </FooterItemSocials>*/}
-              <FooterItemSocials>
+              </FooterItem>*/}
+              <FooterItem>
                 <a href={config.socials.linkedin} title="Max Dietrich on Linkedin"><FaLinkedin/> Linkedin</a>
-              </FooterItemSocials>
-            </FooterSocials>
+              </FooterItem>
+            </List>
           </FooterColumn>
         
           <FooterColumnPosts>

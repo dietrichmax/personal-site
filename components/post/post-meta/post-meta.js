@@ -16,9 +16,8 @@ const Meta = styled.div`
   justify-content: end;
   font-size: 11px;
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: var(--space-sm);
   background-color: var(--body-bg);
-  padding-top: 0.25rem;
   ${media.lessThan('medium')`
 
   `}

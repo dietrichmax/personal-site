@@ -159,7 +159,7 @@ const SEO = ({
     <Head>
     {/* META TAGS */}
       {/* General tags */}
-      <title>{title ? `${title} • ${!data ? "loading" : data.title} - ${!data ? "loading" : data.timeline[0].role}` : `${!data ? "loading" : data.title} - ${!data ? "loading" : data.timeline[0].role}`}</title>
+      <title>{title ? `${title} • ${!data ? "" : data.title} - ${!data ? "" : data.timeline[0].role}` : `${!data ? "" : data.title} - ${!data ? "" : data.timeline[0].role}`}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

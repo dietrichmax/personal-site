@@ -127,7 +127,7 @@ const Credit = styled.p`
 `
 
 
-export default function Resume({ cv }) {
+export default function CV({ cv }) {
   const router = useRouter()
 
 
@@ -139,14 +139,14 @@ export default function Resume({ cv }) {
       ) : (
         <>
           <SEO   
-            title="Resume"
-            description="Resume"
-            slug={`resume`}
+            title="CV"
+            description="Curriculum Vitae"
+            slug={`cv`}
           />
           
-          <PageTitle>Resume</PageTitle>
+          <PageTitle>CV</PageTitle>
 
-          <ResumeWrapper className="h-resume resume"> 
+          <ResumeWrapper className="h-cv cv"> 
 
             <Paper>
               <Title>{cv.title}</Title>

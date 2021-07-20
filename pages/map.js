@@ -53,7 +53,8 @@ export default function Map({ locations, locationsCount } ) {
         <Livemap data={locations} />
       </MapContainer>
       <Description>
-        Since 2021-03-02 i am tracking my current location. Right now there are {locationsCount} locations displayed on the map and the map is always centered at my last known position.
+        Since 2021-03-02 i am tracking my current location. Right now there are {locationsCount} locations displayed on the map. 
+        The map is always centered at my last known position.
       </Description>
       <Description>
         If you are curious how that works have a look at the article <InternalLink href="/articles/how-i-track-my-location-and-display-the-data-on-my-website" title="How i track my location and display the data on my website">How i track my location and display the data on my website</InternalLink> where i am describing the details behind it.

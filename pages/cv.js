@@ -33,6 +33,12 @@ const Paper = styled.section`
   height: 297mm;
   background-color: var(--content-bg);
   padding: var(--space-sm);
+  ${media.lessThan('830px')`
+    max-width: 100%;
+    height: 100%;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  `}
 `
 
 const Title = styled.h1`
@@ -56,6 +62,9 @@ const Grid = styled.div`
   display: grid;
   gap: var(--space);
   font-size: 14px;
+  ${media.lessThan('830px')`
+    gap: var(--space-sm);
+  `}
 `
 
 const CVHeader = styled.div`
@@ -73,16 +82,25 @@ const CVImage = styled.div`
   margin-right: 0;
   margin-left: auto;
   width: 125px;
+
 `
 
 
 const Col1 = styled.div`
   grid-column: span 1/span 1;
+  ${media.lessThan('830px')`
+    grid-column: span 4/span 4;
+    order: 2;
+  `}
 
   `
 
 const Col2 = styled.div`
   grid-column: span 3/span 3;
+  ${media.lessThan('830px')`
+    grid-column: span 4/span 4;
+    order: 1;
+  `}
 `
 
 const ColTitle = styled.h3`
@@ -104,6 +122,7 @@ const TimelineItem = styled.div`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid var(--thirdy-color);
+
 `
 
 const TimelineTitle = styled.h4`
@@ -128,6 +147,7 @@ const Col1Item = styled.div`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid var(--thirdy-color);
+
 `
 
 const Education = styled.div`
@@ -188,8 +208,8 @@ export default function CV({ cv }) {
                             <>
                               <ColTitle className="summary skill-summary">{item.name}</ColTitle>
                                 <SkillGrid>
-                                  {item.skillName.map((name) => {
-                                    return (<Skill className="skill">{name.name}</Skill>)
+                                  {item.skillName.map((name,i) => {
+                                    return (<Skill key={i} className="skill">{name.name}</Skill>)
                                   })}
                               </SkillGrid>
                             </>

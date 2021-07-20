@@ -12,6 +12,7 @@ import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"
 import SyndicationLinks from "@/components/microformats/syndication-links"
+import PhotoMeta from "@/components/note/note-meta/note-meta"
 
 const PageWrapper = styled.div`
 position: relative;
@@ -33,6 +34,12 @@ const PhotoItem = styled.li`;
 
 `
 
+const MetaWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+`
 
 export default function Photo({ photo }) {
   const router = useRouter()
@@ -72,8 +79,12 @@ export default function Photo({ photo }) {
                   
                 </PhotoList>
               <PageBody className="e-content" content={photo.description} />
-
-              <SyndicationLinks syndicationLinks={photo.syndicationLinks} />
+              
+              <MetaWrapper>
+                <NoteMeta note={photo} />
+                <SyndicationLinks syndicationLinks={photo.syndicationLinks} />
+              </MetaWrapper>
+              
               <WebActions slug={`/photos/${photo.slug}`} />
               <Webmentions slug={`/photos/${photo.slug}`} />
             </PageWrapper>

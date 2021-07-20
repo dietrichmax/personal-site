@@ -60,7 +60,11 @@ export default function NoteMeta({ note }) {
       <MetaOuterWrapper>
 
         <MetaInnerWrapper>
-            <MetaItem><a className="u-url" href={`${config.siteUrl}/notes/${note.slug}`}><Title><Time>{format(parseISO(date), config.dateFormat)}</Time></Title> |</a></MetaItem>
+            <MetaItem>
+              <a className="u-url" href={`${config.siteUrl}/notes/${note.id}`}>
+                <Title><Time class="dt-published">{format(parseISO(date), config.dateFormat)}</Time></Title> |
+              </a>
+            </MetaItem>
             <MetaItem><Location className="p-location" title="View this location in OpenStreetMap" href={`http://www.openstreetmap.org/?mlat=${note.lat}&mlon=${note.lon}&zoom=12`}><FaMapMarkerAlt /></Location> | </MetaItem>
             <MetaItem>{note.weather_icon ? 
               <Weather title={note.weather_description}>

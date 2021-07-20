@@ -10,6 +10,7 @@ import Image from "next/image"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"
+import HCard from "@/components/microformats/h-card"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -59,6 +60,7 @@ export default function Note({ link }) {
               date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
+            <HCard /> 
             <LinksLink href={link.link} title={link.title}c lassName="u-bookmark-of h-cite">{link.link}</LinksLink>
             <PageWrapper>
               <PageBody className="e-content" content={link.description} />

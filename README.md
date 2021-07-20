@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://mxd.codes/logos/android-chrome-192x192.png" width="100" style="border-radius:50%;"/>
+  <img alt="Logo" src="https://mxd.codes/logos/firefox/firefox-general-256-256.png" width="100" style="border-radius:50%;"/>
 </div>
 <h1 align="center">
   mxd.codes
@@ -12,15 +12,14 @@
 
 You can see the site live here:
 
-[``` mxd.codes ```](https://gis-netzwerk.com/)
+[``` mxd.codes ```](https://mxd.codes)
 
 The **frontend** of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js"). 
 The **backend** consists of:
-- CMS: [Strapi](https://strapi.io/ "strapi") is an awsome open-source content management system.
+- CMS: [Strapi](https://strapi.io/ "strapi") is an open-source content management system which i am using with Postgres.
 - Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo"). 
-- Web-Server: Nginx.
+- Web-Server: VPS with Nginx.
 
-No personal information is collected nor data is given to any third parties due to the fact that everything is hosted on a private server.
 
 ## Licensed under the [MIT License](https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/LICENSE "MIT License")
 
@@ -32,6 +31,4 @@ Images are mainly from
 - https://unsplash.com/,
 - https://www.esa.int
 - https://pixabay.com/de/
-
-Have a look at the credits below the images to find the according licence!
 

@@ -118,7 +118,7 @@ export default function Post({ post }) {
 
               <PostWrapper>
               <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                <DateWrapper className="dt-published">{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</DateWrapper>
+                <DateWrapper className="dt-published"><a className="u-url" href={`$config.siteUrl}${slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
 
                 <Content>
@@ -131,7 +131,6 @@ export default function Post({ post }) {
                   </SyndicationLinksWrapper>
                   {/*<Comments slug={slug} />*/}
                   <WebActions slug={slug} />
-                  <PostMeta post={post} slug={slug}/>
                   {/*<Likes />*/}
                   <Webmentions slug={slug} />
 

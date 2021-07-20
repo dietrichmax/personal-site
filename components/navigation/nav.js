@@ -46,8 +46,8 @@ export default function Nav({ color }) {
   const headerItems = [
     { "name": "Now", "link":  "/now" },
     { "name": "Articles", "link":  "/articles" },
-    { "name": "Notes", "link":  "/notes" },
     { "name": "Photos", "link":  "/photos" },
+    { "name": "Notes", "link":  "/notes" },
     { "name": "Links", "link":  "/links" },
   ]
 

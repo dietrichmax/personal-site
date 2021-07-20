@@ -3,18 +3,20 @@ import media from 'styled-media-query';
 import ActiveLink from "@/components/navigation/active-link"
 
 
-const NavItems = styled.li`
+const NavItems = styled.ul`
   grid-column: span 1 / span 1;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-inline-start: 0;
+  list-style: none;
   ${media.lessThan('medium')`
     margin-top: var(--space-sm);
   `}
 `
 
 
-const NavItem = styled.ul`
+const NavItem = styled.li`
   transition: none;
   color: ${props => (props.color ? `${props.color}`  : "color: var(--gray);")};
   padding-left: 0;

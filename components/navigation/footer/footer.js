@@ -260,16 +260,15 @@ export default function Footer() {
         <FooterBar>
 
           <SearchWrapper >
-            <label for="search-website">
-              <Input 
-                type="text"   
-                name="search-website"
-                id="search-website"
-                value={search}
-                label="search-input"
-                onChange={(e) => setSearch(e.target.value)}
-              /> 
-            </label>
+            <Input 
+              type="text"   
+              name="search-website"
+              id="search-website"
+              aria-label="Search"
+              value={search}
+              label="search-input"
+              onChange={(e) => setSearch(e.target.value)}
+            /> 
             <Button 
               type="button"
               name="search"

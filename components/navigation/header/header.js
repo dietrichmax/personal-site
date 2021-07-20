@@ -15,7 +15,7 @@ const HeaderWrapper = styled.header`
   color: ${props => (props.color ? `${props.color}`  : "var(--text-color)")};
 `
 
-const InnerHeader = styled.div`
+const InnerHeader = styled.nav`
   max-width: 1200px;
   margin: calc(var(--space-sm)*0.5) auto var(--space) auto;
   padding: var(--space-sm) var(--space);
@@ -26,18 +26,8 @@ const InnerHeader = styled.div`
   `}
 `
 
-const Navigation = styled.nav`
-  position: relative;
-  width: 100%;
-  float: left;
-  right: 0;
-  padding: 0;
-  font-size: 1rem;
-  text-align: right;
-  border-bottom-style: none;
-`
 
-const MainNav = styled.ul`
+const MainNav = styled.div`
   text-align: justify;
   list-style-type: none;
   padding-inline-start: 0;
@@ -49,7 +39,7 @@ const MainNav = styled.ul`
   `}
 `
 
-const Logo = styled.li`
+const Logo = styled.div`
   grid-column: span 2 / span 2;
   display: inline-block;
   line-height: 1.25;
@@ -76,9 +66,8 @@ export default function Header({ color }) {
     <HeaderWrapper color={color}>
       
       <InnerHeader>
-        <Navigation itemtype="https://schema.org/SiteNavigationElement">
 
-        <MainNav>
+        <MainNav itemtype="https://schema.org/SiteNavigationElement">
 
           <Logo>
             <Link rel="home" href="/" passHref>
@@ -94,7 +83,6 @@ export default function Header({ color }) {
 
         </MainNav>
 
-        </Navigation>
       </InnerHeader>
     </HeaderWrapper>
   )

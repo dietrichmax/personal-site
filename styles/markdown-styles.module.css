@@ -8,7 +8,7 @@
 }
 
 .markdown a {
-  color: var(--link-color);
+  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
 }
 

@@ -97,7 +97,7 @@ export default function Note({ note }) {
                   
                   <NoteTags tags={note.tags} />
                   <MetaWrapper>
-                    <NoteMeta  note={note} />
+                    <NoteMeta note={note} />
                     <SyndicationLinks syndicationLinks={note.syndicationLinks} />
                   </MetaWrapper>
 

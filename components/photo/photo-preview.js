@@ -43,29 +43,28 @@ const PhotoWrapper = styled.div`
 export default function PhotoPreview({ photo }) {
 
   return (       
-    <Link
-        href={`/photos/${photo.slug}`}
-        className="u-url"
-        rel="bookmark"
-        passHref
-    > 
-      <Card className="h-entry">   
-        <HCard /> 
-        <PhotoWrapper>
-            <Photo
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
-                alt={`Cover medium of photo ${photo.date}`}
-                layout="fill"
-                className="u-photo" 
-            /> 
-        </PhotoWrapper>
-        <PhotoContainer>
-            <PhotosTitle className="p-name">{photo.title}</PhotosTitle>
-            <PhotosContent className="e-content">{photo.description}</PhotosContent>
-            <PostTags tags={photo.tags} />
-            <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
-        </PhotoContainer>
-      </Card>
-    </Link>
+    <Card className="h-entry">   
+      <HCard /> 
+      <PhotoWrapper> 
+        <Link href={`/photos/${photo.slug}`} className="u-url" passHref>
+          <Photo
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
+            alt={`Cover medium of photo ${photo.date}`}
+            layout="fill"
+            className="u-photo" 
+          /> 
+        </Link>
+      </PhotoWrapper>
+      <PhotoContainer>
+        <PhotosTitle>
+          <Link href={`/photos/${photo.slug}`} className="u-url">
+            <a className="p-name" rel="bookmark">{photo.title}</a>
+          </Link>
+        </PhotosTitle>
+        <PhotosContent className="e-content">{photo.description}</PhotosContent>
+        <PostTags tags={photo.tags} />
+        <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
+      </PhotoContainer>
+    </Card>
   )
 }

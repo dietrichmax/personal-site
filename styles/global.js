@@ -33,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: var(--text-color);
   }
+  a:focus-visible {  
+    background-color: yellow;
+    color: var(--primary-color);
+  }
   strong {
     font-weight: bold;
   }

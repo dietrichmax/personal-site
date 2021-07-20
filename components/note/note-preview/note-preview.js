@@ -27,11 +27,9 @@ export default function NotePreview({ note }) {
     <Card className="h-entry" >
       <Link
         href={slug}
-        className="u-url"
-        rel="bookmark"
         passHref
       >
-        <a title={note.title}>
+        <a className="u-url" rel="bookmark"title={note.title}>
         <Hidden className="webmention meta">
           <HCard /> 
           <span className="webmention type">

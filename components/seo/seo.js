@@ -59,7 +59,7 @@ const SEO = ({
         "dateModified": date,
         "author": {
           "@type": "Person",
-          "name": Max Dietrich,
+          "name": "Max Dietrich",
           "nationality": "German",
           "address": {
             "@type": "PostalAddress",
@@ -113,7 +113,7 @@ const SEO = ({
   if (aboutSchema) {
     schemaOrgJSONLD = {
       "@type": "Person",
-      "name": config.siteTitle,
+      "name": "Max Dietrich",
       "nationality": "German",
       "address": {
         "@type": "PostalAddress",

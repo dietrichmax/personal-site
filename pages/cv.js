@@ -48,6 +48,7 @@ const SmallBio = styled.p`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--gray-light);
+  font-size: 14px;
 `
 
 const Grid = styled.div`

@@ -16,7 +16,8 @@ const SEO = ({
   
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
   if (error) return console.log("error")
-  if (!data) return console.log("loading")
+  
+  const cv = !data? "" : data
 
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl
@@ -60,7 +61,7 @@ const SEO = ({
         "dateModified": date,
         "author": {
           "@type": "Person",
-          "name": data.title,
+          "name": cv.title,
           "nationality": "German",
           "address": {
             "@type": "PostalAddress",
@@ -76,11 +77,11 @@ const SEO = ({
             }
           ],
           "gender": "Male",
-          "jobTitle": data.timeline[0].role,
+          "jobTitle": cv.timeline[0].role,
           "worksFor": [
             {
               "@type": "Organization",
-              "name": data.timeline[0].company,
+              "name": cv.timeline[0].company,
             }
           ],
           "nationality": "German",
@@ -92,10 +93,10 @@ const SEO = ({
             config.socials.instagram,
           ],
           "knowsAbout": [
-            data.skills[0].skillName.map((skill) => {
+            cv.skills[0].skillName.map((skill) => {
               skill.name
             }),
-            data.skills[1].skillName.map((skill) => {
+            cv.skills[1].skillName.map((skill) => {
               skill.name
             }),
           ],
@@ -130,11 +131,11 @@ const SEO = ({
         }
       ],
       "gender": "Male",
-      "jobTitle": data.timeline[0].role,
+      "jobTitle": cv.timeline[0].role,
       "worksFor": [
         {
           "@type": "Organization",
-          "jobTitle": data.timeline[0].company,
+          "jobTitle": cv.timeline[0].company,
         }
       ],
       "nationality": "German",
@@ -146,10 +147,10 @@ const SEO = ({
         config.socials.instagram,
       ],
       "knowsAbout": [
-        data.skills[0].skillName.map((skill) => {
+        cv.skills[0].skillName.map((skill) => {
           skill.name
         }),
-        data.skills[1].skillName.map((skill) => {
+        cv.skills[1].skillName.map((skill) => {
           skill.name
         }),
       ],
@@ -160,7 +161,7 @@ const SEO = ({
     <Head>
     {/* META TAGS */}
       {/* General tags */}
-      <title>{title ? `${title} • ${data.title} - ${data.timeline[0].role}` : `${data.title} - ${data.timeline[0].role}`}</title>
+      <title>{title ? `${title} • ${cv.title} - ${cv.timeline[0].role}` : `${cv.title} - ${cv.timeline[0].role}`}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

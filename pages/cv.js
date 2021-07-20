@@ -165,7 +165,7 @@ export default function CV({ cv }) {
           
           <PageTitle>CV</PageTitle>
 
-          <ResumeWrapper className="h-cv cv"> 
+          <ResumeWrapper className="h-resume resume"> 
 
             <Paper>
               <CVHeader>
@@ -186,10 +186,10 @@ export default function CV({ cv }) {
                       return (
                         <Education key={i}>
                             <>
-                              <ColTitle>{item.name}</ColTitle>
+                              <ColTitle className="summary skill-summary">{item.name}</ColTitle>
                                 <SkillGrid>
                                   {item.skillName.map((name) => {
-                                    return (<Skill>{name.name}</Skill>)
+                                    return (<Skill className="skill">{name.name}</Skill>)
                                   })}
                               </SkillGrid>
                             </>
@@ -205,9 +205,9 @@ export default function CV({ cv }) {
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>
-                        <EducationTitle>{item.type} - {item.location}</EducationTitle>
+                        <EducationTitle className"summary education-summary">{item.type} - {item.location}</EducationTitle>
                         <p>{item.date}</p>
-                        <p>{item.description}</p>
+                        <p className="education">{item.description}</p>
                       </Education>
                     )
                   })}
@@ -232,8 +232,8 @@ export default function CV({ cv }) {
                   {cv.timeline.map((role,i) => {
                     return(
                       <TimelineItem key={i}>
-                        <TimelineTitle>{role.role}</TimelineTitle>
-                        <TimelineCompany>{role.company} | {role.date}</TimelineCompany>
+                        <TimelineTitle className="summary experience-summary">{role.role}</TimelineTitle>
+                        <TimelineCompany className"experience">{role.company} | {role.date}</TimelineCompany>
                         <TimelineLongDescription>
                           <ReactMarkdown
                             children={role.longDescription}

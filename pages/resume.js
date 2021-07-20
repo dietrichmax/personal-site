@@ -68,7 +68,7 @@ const Col2 = styled.div`
 
 const ColTitle = styled.h3`
   font-weight: 400;
-  color: var(--thirdy-color);
+  color: var(--secondary-color);
   text-transform: uppercase;
   margin-bottom: .25rem;
 `
@@ -84,16 +84,17 @@ const SkillGrid = styled.div`
 const TimelineItem = styled.div`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--gray-light);
+  border-bottom: 2px solid var(--thirdy-color);
 `
 
 const TimelineTitle = styled.h4`
-  font-weight: 600;
+  font-weight: 700;
+  font-style: italic
   font-size: 1rem;
 `
 
 const TimelineCompany = styled.h5`
-  font-weight: 500;
+  font-weight: 600;
 `
 
 const TimelineLongDescription = styled.div`
@@ -101,13 +102,13 @@ const TimelineLongDescription = styled.div`
 `
 
 const TimelineTags = styled.p`
-  color: var(--thirdy-color);
+  color: var(--secondary-color);
 `
 
 const Col1Item = styled.div`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--gray-light);
+  border-bottom: 2px solid var(--thirdy-color);
 `
 
 const Education = styled.div`

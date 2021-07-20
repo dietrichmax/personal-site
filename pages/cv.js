@@ -205,7 +205,7 @@ export default function CV({ cv }) {
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>
-                        <EducationTitle className"summary education-summary">{item.type} - {item.location}</EducationTitle>
+                        <EducationTitle className="summary education-summary">{item.type} - {item.location}</EducationTitle>
                         <p>{item.date}</p>
                         <p className="education">{item.description}</p>
                       </Education>

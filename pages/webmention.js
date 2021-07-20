@@ -157,7 +157,7 @@ export default function WebmentionEndpoint({  }) {
                       onChange={(e) => setTargetUrl(e.target.value)} 
                     />
                   </WebmentionFormField>
-                  <Button type="submit" onClick={() => sendWebmention()}>Send Webmention</Button>
+                  <Button aria-label="Send Webmention" type="submit" onClick={() => sendWebmention()}>Send Webmention</Button>
                   <Status color={status.color}>{status.text}</Status>
                 </WebmentionForm> 
 

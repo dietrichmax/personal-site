@@ -211,6 +211,10 @@ export default function Footer() {
       link: "/feeds" 
     },
     { 
+      name: "Webmention Endpoint",
+      link: "/webmention" 
+    },
+    { 
       name: "Mailing",
       link: "/mailinglist" 
     },

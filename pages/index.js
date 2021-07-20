@@ -48,6 +48,7 @@ const HeroDescription = styled.h3`
   `}
   ${media.lessThan('medium')`
     margin: 0 var(--space-sm);
+    line-height: 1.45;
   `}
 `
 

@@ -38,5 +38,5 @@ yarn-error.log*
 /public/sitemap.xml
 
 # service worker
-/public/sw.js
+/public/sw*
 /public/workbox*

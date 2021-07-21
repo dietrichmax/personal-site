@@ -35,8 +35,8 @@ import { formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"
 
 const StyledReactTooltip = styled(ReactTooltip)`
-  background-color: var(--gray-extra-light);
-  color: var(--primary-color);
+  background-color: var(--content-bg);
+  color: var(--text-color);
 `
 
 const Container = styled.div`

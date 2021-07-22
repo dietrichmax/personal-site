@@ -8,6 +8,7 @@ import Link from 'next/link'
 import media from "styled-media-query"
 
 const PreviewContainer = styled.div`
+  display: flex;
   ${media.lessThan('small')`
     display: block;
   `}

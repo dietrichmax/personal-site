@@ -8,13 +8,15 @@ import Link from 'next/link'
 import media from "styled-media-query"
 
 const PreviewContainer = styled.div`
-  display: block;
+  ${media.lessThan('small')`
+    display: block;
+  `}
 `
 
 const PhotoContainer = styled.div`
   padding: 0 var(--space-sm);
   width: 50%;
-  ${media.lessThan('medium')`
+  ${media.lessThan('small')`
     calc(var(--space-sm)*0.5) 0
     width: 100%
   `}
@@ -47,7 +49,7 @@ const PhotoWrapper = styled.div`
   cursor: pointer;
   height: 200px;
   width: 50%;
-  ${media.lessThan('medium')`
+  ${media.lessThan('small')`
    width: 100%
   `}
 `

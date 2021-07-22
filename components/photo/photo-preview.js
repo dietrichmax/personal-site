@@ -9,6 +9,7 @@ import media from "styled-media-query"
 
 const PreviewContainer = styled.div`
   display: flex;
+  width: 100%;
   ${media.lessThan('small')`
     display: block;
   `}

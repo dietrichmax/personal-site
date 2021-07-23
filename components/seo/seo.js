@@ -29,8 +29,9 @@ const SEO = ({
       "name": "Max Dietrich",
       "nationality": "German",
       "url": config.siteUrl,
-      "logo": {
-        "url": config.siteLogo
+      "image": {
+        "@type": "ImageObject",
+        "url": config.siteLogo,
       },       
       "gender": "Male",
       "address": {

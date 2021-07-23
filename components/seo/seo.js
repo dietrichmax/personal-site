@@ -70,18 +70,6 @@ const SEO = ({
     }
   ]
   
-  const publisher = [
-    {
-      "@type": "Person",
-        "name": config.siteTitle,
-        "url": config.siteUrl,
-        "image": {
-          "@type": "ImageObject",
-          "url": `${config.siteUrl}${config.siteLogo}`,
-        },
-    }
-  ]
-  
   let schemaOrgJSONLD = [
     { 
       "@context": "http://schema.org",
@@ -93,7 +81,7 @@ const SEO = ({
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       },
-      "publisher": publisher
+      "publisher": author
     },
   ]
 

@@ -24,6 +24,7 @@ const SEO = ({
   ogType = ogType ? ogType : "website"
 
   const author = [
+    {
       "@type": "Person",
       "name": "Max Dietrich",
       "nationality": "German",
@@ -66,16 +67,19 @@ const SEO = ({
           skill.name
         }),
       ],  
+    }
   ]
   
   const publisher = [
-    "@type": "Person",
-      "name": config.siteTitle,
-      "url": config.siteUrl,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${config.siteUrl}${config.siteLogo}`,
-      },
+    {
+      "@type": "Person",
+        "name": config.siteTitle,
+        "url": config.siteUrl,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${config.siteUrl}${config.siteLogo}`,
+        },
+    }
   ]
   
   let schemaOrgJSONLD = [

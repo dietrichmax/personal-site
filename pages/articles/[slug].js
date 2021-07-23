@@ -100,6 +100,7 @@ export default function Post({ post }) {
               date={post.updated_at ? post.updated_at : post.published_at}
               ogType="article"
               articleSchema
+              data={post}
             />
             <article ref={target} className="h-entry">
              

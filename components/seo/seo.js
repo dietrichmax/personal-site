@@ -25,49 +25,49 @@ const SEO = ({
 
   const author = [
     "author": {
-    "@type": "Person",
-    "name": "Max Dietrich",
-    "nationality": "German",
-    "url": config.siteUrl,
-    "logo": {
-      "url": config.siteLogo
-    }          
-    "gender": "Male",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Rosenheim",
-      "addressRegion": "BY",
-      "addressCountry": "Germany"
-    },
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Salzburg",
-        "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
-      }
-    ],
-    "jobTitle": !data ? "loading" : data.timeline[0].role,
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": !data ? "loading" : data.timeline[0].company,
-      }
-    ],
-    "sameAs" : [ 
-      config.socials.twitter,
-      config.socials.linkedin,
-      config.socials.github,
-      config.socials.instagram,
-    ],
-    "knowsAbout": [
-      !data ? "loading" : data.skills[0].skillName.map((skill) => {
-        skill.name
-      }),
-      !data ? "loading" : data.skills[1].skillName.map((skill) => {
-        skill.name
-      }),
-    ],
-   },  
+      "@type": "Person",
+      "name": "Max Dietrich",
+      "nationality": "German",
+      "url": config.siteUrl,
+      "logo": {
+        "url": config.siteLogo
+      }          
+      "gender": "Male",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rosenheim",
+        "addressRegion": "BY",
+        "addressCountry": "Germany"
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Salzburg",
+          "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
+        }
+      ],
+      "jobTitle": !data ? "loading" : data.timeline[0].role,
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": !data ? "loading" : data.timeline[0].company,
+        }
+      ],
+      "sameAs" : [ 
+        config.socials.twitter,
+        config.socials.linkedin,
+        config.socials.github,
+        config.socials.instagram,
+      ],
+      "knowsAbout": [
+        !data ? "loading" : data.skills[0].skillName.map((skill) => {
+          skill.name
+        }),
+        !data ? "loading" : data.skills[1].skillName.map((skill) => {
+          skill.name
+        }),
+      ],
+    },  
   ]
   
   const publisher = [
@@ -78,8 +78,8 @@ const SEO = ({
       "logo": {
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
-      }
-    }
+      },
+    },
   ]
   
   let schemaOrgJSONLD = [
@@ -98,48 +98,52 @@ const SEO = ({
     },
   ]
 
-if (articleSchema) {
-  schemaOrgJSONLD = {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "name": post.title,,
-    "headline": post.title,
-    "url": slug
-    "image": {
-      "@type": "ImageObject",
-      "url": image,
-      "height": 450,
-      "width": 1300
-    },
-    "articleBody": post.content,
-    "datePublished": post.published_at,
-    "dateModified": post.updated_at,
-    "dateCreated": post.created_at,
-    "keywords": "",
-  }
-} 
+  if (articleSchema) {
+    schemaOrgJSONLD = {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "name": post.title,,
+      "headline": post.title,
+      "url": slug
+      "image": {
+        "@type": "ImageObject",
+        "url": image,
+        "height": 450,
+        "width": 1300
+      },
+      "articleBody": post.content,
+      "datePublished": post.published_at,
+      "dateModified": post.updated_at,
+      "dateCreated": post.created_at,
+      "keywords": "",
+    }
+  } 
 
-const breadcrumbList = {
-      {
+  const breadcrumbList = {
+    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Books",
-        "item": "https://example.com/books"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Science Fiction",
-        "item": "https://example.com/books/sciencefiction"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Award Winners"
-      }]
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Books",
+          "item": "https://example.com/books"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Science Fiction",
+          "item": "https://example.com/books/sciencefiction"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Award Winners"
+        }
+      ]
     }
-}
+  }
   return (
     <Head>
     {/* META TAGS */}

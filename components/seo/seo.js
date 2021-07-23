@@ -98,7 +98,7 @@ const SEO = ({
   ]
 
   if (articleSchema) {
-    schemaOrgJSONLD = {
+    schemaOrgJSONLD.push({
       "@context": "http://schema.org",
       "@type": "Article",
       "name": articleData.title,
@@ -120,7 +120,7 @@ const SEO = ({
         "@type": "WebPage",
         "@id":  `${config.siteUrl}`
       },  
-    }
+    })
   } 
 
   const breadcrumbList = [

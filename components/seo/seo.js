@@ -92,7 +92,7 @@ const SEO = ({
       "logo": {
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
-      }
+      },
       "publisher": publisher
     },
   ]

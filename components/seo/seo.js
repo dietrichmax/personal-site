@@ -119,7 +119,7 @@ const SEO = ({
     }
   } 
 
-  const breadcrumbList = {
+  const breadcrumbList = [
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -143,7 +143,8 @@ const SEO = ({
         }
       ]
     }
-  }
+  ]
+  
   return (
     <Head>
     {/* META TAGS */}

@@ -22,86 +22,100 @@ const SEO = ({
   image = image ? `${image.startsWith("/") ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ""}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
-  
-  const authorJSONLD = [
+
+  const author = [
     "author": {
+    "@type": "Person",
+    "name": "Max Dietrich",
+    "nationality": "German",
+    "url": config.siteUrl,
+    "logo": {
+      "url": config.siteLogo
+    }          
+    "gender": "Male",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rosenheim",
+      "addressRegion": "BY",
+      "addressCountry": "Germany"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Salzburg",
+        "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
+      }
+    ],
+    "jobTitle": !data ? "loading" : data.timeline[0].role,
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": !data ? "loading" : data.timeline[0].company,
+      }
+    ],
+    "sameAs" : [ 
+      config.socials.twitter,
+      config.socials.linkedin,
+      config.socials.github,
+      config.socials.instagram,
+    ],
+    "knowsAbout": [
+      !data ? "loading" : data.skills[0].skillName.map((skill) => {
+        skill.name
+      }),
+      !data ? "loading" : data.skills[1].skillName.map((skill) => {
+        skill.name
+      }),
+    ],
+   },  
+  ]
+  
+  const publisher = [
+    "publisher": {
       "@type": "Person",
-      "name": "Max Dietrich",
-      "nationality": "German",
+      "name": config.siteTitle,
       "url": config.siteUrl,
       "logo": {
-        "url": config.siteLogo
-      }          
-      "gender": "Male",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Rosenheim",
-        "addressRegion": "BY",
-        "addressCountry": "Germany"
-      },
-      "alumniOf": [
-         {
-           "@type": "CollegeOrUniversity",
-           "name": "University of Salzburg",
-           "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
-         }
-       ],
-       "jobTitle": !data ? "loading" : data.timeline[0].role,
-       "worksFor": [
-         {
-           "@type": "Organization",
-           "name": !data ? "loading" : data.timeline[0].company,
-         }
-       ],
-       "sameAs" : [ 
-         config.socials.twitter,
-         config.socials.linkedin,
-         config.socials.github,
-         config.socials.instagram,
-       ],
-       "knowsAbout": [
-         !data ? "loading" : data.skills[0].skillName.map((skill) => {
-          skill.name
-         }),
-        !data ? "loading" : data.skills[1].skillName.map((skill) => {
-          skill.name
-        }),
-       ],
-       },  
-     ]
-
+        "@type": "ImageObject",
+        "url": `${config.siteUrl}${config.siteLogo}`,
+      }
+    }
+  ]
+  
   let schemaOrgJSONLD = [
     { 
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        url: config.siteUrl,
-        name: config.siteTitle,
-        alternateName: config.siteTitleAlt,
-        authorJSONLD
-      },
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      url: config.siteUrl,
+      name: config.siteTitle,
+      alternateName: config.siteTitleAlt,  
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${config.siteUrl}${config.siteLogo}`,
+      }
+      author,
+      publisher
+    },
   ]
 
-  if (articleSchema) {
-      schemaOrgJSONLD = {
-        "@context": "http://schema.org",
-        "@type": "Article",
-        "name": post.title,,
-        "headline": post.title,
-        "url": slug
-        "image": {
-          "@type": "ImageObject",
-          "url": image,
-          "height": 450,
-          "width": 1300
-        },
-        "articleBody": post.content,
-        "datePublished": post.published_at,
-        "dateModified": post.updated_at,
-        "dateCreated": post.created_at,
-        "keywords": "",
-        authorJSONLD
-        
-    }
+if (articleSchema) {
+  schemaOrgJSONLD = {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "name": post.title,,
+    "headline": post.title,
+    "url": slug
+    "image": {
+      "@type": "ImageObject",
+      "url": image,
+      "height": 450,
+      "width": 1300
+    },
+    "articleBody": post.content,
+    "datePublished": post.published_at,
+    "dateModified": post.updated_at,
+    "dateCreated": post.created_at,
+    "keywords": "",
   }
 } 
 

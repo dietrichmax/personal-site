@@ -11,7 +11,7 @@ const SEO = ({
   date,
   ogType,
   articleSchema,
-  data
+  articleData
 }) => {
   
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
@@ -101,8 +101,8 @@ const SEO = ({
     schemaOrgJSONLD = {
       "@context": "http://schema.org",
       "@type": "Article",
-      "name": post.title,,
-      "headline": post.title,
+      "name": articleData.title,
+      "headline": articleData.title,
       "url": slug
       "image": {
         "@type": "ImageObject",
@@ -110,10 +110,10 @@ const SEO = ({
         "height": 450,
         "width": 1300
       },
-      "articleBody": post.content,
-      "datePublished": post.published_at,
-      "dateModified": post.updated_at,
-      "dateCreated": post.created_at,
+      "articleBody": articleData.content,
+      "datePublished": articleData.published_at,
+      "dateModified": articleData.updated_at,
+      "dateCreated": articleData.created_at,
       "keywords": "",
       "author": author,
     }

@@ -24,7 +24,6 @@ const SEO = ({
   ogType = ogType ? ogType : "website"
 
   const author = [
-    "author": {
       "@type": "Person",
       "name": "Max Dietrich",
       "nationality": "German",
@@ -66,20 +65,17 @@ const SEO = ({
         !data ? "loading" : data.skills[1].skillName.map((skill) => {
           skill.name
         }),
-      ],
-    },  
+      ],  
   ]
   
   const publisher = [
-    "publisher": {
-      "@type": "Person",
+    "@type": "Person",
       "name": config.siteTitle,
       "url": config.siteUrl,
       "logo": {
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       },
-    },
   ]
   
   let schemaOrgJSONLD = [
@@ -93,8 +89,7 @@ const SEO = ({
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       }
-      author,
-      publisher
+      "publisher": publisher
     },
   ]
 
@@ -116,6 +111,7 @@ const SEO = ({
       "dateModified": post.updated_at,
       "dateCreated": post.created_at,
       "keywords": "",
+      "author": author,
     }
   } 
 

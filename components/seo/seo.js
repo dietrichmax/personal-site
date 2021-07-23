@@ -75,7 +75,7 @@ const SEO = ({
       "@type": "Person",
         "name": config.siteTitle,
         "url": config.siteUrl,
-        "logo": {
+        "image": {
           "@type": "ImageObject",
           "url": `${config.siteUrl}${config.siteLogo}`,
         },
@@ -89,7 +89,7 @@ const SEO = ({
       url: config.siteUrl,
       name: config.siteTitle,
       alternateName: config.siteTitleAlt,  
-      "logo": {
+      "image": {
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       },
@@ -116,6 +116,10 @@ const SEO = ({
       "dateCreated": articleData.created_at,
       "keywords": "",
       "author": author,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id":  `${config.siteUrl}`
+      },  
     }
   } 
 

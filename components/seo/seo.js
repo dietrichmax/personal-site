@@ -103,7 +103,7 @@ const SEO = ({
       "@type": "Article",
       "name": articleData.title,
       "headline": articleData.title,
-      "url": slug
+      "url": slug,
       "image": {
         "@type": "ImageObject",
         "url": image,

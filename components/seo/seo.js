@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react"
 import Head from "next/head"
 import config, { dateFormat } from "@/lib/data/internal/SiteConfig";
 import useSWR from 'swr'
@@ -14,8 +15,17 @@ const SEO = ({
   articleData
 }) => {
   
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
-  if (error) return console.log("error")
+  const [data, setData] = useState("")
+  
+  useEffect(() => {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+    fetch('https://api.mxd.codes/cv', requestOptions)
+        .then(response => response.json())
+        .then(data => setData(data));
+  }, []);
 
   description  = description ? description.replace(/(<([^>]+)>)/gi, "") : config.siteDescription
   slug = slug ? `${config.siteUrl}/${slug}` : config.siteUrl

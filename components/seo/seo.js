@@ -31,7 +31,7 @@ const SEO = ({
       "url": config.siteUrl,
       "logo": {
         "url": config.siteLogo
-      }          
+      },       
       "gender": "Male",
       "address": {
         "@type": "PostalAddress",

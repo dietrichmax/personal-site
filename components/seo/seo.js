@@ -10,8 +10,8 @@ const SEO = ({
   slug,
   date,
   ogType,
-  postSchema,
-  aboutSchema
+  articleSchema,
+  data
 }) => {
   
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
@@ -23,9 +23,64 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
   
-
-  
-
+  const authorJSONLD = [
+    "author": {
+      "@type": "Person",
+      "name": "Max Dietrich",
+      "nationality": "German",
+      "url": config.siteUrl,
+      "logo": {
+        "url": config.siteLogo
+      }          
+      "gender": "Male",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rosenheim",
+        "addressRegion": "BY",
+        "addressCountry": "Germany"
+      },
+      "alumniOf": [
+         {
+           "@type": "CollegeOrUniversity",
+           "name": "University of Salzburg",
+           "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
+         }
+       ],
+       "jobTitle": !data ? "loading" : data.timeline[0].role,
+       "worksFor": [
+         {
+           "@type": "Organization",
+           "name": !data ? "loading" : data.timeline[0].company,
+         }
+       ],
+       "sameAs" : [ 
+         config.socials.twitter,
+         config.socials.linkedin,
+         config.socials.github,
+         config.socials.instagram,
+       ],
+       "knowsAbout": [
+         !data ? "loading" : data.skills[0].skillName.map((skill) => {
+          skill.name
+         }),
+        !data ? "loading" : data.skills[1].skillName.map((skill) => {
+          skill.name
+        }),
+       ],
+       "mainEntityOfPage": {
+       "@type": "WebPage",
+       "@id":  `${config.siteUrl}`
+       },  
+       "publisher": {
+         "@type": "Person",
+         "name": "Max Dietrich",
+         "url": config.siteUrl,
+         "logo": {
+          "@type": "ImageObject",
+          "url": config.siteLogo,
+         }
+       }  
+     ]
 
   let schemaOrgJSONLD = [
     { 
@@ -34,120 +89,32 @@ const SEO = ({
         url: config.siteUrl,
         name: config.siteTitle,
         alternateName: config.siteTitleAlt,
-        "logo": config.siteLogo,
+        authorJSONLD
       },
   ]
 
-  if (postSchema) {
+  if (articleSchema) {
       schemaOrgJSONLD = {
         "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id":  `${config.siteUrl}`
-        },  
-        "headline": title,
-        "image": [
-          image,
-         ],
-        "datePublished": date,
-        "dateModified": date,
-        "author": {
-          "@type": "Person",
-          "name": "Max Dietrich",
-          "nationality": "German",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Rosenheim",
-            "addressRegion": "BY",
-            "addressCountry": "Germany"
-          },
-          "alumniOf": [
-            {
-             "@type": "CollegeOrUniversity",
-             "name": "University of Salzburg",
-             "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
-            }
-          ],
-          "gender": "Male",
-          "jobTitle": !data ? "loading" : data.timeline[0].role,
-          "worksFor": [
-            {
-              "@type": "Organization",
-              "name": !data ? "loading" : data.timeline[0].company,
-            }
-          ],
-          "nationality": "German",
-          "url": config.siteUrl,
-          "sameAs" : [ 
-            config.socials.twitter,
-            config.socials.linkedin,
-            config.socials.github,
-            config.socials.instagram,
-          ],
-          "knowsAbout": [
-            !data ? "loading" : data.skills[0].skillName.map((skill) => {
-              skill.name
-            }),
-            !data ? "loading" : data.skills[1].skillName.map((skill) => {
-              skill.name
-            }),
-          ],
+        "@type": "Article",
+        "name": post.title,,
+        "headline": post.title,
+        "url": slug
+        "image": {
+          "@type": "ImageObject",
+          "url": image,
+          "height": 450,
+          "width": 1300
         },
-        "publisher": {
-          "@type": "Organization",
-          "name": config.siteTitle,
-          "logo": {
-            "@type": "ImageObject",
-            "url": config.siteLogo
-          }
-        }  
+        "articleBody": post.content,
+        "datePublished": post.published_at,
+        "dateModified": post.updated_at,
+        "dateCreated": post.created_at,
+        "keywords": "",
+        authorJSONLD
+        
     }
   }
-
-  if (aboutSchema) {
-    schemaOrgJSONLD = {
-      "@type": "Person",
-      "name": "Max Dietrich",
-      "nationality": "German",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Rosenheim",
-        "addressRegion": "BY",
-        "addressCountry": "Germany"
-      },
-      "alumniOf": [
-        {
-         "@type": "CollegeOrUniversity",
-         "name": "University of Salzburg",
-         "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg"
-        }
-      ],
-      "gender": "Male",
-      "jobTitle": !data ? "loading" : data.timeline[0].role,
-      "worksFor": [
-        {
-          "@type": "Organization",
-          "jobTitle": !data ? "loading" : data.timeline[0].company,
-        }
-      ],
-      "nationality": "German",
-      "url": config.siteUrl,
-      "sameAs" : [ 
-        config.socials.twitter,
-        config.socials.linkedin,
-        config.socials.github,
-        config.socials.instagram,
-      ],
-      "knowsAbout": [
-        !data ? "loading" : data.skills[0].skillName.map((skill) => {
-          skill.name
-        }),
-        !data ? "loading" : data.skills[1].skillName.map((skill) => {
-          skill.name
-        }),
-      ],
-    }
 } 
 
   return (

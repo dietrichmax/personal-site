@@ -74,7 +74,7 @@
   font-style: italic;
 }
 
-.markdown blockqoute > p {
-  margin: 0;
+.markdown blockqoute p {
+  margin-bottom: 0;
 }
 

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Head from "next/head"
 import config, { dateFormat } from "@/lib/data/internal/SiteConfig";
-import useSWR from 'swr'
-import fetcher from "@/lib/utils/fetcher"
 
 const SEO = ({ 
   title,

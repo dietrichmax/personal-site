@@ -7,7 +7,7 @@ import { getActivity, getAllActivities } from '@/lib/data/external/cms'
 import { fromUnixTime, format } from 'date-fns'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
-import config from "@/lib/data/SiteConfig";
+import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"
 import Comments from "@/components/comments/comments"
@@ -78,7 +78,9 @@ const DataItem = styled.dl`
   `}
 `
 
-const DataItemLabel = styled.dt``
+const DataItemLabel = styled.dt`
+  color: var(--text-color);
+`
 
 const DataItemValue = styled.dd`
     font-weight: 600;
@@ -93,7 +95,7 @@ const MapContainer = styled.div`
 export default function Activity({ activity }) {  
   const router = useRouter()
 
-  const slug = `/activities/${activity.id}`
+  const slug = `/activities/${activity.activityId}`
 
   const getTypeIcon = activity => {
     if (activity.activityType.typeId == 5) {
@@ -172,13 +174,13 @@ export default function Activity({ activity }) {
                 </Data>
                 <HCard />
                 <MapContainer>
-                    {/*<ActivityMap data={activity.details.geoPolylineDTO} />
+                    {/*<ActivityMap data={activity.details.geoPolylineDTO} />*/}
                 </MapContainer>
 
               </ActivityContainer>
 
                 <WebActions slug={slug} />
-                {/*<Likes />
+                {/*<Likes />*/}
                 <Webmentions slug={slug} />
                 
 
@@ -192,7 +194,7 @@ export default function Activity({ activity }) {
 }
 
 export async function getStaticProps({ params }) {  
-  const data = await getActivity(params.id)
+  const data = await getActivity(params.activityId)
   
   return {
     props: {
@@ -207,7 +209,7 @@ export async function getStaticPaths() {
   const activities = await getAllActivities()
   
   return {
-    paths: activities?.map((activity) => `/activities/${activity.id}`) || [],
+    paths: activities?.map((activity) => `/activities/${activity.activityId}`) || [],
     fallback: true,
   }
 }

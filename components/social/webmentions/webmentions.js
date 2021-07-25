@@ -296,7 +296,7 @@ export default function Webmentions({ slug, preview }) {
         </WebmentionsHeader>
         
         <SendWebmentions>
-          <SendText for="webmention">Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
+          <SendText>Have you published a response to this? Send me a webmention by letting me know the URL.</SendText>
           <Input
             type="webmention"
             name="webmention"
@@ -307,6 +307,8 @@ export default function Webmentions({ slug, preview }) {
           />
           <Button
             type="button"
+            name="webmention"
+            id="webmention"
             aria-label="Send Webmention"
             onClick={() => sendWebmention()}
             style={{ width: "100%" }}

@@ -10,12 +10,8 @@ import styled from 'styled-components';
 import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"
-import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
-import Likes from "@/components/social/favorites/favorites"
 import WebActions from "@/components/social/feedback/feedback"
-import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
-import PostMeta from '@/components/post/post-meta/post-meta'
 import { FaRunning, FaBiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
@@ -95,8 +91,6 @@ const MapContainer = styled.div`
 export default function Activity({ activity }) {  
   const router = useRouter()
 
-  const slug = `/activities/${activity.activityId}`
-
   const getTypeIcon = activity => {
     if (activity.activityType.typeId == 5) {
         return <FaBiking/>
@@ -121,7 +115,7 @@ export default function Activity({ activity }) {
             <SEO   
               title={`${activity.activityName}-${format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")}`}
               description={`${activity.activityName}`}
-              slug={slug}
+              slug={`/activities/${activity.activityId}`}
               date={activity.updated_at ? activity.updated_at : activity.created_at}
               ogType="activity"
             />
@@ -129,7 +123,7 @@ export default function Activity({ activity }) {
               <ActivityContainer>
                 <HCard /> 
 
-                <Link href={slug} passHref>
+                <Link href={`/activities/${activity.activityId}`} passHref>
                   <a className="p-name u-url" title={activity.activityName}>
                     <Title>
                         <Icon title={activity.activityType.typeKey}>{getTypeIcon(activity)}</Icon>{` `}
@@ -179,9 +173,9 @@ export default function Activity({ activity }) {
 
               </ActivityContainer>
 
-                <WebActions slug={slug} />
+                <WebActions slug={`/activities/${activity.activityId}`} />
                 {/*<Likes />*/}
-                <Webmentions slug={slug} />
+                <Webmentions slug={`/activities/${activity.activityId}`} />
                 
 
 

@@ -25,6 +25,7 @@ import {
   getActivitiesCount,
   getLinksCount,
   getPhotosCount,
+  getAllActivities
 } from "@/lib/data/external/cms"
 import { fetchWebmentions } from "@/lib/data/external/webmentions"
 import { getGitHubStats } from "@/lib/data/external/github"
@@ -305,7 +306,8 @@ export default function Dashboard({
     activitiesCount,
     linksCount,
     visitsSummary,
-    photosCount
+    photosCount,
+    activities
 }) {
     const router = useRouter()
     const [liveViews, setLiveViews] = useState(0);
@@ -362,6 +364,26 @@ export default function Dashboard({
         const timeOnSite = `${minutes} min ${seconds} s`
         return timeOnSite
     }
+
+    let distance = 0
+    let duration = 0
+    let averageSpeed = 0
+    let maxSpeed = []
+    let elevationGain = 0
+    let jumpCount = 0
+    let greatestElevationGain = []
+    let longestRide = []
+    
+    activities.map((item) => {
+      distance = distance + item.distance
+      duration = duration + item.duration
+      averageSpeed = averageSpeed + item.averageSpeed
+      maxSpeed.push(item.maxSpeed)
+      elevationGain = elevationGain + item.elevationGain
+      jumpCount = jumpCount + item.jumpCount
+      greatestElevationGain.push(item.elevationGain)
+      longestRide.push(item.distance)
+    })
 
     return (
         <>
@@ -435,10 +457,10 @@ export default function Dashboard({
                                             <GridStatsDescription>Links bookmarked</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
-                                    <Link href="/activities" passHref>
-                                        <StatsSmallGrid title="See all Activities">
-                                            <GridStats>{activitiesCount}</GridStats>
-                                            <GridStatsDescription>Activities tracked</GridStatsDescription>
+                                    <Link href="/photos" passHref>
+                                        <StatsSmallGrid title="See all Photos">
+                                            <GridStats>{photosCount}</GridStats>
+                                            <GridStatsDescription>Photos posted</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>
                                     <Link href="/topics">
@@ -668,6 +690,45 @@ export default function Dashboard({
                                         </LanguageColumn>
                                     </LanguageWrapper>
                                 </LanguageContainer>
+
+                                <GeneralStats>
+                                <StatsGridMedium>
+                                    <GridMediumTitle>Activity Stats</GridMediumTitle>
+                                        <BottomStatsGrid title="See all Activities">
+                                            <GridStats>{activitiesCount}</GridStats>
+                                            <GridStatsDescription>Activities tracked</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{parseInt(distance/1000)}</GridStats>
+                                            <GridStatsDescription>Total distance [km]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{parseInt(duration/3600)}</GridStats>
+                                            <GridStatsDescription>Total duration [h]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{Math.max(...maxSpeed).toFixed(1)}</GridStats>
+                                            <GridStatsDescription>Max Speed [km/h]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{(Math.max(...longestRide)/1000).toFixed(1)}</GridStats>
+                                            <GridStatsDescription>Longest ride [km]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{(elevationGain).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                            <GridStatsDescription>Total Elevation Gain [m]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{jumpCount}</GridStats>
+                                            <GridStatsDescription>Jump count</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                        <BottomStatsGrid>
+                                            <GridStats>{(averageSpeed/activitiesCount).toFixed(1)}</GridStats>
+                                            <GridStatsDescription>Average speed [km/h]</GridStatsDescription>
+                                        </BottomStatsGrid>
+                                </StatsGridMedium>
+                            </GeneralStats>
+
                         {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
                         </Container>
                     </>
@@ -694,6 +755,7 @@ export async function getStaticProps() {
     const allWebmentions = (await fetchWebmentions()) || []
     const seoStats = (await getMatomoSEOStats()) || []
     const visitsSummary = (await getMatomoVisitsSummary()) || []
+    const activities = (await getAllActivities()) || []
     
     return {
         revalidate:  86400,
@@ -713,7 +775,8 @@ export async function getStaticProps() {
             allWebmentions,
             seoStats,
             visitsSummary,
-            photosCount
+            photosCount,
+            activities
         },
     }
 }

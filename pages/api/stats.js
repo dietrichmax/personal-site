@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react"
 import {
   getPostsCount,
   getTagsCount,
@@ -6,9 +7,11 @@ import {
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
+  getAllActivities
 } from "@/lib/data/external/cms"
 
 export default async (_, res) => {
+
   const postsCount = (await getPostsCount()) || []
   const tagsCount = (await getTagsCount()) || []
   const notesCount = (await getNotesCount()) || []
@@ -16,7 +19,23 @@ export default async (_, res) => {
   const locationsCount = (await getLocationsCount()) || []
   const activitiesCount = await getActivitiesCount()
   const subscribersCount = (await getSubscribersCount()) || []
+  const activities = (await getAllActivities()) || []
 
+  let distance = 0
+  let duration = 0
+  let averageSpeed = 0
+  let maxSpeed = []
+  let elevationGain = 0
+  let jumpCount = 0
+  
+  activities.map((item) => {
+    distance = distance + item.distance
+    duration = duration + item.duration
+    averageSpeed = averageSpeed + item.averageSpeed
+    maxSpeed.push(item.maxSpeed)
+    elevationGain = elevationGain + item.elevationGain
+    jumpCount = jumpCount + item.jumpCount
+  })
 
   res.setHeader(
     'Cache-Control',
@@ -34,6 +53,15 @@ export default async (_, res) => {
         subscribers: subscribersCount,
         locations: locationsCount,
       }
+    },
+    activities: {
+      distance: parseInt(distance/1000),
+      duration: parseInt(duration/3600),
+      averageSpeed: (averageSpeed/activitiesCount).toFixed(2),
+      maxSpeed: Math.max(maxSpeed).toFixed(2),
+      elevationGain: parseInt(elevationGain),
+      jumpCount: jumpCount
+
     }
   });
 };

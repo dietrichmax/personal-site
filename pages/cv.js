@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Image from "next/image"
-import Content from '@/components/article/article-body/article-body'
 import Layout from '@/components/layout/layout'
 import { getCV } from '@/lib/data/external/cms'
 import PageTitle from '@/components/title/page-title'
@@ -10,13 +9,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import config from "@/lib/data/internal/SiteConfig";
 import ReactMarkdown from "react-markdown"
-import markdownStyles from '@/styles/markdown-styles.module.css'
-import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
-import { isExists } from "date-fns"
-import { data } from "remark"
-
-
-
+import { Button } from "@/styles/templates/button"
 
 const ResumeWrapper = styled.div`
   max-width: 1200px;
@@ -33,6 +26,7 @@ const Paper = styled.section`
   height: 297mm;
   background-color: var(--content-bg);
   padding: var(--space-sm);
+  margin-bottom: var(--space);
   ${media.lessThan('830px')`
     max-width: 100%;
     height: 100%;
@@ -158,7 +152,6 @@ const EducationTitle = styled.p`
 `
 
 const Interests = styled.div`
-  margin-bottom: var(--space-sm);
 `
 const Credit = styled.p`
   font-size: .75rem;
@@ -186,7 +179,7 @@ export default function CV({ cv }) {
 
           <ResumeWrapper className="h-resume resume"> 
 
-            <Paper>
+            <Paper className="cv" id="cv">
               <CVHeader>
                 <CVTitle>
                   <Title>{cv.title}</Title>
@@ -194,16 +187,22 @@ export default function CV({ cv }) {
                   <SmallBio>{cv.smallBio}</SmallBio>
                 </CVTitle>
                 <CVImage>
-                  <Image src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cv.profile.formats.small.url}`} width="125px" height="125px" alt={`Image of ${cv.title}`}/>
+                  <Image 
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cv.profile.formats.small.url}`} 
+                    width="125px" 
+                    height="125px" 
+                    alt={`Image of ${cv.title}`}
+                    className="profile u-photo"
+                  />
                 </CVImage>
               </CVHeader>
               <Grid>
                 <Col1>
 
-                  <Col1Item>
+                  <Col1Item className="skills-grid">
                     {cv.skills.map((item,i) => {
                       return (
-                        <Education key={i}>
+                        <Education className="skills-column" key={i}>
                             <>
                               <ColTitle className="summary skill-summary">{item.name}</ColTitle>
                                 <SkillGrid>
@@ -237,8 +236,8 @@ export default function CV({ cv }) {
                   {cv.interests.map((item,i) => {
                     return (
                       <Interests key={i}>
-                        <strong>{item.title}</strong>
-                        <p style={{fontWeight:'500'}}>{item.description}</p>
+                        <p>{item.title}</p>
+                        <p>{item.description}</p>
                       </Interests>
                     )
                   })}
@@ -267,14 +266,11 @@ export default function CV({ cv }) {
               </Grid>
             </Paper>
             
-            <button
-              className="btn-accent my-8"
-              onClick={() => {
-                console.log("hi")
-              }}
+            <Button 
+              onClick={() => {window.open(`/api/cv`)}}
             >
               Download CV
-            </button> </ResumeWrapper>
+            </Button> </ResumeWrapper>
         </>
       )}
     </Layout>

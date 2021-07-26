@@ -93,11 +93,11 @@ const SEO = ({
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       },
-      "potentialAction": {
+      /*"potentialAction": {
         "@type": "SearchAction",
         "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
         "query-input": "required name=search_term_string"
-      },
+      },*/
     },
   ]
 

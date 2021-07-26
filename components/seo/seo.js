@@ -115,7 +115,7 @@ const SEO = ({
       "dateCreated": articleData.created_at,
       "keywords": "",
       "author": author,
-      "publisher": author
+      "publisher": author,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id":  `${config.siteUrl}`
@@ -144,6 +144,29 @@ const SEO = ({
           "@type": "ListItem",
           "position": 3,
           "name": "Award Winners"
+        }
+      ]
+    }
+  ]
+  
+  const contact = [
+    {
+      "@context":"http://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"SiteNavigationElement",
+          "position":1,
+          "name": "Home",
+          "description": "Homes Desc.",
+          "url":"http://www.example.com/"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":2,
+          "name": "Tours",
+          "description": "Tours desc.",
+          "url":"http://www.example.com/tours/"
         }
       ]
     }

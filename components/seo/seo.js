@@ -10,7 +10,8 @@ const SEO = ({
   date,
   ogType,
   articleSchema,
-  articleData
+  articleData,
+  ldjson
 }) => {
   
   const [data, setData] = useState("")
@@ -48,6 +49,7 @@ const SEO = ({
         "addressRegion": "BY",
         "addressCountry": "Germany"
       },
+      "email": config.socials.mail,
       "alumniOf": [
         {
           "@type": "CollegeOrUniversity",
@@ -67,6 +69,7 @@ const SEO = ({
         config.socials.linkedin,
         config.socials.github,
         config.socials.instagram,
+        config.socials.mail,
       ],
       "knowsAbout": [
         !data ? "loading" : data.skills[0].skillName.map((skill) => {
@@ -90,14 +93,13 @@ const SEO = ({
         "@type": "ImageObject",
         "url": `${config.siteUrl}${config.siteLogo}`,
       },
-      "publisher": author
     },
   ]
 
   if (articleSchema) {
     schemaOrgJSONLD.push({
       "@context": "http://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       "name": articleData.title,
       "headline": articleData.title,
       "url": slug,
@@ -113,13 +115,14 @@ const SEO = ({
       "dateCreated": articleData.created_at,
       "keywords": "",
       "author": author,
+      "publisher": author
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id":  `${config.siteUrl}`
       },  
     })
   } 
-
+   
   const breadcrumbList = [
     {
       "@context": "https://schema.org",
@@ -145,6 +148,8 @@ const SEO = ({
       ]
     }
   ]
+  
+  schemaOrgJSONLD.push(ldjson)
   
   return (
     <Head>

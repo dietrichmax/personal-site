@@ -87,7 +87,7 @@ const AboutMeLink = styled.a`
   }
 `
 
-const jsonld = [
+const jsonld = 
     {
       "@context":"http://schema.org",
       "@type":"ItemList",
@@ -150,7 +150,7 @@ const jsonld = [
         }
       ]
     }
-  ]
+  
 
 export default function Index({ posts, cv }) {
   const router = useRouter()

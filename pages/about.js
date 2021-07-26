@@ -55,14 +55,13 @@ const BioContainer = styled.section`
 font-family: var(--secondary-font);
 `
 
-const jsonld = [
-  {
-    "@context": "http://schema.org/",
-    "@type": "AboutPage",
-      "mainContentOfPage": "https://www.mxd.codes/about",
-      "description": "About me"
-  }
-]
+const jsonld = {
+  "@context": "http://schema.org/",
+  "@type": "AboutPage",
+  "mainContentOfPage": "https://www.mxd.codes/about",
+  "description": "About me"
+}
+
 
 export default function About({ about }) {
   const router = useRouter()

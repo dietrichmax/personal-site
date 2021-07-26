@@ -11,7 +11,7 @@ const SEO = ({
   ogType,
   articleSchema,
   articleData,
-  ldjson
+  jsonld
 }) => {
   
   const [data, setData] = useState("")
@@ -149,7 +149,7 @@ const SEO = ({
     }
   ]
   
-  schemaOrgJSONLD.push(ldjson)
+  schemaOrgJSONLD.push(jsonld)
   
   return (
     <Head>

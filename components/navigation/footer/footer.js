@@ -215,6 +215,10 @@ export default function Footer() {
       link: "/webmention" 
     },
     { 
+      name: "Blogroll",
+      link: "/blogroll" 
+    },
+    { 
       name: "Mailing",
       link: "/mailinglist" 
     },

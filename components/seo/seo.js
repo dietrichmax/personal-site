@@ -172,7 +172,7 @@ const SEO = ({
     }
   ]
   
-  schemaOrgJSONLD.push(jsonld)
+  schemaOrgJSONLD.push({jsonld})
   
   return (
     <Head>

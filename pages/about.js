@@ -55,6 +55,14 @@ const BioContainer = styled.section`
 font-family: var(--secondary-font);
 `
 
+const jsonld = [
+  {
+    "@context": "http://schema.org/",
+    "@type": "AboutPage",
+      "mainContentOfPage": "https://www.mxd.codes/about",
+      "description": "About me"
+  }
+]
 
 export default function About({ about }) {
   const router = useRouter()
@@ -85,6 +93,7 @@ export default function About({ about }) {
               title={about.title}
               description=""
               slug={`about`}
+              jsonld={jsonld}
             />
 
             <ImageWrapper>

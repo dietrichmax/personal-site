@@ -98,7 +98,7 @@ const jsonld = [
           "name": "Now",
           "description": "What's happening right now",
           "url":"http://www.mxd.codes/now"
-        }
+        },
         {
           "@type":"SiteNavigationElement",
           "position":2,

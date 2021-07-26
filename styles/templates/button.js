@@ -3,7 +3,6 @@ import styled from 'styled-components'
 const Button = styled.button`
   border: none;
   width: auto !important;
-  color: var(--text-color);
   text-transform: uppercase;
   outline: none;
   overflow: hidden;
@@ -14,6 +13,7 @@ const Button = styled.button`
   border-radius: var(--border-radius);
   background: var(--secondary-color);
   cursor: pointer; 
+  color: var(--primary-color);
   :hover {
       color: var(--text-color);
   }

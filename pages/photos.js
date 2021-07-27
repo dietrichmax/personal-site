@@ -6,7 +6,6 @@ import SEO from '@/components/seo/seo'
 import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
-import Grid from '@/components/grid/grid'
 import PhotosPreview from "@/components/photo/photo-preview"
 
 const PhotosContainer = styled.div`

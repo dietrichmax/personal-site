@@ -49,7 +49,7 @@ const Photo= styled(Image)`
 const PhotoWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  height: 250px;
+  height: 300px;
   width: 100%;
   ${media.lessThan('small')`
    width: 100%
@@ -67,8 +67,7 @@ export default function PhotoPreview({ photo }) {
             <Photo
               src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
               alt={`Cover medium of photo ${photo.date}`}
-              width="545"
-              height="250"
+              layout="fill"
               className="u-photo" 
             /> 
           </Link>

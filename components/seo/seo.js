@@ -114,7 +114,7 @@ const SEO = ({
         "height": 450,
         "width": 1300
       },
-      "articleBody": `${articleData.content}`,
+      "description": description`,
       "datePublished": articleData.published_at,
       "dateModified": articleData.updated_at,
       "dateCreated": articleData.created_at,
@@ -123,7 +123,7 @@ const SEO = ({
       "publisher": author,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id":  `${config.siteUrl}`
+        "@id":  slug
       },  
     })
   } 

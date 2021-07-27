@@ -177,9 +177,9 @@ const SEO = ({
     }
   ]
   
-  schemaOrgJSONLD = [
-    schemaOrgJSONLD, jsonld
-  ]
+  if (jsonld) {
+    schemaOrgJSONLD.push({jsonld})
+  }
   
   console.log(schemaOrgJSONLD)
   

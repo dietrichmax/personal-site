@@ -176,9 +176,11 @@ const SEO = ({
         "@id":  slug
       },  
     })
-  } else if (jsonld) {
+  } 
+  if (jsonld) {
     schemaOrgJSONLD.push(jsonld)
-  } else if (aboutSchema) {
+  } 
+  if (aboutSchema) {
     schemaOrgJSONLD.push(author)
   } 
     

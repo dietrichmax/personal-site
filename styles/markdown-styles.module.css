@@ -68,13 +68,13 @@
 
 .markdown blockquote {
   border-left: 2px solid var(--secondary-color);
-  padding: calc(var(--space-sm)*0.5) var(--space);
+  padding: var(--space-sm) var(--space);
   margin-bottom: 2rem;
   background: var(--content-bg);
   font-style: italic;
 }
 
-.markdown blockqoute p {
+.markdown blockquote p {
   margin-bottom: 0;
 }
 

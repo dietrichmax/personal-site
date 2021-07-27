@@ -188,7 +188,6 @@ const SEO = ({
     
   
   
-  console.log(schemaOrgJSONLD)
   
   return (
     <Head>

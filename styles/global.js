@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: var(--body-bg);
-    font-size: 16px;
+    font-size: calc(15px + 0.115vw);
     line-height: 1.5;
     font-weight: 400;
     font-style: normal;

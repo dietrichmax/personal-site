@@ -35,7 +35,6 @@ const ImageWrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 3rem;
-  text-transform: capitalize;
   margin-top: var(--space);
   margin-bottom: var(--space);
   ${media.lessThan('medium')`

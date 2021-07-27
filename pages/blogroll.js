@@ -92,6 +92,7 @@ export default function Blogroll({ allBlogrolls }) {
                           src={blogroll.profilePictureUrl}
                           width="70"
                           height="70"
+                          title={blogroll.name}
                           alt={blogroll.name}
                           className="p-photo"
                         /> 

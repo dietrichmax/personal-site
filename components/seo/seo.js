@@ -35,6 +35,7 @@ const SEO = ({
     
   const author = 
     {
+      "@context": "http://schema.org",
       "@type": "Person",
       "name": "Max Dietrich",
       "nationality": "German",

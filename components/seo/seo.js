@@ -32,27 +32,8 @@ const SEO = ({
   image = image ? `${image.startsWith("/") ? process.env.NEXT_PUBLIC_STRAPI_API_URL : ""}${image}` : `${config.siteUrl}${config.siteLogo}`
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
-
-  let schemaOrgJSONLD = [
-    { 
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      url: config.siteUrl,
-      name: config.siteTitle,
-      alternateName: config.siteTitleAlt,  
-      "image": {
-        "@type": "ImageObject",
-        "url": `${config.siteUrl}${config.siteLogo}`,
-      },
-      /*"potentialAction": {
-        "@type": "SearchAction",
-        "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
-        "query-input": "required name=search_term_string"
-      },*/
-    },
-  ]
     
-  const author = 
+  const author = [
     {
       "@type": "Person",
       "name": "Max Dietrich",
@@ -100,8 +81,28 @@ const SEO = ({
         }),
       ],  
     }
+  ]
   
-   
+  let schemaOrgJSONLD = [
+    { 
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      name: config.siteTitle,
+      description: description,
+      url: config.siteUrl,
+      alternateName: config.siteTitleAlt,  
+      "image": {
+        "@type": "ImageObject",
+        "url": `${config.siteUrl}${config.siteLogo}`,
+      },
+      "author": author,
+      /*"potentialAction": {
+        "@type": "SearchAction",
+        "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
+        "query-input": "required name=search_term_string"
+      },*/
+    },
+  ]
   const breadcrumbList = [
     {
       "@context": "https://schema.org",

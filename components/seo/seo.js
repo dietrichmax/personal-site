@@ -177,7 +177,9 @@ const SEO = ({
     }
   ]
   
-  schemaOrgJSONLD.push({jsonld})
+  schemaOrgJSONLD = [
+    schemaOrgJSONLD, jsonLD
+  ]
   
   console.log(schemaOrgJSONLD)
   

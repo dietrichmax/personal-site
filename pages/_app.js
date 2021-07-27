@@ -4,9 +4,6 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/internal/SiteConfig"
-import { ThemeProvider } from 'styled-components'
-import { themes } from '@/styles/themes'
-//import useDarkMode from 'use-dark-mode'
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -103,7 +100,7 @@ class MyApp extends App {
 
         </Head>
         {/*<ThemeProvider theme={themes}>*/}
-          <script src="noflash.js" />
+          {/*<script src="noflash.js" />*/}
           <GlobalStyle/>
           <Component {...pageProps} />
         {/*</ThemeProvider>*/}

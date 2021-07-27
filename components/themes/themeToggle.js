@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styled from 'styled-components';
-import useDarkMode from 'use-dark-mode';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ToggleButton = styled.button`
@@ -17,8 +16,6 @@ const Toggle = styled.span`
 `
 
 const ThemeToggle = () => {  
-
-  //const darkMode = useDarkMode(false);
 
   const [activeTheme, setActiveTheme] = useState("dark");
   const inactiveTheme = activeTheme === "light" ? "dark" : "light";

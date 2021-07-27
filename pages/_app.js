@@ -15,8 +15,6 @@ const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
 const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 class MyApp extends App {
-  //const darkMode = useDarkMode(true)
-  //const theme = darkMode.value ? darkTheme : lightTheme
   
   componentDidMount() {
     if (window.location.href.includes("mxd.codes")) {

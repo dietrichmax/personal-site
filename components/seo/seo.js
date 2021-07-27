@@ -114,7 +114,7 @@ const SEO = ({
         "height": 450,
         "width": 1300
       },
-      "description": description`,
+      "description": description,
       "datePublished": articleData.published_at,
       "dateModified": articleData.updated_at,
       "dateCreated": articleData.created_at,

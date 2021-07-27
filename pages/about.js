@@ -92,6 +92,7 @@ export default function About({ about }) {
               title={about.title}
               description=""
               slug={`about`}
+              aboutSchema
               jsonld={jsonld}
             />
 

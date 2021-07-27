@@ -67,7 +67,8 @@ export default function PhotoPreview({ photo }) {
             <Photo
               src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
               alt={`Cover medium of photo ${photo.date}`}
-              layout="fill"
+              width="545"
+              height="250"
               className="u-photo" 
             /> 
           </Link>

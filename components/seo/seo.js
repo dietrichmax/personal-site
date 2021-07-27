@@ -32,6 +32,25 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
 
+  let schemaOrgJSONLD = [
+    { 
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      url: config.siteUrl,
+      name: config.siteTitle,
+      alternateName: config.siteTitleAlt,  
+      "image": {
+        "@type": "ImageObject",
+        "url": `${config.siteUrl}${config.siteLogo}`,
+      },
+      /*"potentialAction": {
+        "@type": "SearchAction",
+        "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
+        "query-input": "required name=search_term_string"
+      },*/
+    },
+  ]
+    
   const author = [
     {
       "@type": "Person",
@@ -81,25 +100,6 @@ const SEO = ({
       ],  
     }
   ]
-  
-  let schemaOrgJSONLD = [
-    { 
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      url: config.siteUrl,
-      name: config.siteTitle,
-      alternateName: config.siteTitleAlt,  
-      "image": {
-        "@type": "ImageObject",
-        "url": `${config.siteUrl}${config.siteLogo}`,
-      },
-      /*"potentialAction": {
-        "@type": "SearchAction",
-        "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
-        "query-input": "required name=search_term_string"
-      },*/
-    },
-  ]
 
   if (articleSchema) {
     schemaOrgJSONLD.push({
@@ -114,7 +114,7 @@ const SEO = ({
         "height": 450,
         "width": 1300
       },
-      "articleBody": articleData.content,
+      "articleBody": `${articleData.content}`,
       "datePublished": articleData.published_at,
       "dateModified": articleData.updated_at,
       "dateCreated": articleData.created_at,

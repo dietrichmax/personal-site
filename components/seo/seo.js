@@ -181,7 +181,7 @@ const SEO = ({
     schemaOrgJSONLD.push(jsonld)
   } 
   if (aboutSchema) {
-    schemaOrgJSONLD.push(author)
+    schemaOrgJSONLD.push({author})
   } 
     
   

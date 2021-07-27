@@ -177,9 +177,9 @@ const SEO = ({
       },  
     })
   } else if (jsonld) {
-    schemaOrgJSONLD.push({jsonld})
+    schemaOrgJSONLD.push(jsonld)
   } else if (aboutSchema) {
-    schemaOrgJSONLD.push({author})
+    schemaOrgJSONLD.push(author)
   } 
     
   

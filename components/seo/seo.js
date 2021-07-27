@@ -33,7 +33,7 @@ const SEO = ({
   date = date ? date : new Date()
   ogType = ogType ? ogType : "website"
     
-  const author = [
+  const author = 
     {
       "@type": "Person",
       "name": "Max Dietrich",
@@ -81,7 +81,7 @@ const SEO = ({
         }),
       ],  
     }
-  ]
+  
   
   let schemaOrgJSONLD = [
     { 

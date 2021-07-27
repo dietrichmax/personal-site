@@ -49,8 +49,8 @@ const Photo= styled(Image)`
 const PhotoWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  height: 300px;
-  width: 100%;
+  height: 200px;
+  width: 50%;
   ${media.lessThan('small')`
    width: 100%
   `}
@@ -72,7 +72,7 @@ export default function PhotoPreview({ photo }) {
             /> 
           </Link>
         </PhotoWrapper>
-        {/*<PhotoContainer>
+        <PhotoContainer>
           <PhotosTitle>
             <Link href={`/photos/${photo.slug}`} className="u-url">
               <a className="p-name" rel="bookmark">{photo.title}</a>
@@ -80,8 +80,8 @@ export default function PhotoPreview({ photo }) {
           </PhotosTitle>
           <PhotosContent className="e-content">{photo.description}</PhotosContent>
           <PostTags tags={photo.tags} />
-        </PhotoContainer>*/}
-        <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
+          <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
+        </PhotoContainer>
       </PreviewContainer>
     </Card>
   )

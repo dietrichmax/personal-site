@@ -39,9 +39,9 @@ class MyApp extends App {
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
-          <link rel="preconnect" href="https://api.mxd.codes" crossorigin/>,
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />,
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://api.mxd.codes" crossOrigin="true"/>,
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />,
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" />,
           {/* IndieCert */}
@@ -62,7 +62,7 @@ class MyApp extends App {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
           {/*<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght300;500;700&display=swap"  />*/}
           {/*<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css'  />*/}
-          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"/>*/}
+          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"="true"/>*/}
         
           {/* RSS */}
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />
@@ -103,6 +103,7 @@ class MyApp extends App {
 
         </Head>
         {/*<ThemeProvider theme={themes}>*/}
+          <script src="noflash.js" />
           <GlobalStyle/>
           <Component {...pageProps} />
         {/*</ThemeProvider>*/}

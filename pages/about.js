@@ -114,6 +114,8 @@ export default function About({ about }) {
                 <Content content={renderBio()} />
               </BioContainer>
 
+
+
             </PageWrapper>
           </>
         )}

@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
 import ReactTooltip from 'react-tooltip';
+import { Button } from "@/styles/templates/button"
 import {
     getMatomoActions,
     getMatomoLiveCounter,
@@ -230,19 +231,6 @@ const GitHubButtonLink = styled.a`
 const GitHubDescription = styled.p`
 `
 
-const GitHubButton = styled.button`
-    transition: 0.2s;
-    background-color: var(--secondary-color);
-    cursor: pointer;
-    max-width: 28rem;
-    padding: 0.725rem;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    :hover {
-        color: var(--content-bg);
-    }
-`
 const LanguageContainer = styled.div`
     max-width: 1200px;
     margin: auto;
@@ -542,27 +530,27 @@ export default function Dashboard({
                                             title="GitHub - DaTurboD"
                                             alt="GitHub - DaTurboD"
                                         >
-                                            <GitHubButton>
+                                            <Button>
                                                 Follow me on GitHub
-                                            </GitHubButton>
+                                            </Button>
                                         </GitHubButtonLink>
                                         <GitHubButtonLink
                                             href={forkUrl}
                                             title="Fork mxd-codes-frontend"
                                             alt="Fork mxd-codes-frontend"
                                         >
-                                            <GitHubButton>
+                                            <Button>
                                                 Fork this repo
-                                            </GitHubButton>
+                                            </Button>
                                         </GitHubButtonLink>
                                         <GitHubButtonLink
                                             href={starUrl}
                                             title="Star mxd-codes-frontend"
                                             alt="Star mxd-codes-frontend"
                                         >
-                                            <GitHubButton>
+                                            <Button>
                                                 Star this repo
-                                            </GitHubButton>
+                                            </Button>
                                         </GitHubButtonLink>
                                     </GitHubButtonWrapper>
                                 </GitHubWrapper>

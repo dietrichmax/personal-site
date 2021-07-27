@@ -13,12 +13,12 @@ const TagItem = styled.a`
   font-size: .75rem;  
   margin: .25rem 1rem .5rem 0;
   padding: 3px calc(var(--space-sm)*0.5);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--content-bg);
+  color: var(--text-color);
   font-family: var(--secondary-font);
   :hover {
-    color: ${props => props.color ? props.color : 'var(--primary-color'};
-    background-color: ${props => props.bgColor ? props.bgColor : '#798ad0'};
+    color: var(--content-bg);
+    background-color: var(--text-color);
   }
 `
 

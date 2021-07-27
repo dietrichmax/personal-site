@@ -80,7 +80,7 @@ export default function Header({ color }) {
           </Logo>
 
           <Nav color={color} />
-
+          
         </MainNav>
 
       </InnerHeader>

@@ -10,6 +10,7 @@ const SEO = ({
   date,
   ogType,
   articleSchema,
+  aboutSchema,
   articleData,
   jsonld
 }) => {
@@ -100,33 +101,6 @@ const SEO = ({
       ],  
     }
   ]
-
-  if (articleSchema) {
-    schemaOrgJSONLD.push({
-      "@context": "http://schema.org",
-      "@type": "BlogPosting",
-      "name": articleData.title,
-      "headline": articleData.title,
-      "url": slug,
-      "image": {
-        "@type": "ImageObject",
-        "url": image,
-        "height": 450,
-        "width": 1300
-      },
-      "description": description,
-      "datePublished": articleData.published_at,
-      "dateModified": articleData.updated_at,
-      "dateCreated": articleData.created_at,
-      "keywords": "",
-      "author": author,
-      "publisher": author,
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id":  slug
-      },  
-    })
-  } 
    
   const breadcrumbList = [
     {
@@ -177,9 +151,38 @@ const SEO = ({
     }
   ]
   
-  if (jsonld) {
+  if (articleSchema) {
+    schemaOrgJSONLD.push({
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "name": articleData.title,
+      "headline": articleData.title,
+      "url": slug,
+      "image": {
+        "@type": "ImageObject",
+        "url": image,
+        "height": 450,
+        "width": 1300
+      },
+      "description": description,
+      "datePublished": articleData.published_at,
+      "dateModified": articleData.updated_at,
+      "dateCreated": articleData.created_at,
+      "keywords": "",
+      "author": author,
+      "publisher": author,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id":  slug
+      },  
+    })
+  } else if (jsonld) {
     schemaOrgJSONLD.push({jsonld})
-  }
+  } else if (aboutSchema) {
+    schemaOrgJSONLD.push({author})
+  } 
+    
+  
   
   console.log(schemaOrgJSONLD)
   

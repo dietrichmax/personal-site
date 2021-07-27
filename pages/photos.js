@@ -14,6 +14,22 @@ const PhotosContainer = styled.div`
   max-width: 1200px;
 `
 
+const Grid = styled.ol`
+  max-width: var(--width-container);
+  display: grid;
+  padding-left: var(--space);
+  padding-right: var(--space);
+  margin-bottom: var(--space-lg);
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: var(--space-lg);
+  list-style: none;
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  `}
+`
+
 export default function Photos({ allPhotos }) {
   const router = useRouter()
 

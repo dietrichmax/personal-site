@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import PhotosPreview from "@/components/photo/photo-preview"
+import media from 'styled-media-query';
 
 const PhotosContainer = styled.div`
   margin: 0 auto;

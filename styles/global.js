@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
   }
-  body[data-theme="dark"] { 
+  body { 
     --primary-color: #051129;
     --secondary-color: #A1B4EC;
     --thirdy-color: #c2c7c1;

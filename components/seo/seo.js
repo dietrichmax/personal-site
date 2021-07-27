@@ -52,7 +52,7 @@ const SEO = ({
     },
   ]
     
-  const author = [
+  const author = 
     {
       "@type": "Person",
       "name": "Max Dietrich",
@@ -100,7 +100,7 @@ const SEO = ({
         }),
       ],  
     }
-  ]
+  
    
   const breadcrumbList = [
     {

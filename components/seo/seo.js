@@ -179,6 +179,8 @@ const SEO = ({
   
   schemaOrgJSONLD.push({jsonld})
   
+  console.log(schemaOrgJSONLD)
+  
   return (
     <Head>
     {/* META TAGS */}

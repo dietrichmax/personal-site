@@ -58,7 +58,7 @@ const Title = styled.p`
 `
 
 const Stats = styled.span`
-    color: var(--thirdy-color);
+    color: var(--secondary-color);
 `
 
 const GeneralStats = styled.div`

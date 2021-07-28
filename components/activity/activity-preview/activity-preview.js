@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import media from "styled-media-query"
 import { fromUnixTime, format, parseISO } from 'date-fns'
-import PostMeta from '@/components/post/post-meta/post-meta'
+import PostMeta from '@/components/post/post-meta/post-meta-preview'
 import HCard from "@/components/microformats/h-card"
 import dynamic from "next/dynamic";
 import { FaRunning, FaBiking, FaClock } from 'react-icons/fa';

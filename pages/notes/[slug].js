@@ -13,6 +13,7 @@ import NoteTags from "@/components/tags/tags"
 import NoteMeta from "@/components/note/note-meta/note-meta"
 import SyndicationLinks from "@/components/microformats/syndication-links"
 import WebActions from "@/components/social/feedback/feedback"
+import Meta from "@/components/post/post-meta/post-meta"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);
@@ -97,7 +98,6 @@ export default function Note({ note }) {
                   
                   <NoteTags tags={note.tags} />
                   <MetaWrapper>
-                    <NoteMeta note={note} />
                     <SyndicationLinks syndicationLinks={note.syndicationLinks} />
                   </MetaWrapper>
 
@@ -108,6 +108,7 @@ export default function Note({ note }) {
               </NotesItem>
       
               <WebActions slug={`/notes/${note.id}`} />
+              <Meta post={note} slug={`/notes/${note.id}`}/>
               <Webmentions slug={`/notes/${note.id}`} />
 
             </NoteWrapper>

@@ -12,7 +12,7 @@ import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"
 import SyndicationLinks from "@/components/microformats/syndication-links"
-import PhotoMeta from "@/components/note/note-meta/note-meta"
+import Meta from "@/components/post/post-meta/post-meta"
 import HCard from "@/components/microformats/h-card"
 import PhotoTags from '@/components/tags/tags'
 
@@ -91,7 +91,7 @@ export default function Photo({ photo }) {
               <TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> 
               
               <MetaWrapper>
-                <PhotoMeta note={photo} />
+                <Meta post={photo} slug={`/photos/${photo.slug}`}/>
                 <SyndicationLinks syndicationLinks={photo.syndicationLinks} />
               </MetaWrapper>
               

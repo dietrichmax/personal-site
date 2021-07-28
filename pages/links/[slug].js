@@ -6,7 +6,7 @@ import SEO from '@/components/seo/seo'
 import media from 'styled-media-query';
 import config from "@/lib/data/internal/SiteConfig";
 import Webmentions from "@/components/social/webmentions/webmentions"
-import Image from "next/image"
+import Meta from "@/components/post/post-meta/post-meta"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
 import WebActions from "@/components/social/feedback/feedback"
@@ -22,27 +22,18 @@ const PageWrapper = styled.div`
   `}
 `
 
-const LinksLink = styled.p`
+const LinksLink = styled.a`
   cursor: pointer;
   font-family: var(--secondary-font);
   text-decoration: underline;
   text-decoration-color: var(--secondary-color);
   font-style: italic;
-  max-width: 1200px;
-  margin: var(--space-lg) auto;
-  padding-left: var(--space);
-  padding-right: var(--space);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.4;
   color: var(--text-color);
-  ${media.lessThan('medium')`
-    margin: var(--space-sm);
-    font-size: 1rem;
-    padding: 0;
-  `}
-`
 
+`
 
 export default function Note({ link }) {
   const router = useRouter()
@@ -61,11 +52,12 @@ export default function Note({ link }) {
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
             <HCard /> 
-            <LinksLink href={link.link} title={link.title}c lassName="u-bookmark-of h-cite">{link.link}</LinksLink>
             <PageWrapper>
+              <LinksLink href={link.link} title={link.title} className="u-bookmark-of h-cite">{link.link}</LinksLink>
               <PageBody className="e-content" content={link.description} />
 
               <WebActions slug={`/links/${link.id}`} />
+              <Meta post={link} slug={`/links/${link.id}`}/>
               <Webmentions slug={`/links/${link.id}`} />
             </PageWrapper>
           </article>

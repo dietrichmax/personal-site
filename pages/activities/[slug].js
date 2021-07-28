@@ -16,6 +16,7 @@ import { FaRunning, FaBiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
 import { GiValley, GiSummits } from 'react-icons/gi';
+import Meta from "@/components/post/post-meta/post-meta"
 
 
 
@@ -174,6 +175,7 @@ export default function Activity({ activity }) {
               </ActivityContainer>
 
                 <WebActions slug={`/activities/${activity.activityId}`} />
+                <Meta post={activity} slug={`/activities/${activity.activityId}`}/>
                 {/*<Likes />*/}
                 <Webmentions slug={`/activities/${activity.activityId}`} />
                 

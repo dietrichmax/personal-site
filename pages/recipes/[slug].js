@@ -12,6 +12,7 @@ import Link from"next/link"
 import Image from "next/image" 
 import HCard from "@/components/microformats/h-card"
 import WebActions from "@/components/social/feedback/feedback"
+import Meta from "@/components/post/post-meta/post-meta"
 
 const RecipeWrapper = styled.div`
   max-width: var(--width-container);
@@ -109,6 +110,7 @@ export default function Recipe({ recipe }) {
               <SubTitle>Preparation</SubTitle>
               <RecipeContent className="e-instructions" content={recipe.description}/>
               <WebActions slug={`/recipes/${recipe.slug}`} />
+              <Meta post={recipe} slug={`/recipes/${recipe.slug}`}/>
               <Webmentions slug={`/recipes/${recipe.slug}`} />
             </RecipeWrapper>
           </div>

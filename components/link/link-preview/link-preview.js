@@ -5,7 +5,7 @@ import PostTags from "@/components/tags/tags"
 import Date from "@/components/date/date"
 import HCard from "@/components/microformats/h-card"
 import config from "@/lib/data/internal/SiteConfig"
-import PostMeta from '@/components/post/post-meta/post-meta'
+import PostMeta from '@/components/post/post-meta/post-meta-preview'
 import { Card } from "@/styles/templates/card"
 
 const LinkContainer = styled.div`

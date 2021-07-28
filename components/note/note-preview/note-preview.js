@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components';
 import NoteBody from "@/components/note/note-body/note-body"
-import PostMeta from '@/components/post/post-meta/post-meta'
+import PostMeta from '@/components/post/post-meta/post-meta-preview'
 import HCard from "@/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
 

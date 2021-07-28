@@ -4,11 +4,12 @@ import media from "styled-media-query"
 import { fromUnixTime, format, parseISO } from 'date-fns'
 import PostMeta from '@/components/post/post-meta/post-meta-preview'
 import HCard from "@/components/microformats/h-card"
-import dynamic from "next/dynamic";
-import { FaRunning, FaBiking, FaClock } from 'react-icons/fa';
+import config from "@/lib/data/internal/SiteConfig"
+import { FaRunning, FaBiking, FaHiking, FaClock } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowsVAlt } from 'react-icons/cg';
 import { GiWeightLiftingDown } from 'react-icons/gi';
-
+import ActivityMap from "@/components/maps/deckgl/activities"
+const polyline = require('@mapbox/polyline');
 
 const Item = styled.li`
   display: flex;
@@ -27,7 +28,6 @@ const Item = styled.li`
 `
 
 const Title = styled.h2`
-  font-size: 1.25rem;
   cursor: pointer;
 `
 
@@ -41,6 +41,7 @@ const Date = styled.time`
 
 const Icon = styled.span`
   all: initial;
+  color: var(--text-color);
 `
 
 const Data = styled.div`
@@ -78,37 +79,21 @@ const Dot = styled.span`
   display: inline-block;
 `
 
-const getFlow = (flow) => {
-  if (flow < 1) 
-    return <Dot color="#72ea24"/>
-  else if (flow > 1 && flow < 20)
-    return <Dot color="#d6ff32"/>
-  else if (flow > 20)
-    return <Dot color="#ff0035"/>
-}
-
-const getGrit = (grit) => {
-  if (grit < 20) 
-    return <Dot color="#72ea24"/>
-  else if (grit > 20 && grit < 40)
-    return <Dot color="#11A9ED"/>
-  else if (grit > 40)
-    return <Dot color="#632D5C"/>
-}
 
 export default function ActivityPreview({ activity }) {
 
-  const date = format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd-kk-mm")
+  const date = activity.start_date
   const slug = `/activities/${activity.activityId}`
 
 
-  const getTypeIcon = activity => {
-    if (activity.activityType.typeId == 5) {
+  const getTypeIcon = type => {
+    if (type === "Ride") {
         return <FaBiking/>
-    } else if (activity.activityType.typeId == 15) {
+    } else if (type === "Hike") {
+      return <FaHiking/>
+    } else if (type === "Run"){
       return <FaRunning/>
-  }
-
+    }
   }
 
   const secondsToHms = (s) => {
@@ -118,15 +103,17 @@ export default function ActivityPreview({ activity }) {
     return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
   
+  const geoPolyline = polyline.decode(activity.details.summary_polyline);
+
   return (
     <Item className="h-entry" >
         
         <Link href={slug} passHref>
           <a className="p-name u-url" title={activity.activityName}>
             <Title>
-                <Icon title={activity.activityType.typeKey}>{getTypeIcon(activity)}</Icon>{` `}
+                <Icon title={activity.type}>{getTypeIcon(activity.type)}</Icon>{` `}
                 {activity.activityName}{` `}
-                <Date>({format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")})</Date>
+                <Date>{format(parseISO(activity.start_date), config.dateFormat)}</Date>
             </Title>
             </a>
         </Link>
@@ -156,7 +143,7 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-            {/*<ActivityMap data={activity.details.geoPolylineDTO} />*/}
+            <ActivityMap data={geoPolyline} />
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

@@ -358,21 +358,22 @@ export default function Dashboard({
     let averageSpeed = 0
     let maxSpeed = []
     let elevationGain = 0
-    let jumpCount = 0
+    let averageWatts = 0
     let greatestElevationGain = []
     let longestRide = []
     
     activities.map((item) => {
       distance = distance + item.distance
-      duration = duration + item.duration
+      duration = duration + item.movingDuration
       averageSpeed = averageSpeed + item.averageSpeed
       maxSpeed.push(item.maxSpeed)
       elevationGain = elevationGain + item.elevationGain
-      jumpCount = jumpCount + item.jumpCount
+      console.log(item)
       greatestElevationGain.push(item.elevationGain)
       longestRide.push(item.distance)
     })
 
+    console.log(averageWatts)
     return (
         <>
             <Layout>
@@ -706,10 +707,10 @@ export default function Dashboard({
                                             <GridStats>{(elevationGain).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                             <GridStatsDescription>Total Elevation Gain [m]</GridStatsDescription>
                                         </BottomStatsGrid>
-                                        <BottomStatsGrid>
-                                            <GridStats>{jumpCount}</GridStats>
-                                            <GridStatsDescription>Jump count</GridStatsDescription>
-                                        </BottomStatsGrid>
+                                        {/*<BottomStatsGrid>
+                                            <GridStats>{(averageWatts/activitiesCount).toFixed(1)}</GridStats>
+                                            <GridStatsDescription>Average Watts</GridStatsDescription>
+                                        </BottomStatsGrid>*/}
                                         <BottomStatsGrid>
                                             <GridStats>{(averageSpeed/activitiesCount).toFixed(1)}</GridStats>
                                             <GridStatsDescription>Average speed [km/h]</GridStatsDescription>

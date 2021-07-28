@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Layout from '@/components/layout/layout'
 import SEO from '@/components/seo/seo'
 import { getActivity, getAllActivities } from '@/lib/data/external/cms'
-import { fromUnixTime, format } from 'date-fns'
+import { fromUnixTime, format, parseISO } from 'date-fns'
 import PageTitle from '@/components/title/page-title'
 import styled from 'styled-components';
 import config from "@/lib/data/internal/SiteConfig";
@@ -92,12 +92,14 @@ const MapContainer = styled.div`
 export default function Activity({ activity }) {  
   const router = useRouter()
 
-  const getTypeIcon = activity => {
-    if (activity.activityType.typeId == 5) {
+  const getTypeIcon = type => {
+    if (type === "Ride") {
         return <FaBiking/>
-    } else if (activity.activityType.typeId == 15) {
+    } else if (type === "Hike") {
+      return <FaHiking/>
+    } else if (type === "Run"){
       return <FaRunning/>
-    } 
+    }
   }
 
   const secondsToHms = (s) => {
@@ -113,8 +115,8 @@ export default function Activity({ activity }) {
           <PageTitle>{config.loading}</PageTitle>
         ) : (
           <>
-            <SEO   
-              title={`${activity.activityName}-${format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")}`}
+            <SEO  
+              title={`${activity.activityName}-${format(parseISO(activity.start_date), "yyyy-MM-dd kk:mm")}`}
               description={`${activity.activityName}`}
               slug={`/activities/${activity.activityId}`}
               date={activity.updated_at ? activity.updated_at : activity.created_at}
@@ -127,9 +129,9 @@ export default function Activity({ activity }) {
                 <Link href={`/activities/${activity.activityId}`} passHref>
                   <a className="p-name u-url" title={activity.activityName}>
                     <Title>
-                        <Icon title={activity.activityType.typeKey}>{getTypeIcon(activity)}</Icon>{` `}
+                      <Icon title={activity.type}>{getTypeIcon(activity.type)}</Icon>{` `}
                         {activity.activityName}{` `}
-                        <Date>({format(fromUnixTime(activity.beginTimestamp.substring(0, activity.beginTimestamp.length - 3)), "yyyy-MM-dd kk:mm")})</Date>
+                        <Date>({format(parseISO(activity.start_date), config.dateFormat)})</Date>
                     </Title>
                     </a>
                 </Link>
@@ -153,18 +155,6 @@ export default function Activity({ activity }) {
                   <DataItem>
                     <DataItemLabel><CgArrowTopRight /> Uphill</DataItemLabel>
                     <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
-                  </DataItem>
-                  <DataItem>
-                    <DataItemLabel><CgArrowBottomRight /> Downhill</DataItemLabel>
-                    <DataItemValue>{activity.elevationLoss.toFixed(0)} m</DataItemValue>
-                  </DataItem>
-                  <DataItem>
-                    <DataItemLabel><GiValley/> Min Elevation</DataItemLabel>
-                    <DataItemValue>{(activity.minElevation / 100).toFixed(0)} m</DataItemValue>
-                  </DataItem>
-                  <DataItem>
-                    <DataItemLabel><GiSummits/> Max Elevation</DataItemLabel>
-                    <DataItemValue>{(activity.maxElevation / 100).toFixed(0)} m</DataItemValue>
                   </DataItem>
                 </Data>
                 <HCard />

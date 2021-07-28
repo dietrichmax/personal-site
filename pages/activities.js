@@ -8,7 +8,7 @@ import PageTitle from '@/components/title/page-title'
 import SubTitle from '@/components/title/sub-title'
 import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
 import media from 'styled-media-query';
-import ActivitiesMap from "@/components/maps/deckgl/activities"
+//import ActivitiesMap from "@/components/maps/deckgl/activities"
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 const ActivityPageContainer = styled.div`
@@ -81,7 +81,7 @@ export async function getStaticProps() {
   return {
     revalidate:  86400,
     props: { 
-      allActivities
+      allActivities: allActivities.slice(0,1)
     },
   }
 }

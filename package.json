@@ -24,6 +24,7 @@
     "test": "npx next lint"
   },
   "dependencies": {
+    "@mapbox/polyline": "^1.1.1",
     "@prisma/client": "2.26.0",
     "@remy/webmention": "^1.4.5",
     "@socialgouv/matomo-next": "^1.2.2",

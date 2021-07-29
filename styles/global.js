@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
   body { 
     --primary-color: #051129;
     --secondary-color: #A1B4EC;
-    --thirdy-color: #c2c7c1;
+    --thirdy-color: #6680CA;
     --body-bg: #0d1117; 
     --content-bg: #1b2026;
     --gap: var(--space-sm);

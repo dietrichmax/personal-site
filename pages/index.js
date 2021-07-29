@@ -43,7 +43,7 @@ const HeroDescription = styled.h3`
   line-height: 1.35;
   font-family: var(--thirdy-font);
   ${media.lessThan('small')`
-    font-size: 1.5em;
+    font-size: 1.75em;
   `}
   ${media.lessThan('medium')`
     margin: 0 var(--space-sm);

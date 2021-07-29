@@ -62,7 +62,7 @@ export default function ActivitiesMap({
     }),
   ];
 
-    console.log(data)
+    //console.log(data)
 
 
   return (

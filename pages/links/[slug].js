@@ -47,7 +47,7 @@ export default function Note({ link }) {
             <SEO   
               title={link.title}
               description={link.description}
-              slug={`/links/${link.id}`}
+              slug={`/links/${link.title}`}
               date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
@@ -56,9 +56,9 @@ export default function Note({ link }) {
               <LinksLink href={link.link} title={link.title} className="u-bookmark-of h-cite">{link.link}</LinksLink>
               <PageBody className="e-content" content={link.description} />
 
-              <WebActions slug={`/links/${link.id}`} />
-              <Meta post={link} slug={`/links/${link.id}`}/>
-              <Webmentions slug={`/links/${link.id}`} />
+              <WebActions slug={`/links/${link.title}`} />
+              <Meta post={link} slug={`/links/${link.title}`}/>
+              <Webmentions slug={`/links/${link.title}`} />
             </PageWrapper>
           </article>
         )}
@@ -82,7 +82,7 @@ export async function getStaticPaths() {
   const links = (await getAllLinks()) || []
   
   return {
-    paths: links?.map((link) => `/links/${link.id}`) || [],
+    paths: links?.map((link) => `/links/${link.title}`) || [],
     fallback: true,
   }
 }

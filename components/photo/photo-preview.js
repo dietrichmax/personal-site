@@ -21,6 +21,7 @@ const PhotoContainer = styled.div`
   opacity: 0;
   transition: 0.2s;
   height: 100%;
+  width: 100%;
   :hover {
     opacity: 1;
     height: 200px;

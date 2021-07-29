@@ -19,6 +19,15 @@ const PhotoContainer = styled.div`
   padding: 0 var(--space-sm);
   width: 50%;
   display: none;
+  :hover {
+    display: block;
+    cursor: pointer;
+    height: 200px;
+    width: 100%;
+    padding: var(--space-sm);
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+  }
   ${media.lessThan('small')`
     padding: calc(var(--space-sm)*0.5) 0;
     width: 100%;

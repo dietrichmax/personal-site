@@ -544,8 +544,8 @@ module.exports = withPlugins([
       "sld.codes",
       "mxb.dev",
     ],
-    deviceSizes: [272, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 272, 346, 1136, 1300],
+    deviceSizes: [346 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 346, 1136, 1300],
   }}
   ],{webpack (config, { dev, isServer }) {
       // Replace React with Preact only in client production build

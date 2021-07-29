@@ -29,6 +29,7 @@ const Item = styled.li`
 
 const Title = styled.h2`
   cursor: pointer;
+  color: var(--secondary-color);
 `
 
 const Date = styled.time`

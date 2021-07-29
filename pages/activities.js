@@ -81,7 +81,7 @@ export async function getStaticProps() {
   return {
     revalidate:  86400,
     props: { 
-      allActivities: allActivities.slice(0,1)
+      allActivities
     },
   }
 }

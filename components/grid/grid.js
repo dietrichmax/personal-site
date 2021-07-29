@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import image from "next/image"
 
-const GridContainer = styled.ol`
+const GridContainer = styled.ul`
   max-width: var(--width-container);
   display: grid;
   padding-left: var(--space);

@@ -16,12 +16,12 @@ const PreviewContainer = styled.div`
 `
 
 const PhotoContainer = styled.div`
-  padding: 0 var(--space-sm);
+  position: absolute;
+  padding: var(--space-sm);
   width: 50%;
-  display: none;
+  opacity: 0;
   :hover {
-    display: block;
-    cursor: pointer;
+    opacity: 1;
     height: 200px;
     width: 100%;
     padding: var(--space-sm);

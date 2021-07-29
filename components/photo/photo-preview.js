@@ -17,9 +17,10 @@ const PreviewContainer = styled.div`
 
 const PhotoContainer = styled.div`
   position: absolute;
-  padding: var(--space-sm);
-  width: 50%;
+  padding: var(--space-sm);    
   opacity: 0;
+  transition: 0.2s;
+  height: 100%;
   :hover {
     opacity: 1;
     height: 200px;

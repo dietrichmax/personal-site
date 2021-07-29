@@ -29,6 +29,7 @@ const PhotosTitle = styled.h2`
   font-size: 1.25rem;
   margin-bottom: var(--space-sm);
   cursor: pointer;
+  color: var(--secondary-color);
   :hover {
     text-decoration: underline;
   }

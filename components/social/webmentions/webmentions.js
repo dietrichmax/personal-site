@@ -160,6 +160,12 @@ const WebmentionPreviewLabel = styled.span`
   `}
 `
 
+const Ads = styled.div`
+  width:300px;
+  height:250px;
+`
+
+
 export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
@@ -364,9 +370,9 @@ export default function Webmentions({ slug, preview }) {
         <Comments slug={slug} />
       </WebMentionsWrapper> 
       )}
-      <div style="width:300px;height:250px">
+      <Ads>
         <script src="https://cdn.purpleads.io/agent.js?publisherId=dbadb8c9c82d350f83943f00385c5e07:07a0e10755a68fd6c4976a4475b1c9ccfabb84c9b9de037f35c3c92f4227953a5fd63637cd162fd041edea2077528ab810d0c58ac7783c824ea67c36413ddfd6" data-pa-tag async />
-      </div>
+      </Ads>
     </>
   )
 }

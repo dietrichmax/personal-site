@@ -259,7 +259,7 @@ export default function Webmentions({ slug, preview }) {
   const renderAuthorImg = (mention) => {
     return (
       <WebmentionLike>
-        <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="nofollow">
+        <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="noopener noreferrer nofollow">
           <Image
             src={mention.author.photo}
             height="50"
@@ -288,7 +288,7 @@ export default function Webmentions({ slug, preview }) {
           <WebmentionsTitle>{webmentions.count ? webmentions.count : "0"} Webmentions</WebmentionsTitle>
           <WebmentionsInfo 
             href="/webmention" 
-            target="_blank" rel="noopener noreferrer" 
+            target="_blank" rel="noopener noreferrer nofollow" 
             title="What's this?" 
             onClick={() => {!process.env.NODE_ENV === 'development' ? window._paq.push(['trackEvent', 'WebMentionsInfo', 'Click on Info']) : null}}
             >
@@ -329,7 +329,7 @@ export default function Webmentions({ slug, preview }) {
               <WebmentionAuthor className="h-card p-author" >
                 {renderAuthorImg(mention)}
                 <WebmentionAuthorName className="p-name">{mention.author.name}</WebmentionAuthorName>
-                <a href={mention.url} rel="nofollow" title={mention.published}>
+                <a href={mention.url} rel="noopener noreferrer nofollow" title={mention.published}>
                   <WebmentionDate className="dt-published">{mention.published ? `${formatDistance(new Date(mention.published), new Date())} ago` : null}</WebmentionDate>
                 </a>
                 </WebmentionAuthor>

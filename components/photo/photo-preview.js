@@ -18,7 +18,7 @@ const PreviewContainer = styled.div`
 const PhotoContainer = styled.div`
   padding: 0 var(--space-sm);
   width: 50%;
-  display: none
+  display: none;
   ${media.lessThan('small')`
     padding: calc(var(--space-sm)*0.5) 0;
     width: 100%;

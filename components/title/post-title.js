@@ -6,6 +6,7 @@ const Title = styled.h1`
   font-size: 3rem;
   max-width: 900px;
   font-weight: 700;
+  color: var(--secondary-color);
   ${media.lessThan('medium')`
     font-size: 2rem;
 `}

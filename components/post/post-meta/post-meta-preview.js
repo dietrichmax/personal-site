@@ -26,8 +26,7 @@ const Meta = styled.div`
 
 
 const Date = styled.a`
-  margin-left: auto;
-  margin-right: var(--space-sm);
+  margin-left: auto
   :hover {
     text-decoration: underline;
   }

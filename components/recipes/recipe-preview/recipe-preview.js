@@ -24,6 +24,7 @@ const ImageWrapper = styled.div`
 
 const Title = styled.h2`
   cursor: pointer;
+  color: var(--secondary-color);
   :hover {
     text-decoration: underline;
   }

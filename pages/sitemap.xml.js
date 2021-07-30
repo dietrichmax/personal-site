@@ -35,7 +35,7 @@ const createSitemap = (posts, tags, pages, notes, photos, /*morePages,*/ recipes
         ${tags.map((tag) => {
             return `
                 <url>
-                    <loc>${`${config.siteUrl}/articles/topics/${tag.slug}`}</loc>
+                    <loc>${`${config.siteUrl}/topics/${tag.slug}`}</loc>
                     <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>

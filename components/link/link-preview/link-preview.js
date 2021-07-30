@@ -37,7 +37,7 @@ const LinkLink = styled.a`
 
 export default function LinkPreview({ link }) {
 
-  const slug = `/links/${link.id}`
+  const slug = `/links/${link.slug}`
 
   return ( 
     <Card title={link.title} className="h-entry">    

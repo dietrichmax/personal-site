@@ -9,6 +9,7 @@ import { FaRunning, FaBiking, FaHiking, FaClock } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowsVAlt } from 'react-icons/cg';
 import { GiWeightLiftingDown } from 'react-icons/gi';
 import ActivityMap from "@/components/maps/deckgl/activities"
+import Image from "next/image"
 const polyline = require('@mapbox/polyline');
 
 const Item = styled.li`
@@ -105,7 +106,13 @@ export default function ActivityPreview({ activity }) {
   }
   
   const geoPolyline = polyline.decode(activity.details.summary_polyline);
+  let path = []
+  geoPolyline.map((item) => {
+    path.push([item[1]],[item[0]])
+  })
 
+  const mapImageUrl = `https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain-background&attribution=none&width=400&height=240&path[]=${path.toString()};weight:3;color:6680CA`
+  
   return (
     <Item className="h-entry" >
         
@@ -144,7 +151,11 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-            {/*<ActivityMap data={geoPolyline} />*/}
+          <Image 
+            src={mapImageUrl} 
+            width="400"
+            height="240"
+           />
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

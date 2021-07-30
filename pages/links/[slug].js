@@ -9,7 +9,7 @@ import Webmentions from "@/components/social/webmentions/webmentions"
 import Meta from "@/components/post/post-meta/post-meta"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
-import WebActions from "@/components/social/feedback/feedback"
+import WebActions from "@/components/social/social-share/social-share"
 import HCard from "@/components/microformats/h-card"
 
 const PageWrapper = styled.div`
@@ -46,7 +46,7 @@ export default function Note({ link }) {
             <SEO   
               title={link.title}
               description={link.description}
-              slug={`/links/${link.id}`}
+              slug={`/links/${link.slug}`}
               date={link.updated_at ? link.updated_at : link.published_at}
             />
             <PageTitle className="p-name">{link.title}</PageTitle>
@@ -55,9 +55,9 @@ export default function Note({ link }) {
               <LinksLink href={link.link} title={link.title} className="u-bookmark-of h-cite">{link.link}</LinksLink>
               <PageBody className="e-content" content={link.description} />
 
-              <WebActions slug={`/links/${link.id}`} />
-              <Meta post={link} slug={`/links/${link.id}`}/>
-              <Webmentions slug={`/links/${link.id}`} />
+              <WebActions slug={`/links/${link.slug}`} />
+              <Meta post={link} slug={`/links/${link.slug}`} syndicationLinks={link.syndicationLinks}/>
+              <Webmentions slug={`/links/${link.slug}`} />
             </PageWrapper>
           </article>
         )}
@@ -81,7 +81,7 @@ export async function getStaticPaths() {
   const links = (await getAllLinks()) || []
   
   return {
-    paths: links?.map((link) => `/links/${link.id}`) || [],
+    paths: links?.map((link) => `/links/${link.slug}`) || [],
     fallback: true,
   }
 }

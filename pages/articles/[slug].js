@@ -20,9 +20,8 @@ import PostTags from '@/components/tags/tags'
 import { parseISO, format } from 'date-fns'
 //import Comments from "@/components/comments/comments"
 import HCard from "@/components/microformats/h-card"
-//import Likes from "@/components/social/favorites/favorites"
-import WebActions from "@/components/social/feedback/feedback"
-import SyndicationLinks from "@/components/microformats/syndication-links"
+import Feedback from "@/components/social/feedback/feedback"
+import WebActions from "@/components/social/social-share/social-share"
 import Meta from "@/components/post/post-meta/post-meta"
 
 
@@ -73,11 +72,6 @@ const DateWrapper = styled.div`
   font-size: 12px;
 `
 
-const SyndicationLinksWrapper = styled.div`
-  text-align: right;
-`
-
-
 export default function Post({ post }) {  
 
   const router = useRouter()
@@ -125,13 +119,10 @@ export default function Post({ post }) {
     
                   <PostBody content={post.content} />   
 
-                  
-                  <SyndicationLinksWrapper>
-                    <SyndicationLinks syndicationLinks={post.syndicationLinks} />
-                  </SyndicationLinksWrapper>
-                  {/*<Comments slug={post.slug} />*/}
+                  {/*<Comments slug={post.slug} />
+                  <Feedback /> */}
                   <WebActions slug={`/articles/${post.slug}`} />
-                  <Meta post={post} slug={`/articles/${post.slug}`}/>
+                  <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
                   {/*<Likes />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />
 

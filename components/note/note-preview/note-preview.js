@@ -22,7 +22,7 @@ const NoteBodyContainer = styled.div`
 `
 export default function NotePreview({ note }) {
 
-  const slug = `/notes/${note.id}`
+  const slug = `/notes/${note.slug}`
   return (
     <Card className="h-entry" >
       <Link

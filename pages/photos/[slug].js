@@ -10,8 +10,7 @@ import Image from "next/image"
 import Link from "next/link"
 import PageTitle from '@/components/title/page-title'
 import PageBody from '@/components/article/article-body/article-body'
-import WebActions from "@/components/social/feedback/feedback"
-import SyndicationLinks from "@/components/microformats/syndication-links"
+import WebActions from "@/components/social/social-share/social-share"
 import Meta from "@/components/post/post-meta/post-meta"
 import HCard from "@/components/microformats/h-card"
 import PhotoTags from '@/components/tags/tags'
@@ -40,14 +39,6 @@ const TagsWrapper = styled.div`
   margin: var(--space-sm) 0;
 `
 
-
-const MetaWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  margin-top: var(--space-sm);
-`
 
 export default function Photo({ photo }) {
   const router = useRouter()
@@ -90,12 +81,8 @@ export default function Photo({ photo }) {
               <PageBody className="e-content" content={photo.description} />
               <TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> 
               
-              <MetaWrapper>
-                <Meta post={photo} slug={`/photos/${photo.slug}`}/>
-                <SyndicationLinks syndicationLinks={photo.syndicationLinks} />
-              </MetaWrapper>
-              
               <WebActions slug={`/photos/${photo.slug}`} />
+              <Meta post={photo} slug={`/photos/${photo.slug}`} syndicationLinks={photo.syndicationLinks}/>
               <Webmentions slug={`/photos/${photo.slug}`} />
             </PageWrapper>
           </article>

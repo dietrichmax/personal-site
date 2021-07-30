@@ -10,9 +10,7 @@ import NoteTitle from "@/components/title/post-title"
 import Webmentions from "@/components/social/webmentions/webmentions"
 import HCard from "@/components/microformats/h-card"
 import NoteTags from "@/components/tags/tags"
-import NoteMeta from "@/components/note/note-meta/note-meta"
-import SyndicationLinks from "@/components/microformats/syndication-links"
-import WebActions from "@/components/social/feedback/feedback"
+import WebActions from "@/components/social/social-share/social-share"
 import Meta from "@/components/post/post-meta/post-meta"
 
 const NoteWrapper = styled.div`
@@ -43,12 +41,6 @@ const NotesContent = styled.div`
   background-color: var(--content-bg);
 `
 
-const MetaWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-`
 const Hidden = styled.a`
   display: none;
 `
@@ -67,7 +59,7 @@ export default function Note({ note }) {
             <SEO   
               title={note.title}
               description={note.description}
-              slug={`/notes/${note.id}`}
+              slug={`/notes/${note.slug}`}
               date={note.updated_at ? note.updated_at : note.published_at}
               postSEO
             />
@@ -97,19 +89,15 @@ export default function Note({ note }) {
                   : null }
                   
                   <NoteTags tags={note.tags} />
-                  <MetaWrapper>
-                    <SyndicationLinks syndicationLinks={note.syndicationLinks} />
-                  </MetaWrapper>
-
                   
                 </NotesContent>
 
                 </ContentWrapper>
               </NotesItem>
       
-              <WebActions slug={`/notes/${note.id}`} />
-              <Meta post={note} slug={`/notes/${note.id}`}/>
-              <Webmentions slug={`/notes/${note.id}`} />
+              <WebActions slug={`/notes/${note.slug}`} />
+              <Meta post={note} slug={`/notes/${note.slug}`} syndicationLinks={note.syndicationLinks}/>
+              <Webmentions slug={`/notes/${note.slug}`} />
 
             </NoteWrapper>
           </>
@@ -147,7 +135,7 @@ export async function getStaticPaths() {
   const notes = await getAllNotes()
   
   return {
-    paths: notes?.map((note) => `/notes/${note.id}`) || [],
+    paths: notes?.map((note) => `/notes/${note.slug}`) || [],
     fallback: true,
   }
 }

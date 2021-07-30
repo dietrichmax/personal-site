@@ -11,7 +11,7 @@ import config from "@/lib/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"
 import HCard from "@/components/microformats/h-card"
-import WebActions from "@/components/social/feedback/feedback"
+import WebActions from "@/components/social/social-share/social-share"
 import { FaRunning, FaBiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';

@@ -22,8 +22,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   ::selection {
-    background: var(--primary-color);
-    color: var(--gray-extra-light);
+    background: var(--text-color);
+    color: var(--body-bg);
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,

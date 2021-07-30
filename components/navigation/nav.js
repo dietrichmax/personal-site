@@ -54,9 +54,9 @@ export default function Nav({ color }) {
 
 
   return (
-    <NavItems>
+    <NavItems itemscope itemtype="https://schema.org/SiteNavigationElement">
         {headerItems.map((item, i) => (
-            <NavItem key={i} color={color}>
+            <NavItem key={i} color={color} itemprop="name" >
                 <ActiveLink activeClassName={`active`} href={item.link} passHref>
                     <a title={item.name}>{item.name}</a>
                 </ActiveLink> 

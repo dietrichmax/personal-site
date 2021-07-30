@@ -10,7 +10,7 @@ export default function hCard() {
     return (
         <Hidden> 
           <div className="h-card p-author" itemprop="author publisher" itemscope itemtype="http://schema.org/Person">
-            <img className="u-photo" itemprop="image" src={config.siteLogo} alt={`Image of ${config.siteTitle}`}
+            <img className="u-photo" itemprop="image" src={config.siteLogo} alt={`Image of ${config.siteTitle}`} /> 
             <data className="p-description" itemprop="description" data={config.siteDescription} /> 
             <data className="p-description" itemprop="url" data={config.siteUrl} />
             <a className="p-name u-url" rel="author" itemprop="name" href={config.siteUrl}>{config.siteTitleAlt}</a>

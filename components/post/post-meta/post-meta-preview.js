@@ -13,7 +13,7 @@ const Meta = styled.div`
   bottom: 0;
   right: 0;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   font-size: 11px;
   width: 100%;
   margin-top: var(--space-sm);
@@ -26,7 +26,7 @@ const Meta = styled.div`
 
 
 const Date = styled.a`
-  margin-left: auto
+  margin-left: auto;
   :hover {
     text-decoration: underline;
   }

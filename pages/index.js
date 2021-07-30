@@ -86,7 +86,70 @@ const AboutMeLink = styled.a`
   }
 `
 
-
+const jsonld = 
+    {
+      "@context":"http://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"SiteNavigationElement",
+          "position":1,
+          "name": "Now",
+          "description": "What's happening right now",
+          "url":"http://www.mxd.codes/now"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":2,
+          "name": "Articles",
+          "description": "Tutorials, Guides and thoughts.",
+          "url":"http://www.mxd.codes/articles"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":3,
+          "name": "Photos",
+          "description": "Photos taken by me",
+          "url":"http://www.mxd.codes/photos"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":4,
+          "name": "Notes",
+          "description": "Status updates and short notes",
+          "url":"http://www.mxd.codes/notes"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":5,
+          "name": "Links",
+          "description": "Awesome content on the web, in random order",
+          "url":"http://www.mxd.codes/links"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":6,
+          "name": "Dashboard",
+          "description": "Awesome content on the web, in random order",
+          "url":"https://mxd.codes/dashboard"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":7,
+          "name": "Contact",
+          "description": "Contact information",
+          "url":"https://mxd.codes/contact"
+        },
+        {
+          "@type":"SiteNavigationElement",
+          "position":8,
+          "name": "Feeds",
+          "description": "You can subscribe to all content or individual content types",
+          "url":"https://mxd.codes/feeds"
+        }
+      ]
+    }
+  
   
 
 export default function Index({ posts, cv }) {
@@ -104,7 +167,8 @@ export default function Index({ posts, cv }) {
           <>
             <SEO   
               description={`Hi, I'm ${cv.title}. I currently work as a ${cv.timeline[0].role} at ${cv.timeline[0].company} where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
-            />
+              jsonld={jsonld}
+             />
              <HeroWrapper className="h-card">
               <Hero>
                 <HCard />

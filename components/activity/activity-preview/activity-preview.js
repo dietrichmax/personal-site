@@ -144,7 +144,7 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-            <ActivityMap data={geoPolyline} />
+            {/*<ActivityMap data={geoPolyline} />*/}
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

@@ -368,7 +368,6 @@ export default function Dashboard({
       averageSpeed = averageSpeed + item.averageSpeed
       maxSpeed.push(item.maxSpeed)
       elevationGain = elevationGain + item.elevationGain
-      console.log(item)
       greatestElevationGain.push(item.elevationGain)
       longestRide.push(item.distance)
     })

@@ -12,13 +12,12 @@ import media from 'styled-media-query';
 import Webmentions from "@/components/social/webmentions/webmentions"
 import HCard from "@/components/microformats/h-card"
 import WebActions from "@/components/social/social-share/social-share"
-import { FaRunning, FaBiking, FaMountain } from 'react-icons/fa';
+import { FaRunning, FaBiking, FaHiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
-import { GiValley, GiSummits } from 'react-icons/gi';
 import Meta from "@/components/post/post-meta/post-meta"
 
-
+import ActivityMap from "@/components/maps/deckgl/activity"
 
 
 const ActivityWrapper = styled.article`
@@ -53,7 +52,7 @@ const Item = styled.li`
 
 const Title = styled.h2`
   font-size: 1.25rem;
-  cursor: pointer;
+  color: var(--secondary-color);
 `
 
 const Date = styled.time`
@@ -109,6 +108,8 @@ export default function Activity({ activity }) {
     return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
 
+
+
   return (
     <Layout>
         {router.isFallback ? (
@@ -118,7 +119,7 @@ export default function Activity({ activity }) {
             <SEO  
               title={`${activity.activityName}-${format(parseISO(activity.start_date), "yyyy-MM-dd kk:mm")}`}
               description={`${activity.activityName}`}
-              slug={`/activities/${activity.activityId}`}
+              slug={`/activities/${activity.slug}`}
               date={activity.updated_at ? activity.updated_at : activity.created_at}
               ogType="activity"
             />
@@ -153,21 +154,21 @@ export default function Activity({ activity }) {
                     <DataItemValue>{activity.maxSpeed.toFixed(2)} km/h</DataItemValue>
                   </DataItem>
                   <DataItem>
-                    <DataItemLabel><CgArrowTopRight /> Uphill</DataItemLabel>
+                    <DataItemLabel><CgArrowTopRight /> Elevation Gain</DataItemLabel>
                     <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
                   </DataItem>
                 </Data>
                 <HCard />
                 <MapContainer>
-                    {/*<ActivityMap data={activity.details.geoPolylineDTO} />*/}
+                    <ActivityMap data={activity} />
                 </MapContainer>
 
               </ActivityContainer>
 
-                <WebActions slug={`/activities/${activity.activityId}`} />
-                <Meta post={activity} slug={`/activities/${activity.activityId}`}/>
+                <WebActions slug={`/activities/${activity.slug}`} />
+                <Meta post={activity} slug={`/activities/${activity.slug}`} syndicationLinks={[{slug:`https://www.strava.com/activities/${activity.slug}`,name:"strava"}]}/>
                 {/*<Likes />*/}
-                <Webmentions slug={`/activities/${activity.activityId}`} />
+                <Webmentions slug={`/activities/${activity.slug}`} />
                 
 
 
@@ -180,7 +181,7 @@ export default function Activity({ activity }) {
 }
 
 export async function getStaticProps({ params }) {  
-  const data = await getActivity(params.activityId)
+  const data = await getActivity(params.slug)
   
   return {
     props: {
@@ -195,7 +196,7 @@ export async function getStaticPaths() {
   const activities = await getAllActivities()
   
   return {
-    paths: activities?.map((activity) => `/activities/${activity.activityId}`) || [],
+    paths: activities?.map((activity) => `/activities/${activity.slug}`) || [],
     fallback: true,
   }
 }

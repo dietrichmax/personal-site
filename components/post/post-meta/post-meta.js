@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { parseISO, format } from 'date-fns'
 import config from "@/lib/data/internal/SiteConfig";
-import { FaTwitter, FaInstagram, FaReddit } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaReddit, FaStrava } from 'react-icons/fa';
 
 const Meta = styled.div`
   display: flex;
@@ -45,8 +45,11 @@ export default function PostMeta({ post, slug, syndicationLinks }) {
         return <FaInstagram/> 
     } else if (name == "reddit") {
       return <FaReddit/> 
-  }
+  } else if (name == "strava") {
+    return <FaStrava/> 
 }
+}
+
 
   return ( 
     <Meta>

@@ -7,8 +7,6 @@ import HCard from "@/components/microformats/h-card"
 import config from "@/lib/data/internal/SiteConfig"
 import { FaRunning, FaBiking, FaHiking, FaClock } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowsVAlt } from 'react-icons/cg';
-import { GiWeightLiftingDown } from 'react-icons/gi';
-import ActivityMap from "@/components/maps/deckgl/activities"
 import Image from "next/image"
 const polyline = require('@mapbox/polyline');
 
@@ -23,18 +21,18 @@ const Item = styled.li`
   background-color: var(--content-bg);
   border-radius: var(--border-radius);
   transition: .5s;
-  :hover {
-    transform: var(--transform);
-  }
 `
 
 const Title = styled.h2`
   cursor: pointer;
   color: var(--secondary-color);
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 const Date = styled.time`
-  font-size: 1rem;
+  font-size: .875rem;
   font-weight: 400;
   ${media.lessThan('large')`
     display: block;
@@ -47,7 +45,6 @@ const Icon = styled.span`
 `
 
 const Data = styled.div`
-  font-size: .875rem;
   ${media.lessThan('small')`
     display: flex;
     justify-content: space-between;
@@ -63,14 +60,19 @@ const DataItem = styled.dl`
   `}
 `
 
-const DataItemLabel = styled.dt``
+const DataItemLabel = styled.dt`
+  font-size: 0.75rem;
+`
 
 const DataItemValue = styled.dd`
-    font-weight: 600;
+font-size: 1rem;
 `
 
 const MapContainer = styled.div`
+  position: relative;
   margin-bottom: var(--space-sm);
+  width: 100%;
+  height: 250px;
 `
 
 const Dot = styled.span`
@@ -85,7 +87,7 @@ const Dot = styled.span`
 export default function ActivityPreview({ activity }) {
 
   const date = activity.start_date
-  const slug = `/activities/${activity.activityId}`
+  const slug = `/activities/${activity.slug}`
 
 
   const getTypeIcon = type => {
@@ -106,13 +108,12 @@ export default function ActivityPreview({ activity }) {
   }
   
   const geoPolyline = polyline.decode(activity.details.summary_polyline);
+
   let path = []
-  geoPolyline.map((item) => {
-    path.push([item[1]],[item[0]])
+  geoPolyline.map((coordinate) => {
+    path.push([coordinate[1],coordinate[0]])
   })
 
-  const mapImageUrl = `https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain-background&attribution=none&width=400&height=240&path[]=${path.toString()};weight:3;color:6680CA`
-  
   return (
     <Item className="h-entry" >
         
@@ -135,10 +136,6 @@ export default function ActivityPreview({ activity }) {
             <DataItemValue>{secondsToHms(activity.movingDuration)}</DataItemValue>
           </DataItem>
           <DataItem>
-            <DataItemLabel>Ø Speed</DataItemLabel>
-            <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
-          </DataItem>
-          <DataItem>
             <DataItemLabel><CgArrowsVAlt /> Elevation gain</DataItemLabel>
             <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
           </DataItem>
@@ -152,9 +149,8 @@ export default function ActivityPreview({ activity }) {
         <HCard />
         <MapContainer>
           <Image 
-            src={mapImageUrl} 
-            width="400"
-            height="240"
+            src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:3;color:6680CA`}
+            layout="fill"
            />
         </MapContainer>
 

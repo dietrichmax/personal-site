@@ -36,7 +36,6 @@ export default function PostReactions() {
     }, []);
     
     const sendIncrement = (value) => {
-      console.log(value)
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

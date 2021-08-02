@@ -1,7 +1,5 @@
 import React from 'react';
 import config from "@/lib/data/internal/SiteConfig"
-import useSWR from 'swr'
-import fetcher from "@/lib/utils/fetcher"
 
 
 const createManifest = () => 

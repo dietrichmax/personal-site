@@ -34,9 +34,9 @@ class MyApp extends App {
           <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
-          <link rel="preconnect" href="https://api.mxd.codes" crossOrigin="true"/>,
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="true" />,
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          <link rel="preconnect" href="https://api.mxd.codes" crossOrigin />,
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin />,
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           {/* Preload */}
           <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" crossOrigin />,
           {/* IndieCert */}

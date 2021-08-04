@@ -15,10 +15,10 @@ export default function hCard() {
             <data className="p-description" itemProp="url" data={config.siteUrl} />
             <a className="p-name u-url" rel="author" itemProp="name" href={config.siteUrl}>{config.siteTitleAlt}</a>
             <time className="dt-btday" dateTime="--08-08" itemProp="birthDate" />
-            <data className="p-locality" data="Rosenheim" />
-            <data className="p-region" data="Bavaria" />
-            <data className="p-postal-code" data="83026" />
-            <data className="p-country-name" data="Germany" />
+            <data className="p-locality" value="Rosenheim" />
+            <data className="p-region" value="Bavaria" />
+            <data className="p-postal-code" value="83026" />
+            <data className="p-country-name" value="Germany" />
           </div>
         </Hidden> 
     )

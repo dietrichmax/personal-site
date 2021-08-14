@@ -301,7 +301,7 @@ export default function Webmentions({ slug, preview }) {
           <Input
             type="webmention"
             name="webmention"
-            id="webmention"
+            id="webmention-input"
             label="webmention-input"
             placeholder="URL / permalink of your response"
             onChange={(e) => setSourceUrl(e.target.value)}
@@ -309,7 +309,7 @@ export default function Webmentions({ slug, preview }) {
           <Button
             type="button"
             name="webmention"
-            id="webmention"
+            id="webmention-button"
             aria-label="Send Webmention"
             onClick={() => sendWebmention()}
             style={{ width: "100%" }}

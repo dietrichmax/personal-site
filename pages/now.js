@@ -115,14 +115,14 @@ export default function Now({ weather, address, content, now  }) {
 
               <LiveDataWrapper>
                 <Data>
-                  In {town} it has {weather.main.temp}°C. {/* which feels more like {weather.main.feels_like}°C and the weather is 
+                  In {town} it has {weather.main.temp}°C with {weather.weather[0].description}.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     title={weather.weather[0].description}
                     alt="Icon displaying weather"
                     width="30"
                     height="30"
-                  />*/}
+                  />
                 </Data>
                 {now.batt ? <Data>My phone's battery level is {now.batt}% <i className={`las la-battery-${getBatteryLevelIcon(now.batt)}`} title={`${now.batt}% Battery Level`}/> and it is currently {batteryStatus(now.bs)}.</Data> : null}
               </LiveDataWrapper>

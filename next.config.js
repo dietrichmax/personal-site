@@ -2,6 +2,9 @@
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
 const withPWA = require('next-pwa')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 // redirects
 const redirects = {async redirects() {
@@ -497,6 +500,11 @@ const redirects = {async redirects() {
       source: '/indieweb',
       destination: 'https://indieweb.org/User:Mxd.codes',
       permanent: true
+    },
+    {
+      source: '/slack',
+      destination: 'slack://user=U01RZ0F2DBQ',
+      permanent: true
     }
   ]
 }};
@@ -517,6 +525,9 @@ module.exports = withPlugins([
     pwa: {
     dest: 'public',
   }}],
+  [withBundleAnalyzer({ 
+    // put the rest of config here
+  })],
   redirects,
   withFonts,
   {i18n: {

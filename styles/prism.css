@@ -31,7 +31,7 @@ pre > code[class*="language-"] {
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
 	background-color: var(--content-bg);
-	color: var(--content-bg);
+	color: var(--text-color);
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,

@@ -3,9 +3,13 @@ import SEO from '@/components/seo/seo'
 import Title from '@/components/title/page-title'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import Livemap from "@/components/maps/deckgl/livemap"
 import { getLocationsCount } from "@/lib/data/external/cms"
 import prisma from '@/lib/utils/prisma'
+import dynamic from 'next/dynamic'
+
+const Livemap = dynamic(
+  () => import('@/components/maps/deckgl/livemap'),
+)
 
 const MapContainer = styled.div`
   margin: auto;

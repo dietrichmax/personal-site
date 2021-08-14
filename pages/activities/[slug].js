@@ -16,8 +16,12 @@ import { FaRunning, FaBiking, FaHiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
 import Meta from "@/components/post/post-meta/post-meta"
+import dynamic from 'next/dynamic'
 
-import ActivityMap from "@/components/maps/deckgl/activity"
+const ActivityMap= dynamic(
+  () => import('@/components/maps/deckgl/activity'),
+)
+
 
 
 const ActivityWrapper = styled.article`

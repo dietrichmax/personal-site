@@ -31,14 +31,12 @@ class MyApp extends App {
           <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
 
           {/* DNS Prefetch*/} 
-          <link rel="dns-prefetch" href="https://analytics.mxd.codes" />,
           <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
           {/* Preconnect */}
           <link rel="preconnect" href="https://api.mxd.codes" crossOrigin />,
           <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin />,
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           {/* Preload */}
-          <link rel="preload" href="https://analytics.mxd.codes/matomo.js" as="script" crossOrigin />,
           {/* IndieCert */}
           <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
           <link rel="micropub" href="https://mxd.codes/micropub" />

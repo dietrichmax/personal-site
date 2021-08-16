@@ -45,11 +45,11 @@ export default function Nav({ color }) {
 
 
   const headerItems = [
-    { "name": "Now", "link":  "/now" },
     { "name": "Articles", "link":  "/articles" },
     { "name": "Photos", "link":  "/photos" },
     { "name": "Notes", "link":  "/notes" },
     { "name": "Links", "link":  "/links" },
+    { "name": "Activities", "link":  "/activities" },
   ]
 
 

@@ -199,6 +199,10 @@ export default function Footer() {
       link: "/contact" 
     },   
     { 
+      name: "Now",
+      link: "/now" 
+    },
+    { 
       name: "About this site",
       link: "/about-this-site" 
     },
@@ -224,28 +228,6 @@ export default function Footer() {
     },
   ]
 
-  const headerItems = [
-    { 
-      name: "Now",
-      link: "/now" 
-    },
-    { 
-      name: "Articles",
-      link: "/articles" 
-    },
-    { 
-      name: "Notes",
-      link: "/notes" 
-    },
-    { 
-      name: "Photos",
-      link: "/photos" 
-    },
-    { 
-      name: "Links",
-      link: "/links" 
-    },
-  ]
   return (
     <FooterContainer>
 

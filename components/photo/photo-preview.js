@@ -41,7 +41,7 @@ const PhotosTitle = styled.h2`
   font-size: 1.25rem;
   margin-bottom: var(--space-sm);
   cursor: pointer;
-  color: var(--secondary-color);
+  color: var(--gray);
   :hover {
     text-decoration: underline;
   }
@@ -51,6 +51,7 @@ const PhotosContent = styled.p`
   max-width: 700px;
   font-family: var(--secondary-font);
   font-size: .875rem;
+  color: var(--gray);
   margin-bottom: var(--space-sm);
 `
 

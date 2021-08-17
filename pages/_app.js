@@ -4,6 +4,7 @@ import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/internal/SiteConfig"
+import Providers from '@/lib/utils/providers';
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -95,11 +96,11 @@ class MyApp extends App {
           <link href="/manifest.json" rel="manifest" />
 
         </Head>
-        {/*<ThemeProvider theme={themes}>*/}
+        <Providers>
           {/*<script src="noflash.js" />*/}
           <GlobalStyle/>
           <Component {...pageProps} />
-        {/*</ThemeProvider>*/}
+        </Providers>
       </>
     )
   }

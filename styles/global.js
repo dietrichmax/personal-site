@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a:focus-visible {  
     background-color: yellow;
-    color: var(--primary-color);
+    color: var(--text-color);
   }
   strong {
     font-weight: bold;
@@ -49,10 +49,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: var(--body-bg);
-    font-size: calc(15px + 0.115vw);
     line-height: 1.5;
-    font-weight: 400;
-    font-style: normal;
     font-stretch: normal;
     font-family: var(--primary-font);
     -webkit-font-smoothing: antialiased;
@@ -74,11 +71,12 @@ const GlobalStyle = createGlobalStyle`
     image-rendering: crisp-edges;
   }
   body { 
-    --primary-color: #051129;
-    --secondary-color: #A1B4EC;
-    --thirdy-color: #6680CA;
-    --body-bg: #0d1117; 
-    --content-bg: #1b2026;
+    --primary-color: ${props => props.theme.primaryColor};
+    --secondary-color: ${props => props.theme.secondaryColor};
+    --thirdy-color: ${props => props.theme.thirdyColor};
+    --body-bg: ${props => props.theme.bodyBg};
+    --content-bg: ${props => props.theme.contentBg};
+    --gray: #c9d1d9;
     --gap: var(--space-sm);
     --border: var(--thirdy-coor);
     --border-radius: 4px;
@@ -86,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: var(--primary-color);
-    --text-color: rgb(201, 209, 217);
+    --text-color: ${props => props.theme.textColor};
     --width-container: 1200px;
     --content-width: 720px;
     --space: 2rem;

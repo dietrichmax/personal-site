@@ -32,6 +32,9 @@ const LinkLink = styled.a`
   cursor: pointer;
   font-family: var(--secondary-font);
   font-style: italic;
+  :hover {
+    border-bottom: none;
+  }
 `
 
 export default function LinkPreview({ link }) {

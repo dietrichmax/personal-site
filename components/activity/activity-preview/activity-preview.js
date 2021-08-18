@@ -18,14 +18,12 @@ const Item = styled.li`
   position: relative;
   height: 100%;
   padding: var(--space-sm);
-  background-color: var(--content-bg);
   border-radius: var(--border-radius);
   transition: .5s;
 `
 
 const Title = styled.h2`
   cursor: pointer;
-  color: var(--secondary-color);
   :hover {
     text-decoration: underline;
   }
@@ -148,7 +146,7 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-          <Image 
+          <Image
             src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:3;color:6680CA`}
             layout="fill"
            />

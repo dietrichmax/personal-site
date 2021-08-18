@@ -56,7 +56,7 @@ class MyApp extends App {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
           {/*<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght300;500;700&display=swap"  />*/}
           {/*<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css'  />*/}
-          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin="true"="true"/>*/}
+          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin />*/}
         
           {/* RSS */}
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />

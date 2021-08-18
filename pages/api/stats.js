@@ -9,6 +9,15 @@ import {
   getLinksCount,
   getAllActivities
 } from "@/lib/data/external/cms"
+import {
+    getMatomoActions,
+    getMatomoLiveCounter,
+    getMatomoPageViews,
+    getMatomoAllVisits,
+    getMatomoSumVisitDuration,
+    getMatomoSEOStats,
+    getMatomoVisitsSummary
+} from "@/lib/data/external/analytics"
 
 export default async (_, res) => {
 
@@ -20,6 +29,7 @@ export default async (_, res) => {
   const activitiesCount = await getActivitiesCount()
   const subscribersCount = (await getSubscribersCount()) || []
   const activities = (await getAllActivities()) || []
+  const lastViews = (await getMatomoPageViews()) || []
 
   let distance = 0
   let duration = 0

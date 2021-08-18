@@ -53,22 +53,20 @@ const HeroDescription = styled.h3`
 
 const HeroLinks = styled.a`
   font-weight: 600;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
-  color: var(--thirdy-color);
+  color: var(--secondary-color);
   :hover {
     border-bottom: 2px solid transparent;
-    color: var(--thirdy-color);
   }
 `
 
 const HeroLinksNormal = styled.a`
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
-  color: var(--thirdy-color);
+  color: var(--secondary-color);
   :hover {
     border-bottom: 2px solid transparent;
-    color: var(--thirdy-color);
   }
 `
 

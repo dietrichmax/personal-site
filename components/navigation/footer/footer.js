@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
+import markdownStyles from '@/styles/markdown-styles.module.css'
 import { format } from 'date-fns'
 import { getNowData } from "@/lib/data/external/cms";
 import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle, FaSteam, FaSlack } from 'react-icons/fa';

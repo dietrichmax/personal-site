@@ -45,7 +45,7 @@ const Title = styled.h1`
 const Intro = styled.p`
   font-size: 1.25rem;
   max-width: var(--content-width);
-  margin: var(--space-sm) 0;
+  margin: var(--space) 0;
   line-height: 1.75rem;
   font-family: var(--secondary-font);
 `

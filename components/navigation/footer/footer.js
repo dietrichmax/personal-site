@@ -11,6 +11,8 @@ import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicy
 import { SiGarmin, SiStrava } from 'react-icons/si';
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
+import useSWR from 'swr'
+import fetcher from "@/lib/utils/fetcher"
 // styled components
 
 const FooterContainer = styled.footer`
@@ -194,6 +196,10 @@ export default function Footer() {
 
   }, []);
 
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
+  
+  if (error) return console.log("error")
+
   const footerItems = [
     { 
       name: "Contact",
@@ -334,8 +340,9 @@ export default function Footer() {
         </FooterColumnWrapper> 
 
         <FooterNotice>
-          2018–{format(new Date(), "yyyy")} <Link href="/">
-            <a title={config.siteTitle}>{config.siteTitle}</a>
+          2018 – {format(new Date(), "yyyy")} 
+          <Link href="/">
+            <a title={`Max Dietrich - ${!data ? "" : data.timeline[0].role}`}> Max Dietrich - {!data ? "" : data.timeline[0].role}</a>
           </Link>
           <span> • </span>
           <Link href="/privacy-policy"> 

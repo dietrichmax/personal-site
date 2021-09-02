@@ -89,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
     --content-width: 720px;
     --space: 2rem;
     --space-sm: 1rem;
-    --space-lg: 3rem;
+    --space-lg: 4rem;
   }
 
 `

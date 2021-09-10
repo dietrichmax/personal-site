@@ -478,7 +478,7 @@ const redirects = {async redirects() {
     },
     {
       source: '/github',
-      destination: 'https://github.com/DaTurboD',
+      destination: 'https://github.com//dietrichmax',
       permanent: true
     },
     {

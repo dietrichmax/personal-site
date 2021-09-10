@@ -23,7 +23,7 @@ export default function ActivitiesMap({
 
   let coordinates = []
   geoPolyline.map((coordinate) => {
-    coordinates.push([coordinate[1],coordinate[0]])
+    coordinates.push([coordinate[1],coordinate[0],coordinate[2]])
   })
 
   let latitudes = []

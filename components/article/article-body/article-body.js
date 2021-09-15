@@ -40,7 +40,7 @@ const Sidebar = styled.div`
 export default function PostBody({ post }) {
 
   return (
-    <>s
+    <>
       <PostContent>
         <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
         <ContentWrapper className="e-content">

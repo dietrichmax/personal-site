@@ -117,7 +117,7 @@ export default function Post({ post }) {
 
                 <Content>
     
-                  <PostBody content={post.content} />   
+                  <PostBody post={post} />   
 
                   {/*<Comments slug={post.slug} />
                   <Feedback /> */}

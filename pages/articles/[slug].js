@@ -98,6 +98,7 @@ export default function Post({ post }) {
               articleData={post}
             />
             <article ref={target} className="h-entry">
+              <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
              
               <HCard /> 
               
@@ -117,7 +118,7 @@ export default function Post({ post }) {
 
                 <Content>
     
-                  <PostBody post={post} />   
+                  <PostBody content={post.content} />   
 
                   {/*<Comments slug={post.slug} />
                   <Feedback /> */}

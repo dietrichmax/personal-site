@@ -37,16 +37,15 @@ const Sidebar = styled.div`
 
 `
 
-export default function PostBody({ post }) {
+export default function PostBody({ content }) {
 
   return (
     <>
       <PostContent>
-        <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
         <ContentWrapper className="e-content">
           <ReactMarkdown
             className={markdownStyles['markdown']}
-            children={post.content}
+            children={content}
             components={renderers}
           />
         </ContentWrapper>

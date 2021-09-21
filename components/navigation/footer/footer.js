@@ -225,10 +225,10 @@ export default function Footer() {
       name: "Webmention Endpoint",
       link: "/webmention" 
     },
-    { 
+    /*{ 
       name: "Blogroll",
       link: "/blogroll" 
-    },
+    },*/
     { 
       name: "Mailing",
       link: "/mailinglist" 

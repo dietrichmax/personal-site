@@ -59,7 +59,7 @@ export default function Map({ locations, locationsCount } ) {
         The map is always centered at my last known position.
       </Description>
       <Description>
-        If you are curious how that works have a look at the article <InternalLink href="/articles/how-i-track-my-location-and-display-the-data-on-my-website" title="How i track my location and display the data on my website">How i track my location and display the data on my website</InternalLink> where i am describing the details behind it.
+        If you are curious how that works have a look at the article <InternalLink href="/articles/constant-location-tracking-with-owntracks-strapi-and-visualizing-data-with-deckgl" title="How i constantly track my location and display a web-map with all the locations">How i constantly track my location and display a web-map with all the locations</InternalLink> where i am describing the details behind it.
       </Description>    
     </Layout>
   )

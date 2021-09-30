@@ -164,7 +164,7 @@ export default function Index({ posts, cv }) {
             
           <>
             <SEO   
-              description={`Hi, I'm ${cv.title}. I currently work as a ${cv.timeline[0].role} at ${cv.timeline[0].company} where I'm doing Data Migrations. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
+              description={`Hi, I'm ${cv.title}. I am a Geospatial Developer currently working at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
              />
              <HeroWrapper className="h-card">

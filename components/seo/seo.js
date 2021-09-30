@@ -193,7 +193,7 @@ const SEO = ({
     <Head>
     {/* META TAGS */}
       {/* General tags */}
-      <title>{title ? `${title} • Max Dietrich - Geodata-Manager` : `Max Dietrich - Geodata-Manager`}</title>
+      <title>{title ? `${title} • Max Dietrich - Geospatial Developer` : `Max Dietrich - Geospatial Developer`}</title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

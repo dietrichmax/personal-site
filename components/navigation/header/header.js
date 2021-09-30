@@ -74,7 +74,7 @@ export default function Header({ color }) {
               <a className="u-url" rel="me" title="Max Dietrich">
                 <LogoName className="p-name" >Max Dietrich</LogoName>
                 <br/>
-                <LogoDescription>{!data ? "" : data.timeline[0].role}</LogoDescription>
+                <LogoDescription>{!data ? "Geospatial Developer" : data.timeline[0].role}</LogoDescription>
               </a>
             </Link>
           </Logo>

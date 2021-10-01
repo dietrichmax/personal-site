@@ -694,24 +694,8 @@ export default function Dashboard({
                                             <GridStatsDescription>Total duration [h]</GridStatsDescription>
                                         </BottomStatsGrid>
                                         <BottomStatsGrid>
-                                            <GridStats>{Math.max(...maxSpeed).toFixed(1)}</GridStats>
-                                            <GridStatsDescription>Max Speed [km/h]</GridStatsDescription>
-                                        </BottomStatsGrid>
-                                        <BottomStatsGrid>
-                                            <GridStats>{(Math.max(...longestRide)/1000).toFixed(1)}</GridStats>
-                                            <GridStatsDescription>Longest ride [km]</GridStatsDescription>
-                                        </BottomStatsGrid>
-                                        <BottomStatsGrid>
                                             <GridStats>{(elevationGain).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                             <GridStatsDescription>Total Elevation Gain [m]</GridStatsDescription>
-                                        </BottomStatsGrid>
-                                        {/*<BottomStatsGrid>
-                                            <GridStats>{(averageWatts/activitiesCount).toFixed(1)}</GridStats>
-                                            <GridStatsDescription>Average Watts</GridStatsDescription>
-                                        </BottomStatsGrid>*/}
-                                        <BottomStatsGrid>
-                                            <GridStats>{(averageSpeed/activitiesCount).toFixed(1)}</GridStats>
-                                            <GridStatsDescription>Average speed [km/h]</GridStatsDescription>
                                         </BottomStatsGrid>
                                 </StatsGridMedium>
                             </GeneralStats>

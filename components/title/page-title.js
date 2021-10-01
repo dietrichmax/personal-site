@@ -20,6 +20,8 @@ const Title = styled.h1`
 `}
 `
 
+
+
 export default function PageTitle({ children, color }) {
   return (
     <TitleWrapper>

@@ -84,6 +84,22 @@ const AboutMeLink = styled.a`
   }
 `
 
+const RecentPosts= styled.div`
+  max-width: 1000px;
+  display: grid;
+  margin: auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
+  margin-bottom: var(--space-lg);
+  grid-template-columns: repeat(1,minmax(0,1fr));
+  gap: var(--space-lg);
+  list-style: none;
+  ${media.lessThan('medium')`
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  `}
+`
 const jsonld = 
     {
       "@context":"http://schema.org",
@@ -185,7 +201,7 @@ export default function Index({ posts, cv }) {
              </HeroWrapper>
             <IndexPageContainer>
 
-              <Grid>
+              <RecentPosts>
                 {content.map((post,i) => (
                   post.type === "article" ? (
                     <PostPreview
@@ -209,7 +225,7 @@ export default function Index({ posts, cv }) {
                     />
                   ) : null
                 ))}
-              </Grid>
+              </RecentPosts>
 
 
               {/*{<SubTitle>Recent Notes</SubTitle>

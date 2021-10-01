@@ -5,7 +5,7 @@ import media from 'styled-media-query';
 import config from "@/lib/data/internal/SiteConfig"
 import { format, subDays, formatDistance} from 'date-fns'
 import Image from 'next/image'
-import { FaRegQuestionCircle, FaRetweet, FaRegComment } from 'react-icons/fa';
+import { FaRegQuestionCircle, FaRetweet, FaRegComment, FaRegStickyNote } from 'react-icons/fa';
 import { BsStar } from 'react-icons/bs';
 import Comments from "@/components/comments/comments"
 
@@ -160,6 +160,13 @@ const WebmentionPreviewLabel = styled.span`
   `}
 `
 
+const ImagePlacholder = styled.div`
+  width: 50px;
+  height: 50px;
+  background-color: var(--content-bg);
+  color: var(--text-color);
+`
+
 
 export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
@@ -174,6 +181,7 @@ export default function Webmentions({ slug, preview }) {
     const commentsProperty = ['mention-of', 'in-reply-to']
     const likesProperty = ['like-of']
     const repostsProperty = ['repost-of']
+    const mentionsProperty = ['mention-of']
 
     const hasRequiredFields = entry => {
         const { author, published, content } = entry
@@ -187,6 +195,7 @@ export default function Webmentions({ slug, preview }) {
         return entry
     }
 
+
     const count = webmentions.length
     const comments = webmentions
       .filter(entry => entry['wm-target'] === url)
@@ -199,7 +208,10 @@ export default function Webmentions({ slug, preview }) {
     const reposts = webmentions
       .filter(entry => entry['wm-target'] === url)
       .filter(entry => repostsProperty.includes(entry['wm-property']))
-
+    const mentions = webmentions
+      .filter(entry => entry['wm-target'] === url)
+      .filter(entry => mentionsProperty.includes(entry['wm-property']))
+    
     return {
       count: count,
       comments: comments,
@@ -207,10 +219,12 @@ export default function Webmentions({ slug, preview }) {
       likes: likes,
       likesCount: likes.length,
       reposts: reposts,
-      repostsCount: reposts.length
+      repostsCount: reposts.length,
+      mentions: mentions,
+      mentionsCount: mentions.length
     }
   }
-
+  
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
     async function sendData() {
@@ -259,18 +273,26 @@ export default function Webmentions({ slug, preview }) {
 
   const renderAuthorImg = (mention) => {
     return (
-      <WebmentionLike>
-        <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="noopener noreferrer nofollow">
-          <Image
-            src={mention.author.photo}
-            height="50"
-            width="50"
-            className="u-photo"
-            alt={`Photo of ${mention.author.name}`}
-            title={mention.author.name}
-          />
-        </WebmentionAuthorImgWrapper>
-      </WebmentionLike>
+      mention.author.photo ? (
+        <WebmentionLike>
+          <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="noopener noreferrer nofollow">
+            <Image
+              src={mention.author.photo}
+              height="50"
+              width="50"
+              className="u-photo"
+              alt={`Photo of ${mention.author.name}`}
+              title={mention.author.name}
+            />
+          </WebmentionAuthorImgWrapper>
+        </WebmentionLike>
+      ) : (
+        <WebmentionLike>
+          <WebmentionAuthorImgWrapper className="u-url" href={mention.author.url} rel="noopener noreferrer nofollow">
+            <ImagePlacholder>{mention.author.name}</ImagePlacholder>
+          </WebmentionAuthorImgWrapper>
+        </WebmentionLike>
+      )
     )
   }
 
@@ -282,6 +304,7 @@ export default function Webmentions({ slug, preview }) {
         {webmentions.likesCount > 0 ? <WebmentionPreviewCount><BsStar/> {webmentions.likesCount} <WebmentionPreviewLabel>{webmentions.likesCount == 1 ? "like" : "likes"}</WebmentionPreviewLabel></WebmentionPreviewCount> : null }
         {webmentions.repostsCount > 0 ? <WebmentionPreviewCount><FaRetweet/> {webmentions.repostsCount} <WebmentionPreviewLabel>{webmentions.repostsCount == 1 ? "repost" : "reposts"}</WebmentionPreviewLabel></WebmentionPreviewCount>  : null }
         {webmentions.commentsCount > 0 ? <WebmentionPreviewCount><FaRegComment/> {webmentions.commentsCount} <WebmentionPreviewLabel>{webmentions.commentsCount == 1 ? "reply" : "replies"}</WebmentionPreviewLabel></WebmentionPreviewCount>  : null }
+        {webmentions.mentionsCount > 0 ? <WebmentionPreviewCount><FaRegStickyNote/> {webmentions.mentionsCount} <WebmentionPreviewLabel>{webmentions.mentionsCount == 1 ? "mention" : "mentions"}</WebmentionPreviewLabel></WebmentionPreviewCount>  : null }
       </WebmentionsPreview>
     ):( 
       <WebMentionsWrapper> 
@@ -359,6 +382,14 @@ export default function Webmentions({ slug, preview }) {
             </WebmentionsList>
           ) : null }
           {/* Mentions*/}
+          {webmentions.mentions.length > 0 ? (
+          <WebmentionsList>
+            <WebmentionsTitle style={{marginBottom:'var(--space-sm)'}}>{webmentions.mentions.length} {webmentions.mentions.length == 1 ? "Mention" : "Mentions"}</WebmentionsTitle>
+            {webmentions.mentions.map((mention) => (
+              renderAuthorImg(mention)
+            ))}
+            </WebmentionsList>
+          ) : null }
         </>
         ) : (
           <WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent>

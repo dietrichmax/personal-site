@@ -57,6 +57,7 @@ export default function Blog({ allPosts, allTags }) {
           <>
             <SEO   
               title="Articles"
+              description="Tutorials, Guides and thoughts"
               slug="articles"
             />
             

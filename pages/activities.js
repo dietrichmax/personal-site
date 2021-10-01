@@ -50,7 +50,7 @@ export default function Blog({ allActivities }) {
             <SEO   
               title="Activities"
               slug="activities"
-              description="I am tracking most of my bike rides and runs. These maps are automatically generated with the collected data."
+              description="I am tracking most of my bike rides and runs with Strava and/or Komoot. The maps on this page are automatically generated with the collected data."
             />
             
             <PageTitle>Activities</PageTitle>

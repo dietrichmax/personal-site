@@ -86,7 +86,7 @@ const GlobalStyle = createGlobalStyle`
     --link-color-hover: var(--primary-color);
     --text-color: ${props => props.theme.textColor};
     --width-container: 1200px;
-    --content-width: 720px;
+    --content-width: 700px;
     --space: 2rem;
     --space-sm: 1rem;
     --space-lg: 4rem;

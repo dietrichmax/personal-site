@@ -13,6 +13,7 @@ const CardItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 6px 6px 0 6px;
 `;
 
 const CardItemInfo = styled.div`

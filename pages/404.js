@@ -23,7 +23,6 @@ export default function Custom404({pages}) {
   const result = StringSimilarity.findBestMatch(pathname, pages).bestMatch
   const goodMatch = result.rating > 0.7
 
-  console.log(goodMatch)
   return (
     <Layout>
   

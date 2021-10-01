@@ -9,6 +9,7 @@ import PostMeta from '@/components/post/post-meta/post-meta-preview'
 import { Card } from "@/styles/templates/card"
 
 const LinkContainer = styled.div`
+  padding: 6px 6px 0 6px;
 `
 
 const LinksTitle = styled.h2`

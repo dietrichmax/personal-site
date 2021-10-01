@@ -55,15 +55,17 @@ const PhotosContent = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-const Photo= styled(Image)`
+const Photo= styled.img`
   object-fit: cover;
   object-position: bottom;
+  height: 300px;
+  width: 100%;
 `
 
 const PhotoWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  height: 200px;
+  height: 100%;
   width: 100%;
   ${media.lessThan('small')`
    width: 100%
@@ -72,30 +74,34 @@ const PhotoWrapper = styled.div`
 
 export default function PhotoPreview({ photo }) {
 
+  const slug = `/photos/${photo.slug}`
+
   return (       
     <Card className="h-entry">   
       <HCard /> 
       <PreviewContainer>
         <PhotoWrapper> 
-          <Link href={`/photos/${photo.slug}`} className="u-url" passHref>
+          <Link href={slug} className="u-url" passHref>
             <Photo
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.thumbnail.url}`}
-              alt={`Cover medium of photo ${photo.date}`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo[0].formats.content ? photo.photo[0].formats.content.url : photo.photo[0].url}`}
+              alt={`Photo of ${photo.title}`}
+              title={`Photo of "${photo.title}"`}
               layout="fill"
               className="u-photo" 
             /> 
           </Link>
         </PhotoWrapper>
-        <PhotoContainer>
+        {/*<PhotoContainer>
           <PhotosTitle>
-            <Link href={`/photos/${photo.slug}`} className="u-url">
+            <Link href={slug} className="u-url">
               <a className="p-name" rel="bookmark">{photo.title}</a>
             </Link>
           </PhotosTitle>
           <PhotosContent className="e-content">{photo.description}</PhotosContent>
           <PostTags tags={photo.tags} />
           <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
-        </PhotoContainer>
+        </PhotoContainer>*/}
+        <PostMeta post={photo} slug={slug}/>
       </PreviewContainer>
     </Card>
   )

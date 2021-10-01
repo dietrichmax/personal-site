@@ -20,6 +20,7 @@ const Item = styled.li`
   padding: var(--space-sm);
   border-radius: var(--border-radius);
   transition: .5s;
+  padding: 6px 6px 0 6px;
 `
 
 const Title = styled.h2`

@@ -27,6 +27,7 @@ const Paper = styled.section`
   background-color: var(--content-bg);
   padding: var(--space-sm);
   margin-bottom: var(--space);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   ${media.lessThan('830px')`
     max-width: 100%;
     height: 100%;
@@ -98,7 +99,7 @@ const Col2 = styled.div`
 `
 
 const ColTitle = styled.h3`
-  font-weight: 400;
+  font-weight: 600;
   color: var(--secondary-color);
   text-transform: uppercase;
   margin-bottom: .25rem;

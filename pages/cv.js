@@ -37,19 +37,20 @@ const Paper = styled.section`
 `
 
 const Title = styled.h1`
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
 `
 
 const SubTitle = styled.h2`
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.875rem;
 `
 
 const SmallBio = styled.p`
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--gray-light);
-  font-size: 14px;
+  border-bottom: 2px solid var(--thirdy-color);
+  font-size: .75rem;
 `
 
 const Grid = styled.div`
@@ -83,6 +84,7 @@ const CVImage = styled.div`
 
 const Col1 = styled.div`
   grid-column: span 1/span 1;
+  font-size: .75rem;
   ${media.lessThan('830px')`
     grid-column: span 4/span 4;
     order: 2;
@@ -92,6 +94,7 @@ const Col1 = styled.div`
 
 const Col2 = styled.div`
   grid-column: span 3/span 3;
+  font-size: .75rem;
   ${media.lessThan('830px')`
     grid-column: span 4/span 4;
     order: 1;
@@ -100,6 +103,7 @@ const Col2 = styled.div`
 
 const ColTitle = styled.h3`
   font-weight: 600;
+  font-size: .75rem;
   color: var(--secondary-color);
   text-transform: uppercase;
   margin-bottom: .25rem;
@@ -123,7 +127,7 @@ const TimelineItem = styled.div`
 const TimelineTitle = styled.h4`
   font-weight: 700;
   font-style: italic;
-  font-size: 1rem;
+  font-size: .875rem;
 `
 
 const TimelineCompany = styled.h5`

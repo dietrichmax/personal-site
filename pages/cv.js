@@ -129,6 +129,10 @@ const TimelineCompany = styled.h5`
   font-weight: 600;
 `
 
+const TimelineDate = styled.p`
+
+`
+
 const TimelineLongDescription = styled.div`
   margin-bottom: .25rem
 `
@@ -136,6 +140,7 @@ const TimelineLongDescription = styled.div`
 const TimelineTags = styled.p`
   color: var(--secondary-color);
 `
+
 
 const Col1Item = styled.div`
   margin-bottom: var(--space-sm);
@@ -251,7 +256,8 @@ export default function CV({ cv }) {
                     return(
                       <TimelineItem key={i}>
                         <TimelineTitle className="summary experience-summary">{role.role}</TimelineTitle>
-                        <TimelineCompany className="experience">{role.company} | {role.date}</TimelineCompany>
+                        <TimelineCompany className="experience">{role.company} | {role.description}</TimelineCompany>
+                        <TimelineDate>{role.date}</TimelineDate>
                         <TimelineLongDescription>
                           <ReactMarkdown
                             children={role.longDescription}

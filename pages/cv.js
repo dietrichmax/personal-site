@@ -108,6 +108,7 @@ const ColTitle = styled.h3`
   color: var(--secondary-color);
   text-transform: uppercase;
   margin-bottom: .25rem;
+  letter-spacing: 1.25px;
 `
 
 const Skill = styled.p``

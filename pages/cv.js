@@ -163,6 +163,10 @@ const EducationTitle = styled.p`
   font-weight: 700;
 `
 
+const EducationLocation = styled.p`
+  font-weight: 600;
+`
+
 const Interests = styled.div`
 `
 const Credit = styled.p`
@@ -237,7 +241,8 @@ export default function CV({ cv }) {
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>
-                        <EducationTitle className="summary education-summary">{item.type} - {item.location}</EducationTitle>
+                        <EducationTitle className="summary education-summary">{item.type}</EducationTitle>
+                        <EducationLocation>{item.location}</EducationLocation>
                         <p>{item.date}</p>
                         <p className="education">{item.description}</p>
                       </Education>

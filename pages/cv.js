@@ -27,6 +27,7 @@ const Paper = styled.section`
   background-color: var(--content-bg);
   padding: var(--space-sm);
   margin-bottom: var(--space);
+  position: relative;
   font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   ${media.lessThan('830px')`
     max-width: 100%;
@@ -77,7 +78,7 @@ const CVTitle = styled.div`
 const CVImage = styled.div`
   margin-right: 0;
   margin-left: auto;
-  width: 125px;
+  width: 100px;
 
 `
 
@@ -126,7 +127,6 @@ const TimelineItem = styled.div`
 
 const TimelineTitle = styled.h4`
   font-weight: 700;
-  font-style: italic;
   font-size: .875rem;
 `
 
@@ -165,6 +165,8 @@ const Interests = styled.div`
 `
 const Credit = styled.p`
   font-size: .75rem;
+  position: absolute;
+  bottom: var(--space-sm);
 `
 
 
@@ -199,8 +201,8 @@ export default function CV({ cv }) {
                 <CVImage>
                   <Image 
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cv.profile.formats.small.url}`} 
-                    width="125px" 
-                    height="125px" 
+                    width="100px" 
+                    height="100px" 
                     alt={`Image of ${cv.title}`}
                     className="profile u-photo"
                   />

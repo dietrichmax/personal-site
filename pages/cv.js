@@ -145,6 +145,7 @@ const TimelineLongDescription = styled.div`
 
 const TimelineTags = styled.p`
   color: var(--secondary-color);
+  font-weight: 600;
 `
 
 

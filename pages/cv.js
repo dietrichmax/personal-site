@@ -159,7 +159,7 @@ const Education = styled.div`
 `
 
 const EducationTitle = styled.p`
-  font-weight: 600;
+  font-weight: 700;
 `
 
 const Interests = styled.div`

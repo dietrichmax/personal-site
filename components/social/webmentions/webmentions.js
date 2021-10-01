@@ -358,6 +358,7 @@ export default function Webmentions({ slug, preview }) {
             ))}
             </WebmentionsList>
           ) : null }
+          {/* Mentions*/}
         </>
         ) : (
           <WebmentionContent>Found no Webmentions yet. Be the first!</WebmentionContent>

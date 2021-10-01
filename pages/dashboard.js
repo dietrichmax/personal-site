@@ -119,14 +119,14 @@ const GridStatsDescription = styled.p`
 const StatsSmallGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
-    border-radius: var(--space-sm);  
+    border-radius: 6px;  
 `
 
 const StatsLargeGrid = styled.div`
     text-align: center;
     background-color: var(--content-bg);
     grid-column: span 2/span 2;    
-    border-radius: var(--space-sm);  
+    border-radius: 6px;  
     overflow: hidden;
 `
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import media from 'styled-media-query';
 import ActiveLink from "@/components/navigation/active-link"
-import ThemeToggle from "@/components/themes/themeToggle"
 
 
 const NavItems = styled.ul`
@@ -62,7 +61,6 @@ export default function Nav({ color }) {
                 </ActiveLink> 
             </NavItem>
         ))}
-        {/*<ThemeToggle />*/}
     </NavItems>
   )
 }

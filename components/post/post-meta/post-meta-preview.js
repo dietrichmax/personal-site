@@ -54,7 +54,7 @@ export default function PostMeta({ post, slug }) {
         <Webmentions slug={slug} preview/>
       </Socials>
 
-      <Date title={permaUrl} href={permaUrl} className="u-url" rel="bookmark nofollow">                  
+      <Date title={permaUrl} href={permaUrl} className="u-url" rel="bookmark">                  
         <time className="dt-published" dateTime={date}>
           {format(parseISO(date), config.dateFormat)}
         </time>

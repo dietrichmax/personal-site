@@ -237,7 +237,7 @@ export default function CV({ cv }) {
 
 
                   <Col1Item>
-                  <ColTitle>Education</ColTitle>
+                  <ColTitle style={{color:'var(--secondary-color)'}}>Education</ColTitle>
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>

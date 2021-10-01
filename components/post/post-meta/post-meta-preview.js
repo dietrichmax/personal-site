@@ -19,8 +19,8 @@ const Meta = styled.div`
   margin-top: var(--space-sm);
   padding-top: calc(var(--space-sm)*0.25);
   background-color: var(--body-bg);
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
   ${media.lessThan('medium')`
 
   `}

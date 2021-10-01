@@ -28,7 +28,7 @@ const FooterInnerContainer = styled.div`
   display: grid;
   margin: 0px auto;
   padding: var(--space) var(--space) 0 var(--space);
-  max-width: 1200px;
+  max-width: var(--width-container);
   border-top: 1px solid rgb(48, 54, 61);
   ${media.lessThan('medium')`
     padding: var(--space) 0 0 0;

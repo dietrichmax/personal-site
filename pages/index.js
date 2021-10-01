@@ -26,7 +26,7 @@ const HeroWrapper = styled.div`
   `
 const Hero = styled.div`   
   display: flex;
-  max-width: 1200px;
+  max-width: var(--width-container);
   padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
   ${media.lessThan('medium')`
@@ -85,9 +85,10 @@ const AboutMeLink = styled.a`
 `
 
 const RecentPosts= styled.div`
-  max-width: var(--content-width);
+  max-width: 800px;
   display: grid;
   margin: auto;
+  margin-left: 0;
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
@@ -180,14 +181,14 @@ export default function Index({ posts, cv }) {
             
           <>
             <SEO   
-              description={`Hi, I'm ${cv.title}. I am a Geospatial Developer currently working at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
+              description={`Hi, I'm ${cv.title}. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
              />
              <HeroWrapper className="h-card">
               <Hero>
                 <HCard />
                 <HeroDescription>
-                  <HeroFont>Hi, I’m </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>{cv.title}</HeroLinks>, {cv.timeline[0].role}, creator, writer and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
+                  <HeroFont>Hi, I’m </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>{cv.title}</HeroLinks>, {cv.timeline[0].role}, creator, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
                     I' am also a proud member of the <HeroLinks className="p-org h-card" href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>

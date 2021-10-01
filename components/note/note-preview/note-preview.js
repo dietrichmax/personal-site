@@ -8,7 +8,7 @@ import { Card } from "@/styles/templates/card"
 const NoteBodyWrapper = styled.div`
   height: 100%;
   font-size: .875rem;
-  padding: 6px 6px 0 6px;
+  padding: 0.5rem 1rem 0 1rem;
 `
 
 const NotesContent = styled.div`

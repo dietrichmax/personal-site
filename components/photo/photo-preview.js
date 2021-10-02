@@ -55,18 +55,16 @@ const PhotosContent = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-const Photo= styled.img`
+const Photo= styled(Image)`
   object-fit: cover;
   object-position: bottom;
-  height: 300px;
-  width: 100%;
 `
 
 const PhotoWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 734px;
   ${media.lessThan('small')`
    width: 100%
   `}

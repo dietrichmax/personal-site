@@ -274,12 +274,14 @@ export default function CV({ cv }) {
             </Paper>
             
             <Button 
-              onClick={() => nodeHtmlToImage({
-                output: './image.png',
-                html: cvHtml
-              })
-                .then(() => console.log('The image was created successfully!'))
-              }
+              onClick={() => domtoimage.toJpeg(document.getElementById('cv'), { quality: 0.95 })
+              .then(function (dataUrl) {
+                  var link = document.createElement('a');
+                  link.download = 'my-image-name.jpeg';
+                  link.href = dataUrl;
+                  link.click();
+              });
+          }
             >
               Download CV
             </Button> </ResumeWrapper>

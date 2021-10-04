@@ -169,11 +169,8 @@ const Credit = styled.p`
   margin-top: var(--space-sm);
 `
 
-
 export default function CV({ cv }) {
   const router = useRouter()
-
-  const cvHtml = document.getElementById('cv');
 
   return (
     <Layout>

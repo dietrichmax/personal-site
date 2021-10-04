@@ -63,7 +63,7 @@ const Photo= styled(Image)`
 const PhotoWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  height: 300px;
+  height: 414px;
   width: 734px;
   ${media.lessThan('small')`
    width: 100%

@@ -81,7 +81,7 @@ const Col2 = styled.div`
 const ColTitle = styled.h3`
   font-weight: 600;
   font-size: 12px;
-  color: var(--secondary-color)
+  color: var(--secondary-color);
   text-transform: uppercase;
   margin-bottom: 4px;
   letter-spacing: 1.25px;

@@ -269,14 +269,7 @@ export default function CV({ cv }) {
             </Paper>
             
             <Button 
-              onClick={() => domtoimage.toJpeg(document.getElementById('cv'), { height: 1053, width: 794 })
-              .then(function (dataUrl) {
-                  var link = document.createElement('a');
-                  link.download = 'cv.jpeg';
-                  link.href = dataUrl;
-                  link.click();
-              })
-          }
+              onClick={() => {window.open(`/api/cv`)}}
             >
               Download CV
             </Button> </ResumeWrapper>

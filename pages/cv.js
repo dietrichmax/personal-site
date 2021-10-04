@@ -220,7 +220,7 @@ export default function CV({ cv }) {
 
 
                   <Col1Item>
-                  <h3 class="colTitle" style={{color:'var(--primary-Color)'}}>Education</h3>
+                  <h3 class="colTitle" style={{color:'var(--secondary-color)'}}>Education</h3>
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>

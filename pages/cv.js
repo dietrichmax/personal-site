@@ -269,10 +269,10 @@ export default function CV({ cv }) {
             </Paper>
             
             <Button 
-              onClick={() => domtoimage.toJpeg(document.getElementById('cv'), { quality: 0.95 })
+              onClick={() => domtoimage.toJpeg(document.getElementById('cv'), { height: 298, width: 210 })
               .then(function (dataUrl) {
                   var link = document.createElement('a');
-                  link.download = 'my-image-name.jpeg';
+                  link.download = 'cv.jpeg';
                   link.href = dataUrl;
                   link.click();
               })

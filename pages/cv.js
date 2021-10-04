@@ -10,9 +10,7 @@ import media from 'styled-media-query';
 import config from "@/lib/data/internal/SiteConfig";
 import ReactMarkdown from "react-markdown"
 import { Button } from "@/styles/templates/button"
-import domtoimage from 'dom-to-image';
 import { ServerStyleSheet } from 'styled-components';
-import puppeteer from "puppeteer";
 
 const ResumeWrapper = styled.div`
   max-width: 1200px;

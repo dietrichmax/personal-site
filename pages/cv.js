@@ -10,6 +10,8 @@ import media from 'styled-media-query';
 import config from "@/lib/data/internal/SiteConfig";
 import ReactMarkdown from "react-markdown"
 import { Button } from "@/styles/templates/button"
+import domtoimage from 'dom-to-image';
+import { jsPDF } from "jspdf";
 
 const ResumeWrapper = styled.div`
   max-width: 1200px;
@@ -168,6 +170,18 @@ const Credit = styled.p`
   margin-top: var(--space-sm);
 `
 
+
+const printCV = () => {
+  const input = document.getElementById('cv');
+  const pdf = new jsPDF();
+  if (pdf) {
+    domtoimage.toPng(input)
+      .then(imgData => {
+        pdf.addImage(imgData, 'PNG', 10, 10);
+        pdf.save('download.pdf');
+      });
+   }
+}
 
 export default function CV({ cv }) {
   const router = useRouter()

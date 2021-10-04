@@ -22,8 +22,7 @@ const ResumeWrapper = styled.div`
 `
 
 const Paper = styled.section`
-  width: 210mm;
-  height: 297mm;
+  width: 210mm
   background-color: var(--content-bg);
   padding: var(--space-sm);
   margin-bottom: var(--space);
@@ -65,7 +64,6 @@ const Grid = styled.div`
 `
 
 const CVHeader = styled.div`
-  display: flex;
 `
 
 const CVTitle = styled.div`
@@ -167,8 +165,7 @@ const Interests = styled.div`
 `
 const Credit = styled.p`
   font-size: .75rem;
-  position: absolute;
-  bottom: var(--space-sm);
+  margin-top: var(--space-sm);
 `
 
 

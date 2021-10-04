@@ -22,7 +22,7 @@ const ResumeWrapper = styled.div`
 `
 
 const Paper = styled.section`
-  width: 210mm
+  width: 210mm;
   background-color: var(--content-bg);
   padding: var(--space-sm);
   margin-bottom: var(--space);

@@ -285,7 +285,7 @@ export default function CV({ cv }) {
             </Paper>
             
             <Button 
-              onClick={() => {window.open(`/api/cv`)}}
+              onClick={() => printCV()}
             >
               Download CV
             </Button> </ResumeWrapper>

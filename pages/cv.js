@@ -171,47 +171,6 @@ const Credit = styled.p`
   margin-top: var(--space-sm);
 `
 
-const async generatePDF() {
-  
-  // get css
-  const stylesheet = new ServerStyleSheet();
-  const css = stylesheet.getStyleTags();
-  
-  console.log(css)
-  
-  //launch pupeteer
-  const browser = await puppeteer.launch({
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox'
-    ]
-  })
-  const page = await browser.newPage();
-
-  // go to page
-  await page.goto(config.siteUrl+"/cv", {
-      waitUntil: 'networkidle0',
-  })
-  
-  await page.addStyleTag(css)
-  
-  // get cv content
-  const cv = await page.evaluate(() => document.querySelector("section").innerHTML);
-  await page.setContent(`${css}${cv}`, {
-    waitUntil: 'networkidle0'
-  });
-  
-  //  Style
-  const pdfBuffer = await page.pdf({ 
-      format: "a4",
-      printBackground: true,
-  });
-
-  await page.close();
-  await browser.close();
-
-  return pdfBuffer;
-};
 
 export default function CV({ cv }) {
   const router = useRouter()
@@ -263,7 +222,7 @@ export default function CV({ cv }) {
 
 
                   <Col1Item>
-                  <ColTitle style={{color:'var(--secondary-color)'}}>Education</ColTitle>
+                  <h3 class="colTitle" style={{color:'var(--primary-Color)'}}>Education</h3>
                   {cv.education.map((item,i) => {
                     return (
                       <Education key={i}>
@@ -313,7 +272,7 @@ export default function CV({ cv }) {
             </Paper>
             
             <Button 
-              onClick={() => {generatePDF()}
+              onClick={() => {window.open(`/api/cv`)}}
             >
               Download CV
             </Button> </ResumeWrapper>

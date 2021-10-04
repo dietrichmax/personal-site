@@ -11,8 +11,6 @@ import config from "@/lib/data/internal/SiteConfig";
 import ReactMarkdown from "react-markdown"
 import { Button } from "@/styles/templates/button"
 import domtoimage from 'dom-to-image';
-import { jsPDF } from "jspdf";
-const nodeHtmlToImage = require('node-html-to-image');
 
 const ResumeWrapper = styled.div`
   max-width: 1200px;

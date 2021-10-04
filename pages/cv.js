@@ -69,10 +69,6 @@ const CVHeader = styled.div`
 `
 
 const CVTitle = styled.div`
-  flex-direction: column;
-  display: flex;
-  width: 75%;
-  margin-right: var(--space-lg);
 `
 
 const CVImage = styled.div`
@@ -204,15 +200,6 @@ export default function CV({ cv }) {
                   <SubTitle>{cv.subtitle}</SubTitle>
                   <SmallBio>{cv.smallBio}</SmallBio>
                 </CVTitle>
-                <CVImage>
-                  <Image 
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cv.profile.formats.small.url}`} 
-                    width="100px" 
-                    height="100px" 
-                    alt={`Image of ${cv.title}`}
-                    className="profile u-photo"
-                  />
-                </CVImage>
               </CVHeader>
               <Grid>
                 <Col1>

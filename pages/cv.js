@@ -171,7 +171,7 @@ const Credit = styled.p`
   margin-top: var(--space-sm);
 `
 
-const generatePDF = () => {
+const async generatePDF = () => {
   
   // get css
   const stylesheet = new ServerStyleSheet();

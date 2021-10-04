@@ -280,7 +280,7 @@ export default function CV({ cv }) {
                   link.download = 'my-image-name.jpeg';
                   link.href = dataUrl;
                   link.click();
-              });
+              })
           }
             >
               Download CV

@@ -8,7 +8,7 @@ const Paper = styled.section`
   padding: 16px;
   margin-bottom: 28px;
   position: relative;
-  background-color: #ebeef2;
+  background-color: var(--content-bg);
   font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   ${media.lessThan('830px')`
     max-width: 100%;
@@ -31,7 +31,7 @@ const SubTitle = styled.h2`
 const SmallBio = styled.p`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid #A1B4EC;
+  border-bottom: 2px solid var(--thirdy-color);
   font-size: 12px;
 `
 
@@ -81,7 +81,7 @@ const Col2 = styled.div`
 const ColTitle = styled.h3`
   font-weight: 600;
   font-size: 12px;
-  color: #6680CA;
+  color: var(--secondary-color)
   text-transform: uppercase;
   margin-bottom: 4px;
   letter-spacing: 1.25px;
@@ -98,7 +98,7 @@ const SkillGrid = styled.div`
 const TimelineItem = styled.div`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid #A1B4EC;
+  border-bottom: 2px solid var(--thirdy-color);
 
 `
 
@@ -120,7 +120,7 @@ const TimelineLongDescription = styled.div`
 `
 
 const TimelineTags = styled.p`
-  color: #6680CA;
+  color: var(--secondary-color)
   font-weight: 600;
 `
 
@@ -128,7 +128,7 @@ const TimelineTags = styled.p`
 const Col1Item = styled.div`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid #A1B4EC;
+  border-bottom: 2px solid var(--thirdy-color);
 `
 
 const Education = styled.div`

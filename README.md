@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://mxd.codes/logos/firefox/firefox-general-256-256.png" width="100" style="border-radius:50%;"/>
+  <img alt="Logo" src="https://mxd.codes/profile.png" width="100" style="border-radius:50%;"/>
 </div>
 <h1 align="center">
   mxd.codes

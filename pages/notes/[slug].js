@@ -37,8 +37,6 @@ const ContentWrapper = styled.div`
 `
 
 const NotesContent = styled.div`
-  padding: var(--space-sm);
-  background-color: var(--content-bg);
 `
 
 const Hidden = styled.a`

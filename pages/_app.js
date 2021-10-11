@@ -32,12 +32,12 @@ class MyApp extends App {
           <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
 
           {/* DNS Prefetch*/} 
-          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />,
+  
           {/* Preconnect */}
           <link rel="preconnect" href="https://api.mxd.codes" crossOrigin />,
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin />,
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+          <link rel="preconnect" href="https://static-maps-api.mxd.codes" crossOrigin />,
           {/* Preload */}
+
           {/* IndieCert */}
           <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
           <link rel="micropub" href="https://mxd.codes/micropub" />
@@ -53,10 +53,6 @@ class MyApp extends App {
           <link rel="me" href={config.socials.instagram} />
       
           {/* Stylesheets */}
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-          {/*<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght300;500;700&display=swap"  />*/}
-          {/*<link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.1/mapbox-gl.css'  />*/}
-          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" crossOrigin />*/}
         
           {/* RSS */}
           <link rel="alternate" type="application/rss+xml" title={`RSS feed for ${config.siteTitle}`} href={`${config.siteUrl}/feed.xml`} />

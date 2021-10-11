@@ -152,13 +152,6 @@ export default function ActivityPreview({ activity }) {
         <MapContainer>
           <Image
             loader={staticMapLoader}
-            basemap="stamen-terrain";
-            attribution="none";
-            width="520";
-            height="250";
-            path={JSON.stringify(path)};
-            weight="3";
-            color="6680CA";
             basemap="stamen-terrain"
             attribution="none"
             width="520"
@@ -166,7 +159,6 @@ export default function ActivityPreview({ activity }) {
             path={JSON.stringify(path)}
             weight="3"
             color="6680CA"
-            layout="fill"
            />
         </MapContainer>
 

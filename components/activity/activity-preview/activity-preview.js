@@ -82,9 +82,9 @@ const Dot = styled.span`
   display: inline-block;
 `
 
-/*const staticMapLoader = ({ basemap, attribution, width, height, path, weight, color }) => {
+const staticMapLoader = ({ basemap, attribution, width, height, path, weight, color }) => {
   return `https://static-maps-api.mxd.codes/img.php?basemap=${basemap || "stamen-terrain"}&attribution=${attribution || "none"}&width=${width || "520"}&height={height || "250}&path[]=${path};weight:${weight || "3"};color:${color | "6680CA"}`
-}*/
+}
 
 export default function ActivityPreview({ activity }) {
 
@@ -151,9 +151,23 @@ export default function ActivityPreview({ activity }) {
         <HCard />
         <MapContainer>
           <Image
-            src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:3;color:6680CA`}
+            loader={staticMapLoader}
+            basemap="stamen-terrain";
+            attribution="none";
+            width="520";
+            height="250";
+            path={JSON.stringify(path)};
+            weight="3";
+            color="6680CA";
+            basemap="stamen-terrain"
+            attribution="none"
+            width="520"
+            height="250"
+            path={JSON.stringify(path)}
+            weight="3"
+            color="6680CA"
             layout="fill"
-          />
+           />
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

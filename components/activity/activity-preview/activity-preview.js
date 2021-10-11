@@ -116,7 +116,6 @@ export default function ActivityPreview({ activity }) {
     path.push([coordinate[1],coordinate[0]])
   })
 
-      console.log(path)
   return (
     <Item className="h-entry" >
         
@@ -151,7 +150,12 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-          <Image
+          <img
+            src={`https://static-maps-api.mxd.codes/img.php?basemap=${basemap || "stamen-terrain"}&attribution=${attribution || "none"}&width=${width || "520"}&height=${height || "250"}&path[]=${path};weight:${weight || "3"};color:${color | "6680CA"}`}  
+            title={activity.activityName}
+            alt={`Track of activity ${activity.activityName}`}
+          />
+          {/*<Image
             loader={staticMapLoader}
             basemap="stamen-terrain"
             attribution="none"
@@ -160,7 +164,7 @@ export default function ActivityPreview({ activity }) {
             geometry={path}
             weight="3"
             color="6680CA"
-           />
+           />*/}
         </MapContainer>
 
         <PostMeta post={activity} slug={slug} />

@@ -82,9 +82,6 @@ const Dot = styled.span`
   display: inline-block;
 `
 
-const staticMapLoader = ({ basemap, attribution, width, height, geometry, weight, color }) => {
-  return `https://static-maps-api.mxd.codes/img.php?basemap=${basemap || "stamen-terrain"}&attribution=${attribution || "none"}&width=${width || "520"}&height=${height || "250"}&path[]=${geometry};weight:${weight || "3"};color:${color | "6680CA"}`
-}
 
 export default function ActivityPreview({ activity }) {
 
@@ -150,10 +147,12 @@ export default function ActivityPreview({ activity }) {
         </Data>
         <HCard />
         <MapContainer>
-          <img
-            src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:3;color:6680CA`}  
+          <Image
+            src={`https://static-maps-api.mxd.codes/img.php?basemap=gray&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:4;color:6680CA`}  
             title={activity.activityName}
             alt={`Track of activity ${activity.activityName}`}
+            width="520"
+            height="250"
           />
           {/*<Image
             loader={staticMapLoader}

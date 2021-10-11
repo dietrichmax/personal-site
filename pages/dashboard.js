@@ -371,7 +371,7 @@ export default function Dashboard({
       greatestElevationGain.push(item.elevationGain)
       longestRide.push(item.distance)
     })
-
+    
     return (
         <>
             <Layout>
@@ -397,31 +397,30 @@ export default function Dashboard({
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>
                                     </StatsLargeGrid>
-                                    {/*<StatsSmallGrid>
-                                        <GridStats>{actions.nb_pageviews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                    <StatsSmallGrid>
+                                        <GridStats>{actions.nb_pageviews ? actions.nb_pageviews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"}</GridStats>
                                         <GridStatsDescription>Page Views</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{visitsSummary.nb_visits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStats>{visitsSummary.nb_visits ? visitsSummary.nb_visits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"}</GridStats>
                                         <GridStatsDescription>Sessions</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{getTimeOnSite(visitsSummary.avg_time_on_site)}</GridStats>
+                                        <GridStats>{visitsSummary.avg_time_on_site ? getTimeOnSite(visitsSummary.avg_time_on_site) : "-"}</GridStats>
                                         <GridStatsDescription>Avg time on site</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{visitsSummary.bounce_rate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStats>{visitsSummary.bounce_rate ? visitsSummary.bounce_rate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"}</GridStats>
                                         <GridStatsDescription>Bounce Rate</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
-                                        <GridStats>{(visitsSummary.sum_visit_length/60).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                        <GridStats>{visitsSummary.sum_visit_length ? (visitsSummary.sum_visit_length/60).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"}</GridStats>
                                         <GridStatsDescription>Min Visit duration</GridStatsDescription>
                                     </StatsSmallGrid>
                                     <StatsSmallGrid>
                                         <GridStats>{webmentionsCount}</GridStats>
                                         <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
-                                    */}
                                 </StatsGrid>
 
                                 
@@ -463,7 +462,7 @@ export default function Dashboard({
                                     </StatsSmallGrid>
                                     <Link href="/map" passHref>
                                         <StatsSmallGrid>
-                                            <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
+                                            <GridStats>{(locationsCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</GridStats>
                                             <GridStatsDescription>Locations tracked</GridStatsDescription>
                                         </StatsSmallGrid>
                                     </Link>

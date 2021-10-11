@@ -151,7 +151,7 @@ export default function ActivityPreview({ activity }) {
         <HCard />
         <MapContainer>
           <img
-            src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${path};weight:3;color:6680CA`}  
+            src={`https://static-maps-api.mxd.codes/img.php?basemap=stamen-terrain&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:3;color:6680CA`}  
             title={activity.activityName}
             alt={`Track of activity ${activity.activityName}`}
           />

@@ -82,8 +82,8 @@ const Dot = styled.span`
   display: inline-block;
 `
 
-const staticMapLoader = ({ basemap, attribution, width, height, path, weight, color }) => {
-  return `https://static-maps-api.mxd.codes/img.php?basemap=${basemap || "stamen-terrain"}&attribution=${attribution || "none"}&width=${width || "520"}&height=${height || "250"}&path[]=${JSON.stringify(path)};weight:${weight || "3"};color:${color | "6680CA"}`
+const staticMapLoader = ({ basemap, attribution, width, height, geometry, weight, color }) => {
+  return `https://static-maps-api.mxd.codes/img.php?basemap=${basemap || "stamen-terrain"}&attribution=${attribution || "none"}&width=${width || "520"}&height=${height || "250"}&path[]=${JSON.stringify(geometry)};weight:${weight || "3"};color:${color | "6680CA"}`
 }
 
 export default function ActivityPreview({ activity }) {
@@ -116,6 +116,7 @@ export default function ActivityPreview({ activity }) {
     path.push([coordinate[1],coordinate[0]])
   })
 
+      console.log(path)
   return (
     <Item className="h-entry" >
         
@@ -156,7 +157,7 @@ export default function ActivityPreview({ activity }) {
             attribution="none"
             width="520"
             height="250"
-            path={path}
+            geometry={path}
             weight="3"
             color="6680CA"
            />

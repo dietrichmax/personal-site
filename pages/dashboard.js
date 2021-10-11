@@ -397,7 +397,7 @@ export default function Dashboard({
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>
                                     </StatsLargeGrid>
-                                    <StatsSmallGrid>
+                                    {/*<StatsSmallGrid>
                                         <GridStats>{actions.nb_pageviews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</GridStats>
                                         <GridStatsDescription>Page Views</GridStatsDescription>
                                     </StatsSmallGrid>
@@ -421,6 +421,7 @@ export default function Dashboard({
                                         <GridStats>{webmentionsCount}</GridStats>
                                         <GridStatsDescription>Webmentions</GridStatsDescription>
                                     </StatsSmallGrid>
+                                    */}
                                 </StatsGrid>
 
                                 

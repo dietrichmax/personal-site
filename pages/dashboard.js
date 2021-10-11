@@ -12,7 +12,6 @@ import {
     getMatomoActions,
     getMatomoLiveCounter,
     getMatomoPageViews,
-    getMatomoAllVisits,
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
     getMatomoVisitsSummary
@@ -721,7 +720,6 @@ export async function getStaticProps() {
     const lastViews = (await getMatomoPageViews()) || []
     const actions = (await getMatomoActions()) || []
     const githubStats = (await getGitHubStats()) || []
-    const allVisits = (await getMatomoAllVisits()) || []
     const visitDuration = (await getMatomoSumVisitDuration()) || []
     const allWebmentions = (await fetchWebmentions()) || []
     const seoStats = (await getMatomoSEOStats()) || []
@@ -741,7 +739,6 @@ export async function getStaticProps() {
             locationsCount,
             linksCount,
             githubStats,
-            allVisits,
             visitDuration,
             allWebmentions,
             seoStats,

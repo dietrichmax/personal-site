@@ -5,7 +5,6 @@ import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "@/lib/data/internal/SiteConfig"
 import Providers from '@/lib/utils/providers';
-import withDarkMode from 'next-dark-mode'
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -102,4 +101,4 @@ class MyApp extends App {
   }
 }
 
-export default withDarkMode(MyApp);
+export default MyApp;

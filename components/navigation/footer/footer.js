@@ -340,7 +340,7 @@ export default function Footer() {
         </FooterColumnWrapper> 
 
         <FooterNotice>
-          2018 – {format(new Date(), "yyyy")} 
+          2018 – present 
           <Link href="/">
             <a title={`Max Dietrich - ${!data ? "" : data.timeline[0].role}`}> Max Dietrich - {!data ? "" : data.timeline[0].role}</a>
           </Link>

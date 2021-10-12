@@ -371,6 +371,7 @@ export default function Dashboard({
       longestRide.push(item.distance)
     })
     
+    console.log(actions)
     return (
         <>
             <Layout>

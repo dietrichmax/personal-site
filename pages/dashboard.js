@@ -307,6 +307,7 @@ export default function Dashboard({
         fetchLiveData();
     }, []);
 
+    console.log(liveViews)
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
     const githubUrl = "https://mxd.codes/github"

@@ -93,7 +93,7 @@ class MyApp extends App {
 
         </Head>
         <Providers>
-          {/*<script src="noflash.js" />*/}
+          <script src="noflash.js" />
           <GlobalStyle/>
           <Component {...pageProps} />
         </Providers>

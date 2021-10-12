@@ -294,20 +294,11 @@ export default function Dashboard({
     linksCount,
     visitsSummary,
     photosCount,
-    activities
+    activities,
+    liveViews
 }) {
     const router = useRouter()
-    const [liveViews, setLiveViews] = useState(0);
 
-    useEffect(() => {
-        async function fetchLiveData() {
-          const result = await getMatomoLiveCounter() || []
-          setLiveViews(result[0].visits);
-        };
-        fetchLiveData();
-    }, []);
-
-    console.log(liveViews)
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
     const githubUrl = "https://mxd.codes/github"
@@ -709,7 +700,7 @@ export default function Dashboard({
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
@@ -726,9 +717,9 @@ export async function getStaticProps() {
     const seoStats = (await getMatomoSEOStats()) || []
     const visitsSummary = (await getMatomoVisitsSummary()) || []
     const activities = (await getAllActivities()) || []
+    const liveViews = await getMatomoLiveCounter() || []
     
     return {
-        revalidate:  86400,
         props: {
             lastViews,
             actions,
@@ -745,7 +736,8 @@ export async function getStaticProps() {
             seoStats,
             visitsSummary,
             photosCount,
-            activities
+            activities,
+            liveViews
         },
     }
 }

@@ -310,7 +310,6 @@ export default function Dashboard({
 
     const linesOfCode = codeStats.SUM.code
 
-
     const α = 0.7
     const B = 100
     let pageViews = []
@@ -700,7 +699,7 @@ export default function Dashboard({
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const postsCount = (await getPostsCount()) || []
     const tagsCount = (await getTagsCount()) || []
     const subscribersCount = (await getSubscribersCount()) || []
@@ -720,6 +719,7 @@ export async function getServerSideProps() {
     const liveViews = await getMatomoLiveCounter() || []
     
     return {
+        revalidate:  1200,
         props: {
             lastViews,
             actions,

@@ -362,8 +362,6 @@ export default function Dashboard({
       longestRide.push(item.distance)
     })
     
-    console.log(parseInt(liveViews.visitors) > 1 ? "true" : "false")
-    console.log(liveViews[0].visitors)
     return (
         <>
             <Layout>
@@ -383,8 +381,8 @@ export default function Dashboard({
                                 <StatsGrid>
                                     <GridTitle>Web Analytics</GridTitle>
                                     <StatsLargeGrid>
-                                        {parseInt(liveViews.visitors) > 1 ? 
-                                            <GridStats>{liveViews.visitors} people</GridStats> :
+                                        {liveViews[0].visitors > 1 ? 
+                                            <GridStats>{liveViews[0].visitors} people</GridStats> :
                                             <GridStats>You are</GridStats>
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>

@@ -295,8 +295,7 @@ export default function Dashboard({
     visitsSummary,
     photosCount,
     activities,
-    liveViews
-}) {
+}, liveViews) {
     const router = useRouter()
 
     const { forkCount } = githubStats.user.repository

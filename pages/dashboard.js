@@ -381,8 +381,8 @@ export default function Dashboard({
                                 <StatsGrid>
                                     <GridTitle>Web Analytics</GridTitle>
                                     <StatsLargeGrid>
-                                        {liveViews > 1 ? 
-                                            <GridStats>{liveViews} people</GridStats> :
+                                        {liveViews.visitors > 1 ? 
+                                            <GridStats>{liveViews.visitors} people</GridStats> :
                                             <GridStats>You are</GridStats>
                                         }
                                         <GridStatsDescription>Visiting right Now!</GridStatsDescription>

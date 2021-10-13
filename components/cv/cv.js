@@ -2,7 +2,6 @@ import React from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
-import markdownStyles from '@/styles/markdown-styles.module.css'
 
 const Paper = styled.section`
   width: 210mm;
@@ -151,7 +150,12 @@ const Credit = styled.p`
   margin-top: 16px;
 `
 
-
+const markdownCSS = {`
+  .markdown ul, .markdown ol {
+    padding-inline-start: var(--space-sm);
+    list-style: none; 
+  }
+`}
 export default function CV({ data }) {
 
   return (
@@ -223,7 +227,7 @@ export default function CV({ data }) {
                         <TimelineDate>{role.date}</TimelineDate>
                         <TimelineLongDescription>
                           <ReactMarkdown
-                            className={markdownStyles['markdown']}
+                            className={markdownCSS['markdown']}
                             children={role.longDescription}
                           />
                         </TimelineLongDescription>

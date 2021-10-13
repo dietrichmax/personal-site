@@ -295,7 +295,8 @@ export default function Dashboard({
     visitsSummary,
     photosCount,
     activities,
-}, liveViews) {
+    liveViews
+}) {
     const router = useRouter()
 
     const { forkCount } = githubStats.user.repository
@@ -362,7 +363,7 @@ export default function Dashboard({
     })
     
     console.log(parseInt(liveViews.visitors) > 1 ? "true" : "false")
-    console.log(liveViews)
+    console.log({liveViews})
     return (
         <>
             <Layout>

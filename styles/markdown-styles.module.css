@@ -17,12 +17,12 @@
 }
 
 .markdown p, .markdown dl, .markdown ol, .markdown ul {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space);
 }
 
 
 .markdown ul, .markdown ol {
-  padding-inline-start: 1.5rem;
+  padding-inline-start: var(--space-sm);
   list-style: none; 
 }
 
@@ -45,7 +45,7 @@
 
 .markdown h2 {
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-top: var(--space);
   margin-bottom: 1.5rem;
   font-family: var(--primary-font);
   color: var(--secondary-color);
@@ -71,7 +71,7 @@
 .markdown blockquote {
   border-left: 2px solid var(--secondary-color);
   padding: var(--space-sm) var(--space);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space);
   background: var(--content-bg);
   font-style: italic;
 }

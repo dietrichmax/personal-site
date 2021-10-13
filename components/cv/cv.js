@@ -150,12 +150,13 @@ const Credit = styled.p`
   margin-top: 16px;
 `
 
-const markdownCSS = {`
+const markdownCSS = `
   .markdown ul, .markdown ol {
     padding-inline-start: var(--space-sm);
     list-style: none; 
   }
-`}
+`
+
 export default function CV({ data }) {
 
   return (

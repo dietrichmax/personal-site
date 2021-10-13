@@ -363,6 +363,7 @@ export default function Dashboard({
     })
     
     console.log(parseInt(liveViews.visitors) > 1 ? "true" : "false")
+    console.log(parseInt(liveViews.visitors))
     return (
         <>
             <Layout>

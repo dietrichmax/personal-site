@@ -26,6 +26,13 @@
   list-style: none; 
 }
 
+@media screen and (max-device-width: 800px) {
+  .markdown ul, .markdown ol {
+    padding-inline-start: 1.5rem;
+    list-style: none; 
+  }
+}
+
 .markdown li {
   margin-bottom: 0.75rem;
 }

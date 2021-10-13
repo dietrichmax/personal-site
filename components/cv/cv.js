@@ -2,6 +2,7 @@ import React from "react"
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
+import markdownStyles from '@/styles/markdown-styles.module.css'
 
 const Paper = styled.section`
   width: 210mm;
@@ -222,6 +223,7 @@ export default function CV({ data }) {
                         <TimelineDate>{role.date}</TimelineDate>
                         <TimelineLongDescription>
                           <ReactMarkdown
+                            className={markdownStyles['markdown']}
                             children={role.longDescription}
                           />
                         </TimelineLongDescription>

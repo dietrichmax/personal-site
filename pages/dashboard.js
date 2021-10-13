@@ -362,7 +362,7 @@ export default function Dashboard({
       longestRide.push(item.distance)
     })
     
-    console.log(liveViews.visitors > 1 ? "true" : "false")
+    console.log(parseInt(liveViews.visitors) > 1 ? "true" : "false")
     return (
         <>
             <Layout>

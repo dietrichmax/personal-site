@@ -459,7 +459,7 @@ export default function Dashboard({
                                 </StatsGrid>
                             </GeneralStats>
                                 
-                            <GeneralStats>
+                            {/*<GeneralStats>
                                 <StatsGridMedium>
                                     <GridMediumTitle>SEO Stats</GridMediumTitle>
                                     {seoStats.map((seo,i) => (
@@ -469,7 +469,7 @@ export default function Dashboard({
                                         </BottomStatsGrid>
                                     ))}
                                 </StatsGridMedium>
-                            </GeneralStats>
+                                    </GeneralStats>*/}
 
                             <ViewsContainer>
                                 <Title>

@@ -23,6 +23,7 @@ import HCard from "@/components/microformats/h-card"
 import Feedback from "@/components/social/feedback/feedback"
 import WebActions from "@/components/social/social-share/social-share"
 import Meta from "@/components/post/post-meta/post-meta"
+import Subscribe from "@/components/social/subscribe/subscribe"
 
 
 // components for posts
@@ -126,6 +127,7 @@ export default function Post({ post }) {
                   <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
                   {/*<Likes />*/}
                   <Webmentions slug={`/articles/${post.slug}`} />
+
 
 
                 </Content>

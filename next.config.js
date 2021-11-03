@@ -559,7 +559,9 @@ module.exports = withPlugins([
     deviceSizes: [346, 650, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 346, 650, 1136, 1200, 1300],
   }}
-  ],{webpack (config, { dev, isServer }) {
+  ],
+  {swcMinify: true},
+  {webpack (config, { dev, isServer }) {
       // Replace React with Preact only in client production build
       if (!dev && !isServer) {
         Object.assign(config.resolve.alias, {

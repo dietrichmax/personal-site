@@ -9,7 +9,6 @@ import Providers from '@/lib/utils/providers';
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
-import "@/public/fonts/Cormorant_Garamond/style.css"
 //import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;

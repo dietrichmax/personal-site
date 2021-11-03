@@ -11,7 +11,7 @@ const Title = styled.p`
   line-height: 1.4;
   color: var(--text-color);
   ${media.lessThan('medium')`
-    margin: var(--space-sm);
+    margin: var(--space) var(--space-sm);
     font-size: 1rem;
     padding: 0;
   `}

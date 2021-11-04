@@ -719,7 +719,7 @@ export async function getStaticProps() {
     const liveViews = await getMatomoLiveCounter() || []
     
     return {
-        revalidate:  300,
+        revalidate:  86400,
         props: {
             lastViews,
             actions,

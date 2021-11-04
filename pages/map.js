@@ -55,8 +55,8 @@ export default function Map({ locations, locationsCount } ) {
         <Livemap data={locations} />
       </MapContainer>
       <Description>
-        Since 2021-03-02 i am tracking my current location. Right now there are {locationsCount} locations displayed on the map. 
-        The map is always centered at my last known position.
+        Since 2021-03-02 i am tracking my current location. 
+        Right now there are {locationsCount} locations displayed on the map. 
       </Description>
       <Description>
         If you are curious how that works have a look at the article <InternalLink href="/articles/constant-location-tracking-with-owntracks-strapi-and-visualizing-data-with-deckgl" title="How i constantly track my location and display a web-map with all the locations">How i constantly track my location and display a web-map with all the locations</InternalLink> where i am describing the details behind it.

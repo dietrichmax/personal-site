@@ -500,11 +500,6 @@ const redirects = {async redirects() {
       source: '/indieweb',
       destination: 'https://indieweb.org/User:Mxd.codes',
       permanent: true
-    },
-    {
-      source: '/slack',
-      destination: 'slack://user=U01RZ0F2DBQ',
-      permanent: true
     }
   ]
 }};

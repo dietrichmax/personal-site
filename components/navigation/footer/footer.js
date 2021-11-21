@@ -4,11 +4,8 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import media from 'styled-media-query';
 import ReactMarkdown from "react-markdown"
-import markdownStyles from '@/styles/markdown-styles.module.css'
-import { format } from 'date-fns'
-import { getNowData } from "@/lib/data/external/cms";
-import { FaGithub, FaTwitter, FaInstagram, FaRss, FaEnvelope, FaLinkedin, FaBicycle, FaSteam, FaSlack } from 'react-icons/fa';
-import { SiGarmin, SiStrava } from 'react-icons/si';
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { SiStrava } from 'react-icons/si';
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 import useSWR from 'swr'

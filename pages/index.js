@@ -12,7 +12,6 @@ import { getAbout } from '@/lib/data/external/cms'
 import Link from "next/link"
 import HCard from '@/components/microformats/h-card';
 import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData, getCV } from '@/lib/data/external/cms'
-import Grid from "@/components/grid/grid"
 
 const IndexPageContainer = styled.div`
   max-width: 1200px; 

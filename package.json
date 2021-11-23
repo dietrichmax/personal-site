@@ -58,7 +58,7 @@
     "react-emoji-render": "^1.2.4",
     "react-icons": "^4.2.0",
     "react-leaflet": "^3.2.0",
-    "react-map-gl": "@5.x",
+    "react-map-gl": "^5.3.17",
     "react-markdown": "^6.0.2",
     "react-router-dom": "^5.2.0",
     "react-tooltip": "^4.2.21",

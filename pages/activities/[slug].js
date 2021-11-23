@@ -170,7 +170,6 @@ export default function Activity({ activity }) {
 
 export async function getStaticProps({ params }) {  
   const data = await getActivity(params.slug)
-  console.log(data)
   return {
     props: {
       activity: {

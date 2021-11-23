@@ -301,7 +301,7 @@ export default function Dashboard({
 
     const { forkCount } = githubStats.user.repository
     const stars = githubStats.user.repository.stargazers.totalCount
-    const githubUrl = "https://mxd.codes/github"
+    const githubUrl = "https://github.com/dietrichmax'"
     const forkUrl = `${githubStats.user.repository.url}/fork`
     const starUrl = githubStats.user.repository.url
     const lastModified = githubStats.user.repository.pushedAt

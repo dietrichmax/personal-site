@@ -478,7 +478,7 @@ const redirects = {async redirects() {
     },
     {
       source: '/github',
-      destination: 'https://github.com//dietrichmax',
+      destination: 'https://github.com/dietrichmax',
       permanent: true
     },
     {
@@ -555,7 +555,6 @@ module.exports = withPlugins([
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 346, 650, 1136, 1200, 1300],
   }}
   ],
-  {swcMinify: true},
   {webpack (config, { dev, isServer }) {
       // Replace React with Preact only in client production build
       if (!dev && !isServer) {

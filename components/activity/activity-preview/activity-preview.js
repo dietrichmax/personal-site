@@ -106,12 +106,28 @@ export default function ActivityPreview({ activity }) {
     return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
   
-  const geoPolyline = polyline.decode(activity.details.summary_polyline);
+  const getPath = (polyline) => {
+    const geoPolyline = polyline.decode(activity.details.summary_polyline);
 
-  let path = []
-  geoPolyline.map((coordinate) => {
-    path.push([coordinate[1],coordinate[0]])
-  })
+    let path = []
+    geoPolyline.map((coordinate) => {
+      path.push([coordinate[1],coordinate[0]])
+    })
+
+    return (
+      <MapContainer>
+        <Image
+          src={`https://static-maps-api.mxd.codes/img.php?basemap=gray&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:2;color:6680CA`}  
+          title={activity.activityName}
+          alt={`Track of activity ${activity.activityName}`}
+          width="520"
+          height="250"
+        />
+      </MapContainer>
+    )
+  }
+
+  
 
   return (
     <Item className="h-entry" >
@@ -138,33 +154,13 @@ export default function ActivityPreview({ activity }) {
             <DataItemLabel><CgArrowsVAlt /> Elevation gain</DataItemLabel>
             <DataItemValue>{activity.elevationGain.toFixed(0)} m</DataItemValue>
           </DataItem>
-
-          {/*activity.grit ?
           <DataItem>
-            <DataItemLabel>{getGrit(activity.grit)} Grit</DataItemLabel>
-            <DataItemValue>{activity.grit.toFixed(2)}</DataItemValue>
-          </DataItem> : null */}
+            <DataItemLabel>Ø speed</DataItemLabel>
+            <DataItemValue>{activity.averageSpeed.toFixed(1).replace(".",",")} km/h</DataItemValue>
+          </DataItem>
         </Data>
         <HCard />
-        <MapContainer>
-          <Image
-            src={`https://static-maps-api.mxd.codes/img.php?basemap=gray&attribution=none&width=520&height=250&path[]=${JSON.stringify(path)};weight:4;color:6680CA`}  
-            title={activity.activityName}
-            alt={`Track of activity ${activity.activityName}`}
-            width="520"
-            height="250"
-          />
-          {/*<Image
-            loader={staticMapLoader}
-            basemap="stamen-terrain"
-            attribution="none"
-            width="520"
-            height="250"
-            geometry={path}
-            weight="3"
-            color="6680CA"
-           />*/}
-        </MapContainer>
+        {polyline ? getPath(polyline) : null}
 
         <PostMeta post={activity} slug={slug} />
       </Item>

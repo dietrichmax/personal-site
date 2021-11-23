@@ -23,7 +23,6 @@ model abouts {
 
 model activities {
   id                  Int       @id @default(autoincrement())
-  activityID          Float?
   activityName        String?   @db.VarChar(255)
   beginTimestamp      String?   @db.VarChar(255)
   activityType        Json?
@@ -51,7 +50,7 @@ model activities {
   minElevation        Float?
   maxElevation        Float?
   sportTypeId         Int?
-  activityId          Float?
+  activityId          BigInt?   @unique
   grit                Float?
   flow                Float?
   jumpCount           Int?
@@ -59,6 +58,15 @@ model activities {
   caloriesConsumed    Float?
   waterEstimated      Float?
   waterConsumed       Float?
+  achievement_count   Int?
+  kudos_count         Int?
+  comment_count       Int?
+  athlete_count       Int?
+  commute             Boolean?
+  average_watts       Decimal?  @db.Decimal(10, 2)
+  type                String?   @db.VarChar(255)
+  start_date          DateTime? @db.Timestamptz(6)
+  slug                String?   @unique @db.VarChar(255)
 }
 
 model audience {
@@ -111,10 +119,6 @@ model components_cv_interests {
 }
 
 model components_cv_single_skills {
-  id Int @id @default(autoincrement())
-}
-
-model components_cv_skill {
   id Int @id @default(autoincrement())
 }
 
@@ -362,6 +366,7 @@ model links {
   updated_by   Int?
   created_at   DateTime? @default(now()) @db.Timestamptz(6)
   updated_at   DateTime? @default(now()) @db.Timestamptz(6)
+  slug         String?   @unique @db.VarChar(255)
 }
 
 model locations {
@@ -389,6 +394,11 @@ model locations {
   inregions  Json?
   ssid       String?   @db.VarChar(255)
   bssid      String?   @db.VarChar(255)
+
+  @@index([alt], name: "alt_idx")
+  @@index([lat], name: "lat_idx")
+  @@index([lon], name: "lon_idx")
+  @@index([vel], name: "vel_idx")
 }
 
 model navigations {
@@ -502,6 +512,9 @@ model posts {
   dateUpdated             DateTime?          @db.Timestamptz(6)
   positive_feedback_count Int?
   negative_feedback_count Int?
+  vgworttracking          String?            @db.VarChar(255)
+  vgwortpubliccode        String?            @db.VarChar(255)
+  vgwortprivatecode       String?            @db.VarChar(255)
   posts_components        posts_components[]
 }
 
@@ -631,6 +644,7 @@ model tags {
   backgroundColor String?   @unique @db.VarChar(255)
   tag             Int?
   note            Int?
+  photo           Int?
 }
 
 model upload_file {
@@ -721,4 +735,46 @@ model users_permissions_user_components {
   users_permissions_user    users_permissions_user @relation(fields: [users_permissions_user_id], references: [id])
 
   @@map("users-permissions_user_components")
+}
+
+model photos {
+  id                Int                 @id @default(autoincrement())
+  title             String?             @db.VarChar(255)
+  description       String?
+  slug              String?             @unique @db.VarChar(255)
+  published_at      DateTime?           @db.Timestamptz(6)
+  created_by        Int?
+  updated_by        Int?
+  created_at        DateTime?           @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime?           @default(now()) @db.Timestamptz(6)
+  photos_components photos_components[]
+}
+
+model photos_components {
+  id             Int    @id @default(autoincrement())
+  field          String @db.VarChar(255)
+  order          Int
+  component_type String @db.VarChar(255)
+  component_id   Int
+  photo_id       Int
+  photos         photos @relation(fields: [photo_id], references: [id])
+}
+
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+}
+
+model strava_tokens {
+  id            Int       @id @default(autoincrement())
+  access_token  String?   @db.VarChar(255)
+  refresh_token String?   @db.VarChar(255)
+  published_at  DateTime? @db.Timestamptz(6)
+  created_by    Int?
+  updated_by    Int?
+  created_at    DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime? @default(now()) @db.Timestamptz(6)
 }

@@ -1,6 +1,7 @@
 import PostPreview from '@/components/article/article-preview/article-preview'
 import NotePreview from "@/components/note/note-preview/note-preview"
 import LinkPreview from "@/components/link/link-preview/link-preview"
+//import ActivityPreview from "@/components/activity/activity-preview/activity-preview"
 import PhotoPreview from '@/components/photo/photo-preview'
 import Layout from '@/components/layout/layout'
 import config from "@/lib/data/internal/SiteConfig";
@@ -255,7 +256,7 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
-  //const allActivities = (await getAllActivities()) || []
+  const allActivities = (await getAllActivities()) || []
   const allPhotos = (await getAllPhotos()) || []
   const cv = (await getCV()) || []
 
@@ -291,6 +292,14 @@ export async function getStaticProps() {
       photo: photo,
       date: photo.created_at,
       type: "photo"
+    })
+  })
+
+  allActivities.map((activity) => {
+    allContent.push({
+      activity: activity,
+      date: activity.created_at,
+      type: "activity"
     })
   })
 

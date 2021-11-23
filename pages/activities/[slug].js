@@ -35,28 +35,12 @@ const ActivityWrapper = styled.article`
 `
 
 const ActivityContainer = styled.div`
-  background-color: var(--content-bg);
-  padding: var(--space-sm);
   box-shadow: var(--box-shadow);
 `
 
-
-const Item = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  padding: var(--space-sm);
-  box-shadow: var(--box-shadow);
-  background-color: var(--content-bg);
-  border-radius: var(--border-radius);
-`
 
 const Title = styled.h2`
   font-size: 1.25rem;
-  color: var(--secondary-color);
 `
 
 const Date = styled.time`
@@ -151,11 +135,11 @@ export default function Activity({ activity }) {
                   </DataItem>
                   <DataItem>
                     <DataItemLabel>Ø Speed</DataItemLabel>
-                    <DataItemValue>{activity.averageSpeed.toFixed(2)} km/h</DataItemValue>
+                    <DataItemValue>{activity.averageSpeed.toFixed(2).replace(".",",")} km/h</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><IoMdSpeedometer /> Max Speed</DataItemLabel>
-                    <DataItemValue>{activity.maxSpeed.toFixed(2)} km/h</DataItemValue>
+                    <DataItemValue>{activity.maxSpeed.toFixed(2).replace(".",",")} km/h</DataItemValue>
                   </DataItem>
                   <DataItem>
                     <DataItemLabel><CgArrowTopRight /> Elevation Gain</DataItemLabel>
@@ -186,7 +170,7 @@ export default function Activity({ activity }) {
 
 export async function getStaticProps({ params }) {  
   const data = await getActivity(params.slug)
-  
+  console.log(data)
   return {
     props: {
       activity: {

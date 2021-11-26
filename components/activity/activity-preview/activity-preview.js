@@ -106,8 +106,8 @@ export default function ActivityPreview({ activity }) {
     return (`${hours}h ${minutes}min ${parseInt(seconds)}s`)
   }
   
-  const getPath = (polyline) => {
-    const geoPolyline = polyline.decode(activity.details.summary_polyline);
+  const getPath = (activity) => {
+    const geoPolyline = polyline.decode(activity);
 
     let path = []
     geoPolyline.map((coordinate) => {
@@ -160,7 +160,7 @@ export default function ActivityPreview({ activity }) {
           </DataItem>
         </Data>
         <HCard />
-        {polyline ? getPath(polyline) : null}
+        {activity.details.summary_polyline ? getPath(activity.details.summary_polyline) : null}
 
         <PostMeta post={activity} slug={slug} />
       </Item>

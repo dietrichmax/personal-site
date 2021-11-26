@@ -192,8 +192,7 @@ export default function Footer() {
   }
 
   useEffect(() => {
-    loadedData == false ?
-    getData() : null
+    loadedData == false ? getData() : null
 
   }, []);
 

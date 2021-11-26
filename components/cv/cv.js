@@ -152,7 +152,7 @@ const Credit = styled.p`
 
 const markdownCSS = `
   .markdown ul, .markdown ol {
-    padding-inline-start: var(--space-sm);
+    padding-inline-start: 10px;
     list-style: none; 
   }
 `

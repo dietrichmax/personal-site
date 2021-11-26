@@ -56,13 +56,6 @@ const LogoName = styled.span`
 const LogoDescription = styled.span`
 
 `
-
-/*const ImageWrapper = styled.div`
-  margin-right: var(--space-sm);
-  overflow: hidden;
-`*/
-
-
 export default function Header({ color }) {
 
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
@@ -77,13 +70,6 @@ export default function Header({ color }) {
         <MainNav itemtype="https://schema.org/SiteNavigationElement">
 
           <Logo>
-            {/*<ImageWrapper>
-              <img
-                  src="/logos/windows/windows-smallsquare-54-54.png"
-                  className="profile u-photo"
-                  style={{height:'40px',width:'100%'}}
-            />
-            </ImageWrapper>*/}
             <Link rel="home" href="/" passHref>
               <a className="u-url" rel="me" title="Max Dietrich">
                 <LogoName className="p-name" >Max Dietrich</LogoName>

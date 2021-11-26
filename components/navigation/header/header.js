@@ -6,6 +6,7 @@ import React, { useEffect }  from "react";
 import Nav from "@/components/navigation/nav"
 import useSWR from 'swr'
 import fetcher from "@/lib/utils/fetcher"
+import Image from "next/image"
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -44,6 +45,7 @@ const Logo = styled.div`
   display: inline-block;
   line-height: 1.25;
   margin: 0;
+  display: flex;
   ${media.lessThan('small')`
     font-size: 1rem;
   `}
@@ -54,6 +56,11 @@ const LogoName = styled.span`
 const LogoDescription = styled.span`
 
 `
+
+/*const ImageWrapper = styled.div`
+  margin-right: var(--space-sm);
+  overflow: hidden;
+`*/
 
 
 export default function Header({ color }) {
@@ -70,6 +77,13 @@ export default function Header({ color }) {
         <MainNav itemtype="https://schema.org/SiteNavigationElement">
 
           <Logo>
+            {/*<ImageWrapper>
+              <img
+                  src="/logos/windows/windows-smallsquare-54-54.png"
+                  className="profile u-photo"
+                  style={{height:'40px',width:'100%'}}
+            />
+            </ImageWrapper>*/}
             <Link rel="home" href="/" passHref>
               <a className="u-url" rel="me" title="Max Dietrich">
                 <LogoName className="p-name" >Max Dietrich</LogoName>

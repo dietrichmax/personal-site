@@ -44,10 +44,10 @@ const HeroDescription = styled.h3`
   font-family: var(--thirdy-font);
   ${media.lessThan('small')`
     font-size: 1.75em;
+    letter-spacing: 0.5px;
   `}
   ${media.lessThan('medium')`
     margin: 0 var(--space-sm);
-    line-height: 1.45;
   `}
 `
 
@@ -85,14 +85,13 @@ const AboutMeLink = styled.a`
 `
 
 const RecentPosts= styled.div`
-  max-width: 800px;
   display: grid;
   margin: auto;
   margin-left: 0;
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
-  grid-template-columns: repeat(1,minmax(0,1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: var(--space-lg);
   list-style: none;
   ${media.lessThan('medium')`
@@ -169,8 +168,7 @@ const jsonld =
 
 export default function Index({ posts, cv }) {
   const router = useRouter()
-
-  const content = posts.slice(0,20)
+  const content = posts.slice(0,6)
 
   return (
     <>
@@ -256,7 +254,6 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
-  const allActivities = (await getAllActivities()) || []
   const allPhotos = (await getAllPhotos()) || []
   const cv = (await getCV()) || []
 
@@ -295,13 +292,6 @@ export async function getStaticProps() {
     })
   })
 
-  allActivities.map((activity) => {
-    allContent.push({
-      activity: activity,
-      date: activity.created_at,
-      type: "activity"
-    })
-  })
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
   

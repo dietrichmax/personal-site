@@ -83,6 +83,8 @@ const FooterColumn = styled.nav`
   ${media.lessThan('medium')`  
     margin-bottom: var(--space);
     max-width: 100%;
+    border-bottom: 1px solid var(--content-bg);
+    padding-bottom: var(--space-sm);
   `}
 `
 
@@ -92,6 +94,8 @@ const FooterColumnPosts = styled.nav`
   ${media.lessThan('medium')`  
     margin-bottom: var(--space);
     max-width: 100%;
+    border-bottom: 1px solid var(--content-bg);
+    padding-bottom: var(--space-sm);
   `}
 `
 
@@ -334,7 +338,8 @@ export default function Footer() {
         </FooterColumnWrapper> 
 
         <FooterNotice>
-          2018 – present 
+          © 2018 – {new Date().getFullYear()}
+          <span> • </span>
           <Link href="/">
             <a title={`Max Dietrich - ${!data ? "" : data.timeline[0].role}`}> Max Dietrich - {!data ? "" : data.timeline[0].role}</a>
           </Link>

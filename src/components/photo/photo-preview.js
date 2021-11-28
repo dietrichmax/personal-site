@@ -57,6 +57,10 @@ const PhotosContent = styled.p`
 const Photo = styled(Image)`
   object-fit: cover;
   object-position: bottom;
+  transition: 0.5s;
+  :hover {
+    transform:  scale(1.02);
+  }
 `
 
 const PhotoWrapper = styled.div`

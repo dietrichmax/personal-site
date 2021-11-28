@@ -8,7 +8,9 @@ const Card = styled.li`
   border: 1px solid var(--content-bg);
   border-radius: 6px;
   overflow: hidden;
-  background-color: var(--content-bg);
+  background-color: var(--content-bg);  
+  box-shadow: 0 20px 30px rgba(0,0,0,0.1);  
+
 `
 
 export { Card }

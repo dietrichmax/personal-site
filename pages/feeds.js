@@ -1,16 +1,16 @@
-import Layout from '@/components/layout/layout'
-import { getLocationData, getNowData} from '@/lib/data/external/cms'
-import config from "../lib/data/internal/SiteConfig";
-import SEO from '@/components/seo/seo'
+import Layout from 'src/components/layout/layout'
+import { getLocationData, getNowData} from 'src/data/external/cms'
+import config from "../src/data/internal/SiteConfig";
+import SEO from 'src/components/seo/seo'
 import media from "styled-media-query"
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import SubTitle from '@/components/title/sub-title'
+import PageTitle from 'src/components/title/page-title'
+import SubTitle from 'src/components/title/sub-title'
 import axios from 'axios';
 import Image from "next/image"
 import { format, fromUnixTime} from 'date-fns'
-import TextBody from '@/components/note/note-body/note-body'
+import TextBody from 'src/components/note/note-body/note-body'
 
 
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import Layout from "@/components/layout/layout"
-import config from "../lib/data/internal/SiteConfig"
+import Layout from "src/components/layout/layout"
+import config from "../src/data/internal/SiteConfig"
 import styled from "styled-components"
-import SEO from "@/components/seo/seo"
+import SEO from "src/components/seo/seo"
 import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
@@ -15,7 +15,7 @@ import {
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
     getMatomoVisitsSummary
-} from "@/lib/data/external/analytics"
+} from "src/data/external/analytics"
 import {
   getPostsCount,
   getTagsCount,
@@ -26,12 +26,12 @@ import {
   getLinksCount,
   getPhotosCount,
   getAllActivities
-} from "@/lib/data/external/cms"
-import { fetchWebmentions } from "@/lib/data/external/webmentions"
-import { getGitHubStats } from "@/lib/data/external/github"
-import PageTitle from "@/components/title/page-title"
+} from "src/data/external/cms"
+import { fetchWebmentions } from "src/data/external/webmentions"
+import { getGitHubStats } from "src/data/external/github"
+import PageTitle from "src/components/title/page-title"
 import codeStats from "@/lib/data/internal/count_total.json"
-import SubTitle from '@/components/title/sub-title'
+import SubTitle from 'src/components/title/sub-title'
 import { formatDistance } from 'date-fns'
 import { getAllExtensions } from "showdown"
 

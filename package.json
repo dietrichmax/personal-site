@@ -19,7 +19,7 @@
     "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py",
     "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,css,json}' --config .prettierrc",
+    "format": "prettier --write src/**/*.js --config .prettierrc.json",
     "count": "cloc --exclude-ext=svg --exclude-dir=animation-data,node_modules,.next --json components/ lib/ pages/ styles/ public/ . > lib/data/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send",
     "test": "npx next lint"

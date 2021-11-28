@@ -1,7 +1,7 @@
-import Layout from '@/components/layout/layout'
-import SEO from '@/components/seo/seo'
-import Title from '@/components/title/page-title'
-import Newsletter from '@/components/social/newsletter/subscribe'
+import Layout from 'src/components/layout/layout'
+import SEO from 'src/components/seo/seo'
+import Title from 'src/components/title/page-title'
+import Newsletter from 'src/components/social/newsletter/subscribe'
 
 export default function MailingList() {
   return (

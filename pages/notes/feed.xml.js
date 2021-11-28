@@ -1,6 +1,6 @@
 import React from 'react';
-import config from "@/lib/data/internal/SiteConfig"
-import { getAllNotes } from '@/lib/data/external/cms'
+import config from "src/data/internal/SiteConfig"
+import { getAllNotes } from 'src/data/external/cms'
 const showdown  = require('showdown'),
 converter = new showdown.Converter()
 

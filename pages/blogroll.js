@@ -1,16 +1,16 @@
-import Layout from '@/components/layout/layout'
-import { getAllBlogrolls } from '@/lib/data/external/cms'
-import config from "@/lib/data/internal/SiteConfig";
+import Layout from 'src/components/layout/layout'
+import { getAllBlogrolls } from 'src/data/external/cms'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
 import Image from 'next/image'
 import media from "styled-media-query"
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import SubTitle from '@/components/title/sub-title'
+import PageTitle from 'src/components/title/page-title'
+import SubTitle from 'src/components/title/sub-title'
 import Link from "next/link"
-import TextBody from "@/components/note/note-body/note-body"
-import Grid from "@/components/grid/grid"
+import TextBody from "src/components/note/note-body/note-body"
+import Grid from "src/components/grid/grid"
 
 const BlogrollContainer = styled.div`
   max-width: 1200px;

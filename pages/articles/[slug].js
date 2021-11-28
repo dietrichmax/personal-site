@@ -1,29 +1,29 @@
 import React from "react"
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import PostBody from '@/components/article/article-body/article-body'
-import Layout from '@/components/layout/layout'
-import SEO from '@/components/seo/seo'
-import { getAllPosts, getPostAndMorePosts } from '@/lib/data/external/cms'
-import PageTitle from '@/components/title/page-title'
-import markdownToHtml from '@/lib/utils/markdownToHtml'
+import PostBody from 'src/components/article/article-body/article-body'
+import Layout from 'src/components/layout/layout'
+import SEO from 'src/components/seo/seo'
+import { getAllPosts, getPostAndMorePosts } from 'src/data/external/cms'
+import PageTitle from 'src/components/title/page-title'
+import markdownToHtml from 'src/utils/markdownToHtml'
 import styled from 'styled-components';
-import config from "@/lib/data/internal/SiteConfig";
-import ReadingProgress from "@/components/reading-progress/reading-progress.js"
+import config from "src/data/internal/SiteConfig";
+import ReadingProgress from "src/components/reading-progress/reading-progress.js"
 import media from 'styled-media-query';
-import Webmentions from "@/components/social/webmentions/webmentions"
+import Webmentions from "src/components/social/webmentions/webmentions"
 //import PostComments from "@/components/article/post-comments/post-comments"
-import getReadTime from "@/lib/utils/read-time"
-import PostImage from "@/components/article/article-image/article-image"
-import PostTitle from '@/components/title/post-title'
-import PostTags from '@/components/tags/tags'
+import getReadTime from "src/utils/read-time"
+import PostImage from "src/components/article/article-image/article-image"
+import PostTitle from 'src/components/title/post-title'
+import PostTags from 'src/components/tags/tags'
 import { parseISO, format } from 'date-fns'
 //import Comments from "@/components/comments/comments"
-import HCard from "@/components/microformats/h-card"
-import Feedback from "@/components/social/feedback/feedback"
-import WebActions from "@/components/social/social-share/social-share"
-import Meta from "@/components/post/post-meta/post-meta"
-import Subscribe from "@/components/social/subscribe/subscribe"
+import HCard from "src/components/microformats/h-card"
+import Feedback from "src/components/social/feedback/feedback"
+import WebActions from "src/components/social/social-share/social-share"
+import Meta from "src/components/post/post-meta/post-meta"
+import Subscribe from "src/components/social/subscribe/subscribe"
 
 
 // components for posts

@@ -1,4 +1,4 @@
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from '@/lib/data/external/cms'
+import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from 'src/data/external/cms'
 
 export default async (_, res) => {
   const allPosts = (await getAllPosts()) || []

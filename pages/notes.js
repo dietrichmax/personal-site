@@ -1,15 +1,15 @@
 
-import Layout from '@/components/layout/layout'
-import { getAllNotes } from '@/lib/data/external/cms'
-import config from "@/lib/data/internal/SiteConfig";
+import Layout from 'src/components/layout/layout'
+import { getAllNotes } from 'src/data/external/cms'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import NotePreview from "@/components/note/note-preview/note-preview"
-import SubTitle from '@/components/title/sub-title'
+import PageTitle from 'src/components/title/page-title'
+import NotePreview from "src/components/note/note-preview/note-preview"
+import SubTitle from 'src/components/title/sub-title'
 import media from 'styled-media-query';
-import Grid from '@/components/grid/grid'
+import Grid from 'src/components/grid/grid'
 import { FaRss } from 'react-icons/fa';
 
 const NotesWrapper = styled.div`

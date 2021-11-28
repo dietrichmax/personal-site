@@ -1,12 +1,12 @@
-import Layout from '@/components/layout/layout'
-import { getAllActivities } from '@/lib/data/external/cms'
-import config from "@/lib/data/internal/SiteConfig";
+import Layout from 'src/components/layout/layout'
+import { getAllActivities } from 'src/data/external/cms'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import SubTitle from '@/components/title/sub-title'
-import ActivityPreview from '@/components/activity/activity-preview/activity-preview'
+import PageTitle from 'src/components/title/page-title'
+import SubTitle from 'src/components/title/sub-title'
+import ActivityPreview from 'src/components/activity/activity-preview/activity-preview'
 import media from 'styled-media-query';
 //import ActivitiesMap from "@/components/maps/deckgl/activities"
 import { FaLongArrowAltLeft } from 'react-icons/fa';

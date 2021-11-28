@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/router'
 import Image from "next/image"
-import Content from '@/components/article/article-body/article-body'
-import Layout from '@/components/layout/layout'
-import { getAbout } from '@/lib/data/external/cms'
-import PageTitle from '@/components/title/page-title'
+import Content from 'src/components/article/article-body/article-body'
+import Layout from 'src/components/layout/layout'
+import { getAbout } from 'src/data/external/cms'
+import PageTitle from 'src/components/title/page-title'
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/internal/SiteConfig";
+import config from "src/data/internal/SiteConfig";
 
 const PageWrapper = styled.div`
   max-width: 1200px;

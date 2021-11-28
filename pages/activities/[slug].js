@@ -1,25 +1,25 @@
 import React from "react"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Layout from '@/components/layout/layout'
-import SEO from '@/components/seo/seo'
-import { getActivity, getAllActivities } from '@/lib/data/external/cms'
+import Layout from 'src/components/layout/layout'
+import SEO from 'src/components/seo/seo'
+import { getActivity, getAllActivities } from 'src/data/external/cms'
 import { fromUnixTime, format, parseISO } from 'date-fns'
-import PageTitle from '@/components/title/page-title'
+import PageTitle from 'src/components/title/page-title'
 import styled from 'styled-components';
-import config from "@/lib/data/internal/SiteConfig";
+import config from "src/data/internal/SiteConfig";
 import media from 'styled-media-query';
-import Webmentions from "@/components/social/webmentions/webmentions"
-import HCard from "@/components/microformats/h-card"
-import WebActions from "@/components/social/social-share/social-share"
+import Webmentions from "src/components/social/webmentions/webmentions"
+import HCard from "src/components/microformats/h-card"
+import WebActions from "src/components/social/social-share/social-share"
 import { FaRunning, FaBiking, FaHiking, FaMountain } from 'react-icons/fa';
 import { CgArrowsH, CgAlarm, CgArrowTopRight, CgArrowBottomRight } from 'react-icons/cg';
 import { IoMdSpeedometer } from 'react-icons/io';
-import Meta from "@/components/post/post-meta/post-meta"
+import Meta from "src/components/post/post-meta/post-meta"
 import dynamic from 'next/dynamic'
 
 const ActivityMap= dynamic(
-  () => import('@/components/maps/deckgl/activity'),
+  () => import('src/components/maps/deckgl/activity'),
 )
 
 

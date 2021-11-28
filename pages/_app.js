@@ -3,8 +3,8 @@ import React from "react";
 import App from "next/app";
 import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
-import config from "@/lib/data/internal/SiteConfig"
-import Providers from '@/lib/utils/providers';
+import config from "src/data/internal/SiteConfig"
+import Providers from 'src/utils/providers';
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"

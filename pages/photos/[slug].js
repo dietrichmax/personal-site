@@ -1,19 +1,19 @@
 import { useRouter } from 'next/router'
-import Layout from '@/components/layout/layout'
-import { getPhoto, getAllPhotos } from '@/lib/data/external/cms'
+import Layout from 'src/components/layout/layout'
+import { getPhoto, getAllPhotos } from 'src/data/external/cms'
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/internal/SiteConfig";
-import Webmentions from "@/components/social/webmentions/webmentions"
+import config from "src/data/internal/SiteConfig";
+import Webmentions from "src/components/social/webmentions/webmentions"
 import Image from "next/image"
 import Link from "next/link"
-import PageTitle from '@/components/title/page-title'
-import PageBody from '@/components/article/article-body/article-body'
-import WebActions from "@/components/social/social-share/social-share"
-import Meta from "@/components/post/post-meta/post-meta"
-import HCard from "@/components/microformats/h-card"
-import PhotoTags from '@/components/tags/tags'
+import PageTitle from 'src/components/title/page-title'
+import PageBody from 'src/components/article/article-body/article-body'
+import WebActions from "src/components/social/social-share/social-share"
+import Meta from "src/components/post/post-meta/post-meta"
+import HCard from "src/components/microformats/h-card"
+import PhotoTags from 'src/components/tags/tags'
 
 const PageWrapper = styled.div`
 position: relative;

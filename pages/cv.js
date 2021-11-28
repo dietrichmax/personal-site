@@ -1,14 +1,14 @@
 import React from "react"
 import { useRouter } from 'next/router'
-import Layout from '@/components/layout/layout'
-import { getCV } from '@/lib/data/external/cms'
-import PageTitle from '@/components/title/page-title'
+import Layout from 'src/components/layout/layout'
+import { getCV } from 'src/data/external/cms'
+import PageTitle from 'src/components/title/page-title'
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/internal/SiteConfig";
+import config from "src/data/internal/SiteConfig";
 import { Button } from "@/styles/templates/button"
-import CV from "@/components/cv/cv"
+import CV from "src/components/cv/cv"
 
 const ResumeWrapper = styled.div`
   max-width: 1200px;

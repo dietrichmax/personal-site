@@ -1,14 +1,14 @@
-import Layout from '@/components/layout/layout'
-import SEO from '@/components/seo/seo'
-import Title from '@/components/title/page-title'
+import Layout from 'src/components/layout/layout'
+import SEO from 'src/components/seo/seo'
+import Title from 'src/components/title/page-title'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { getLocationsCount } from "@/lib/data/external/cms"
-import prisma from '@/lib/utils/prisma'
+import { getLocationsCount } from "src/data/external/cms"
+import prisma from 'src/utils/prisma'
 import dynamic from 'next/dynamic'
 
 const Livemap = dynamic(
-  () => import('@/components/maps/deckgl/livemap'),
+  () => import('src/components/maps/deckgl/livemap'),
 )
 
 const MapContainer = styled.div`

@@ -1,14 +1,14 @@
 
-import Layout from '@/components/layout/layout'
-import { getAllRecipes } from '@/lib/data/external/cms'
-import config from "@/lib/data/internal/SiteConfig";
+import Layout from 'src/components/layout/layout'
+import { getAllRecipes } from 'src/data/external/cms'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import SubTitle from '@/components/title/sub-title'
-import Grid from '@/components/grid/grid'
-import Preview from "@/components/recipes/recipe-preview/recipe-preview"
+import PageTitle from 'src/components/title/page-title'
+import SubTitle from 'src/components/title/sub-title'
+import Grid from 'src/components/grid/grid'
+import Preview from "src/components/recipes/recipe-preview/recipe-preview"
 
 const RecipesWrapper = styled.div`
   max-width: 1200px;

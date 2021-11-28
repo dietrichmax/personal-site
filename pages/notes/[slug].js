@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router'
-import Layout from '@/components/layout/layout'
-import { getAllNotes, getNote } from '@/lib/data/external/cms'
+import Layout from 'src/components/layout/layout'
+import { getAllNotes, getNote } from 'src/data/external/cms'
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/internal/SiteConfig";
-import NoteBody from "@/components/note/note-body/note-body"
-import NoteTitle from "@/components/title/post-title"
-import Webmentions from "@/components/social/webmentions/webmentions"
-import HCard from "@/components/microformats/h-card"
-import NoteTags from "@/components/tags/tags"
-import WebActions from "@/components/social/social-share/social-share"
-import Meta from "@/components/post/post-meta/post-meta"
+import config from "src/data/internal/SiteConfig";
+import NoteBody from "src/components/note/note-body/note-body"
+import NoteTitle from "src/components/title/post-title"
+import Webmentions from "src/components/social/webmentions/webmentions"
+import HCard from "src/components/microformats/h-card"
+import NoteTags from "src/components/tags/tags"
+import WebActions from "src/components/social/social-share/social-share"
+import Meta from "src/components/post/post-meta/post-meta"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);

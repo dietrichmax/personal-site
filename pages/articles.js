@@ -1,14 +1,14 @@
-import Layout from '@/components/layout/layout'
-import { getAllPosts, getAllTags } from '@/lib/data/external/cms'
-import config from "@/lib/data/internal/SiteConfig";
+import Layout from 'src/components/layout/layout'
+import { getAllPosts, getAllTags } from 'src/data/external/cms'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
-import Grid from '@/components/grid/grid';
-import SubTitle from '@/components/title/sub-title'
-import PostPreview from '@/components/article/article-preview/article-preview'
-import Tags from "@/components/tags/tags"
+import PageTitle from 'src/components/title/page-title'
+import Grid from 'src/components/grid/grid';
+import SubTitle from 'src/components/title/sub-title'
+import PostPreview from 'src/components/article/article-preview/article-preview'
+import Tags from "src/components/tags/tags"
 import media from 'styled-media-query';
 
 const BlogPageContainer = styled.div`

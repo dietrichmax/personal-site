@@ -1,18 +1,18 @@
-import PostPreview from '@/components/article/article-preview/article-preview'
-import NotePreview from "@/components/note/note-preview/note-preview"
-import LinkPreview from "@/components/link/link-preview/link-preview"
+import PostPreview from 'src/components/article/article-preview/article-preview'
+import NotePreview from "src/components/note/note-preview/note-preview"
+import LinkPreview from "src/components/link/link-preview/link-preview"
 //import ActivityPreview from "@/components/activity/activity-preview/activity-preview"
-import PhotoPreview from '@/components/photo/photo-preview'
-import Layout from '@/components/layout/layout'
-import config from "@/lib/data/internal/SiteConfig";
+import PhotoPreview from 'src/components/photo/photo-preview'
+import Layout from 'src/components/layout/layout'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
 import { useRouter } from 'next/router'
-import { getAbout } from '@/lib/data/external/cms'
+import { getAbout } from 'src/data/external/cms'
 import Link from "next/link"
-import HCard from '@/components/microformats/h-card';
-import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData, getCV } from '@/lib/data/external/cms'
+import HCard from 'src/components/microformats/h-card';
+import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData, getCV } from 'src/data/external/cms'
 
 const IndexPageContainer = styled.div`
   max-width: 1200px; 

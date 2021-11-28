@@ -1,11 +1,11 @@
 import { useState } from "react"
-import Layout from '@/components/layout/layout'
-import config from "../lib/data/internal/SiteConfig";
-import SEO from '@/components/seo/seo'
+import Layout from 'src/components/layout/layout'
+import config from "../src/data/internal/SiteConfig";
+import SEO from 'src/components/seo/seo'
 import media from "styled-media-query"
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
-import PageTitle from '@/components/title/page-title'
+import PageTitle from 'src/components/title/page-title'
 import Image from "next/image"
 import { Input } from "@/styles/templates/input"
 

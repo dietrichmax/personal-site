@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router'
-import Layout from '@/components/layout/layout'
-import { getAllRecipes, getRecipe } from '@/lib/data/external/cms'
+import Layout from 'src/components/layout/layout'
+import { getAllRecipes, getRecipe } from 'src/data/external/cms'
 import styled from 'styled-components';
-import SEO from '@/components/seo/seo'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import config from "@/lib/data/internal/SiteConfig";
-import RecipeContent from "@/components/article/article-body/article-body"
-import Title from "@/components/title/post-title"
-import Webmentions from "@/components/social/webmentions/webmentions"
+import config from "src/data/internal/SiteConfig";
+import RecipeContent from "src/components/article/article-body/article-body"
+import Title from "src/components/title/post-title"
+import Webmentions from "src/components/social/webmentions/webmentions"
 import Link from"next/link"
 import Image from "next/image" 
-import HCard from "@/components/microformats/h-card"
-import WebActions from "@/components/social/social-share/social-share"
-import Meta from "@/components/post/post-meta/post-meta"
+import HCard from "src/components/microformats/h-card"
+import WebActions from "src/components/social/social-share/social-share"
+import Meta from "src/components/post/post-meta/post-meta"
 
 const RecipeWrapper = styled.div`
   max-width: var(--width-container);

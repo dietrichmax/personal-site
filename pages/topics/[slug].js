@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Grid from '@/components/grid/grid'
-import Layout from '@/components/layout/layout'
-import { getTag, getAllTags } from '@/lib/data/external/cms'
-import PageTitle from '@/components/title/tag-title'
-import config from "@/lib/data/internal/SiteConfig";
+import Grid from 'src/components/grid/grid'
+import Layout from 'src/components/layout/layout'
+import { getTag, getAllTags } from 'src/data/external/cms'
+import PageTitle from 'src/components/title/tag-title'
+import config from "src/data/internal/SiteConfig";
 import styled from 'styled-components';
-import SubTitle from '@/components/title/sub-title'
-import SEO from '@/components/seo/seo'
+import SubTitle from 'src/components/title/sub-title'
+import SEO from 'src/components/seo/seo'
 import media from 'styled-media-query';
-import PostPreview from '@/components/article/article-preview/article-preview'
+import PostPreview from 'src/components/article/article-preview/article-preview'
 
 const TagContainer = styled.div`
   max-width: 1200px;

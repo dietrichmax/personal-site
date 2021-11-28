@@ -8,7 +8,7 @@ import {
   getActivitiesCount,
   getLinksCount,
   getAllActivities
-} from "@/lib/data/external/cms"
+} from "src/data/external/cms"
 import {
     getMatomoActions,
     getMatomoLiveCounter,
@@ -17,7 +17,7 @@ import {
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
     getMatomoVisitsSummary
-} from "@/lib/data/external/analytics"
+} from "src/data/external/analytics"
 
 export default async (_, res) => {
 

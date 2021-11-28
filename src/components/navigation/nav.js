@@ -45,8 +45,7 @@ export default function Nav({ color }) {
     { name: "Articles", link: "/articles" },
     { name: "Photos", link: "/photos" },
     { name: "Notes", link: "/notes" },
-    { name: "Links", link: "/links" },
-    { name: "Activities", link: "/activities" },
+    { name: "Links", link: "/links" }
   ]
 
   return (

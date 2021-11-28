@@ -1,5 +1,5 @@
-import generatePDF from "src/utils/generatePDF";
-import { getCV } from 'src/data/external/cms'
+import generatePDF from "@/src/utils/generatePDF";
+import { getCV } from '@/src/data/external/cms'
 
 export default async (_, res) => {
   const cvData = await getCV()

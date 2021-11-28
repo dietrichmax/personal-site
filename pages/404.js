@@ -1,11 +1,11 @@
-import Layout from 'src/components/layout/layout'
-import SEO from 'src/components/seo/seo'
-import Title from 'src/components/title/page-title'
+import Layout from '@/components/layout/layout'
+import SEO from '@/components/seo/seo'
+import Title from '@/components/title/page-title'
 import { getAllPosts } from 'src/data/external/cms'
 import { useRouter } from 'next/router'
 import StringSimilarity from "string-similarity"
 import styled from 'styled-components';
-import SubTitle from 'src/components/title/sub-title'
+import SubTitle from '@/components/title/sub-title'
 
 const Container = styled.div`
   max-width: 1200px;

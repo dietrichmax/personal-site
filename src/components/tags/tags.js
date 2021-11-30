@@ -17,8 +17,8 @@ const TagItem = styled.a`
   background-color: var(--text-color);
   color: var(--content-bg);
   :hover {
-    color: var(--content-bg);
-    background-color: var(--text-color);
+    color: var(--text-color);
+    background-color: var(--content-bg);
   }
 `
 

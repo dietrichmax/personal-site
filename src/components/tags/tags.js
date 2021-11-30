@@ -13,9 +13,9 @@ const TagItem = styled.a`
   font-size: 0.75rem;
   margin: 0.25rem 1rem 0.5rem 0;
   padding: 3px calc(var(--space-sm) * 0.5);
-  background-color: var(--body-bg);
-  color: var(--text-color);
   font-family: var(--secondary-font);
+  background-color: var(--text-color);
+  color: var(--content-bg);
   :hover {
     color: var(--content-bg);
     background-color: var(--text-color);

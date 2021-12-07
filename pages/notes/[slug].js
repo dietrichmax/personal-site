@@ -76,19 +76,21 @@ export default function Note({ note }) {
                   </div>
                 </Hidden>            
                  
+                <NoteTitle>{note.title}</NoteTitle>
+                
                 <ContentWrapper className="e-content">
 
-                <NotesContent>
-                  {note.content ? 
-                    <NoteBody 
-                      className="p-summary" 
-                      content={note.content} 
-                    />
-                  : null }
-                  
-                  <NoteTags tags={note.tags} />
-                  
-                </NotesContent>
+                  <NotesContent>
+                    {note.content ? 
+                      <NoteBody 
+                        className="p-summary" 
+                        content={note.content} 
+                      />
+                    : null }
+                    
+                    <NoteTags tags={note.tags} />
+                    
+                  </NotesContent>
 
                 </ContentWrapper>
               </NotesItem>

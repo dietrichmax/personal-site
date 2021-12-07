@@ -25,7 +25,7 @@ const PostsGrid = styled.ol`
   list-style: none;
   padding-inline-start: 0;
   display: grid;
-  gap: var(--space);
+  gap: var(--space-lg);
   grid-template-columns: repeat(3, minmax(0px, 1fr));
   ${media.lessThan('large')`
     padding-left: 0;
@@ -36,8 +36,9 @@ const PostsGrid = styled.ol`
   `}
 `
 
-export default function Tags({ tag }) {
+export default function Tags({ posts, tag }) {
   const router = useRouter()
+  const content = posts
   if (!router.isFallback && !tag?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -59,31 +60,69 @@ export default function Tags({ tag }) {
               <TagPostsContainer>
               <Grid>
                 <PostsGrid>
-                  {tag.posts.map((post,i) => (
-                    <PostPreview
-                      key={i}
-                      postData={post}
-                    />
+                  {content.map((post,i) => (
+                    post.type === "article" ? (
+                      <PostPreview
+                        key={i}
+                        postData={post.post}
+                      />
+                    ) : post.type === "note" ? (
+                      <NotePreview 
+                        key={i}
+                        note={post.note} 
+                      />
+                    ) : post.type === "link" ? (
+                      <LinkPreview
+                        key={i}
+                        link={post.link} 
+                      />
+                    ) : post.type === "photo" ? (
+                      <PhotoPreview
+                        key={i}
+                        photo={post.photo} 
+                      />
+                    ) : null
                   ))}
-                  </PostsGrid>
-                </Grid> 
-              </TagPostsContainer>
-            </TagContainer>
-          </>
-        )}
+                </PostsGrid>
+              </Grid> 
+            </TagPostsContainer>
+          </TagContainer>
+        </>
+      )}
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
   const data = await getTag(params.slug)
+  const allContent = []
+  const posts = data.tags[0].posts
+  const notes = data.tags[0].notes
+  /*const photos = data.tags[0].photos
+  const links = data.tags[0].photos*/
+  console.log(notes)
+  posts.map((post) => {
+    allContent.push({
+      post: post,
+      date: post.published_at,
+      type: "article"
+    })
+  })
+  /*notes.map((post) => {
+    allContent.push({
+      post: post,
+      date: post.published_at,
+      type: "note"
+    })
+  })*/
+
+  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return {
     revalidate:  86400,
     props: {
-      tag: {
-        ...data?.tags[0],
-      },
+      posts: sortedContent,
+      tag: data.tags[0]
     },
   }
 }

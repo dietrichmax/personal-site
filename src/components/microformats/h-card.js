@@ -14,7 +14,7 @@ export default function hCard() {
         itemScope
         itemType="http://schema.org/Person"
       >
-        <a
+        <div
           className="p-name u-url"
           rel="author"
           itemProp="name"
@@ -50,7 +50,7 @@ export default function hCard() {
           <data className="p-region" value="Bavaria" />
           <data className="p-postal-code" value="83026" />
           <data className="p-country-name" value="Germany" />
-        </a>
+        </div>
       </div>
     </Hidden>
   )

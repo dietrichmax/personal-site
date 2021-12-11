@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
@@ -311,6 +311,14 @@ export default function Footer() {
               {/*<FooterItem>
                 <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
               </FooterItem>*/}
+              <FooterItem>
+                <a
+                  href={config.socials.xing}
+                  title="Max Dietrich on Xing"
+                >
+                  <FaXing /> Xing
+                </a>
+              </FooterItem>
               <FooterItem>
                 <a
                   href={config.socials.linkedin}

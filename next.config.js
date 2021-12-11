@@ -477,6 +477,11 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
+      source: '/xing',
+      destination: 'https://www.xing.com/profile/Max_Dietrich7/',
+      permanent: true
+    },
+    {
       source: '/github',
       destination: 'https://github.com/dietrichmax',
       permanent: true

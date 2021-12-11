@@ -27,7 +27,7 @@ const config = {
     strava: "/strava",
     //komoot: "/komoot",
     //mastodon: "https://fosstodon.org/@mxd",
-    //xing: "https://www.xing.com/profile/Max_Dietrich7/",
+    xing: "/xing",
     //reddit: "https://www.reddit.com/user/DaTurboD",
     mail: "mailto:mail@mxd.codes",
   },

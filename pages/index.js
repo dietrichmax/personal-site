@@ -84,7 +84,7 @@ const AboutMeLink = styled.a`
   }
 `
 
-const RecentPosts= styled.div`
+const RecentPosts= styled.ol`
   display: grid;
   margin: auto;
   margin-left: 0;

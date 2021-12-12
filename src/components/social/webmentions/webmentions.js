@@ -42,7 +42,7 @@ const WebmentionsInfoIcon = styled.i`
   margin-right: 0.125rem;
 `
 
-const WebmentionsList = styled.ol`
+const WebmentionsContainer = styled.div`
   list-style: none;
   padding-inline-start: 0;
   margin-bottom: var(--space-sm);
@@ -170,6 +170,11 @@ const ImagePlacholder = styled.div`
   color: var(--text-color);
 `
 
+const WebmentionsList = styled.ol`
+  list-style: none;
+  padding-inline-start: 0;
+`
+
 export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
@@ -275,13 +280,15 @@ export default function Webmentions({ slug, preview }) {
     getViews()*/
   }, [])
 
-  const renderAuthorImg = (mention) => {
+  const renderAuthorImg = (mention,i) => {
     return mention.author.photo ? (
-      <WebmentionLike>
+      <WebmentionLike key={i}>
         <WebmentionAuthorImgWrapper
           className="u-url"
           href={mention.author.url}
           rel="noopener noreferrer nofollow"
+          alt={`Link to profile of ${mention.author.name}`}
+          title={mention.author.name}
         >
           <Image
             src={mention.author.photo}
@@ -405,7 +412,7 @@ export default function Webmentions({ slug, preview }) {
             <>
               {/* Comments */}
               {webmentions.comments.length > 0 ? (
-                <WebmentionsList>
+                <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
@@ -414,39 +421,41 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.comments.length}{" "}
                     {webmentions.comments.length == 1 ? "Reply" : "Replies"}
                   </WebmentionsTitle>
-                  {webmentions.comments.map((mention) => (
-                    <WebmentionComment className="u-comment u-mention h-cite">
-                      <WebmentionAuthor className="h-card p-author">
-                        {renderAuthorImg(mention)}
-                        <WebmentionAuthorName className="p-name">
-                          {mention.author.name}
-                        </WebmentionAuthorName>
-                        <a
-                          href={mention.url}
-                          rel="noopener noreferrer nofollow"
-                          title={mention.published}
-                        >
-                          <WebmentionDate className="dt-published">
-                            {mention.published
-                              ? `${formatDistance(
-                                  new Date(mention.published),
-                                  new Date()
-                                )} ago`
-                              : null}
-                          </WebmentionDate>
-                        </a>
-                      </WebmentionAuthor>
-                      <WebmentionContent className="p-content u-comment">
-                        {mention.content ? mention.content.text : null}
-                      </WebmentionContent>
-                    </WebmentionComment>
-                  ))}
-                </WebmentionsList>
+                  <WebmentionsList>
+                    {webmentions.comments.map((mention, i) => (
+                        <WebmentionComment  key={i} className="u-comment u-mention h-cite">
+                          <WebmentionAuthor className="h-card p-author">
+                            {renderAuthorImg(mention)}
+                            <WebmentionAuthorName className="p-name">
+                              {mention.author.name}
+                            </WebmentionAuthorName>
+                            <a
+                              href={mention.url}
+                              rel="noopener noreferrer nofollow"
+                              title={mention.published}
+                            >
+                              <WebmentionDate className="dt-published">
+                                {mention.published
+                                  ? `${formatDistance(
+                                      new Date(mention.published),
+                                      new Date()
+                                    )} ago`
+                                  : null}
+                              </WebmentionDate>
+                            </a>
+                          </WebmentionAuthor>
+                          <WebmentionContent className="p-content u-comment">
+                            {mention.content ? mention.content.text : null}
+                          </WebmentionContent>
+                        </WebmentionComment>
+                    ))}
+                  </WebmentionsList>
+                </WebmentionsContainer>
               ) : null}
               {/* Likes */}
 
               {webmentions.likes.length > 0 ? (
-                <WebmentionsList>
+                <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
@@ -455,12 +464,15 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.likes.length}{" "}
                     {webmentions.likes.length == 1 ? "Like" : "Likes"}
                   </WebmentionsTitle>
-                  {webmentions.likes.map((mention) => renderAuthorImg(mention))}
-                </WebmentionsList>
+                  
+                  <WebmentionsList>
+                    {webmentions.likes.map((mention,i) => renderAuthorImg(mention,i))}
+                  </WebmentionsList>
+                </WebmentionsContainer>
               ) : null}
               {/* Reposts*/}
               {webmentions.reposts.length > 0 ? (
-                <WebmentionsList>
+                <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
@@ -469,14 +481,16 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.reposts.length}{" "}
                     {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}
                   </WebmentionsTitle>
-                  {webmentions.reposts.map((mention) =>
-                    renderAuthorImg(mention)
-                  )}
-                </WebmentionsList>
+                  <WebmentionsList>
+                    {webmentions.reposts.map((mention,i) =>
+                      renderAuthorImg(mention,i)
+                    )}
+                  </WebmentionsList>
+                </WebmentionsContainer>
               ) : null}
               {/* Mentions*/}
               {webmentions.mentions.length > 0 ? (
-                <WebmentionsList>
+                <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
@@ -485,10 +499,12 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.mentions.length}{" "}
                     {webmentions.mentions.length == 1 ? "Mention" : "Mentions"}
                   </WebmentionsTitle>
-                  {webmentions.mentions.map((mention) =>
-                    renderAuthorImg(mention)
-                  )}
-                </WebmentionsList>
+                  <WebmentionsList>
+                    {webmentions.mentions.map((mention,i) =>
+                      renderAuthorImg(mention,i)
+                    )}
+                  </WebmentionsList>
+                </WebmentionsContainer>
               ) : null}
             </>
           ) : (

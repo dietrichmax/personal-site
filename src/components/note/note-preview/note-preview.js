@@ -4,6 +4,8 @@ import NoteBody from "src/components/note/note-body/note-body"
 import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import HCard from "src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
+import renderers from "src/utils/renderers"
+
 
 const NoteBodyWrapper = styled.div`
   height: 100%;
@@ -44,7 +46,10 @@ export default function NotePreview({ note }) {
           <NotesContent className="e-content">
             <NoteBodyWrapper>
               <NoteBodyContainer>
-                <NoteBody content={note.content} />
+                <NoteBody 
+                  content={note.content} 
+                  components={renderers}
+                />
               </NoteBodyContainer>
               <PostMeta post={note} slug={slug} />
             </NoteBodyWrapper>

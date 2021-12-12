@@ -69,18 +69,16 @@ export default function PostImage({ preview, previewLarge, postData }) {
           />
         ) : null
       ) : coverImage ? (
-        <Link href={`/articles/${slug}`} aria-label={title} passHref>
-          <PostImg
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
-            alt={title}
-            title={title}
-            className="u-photo"
-            width="1300"
-            height="450"
-            placeholder="blur"
-            blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
-          />
-        </Link>
+        <PostImg
+          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+          alt={title}
+          title={title}
+          className="u-photo"
+          width="1300"
+          height="450"
+          placeholder="blur"
+          blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+        />
       ) : (
         <Link
           as={`/articles/${slug}`}

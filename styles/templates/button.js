@@ -13,9 +13,9 @@ const Button = styled.button`
   border-radius: var(--border-radius);
   background: var(--secondary-color);
   cursor: pointer; 
-  color: var(--text-color);
+  color: var(--body-bg);
   :hover {
-    color: var(--body-bg);
+      color: var(--text-color);
   }
 `
 

@@ -944,11 +944,16 @@ export async function getCV() {
           role
           company
           location
-          date
           description
           longDescription
           tags
           url
+          startDate
+          endDate
+          logo {
+            url
+            formats
+          }
         }
         interests {
           title

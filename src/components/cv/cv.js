@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
+import { parseISO, format, intervalToDuration } from "date-fns"
 
 const Paper = styled.section`
   width: 210mm;
@@ -224,7 +225,8 @@ export default function CV({ data }) {
                 <TimelineCompany className="experience">
                   {role.company} | {role.description}
                 </TimelineCompany>
-                <TimelineDate>{role.date}</TimelineDate>
+                <TimelineDate>{format(parseISO(role.startDate), "yyyy/MM")} - {role.endDate ? format(parseISO(role.endDate), "yyyy/MM") : "Present"}
+                </TimelineDate>
                 <TimelineLongDescription>
                   <ReactMarkdown
                     className={markdownCSS["markdown"]}

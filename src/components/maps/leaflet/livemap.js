@@ -31,8 +31,8 @@ function LiveMap({ data }) {
           ],
           view: new View({
             center: transform([data.slice(-1)[0].lon, data.slice(-1)[0].lat], "EPSG:4326", "EPSG:3857"),
-            zoom: 12,
-            maxZoom: 15
+            zoom: 13,
+            maxZoom: 13
           }),
       });
       setMap(initialMap);

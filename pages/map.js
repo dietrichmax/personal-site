@@ -17,6 +17,7 @@ const MapContainer = styled.div`
   padding: var(--space);
   ${media.lessThan('medium')`
     padding: var(--space-sm);
+    height: 60vh;
   `}
 `
 

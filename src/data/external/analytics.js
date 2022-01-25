@@ -1,8 +1,4 @@
-import { parseISO, format } from "date-fns"
-import Axios from "axios"
-
 export async function fetchMatomoAPI(params) {
-  console.log(params.method)
   const options = {
     module: params.module || "API",
     method: params.method || "Actions.getPageUrls",

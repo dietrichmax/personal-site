@@ -64,8 +64,13 @@
 }
 
 .markdown code {
-  overflow: auto;
+  overflow: auto; 
   font-size: 1rem;
+}
+
+.markdown pre {
+  overflow: auto; 
+  margin-bottom: var(--space);
 }
 
 .markdown blockquote {

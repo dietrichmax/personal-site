@@ -6,7 +6,6 @@ import { parseISO, formatDistance } from "date-fns"
 
 export default function PostComments({ slug }) {
   const [comments, setComments] = useState([])
-  console.log(comments)
 
   useEffect(() => {
     async function fetchStrapiAPI(query, { variables } = {}) {

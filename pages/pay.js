@@ -70,7 +70,6 @@ export default function Feeds({ }) {
   const router = useRouter()
   const [amount, setAmount] = useState(10)
 
-console.log(amount)
   return (
     <>
       <Layout>

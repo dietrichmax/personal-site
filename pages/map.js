@@ -3,17 +3,17 @@ import SEO from 'src/components/seo/seo'
 import Title from 'src/components/title/page-title'
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { getLocationsCount } from "src/data/external/cms"
-import prisma from 'src/utils/prisma'
+import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from 'next/dynamic'
 
 const Livemap = dynamic(
-  () => import('src/components/maps/deckgl/livemap'),
+  () => import('src/components/maps/leaflet/livemap'),
 )
 
 const MapContainer = styled.div`
   margin: auto;
   max-width: 1200px;
+  height: 600px;
   padding: var(--space);
   ${media.lessThan('medium')`
     padding: var(--space-sm);
@@ -67,15 +67,8 @@ export default function Map({ locations, locationsCount } ) {
 
 export async function getStaticProps() {
   const locationsCount = (await getLocationsCount()) || []
-  
-  const locations = await prisma.locations.findMany({
-    select: {
-      lat: true,
-      lon: true,
-      alt: true,
-      vel: false,
-    },
-  });
+  const locations = (await getRecentLocationData()) || []
+
 
   return {
     revalidate:  86400,

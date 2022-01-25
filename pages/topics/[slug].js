@@ -100,7 +100,6 @@ export async function getStaticProps({ params }) {
   const notes = data.tags[0].notes
   /*const photos = data.tags[0].photos
   const links = data.tags[0].photos*/
-  console.log(notes)
   posts.map((post) => {
     allContent.push({
       post: post,

@@ -15,15 +15,19 @@ const SEO = ({
   jsonld,
 }) => {
   const [data, setData] = useState("")
+  
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }
 
   useEffect(() => {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
+    let isSubscribed = true;
     fetch("https://api.mxd.codes/cv", requestOptions)
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => isSubscribed ? setData(data) : null)
+    
+    return () => (isSubscribed = false)
   }, [])
 
   description = description

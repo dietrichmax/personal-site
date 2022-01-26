@@ -170,26 +170,23 @@ const AboutMeLink = styled.a`
 
 export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
-  const [loadedData, setLoadedData] = useState([])
   const [about, setAbout] = useState([])
   const [search, setSearch] = useState("")
 
-  const getData = () => {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://api.mxd.codes/posts?_sort=date:DESC", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setRecentPosts(data.slice(0, 4)))
-    fetch("https://api.mxd.codes/about", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setAbout(data))
-    setLoadedData(true)
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
   }
 
   useEffect(() => {
-    loadedData == false ? getData() : null
+    let isSubscribed = true;
+    fetch("https://api.mxd.codes/posts?_sort=date:DESC", requestOptions)
+      .then((response) => response.json())
+      .then((data) => isSubscribed ? setRecentPosts(data.slice(0, 4)) : null)
+    fetch("https://api.mxd.codes/about", requestOptions)
+      .then((response) => response.json())
+      .then((data) => isSubscribed ? setAbout(data) : null)
+    return () => (isSubscribed = false)
   }, [])
 
   const { data, error } = useSWR(

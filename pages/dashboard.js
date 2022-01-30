@@ -311,7 +311,7 @@ export default function Dashboard({
     const linesOfCode = codeStats.SUM.code
 
     const α = 0.7
-    const B = 100
+    const B = 500
     let pageViews = []
     let normalisedViews = []
     let recentViews = 0

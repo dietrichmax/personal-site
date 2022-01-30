@@ -53,8 +53,9 @@ const Content = styled.div`
 
 const PostTitleWrapper = styled.div`
   max-width: 1200px;
-  margin: var(--space-sm) auto var(--space-lg) 5rem;
+  margin: var(--space-sm) auto var(--space) 5rem;
   bottom: 0;
+  line-height: normal;
   ${media.lessThan('large')`
     position: relative;
     margin: var(--space-sm) var(--space);

@@ -57,7 +57,7 @@ export default function Map({ locations, locationsCount } ) {
       </MapContainer>
       <Description>
         Since 2021-03-02 i am tracking my current location. 
-        Right now there are {locationsCount} locations displayed on the map. 
+        Right now there are {parseFloat(locationsCount).toLocaleString('en')} locations displayed on the map. 
       </Description>
       <Description>
         If you are curious how that works have a look at the article <InternalLink href="/articles/constant-location-tracking-with-owntracks-strapi-and-visualizing-data-with-deckgl" title="How i constantly track my location and display a web-map with all the locations">How i constantly track my location and display a web-map with all the locations</InternalLink> where i am describing the details behind it.

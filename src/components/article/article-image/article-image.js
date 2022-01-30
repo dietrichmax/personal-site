@@ -79,16 +79,7 @@ export default function PostImage({ preview, previewLarge, postData }) {
           placeholder="blur"
           blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
         />
-      ) : (
-        <Link
-          as={`/articles/${slug}`}
-          href="/articles/[slug]"
-          aria-label={title}
-          passHref
-        >
-          <ImagePlaceholder title={title} />
-        </Link>
-      )}
+      ) : null}
     </>
   )
 }

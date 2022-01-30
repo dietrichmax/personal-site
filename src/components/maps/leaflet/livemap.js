@@ -22,7 +22,7 @@ function LiveMap({ data }) {
                 url: 'https://map.mxd.codes/hot/{z}/{x}/{y}.png',
                 attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>'
               }),
-              zIndex: 1 
+              zIndex: 1
             }),
             new TileLayer({
               source: new OSM(),

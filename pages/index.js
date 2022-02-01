@@ -179,14 +179,14 @@ export default function Index({ posts, cv }) {
             
           <>
             <SEO   
-              description={`Hi, I'm ${cv.title}. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
+              description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
              />
              <HeroWrapper className="h-card">
               <Hero>
                 <HCard />
                 <HeroDescription>
-                  <HeroFont>Hi, I’m </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>{cv.title}</HeroLinks>, {cv.timeline[0].role}, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
+                  <HeroFont>Hi, I’m </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, developer, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
                     I' am also a proud member of the <HeroLinks className="p-org h-card" href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>

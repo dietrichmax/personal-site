@@ -16,7 +16,7 @@ import Comments from "src/components/comments/comments"
 const WebMentionsWrapper = styled.section`
   border-top: 0.1rem solid var(--content-bg);
   margin: var(--space) 0;
-  padding-top: var(--space-sm);
+  padding: var(--space-sm) 0 var(--space-sm) 0;
 `
 
 const WebmentionsHeader = styled.div`
@@ -104,7 +104,7 @@ const Input = styled.input`
   margin: var(--space-sm) auto;
   width: 60%;
   border: 2px solid var(--gray-light);
-  background-color: var(--content-bg);
+  background-color: var(--body-bg);
   color: var(--text-color);
   :invalid {
     border: 1px solid red;

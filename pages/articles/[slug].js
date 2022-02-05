@@ -52,9 +52,7 @@ const Content = styled.div`
 `
 
 const PostTitleWrapper = styled.div`
-  max-width: 1200px;
-  margin: var(--space-sm) auto var(--space) auto;
-  padding: 0 var(--space);
+  padding: var(--space-sm) 0 0 var(--space) ;
   bottom: 0;
   line-height: normal;
   ${media.lessThan('large')`
@@ -76,8 +74,15 @@ const DateWrapper = styled.div`
 `
 
 const ArticleBackground = styled.div`
+  margin: auto auto var(--space-sm) auto;
+  max-width: 1200px;
 `
 
+const ArticleBackgroundColor = styled.div`
+  max-width: 900px;
+  margin: 0 auto var(--space-sm) 0;
+  background-color: var(--content-bg);
+`
 
 export default function Post({ post }) {  
 
@@ -116,31 +121,33 @@ export default function Post({ post }) {
               </PostImgWrapper>
 
               <ArticleBackground>
-                <PostTitleWrapper className="p-name" >  
-                  <PostTitle >{post.title}</PostTitle>
-                </PostTitleWrapper> 
+                <ArticleBackgroundColor>
+                  <PostTitleWrapper className="p-name" >  
+                    <PostTitle >{post.title}</PostTitle>
+                  </PostTitleWrapper> 
 
-                <PostWrapper>
-                <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                  <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
-
-
-                  <Content>
-      
-                    <PostBody content={post.content} />   
-
-                    {/*<Comments slug={post.slug} />
-                    <Feedback /> */}
-                    <WebActions slug={`/articles/${post.slug}`} />
-                    <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
-                    {/*<Likes />*/}
-                    <Webmentions slug={`/articles/${post.slug}`} />
+                  <PostWrapper>
+                  <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
+                    <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
 
+                    <Content>
+        
+                      <PostBody content={post.content} />   
 
-                  </Content>
+                      {/*<Comments slug={post.slug} />
+                      <Feedback /> */}
+                      <WebActions slug={`/articles/${post.slug}`} />
+                      <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
+                      {/*<Likes />*/}
+                      <Webmentions slug={`/articles/${post.slug}`} />
 
-                </PostWrapper>
+
+
+                    </Content>
+
+                  </PostWrapper>
+                </ArticleBackgroundColor>
               </ArticleBackground>
 
             </article>

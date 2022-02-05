@@ -26,6 +26,7 @@ const NoteWrapper = styled.div`
 
 const NotesItem = styled.div`
   display: flex;
+  max-width: 900px;
   flex-direction: column;
   justify-content: space-between;
 `
@@ -43,7 +44,16 @@ const Hidden = styled.a`
   display: none;
 `
 
+const NoteBackground = styled.div`
+  margin: auto auto var(--space-sm) auto;
+  max-width: 1200px;
+`
 
+const NoteBackgroundColor = styled.div`
+  max-width: 900px;
+  margin: 0 auto var(--space-sm) 0;
+  background-color: var(--content-bg);
+`
 
 export default function Note({ note }) {
   const router = useRouter()
@@ -75,7 +85,6 @@ export default function Note({ note }) {
                       <HCard /> 
                   </div>
                 </Hidden>            
-                 
                 <NoteTitle>{note.title}</NoteTitle>
                 
                 <ContentWrapper className="e-content">

@@ -90,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
     --space: 2rem;
     --space-sm: 1rem;
     --space-lg: 4rem;
+    --box-shadow: rgba(0, 0, 0, 0.13) 0px 1.6px 3.6px 0px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
   }
 
 `

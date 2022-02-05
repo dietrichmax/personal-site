@@ -78,12 +78,12 @@ const GlobalStyle = createGlobalStyle`
     --content-bg: ${props => props.theme.contentBg};
     --gray: #c9d1d9;
     --gap: var(--space-sm);
-    --border: var(--thirdy-coor);
+    --border: var(--thirdy-color);
     --border-radius: 4px;
     --primary-font: sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
-    --link-color-hover: var(--primary-color);
+    --link-color-hover: ${props => props.theme.primaryColor};
     --text-color: ${props => props.theme.textColor};
     --width-container: 1200px;
     --content-width: 670px;

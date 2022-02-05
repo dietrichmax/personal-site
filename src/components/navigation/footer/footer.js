@@ -118,15 +118,12 @@ const FooterItem = styled.li`
   margin-bottom: var(--space-sm);
   transition: 0.2s;
   :hover {
-    color: var(--thirdy-color);
+    color: var(--secondary-color);
     cursor: pointer;
   }
 `
 
 const FooterItemLink = styled(Link)`
-  :hover {
-    color: var(--secondary-color);
-  }
 `
 
 const FooterNotice = styled.p`

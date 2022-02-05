@@ -9,7 +9,7 @@ const Card = styled.li`
   border-radius: 6px;
   overflow: hidden;
   background-color: var(--content-bg);  
-  box-shadow: 0 2px 5px rgba(0,0,0,.14);
+  box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.13),0 .3px .9px 0 rgba(0,0,0,0.11);
 `
 
 export { Card }

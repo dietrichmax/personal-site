@@ -359,7 +359,7 @@ export default function Footer() {
           <Link href="/">
             <a title={`Max Dietrich - ${!data ? "" : data.timeline[0].role}`}>
               {" "}
-              Max Dietrich - {!data ? "" : data.timeline[0].role}
+              Max Dietrich
             </a>
           </Link>
           <span> • </span>

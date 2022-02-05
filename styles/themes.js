@@ -1,9 +1,9 @@
 export const lightTheme = {
-    primaryColor: "#dbe7ff",
-    secondaryColor: "#6680CA",
-    thirdyColor: "#A1B4EC",
-    bodyBg: '#fff',
-    contentBg: "#ebeef2",
+    primaryColor: "#112D4E",
+    secondaryColor: "#3F72AF",
+    thirdyColor: "#DBE2EF",
+    bodyBg: '#f2f2f2',
+    contentBg: "#fff",
     textColor: "#171717"
 }
 export const darkTheme = {

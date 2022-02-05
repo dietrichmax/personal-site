@@ -23,6 +23,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
   background-color: var(--primary-color);
+  color: ${(props) => (props.color ? `${props.color}` : "color: var(--content-bg);")};
   `
 const Hero = styled.div`   
   display: flex;
@@ -172,7 +173,7 @@ export default function Index({ posts, cv }) {
 
   return (
     <>
-      <Layout color="var(--text-color)">
+      <Layout color="var(--body-bg)">
         {router.isFallback ? (
             <PageTitle>{config.loading}</PageTitle>
           ) : (
@@ -182,11 +183,11 @@ export default function Index({ posts, cv }) {
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
              />
-             <HeroWrapper className="h-card">
+             <HeroWrapper className="h-card" color="var(--body-bg)">
               <Hero>
                 <HCard />
                 <HeroDescription>
-                  <HeroFont>Hi, I’m </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, developer, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
+                  <HeroFont>Hi, I'm </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, developer, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
                     I' am also a proud member of the <HeroLinks className="p-org h-card" href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
                     <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
                 </HeroDescription>

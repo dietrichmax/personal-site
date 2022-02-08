@@ -83,6 +83,9 @@ const ArticleBackgroundColor = styled.div`
   margin: 0 auto var(--space-sm) 0;
   background-color: var(--content-bg);
   box-shadow: var(--box-shadow);
+  ${media.lessThan('large')`
+    padding-top: calc(var(--space-sm)*0.125);
+  `}
 `
 
 export default function Post({ post }) {  

@@ -151,7 +151,6 @@ export async function getStaticProps() {
 
 
   return {
-    revalidate: 900,
     props: { 
       weather: weather.data,
       address: address.data,

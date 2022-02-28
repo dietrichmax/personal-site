@@ -114,7 +114,7 @@ export default function Post({ post }) {
               articleData={post}
             />
             <article ref={target} className="h-entry">
-              {/*<img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />*/}
+              <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
              
               <HCard /> 
               

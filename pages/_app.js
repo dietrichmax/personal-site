@@ -18,7 +18,10 @@ class MyApp extends App {
   
   componentDidMount() {
     if (window.location.href.includes("mxd.codes")) {
-      init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID }), 
+      init({ 
+        url: "https://analytics.mxd.codes", 
+        siteId: 1
+      }), 
       window._paq.push(['enableHeartBeatTimer']);
     }
   }

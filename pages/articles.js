@@ -23,7 +23,7 @@ const PostsGrid = styled.ol`
   list-style: none;
   padding-inline-start: 0;
   display: grid;
-  gap: var(--space-lg);
+  gap: var(--space);
   grid-template-columns: repeat(2, minmax(0px, 1fr));
   ${media.lessThan('medium')`
     padding-left: 0;

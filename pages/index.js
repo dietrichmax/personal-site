@@ -93,7 +93,7 @@ const RecentPosts= styled.ol`
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
   grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: var(--space-lg);
+  gap: var(--space);
   list-style: none;
   ${media.lessThan('medium')`
     padding-left: var(--space-sm);

@@ -91,8 +91,17 @@ export default function Now({ weather, address, content, now  }) {
     }
   };
 
-  const town = address.address.city ? address.address.city : address.address.village
-  
+
+  const town = (address) => {  
+    if (address.city) {
+      return address.city
+    } else if (address.village) {
+      return address.village
+    } else if (address.county) {
+      return address.county
+    }
+  }
+
   return (
     <>
       <Layout>
@@ -108,7 +117,7 @@ export default function Now({ weather, address, content, now  }) {
             />
             
             <PageTitle>Now</PageTitle>
-            <SubTitle>Right now i am in {`${address.address.city}, ${address.address.state}, ${address.address.country}`}</SubTitle>
+            <SubTitle>Right now i am in {`${town(address.address)}, ${address.address.state}, ${address.address.country}`}</SubTitle>
 
             <Container >
 
@@ -148,7 +157,6 @@ export async function getServerSideProps() {
 
   const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`)
   const address = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[0].lon}&format=json&zoom=10`)
-
 
   return {
     props: { 

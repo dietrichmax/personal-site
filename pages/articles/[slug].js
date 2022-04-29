@@ -24,7 +24,6 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 //import Subscribe from "src/components/social/subscribe/subscribe"
-import Cookie from "js-cookie"
 
 
 // components for posts
@@ -114,8 +113,7 @@ export default function Post({ post }) {
               articleData={post}
             />
             <article ref={target} className="h-entry">
-            {/*{Cookie.get("consent") ? <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" /> : null}*/}
-              
+              <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
              
               <HCard /> 
               

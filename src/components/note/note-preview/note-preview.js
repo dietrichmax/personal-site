@@ -30,7 +30,7 @@ export default function NotePreview({ note }) {
         <a className="u-url" rel="bookmark" title={note.title}>
           <Hidden className="webmention meta">
             <HCard />
-            <span className="webmention type">
+            <div className="webmention type">
               {note.ofUrl && note.category == "Like" ? (
                 <a className="u-like-of" href={note.ofUrl} />
               ) : null}
@@ -40,7 +40,7 @@ export default function NotePreview({ note }) {
               {note.ofUrl && note.category == "Repost" ? (
                 <a className="u-repost-of" href={note.ofUrl} />
               ) : null}
-            </span>
+            </div>
           </Hidden>
 
           <NotesContent className="e-content">

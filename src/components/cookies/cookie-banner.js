@@ -60,6 +60,7 @@ const CookieInnerContainer = styled.div`
   white-space: normal;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   position: relative;
+  border: 1px solid var(--body-bg);
   vertical-align: middle;
   ${media.lessThan('medium')`
     width: 90%;
@@ -326,7 +327,7 @@ class CookieBanner extends Component {
 
               <ButtonContainer>
                 <Button onClick={() => { this.accept() }}>Accept required and optional cookies</Button>
-                <Button onClick={() => { this.decline() }} backgroundColor="var(--body-bg)" color="#70757a" >Only Accept required cookies</Button>
+                <Button onClick={() => { this.decline() }} backgroundColor="var(--content-bg)" color="#70757a" >Only Accept required cookies</Button>
               </ButtonContainer>
 
               </CookieBody>

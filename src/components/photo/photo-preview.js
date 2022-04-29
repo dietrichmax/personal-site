@@ -82,17 +82,19 @@ export default function PhotoPreview({ photo }) {
       <PreviewContainer>
         <PhotoWrapper>
           <Link href={slug} className="u-url" passHref>
-            <Photo
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
-                photo.photo[0].formats.content
-                  ? photo.photo[0].formats.content.url
-                  : photo.photo[0].url
-              }`}
-              alt={`Photo of ${photo.title}`}
-              title={`Photo of "${photo.title}"`}
-              layout="fill"
-              className="u-photo"
-            />
+            <a>
+              <Photo
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
+                  photo.photo[0].formats.content
+                    ? photo.photo[0].formats.content.url
+                    : photo.photo[0].url
+                }`}
+                alt={`Photo of ${photo.title}`}
+                title={`Photo of "${photo.title}"`}
+                layout="fill"
+                className="u-photo"
+              />
+            </a>
           </Link>
         </PhotoWrapper>
         {/*<PhotoContainer>

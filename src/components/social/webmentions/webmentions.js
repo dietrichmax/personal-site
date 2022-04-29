@@ -180,6 +180,7 @@ export default function Webmentions({ slug, preview }) {
   const [sourceUrl, setSourceUrl] = useState("")
   const [views, setViews] = useState(0)
   const [status, setStatus] = useState({})
+  const [gotData, setGotData] = useState(false)
 
   const url = config.siteUrl + slug
   const pageLimit = 1000
@@ -259,17 +260,18 @@ export default function Webmentions({ slug, preview }) {
     sendData()
   }
 
+  async function getData() {
+    fetch( `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`)
+      .then((response) => response.json())
+      .then((result) => {
+        setWebmentions(getWebmentionsForUrl(result.children, url))
+      })
+    setGotData(true)
+  }
+
   useEffect(() => {
-    async function getData() {
-      fetch(
-        `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`
-      )
-        .then((response) => response.json())
-        .then((result) => {
-          setWebmentions(getWebmentionsForUrl(result.children, url))
-        })
-    }
-    getData()
+    
+    gotData ? getData() : null
     /*async function getViews() {
       fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
       .then((response) => response.json())

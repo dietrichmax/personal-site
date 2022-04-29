@@ -55,13 +55,12 @@ const CookieInnerContainer = styled.div`
   border-radius: 16px;
   display: inline-block;
   z-index: 9999;
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   text-align: left;
   white-space: normal;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
   position: relative;
   vertical-align: middle;
-
   ${media.lessThan('medium')`
     width: 90%;
   `}
@@ -158,6 +157,10 @@ const ButtonContainer = styled.div`
   margin: var(--space);
   display: flex;
   justify-content: space-between;
+  ${media.lessThan('medium')`
+    flex-direction: column;
+    gap: var(--space-sm);
+  `}
 `
 
 class CookieBanner extends Component {

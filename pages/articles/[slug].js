@@ -20,10 +20,11 @@ import PostTags from 'src/components/tags/tags'
 import { parseISO, format } from 'date-fns'
 //import Comments from "@/components/comments/comments"
 import HCard from "src/components/microformats/h-card"
-import Feedback from "src/components/social/feedback/feedback"
+//import Feedback from "src/components/social/feedback/feedback"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
-import Subscribe from "src/components/social/subscribe/subscribe"
+//import Subscribe from "src/components/social/subscribe/subscribe"
+import Cookie from "js-cookie"
 
 
 // components for posts
@@ -113,7 +114,8 @@ export default function Post({ post }) {
               articleData={post}
             />
             <article ref={target} className="h-entry">
-              <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" />
+            {/*{Cookie.get("consent") ? <img src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`} width="1" height="1" alt="" /> : null}*/}
+              
              
               <HCard /> 
               

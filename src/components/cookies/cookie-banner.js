@@ -4,10 +4,10 @@ import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import Image from "next/image"
-import Script from 'next/script'
+//import Script from 'next/script'
 import Logo from "@/components/logo/logo"
 import { Button }  from "@/styles/templates/button"
-import Head from "next/head"
+//import Head from "next/head"
 import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
 import config from "src/data/internal/SiteConfig"
@@ -52,7 +52,7 @@ const CookieInnerContainer = styled.div`
   width: var(--content-width);
   height: auto;
   max-width: none;   
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   display: inline-block;
   z-index: 9999;
   background-color: var(--content-bg);
@@ -176,22 +176,22 @@ class CookieBanner extends Component {
     const { debug } = this.props
     // if cookie undefined or debug
     if (Cookie.get("consent") === undefined || debug) {
+      document.body.style.overflow = 'hidden';
       this.setState({ visible: true })
     }
   }
 
   componentDidUpdate() {
-    document.body.style.overflow = 'hidden';
     if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = 'scroll'
     }
   }
 
   accept = () => {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
+    document.body.style.overflow = 'scroll'
     this.setState({ visible: false })
     push(["trackEvent", "consent", "true"]);
-    document.body.style.overflow = 'scroll';
     /*return (
       <Head>
         <Script
@@ -216,6 +216,7 @@ class CookieBanner extends Component {
 
   decline = () => {
     Cookie.set("consent", false, { sameSite: "strict", expires: 365 })
+    document.body.style.overflow = 'scroll'
     this.setState({ visible: false })
     push(["trackEvent", "consent", "false"]);
   }

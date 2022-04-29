@@ -5,6 +5,7 @@ import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "src/data/internal/SiteConfig"
 import Providers from 'src/utils/providers';
+import Cookie from "@/components/cookies/cookie-banner"
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -98,7 +99,8 @@ class MyApp extends App {
           */}
         </Head>
         <Providers>
-          <GlobalStyle/>
+          <GlobalStyle/> 
+          <Cookie/> 
           <Component {...pageProps} />
         </Providers>
       </>

@@ -11,9 +11,9 @@ const Button = styled.button`
   padding: .5rem 1.25rem;
   width: 20%;
   border-radius: var(--border-radius);
-  background: var(--secondary-color);
+  color:  ${props => (props.color ? `${props.color}`  : "var(--body-bg)")};
+  background:  ${props => (props.backgroundColor ? `${props.backgroundColor}`  : "var(--secondary-color)")};
   cursor: pointer; 
-  color: var(--body-bg);
   :hover {
       color: var(--text-color);
   }

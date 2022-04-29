@@ -1,73 +1,163 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { Component } from "react"
 import Cookie from "js-cookie"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
-import ReactGA from "react-ga"
-//import { useAnalytics } from "../../lib/useGA";
-import Router from "next/router"
+import Image from "next/image"
+import Script from 'next/script'
+import Logo from "@/components/logo/logo"
+import { Button }  from "@/styles/templates/button"
+import Head from "next/head"
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
+import { SiStrava } from "react-icons/si"
+import config from "src/data/internal/SiteConfig"
+import { push } from "@socialgouv/matomo-next";
 
-const Background = styled.div`
+const Background = styled.div`    
   position: fixed;
+  z-index: 9997;
+  right: 0;
+  bottom: -200px;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.7;
-  z-index: 1000;
-  background-color: #00000054;
+  background-color: rgba(0,0,0,0.5);
 `
 
-const Wrapper = styled.div`
-  position: sticky;
+const CookieContainer = styled.div`    
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  vertical-align: middle;
+  white-space: nowrap;
+  max-height: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 14px;
+  overflow-y: scroll;
+  :after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+`
+
+const CookieInnerContainer = styled.div`    
+  width: var(--content-width);
+  height: auto;
+  max-width: none;   
+  border-radius: 16px;
+  display: inline-block;
+  z-index: 9999;
+  background-color: var(--body-bg);
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+  position: relative;
+  vertical-align: middle;
+
+  ${media.lessThan('medium')`
+    width: 90%;
+  `}
+`
+
+const Wrapper = styled.div`  
+  max-height: 100%;
+  height: auto;
+  max-width: none;
+  text-align: center;
+  border-radius: 16px;
+  display: inline-block;
+  text-align: left;
+  white-space: normal;
+`
+
+const CookieHeader = styled.div`
+  padding: var(--space);
   display: flex;
   justify-content: space-between;
-  left: 0;
-  bottom: 0;
-  z-index: 1000;
-  background-color: #fff;
-  padding: calc(var(--space-lg) * 1.5);
-  border-top: 3px solid var(--primary-color);
-  ${media.lessThan("large")`
-        display: block;
-        text-align: center;
-    `}
 `
 
-const CookieBannerText = styled.p`
-  margin-top: calc(var(--space-sm) * 0.5);
-  font-size: 1.5rem;
+
+const CookieBody = styled.div`
 `
 
-const PrivacyPolicyLink = styled.a`
-  cursor: pointer;
-  color: var(--gray-dark);
-  border-bottom: 1px solid var(--primary-color);
-  :hover {
-    border-bottom: 1px solid var(--border-light);
-  }
+const CookieContentContainer = styled.div`
+
 `
 
-const AcceptButton = styled.button`
-  background-color: var(--primary-color);
-  padding: var(--space-sm) calc(var(--space-lg) * 3);
-  margin-left: var(--space-lg);
-  border: medium none;
-  color: ##fff;
-  cursor: pointer;
-  font-weight: 700;
+const CookieContentBlock = styled.div`
+  margin-bottom: var(--space-sm);
+  margin-top: var(--space);
+`
+
+const CookieTextList = styled.ul`
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 1rem;
+`
+
+const CookieTextItem = styled.li`
+  margin: var(--space-sm) 0;
+`
+
+const CookieBannerText = styled.div`
+  padding: 0 var(--space);
+`
+
+const CookieHeadline = styled.h1`
   text-align: center;
-  color: #fff;
-  font-size: 1.7rem;
-  transition: 0.3s;
-  :hover {
-    color: var(--primary-color);
-    background-color: #fff;
-  }
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: var(--space);
+`
 
-  ${media.lessThan("large")`
-        margin: calc(var(--space-lg)*1.5) auto var(--space) auto;
-    `}
+const Text = styled.div`
+  margin-bottom: var(--space-sm);
+  margin-top: var(--space);
+`
+
+const CookieLink = styled.a`
+  border-bottom: 1px solid var(--text-color);
+  :hover {
+    border-bottom: none;
+  }
+  cursor: pointer;
+  margin-right: var(--space-sm);
+`
+
+const TextLink = styled.a`
+  border-bottom: 1px solid var(--text-color);
+  :hover {
+    border-bottom: none;
+  }
+`
+
+const List = styled.ol`
+  list-style: none;
+  padding-inline-start: 0;
+  display: flex;
+`
+
+const Socialtem = styled.li`
+  margin: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+  transition: 0.2s;
+  :hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+`
+
+const ButtonContainer = styled.div`
+  margin: var(--space);
+  display: flex;
+  justify-content: space-between;
 `
 
 class CookieBanner extends Component {
@@ -81,44 +171,164 @@ class CookieBanner extends Component {
 
   componentDidMount() {
     const { debug } = this.props
-
     // if cookie undefined or debug
-    if (Cookie.get("consentGiven") === undefined || debug) {
+    if (Cookie.get("consent") === undefined || debug) {
       this.setState({ visible: true })
     }
   }
 
+  componentDidUpdate() {
+    document.body.style.overflow = 'hidden';
+    if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
+      document.body.style.overflow = 'scroll';
+    }
+  }
+
   accept = () => {
-    Cookie.set("consentGiven", true, { sameSite: "strict", expires: 365 })
+    Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
     this.setState({ visible: false })
+    push(["trackEvent", "consent", "true"]);
+    document.body.style.overflow = 'scroll';
+    /*return (
+      <Head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+        />
+        <Script 
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          `,
+          }}
+        />
+      </Head>
+    )*/
+  }
+
+  decline = () => {
+    Cookie.set("consent", false, { sameSite: "strict", expires: 365 })
+    this.setState({ visible: false })
+    push(["trackEvent", "consent", "false"]);
   }
 
   render() {
-    if (!this.state.visible) {
+    if (!this.state.visible || window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
       return null
     }
 
     return (
       <>
         <Background />
-        <Wrapper>
-          <CookieBannerText>
-            Diese Webseite verwendet Cookies zur Analyse und Verbesserung der
-            Webseite. Weitere Informationen zum Einsatz von Cookies findest du
-            in der der {``}
-            <Link href="/datenschutz">
-              <PrivacyPolicyLink>Datenschutzerklärung</PrivacyPolicyLink>
-            </Link>
-            . 🚀
-          </CookieBannerText>
-          <AcceptButton
-            onClick={() => {
-              this.accept()
-            }}
-          >
-            OK
-          </AcceptButton>
-        </Wrapper>
+        <CookieContainer>
+          <CookieInnerContainer>
+            <Wrapper>
+              <CookieHeader>
+                <Logo/>
+                <Image
+                  src="/logos/android/android-launchericon-48-48.png"
+                  width="40"
+                  height="40"
+                  title="Max Dietrich"
+                  alt="Photo of Max Dietrich"
+                  className="profile u-photo"
+                />
+              </CookieHeader>
+              <CookieBody>
+
+              <CookieBannerText>
+                <CookieHeadline>Hi, welcome on mxd.codes 👋</CookieHeadline>
+                <CookieContentContainer>
+                  <CookieContentBlock>
+                    You can easily support me by accepting cookies. These cookies will help with the following:
+                    <CookieTextList>
+                      <CookieTextItem>
+                        Collect audience interaction data and site statistics
+                      </CookieTextItem>
+                      <CookieTextItem>
+                        Deliver advertisements and measure the effectiveness of advertisements
+                      </CookieTextItem>
+                      <CookieTextItem>
+                        Show personalized content (depending on your settings)
+                      </CookieTextItem>
+                    </CookieTextList>
+                  </CookieContentBlock>
+                  <Text>
+                    <p>
+                      If you do not want to share your data with third parties but still want to support me you can do it via Paypal {' '}
+                      <TextLink href="/pay">mxd.codes/pay</TextLink> or follow me on my socials:
+                      <List>
+                        <Socialtem>
+                          <a href={config.socials.twitter} title="@mxdietrich on Twitter">
+                            <FaTwitter />
+                          </a>
+                        </Socialtem>
+                        <Socialtem>
+                          <a
+                            href={config.socials.instagram}
+                            title="_maxdietrich on Instagram"
+                          >
+                            <FaInstagram />
+                          </a>
+                        </Socialtem>
+                        <Socialtem>
+                          <a href={config.socials.github} title="DaTurboD on GitHub">
+                            <FaGithub />
+                          </a>
+                        </Socialtem>
+                        <Socialtem>
+                          <a href={config.socials.strava} title="Max Dietrich on Strava">
+                            <SiStrava />
+                          </a>
+                        </Socialtem>
+                        <Socialtem>
+                          <a
+                            href={config.socials.xing}
+                            title="Max Dietrich on Xing"
+                          >
+                            <FaXing />
+                          </a>
+                        </Socialtem>
+                        <Socialtem>
+                          <a
+                            href={config.socials.linkedin}
+                            title="Max Dietrich on Linkedin"
+                          >
+                            <FaLinkedin />
+                          </a>
+                        </Socialtem>
+                      </List>
+                    </p>
+                    <p>
+                      For more information about cookies and how they are used please have a look at the Privacy Policy.
+                    </p>
+                  </Text>
+
+                </CookieContentContainer>
+
+                <Link href="/privacy-policy">
+                  <CookieLink>Privacy Policy</CookieLink>
+                </Link>
+                <Link href="/site-notice">
+                  <CookieLink>Site Notice</CookieLink>
+                </Link>
+
+              </CookieBannerText>
+
+              <ButtonContainer>
+                <Button onClick={() => { this.accept() }}>Accept required and optional cookies</Button>
+                <Button onClick={() => { this.decline() }} backgroundColor="var(--body-bg)" color="#70757a" >Only Accept required cookies</Button>
+              </ButtonContainer>
+
+              </CookieBody>
+            </Wrapper>
+          </CookieInnerContainer>
+        </CookieContainer>
       </>
     )
   }

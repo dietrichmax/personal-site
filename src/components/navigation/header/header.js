@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import config from "@/src/data/internal/SiteConfig";
 import media from 'styled-media-query';
 import React, { useEffect }  from "react";
 import Nav from "@/components/navigation/nav"
 import useSWR from 'swr'
 import fetcher from "@/src/utils/fetcher"
-import Image from "next/image"
+import Logo from "@/components/logo/logo"
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -40,22 +39,6 @@ const MainNav = styled.div`
   `}
 `
 
-const Logo = styled.div`
-  grid-column: span 2 / span 2;
-  display: inline-block;
-  line-height: 1.25;
-  margin: 0;
-  display: flex;
-  ${media.lessThan('small')`
-    font-size: 1rem;
-  `}
-`
-const LogoName = styled.span`
-  font-weight: 700;
-`
-const LogoDescription = styled.span`
-
-`
 export default function Header({ color }) {
 
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`, fetcher)
@@ -69,15 +52,7 @@ export default function Header({ color }) {
 
         <MainNav itemtype="https://schema.org/SiteNavigationElement">
 
-          <Logo>
-            <Link rel="home" href="/" passHref>
-              <a className="u-url" rel="me" title="Max Dietrich">
-                <LogoName className="p-name" >Max Dietrich</LogoName>
-                <br/>
-                <LogoDescription>Geospatial Developer</LogoDescription>
-              </a>
-            </Link>
-          </Logo>
+          <Logo />
 
           <Nav color={color} />
           

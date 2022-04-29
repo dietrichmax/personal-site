@@ -68,7 +68,7 @@ const ServiceName = styled.p`
 `
 export default function Feeds({ }) {
   const router = useRouter()
-  const [amount, setAmount] = useState(10)
+  const [amount, setAmount] = useState(3)
 
   return (
     <>
@@ -104,7 +104,7 @@ export default function Feeds({ }) {
                         type="number"
                         name="amount"
                         id="amount"
-                        placeholder="10.00"
+                        placeholder="3.00"
                         onChange={(e) => setAmount(e.target.value)}
                         style={{width:'50%',margin:'calc(var(--space-sm)*0.75) 0',fontSize:'1.25rem'}}
                     /> €

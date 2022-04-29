@@ -183,6 +183,10 @@ class CookieBanner extends Component {
   }
 
   componentDidUpdate() {
+    const { debug } = this.props
+    if (Cookie.get("consent") === undefined || debug) {
+      document.body.style.overflow = 'hidden';
+    }
     if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
       document.body.style.overflow = 'scroll'
     }
@@ -327,7 +331,7 @@ class CookieBanner extends Component {
 
               <ButtonContainer>
                 <Button onClick={() => { this.accept() }}>Accept required and optional cookies</Button>
-                <Button onClick={() => { this.decline() }} backgroundColor="var(--content-bg)" color="#70757a" >Only Accept required cookies</Button>
+                <Button onClick={() => { this.decline() }} backgroundColor="var(--content-bg)" color="#70757a" >Accept required cookies</Button>
               </ButtonContainer>
 
               </CookieBody>

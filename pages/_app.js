@@ -93,8 +93,9 @@ class MyApp extends App {
           {/*Manifest.json  */}
           <link href="/manifest.json" rel="manifest" />
 
-          {/*Adsense  */}
+          {/*Adsense  
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0037698828864449" crossorigin="anonymous"></script>
+          */}
         </Head>
         <Providers>
           <GlobalStyle/>

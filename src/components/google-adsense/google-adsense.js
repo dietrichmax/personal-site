@@ -9,10 +9,11 @@ export function enableGoogleAdsense () {
     scriptElement.defer
     scriptElement.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`
     head.appendChild(scriptElement);
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
 }
 
 export function LoadGoogleAdsense({client, slot}) {
-    const loadAds = () => {
+    /*const loadAds = () => {
         try {
           if (typeof window !== "undefined") {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -24,7 +25,7 @@ export function LoadGoogleAdsense({client, slot}) {
     
       useEffect(() => {
         loadAds();
-      }, []);
+      }, []);*/
     
       return (
         <ins

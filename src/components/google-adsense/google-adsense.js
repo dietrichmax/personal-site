@@ -10,27 +10,22 @@ export function enableGoogleAdsense () {
     scriptElement.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`
     scriptElement.crossOrigin = "anonymous"
     head.appendChild(scriptElement);
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
 }
 
-export function GoogleAdsenseContainer({client, slot}) {
-      return (
-        <>
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client={client}
-            data-ad-slot={slot}
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-          <Script
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            `,
-            }}
-          />
-        </>
-      );     
+export function GoogleAdsenseContainer ( { client, slot }) {
+
+  return (
+    <div key={slot}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
+  );     
 }

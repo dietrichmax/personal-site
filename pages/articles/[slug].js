@@ -136,7 +136,7 @@ export default function Post({ post }) {
 
 
                     <Content>
-                      <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793" />
+                      <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
                       <PostBody content={post.content} />   
 
                       {/*<Comments slug={post.slug} />

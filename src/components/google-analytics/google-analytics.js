@@ -41,4 +41,8 @@ export function enableGoogleAnalytics () {
         trackGoogleAnalytics()
       }
     })
-  }
+}
+
+export function trackEventGoogleAnalytics (params) {
+  window.gtag('send', 'event', "consent", true)
+}

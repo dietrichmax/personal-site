@@ -83,6 +83,7 @@ const ArticleBackgroundColor = styled.div`
   max-width: 900px;
   margin: 0 auto var(--space-sm) 0;
   background-color: var(--content-bg);
+  box-shadow: var(--box-shadow);
   ${media.lessThan('large')`
     padding-top: calc(var(--space-sm)*0.125);
   `}

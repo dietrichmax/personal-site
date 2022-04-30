@@ -19,12 +19,12 @@ const BlogPageContainer = styled.div`
 `
 
 const PostsGrid = styled.ol`
-  grid-column: span 2/span 2;
+  grid-column: span 3/span 3;
   list-style: none;
   padding-inline-start: 0;
   display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
   ${media.lessThan('medium')`
     padding-left: 0;
     grid-template-columns: repeat(1, minmax(0px, 1fr));
@@ -75,11 +75,11 @@ export default function Blog({ allPosts, allTags }) {
                     />
                   ))}
                 </PostsGrid>
-                <TagsGrid>
+                {/*<TagsGrid>
                   <Sticky>
                     <Tags tags={allTags} block />
                   </Sticky>
-                </TagsGrid>
+                  </TagsGrid>*/}
               </Grid>
 
             </BlogPageContainer>

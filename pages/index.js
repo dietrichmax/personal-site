@@ -288,7 +288,7 @@ export async function getStaticProps() {
   allPhotos.map((photo) => {
     allContent.push({
       photo: photo,
-      date: photo.created_at,
+      date: photo.published_at,
       type: "photo"
     })
   })

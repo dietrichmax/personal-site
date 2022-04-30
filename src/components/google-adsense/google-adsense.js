@@ -1,6 +1,6 @@
-import { useEffect } from "react"
-import { default as Router } from "next/router";
-import Script from 'next/script'
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { setConstantValue } from 'typescript';
 
 export function enableGoogleAdsense () {
     const head = document.getElementsByTagName('head')[0]
@@ -13,9 +13,23 @@ export function enableGoogleAdsense () {
 }
 
 export function GoogleAdsenseContainer ( { client, slot }) {
-  
+  const [adLoaded, setaAdLoaded] = useState(false)
+
+  useEffect(() => {
+    if (!adLoaded) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      setaAdLoaded(true)
+    }
+  }, []);
+
+  const AdLabel = styled.span`
+    font-size: 12px;
+  `
+
   return (
-    <div>
+    <div 
+      style={{textAlign: 'left',overflow: 'hidden'}}
+    >
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -24,14 +38,7 @@ export function GoogleAdsenseContainer ( { client, slot }) {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.adsbygoogle = window.adsbygoogle || []
-          window.adsbygoogle.push({})
-        `,
-        }}
-      />
+
     </div>
   );     
 }

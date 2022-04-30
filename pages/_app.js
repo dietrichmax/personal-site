@@ -6,6 +6,7 @@ import GlobalStyle from '@/styles/global.js'
 import config from "src/data/internal/SiteConfig"
 import Providers from 'src/utils/providers';
 import Cookie from "@/components/cookies/cookie-banner"
+import Script from 'next/script'
 
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -98,6 +99,40 @@ class MyApp extends App {
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0037698828864449" crossorigin="anonymous"></script>
           */}
         </Head>
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            // Define dataLayer and the gtag function.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            // Default ad_storage to 'denied' as a placeholder
+            // Determine actual values based on your own requirements
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+            });
+          `,
+          }}
+        />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+        />
+        
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+            
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          `,
+          }}
+        />
         <Providers>
           <GlobalStyle/> 
           <Cookie/> 

@@ -196,6 +196,10 @@ class CookieBanner extends Component {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
     document.body.style.overflow = 'scroll'
     this.setState({ visible: false })
+    window.gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'analytics_storage': 'granted',
+    });
     push(["trackEvent", "consent", "true"]);
     /*return (
       <Head>

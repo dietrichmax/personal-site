@@ -24,6 +24,7 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 //import Subscribe from "src/components/social/subscribe/subscribe"
+import { LoadGoogleAdsense } from "@/components/google-adsense/google-adsense"
 
 
 // components for posts
@@ -135,14 +136,7 @@ export default function Post({ post }) {
 
 
                     <Content>
-                      <ins 
-                        class="adsbygoogle"
-                        style={{display:'block'}}
-                        data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_ID}
-                        data-ad-slot="4628674793"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true" 
-                      />
+                      <LoadGoogleAdsense client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793" />
                       <PostBody content={post.content} />   
 
                       {/*<Comments slug={post.slug} />

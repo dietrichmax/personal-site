@@ -9,6 +9,8 @@ import Logo from "@/components/logo/logo"
 import { Button }  from "@/styles/templates/button"
 //import Head from "next/head"
 import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
+import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
+import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import { SiStrava } from "react-icons/si"
 import config from "src/data/internal/SiteConfig"
 import { push } from "@socialgouv/matomo-next";
@@ -186,44 +188,27 @@ class CookieBanner extends Component {
 
   componentDidUpdate() {
     const { debug } = this.props
-    if (Cookie.get("consent") === undefined || debug) {
-      document.body.style.overflow = 'hidden';
-    } else if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
+    if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
       document.body.style.overflow = 'scroll'
+    } else if (Cookie.get("consent") === undefined || debug) {
+      document.body.style.overflow = 'hidden';
     }
   }
 
-  addGoogleAnalytics = () => {
-    const head = document.getElementsByTagName('head')[0]
-    const script = document.createElement(`script`)
-    script.type = `text/javascript`
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`
-    head.appendChild(script);
-  }
-
-  initializeGoogleAnalytics = () => {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){window.dataLayer.push(arguments);}
-    window.gtag('js', new Date())
-    window.gtag('config', process.env.NEXT_PUBLIC_GA_TRACKING_ID, {
-      'anonymize_ip': true,
-      'allow_google_signals': true
-    })
-  }
 
   accept = () => {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
+    enableGoogleAnalytics();
+    enableGoogleAdsense();
     push(["trackEvent", "consent", "true"])
-    this.addGoogleAnalytics()
-    this.initializeGoogleAnalytics()
     this.setState({ visible: false })
     document.body.style.overflow = 'scroll'
   }
 
   decline = () => {
     Cookie.set("consent", false, { sameSite: "strict", expires: 365 })
-    push(["trackEvent", "consent", "false"]);
     window['ga-disable-GA_MEASUREMENT_ID'] = true;
+    push(["trackEvent", "consent", "false"]);
     this.setState({ visible: false })
     document.body.style.overflow = 'scroll'
   }

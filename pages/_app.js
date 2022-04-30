@@ -5,28 +5,35 @@ import { init } from '@socialgouv/matomo-next';
 import GlobalStyle from '@/styles/global.js'
 import config from "src/data/internal/SiteConfig"
 import Providers from 'src/utils/providers';
-import Cookie from "@/components/cookies/cookie-banner"
-import Script from 'next/script'
-
+import CookieBanner from "@/components/cookies/cookie-banner"
+import Cookie from "js-cookie"
+import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
+import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
 //import 'mapbox-gl/dist/mapbox-gl.css';
 
-const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
-const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 class MyApp extends App {
+
+  
   
   componentDidMount() {
-    if (window.location.href.includes("mxd.codes")) {
-      init({ 
-        url: MATOMO_URL, 
-        siteId: MATOMO_SITE_ID
-      }), 
-      window._paq.push(['enableHeartBeatTimer']);
+    //if (window.location.href.includes("mxd.codes")) {
+    init({ 
+      url: process.env.NEXT_PUBLIC_MATOMO_URL, 
+      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID
+    }), 
+    window._paq.push(['enableHeartBeatTimer']);
+    
+    if (Cookie.get("consent")) {
+      enableGoogleAnalytics();
+      enableGoogleAdsense();
     }
+   //}
   }
+
   
   render() {
     const { Component, pageProps } = this.props;
@@ -98,7 +105,7 @@ class MyApp extends App {
         </Head>
         <Providers>
           <GlobalStyle/> 
-          <Cookie/> 
+          <CookieBanner/> 
           <Component {...pageProps} />
         </Providers>
       </>

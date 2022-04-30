@@ -1,4 +1,3 @@
-
 import { default as Router } from "next/router";
 
 export function addGoogleAnalytics () {

@@ -24,7 +24,7 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 //import Subscribe from "src/components/social/subscribe/subscribe"
-import { LoadGoogleAdsense } from "@/components/google-adsense/google-adsense"
+import {  GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
 
 
 // components for posts
@@ -136,7 +136,7 @@ export default function Post({ post }) {
 
 
                     <Content>
-                      <LoadGoogleAdsense client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793" />
+                      <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793" />
                       <PostBody content={post.content} />   
 
                       {/*<Comments slug={post.slug} />

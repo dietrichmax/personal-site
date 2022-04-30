@@ -20,26 +20,19 @@ class MyApp extends App {
   
   
   componentDidMount() {
-    if (window.location.href.includes("mxd.codes")) {
+    //if (window.location.href.includes("mxd.codes")) {
       init({ 
         url: process.env.NEXT_PUBLIC_MATOMO_URL, 
         siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID
       }), 
       window._paq.push(['enableHeartBeatTimer']);
-      
-      if (Cookie.get("consent") === true) {
+      if (Cookie.get("consent") === "true") {
         enableGoogleAnalytics();
         enableGoogleAdsense();
       }
-    }
+    //}
   }
 
-  componentDidUpdate() {
-    if (window.location.href.includes("mxd.codes")) {
-      if (Cookie.get("consent") === true) {
-      }
-    }
-  }
 
   render() {
     const { Component, pageProps } = this.props;

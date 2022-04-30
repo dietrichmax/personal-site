@@ -138,7 +138,7 @@ export default function Post({ post }) {
                       <ins 
                         class="adsbygoogle"
                         style={{display:'block'}}
-                        data-ad-client="ca-pub-0037698828864449"
+                        data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_ID}
                         data-ad-slot="4628674793"
                         data-ad-format="auto"
                         data-full-width-responsive="true" 

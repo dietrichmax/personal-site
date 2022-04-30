@@ -34,6 +34,14 @@ class MyApp extends App {
     }
   }
 
+  componentDidUpdate() {
+    if (window.location.href.includes("mxd.codes")) {
+      if (Cookie.get("consent")) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    }
+  }
+
   
   render() {
     const { Component, pageProps } = this.props;

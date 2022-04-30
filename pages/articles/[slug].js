@@ -135,7 +135,14 @@ export default function Post({ post }) {
 
 
                     <Content>
-        
+                      <ins 
+                        class="adsbygoogle"
+                        style={{display:'block'}}
+                        data-ad-client="ca-pub-0037698828864449"
+                        data-ad-slot="4628674793"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true" 
+                      />
                       <PostBody content={post.content} />   
 
                       {/*<Comments slug={post.slug} />

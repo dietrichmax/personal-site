@@ -16,7 +16,8 @@ import {
     getMatomoAllVisits,
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
-    getMatomoVisitsSummary
+    getMatomoVisitsSummary,
+    getMatomoConsentEvent
 } from "src/data/external/analytics"
 
 export default async (_, res) => {

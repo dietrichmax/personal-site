@@ -133,6 +133,18 @@ export async function getMatomoCountryVisits() {
   return liveViews
 }
 
+export async function getMatomoConsentEvent() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=SEO.getRank&url=https://mxd.codes/&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
+  )
+  const consentEvent = await res.json()
+  if (consentEvent.errors) {
+    console.error(consentEvent.errors)
+    throw new Error("Failed to fetch Matomo Actions")
+  }
+  return consentEvent
+}
+
 export async function getMatomoSEOStats() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=SEO.getRank&url=https://mxd.codes/&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`

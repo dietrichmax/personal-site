@@ -13,13 +13,9 @@ export function enableGoogleAdsense () {
 }
 
 export function GoogleAdsenseContainer ( { client, slot }) {
-  const [adLoaded, setaAdLoaded] = useState(false)
 
   useEffect(() => {
-    if (!adLoaded) {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      setaAdLoaded(true)
-    }
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
   const AdLabel = styled.span`
@@ -30,6 +26,7 @@ export function GoogleAdsenseContainer ( { client, slot }) {
     <div 
       style={{textAlign: 'left',overflow: 'hidden'}}
     >
+    <AdLabel>Advertisment</AdLabel>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}

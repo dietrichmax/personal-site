@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, useEffect } from "react"
 import Cookie from "js-cookie"
 import styled from "styled-components"
 import Link from "next/link"
@@ -170,6 +170,8 @@ class CookieBanner extends Component {
 
     this.state = {
       visible: false,
+      GAInitialized: false,
+      GAAdded: false,
     }
   }
 
@@ -186,48 +188,44 @@ class CookieBanner extends Component {
     const { debug } = this.props
     if (Cookie.get("consent") === undefined || debug) {
       document.body.style.overflow = 'hidden';
-    }
-    if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
+    } else if (window.location.href.includes("privacy-policy") || window.location.href.includes("site-notice")) {
       document.body.style.overflow = 'scroll'
     }
   }
 
+  addGoogleAnalytics = () => {
+    const head = document.getElementsByTagName('head')[0]
+    const script = document.createElement(`script`)
+    script.type = `text/javascript`
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`
+    head.appendChild(script);
+  }
+
+  initializeGoogleAnalytics = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){window.dataLayer.push(arguments);}
+    window.gtag('js', new Date())
+    window.gtag('config', process.env.NEXT_PUBLIC_GA_TRACKING_ID, {
+      'anonymize_ip': true,
+      'allow_google_signals': true
+    })
+  }
+
   accept = () => {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
-    document.body.style.overflow = 'scroll'
+    push(["trackEvent", "consent", "true"])
+    this.addGoogleAnalytics()
+    this.initializeGoogleAnalytics()
     this.setState({ visible: false })
-    window.gtag('consent', 'update', {
-      'ad_storage': 'granted',
-      'analytics_storage': 'granted',
-    });
-    push(["trackEvent", "consent", "true"]);
-    /*return (
-      <Head>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-        />
-        <Script 
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
-          `,
-          }}
-        />
-      </Head>
-    )*/
+    document.body.style.overflow = 'scroll'
   }
 
   decline = () => {
     Cookie.set("consent", false, { sameSite: "strict", expires: 365 })
-    document.body.style.overflow = 'scroll'
-    this.setState({ visible: false })
     push(["trackEvent", "consent", "false"]);
+    window['ga-disable-GA_MEASUREMENT_ID'] = true;
+    this.setState({ visible: false })
+    document.body.style.overflow = 'scroll'
   }
 
   render() {

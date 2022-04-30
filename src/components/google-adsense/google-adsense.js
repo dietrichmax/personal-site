@@ -24,8 +24,7 @@ export function GoogleAdsenseContainer ( { client, slot }) {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-      <Script
-        strategy="afterInteractive"
+      <script
         dangerouslySetInnerHTML={{
           __html: `
           window.adsbygoogle = window.adsbygoogle || []

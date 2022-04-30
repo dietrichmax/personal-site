@@ -76,7 +76,7 @@ export async function getAllPosts() {
   const data = await fetchStrapiAPI(
     `
     {
-      posts(sort: "date:desc") {
+      posts(sort: "published_at:desc") {
         id
         created_at
         updated_at

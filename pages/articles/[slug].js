@@ -88,6 +88,8 @@ const ArticleBackgroundColor = styled.div`
   `}
 `
 
+
+
 export default function Post({ post }) {  
 
   const router = useRouter()
@@ -132,21 +134,19 @@ export default function Post({ post }) {
 
                   <PostWrapper>
                   <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                    <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
+                  <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
+                  <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
 
-                    <Content>
-                      <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
-                      <PostBody content={post.content} />   
+                  <Content>
+                    <PostBody content={post.content} />   
 
-                      {/*<Comments slug={post.slug} />
-                      <Feedback /> */}
-                      <WebActions slug={`/articles/${post.slug}`} />
-                      <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
-                      {/*<Likes />*/}
-                      <Webmentions slug={`/articles/${post.slug}`} />
-
-
+                    {/*<Comments slug={post.slug} />
+                    <Feedback /> */}
+                    <WebActions slug={`/articles/${post.slug}`} />
+                    <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
+                    {/*<Likes />*/}
+                    <Webmentions slug={`/articles/${post.slug}`} />
 
                     </Content>
 

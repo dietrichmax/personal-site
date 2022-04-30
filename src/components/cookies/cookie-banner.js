@@ -199,7 +199,7 @@ class CookieBanner extends Component {
   accept = () => {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
     enableGoogleAnalytics();
-    enableGoogleAdsense();
+    /*enableGoogleAdsense();*/
     push(["trackEvent", "consent", "true"])
     this.setState({ visible: false })
     document.body.style.overflow = 'scroll'

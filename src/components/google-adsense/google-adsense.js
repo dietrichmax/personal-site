@@ -13,19 +13,6 @@ export function enableGoogleAdsense () {
 }
 
 export function LoadGoogleAdsense({client, slot}) {
-    /*const loadAds = () => {
-        try {
-          if (typeof window !== "undefined") {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-          }
-        } catch (error) {
-          console.log("adsense error", error.message);
-        }
-      };
-    
-      useEffect(() => {
-        loadAds();
-      }, []);*/
     
       return (
         <ins

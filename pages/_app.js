@@ -29,14 +29,20 @@ class MyApp extends App {
       
       if (Cookie.get("consent")) {
         enableGoogleAnalytics();
-        //enableGoogleAdsense();
+        enableGoogleAdsense();
       }
     }
   }
 
+  componentDidUpdate() {
+    if (window.location.href.includes("mxd.codes")) {
+      if (Cookie.get("consent")) {
+        enableGoogleAnalytics();
+        enableGoogleAdsense();
+      }
+    }
+  }
 
-
-  
   render() {
     const { Component, pageProps } = this.props;
     return (

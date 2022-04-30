@@ -27,7 +27,7 @@ class MyApp extends App {
       }), 
       window._paq.push(['enableHeartBeatTimer']);
       
-      if (Cookie.get("consent")) {
+      if (Cookie.get("consent") === true) {
         enableGoogleAnalytics();
         enableGoogleAdsense();
       }
@@ -36,9 +36,7 @@ class MyApp extends App {
 
   componentDidUpdate() {
     if (window.location.href.includes("mxd.codes")) {
-      if (Cookie.get("consent")) {
-        enableGoogleAnalytics();
-        enableGoogleAdsense();
+      if (Cookie.get("consent") === true) {
       }
     }
   }

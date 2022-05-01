@@ -1,13 +1,11 @@
-import React, { Component, useEffect } from "react"
+import React, { Component } from "react"
 import Cookie from "js-cookie"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import Image from "next/image"
-//import Script from 'next/script'
 import Logo from "@/components/logo/logo"
 import { Button }  from "@/styles/templates/button"
-//import Head from "next/head"
 import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
 import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
 import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
@@ -172,8 +170,6 @@ class CookieBanner extends Component {
 
     this.state = {
       visible: false,
-      GAInitialized: false,
-      GAAdded: false,
     }
   }
 
@@ -235,13 +231,11 @@ class CookieBanner extends Component {
                   className="profile u-photo"
                 />
               </CookieHeader>
-              <CookieBody>
 
               <CookieBannerText>
                 <CookieHeadline>Hi, welcome on mxd.codes 👋</CookieHeadline>
-                <CookieContentContainer>
                   <CookieContentBlock>
-                    You can easily support me by accepting cookies. These cookies will help with the following:
+                    You can easily support me by accepting optional (third-party) cookies. These cookies will help with the following:
                     <CookieTextList>
                       <CookieTextItem>
                         Collect audience interaction data and site statistics
@@ -273,7 +267,7 @@ class CookieBanner extends Component {
                           </a>
                         </Socialtem>
                         <Socialtem>
-                          <a href={config.socials.github} title="DaTurboD on GitHub">
+                          <a href={config.socials.github} title="mxdietrich on GitHub">
                             <FaGithub />
                           </a>
                         </Socialtem>
@@ -305,8 +299,6 @@ class CookieBanner extends Component {
                     </p>
                   </Text>
 
-                </CookieContentContainer>
-
                 <Link href="/privacy-policy">
                   <CookieLink>Privacy Policy</CookieLink>
                 </Link>
@@ -320,8 +312,7 @@ class CookieBanner extends Component {
                 <Button onClick={() => { this.accept() }}>Accept required and optional cookies</Button>
                 <Button onClick={() => { this.decline() }} backgroundColor="var(--content-bg)" color="#70757a" >Accept required cookies</Button>
               </ButtonContainer>
-
-              </CookieBody>
+              
             </Wrapper>
           </CookieInnerContainer>
         </CookieContainer>

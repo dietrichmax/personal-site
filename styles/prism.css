@@ -50,6 +50,13 @@ pre[class*="language-"] {
 	margin-bottom: 26px;
 }
 
+code {
+	background: var(--body-bg);
+	border-radius: var(--border-radius);
+	padding-right: .5rem;
+	padding-left: .5rem;
+}
+
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: .2em;
@@ -72,7 +79,7 @@ pre[class*="language-"] {
 }
 
 .token.string {
-	color: #E99696;
+	color: #cf42eb;
 }
 
 .token.punctuation,
@@ -101,12 +108,12 @@ code[class*="language-css"] {
 }
 
 .token.function {
-	color: #c0df21;
+	color: rgb(250, 200, 99);
 }
 
 .token.deleted,
 .language-autohotkey .token.tag {
-	color: #9a050f;
+	color: rgb(252, 146, 158);
 }
 
 .token.selector,

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { setConstantValue } from 'typescript';
 
 export function enableGoogleAdsense () {
     const head = document.getElementsByTagName('head')[0]

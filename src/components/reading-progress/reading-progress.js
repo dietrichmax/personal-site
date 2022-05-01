@@ -50,7 +50,7 @@ export default function ReadingProgress({ target, color }) {
     <ReadingProgressBar
       style={{
         width: `${readingProgress}%`,
-        backgroundColor: color ? color : `var(--thirdy-color)`,
+        backgroundColor: color ? color : `var(--secondary-color)`,
         zIndex: "20000",
       }}
     />

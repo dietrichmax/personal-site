@@ -23,12 +23,60 @@ import HCard from "src/components/microformats/h-card"
 //import Feedback from "src/components/social/feedback/feedback"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
-//import Subscribe from "src/components/social/subscribe/subscribe"
+import Subscribe from "src/components/social/newsletter/subscribe"
 import {  GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
 
 
+const ArticleBackground = styled.div`
+  margin: auto auto var(--space-sm) auto;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 82px;
+  ${media.lessThan('large')`
+    display: block;
+  `}
+`
+
+const StickySideBar = styled.div`    
+  grid-column: span 1/ span 1;
+  ${media.lessThan('large')`
+    display: none;
+  `}
+
+`
+
+const StickySocialShareContainer = styled.div`    
+  top: var(--space-sm);
+  position: sticky;
+  margin-left: var(--space);
+  margin-right: var(--space);
+  margin-top: var(--space);
+  ${media.lessThan('large')`
+    display: none;
+  `}
+
+`
+
+const SocialShareContainer = styled.div`  
+  display: none;
+  ${media.lessThan('large')`
+    display: inline-block;
+  `}
+`
+
+
+const ArticleBackgroundColor = styled.div`
+  grid-column: span 1/spa;
+  max-width: 900px;
+  margin: 0 auto var(--space-sm) 0;
+  background-color: var(--content-bg);
+  box-shadow: var(--box-shadow);
+  ${media.lessThan('large')`
+    padding-top: calc(var(--space-sm)*0.125);
+  `}
+`
 // components for posts
-const PostWrapper = styled.div`
+const PostWrapper = styled.div`  
   max-width: 1200px;
   padding: 0 var(--space);
   margin: var(--space-sm) auto var(--space-sm) auto;
@@ -74,22 +122,6 @@ const DateWrapper = styled.div`
   font-size: 12px;
 `
 
-const ArticleBackground = styled.div`
-  margin: auto auto var(--space-sm) auto;
-  max-width: 1200px;
-`
-
-const ArticleBackgroundColor = styled.div`
-  max-width: 900px;
-  margin: 0 auto var(--space-sm) 0;
-  background-color: var(--content-bg);
-  box-shadow: var(--box-shadow);
-  ${media.lessThan('large')`
-    padding-top: calc(var(--space-sm)*0.125);
-  `}
-`
-
-
 
 export default function Post({ post }) {  
 
@@ -128,6 +160,11 @@ export default function Post({ post }) {
               </PostImgWrapper>
 
               <ArticleBackground>
+                <StickySideBar>
+                  <StickySocialShareContainer>
+                    <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
+                  </StickySocialShareContainer>
+                </StickySideBar>
                 <ArticleBackgroundColor>
                   <PostTitleWrapper className="p-name" >  
                     <PostTitle >{post.title}</PostTitle>
@@ -144,10 +181,16 @@ export default function Post({ post }) {
 
                     {/*<Comments slug={post.slug} />
                     <Feedback /> */}
-                    <WebActions slug={`/articles/${post.slug}`} />
                     <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
+                    <SocialShareContainer>
+                      <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks} />
+                    </SocialShareContainer>
                     {/*<Likes />*/}
                     <Webmentions slug={`/articles/${post.slug}`} />
+
+                    <div style={{borderTop: '1px solid var(--body-bg)'}}>
+                      <Subscribe />
+                    </div>
 
                     </Content>
 

@@ -3,19 +3,24 @@ import config from "src/data/internal/SiteConfig"
 import media from "styled-media-query"
 import Link from "next/link"
 import React, { useState } from "react"
-import { FaRegCopy, FaRetweet, FaRegComment } from "react-icons/fa"
-import { BsStar } from "react-icons/bs"
+import { FaLink, FaTwitter, FaLinkedin, FaReply, FaHeart } from "react-icons/fa"
 
-const WebActions = styled.ol`
+const WebActions = styled.ol`  
   padding-inline-start: 0;
-  list-style: none;
-  margin-top: var(--space);
+  ${media.lessThan('large')`
+    margin-top: var(--space);
+    display: inline-block;
+    padding-inline-start: 0;
+    list-style: none;
+  `}
 `
 
 const Actions = styled.li`
-  display: inline-block;
+display: inline-block;
   margin-right: var(--space-sm);
+  margin-bottom: var(--space-sm);
   cursor: pointer;
+  font-size: 20px;
   :hover {
     color: var(--thirdy-color);
   }
@@ -23,7 +28,7 @@ const Actions = styled.li`
 
 export default function SocialShare({ slug, syndicationLinks }) {
   const [copied, setCopied] = useState("")
-  const [tweetID, setTweetID] = useState("")
+  let tweetID
 
   const url = `${config.siteUrl}${slug}`
 
@@ -35,41 +40,35 @@ export default function SocialShare({ slug, syndicationLinks }) {
     }, 2000)
   }
 
-  const getTweetID = (syndicationLinks) => {
-    syndicationLinks
-      ? syndicationLinks.map((entry) => {
-          entry.name == "twitter"
-            ? setTweetID(
-                entry.slug.replace("https://twitter.com/mxdietrich/status/", "")
-              )
-            : null
-        })
-      : null
-  }
-  getTweetID(syndicationLinks)
+
+  syndicationLinks ? syndicationLinks.map((entry) => {
+    entry.name === "twitter" ? tweetID = entry.slug.replace("https://twitter.com/mxdietrich/status/", "") : null
+  }) : null
 
   return (
     <WebActions className="indie-actions">
       <Actions do="share" with={url}>
         <a
           className="action share"
-          title="Share this post"
+          title="Share this post on Twitter"
           target="_blank"
           href={`https://twitter.com/intent/tweet?url=${url}`}
           rel="nofollow noopener"
         >
-          <FaRetweet /> Share
+          <FaTwitter />
         </a>
       </Actions>
       {tweetID ? (
         <Actions do="like" with={url}>
-          <div
+          <a
             className="action like"
             title="Like this post"
-            onClick={sendLike()}
+            target="_blank"
+            href={`https://twitter.com/intent/favorite?tweet_id=${tweetID}`}
+            rel="nofollow noopener"
           >
-            <BsStar /> Like
-          </div>
+            <FaHeart />
+          </a>
         </Actions>
       ) : null}
       {tweetID ? (
@@ -81,16 +80,27 @@ export default function SocialShare({ slug, syndicationLinks }) {
             href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`}
             rel="nofollow noopener"
           >
-            <FaRegComment /> Reply
+            <FaReply />
           </a>
         </Actions>
       ) : null}
+      <Actions do="share" with={url}>
+        <a
+          className="action share"
+          title="Share this post on Linkedin"
+          target="_blank"
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+          rel="nofollow noopener"
+        >
+          <FaLinkedin />
+        </a>
+      </Actions>
       <Actions
         className="action copy"
         title="Copy this post's permalink"
         onClick={() => copyToClipboard()}
       >
-        <FaRegCopy /> Copy
+        <FaLink />
       </Actions>
     </WebActions>
   )

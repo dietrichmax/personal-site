@@ -12,11 +12,12 @@ import {
 } from "react-icons/fa"
 import { BsStar } from "react-icons/bs"
 import Comments from "src/components/comments/comments"
+import { Button } from "@/styles/templates/button"
 
 const WebMentionsWrapper = styled.section`
-  border-top: 0.1rem solid var(--content-bg);
+  border-top: 0.1rem solid var(--body-bg);
   margin: var(--space) 0;
-  padding: var(--space-sm) 0 var(--space-sm) 0;
+  padding: var(--space) 0 var(--space-sm) 0;
 `
 
 const WebmentionsHeader = styled.div`
@@ -103,30 +104,11 @@ const Input = styled.input`
   padding: 0.5rem 1rem;
   margin: var(--space-sm) auto;
   width: 60%;
-  border: 2px solid var(--gray-light);
-  background-color: var(--body-bg);
+  border: 2px solid var(--body-bg);
+  background-color: var(--content-bg);
   color: var(--text-color);
   :invalid {
     border: 1px solid red;
-  }
-`
-
-const Button = styled.button`
-  border: none;
-  width: auto !important;
-  color: var(--primary-color);
-  text-transform: uppercase;
-  outline: none;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
-  text-align: center;
-  padding: 0.75rem 1.5rem;
-  width: 20%;
-  border-radius: var(--border-radius);
-  background: var(--secondary-color);
-  cursor: pointer;
-  :hover {
-    color: var(--content-bg);
   }
 `
 
@@ -271,7 +253,7 @@ export default function Webmentions({ slug, preview }) {
 
   useEffect(() => {
     
-    gotData ? getData() : null
+    !gotData ? getData() : null
     /*async function getViews() {
       fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
       .then((response) => response.json())

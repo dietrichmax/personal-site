@@ -4,6 +4,7 @@ import { Emojione } from "react-emoji-render"
 import media from "styled-media-query"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
+import Link from "next/link"
 
 const NewsletterWrapper = styled.label`
   display: flex;
@@ -12,11 +13,8 @@ const NewsletterWrapper = styled.label`
   flex-wrap: wrap;
   box-sizing: border-box;
   max-width: 1200px;
-  padding: var(--space);
-  margin: 0 auto var(--space-lg) auto;
-  ${media.lessThan("medium")`
-      padding: var(--space-sm);
-    `}
+  padding: var(--space) 0;
+  margin: 0 auto;
 `
 const DescriptionWrapper = styled.div`
   flex-grow: 0;
@@ -52,22 +50,29 @@ const Emoji = styled(Emojione)`
   display: inline-block;
 `
 
+const FeedLink = styled.span`
+  border-bottom: 1px solid var(--primary-color);
+`
+
 export default function Subscribe({ noLabel, cb }) {
   const [email, setEmail] = useState("")
   const [count, setCount] = useState("")
+  const [gotData, setGotData] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  useEffect(() => {
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://api.mxd.codes/subscribers/count", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setCount(data))
+  async function getCount() {
+      const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+      fetch("https://api.mxd.codes/subscribers/count", requestOptions)
+        .then((response) => response.json())
+        .then((data) => setCount(data))
+      setGotData(true)
+  }
 
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  useEffect(() => {
+    gotData ? getCount() : null
   }, [])
 
   const handleSubmit = () => {
@@ -106,8 +111,8 @@ export default function Subscribe({ noLabel, cb }) {
       ) : (
         <NewsletterWrapper>
           <DescriptionWrapper>
-            Would you like to know when there is something new? <br /> Then
-            subscribe to the newsletter, as well as {count} other subscribers.
+            Do you like my content and want to know when new content is published? <br /> Then
+            subscribe to the newsletter as well as {count} other subscribers or to any <FeedLink><Link href="/feeds" title="Feeds">feed</Link></FeedLink> you like.
             <Emoji text={"🚀"} />
           </DescriptionWrapper>
 

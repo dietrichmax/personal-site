@@ -44,14 +44,14 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 pre[class*="language-"] {
 	padding: 1rem;
 	overflow: auto;
-	background: var(--body-bg);
+	background: var(--content-bg);
 	border-radius: var(--border-radius);
 	scrollbar-color: var(--content-bg);
 	margin-bottom: 26px;
 }
 
 code {
-	background: var(--body-bg);
+	background: var(--content-bg);
 	border-radius: var(--border-radius);
 	padding-right: .5rem;
 	padding-left: .5rem;

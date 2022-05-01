@@ -202,7 +202,7 @@ export default function Post({ post }) {
                       {/*<Likes />*/}
                       <Webmentions slug={`/articles/${post.slug}`} />
 
-                      <div style={{borderTop: '1px solid var(--body-bg)'}}>
+                      <div style={{backgroundColor: 'var(--content-bg)',paddingLeft:'var(--space-sm)'}}>
                         <Subscribe />
                       </div>
 

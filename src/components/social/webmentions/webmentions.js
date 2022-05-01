@@ -15,7 +15,7 @@ import Comments from "src/components/comments/comments"
 import { Button } from "@/styles/templates/button"
 
 const WebMentionsWrapper = styled.section`
-  border-top: 0.1rem solid var(--body-bg);
+  border-top: 0.1rem solid var(--content-bg);
   margin: var(--space) 0;
   padding: var(--space) 0 var(--space-sm) 0;
 `

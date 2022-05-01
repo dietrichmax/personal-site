@@ -69,12 +69,22 @@ const ArticleBackgroundColor = styled.div`
   grid-column: span 1/spa;
   max-width: 900px;
   margin: 0 auto var(--space-sm) 0;
-  background-color: var(--content-bg);
-  box-shadow: var(--box-shadow);
+  border-left: 1px solid var(--content-bg);
+  ${media.lessThan('large')`
+    padding-top: calc(var(--space-sm)*0.125);
+    border-left: none;
+  `}
+`
+
+const ArticleContainer = styled.div`
+  grid-column: span 1/spa;
+  max-width: calc(1300-82)px;
+  margin: 0 auto var(--space-sm) 0;
   ${media.lessThan('large')`
     padding-top: calc(var(--space-sm)*0.125);
   `}
 `
+
 // components for posts
 const PostWrapper = styled.div`  
   max-width: 1200px;
@@ -159,43 +169,50 @@ export default function Post({ post }) {
                 <PostImage postData={post} /> 
               </PostImgWrapper>
 
+
               <ArticleBackground>
                 <StickySideBar>
                   <StickySocialShareContainer>
                     <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
                   </StickySocialShareContainer>
                 </StickySideBar>
+
+                <ArticleContainer>
+                <PostTitleWrapper className="p-name" >  
+                  <PostTitle >{post.title}</PostTitle>
+                </PostTitleWrapper> 
+            
                 <ArticleBackgroundColor>
-                  <PostTitleWrapper className="p-name" >  
-                    <PostTitle >{post.title}</PostTitle>
-                  </PostTitleWrapper> 
 
                   <PostWrapper>
-                  <TagsWrapper><PostTags tags={post.tags}/></TagsWrapper> 
-                  <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
-                  
-                  <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
+                    <TagsWrapper><PostTags tags={post.tags} backgroundColor="red"/></TagsWrapper> 
+                    <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
+                    
+                    <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
-                  <Content>
-                    <PostBody content={post.content} />   
+                    <Content>
+                      <PostBody content={post.content} />   
 
-                    {/*<Comments slug={post.slug} />
-                    <Feedback /> */}
-                    <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
-                    <SocialShareContainer>
-                      <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks} />
-                    </SocialShareContainer>
-                    {/*<Likes />*/}
-                    <Webmentions slug={`/articles/${post.slug}`} />
+                      {/*<Comments slug={post.slug} />
+                      <Feedback /> */}
+                      <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
+                      <SocialShareContainer>
+                        <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks} />
+                      </SocialShareContainer>
+                      {/*<Likes />*/}
+                      <Webmentions slug={`/articles/${post.slug}`} />
 
-                    <div style={{borderTop: '1px solid var(--body-bg)'}}>
-                      <Subscribe />
-                    </div>
+                      <div style={{borderTop: '1px solid var(--body-bg)'}}>
+                        <Subscribe />
+                      </div>
 
-                    </Content>
+                      </Content>
 
-                  </PostWrapper>
-                </ArticleBackgroundColor>
+                    </PostWrapper>
+
+                  </ArticleBackgroundColor>
+
+                </ArticleContainer>
               </ArticleBackground>
 
             </article>

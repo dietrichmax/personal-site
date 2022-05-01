@@ -83,7 +83,7 @@ export default function PostPreview({ postData, preview }) {
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper>
-            <PostTags className="p-categories" tags={tags} />
+            <PostTags className="p-categories" tags={tags} backgroundColor="red)"/>
           </TagsWrapper>
         </CardMeta>
       </CardItemWrapper>

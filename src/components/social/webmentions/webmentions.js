@@ -52,7 +52,7 @@ const WebmentionsContainer = styled.div`
 const WebmentionComment = styled.li`
   margin-bottom: var(--space-sm);
   font-family: var(--secondary-font);
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   padding: var(--space-sm);
   border-radius: var(--border-radius);
 `
@@ -70,7 +70,7 @@ const WebmentionAuthorImgWrapper = styled.a`
   margin-right: calc(var(--space-sm) * 0.5);
   margin-bottom: calc(var(--space-sm) * 0.5);
   border-radius: var(--border-radius);
-  background-color: var(--gray-extra-light);
+  background-color: var(--content-bg);
   :hover {
     display: cursor;
   }
@@ -148,7 +148,7 @@ const WebmentionPreviewLabel = styled.span`
 const ImagePlacholder = styled.div`
   width: 50px;
   height: 50px;
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   color: var(--text-color);
 `
 
@@ -264,7 +264,6 @@ export default function Webmentions({ slug, preview }) {
     getViews()*/
   }, [])
 
-  console.log(webmentions)
   const renderAuthorImg = (mention,i) => {
     return mention.author.photo ? (
       <WebmentionLike key={i}>

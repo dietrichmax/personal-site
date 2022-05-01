@@ -14,17 +14,18 @@ const TagItem = styled.a`
   margin: 0.25rem 1rem 0.5rem 0;
   padding: 3px calc(var(--space-sm) * 0.5);
   font-family: var(--secondary-font);
-  background-color: var(--body-bg);
+  background-color: var(--content-bg);
   color: var(--text-color);
+  border: 1px solid var(--body-bg);
   :hover {
     color: var(--text-color);
-    background-color: var(--content-bg);
+    background-color: var(--body-bg);
   }
 `
 
-export default function PostTags(tags) {
+export default function PostTags(tags, backgroundColor) {
   const postTags = tags.tags
-
+  console.log(backgroundColor)
   return (
     <>
       <TagsWrapper>
@@ -36,6 +37,7 @@ export default function PostTags(tags) {
               color={tag.color}
               bgColor={tag.backgroundColor}
               title={tag.name}
+              backgroundColor={backgroundColor}
             >
               {tag.name}
             </TagItem>

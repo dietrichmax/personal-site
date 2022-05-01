@@ -4,7 +4,7 @@ export const lightTheme = {
     thirdyColor: "#DBE2EF",
     bodyBg: '#f2f2f2',
     contentBg: "#fff",
-    textColor: "#171717"
+    textColor: "#1e1d1d"
 }
 export const darkTheme = {
     primaryColor: "#051129",

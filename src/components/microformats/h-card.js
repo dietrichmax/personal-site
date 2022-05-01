@@ -24,7 +24,7 @@ export default function hCard() {
           <img
             className="u-photo"
             itemProp="image"
-            src={config.siteLogo}
+            src="/logos/firefox/firefox-general-32-32.png"
             alt={`Image of ${config.siteTitle}`}
           />
           <data

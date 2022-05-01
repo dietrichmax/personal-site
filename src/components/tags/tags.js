@@ -25,7 +25,7 @@ const TagItem = styled.a`
 
 export default function PostTags(tags, backgroundColor) {
   const postTags = tags.tags
-  console.log(backgroundColor)
+  
   return (
     <>
       <TagsWrapper>

@@ -185,7 +185,7 @@ export default function Post({ post }) {
                 <ArticleBackgroundColor>
 
                   <PostWrapper>
-                    <TagsWrapper><PostTags tags={post.tags} backgroundColor="red"/></TagsWrapper> 
+                    <TagsWrapper><PostTags tags={post.tags} backgroundColor="var(--content-bg)"/></TagsWrapper> 
                     <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
                     
                     <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>

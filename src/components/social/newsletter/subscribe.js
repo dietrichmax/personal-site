@@ -72,7 +72,7 @@ export default function Subscribe({ noLabel, cb }) {
   }
 
   useEffect(() => {
-    gotData ? getCount() : null
+    !gotData ? getCount() : null
   }, [])
 
   const handleSubmit = () => {

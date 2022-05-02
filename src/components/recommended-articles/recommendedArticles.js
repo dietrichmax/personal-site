@@ -32,6 +32,7 @@ export default function RecommendedPosts({ post, allPosts }) {
         <>
           {sortedPosts.slice(0,maxPosts).map((post,i) => (
             <PostPreview
+              style={{marginBottom: 'var(--space-sm)'}}
               key={i} 
               postData={post}
             />

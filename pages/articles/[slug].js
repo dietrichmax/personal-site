@@ -137,7 +137,15 @@ const RecommendedPostsContainer = styled.div`
   grid-column: span 2;
   display: grid;
   grid-gap: var(--space);
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: auto auto auto;
+  ${media.lessThan('large')`
+    display: grid;
+    grid-template-columns: auto;
+  `}
+  ${media.lessThan('medium')`
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
+  `}
 `
 
 const RecommendedPostTitle = styled.h3`
@@ -146,6 +154,9 @@ const RecommendedPostTitle = styled.h3`
   grid-column: span 3;  
   font-size: 1.5rem;
   font-weight: 600;
+  ${media.lessThan('large')`
+    margin-left:0;
+  `}
 `
 
 
@@ -230,7 +241,6 @@ export default function Post({ post, allPosts }) {
 
                 </ArticleContainer>
 
-                
                 <RecommendedPostsContainer>
                   <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
                   <RecommendedPosts post={post} allPosts={allPosts} />

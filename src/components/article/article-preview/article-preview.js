@@ -54,8 +54,7 @@ const CardReadMoreRead = styled.a`
 `
 
 export default function PostPreview({ postData, preview }) {
-  const { title, excerpt, tags, dateUpdated, date, published_at, updated_at } =
-    postData
+  const { title, excerpt, tags, dateUpdated, date, published_at, updated_at } = postData
 
   const slug = `/articles/${postData.slug}`
 
@@ -83,7 +82,7 @@ export default function PostPreview({ postData, preview }) {
         </CardItemInfo>
         <CardMeta>
           <TagsWrapper>
-            <PostTags className="p-categories" tags={tags} backgroundColor="red)"/>
+            <PostTags className="p-categories" tags={tags} backgroundColor="red"/>
           </TagsWrapper>
         </CardMeta>
       </CardItemWrapper>

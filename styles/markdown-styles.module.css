@@ -2,7 +2,6 @@
   font-family: var(--secondary-font);
   max-width: var(--content-width);
   line-height: 1.65;
-  word-break: break-word;
   hyphens: auto;
   padding-bottom: var(--space-sm);
 }

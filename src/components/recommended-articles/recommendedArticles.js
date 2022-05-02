@@ -9,30 +9,29 @@ export default function RecommendedPosts({ post, allPosts }) {
     const maxPosts = 3
 
     // get tags of current posts
-    const tags = post.tags.map((tag) => {
+    const currentTags = post.tags.map((tag) => {
         return tag.name
     })
 
     // rate posts depending on tags
     posts.forEach((post) => {
-        post.value = 0
+        post.relevance = 0
         post.tags.forEach((tag) => {
-            if (tags.includes(tag.name)) {
-                post.value ++
+            if (currentTags.includes(tag.name)) {
+                post.relevance ++
             }
         })
     })
 
-    // sort posts by value
+    // sort posts by relevance
     const sortedPosts = posts.sort(function(a, b) {
-        return b.value - a.value;
+        return b.relevance - a.relevance;
     });
 
     return (
         <>
-          {sortedPosts.slice(0,maxPosts).map((post,i) => (
+          {sortedPosts.slice(0,maxPosts).map((post, i) => (
             <PostPreview
-              style={{marginBottom: 'var(--space-sm)'}}
               key={i} 
               postData={post}
             />

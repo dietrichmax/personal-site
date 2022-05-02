@@ -24,8 +24,8 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
-import {  GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
-
+import { GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
+import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -66,7 +66,7 @@ const SocialShareContainer = styled.div`
 
 
 const ArticleBackgroundColor = styled.div`
-  grid-column: span 1/spa;
+  grid-column: span 1;
   max-width: 900px;
   margin: 0 auto var(--space-sm) 0;
   border-left: 1px solid var(--content-bg);
@@ -77,7 +77,6 @@ const ArticleBackgroundColor = styled.div`
 `
 
 const ArticleContainer = styled.div`
-  grid-column: span 1/spa;
   max-width: calc(1300-82)px;
   margin: 0 auto var(--space-sm) 0;
   ${media.lessThan('large')`
@@ -130,10 +129,27 @@ const TagsWrapper = styled.div`
 
 const DateWrapper = styled.div`
   font-size: 12px;
+  margin-top: var(--space-sm);
+`
+
+const RecommendedPostsContainer = styled.div`
+  margin-bottom: var(--space);
+  grid-column: span 2;
+  display: grid;
+  grid-gap: var(--space);
+  grid-template-columns: 1fr 1fr 1fr ;
+`
+
+const RecommendedPostTitle = styled.h3`
+  margin-top: var(--space);
+  margin-left: var(--space-sm);
+  grid-column: span 3;  
+  font-size: 1.5rem;
+  font-weight: 600;
 `
 
 
-export default function Post({ post }) {  
+export default function Post({ post, allPosts }) {  
 
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -213,6 +229,13 @@ export default function Post({ post }) {
                   </ArticleBackgroundColor>
 
                 </ArticleContainer>
+
+                
+                <RecommendedPostsContainer>
+                  <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
+                  <RecommendedPosts post={post} allPosts={allPosts} />
+                </RecommendedPostsContainer>
+
               </ArticleBackground>
 
             </article>
@@ -228,6 +251,7 @@ export async function getStaticProps({ params }) {
   const content = data?.posts[0]?.content || ''
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || '')
   const readingTime = getReadTime(content); 
+  const allPosts = await getAllPosts()
 
 
   //const morePosts = data?.morePosts || ''
@@ -241,6 +265,7 @@ export async function getStaticProps({ params }) {
         content,
         excerpt,
       },
+      allPosts
     },
   }
 }

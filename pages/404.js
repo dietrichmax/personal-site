@@ -31,7 +31,7 @@ export default function Custom404({pages}) {
         slug=""
       />
       <Title>404 - Page Not Found</Title>
-          <SubTitle>{goodMatch ? `You were probably looking for ${goodMatch}` : ``}</SubTitle>
+          <SubTitle>{goodMatch ? `You were probably looking for ${goodMatch}` : `Seems like you got lost. Sorry for that...`}</SubTitle>
       <Container>
       </Container>
     </Layout>

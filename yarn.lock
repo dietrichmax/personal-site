@@ -3057,11 +3057,6 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-google-analytics-next@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/google-analytics-next/-/google-analytics-next-1.0.0.tgz#54b385b162e770d427f06ee8c331c01f53cac72a"
-  integrity sha512-mAe+zU2SaTdUtijhsfhlc5DUON8+XFXSGxv8Chyvp7+AYi8cz3b/KjNpfhEfD2HOh3SYHXzveQU1BIsTcSh+kw==
-
 graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.9"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.9.tgz"
@@ -3779,6 +3774,11 @@ lodash.sortby@^4.7.0:
 lodash@^4.17.11, lodash@^4.17.20:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 longest-streak@^3.0.0:

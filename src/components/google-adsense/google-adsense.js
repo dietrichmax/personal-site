@@ -19,6 +19,7 @@ export function GoogleAdsenseContainer ( { client, slot }) {
 
   const AdLabel = styled.span`
     font-size: 12px;
+    font-style: italic;
   `
 
   return (

@@ -138,11 +138,14 @@ const RecommendedPostsContainer = styled.div`
   display: grid;
   grid-gap: var(--space);
   grid-template-columns: auto auto auto;
+  margin-left: var(--space);
+  margin-right: var(--space);
   ${media.lessThan('large')`
-    display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-gap: var(--space-sm);
   `}
   ${media.lessThan('medium')`
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
     margin-left: var(--space-sm);
     margin-right: var(--space-sm);
   `}
@@ -150,12 +153,17 @@ const RecommendedPostsContainer = styled.div`
 
 const RecommendedPostTitle = styled.h3`
   margin-top: var(--space);
-  margin-left: var(--space-sm);
+  margin-left: var(--space);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-sm);
   grid-column: span 3;  
   font-size: 1.5rem;
   font-weight: 600;
   ${media.lessThan('large')`
-    margin-left:0;
+    margin-left: var(--space);
+  `}
+  ${media.lessThan('medium')`
+    margin-left: var(--space-sm);
   `}
 `
 
@@ -241,8 +249,8 @@ export default function Post({ post, allPosts }) {
 
                 </ArticleContainer>
 
+                <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
                 <RecommendedPostsContainer>
-                  <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
                   <RecommendedPosts post={post} allPosts={allPosts} />
                 </RecommendedPostsContainer>
 

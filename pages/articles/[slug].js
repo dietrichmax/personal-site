@@ -50,7 +50,7 @@ const StickySocialShareContainer = styled.div`
   position: sticky;
   margin-left: var(--space);
   margin-right: var(--space);
-  margin-top: var(--space);
+  margin-top: 122px;
   ${media.lessThan('large')`
     display: none;
   `}

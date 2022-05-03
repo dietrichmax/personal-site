@@ -86,7 +86,9 @@ export default function Author( author ) {
     }
   }
 
-  
+  if (author === undefined) {
+    return null
+  }
   return (
     <>
       <AuthorTitle>About The Author</AuthorTitle>

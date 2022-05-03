@@ -227,14 +227,14 @@ export default function Post({ post, allPosts }) {
                     <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
                     <Content>
-                      <PostBody content={post.content} />   
-                      <Author post={post.user} />
+                      <PostBody content={post.content} />  
                       {/*<Comments slug={post.slug} />
                       <Feedback /> */}
                       <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>
                       <SocialShareContainer>
                         <WebActions slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks} />
-                      </SocialShareContainer>
+                      </SocialShareContainer> 
+                      <Author post={post.user} />
                       {/*<Likes />*/}
                       <Webmentions slug={`/articles/${post.slug}`} />
 

@@ -7,7 +7,6 @@ import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing, FaGift} from "re
 const AuthorWrapper = styled.div`
   display: flex;
   margin-top: var(--space);
-  margin-bottom: var(--space);
 `
 
 const AuthorMeta = styled.div`
@@ -69,6 +68,8 @@ const AuthorSocialsContainer = styled.a`
   }
 `
 
+const AuthorDescription = styled.div``
+
 export default function Author( author ) {
   const { username, picture, bio, socials } = author.post
 
@@ -107,27 +108,30 @@ export default function Author( author ) {
           />
         </AuthorImgWrapper>
         <AuthorMeta>
-            <AuthorName title="About me">{username} </AuthorName>
-            <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>
-            <AuthorBio>{bio}</AuthorBio>
-            <AuthorSocials>
-              <AuthorSocialsContainer>
-                <Link href="/support">
-                  <a>
-                    <FaGift />  Support
-                  </a>
-                </Link>
-              </AuthorSocialsContainer>
-              {/*(socials.map((social) => 
-                <AuthorSocialsContainer>
-                  <a href={social.link} rel="nofollow noopener" title={social.plattform}>
-                    {renderSocials(social)}
-                  </a>
-                </AuthorSocialsContainer>
-            )*/}
-            </AuthorSocials>
+          <AuthorName title="About me">{username} </AuthorName>
+          <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>    
         </AuthorMeta>
+        
       </AuthorWrapper>
+      <AuthorDescription>
+        <AuthorBio>{bio}</AuthorBio>
+        <AuthorSocials>
+          <AuthorSocialsContainer>
+            <Link href="/support">
+              <a>            
+                <FaGift />  Support
+              </a>
+            </Link>
+          </AuthorSocialsContainer>
+          {/*(socials.map((social) => 
+            <AuthorSocialsContainer>
+              <a href={social.link} rel="nofollow noopener" title={social.plattform}>
+                {renderSocials(social)}
+              </a>
+            </AuthorSocialsContainer>
+        )*/}
+        </AuthorSocials>
+       </AuthorDescription>
     </>
   )
 }

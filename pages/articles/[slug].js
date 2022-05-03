@@ -26,6 +26,7 @@ import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
 import { GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
+import Author from "@/components/article/article-author/article-author"
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -214,20 +215,20 @@ export default function Post({ post, allPosts }) {
 
                 <ArticleContainer>
                 <PostTitleWrapper className="p-name" >  
-                  <PostTitle >{post.title}</PostTitle>
+                  <PostTitle>{post.title}</PostTitle>
                 </PostTitleWrapper> 
             
                 <ArticleBackgroundColor>
 
                   <PostWrapper>
                     <TagsWrapper><PostTags tags={post.tags} /></TagsWrapper> 
-                    <GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>
+                    {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
                     
                     <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>
 
                     <Content>
                       <PostBody content={post.content} />   
-
+                      <Author post={post.user} />
                       {/*<Comments slug={post.slug} />
                       <Feedback /> */}
                       <Meta post={post} slug={`/articles/${post.slug}`} syndicationLinks={post.syndicationLinks}/>

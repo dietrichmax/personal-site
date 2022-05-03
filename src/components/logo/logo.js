@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import media from 'styled-media-query';
 import React from "react";
+import config from '@/src/data/internal/SiteConfig';
 
 const LogoWrapper = styled.div`
 grid-column: span 2 / span 2;
@@ -25,10 +26,10 @@ export default function Logo({ }) {
     return (
       <LogoWrapper>
         <Link rel="home" href="/" passHref>
-          <a className="u-url" rel="me" title="Max Dietrich">
-            <LogoName className="p-name" >Max Dietrich</LogoName>
+          <a className="u-url" rel="me" title={config.siteTitleAlt}>
+            <LogoName className="p-name" >{config.siteTitleAlt}</LogoName>
             <br/>
-            <LogoDescription>Geospatial Developer</LogoDescription>
+            <LogoDescription>{config.siteSubtitle}</LogoDescription>
           </a>
         </Link>
       </LogoWrapper>

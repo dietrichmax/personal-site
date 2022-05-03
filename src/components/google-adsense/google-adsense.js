@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export function enableGoogleAdsense () {
     const head = document.getElementsByTagName('head')[0]
@@ -17,16 +16,8 @@ export function GoogleAdsenseContainer ( { client, slot }) {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
-  const AdLabel = styled.span`
-    font-size: 12px;
-    font-style: italic;
-  `
-
   return (
-    <div 
-      style={{textAlign: 'left',overflow: 'hidden'}}
-    >
-    <AdLabel>Advertisment</AdLabel>
+    <div style={{textAlign: 'left',overflow: 'hidden'}} >
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -35,7 +26,6 @@ export function GoogleAdsenseContainer ( { client, slot }) {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-
     </div>
   );     
 }

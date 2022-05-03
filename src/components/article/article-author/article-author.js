@@ -2,18 +2,16 @@ import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
 import config from "src/data/internal/SiteConfig"
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing, FaGift} from "react-icons/fa"
 
 const AuthorWrapper = styled.div`
   display: flex;
   margin-top: var(--space);
   margin-bottom: var(--space);
-  background-color: var(--secondary-color);
-  padding: var(--space-sm);
 `
 
 const AuthorMeta = styled.div`
-  display: block;
-  margin-left: 12px;
+  margin-left: var(--space-sm);
   width: 100%;
 `
 
@@ -23,12 +21,13 @@ const AuthorName = styled.span`
 `
 
 const AuthorImgWrapper = styled.div`
-  border-radius: 50%;
   overflow: hidden;
   height: 50px;
 `
 
-const AuthorSocials = styled.div``
+const AuthorSocials = styled.div`
+  margin-top: var(--space-sm);
+`
 
 const AuthorSocialIcons = styled.i`
   cursor: pointer;
@@ -39,51 +38,94 @@ const AuthorSocialIcons = styled.i`
   margin: var(--space-sm);
   color: var(--thirdy-color);
 `
-export default function Author({ author }) {
-  const { username, picture, bio, socials } = author
 
+const AuthorTitle = styled.p`
+  margin-top: var(--space);  
+  font-size: 1.5rem;
+  font-weight: 600;
+`
+
+const AuthorSubtitle = styled.p`
+`
+
+const AuthorBio = styled.p`
+  margin-top: var(--space-sm)
+`
+
+const AuthorSocialsContainer = styled.a`
+  margin-right: var(--space-sm);
+  display: inline-block;  
+  border-radius: var(--border-radius);
+  margin: 0.25rem 1rem 0.5rem 0;
+  padding: 3px calc(var(--space-sm) * 0.5);
+  font-family: var(--secondary-font);
+  background-color: var(--secondary-color);
+  color: var(--body-bg);
+  border: 1px solid var(--body-bg);
+  cursor: pointer;
+  :hover {
+    color: var(--body-bg);
+    color: var(--text-color);
+  }
+`
+
+export default function Author( author ) {
+  const { username, picture, bio, socials } = author.post
+
+  const renderSocials = (socials) => {
+    if (socials.plattform === "Instagram") {
+      return <FaInstagram />
+    } else if (socials.plattform === "Twitter") {
+      return <FaTwitter />  
+    } else if (socials.plattform === "Linkedin") {
+      return <FaLinkedin />   
+    } else if (socials.plattform === "Xing") {
+      return <FaXing />
+    } else if (socials.plattform === "GitHub") {
+      return <FaGithub />
+    }
+  }
+
+  
   return (
-    <AuthorWrapper>
-      <AuthorImgWrapper>
-        <Image
-          src={`${
-            picture.url.startsWith("/")
-              ? process.env.NEXT_PUBLIC_STRAPI_API_URL
-              : ""
-          }${picture.url}`}
-          alt={username}
-          title={username}
-          width="50"
-          height="50"
-        />
-      </AuthorImgWrapper>
-      <AuthorMeta>
-        <p>
-          By{" "}
-          <Link href="/about-me" passHref>
+    <>
+      <AuthorTitle>About The Author</AuthorTitle>
+      <AuthorWrapper>
+        <AuthorImgWrapper>
+          <Image
+            src={`${
+              picture.url.startsWith("/")
+                ? process.env.NEXT_PUBLIC_STRAPI_API_URL
+                : ""
+            }${picture.url}`}
+            alt={username}
+            title={username}
+            width="50"
+            height="50"
+          />
+        </AuthorImgWrapper>
+        <AuthorMeta>
             <AuthorName title="About me">{username} </AuthorName>
-          </Link>
-          {/*| {bio}*/}{" "}
-        </p>
-
-        <AuthorSocials>
-          <Link href={config.socials.github} passHref>
-            <AuthorSocialIcons className="lab la-github" title="GitHub" />
-          </Link>
-          <Link href={config.socials.twitter} passHref>
-            <AuthorSocialIcons className="lab la-twitter" title="Twitter" />
-          </Link>
-          <Link href="mailto:kontakt@gis-netzwerk.com" passHref>
-            <AuthorSocialIcons className="las la-envelope" title="Mail" />
-          </Link>
-          <Link href={config.socials.instagram} passHref>
-            <AuthorSocialIcons className="lab la-instagram" title="Instagram" />
-          </Link>
-          <Link href={config.siteRss} passHref>
-            <AuthorSocialIcons className="las la-rss" title="RSS" />
-          </Link>
-        </AuthorSocials>
-      </AuthorMeta>
-    </AuthorWrapper>
+            <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>
+            <AuthorBio>{bio}</AuthorBio>
+            <AuthorSocials>
+              <AuthorSocialsContainer>
+                <Link href="/support">
+                  <a>
+                    <FaGift />  Support
+                  </a>
+                </Link>
+              </AuthorSocialsContainer>
+              {/*(socials.map((social) => 
+                <AuthorSocialsContainer>
+                  <a href={social.link} rel="nofollow noopener" title={social.plattform}>
+                    {renderSocials(social)}
+                  </a>
+                </AuthorSocialsContainer>
+            )*/}
+            </AuthorSocials>
+        </AuthorMeta>
+      </AuthorWrapper>
+    </>
   )
 }

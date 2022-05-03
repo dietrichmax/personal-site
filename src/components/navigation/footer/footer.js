@@ -8,8 +8,6 @@ import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icon
 import { SiStrava } from "react-icons/si"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
-import useSWR from "swr"
-import fetcher from "src/utils/fetcher"
 // styled components
 
 const FooterContainer = styled.footer`
@@ -186,12 +184,6 @@ export default function Footer() {
     return () => (isSubscribed = false)
   }, [])
 
-  const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`,
-    fetcher
-  )
-
-  if (error) return console.log("error")
 
   const footerItems = [
     {
@@ -354,9 +346,9 @@ export default function Footer() {
           © 2018 – {new Date().getFullYear()}
           <span> • </span>
           <Link href="/">
-            <a title={`Max Dietrich - ${!data ? "" : data.timeline[0].role}`}>
+            <a title={config.siteTitleAlt}>
               {" "}
-              Max Dietrich
+              {config.siteTitleAlt}
             </a>
           </Link>
           <span> • </span>

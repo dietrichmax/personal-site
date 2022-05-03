@@ -168,6 +168,10 @@ const RecommendedPostTitle = styled.h3`
   `}
 `
 
+const NewsletterTitle = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
+`
 
 export default function Post({ post, allPosts }) {  
 
@@ -238,7 +242,8 @@ export default function Post({ post, allPosts }) {
                       {/*<Likes />*/}
                       <Webmentions slug={`/articles/${post.slug}`} />
 
-                      <div style={{backgroundColor: 'var(--content-bg)', paddingLeft:'var(--space-sm)'}}>
+                      <div >
+                        <NewsletterTitle>Newsletter</NewsletterTitle>
                         <Subscribe />
                       </div>
 

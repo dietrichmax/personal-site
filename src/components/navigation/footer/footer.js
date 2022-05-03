@@ -215,8 +215,8 @@ export default function Footer() {
       link: "/blogroll" 
     },*/
     {
-      name: "Mailing",
-      link: "/mailinglist",
+      name: "Newsletter",
+      link: "/newsletter",
     },
   ]
 

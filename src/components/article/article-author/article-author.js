@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import config from "src/data/internal/SiteConfig"
 import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing, FaGift} from "react-icons/fa"
+import { Button } from "@/styles/templates/button"
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -52,20 +53,6 @@ const AuthorBio = styled.p`
 `
 
 const AuthorSocialsContainer = styled.a`
-  margin-right: var(--space-sm);
-  display: inline-block;  
-  border-radius: var(--border-radius);
-  margin: 0.25rem 1rem 0.5rem 0;
-  padding: 3px calc(var(--space-sm) * 0.5);
-  font-family: var(--secondary-font);
-  background-color: var(--secondary-color);
-  color: var(--body-bg);
-  border: 1px solid var(--body-bg);
-  cursor: pointer;
-  :hover {
-    color: var(--body-bg);
-    color: var(--text-color);
-  }
 `
 
 const AuthorDescription = styled.div``
@@ -118,9 +105,9 @@ export default function Author( author ) {
         <AuthorSocials>
           <AuthorSocialsContainer>
             <Link href="/support">
-              <a>            
+              <Button>            
                 <FaGift />  Support
-              </a>
+              </Button>
             </Link>
           </AuthorSocialsContainer>
           {/*(socials.map((social) => 

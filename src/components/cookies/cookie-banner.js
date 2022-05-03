@@ -250,8 +250,8 @@ class CookieBanner extends Component {
                   </CookieContentBlock>
                   <Text>
                     <p>
-                      If you do not want to share your data with third parties but still want to support me you can do it via Paypal {' '}
-                      <TextLink href="/pay">mxd.codes/pay</TextLink> or follow me on my socials:
+                      If you do not want to share your data with third parties but still want to support please visit {' '}
+                      <TextLink href="/support">mxd.codes/support</TextLink> or follow me on my socials:
                       <List>
                         <Socialtem>
                           <a href={config.socials.twitter} title="@mxdietrich on Twitter">

@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
-    overflow-wrap: break-word;
   }
   ::selection {
     background: var(--text-color);

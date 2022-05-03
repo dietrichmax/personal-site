@@ -8,7 +8,7 @@ import Logo from "@/components/logo/logo"
 import { Button }  from "@/styles/templates/button"
 import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
 import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
-import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
+//import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import { SiStrava } from "react-icons/si"
 import config from "src/data/internal/SiteConfig"
 import { push } from "@socialgouv/matomo-next";
@@ -251,7 +251,7 @@ class CookieBanner extends Component {
                   <Text>
                     <p>
                       If you do not want to share your data with third parties but still want to support please visit {' '}
-                      <TextLink href="/support">mxd.codes/support</TextLink> or follow me on my socials:
+                      <TextLink href="/support">mxd.codes/support</TextLink> or message me on my socials:
                       <List>
                         <Socialtem>
                           <a href={config.socials.twitter} title="@mxdietrich on Twitter">

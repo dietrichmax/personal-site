@@ -8,7 +8,7 @@ import Providers from 'src/utils/providers';
 import CookieBanner from "@/components/cookies/cookie-banner"
 import Cookie from "js-cookie"
 import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
-import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
+//import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
 import "@/public/fonts/Clarity-City/style.css"
@@ -26,7 +26,7 @@ class MyApp extends App {
       window._paq.push(['enableHeartBeatTimer']);
       if (Cookie.get("consent") === "true") {
         enableGoogleAnalytics();
-        enableGoogleAdsense();
+        //enableGoogleAdsense();
       }
     }
   }

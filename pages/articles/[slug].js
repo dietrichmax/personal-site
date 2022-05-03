@@ -24,7 +24,7 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
-import { GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
+//import { GoogleAdsenseContainer } from "@/components/google-adsense/google-adsense"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import Author from "@/components/article/article-author/article-author"
 
@@ -225,7 +225,7 @@ export default function Post({ post, allPosts }) {
                 <ArticleBackgroundColor>
 
                   <PostWrapper>
-                    <TagsWrapper><PostTags tags={post.tags} /></TagsWrapper> 
+                    {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
                     
                     <DateWrapper className="dt-published"><a className="u-url" href={`articles/${post.slug}`}>{format(parseISO(post.updated_at ? post.updated_at : post.published_at), "yyyy-MM-dd")}</a></DateWrapper>

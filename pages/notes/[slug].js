@@ -97,7 +97,7 @@ export default function Note({ note }) {
                       />
                     : null }
                     
-                    <NoteTags tags={note.tags} />
+                    {/*<NoteTags tags={note.tags} />*/}
                     
                   </NotesContent>
 

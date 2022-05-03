@@ -79,7 +79,7 @@ export default function Photo({ photo }) {
                   
                 </PhotoList>
               <PageBody className="e-content" content={photo.description} />
-              <TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> 
+              {/*<TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> */}
               
               <WebActions slug={`/photos/${photo.slug}`} />
               <Meta post={photo} slug={`/photos/${photo.slug}`} syndicationLinks={photo.syndicationLinks}/>

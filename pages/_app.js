@@ -6,8 +6,8 @@ import GlobalStyle from '@/styles/global.js'
 import config from "src/data/internal/SiteConfig"
 import Providers from 'src/utils/providers';
 import CookieBanner from "@/components/cookies/cookie-banner"
-import Cookie from "js-cookie"
-import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
+//import Cookie from "js-cookie"
+//import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
 //import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
@@ -24,10 +24,10 @@ class MyApp extends App {
         siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID
       }), 
       window._paq.push(['enableHeartBeatTimer']);
-      if (Cookie.get("consent") === "true") {
-        enableGoogleAnalytics();
+      /*if (Cookie.get("consent") === "true") {
+        //enableGoogleAnalytics();
         //enableGoogleAdsense();
-      }
+      }*/
     }
   }
 
@@ -102,7 +102,7 @@ class MyApp extends App {
         </Head>
         <Providers>
           <GlobalStyle/> 
-          <CookieBanner/> 
+          <CookieBanner/>
           <Component {...pageProps} />
         </Providers>
       </>

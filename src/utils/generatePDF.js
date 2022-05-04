@@ -7,11 +7,10 @@ import { ServerStyleSheet } from "styled-components"
 
 export default async function generatePDF(cvData) {
   const stylesheet = new ServerStyleSheet()
-  const html = ReactDOMServer.renderToString(
+  /*const html = ReactDOMServer.renderToString(
     stylesheet.collectStyles(<CV data={cvData} />)
   )
-
-  const css = stylesheet.getStyleTags()
+  const css = stylesheet.getStyleTags()*/
 
   //launch pupeteer
   const browser = await puppeteer.launch({
@@ -21,27 +20,21 @@ export default async function generatePDF(cvData) {
   })
 
   const page = await browser.newPage()
-
-  // go to page
-  await page.goto(config.siteUrl + "/cv", {
-    waitUntil: "networkidle0",
+  await page.setViewport({width:800,height:1020});
+  await page.goto('https://mxd.codes/cv',{ waitUntil: 'networkidle0'});
+  await page.evaluate(() => {
+    /*var cookieBanner = document.querySelector("#cookies_accept");
+    cookieBanner.parentNode.removeChild(cookieBanner);
+    document.getElementById("cv");*/
   })
+  
 
-  // get cv content
-  const cv = await page.evaluate(
-    () => document.querySelector("section").innerHTML
-  )
-
-  await page.setContent(`${css}${html}`, {
-    waitUntil: "networkidle0",
-  })
-
-  //  Style
+  await page.emulateMediaType('screen'); 
   const pdfBuffer = await page.pdf({
-    format: "a4",
+    format: "A4",
     printBackground: true,
   })
-
+  
   await page.close()
   await browser.close()
 

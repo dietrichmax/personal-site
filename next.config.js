@@ -450,6 +450,16 @@ const redirects = {async redirects() {
       permanent: true
     },
     {
+      source: '/fernerkundung-satellitenbilder-downloaden/',
+      destination: '/articles/satellite-imagery-download-high-resolution',
+      permanent: true
+    },
+    {
+      source: '/fernerkundung-satellitenbilder-downloaden',
+      destination: '/articles/satellite-imagery-download-high-resolution',
+      permanent: true
+    },
+    {
       source: '/stellenmarkt',
       destination: '/',
       permanent: true

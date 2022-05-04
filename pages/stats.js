@@ -14,7 +14,8 @@ import {
     getMatomoPageViews,
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
-    getMatomoVisitsSummary
+    getMatomoVisitsSummary,
+    getMatomoTopPageUrls
 } from "@/src/data/external/analytics"
 import {
   getPostsCount,
@@ -32,8 +33,8 @@ import { getGitHubStats } from "@/src/data/external/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from '@/components/title/sub-title'
-import { formatDistance } from 'date-fns'
-import { getAllExtensions } from "showdown"
+//import { formatDistance } from 'date-fns'
+//import { getAllExtensions } from "showdown"
 
 const StyledReactTooltip = styled(ReactTooltip)`
   background-color: var(--content-bg);
@@ -53,7 +54,9 @@ const Container = styled.div`
 `
 
 const Title = styled.p`
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm);  
+    font-size: 1.5rem;
+    font-weight: 600;
 `
 
 const Stats = styled.span`
@@ -87,10 +90,6 @@ const TripleStatsGrid = styled.div`
     ${media.lessThan('1000px')`
         grid-template-columns: repeat(1,minmax(0,1fr));
     `}
-`
-
-const GridTitle = styled.p`
-    grid-column: span 2/span 2;
 `
 
 const GridStats = styled.p`
@@ -140,7 +139,9 @@ const StatsGridMedium = styled.div`
     padding-bottom: 2rem;
 `
 const GridMediumTitle = styled.p`
-    grid-column: span 4/span 4;
+    grid-column: span 4/span 4;  
+    font-size: 1.5rem;
+    font-weight: 600;
 `
 const BottomStatsGrid = styled.div`
     text-align: center;
@@ -281,6 +282,31 @@ const LanguageDot = styled.span`
     margin-right: var(--space-sm);
 `
 
+const TopPageContainer = styled.div`
+
+`
+
+const TopPage = styled.p`
+
+`
+
+const TopPageList = styled.ol`
+        padding-inline-start: var(--space);
+`
+
+const TopPageListItem = styled.li``
+
+const TopPageListItemLink = styled.a`
+    color: var(--secondary-color);
+    text-decoration: underline;
+    :hover {
+        text-decoration: none;
+    }
+`
+
+const TopPageListItemCount = styled.span`
+    font-style: italic;
+`
 
 export default function Dashboard({
     lastViews,
@@ -298,7 +324,8 @@ export default function Dashboard({
     visitsSummary,
     photosCount,
     activities,
-    liveViews
+    liveViews,
+    topPosts
 }) {
     const router = useRouter()
 
@@ -312,7 +339,7 @@ export default function Dashboard({
     const webmentionsCount = allWebmentions.length
 
     const linesOfCode = codeStats.SUM.code
-
+    
     const α = 0.4
     const B = 20000
     let pageViews = []
@@ -364,7 +391,7 @@ export default function Dashboard({
       greatestElevationGain.push(item.elevationGain)
       longestRide.push(item.distance)
     })
-    
+
     return (
         <>
             <Layout>
@@ -373,16 +400,16 @@ export default function Dashboard({
                 ) : (
                     <>
                         <SEO 
-                            title="Dashboard"
-                            slug="dashboard" 
+                            title="Site Stats"
+                            slug="stats" 
                         />
                         <StyledReactTooltip />
-                        <PageTitle>Dashboard</PageTitle>
+                        <PageTitle>Site Stats</PageTitle>
                         <SubTitle>Statistics from Matomo, Strapi, Webmentions and more</SubTitle>
                         <Container>
                             <GeneralStats>
                                 <StatsGrid>
-                                    <GridTitle>Web Analytics</GridTitle>
+                                    <Title>Web Analytics</Title>
                                     <StatsLargeGrid>
                                         {liveViews[0].visitors > 1 ? 
                                             <GridStats>{liveViews[0].visitors} people</GridStats> :
@@ -418,7 +445,7 @@ export default function Dashboard({
 
                                 
                                 <StatsGrid>
-                                    <GridTitle>Content Stats</GridTitle>
+                                    <Title>Content Stats</Title>
                                     <Link href="/articles" passHref>
                                         <StatsLargeGrid  title="See all Articles">
                                             <GridStats>{postsCount}</GridStats>
@@ -505,7 +532,21 @@ export default function Dashboard({
                                 </DateContainer>
                             </ViewsContainer>
 
-
+                            <TopPageContainer>
+                                <Title>
+                                    Most visited posts of all time
+                                </Title>
+                                <TopPageList>
+                                    {topPosts.map((post) => (
+                                            <TopPageListItem>
+                                                <Link href={post.label} passHref>
+                                                    <TopPageListItemLink title={post.label}>{post.label}</TopPageListItemLink>
+                                                </Link>
+                                                <TopPageListItemCount> ({post.nb_hits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} views)</TopPageListItemCount>
+                                            </TopPageListItem>
+                                    ))}
+                                </TopPageList>
+                            </TopPageContainer>
                             <TripleStatsGrid>
 
                                 <GitHubWrapper>
@@ -720,6 +761,8 @@ export async function getStaticProps() {
     const visitsSummary = (await getMatomoVisitsSummary()) || []
     const activities = (await getAllActivities()) || []
     const liveViews = await getMatomoLiveCounter() || []
+    const topPosts = await getMatomoTopPageUrls() || []
+    
     
     return {
         revalidate:  86400,
@@ -740,7 +783,8 @@ export async function getStaticProps() {
             visitsSummary,
             photosCount,
             activities,
-            liveViews
+            liveViews,
+            topPosts
         },
     }
 }

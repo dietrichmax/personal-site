@@ -191,20 +191,20 @@ export default function Footer() {
       link: "/contact",
     },
     {
-      name: "Now",
-      link: "/now",
-    },
-    {
       name: "About this site",
       link: "/about-this-site",
     },
     {
-      name: "Dashboard",
-      link: "/dashboard",
+      name: "Site Stats",
+      link: "/stats",
     },
     {
       name: "Feeds",
       link: "/feeds",
+    },
+    {
+      name: "Now",
+      link: "/now",
     },
     {
       name: "Webmention Endpoint",

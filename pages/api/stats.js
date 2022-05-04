@@ -17,7 +17,8 @@ import {
     getMatomoSumVisitDuration,
     getMatomoSEOStats,
     getMatomoVisitsSummary,
-    getMatomoConsentEvent
+    getMatomoConsentEvent,
+    getMatomoTopPageUrls
 } from "src/data/external/analytics"
 
 export default async (_, res) => {
@@ -31,6 +32,7 @@ export default async (_, res) => {
   const subscribersCount = (await getSubscribersCount()) || []
   const activities = (await getAllActivities()) || []
   const lastViews = (await getMatomoPageViews()) || []
+  const topPageUrls = await getMatomoTopPageUrls() || []
 
   let distance = 0
   let duration = 0
@@ -38,6 +40,7 @@ export default async (_, res) => {
   let maxSpeed = []
   let elevationGain = 0
   let jumpCount = 0
+  let topPosts = []
   
   activities.map((item) => {
     distance = distance + item.distance
@@ -46,6 +49,14 @@ export default async (_, res) => {
     maxSpeed.push(item.maxSpeed)
     elevationGain = elevationGain + item.elevationGain
     jumpCount = jumpCount + item.jumpCount
+  })
+
+  topPageUrls.map((post)  => {
+    topPosts.push({
+      label: post.label,
+      views: post.nb_hits,
+      url: post.url
+    })
   })
 
   res.setHeader(
@@ -63,7 +74,8 @@ export default async (_, res) => {
         activities: activitiesCount,
         subscribers: subscribersCount,
         locations: locationsCount,
-      }
+      },
+      topPosts: topPosts
     },
     activities: {
       distance: parseInt(distance/1000),

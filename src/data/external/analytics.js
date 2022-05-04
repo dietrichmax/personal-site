@@ -157,17 +157,37 @@ export async function getMatomoSEOStats() {
   return liveViews
 }
 
-export async function getPageUrl(url) {
+export async function getMatomoTopPageUrls() {
   const res = await fetch(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
-    }?module=API&method=Actions.getPageUrl&idSite=${
+    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/articles/&flat=1&idSite=${
+      process.env.NEXT_PUBLIC_MATOMO_SITE_ID
+    }&period=range&date=2018-02-01,${new Date()
+      .toISOString()
+      .slice(0, 10)}&format=JSON&filter_limit=5&token_auth=${
+      process.env.NEXT_PUBLIC_MATOMO_API_KEY
+    }`
+  )
+  const pageUrl = await res.json()
+  if (pageUrl.errors) {
+    console.error(pageUrl.errors)
+    throw new Error("Failed to fetch pageUrl")
+  }
+  return pageUrl
+}
+
+export async function getMatomoViewForPage(url) {
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_MATOMO_URL
+    }?module=API&method=Actions.get&segment=pageUrl=@${url}&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2018-02-01,${new Date()
       .toISOString()
       .slice(0, 10)}&format=JSON&token_auth=${
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
-    }&pageUrl=${url}`
+    }`
   )
   const pageUrl = await res.json()
   if (pageUrl.errors) {

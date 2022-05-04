@@ -16,7 +16,7 @@ import Webmentions from "src/components/social/webmentions/webmentions"
 import getReadTime from "src/utils/read-time"
 import PostImage from "src/components/article/article-image/article-image"
 import PostTitle from 'src/components/title/post-title'
-import PostTags from 'src/components/tags/tags'
+//import PostTags from 'src/components/tags/tags'
 import { parseISO, format } from 'date-fns'
 //import Comments from "@/components/comments/comments"
 import HCard from "src/components/microformats/h-card"

@@ -194,7 +194,7 @@ class CookieBanner extends Component {
 
   accept = () => {
     Cookie.set("consent", true, { sameSite: "strict", expires: 365 })
-    enableGoogleAnalytics();
+    //enableGoogleAnalytics();
     //enableGoogleAdsense();
     push(["trackEvent", "consent", "true"])
     this.setState({ visible: false })
@@ -203,7 +203,7 @@ class CookieBanner extends Component {
 
   decline = () => {
     Cookie.set("consent", false, { sameSite: "strict", expires: 365 })
-    window['ga-disable-GA_MEASUREMENT_ID'] = true;
+    //window['ga-disable-GA_MEASUREMENT_ID'] = true;
     push(["trackEvent", "consent", "false"]);
     this.setState({ visible: false })
     document.body.style.overflow = 'scroll'

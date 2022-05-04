@@ -6,7 +6,7 @@ import CV from "src/components/cv/cv"
 import { ServerStyleSheet } from "styled-components"
 
 export default async function generatePDF(cvData) {
-  const stylesheet = new ServerStyleSheet()
+  /*const stylesheet = new ServerStyleSheet()
   /*const html = ReactDOMServer.renderToString(
     stylesheet.collectStyles(<CV data={cvData} />)
   )

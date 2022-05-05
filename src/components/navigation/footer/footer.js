@@ -161,6 +161,7 @@ const SearchWrapper = styled.div`
 `
 
 const AboutMeLink = styled.a`
+  padding-top: var(--space-sm);
   border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
   :hover {

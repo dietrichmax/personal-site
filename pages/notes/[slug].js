@@ -13,6 +13,7 @@ import NoteTags from "src/components/tags/tags"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Author from "@/components/article/article-author/article-author"
+import Subscribe from "src/components/social/newsletter/subscribe"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);
@@ -51,6 +52,11 @@ const NoteBackgroundColor = styled.div`
   max-width: 900px;
   margin: 0 auto var(--space-sm) 0;
   background-color: var(--content-bg);
+`
+
+const NewsletterTitle = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
 `
 
 export default function Note({ note }) {
@@ -109,6 +115,10 @@ export default function Note({ note }) {
               syndicationLinks={note.syndicationLinks}
             />
             <Webmentions slug={`/notes/${note.slug}`} />
+            <div>
+              <NewsletterTitle>Newsletter</NewsletterTitle>
+              <Subscribe />
+            </div>
           </NoteWrapper>
         </>
       )}

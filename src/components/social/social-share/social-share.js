@@ -73,7 +73,7 @@ export default function SocialShare({ slug, syndicationLinks, id }) {
   }
 
   useEffect(() => {
-    !gotPostLike ? getPostLike() : null
+    //!gotPostLike ? getPostLike() : null
   }, [])
 
   const sendLike = () => {

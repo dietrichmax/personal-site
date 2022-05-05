@@ -1,4 +1,11 @@
-import { getAllPosts, getAllNotes, getAllLinks, getAllBlogrolls, getAllRecipes, getAllActivities } from 'src/data/external/cms'
+import {
+  getAllPosts,
+  getAllNotes,
+  getAllLinks,
+  getAllBlogrolls,
+  getAllRecipes,
+  getAllActivities,
+} from "src/data/external/cms"
 
 export default async (_, res) => {
   const allPosts = (await getAllPosts()) || []
@@ -9,21 +16,21 @@ export default async (_, res) => {
 
   const publishOn = (note) => {
     const endpoints = []
-    note.publishOnTwitter ? endpoints.push(`https://brid.gy/publish/twitter`) : null
+    note.publishOnTwitter
+      ? endpoints.push(`https://brid.gy/publish/twitter`)
+      : null
     return endpoints
   }
 
-  
   const allContent = []
 
   allPosts.map((post) => {
     allContent.push({
       post: post,
       date: post.published_at,
-      type: "article"
+      type: "article",
     })
   })
-
 
   allNotes.map((note) => {
     const endpoints = publishOn(note)
@@ -31,7 +38,7 @@ export default async (_, res) => {
       note: note,
       date: note.published_at,
       endpoints: endpoints,
-      type: "note"
+      type: "note",
     })
   })
 
@@ -39,7 +46,7 @@ export default async (_, res) => {
     allContent.push({
       link: link,
       date: link.published_at,
-      type: "link"
+      type: "link",
     })
   })
 
@@ -47,10 +54,10 @@ export default async (_, res) => {
     allContent.push({
       activity: activity,
       date: activity.created_at,
-      type: "activity"
+      type: "activity",
     })
   })
-  
+
   /*recipes.map((recipe) => {
     allContent.push({
       title: recipe.title,
@@ -63,11 +70,9 @@ export default async (_, res) => {
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=120, stale-while-revalidate=60'
-  );
+    "Cache-Control",
+    "public, s-maxage=120, stale-while-revalidate=60"
+  )
 
-  return res.status(200).json(
-    sortedContent
-  );
-};
+  return res.status(200).json(sortedContent)
+}

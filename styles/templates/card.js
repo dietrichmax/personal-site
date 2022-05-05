@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
-const Card = styled.li`    
+const Card = styled.li`
   position: relative;
   display: flex;
   list-style: outside none none;
@@ -8,7 +8,7 @@ const Card = styled.li`
   border: 1px solid var(--body-bg);
   border-radius: 6px;
   overflow: hidden;
-  background-color: var(--content-bg); 
+  background-color: var(--content-bg);
   box-shadow: var(--box-shadow);
 `
 

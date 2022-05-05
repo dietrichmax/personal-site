@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Input = styled.input`
   height: 100%;
@@ -7,7 +7,7 @@ const Input = styled.input`
   background-color: var(--content-bg);
   color: var(--text-color);
   :invalid {
-      border: 1px solid red;
+    border: 1px solid red;
   }
 `
 

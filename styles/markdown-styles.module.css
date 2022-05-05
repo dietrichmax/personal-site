@@ -15,26 +15,31 @@
   border-bottom: 1px solid var(--link-color);
 }
 
-.markdown p, .markdown dl, .markdown ol, .markdown ul {
+.markdown p,
+.markdown dl,
+.markdown ol,
+.markdown ul {
   margin-bottom: var(--space);
 }
 
-
-.markdown ul, .markdown ol {
+.markdown ul,
+.markdown ol {
   padding-inline-start: var(--space-sm);
-  list-style: none; 
+  list-style: none;
 }
 
 .markdown li {
   margin-bottom: 0.75rem;
 }
 
-.markdown li ul, .markdown li ol {
+.markdown li ul,
+.markdown li ol {
   margin-top: 0.75rem;
 }
 
-.markdown ul li::before, .markdown ol li::before {
-  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+.markdown ul li::before,
+.markdown ol li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: var(--secondary-color); /* Change the color */
   font-weight: bold; /* If you want it to be bold */
   display: inline-block; /* Needed to add space between the bullet and the text */
@@ -58,18 +63,20 @@
   color: var(--secondary-color);
 }
 
-.markdown h4, .markdown h5, .markdown h6 {
+.markdown h4,
+.markdown h5,
+.markdown h6 {
   font-family: var(--primary-font);
   color: var(--secondary-color);
 }
 
 .markdown code {
-  overflow: auto; 
+  overflow: auto;
   font-size: 1rem;
 }
 
 .markdown pre {
-  overflow: auto; 
+  overflow: auto;
   margin-bottom: var(--space);
 }
 
@@ -84,4 +91,3 @@
 .markdown blockquote p {
   margin-bottom: 0;
 }
-

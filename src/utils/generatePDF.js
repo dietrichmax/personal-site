@@ -20,21 +20,20 @@ export default async function generatePDF(cvData) {
   })
 
   const page = await browser.newPage()
-  await page.setViewport({width:800,height:1020});
-  await page.goto('https://mxd.codes/cv',{ waitUntil: 'networkidle0'});
+  await page.setViewport({ width: 800, height: 1020 })
+  await page.goto("https://mxd.codes/cv", { waitUntil: "networkidle0" })
   await page.evaluate(() => {
     /*var cookieBanner = document.querySelector("#cookies_accept");
     cookieBanner.parentNode.removeChild(cookieBanner);
     document.getElementById("cv");*/
   })
-  
 
-  await page.emulateMediaType('screen'); 
+  await page.emulateMediaType("screen")
   const pdfBuffer = await page.pdf({
     format: "A4",
     printBackground: true,
   })
-  
+
   await page.close()
   await browser.close()
 

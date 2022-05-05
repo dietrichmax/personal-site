@@ -12,14 +12,14 @@
 
 You can see the site live here:
 
-[``` mxd.codes ```](https://mxd.codes)
+[`mxd.codes`](https://mxd.codes)
 
-The **frontend** of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js"). 
+The **frontend** of the site is built with the react framework [Next.js](https://nextjs.org/ "Next.js").
 The **backend** consists of:
-- CMS: [Strapi](https://strapi.io/ "strapi") is an open-source content management system which i am using with Postgres.
-- Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo"). 
-- Web-Server: VPS with Nginx.
 
+- CMS: [Strapi](https://strapi.io/ "strapi") is an open-source content management system which i am using with Postgres.
+- Analytics: Anonymized traffic data is collected via [Matomo](https://matomo.org/ "Matomo").
+- Web-Server: VPS with Nginx.
 
 ## Licensed under the [MIT License](https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/LICENSE "MIT License")
 
@@ -28,7 +28,7 @@ It would be awsome to give credit by back to [mxd.codes](https://mxd.codes). Tha
 
 Please keep in mind that i dont own most images used on the site.
 Images are mainly from
+
 - https://unsplash.com/,
 - https://www.esa.int
 - https://pixabay.com/de/
-

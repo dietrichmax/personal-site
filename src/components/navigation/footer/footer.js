@@ -4,7 +4,13 @@ import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing} from "react-icons/fa"
+import {
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaXing,
+} from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
@@ -24,7 +30,7 @@ const FooterInnerContainer = styled.div`
   margin: 0px auto;
   padding: var(--space) var(--space) 0 var(--space);
   max-width: var(--width-container);
-  border-top: 1px solid var(--content-bg);;
+  border-top: 1px solid var(--content-bg);
   ${media.lessThan("medium")`
     padding: var(--space) 0 0 0;
     display: block;
@@ -121,8 +127,7 @@ const FooterItem = styled.li`
   }
 `
 
-const FooterItemLink = styled(Link)`
-`
+const FooterItemLink = styled(Link)``
 
 const FooterNotice = styled.p`
   font-size: 0.75rem;
@@ -174,16 +179,15 @@ export default function Footer() {
   }
 
   useEffect(() => {
-    let isSubscribed = true;
+    let isSubscribed = true
     fetch("https://api.mxd.codes/posts?_sort=date:DESC", requestOptions)
       .then((response) => response.json())
-      .then((data) => isSubscribed ? setRecentPosts(data.slice(0, 4)) : null)
+      .then((data) => (isSubscribed ? setRecentPosts(data.slice(0, 4)) : null))
     fetch("https://api.mxd.codes/about", requestOptions)
       .then((response) => response.json())
-      .then((data) => isSubscribed ? setAbout(data) : null)
+      .then((data) => (isSubscribed ? setAbout(data) : null))
     return () => (isSubscribed = false)
   }, [])
-
 
   const footerItems = [
     {
@@ -298,10 +302,7 @@ export default function Footer() {
                 <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
               </FooterItem>*/}
               <FooterItem>
-                <a
-                  href={config.socials.xing}
-                  title="Max Dietrich on Xing"
-                >
+                <a href={config.socials.xing} title="Max Dietrich on Xing">
                   <FaXing /> Xing
                 </a>
               </FooterItem>
@@ -346,10 +347,7 @@ export default function Footer() {
           © 2018 – {new Date().getFullYear()}
           <span> • </span>
           <Link href="/">
-            <a title={config.siteTitleAlt}>
-              {" "}
-              {config.siteTitleAlt}
-            </a>
+            <a title={config.siteTitleAlt}> {config.siteTitleAlt}</a>
           </Link>
           <span> • </span>
           <Link href="/privacy-policy">

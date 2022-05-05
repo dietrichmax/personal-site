@@ -1,13 +1,13 @@
-import Layout from 'src/components/layout/layout'
-import { getAllBlogrolls } from 'src/data/external/cms'
-import config from "src/data/internal/SiteConfig";
-import styled from 'styled-components';
-import Image from 'next/image'
+import Layout from "src/components/layout/layout"
+import { getAllBlogrolls } from "src/data/external/cms"
+import config from "src/data/internal/SiteConfig"
+import styled from "styled-components"
+import Image from "next/image"
 import media from "styled-media-query"
-import SEO from 'src/components/seo/seo'
-import { useRouter } from 'next/router'
-import PageTitle from 'src/components/title/page-title'
-import SubTitle from 'src/components/title/sub-title'
+import SEO from "src/components/seo/seo"
+import { useRouter } from "next/router"
+import PageTitle from "src/components/title/page-title"
+import SubTitle from "src/components/title/sub-title"
 import Link from "next/link"
 import TextBody from "src/components/note/note-body/note-body"
 import Grid from "src/components/grid/grid"
@@ -15,7 +15,7 @@ import Grid from "src/components/grid/grid"
 const BlogrollContainer = styled.div`
   max-width: 1200px;
   margin: var(--space) auto var(--space) auto;
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding: 0;
     margin-top: var(--space-lg);
 `}
@@ -64,45 +64,46 @@ const BlogrollProfileDesc = styled.p`
 export default function Blogroll({ allBlogrolls }) {
   const router = useRouter()
 
-
   return (
     <>
       <Layout>
         {router.isFallback ? (
-            <PageTitle>{config.loading}</PageTitle>
-          ) : (
-            
+          <PageTitle>{config.loading}</PageTitle>
+        ) : (
           <>
-            <SEO   
-              title="Blogroll"
-              slug="blogroll"
-            />
-            
+            <SEO title="Blogroll" slug="blogroll" />
+
             <PageTitle>Blogroll</PageTitle>
-            <SubTitle>List of all personal blogs i am reading in random order.</SubTitle>
+            <SubTitle>
+              List of all personal blogs i am reading in random order.
+            </SubTitle>
 
             <BlogrollContainer>
               <Grid>
-              {allBlogrolls.map((blogroll,i) => (
+                {allBlogrolls.map((blogroll, i) => (
                   <BlogrollItem key={i} className="h-entry">
                     <BlogrollProfile>
                       {blogroll.profilePictureUrl ? (
-                      <BlogrollProfileImgWrapper>
-                        <BlogRollProfileImg
-                          src={blogroll.profilePictureUrl}
-                          width="70"
-                          height="70"
-                          title={blogroll.name}
-                          alt={blogroll.name}
-                          className="p-photo"
-                        /> 
+                        <BlogrollProfileImgWrapper>
+                          <BlogRollProfileImg
+                            src={blogroll.profilePictureUrl}
+                            width="70"
+                            height="70"
+                            title={blogroll.name}
+                            alt={blogroll.name}
+                            className="p-photo"
+                          />
                         </BlogrollProfileImgWrapper>
-                      ) : null }
-                    
+                      ) : null}
+
                       <Link href={blogroll.websiteUrl} passHref>
                         <a rel="bookmark" title={blogroll.name}>
-                          <BlogrollProfileName className="p-name">{blogroll.name}</BlogrollProfileName>
-                          <BlogrollProfileLink className="u-url">{blogroll.websiteUrl}</BlogrollProfileLink>
+                          <BlogrollProfileName className="p-name">
+                            {blogroll.name}
+                          </BlogrollProfileName>
+                          <BlogrollProfileLink className="u-url">
+                            {blogroll.websiteUrl}
+                          </BlogrollProfileLink>
                         </a>
                       </Link>
                     </BlogrollProfile>
@@ -110,7 +111,7 @@ export default function Blogroll({ allBlogrolls }) {
                       <TextBody content={blogroll.bio} />
                     </BlogrollProfileDesc>
                   </BlogrollItem>
-              ))}
+                ))}
               </Grid>
             </BlogrollContainer>
           </>
@@ -122,9 +123,9 @@ export default function Blogroll({ allBlogrolls }) {
 
 export async function getStaticProps() {
   const allBlogrolls = (await getAllBlogrolls()) || []
-  
+
   return {
-    revalidate:  86400,
+    revalidate: 86400,
     props: { allBlogrolls },
   }
 }

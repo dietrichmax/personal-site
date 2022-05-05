@@ -2,7 +2,14 @@ import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
 import config from "src/data/internal/SiteConfig"
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin , FaXing, FaGift} from "react-icons/fa"
+import {
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaXing,
+  FaGift,
+} from "react-icons/fa"
 import { Button } from "@/styles/templates/button"
 
 const AuthorWrapper = styled.div`
@@ -40,33 +47,31 @@ const AuthorSocialIcons = styled.i`
 `
 
 const AuthorTitle = styled.p`
-  margin-top: var(--space);  
+  margin-top: var(--space);
   font-size: 1.5rem;
   font-weight: 600;
 `
 
-const AuthorSubtitle = styled.p`
-`
+const AuthorSubtitle = styled.p``
 
 const AuthorBio = styled.p`
-  margin-top: var(--space-sm)
+  margin-top: var(--space-sm);
 `
 
-const AuthorSocialsContainer = styled.a`
-`
+const AuthorSocialsContainer = styled.a``
 
 const AuthorDescription = styled.div``
 
-export default function Author( author ) {
+export default function Author(author) {
   const { username, picture, bio, socials } = author.post
 
   const renderSocials = (socials) => {
     if (socials.plattform === "Instagram") {
       return <FaInstagram />
     } else if (socials.plattform === "Twitter") {
-      return <FaTwitter />  
+      return <FaTwitter />
     } else if (socials.plattform === "Linkedin") {
-      return <FaLinkedin />   
+      return <FaLinkedin />
     } else if (socials.plattform === "Xing") {
       return <FaXing />
     } else if (socials.plattform === "GitHub") {
@@ -96,17 +101,16 @@ export default function Author( author ) {
         </AuthorImgWrapper>
         <AuthorMeta>
           <AuthorName title="About me">{username} </AuthorName>
-          <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>    
+          <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>
         </AuthorMeta>
-        
       </AuthorWrapper>
       <AuthorDescription>
         <AuthorBio>{bio}</AuthorBio>
         <AuthorSocials>
           <AuthorSocialsContainer>
             <Link href="/support">
-              <Button>            
-                <FaGift />  Support
+              <Button>
+                <FaGift /> Support
               </Button>
             </Link>
           </AuthorSocialsContainer>
@@ -118,7 +122,7 @@ export default function Author( author ) {
             </AuthorSocialsContainer>
         )*/}
         </AuthorSocials>
-       </AuthorDescription>
+      </AuthorDescription>
     </>
   )
 }

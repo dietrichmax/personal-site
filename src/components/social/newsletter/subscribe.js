@@ -61,14 +61,14 @@ export default function Subscribe({ noLabel, cb }) {
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
-      const requestOptions = {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      }
-      fetch("https://api.mxd.codes/subscribers/count", requestOptions)
-        .then((response) => response.json())
-        .then((data) => setCount(data))
-      setGotData(true)
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://api.mxd.codes/subscribers/count", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setCount(data))
+    setGotData(true)
   }
 
   useEffect(() => {
@@ -111,8 +111,15 @@ export default function Subscribe({ noLabel, cb }) {
       ) : (
         <NewsletterWrapper>
           <DescriptionWrapper>
-            Do you like my content and want to know when new content is published? <br /> Then
-            subscribe to the newsletter as well as {count} other subscribers or to any <FeedLink><Link href="/feeds" title="Feeds">feed</Link></FeedLink> you like.
+            Do you like my content and want to know when new content is
+            published? <br /> Then subscribe to the newsletter as well as{" "}
+            {count} other subscribers or to any{" "}
+            <FeedLink>
+              <Link href="/feeds" title="Feeds">
+                feed
+              </Link>
+            </FeedLink>{" "}
+            you like.
             <Emoji text={"🚀"} />
           </DescriptionWrapper>
 

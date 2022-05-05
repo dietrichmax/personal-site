@@ -1,11 +1,11 @@
-import Layout from '@/components/layout/layout'
-import SEO from '@/components/seo/seo'
-import Title from '@/components/title/page-title'
-import { getAllPosts } from 'src/data/external/cms'
-import { useRouter } from 'next/router'
+import Layout from "@/components/layout/layout"
+import SEO from "@/components/seo/seo"
+import Title from "@/components/title/page-title"
+import { getAllPosts } from "src/data/external/cms"
+import { useRouter } from "next/router"
 import StringSimilarity from "string-similarity"
-import styled from 'styled-components';
-import SubTitle from '@/components/title/sub-title'
+import styled from "styled-components"
+import SubTitle from "@/components/title/sub-title"
 
 const Container = styled.div`
   max-width: 1200px;
@@ -14,9 +14,7 @@ const Container = styled.div`
   padding-right: var(--space);
 `
 
-
-
-export default function Custom404({pages}) {
+export default function Custom404({ pages }) {
   const router = useRouter()
 
   const pathname = router.pathname
@@ -25,28 +23,24 @@ export default function Custom404({pages}) {
 
   return (
     <Layout>
-  
-      <SEO   
-        title="404 - Page Not Found"
-        slug=""
-      />
+      <SEO title="404 - Page Not Found" slug="" />
       <Title>404 - Page Not Found</Title>
-          <SubTitle>{goodMatch ? `You were probably looking for ${goodMatch}` : `Seems like you got lost. Sorry for that...`}</SubTitle>
-      <Container>
-      </Container>
+      <SubTitle>
+        {goodMatch
+          ? `You were probably looking for ${goodMatch}`
+          : `Seems like you got lost. Sorry for that...`}
+      </SubTitle>
+      <Container></Container>
     </Layout>
   )
 }
 
-
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const pages = []
-  allPosts.map((post) => 
-    pages.push(post.slug),
-  )
+  allPosts.map((post) => pages.push(post.slug))
   return {
-    revalidate:  86400,
+    revalidate: 86400,
     props: { pages },
   }
 }

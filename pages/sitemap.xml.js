@@ -1,38 +1,57 @@
-import React from 'react';
-import { format } from 'date-fns'
-import { getAllPosts, getAllPages, getAllTags, getAllNotes, getAllRecipes, getAllPhotos } from 'src/data/external/cms'
+import React from "react"
+import { format } from "date-fns"
+import {
+  getAllPosts,
+  getAllPages,
+  getAllTags,
+  getAllNotes,
+  getAllRecipes,
+  getAllPhotos,
+} from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 
 //const globby = require('globby');
 
-
-const createSitemap = (posts, tags, pages, notes, photos, /*morePages,*/ recipes) => 
-
-`<?xml version="1.0" encoding="UTF-8"?>
+const createSitemap = (
+  posts,
+  tags,
+  pages,
+  notes,
+  photos,
+  /*morePages,*/ recipes
+) =>
+  `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
-        ${posts.map((post) => {
-          return `
+        ${posts
+          .map((post) => {
+            return `
               <url>
                   <loc>${`${config.siteUrl}/articles/${post.slug}`}</loc>
-                  <lastmod>${post.updated_at ? post.updated_at : post.published_at}</lastmod>
+                  <lastmod>${
+                    post.updated_at ? post.updated_at : post.published_at
+                  }</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.5</priority>
                </url>
-          `;
-        })
-        .join('')}
-        ${pages.map((page) => {
+          `
+          })
+          .join("")}
+        ${pages
+          .map((page) => {
             return `
                 <url>
                     <loc>${`${config.siteUrl}/${page.slug}`}</loc>
-                    <lastmod>${page.updated_at ? page.updated_at : page.created_at}</lastmod>
+                    <lastmod>${
+                      page.updated_at ? page.updated_at : page.created_at
+                    }</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
-            `;
+            `
           })
-          .join('')}
-        ${tags.map((tag) => {
+          .join("")}
+        ${tags
+          .map((tag) => {
             return `
                 <url>
                     <loc>${`${config.siteUrl}/topics/${tag.slug}`}</loc>
@@ -40,44 +59,53 @@ const createSitemap = (posts, tags, pages, notes, photos, /*morePages,*/ recipes
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
-            `;
+            `
           })
-          .join('')}
-          ${notes.map((note) => {
-            return `
+          .join("")}
+          ${notes
+            .map((note) => {
+              return `
                 <url>
                     <loc>${`${config.siteUrl}/notes/${note.slug}`}</loc>
-                    <lastmod>${note.updated_at ? note.updated_at : note.created_at}</lastmod>
+                    <lastmod>${
+                      note.updated_at ? note.updated_at : note.created_at
+                    }</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
-            `;
-          })
-          .join('')}
-          ${photos.map((photo) => {
-            return `
+            `
+            })
+            .join("")}
+          ${photos
+            .map((photo) => {
+              return `
                 <url>
                     <loc>${`${config.siteUrl}/photos/${photo.slug}`}</loc>
-                    <lastmod>${photo.updated_at ? photo.updated_at : photo.created_at}</lastmod>
+                    <lastmod>${
+                      photo.updated_at ? photo.updated_at : photo.created_at
+                    }</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
-            `;
-          })
-          .join('')}
-          ${recipes.map((recipe) => {
-            return `
+            `
+            })
+            .join("")}
+          ${recipes
+            .map((recipe) => {
+              return `
                 <url>
                     <loc>${`${config.siteUrl}/recipes/${recipe.slug}`}</loc>
-                    <lastmod>${recipe.updated_at ? recipe.updated_at : recipe.created_at}</lastmod>
+                    <lastmod>${
+                      recipe.updated_at ? recipe.updated_at : recipe.created_at
+                    }</lastmod>
                     <changefreq>monthly</changefreq>
                     <priority>0.5</priority>
                  </url>
-            `;
-          })
-          .join('')}
+            `
+            })
+            .join("")}
     </urlset>
-    `;
+    `
 
 class Sitemap extends React.Component {
   static async getInitialProps({ res }) {
@@ -103,14 +131,16 @@ class Sitemap extends React.Component {
     const notes = getNote
     const recipes = getRecipes
     const photos = getPhotos
-    
-    res.setHeader('Content-Type', 'text/xml');
-    res.write(createSitemap(posts, tags, pages, notes, photos, /*morePages,*/ recipes));
-    res.end();
+
+    res.setHeader("Content-Type", "text/xml")
+    res.write(
+      createSitemap(posts, tags, pages, notes, photos, /*morePages,*/ recipes)
+    )
+    res.end()
   }
 }
 
-export default Sitemap;
+export default Sitemap
 
 /*
 ${morePages.map((page) => {

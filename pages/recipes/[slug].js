@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router'
-import Layout from 'src/components/layout/layout'
-import { getAllRecipes, getRecipe } from 'src/data/external/cms'
-import styled from 'styled-components';
-import SEO from 'src/components/seo/seo'
-import media from 'styled-media-query';
-import config from "src/data/internal/SiteConfig";
+import { useRouter } from "next/router"
+import Layout from "src/components/layout/layout"
+import { getAllRecipes, getRecipe } from "src/data/external/cms"
+import styled from "styled-components"
+import SEO from "src/components/seo/seo"
+import media from "styled-media-query"
+import config from "src/data/internal/SiteConfig"
 import RecipeContent from "src/components/article/article-body/article-body"
 import Title from "src/components/title/post-title"
 import Webmentions from "src/components/social/webmentions/webmentions"
-import Link from"next/link"
-import Image from "next/image" 
+import Link from "next/link"
+import Image from "next/image"
 import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
@@ -18,14 +18,14 @@ const RecipeWrapper = styled.div`
   max-width: var(--width-container);
   padding: 0 var(--space);
   margin: 0 auto var(--space-sm) auto;
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
 `
 
 const RecipeImage = styled.div`
-  margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
+  margin: calc(var(--space-lg) * 2.5) auto var(--space-sm) auto;
   position: relative;
   position: relative;
   object-fit: cover;
@@ -38,7 +38,7 @@ const TitleWrapper = styled.div`
   max-width: var(--width-container);
   margin: auto;
   padding: 0 var(--space);
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
@@ -49,13 +49,11 @@ const SubLine = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-
 const Ingredients = styled.ul`
   padding-inline-start: 1rem;
 `
 
 const Ingredient = styled.li``
-
 
 const SubTitle = styled.h3`
   font-size: 1.25rem;
@@ -71,46 +69,71 @@ export default function Recipe({ recipe }) {
 
   return (
     <Layout>
-        {router.isFallback ? (
-          <Title>{config.loading}</Title>
-        ) : (
-          <>
-          <SEO   
+      {router.isFallback ? (
+        <Title>{config.loading}</Title>
+      ) : (
+        <>
+          <SEO
             title={recipe.title}
             description={recipe.description}
             slug={`recipes/${recipe.slug}`}
           />
-          <div className="h-recipe">             
-            <HCard /> 
-            <Link href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`} aria-label={recipe.title} passHref>
+          <div className="h-recipe">
+            <HCard />
+            <Link
+              href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
+              aria-label={recipe.title}
+              passHref
+            >
               <RecipeImage>
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.formats.large.url}`}
-                  alt={recipe.title} 
-                  title={recipe.title} 
+                  alt={recipe.title}
+                  title={recipe.title}
                   className="u-photo"
                   width="1300"
                   height="450"
-                /> 
+                />
               </RecipeImage>
             </Link>
-            <TitleWrapper><Title className="p-name">{recipe.title}</Title></TitleWrapper>
-            <RecipeWrapper>    
-            <SubLine>{recipe.subtitle}</SubLine>
-            <p>Takes overall <Duration className="dt-duration" datetime={`${recipe.duration}MIN`}>{recipe.duration}</Duration> min preparation time 
-            and serves <Yield className="p-yield" value={recipe.yield}>{recipe.yield}</Yield> people.
-              <SubTitle>Ingredients</SubTitle></p>
+            <TitleWrapper>
+              <Title className="p-name">{recipe.title}</Title>
+            </TitleWrapper>
+            <RecipeWrapper>
+              <SubLine>{recipe.subtitle}</SubLine>
+              <p>
+                Takes overall{" "}
+                <Duration
+                  className="dt-duration"
+                  datetime={`${recipe.duration}MIN`}
+                >
+                  {recipe.duration}
+                </Duration>{" "}
+                min preparation time and serves{" "}
+                <Yield className="p-yield" value={recipe.yield}>
+                  {recipe.yield}
+                </Yield>{" "}
+                people.
+                <SubTitle>Ingredients</SubTitle>
+              </p>
               <Ingredients>
-                {recipe.ingredients.map((ingredient,i) => {
-                  (
-                    <Ingredient className="p-ingredient" key={i}>{ingredient.amount} {ingredient.ingredient}</Ingredient>
-                  )
+                {recipe.ingredients.map((ingredient, i) => {
+                  ;<Ingredient className="p-ingredient" key={i}>
+                    {ingredient.amount} {ingredient.ingredient}
+                  </Ingredient>
                 })}
               </Ingredients>
               <SubTitle>Preparation</SubTitle>
-              <RecipeContent className="e-instructions" content={recipe.description}/>
+              <RecipeContent
+                className="e-instructions"
+                content={recipe.description}
+              />
               <WebActions slug={`/recipes/${recipe.slug}`} />
-              <Meta post={recipe} slug={`/recipes/${recipe.slug}`} syndicationLinks={recipe.syndicationLinks}/>
+              <Meta
+                post={recipe}
+                slug={`/recipes/${recipe.slug}`}
+                syndicationLinks={recipe.syndicationLinks}
+              />
               <Webmentions slug={`/recipes/${recipe.slug}`} />
             </RecipeWrapper>
           </div>
@@ -120,12 +143,12 @@ export default function Recipe({ recipe }) {
   )
 }
 
-export async function getStaticProps({ params }) {  
+export async function getStaticProps({ params }) {
   const data = await getRecipe(params.slug)
-  
+
   return {
     props: {
-      recipe: {  
+      recipe: {
         ...data?.recipes[0],
       },
     },

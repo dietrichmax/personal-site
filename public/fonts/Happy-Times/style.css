@@ -1,6 +1,6 @@
 @font-face {
   font-family: Happy-Times;
-      src: url('happy-times-at-the-ikob_italic.otf');
-      src: url('happy-times-at-the-ikob.otf');
+  src: url("happy-times-at-the-ikob_italic.otf");
+  src: url("happy-times-at-the-ikob.otf");
   font-display: swap;
 }

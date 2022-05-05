@@ -1,23 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect } from "react"
 
-export function enableGoogleAdsense () {
-    const head = document.getElementsByTagName('head')[0]
-    const scriptElement = document.createElement(`script`)
-    scriptElement.type = `text/javascript`
-    scriptElement.async
-    scriptElement.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`
-    scriptElement.crossOrigin = "anonymous"
-    head.appendChild(scriptElement);
+export function enableGoogleAdsense() {
+  const head = document.getElementsByTagName("head")[0]
+  const scriptElement = document.createElement(`script`)
+  scriptElement.type = `text/javascript`
+  scriptElement.async
+  scriptElement.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`
+  scriptElement.crossOrigin = "anonymous"
+  head.appendChild(scriptElement)
 }
 
-export function GoogleAdsenseContainer ( { client, slot }) {
-
+export function GoogleAdsenseContainer({ client, slot }) {
   useEffect(() => {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  }, []);
+    ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+  }, [])
 
   return (
-    <div style={{textAlign: 'left',overflow: 'hidden'}} >
+    <div style={{ textAlign: "left", overflow: "hidden" }}>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -27,5 +26,5 @@ export function GoogleAdsenseContainer ( { client, slot }) {
         data-full-width-responsive="true"
       ></ins>
     </div>
-  );     
+  )
 }

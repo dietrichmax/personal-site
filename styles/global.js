@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -70,11 +70,11 @@ const GlobalStyle = createGlobalStyle`
     image-rendering: crisp-edges;
   }
   body { 
-    --primary-color: ${props => props.theme.primaryColor};
-    --secondary-color: ${props => props.theme.secondaryColor};
-    --thirdy-color: ${props => props.theme.thirdyColor};
-    --body-bg: ${props => props.theme.bodyBg};
-    --content-bg: ${props => props.theme.contentBg};
+    --primary-color: ${(props) => props.theme.primaryColor};
+    --secondary-color: ${(props) => props.theme.secondaryColor};
+    --thirdy-color: ${(props) => props.theme.thirdyColor};
+    --body-bg: ${(props) => props.theme.bodyBg};
+    --content-bg: ${(props) => props.theme.contentBg};
     --gray: #c9d1d9;
     --gap: var(--space-sm);
     --border: var(--thirdy-color);
@@ -82,8 +82,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-font: sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
-    --link-color-hover: ${props => props.theme.primaryColor};
-    --text-color: ${props => props.theme.textColor};
+    --link-color-hover: ${(props) => props.theme.primaryColor};
+    --text-color: ${(props) => props.theme.textColor};
     --width-container: 1200px;
     --content-width: 670px;
     --space: 2rem;

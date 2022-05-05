@@ -1,15 +1,15 @@
-import Layout from 'src/components/layout/layout'
-import { getAllPosts, getAllTags } from 'src/data/external/cms'
-import config from "src/data/internal/SiteConfig";
-import styled from 'styled-components';
-import SEO from 'src/components/seo/seo'
-import { useRouter } from 'next/router'
-import PageTitle from 'src/components/title/page-title'
-import Grid from 'src/components/grid/grid';
-import SubTitle from 'src/components/title/sub-title'
-import PostPreview from 'src/components/article/article-preview/article-preview'
+import Layout from "src/components/layout/layout"
+import { getAllPosts, getAllTags } from "src/data/external/cms"
+import config from "src/data/internal/SiteConfig"
+import styled from "styled-components"
+import SEO from "src/components/seo/seo"
+import { useRouter } from "next/router"
+import PageTitle from "src/components/title/page-title"
+import Grid from "src/components/grid/grid"
+import SubTitle from "src/components/title/sub-title"
+import PostPreview from "src/components/article/article-preview/article-preview"
 import Tags from "src/components/tags/tags"
-import media from 'styled-media-query';
+import media from "styled-media-query"
 
 const BlogPageContainer = styled.div`
   margin-left: auto;
@@ -19,20 +19,20 @@ const BlogPageContainer = styled.div`
 `
 
 const PostsGrid = styled.ol`
-  grid-column: span 3/span 3;
+  grid-column: span 3 / span 3;
   list-style: none;
   padding-inline-start: 0;
   display: grid;
   gap: var(--space);
   grid-template-columns: repeat(3, minmax(0px, 1fr));
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding-left: 0;
     grid-template-columns: repeat(1, minmax(0px, 1fr));
 `}
 `
 
 const TagsGrid = styled.div`
-  grid-column: span 1/span 1;
+  grid-column: span 1 / span 1;
   position: sticky;
   padding: var(--space-sm);
 `
@@ -43,36 +43,30 @@ const Sticky = styled.div`
 `
 export default function Blog({ allPosts, allTags }) {
   const router = useRouter()
-  
-  const posts = allPosts
 
+  const posts = allPosts
 
   return (
     <>
       <Layout>
         {router.isFallback ? (
-            <PageTitle>{config.loading}</PageTitle>
-          ) : (
-            
+          <PageTitle>{config.loading}</PageTitle>
+        ) : (
           <>
-            <SEO   
+            <SEO
               title="Articles"
               description="Tutorials, Guides and thoughts"
               slug="articles"
             />
-            
+
             <PageTitle>Articles</PageTitle>
             <SubTitle>Tutorials, Guides and thoughts</SubTitle>
 
-            <BlogPageContainer >
-
-              <Grid>         
+            <BlogPageContainer>
+              <Grid>
                 <PostsGrid>
-                  {posts.map((post,i) => (
-                    <PostPreview
-                      key={i} 
-                      postData={post}
-                    />
+                  {posts.map((post, i) => (
+                    <PostPreview key={i} postData={post} />
                   ))}
                 </PostsGrid>
                 {/*<TagsGrid>
@@ -81,7 +75,6 @@ export default function Blog({ allPosts, allTags }) {
                   </Sticky>
                   </TagsGrid>*/}
               </Grid>
-
             </BlogPageContainer>
           </>
         )}
@@ -94,7 +87,7 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allTags = (await getAllTags()) || []
   return {
-    revalidate:  86400,
+    revalidate: 86400,
     props: { allPosts, allTags },
   }
 }

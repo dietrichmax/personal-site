@@ -6,7 +6,6 @@ import HCard from "src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
 import renderers from "src/utils/renderers"
 
-
 const NoteBodyWrapper = styled.div`
   height: 100%;
   font-size: 0.875rem;
@@ -46,10 +45,7 @@ export default function NotePreview({ note }) {
           <NotesContent className="e-content">
             <NoteBodyWrapper>
               <NoteBodyContainer>
-                <NoteBody 
-                  content={note.content} 
-                  components={renderers}
-                />
+                <NoteBody content={note.content} components={renderers} />
               </NoteBodyContainer>
               <PostMeta post={note} slug={slug} />
             </NoteBodyWrapper>

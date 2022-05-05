@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react"
 import config from "src/data/internal/SiteConfig"
 
-
-const createManifest = () => 
-`{
+const createManifest = () =>
+  `{
     "name": "${config.siteTitle}",
     "short_name": "${config.siteTitleShort}",
     "theme_color": "${config.themeColor}",
@@ -31,16 +30,14 @@ const createManifest = () =>
           "purpose": "any maskable"
         }
     ]
-}`;
+}`
 
 class Manifest extends React.Component {
   static async getInitialProps({ res }) {
-    
-    res.setHeader('Content-Type', 'text/json');
-    res.write(createManifest());
-    res.end();
+    res.setHeader("Content-Type", "text/json")
+    res.write(createManifest())
+    res.end()
   }
 }
 
-export default Manifest;
-
+export default Manifest

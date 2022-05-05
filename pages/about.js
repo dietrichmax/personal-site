@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 import Image from "next/image"
-import Content from 'src/components/article/article-body/article-body'
-import Layout from 'src/components/layout/layout'
-import { getAbout } from 'src/data/external/cms'
-import PageTitle from 'src/components/title/page-title'
-import styled from 'styled-components';
-import SEO from 'src/components/seo/seo'
-import media from 'styled-media-query';
-import config from "src/data/internal/SiteConfig";
+import Content from "src/components/article/article-body/article-body"
+import Layout from "src/components/layout/layout"
+import { getAbout } from "src/data/external/cms"
+import PageTitle from "src/components/title/page-title"
+import styled from "styled-components"
+import SEO from "src/components/seo/seo"
+import media from "styled-media-query"
+import config from "src/data/internal/SiteConfig"
 
 const PageWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space) auto var(--space) auto;
   padding: 0 var(--space);
-  ${media.lessThan('large')`
+  ${media.lessThan("large")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
   `}
@@ -22,10 +22,10 @@ const PageWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   max-width: 1200px;
-  margin: calc(var(--space-lg)*2.5) auto 0 auto;
+  margin: calc(var(--space-lg) * 2.5) auto 0 auto;
   padding-top: 11px;
   padding-left: var(--space);
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
     margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
@@ -36,7 +36,7 @@ const Title = styled.h1`
   font-size: 3rem;
   margin-top: var(--space);
   margin-bottom: var(--space);
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     font-size: 2rem;
 `}
 `
@@ -50,20 +50,19 @@ const Intro = styled.p`
 `
 
 const BioContainer = styled.section`
-font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 `
 
 const jsonld = {
   "@context": "http://schema.org/",
   "@type": "AboutPage",
-  "mainContentOfPage": "https://www.mxd.codes/about",
-  "description": "About me"
+  mainContentOfPage: "https://www.mxd.codes/about",
+  description: "About me",
 }
-
 
 export default function About({ about }) {
   const router = useRouter()
-  const [selected, setSelected] = useState(2);
+  const [selected, setSelected] = useState(2)
 
   const renderBio = () => {
     switch (selected) {
@@ -74,56 +73,48 @@ export default function About({ about }) {
       case 2:
         return about.bioLong
     }
-  };
-  const handleSubmit = () => {
-
-    
   }
-  
+  const handleSubmit = () => {}
+
   return (
     <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
-            <SEO   
+      {router.isFallback ? (
+        <PageTitle>{config.loading}</PageTitle>
+      ) : (
+        <>
+          <SEO
+            title={about.title}
+            description=""
+            slug={`about`}
+            aboutSchema
+            jsonld={jsonld}
+          />
+
+          <ImageWrapper>
+            <Image
+              src="/logos/windows10/SplashScreen.scale-100.png"
+              width="620"
+              height="300"
               title={about.title}
-              description=""
-              slug={`about`}
-              aboutSchema
-              jsonld={jsonld}
+              alt={about.title}
+              className="profile u-photo"
             />
+          </ImageWrapper>
 
-            <ImageWrapper>
-              <Image
-                src="/logos/windows10/SplashScreen.scale-100.png"
-                width="620"
-                height="300"
-                title={about.title}
-                alt={about.title}
-                className="profile u-photo"
-              />
-            </ImageWrapper>
-
-            <PageWrapper>  
-
-              <Title>{about.title}</Title>
-              <Intro>{about.intro}</Intro>
-              <BioContainer>
-                <Content content={renderBio()} />
-              </BioContainer>
-
-
-
-            </PageWrapper>
-          </>
-        )}
+          <PageWrapper>
+            <Title>{about.title}</Title>
+            <Intro>{about.intro}</Intro>
+            <BioContainer>
+              <Content content={renderBio()} />
+            </BioContainer>
+          </PageWrapper>
+        </>
+      )}
     </Layout>
   )
 }
 
-
-export async function getStaticProps({  }) {
+export async function getStaticProps({}) {
   const data = await getAbout()
 
   return {

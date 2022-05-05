@@ -7,22 +7,21 @@ import {
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
-  getAllActivities
+  getAllActivities,
 } from "src/data/external/cms"
 import {
-    getMatomoActions,
-    getMatomoLiveCounter,
-    getMatomoPageViews,
-    getMatomoAllVisits,
-    getMatomoSumVisitDuration,
-    getMatomoSEOStats,
-    getMatomoVisitsSummary,
-    getMatomoConsentEvent,
-    getMatomoTopPageUrls
+  getMatomoActions,
+  getMatomoLiveCounter,
+  getMatomoPageViews,
+  getMatomoAllVisits,
+  getMatomoSumVisitDuration,
+  getMatomoSEOStats,
+  getMatomoVisitsSummary,
+  getMatomoConsentEvent,
+  getMatomoTopPageUrls,
 } from "src/data/external/analytics"
 
 export default async (_, res) => {
-
   const postsCount = (await getPostsCount()) || []
   const tagsCount = (await getTagsCount()) || []
   const notesCount = (await getNotesCount()) || []
@@ -32,7 +31,7 @@ export default async (_, res) => {
   const subscribersCount = (await getSubscribersCount()) || []
   const activities = (await getAllActivities()) || []
   const lastViews = (await getMatomoPageViews()) || []
-  const topPageUrls = await getMatomoTopPageUrls() || []
+  const topPageUrls = (await getMatomoTopPageUrls()) || []
 
   let distance = 0
   let duration = 0
@@ -41,7 +40,7 @@ export default async (_, res) => {
   let elevationGain = 0
   let jumpCount = 0
   let topPosts = []
-  
+
   activities.map((item) => {
     distance = distance + item.distance
     duration = duration + item.duration
@@ -51,18 +50,18 @@ export default async (_, res) => {
     jumpCount = jumpCount + item.jumpCount
   })
 
-  topPageUrls.map((post)  => {
+  topPageUrls.map((post) => {
     topPosts.push({
       label: post.label,
       views: post.nb_hits,
-      url: post.url
+      url: post.url,
     })
   })
 
   res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=120, stale-while-revalidate=60'
-  );
+    "Cache-Control",
+    "public, s-maxage=120, stale-while-revalidate=60"
+  )
 
   return res.status(200).json({
     posts: {
@@ -75,16 +74,15 @@ export default async (_, res) => {
         subscribers: subscribersCount,
         locations: locationsCount,
       },
-      topPosts: topPosts
+      topPosts: topPosts,
     },
     activities: {
-      distance: parseInt(distance/1000),
-      duration: parseInt(duration/3600),
-      averageSpeed: (averageSpeed/activitiesCount).toFixed(2),
+      distance: parseInt(distance / 1000),
+      duration: parseInt(duration / 3600),
+      averageSpeed: (averageSpeed / activitiesCount).toFixed(2),
       maxSpeed: Math.max(maxSpeed).toFixed(2),
       elevationGain: parseInt(elevationGain),
-      jumpCount: jumpCount
-
-    }
-  });
-};
+      jumpCount: jumpCount,
+    },
+  })
+}

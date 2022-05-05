@@ -9,6 +9,7 @@ import {
   FaRetweet,
   FaRegComment,
   FaRegStickyNote,
+  FaHeart,
 } from "react-icons/fa"
 import { BsStar } from "react-icons/bs"
 import Comments from "src/components/comments/comments"
@@ -244,7 +245,9 @@ export default function Webmentions({ slug, preview }) {
   }
 
   async function getData() {
-    fetch( `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`)
+    fetch(
+      `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`
+    )
       .then((response) => response.json())
       .then((result) => {
         setWebmentions(getWebmentionsForUrl(result.children, url))
@@ -253,7 +256,6 @@ export default function Webmentions({ slug, preview }) {
   }
 
   useEffect(() => {
-    
     !gotData ? getData() : null
     /*async function getViews() {
       fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
@@ -265,7 +267,7 @@ export default function Webmentions({ slug, preview }) {
     getViews()*/
   }, [])
 
-  const renderAuthorImg = (mention,i) => {
+  const renderAuthorImg = (mention, i) => {
     return mention.author.photo ? (
       <WebmentionLike key={i}>
         <WebmentionAuthorImgWrapper
@@ -408,31 +410,34 @@ export default function Webmentions({ slug, preview }) {
                   </WebmentionsTitle>
                   <WebmentionsList>
                     {webmentions.comments.map((mention, i) => (
-                        <WebmentionComment  key={i} className="u-comment u-mention h-cite">
-                          <WebmentionAuthor className="h-card p-author">
-                            {renderAuthorImg(mention)}
-                            <WebmentionAuthorName className="p-name">
-                              {mention.author.name}
-                            </WebmentionAuthorName>
-                            <a
-                              href={mention.url}
-                              rel="noopener noreferrer nofollow"
-                              title={mention.published}
-                            >
-                              <WebmentionDate className="dt-published">
-                                {mention.published
-                                  ? `${formatDistance(
-                                      new Date(mention.published),
-                                      new Date()
-                                    )} ago`
-                                  : null}
-                              </WebmentionDate>
-                            </a>
-                          </WebmentionAuthor>
-                          <WebmentionContent className="p-content u-comment">
-                            {mention.content ? mention.content.text : null}
-                          </WebmentionContent>
-                        </WebmentionComment>
+                      <WebmentionComment
+                        key={i}
+                        className="u-comment u-mention h-cite"
+                      >
+                        <WebmentionAuthor className="h-card p-author">
+                          {renderAuthorImg(mention)}
+                          <WebmentionAuthorName className="p-name">
+                            {mention.author.name}
+                          </WebmentionAuthorName>
+                          <a
+                            href={mention.url}
+                            rel="noopener noreferrer nofollow"
+                            title={mention.published}
+                          >
+                            <WebmentionDate className="dt-published">
+                              {mention.published
+                                ? `${formatDistance(
+                                    new Date(mention.published),
+                                    new Date()
+                                  )} ago`
+                                : null}
+                            </WebmentionDate>
+                          </a>
+                        </WebmentionAuthor>
+                        <WebmentionContent className="p-content u-comment">
+                          {mention.content ? mention.content.text : null}
+                        </WebmentionContent>
+                      </WebmentionComment>
                     ))}
                   </WebmentionsList>
                 </WebmentionsContainer>
@@ -449,9 +454,11 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.likes.length}{" "}
                     {webmentions.likes.length == 1 ? "Like" : "Likes"}
                   </WebmentionsTitle>
-                  
+
                   <WebmentionsList>
-                    {webmentions.likes.map((mention,i) => renderAuthorImg(mention,i))}
+                    {webmentions.likes.map((mention, i) =>
+                      renderAuthorImg(mention, i)
+                    )}
                   </WebmentionsList>
                 </WebmentionsContainer>
               ) : null}
@@ -467,8 +474,8 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}
                   </WebmentionsTitle>
                   <WebmentionsList>
-                    {webmentions.reposts.map((mention,i) =>
-                      renderAuthorImg(mention,i)
+                    {webmentions.reposts.map((mention, i) =>
+                      renderAuthorImg(mention, i)
                     )}
                   </WebmentionsList>
                 </WebmentionsContainer>
@@ -485,8 +492,8 @@ export default function Webmentions({ slug, preview }) {
                     {webmentions.mentions.length == 1 ? "Mention" : "Mentions"}
                   </WebmentionsTitle>
                   <WebmentionsList>
-                    {webmentions.mentions.map((mention,i) =>
-                      renderAuthorImg(mention,i)
+                    {webmentions.mentions.map((mention, i) =>
+                      renderAuthorImg(mention, i)
                     )}
                   </WebmentionsList>
                 </WebmentionsContainer>

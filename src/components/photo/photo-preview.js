@@ -59,7 +59,7 @@ const Photo = styled(Image)`
   object-position: bottom;
   transition: 0.5s;
   :hover {
-    transform:  scale(1.02);
+    transform: scale(1.02);
   }
 `
 

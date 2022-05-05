@@ -225,7 +225,11 @@ export default function CV({ data }) {
                 <TimelineCompany className="experience">
                   {role.company} | {role.description}
                 </TimelineCompany>
-                <TimelineDate>{format(parseISO(role.startDate), "yyyy/MM")} - {role.endDate ? format(parseISO(role.endDate), "yyyy/MM") : "Present"}
+                <TimelineDate>
+                  {format(parseISO(role.startDate), "yyyy/MM")} -{" "}
+                  {role.endDate
+                    ? format(parseISO(role.endDate), "yyyy/MM")
+                    : "Present"}
                 </TimelineDate>
                 <TimelineLongDescription>
                   <ReactMarkdown

@@ -19,10 +19,11 @@
     "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py",
     "lint": "eslint --fix .",
-    "format": "prettier --write src/**/*.js --config .prettierrc.json",
+    "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send",
-    "test": "npx next lint"
+    "test": "npx next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
@@ -49,7 +50,7 @@
     "preact": "^10.6.5",
     "preact-compat": "^3.19.0",
     "preact-render-to-string": "^5.1.19",
-    "prettier": "2.5.1",
+    "prettier": "2.6.2",
     "prismjs": "^1.26.0",
     "puppeteer": "^13.1.3",
     "react": "^17.0.2",
@@ -84,7 +85,12 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
     "pretty-quick": "^3.1.1",
     "typescript": "^4.5.5"
+  },
+  "lint-staged": {
+      "**/*": "prettier --write --ignore-unknown"
   }
 }

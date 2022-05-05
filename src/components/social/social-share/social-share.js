@@ -5,9 +5,9 @@ import Link from "next/link"
 import React, { useState } from "react"
 import { FaLink, FaTwitter, FaLinkedin, FaReply, FaHeart } from "react-icons/fa"
 
-const WebActions = styled.ol`  
+const WebActions = styled.ol`
   padding-inline-start: 0;
-  ${media.lessThan('large')`
+  ${media.lessThan("large")`
     margin-top: var(--space);
     display: inline-block;
     padding-inline-start: 0;
@@ -16,7 +16,7 @@ const WebActions = styled.ol`
 `
 
 const Actions = styled.li`
-display: inline-block;
+  display: inline-block;
   margin-right: var(--space-sm);
   margin-bottom: var(--space-sm);
   cursor: pointer;
@@ -40,10 +40,16 @@ export default function SocialShare({ slug, syndicationLinks }) {
     }, 2000)
   }
 
-
-  syndicationLinks ? syndicationLinks.map((entry) => {
-    entry.name === "twitter" ? tweetID = entry.slug.replace("https://twitter.com/mxdietrich/status/", "") : null
-  }) : null
+  syndicationLinks
+    ? syndicationLinks.map((entry) => {
+        entry.name === "twitter"
+          ? (tweetID = entry.slug.replace(
+              "https://twitter.com/mxdietrich/status/",
+              ""
+            ))
+          : null
+      })
+    : null
 
   return (
     <WebActions className="indie-actions">

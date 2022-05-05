@@ -1,21 +1,30 @@
-import PostPreview from 'src/components/article/article-preview/article-preview'
+import PostPreview from "src/components/article/article-preview/article-preview"
 import NotePreview from "src/components/note/note-preview/note-preview"
 import LinkPreview from "src/components/link/link-preview/link-preview"
 //import ActivityPreview from "@/components/activity/activity-preview/activity-preview"
-import PhotoPreview from 'src/components/photo/photo-preview'
-import Layout from 'src/components/layout/layout'
-import config from "src/data/internal/SiteConfig";
-import styled from 'styled-components';
-import SEO from 'src/components/seo/seo'
-import media from 'styled-media-query';
-import { useRouter } from 'next/router'
-import { getAbout } from 'src/data/external/cms'
+import PhotoPreview from "src/components/photo/photo-preview"
+import Layout from "src/components/layout/layout"
+import config from "src/data/internal/SiteConfig"
+import styled from "styled-components"
+import SEO from "src/components/seo/seo"
+import media from "styled-media-query"
+import { useRouter } from "next/router"
+import { getAbout } from "src/data/external/cms"
 import Link from "next/link"
-import HCard from 'src/components/microformats/h-card';
-import { getAllPosts, getAllNotes, getAllLinks, getAllPhotos, getAllRecipes, getAllActivities, getLocationData, getCV } from 'src/data/external/cms'
+import HCard from "src/components/microformats/h-card"
+import {
+  getAllPosts,
+  getAllNotes,
+  getAllLinks,
+  getAllPhotos,
+  getAllRecipes,
+  getAllActivities,
+  getLocationData,
+  getCV,
+} from "src/data/external/cms"
 
 const IndexPageContainer = styled.div`
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: var(--space) auto;
 `
 
@@ -23,14 +32,15 @@ const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
   background-color: var(--primary-color);
-  color: ${(props) => (props.color ? `${props.color}` : "color: var(--content-bg);")};
-  `
-const Hero = styled.div`   
+  color: ${(props) =>
+    props.color ? `${props.color}` : "color: var(--content-bg);"};
+`
+const Hero = styled.div`
   display: flex;
   max-width: var(--width-container);
   padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
   margin: 0 auto;
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
     width: 100%;
     display: block;
@@ -39,15 +49,15 @@ const Hero = styled.div`
 
 const HeroDescription = styled.h3`
   margin: 0 var(--space);
-  font-size: calc(.9rem + 2vw);
+  font-size: calc(0.9rem + 2vw);
   font-weight: 300;
   line-height: 1.35;
   font-family: var(--thirdy-font);
-  ${media.lessThan('small')`
+  ${media.lessThan("small")`
     font-size: 1.75em;
     letter-spacing: 0.5px;
   `}
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     margin: 0 var(--space-sm);
   `}
 `
@@ -76,7 +86,6 @@ const HeroFont = styled.span`
   font-weight: 600;
 `
 
-
 const AboutMeLink = styled.a`
   border-bottom: 2px solid var(--text-color);
   cursor: pointer;
@@ -85,111 +94,139 @@ const AboutMeLink = styled.a`
   }
 `
 
-const RecentPosts= styled.ol`
+const RecentPosts = styled.ol`
   display: grid;
   margin: auto;
   margin-left: 0;
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
-  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space);
   list-style: none;
-  ${media.lessThan('medium')`
+  ${media.lessThan("medium")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
     grid-template-columns: repeat(1, minmax(0px, 1fr));
   `}
 `
-const jsonld = 
+const jsonld = {
+  "@context": "http://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
     {
-      "@context":"http://schema.org",
-      "@type":"ItemList",
-      "itemListElement":[
-        {
-          "@type":"SiteNavigationElement",
-          "position":1,
-          "name": "Now",
-          "description": "What's happening right now",
-          "url":"http://www.mxd.codes/now"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":2,
-          "name": "Articles",
-          "description": "Tutorials, Guides and thoughts.",
-          "url":"http://www.mxd.codes/articles"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":3,
-          "name": "Photos",
-          "description": "Photos taken by me",
-          "url":"http://www.mxd.codes/photos"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":4,
-          "name": "Notes",
-          "description": "Status updates and short notes",
-          "url":"http://www.mxd.codes/notes"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":5,
-          "name": "Links",
-          "description": "Awesome content on the web, in random order",
-          "url":"http://www.mxd.codes/links"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":6,
-          "name": "Dashboard",
-          "description": "Awesome content on the web, in random order",
-          "url":"https://mxd.codes/dashboard"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":7,
-          "name": "Contact",
-          "description": "Contact information",
-          "url":"https://mxd.codes/contact"
-        },
-        {
-          "@type":"SiteNavigationElement",
-          "position":8,
-          "name": "Feeds",
-          "description": "You can subscribe to all content or individual content types",
-          "url":"https://mxd.codes/feeds"
-        }
-      ]
-    }
-  
-  
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "Now",
+      description: "What's happening right now",
+      url: "http://www.mxd.codes/now",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Articles",
+      description: "Tutorials, Guides and thoughts.",
+      url: "http://www.mxd.codes/articles",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "Photos",
+      description: "Photos taken by me",
+      url: "http://www.mxd.codes/photos",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "Notes",
+      description: "Status updates and short notes",
+      url: "http://www.mxd.codes/notes",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 5,
+      name: "Links",
+      description: "Awesome content on the web, in random order",
+      url: "http://www.mxd.codes/links",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 6,
+      name: "Dashboard",
+      description: "Awesome content on the web, in random order",
+      url: "https://mxd.codes/dashboard",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 7,
+      name: "Contact",
+      description: "Contact information",
+      url: "https://mxd.codes/contact",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 8,
+      name: "Feeds",
+      description:
+        "You can subscribe to all content or individual content types",
+      url: "https://mxd.codes/feeds",
+    },
+  ],
+}
 
 export default function Index({ posts, cv }) {
   const router = useRouter()
-  const content = posts.slice(0,6)
+  const content = posts.slice(0, 6)
 
   return (
     <>
       <Layout color="#f2f2f2">
         {router.isFallback ? (
-            <PageTitle>{config.loading}</PageTitle>
-          ) : (
-            
+          <PageTitle>{config.loading}</PageTitle>
+        ) : (
           <>
-            <SEO   
+            <SEO
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
-             />
-             <HeroWrapper className="h-card" color="#f2f2f2">
+            />
+            <HeroWrapper className="h-card" color="#f2f2f2">
               <Hero>
                 <HCard />
                 <HeroDescription>
-                  <HeroFont>Hi, I'm </HeroFont><HeroLinks className="p-name u-url u-uid" rel="author me" href={config.siteUrl} title={config.siteTitle}>Max Dietrich</HeroLinks>, developer, author and cyclist from <a className="p-locality" href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035" title="Rosenheim, Germany">Rosenheim, Germany.</a> <br/>
-                    I' am also a proud member of the <HeroLinks className="p-org h-card" href="https://indieweb.org/" title="IndieWeb">IndieWeb</HeroLinks> community. I've been <HeroLinksNormal href="/map" title="Location tracking">tracking my location</HeroLinksNormal> since 2021.
-                    <Link href="/about" passHref><AboutMeLink title="About me"> Read more.</AboutMeLink></Link>
+                  <HeroFont>Hi, I'm </HeroFont>
+                  <HeroLinks
+                    className="p-name u-url u-uid"
+                    rel="author me"
+                    href={config.siteUrl}
+                    title={config.siteTitle}
+                  >
+                    Max Dietrich
+                  </HeroLinks>
+                  , developer, author and cyclist from{" "}
+                  <a
+                    className="p-locality"
+                    href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"
+                    title="Rosenheim, Germany"
+                  >
+                    Rosenheim, Germany.
+                  </a>{" "}
+                  <br />
+                  I' am also a proud member of the{" "}
+                  <HeroLinks
+                    className="p-org h-card"
+                    href="https://indieweb.org/"
+                    title="IndieWeb"
+                  >
+                    IndieWeb
+                  </HeroLinks>{" "}
+                  community. I've been{" "}
+                  <HeroLinksNormal href="/map" title="Location tracking">
+                    tracking my location
+                  </HeroLinksNormal>{" "}
+                  since 2021.
+                  <Link href="/about" passHref>
+                    <AboutMeLink title="About me"> Read more.</AboutMeLink>
+                  </Link>
                 </HeroDescription>
                 {/*<PostTypes>
                   <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
@@ -198,35 +235,21 @@ export default function Index({ posts, cv }) {
                   <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
                 </PostTypes>*/}
               </Hero>
-             </HeroWrapper>
+            </HeroWrapper>
             <IndexPageContainer>
-
               <RecentPosts>
-                {content.map((post,i) => (
+                {content.map((post, i) =>
                   post.type === "article" ? (
-                    <PostPreview
-                      key={i}
-                      postData={post.post}
-                    />
+                    <PostPreview key={i} postData={post.post} />
                   ) : post.type === "note" ? (
-                    <NotePreview 
-                      key={i}
-                      note={post.note} 
-                    />
+                    <NotePreview key={i} note={post.note} />
                   ) : post.type === "link" ? (
-                    <LinkPreview
-                      key={i}
-                      link={post.link} 
-                    />
+                    <LinkPreview key={i} link={post.link} />
                   ) : post.type === "photo" ? (
-                    <PhotoPreview
-                      key={i}
-                      photo={post.photo} 
-                    />
+                    <PhotoPreview key={i} photo={post.photo} />
                   ) : null
-                ))}
+                )}
               </RecentPosts>
-
 
               {/*{<SubTitle>Recent Notes</SubTitle>
               <NotesContainer >
@@ -241,7 +264,6 @@ export default function Index({ posts, cv }) {
                 </Link>
                 </MoreContainer>*/}
             </IndexPageContainer>
-
           </>
         )}
       </Layout>
@@ -264,16 +286,15 @@ export async function getStaticProps() {
     allContent.push({
       post: post,
       date: post.published_at,
-      type: "article"
+      type: "article",
     })
   })
-
 
   allNotes.map((note) => {
     allContent.push({
       note: note,
       date: note.published_at,
-      type: "note"
+      type: "note",
     })
   })
 
@@ -281,7 +302,7 @@ export async function getStaticProps() {
     allContent.push({
       link: link,
       date: link.published_at,
-      type: "link"
+      type: "link",
     })
   })
 
@@ -289,21 +310,20 @@ export async function getStaticProps() {
     allContent.push({
       photo: photo,
       date: photo.published_at,
-      type: "photo"
+      type: "photo",
     })
   })
 
-
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
-  
+
   return {
-    revalidate:  86400,
-    props: { 
+    revalidate: 86400,
+    props: {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
       location: locationData[0],
-      cv
+      cv,
     },
   }
 }

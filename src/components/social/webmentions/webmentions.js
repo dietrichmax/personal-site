@@ -257,14 +257,6 @@ export default function Webmentions({ slug, preview }) {
 
   useEffect(() => {
     !gotData ? getData() : null
-    /*async function getViews() {
-      fetch(`${process.env.NEXT_PUBLIC_MATOMO_URL}/?module=API&method=Actions.getPageUrl&pageUrl=${url}&idSite=1&period=range&date=2011-01-01,${new Date().toISOString().slice(0,10)}&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setViews(result[0].nb_visits)
-      });
-    }
-    getViews()*/
   }, [])
 
   const renderAuthorImg = (mention, i) => {

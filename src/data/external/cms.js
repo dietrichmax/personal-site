@@ -109,7 +109,7 @@ export async function getAllPosts() {
 export async function getPostAndMorePosts(slug) {
   const data = await fetchStrapiAPI(
     `
-  query PostBySlug($where: JSON, $where_ne: JSON) {
+  query PostBySlug($where: JSON) {
     posts(where: $where) {
       id
       created_at
@@ -150,25 +150,12 @@ export async function getPostAndMorePosts(slug) {
       vgwortpubliccode
       vgwortprivatecode
     }
-
-    morePosts: posts(sort: "date:desc", limit: 3, where: $where_ne) {
-      title
-      slug
-      created_at
-      updated_at
-      published_at
-      positive_feedback_count
-      negative_feedback_count
-    }
   }
   `,
     {
       variables: {
         where: {
           slug,
-        },
-        where_ne: {
-          slug_ne: slug,
         },
       },
     }
@@ -594,7 +581,7 @@ export async function getAllNotes() {
   const data = await fetchStrapiAPI(
     `
     {
-      notes(sort: "date:desc") {
+      notes(sort: "published_at:desc") {
         id
         title
         slug

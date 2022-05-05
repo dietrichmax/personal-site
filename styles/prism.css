@@ -41,13 +41,13 @@ code[class*="language-"] ::selection {
 code {
   background: var(--content-bg);
   border-radius: var(--border-radius);
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: #1b2026;
+  padding-right: 0;
+  padding-left: 0.5rem;
 }
 
 :not(pre) > code[class*="language-"] {

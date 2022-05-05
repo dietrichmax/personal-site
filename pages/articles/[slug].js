@@ -218,6 +218,7 @@ export default function Post({ post, allPosts }) {
                 <StickySocialShareContainer>
                   <WebActions
                     slug={`/articles/${post.slug}`}
+                    id={post.id}
                     syndicationLinks={post.syndicationLinks}
                   />
                 </StickySocialShareContainer>

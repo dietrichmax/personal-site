@@ -488,12 +488,18 @@ const redirects = {
       },
       {
         source: "/leaflet-maps",
-        destination: "/articles/first-steps-with-leaflet-and-react",
+        destination:
+          "/articles/how-to-create-web-maps-with-leaflet-react-and-functional-components",
         permanent: true,
       },
       {
         source: "/en/privacy-policy",
         destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/articles/first-steps-with-leaflet-and-react",
+        destination: "/articles/first-steps-with-react-leaflet",
         permanent: true,
       },
 

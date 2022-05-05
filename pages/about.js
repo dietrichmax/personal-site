@@ -56,8 +56,8 @@ const BioContainer = styled.section`
 const jsonld = {
   "@context": "http://schema.org/",
   "@type": "AboutPage",
-  mainContentOfPage: "https://www.mxd.codes/about",
-  description: "About me",
+  "mainContentOfPage": "https://www.mxd.codes/about",
+  "description": "About me",
 }
 
 export default function About({ about }) {

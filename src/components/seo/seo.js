@@ -45,43 +45,43 @@ const SEO = ({
   const author = {
     "@context": "http://schema.org",
     "@type": "Person",
-    name: "Max Dietrich",
-    nationality: "German",
-    url: config.siteUrl,
-    image: {
+    "name": "Max Dietrich",
+    "nationality": "German",
+    "url": config.siteUrl,
+    "image": {
       "@type": "ImageObject",
-      url: config.siteLogo,
+      "url": config.siteLogo,
     },
-    gender: "Male",
-    address: {
+    "gender": "Male",
+    "address": {
       "@type": "PostalAddress",
-      addressLocality: "Rosenheim",
-      addressRegion: "BY",
-      addressCountry: "Germany",
+      "addressLocality": "Rosenheim",
+      "addressRegion": "BY",
+      "addressCountry": "Germany",
     },
-    email: config.socials.mail,
-    alumniOf: [
+    "email": config.socials.mail,
+    "alumniOf": [
       {
         "@type": "CollegeOrUniversity",
-        name: "University of Salzburg",
-        sameAs: "https://en.wikipedia.org/wiki/University_of_Salzburg",
+        "name": "University of Salzburg",
+        "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg",
       },
     ],
-    jobTitle: !data ? "loading" : data.timeline[0].role,
-    worksFor: [
+    "jobTitle": !data ? "loading" : data.timeline[0].role,
+    "worksFor": [
       {
         "@type": "Organization",
-        name: !data ? "loading" : data.timeline[0].company,
+        "name": !data ? "loading" : data.timeline[0].company,
       },
     ],
-    sameAs: [
+    "sameAs": [
       config.socials.twitter,
       config.socials.linkedin,
       config.socials.github,
       config.socials.instagram,
       config.socials.mail,
     ],
-    knowsAbout: [
+    "knowsAbout": [
       !data
         ? "loading"
         : data.skills[0].skillName.map((skill) => {
@@ -99,15 +99,15 @@ const SEO = ({
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      name: config.siteTitle,
-      description: description,
-      url: config.siteUrl,
-      alternateName: config.siteTitleAlt,
-      image: {
+      "name": config.siteTitle,
+      "description": description,
+      "url": config.siteUrl,
+      "alternateName": config.siteTitleAlt,
+      "image": {
         "@type": "ImageObject",
-        url: `${config.siteUrl}${config.siteLogo}`,
+        "url": `${config.siteUrl}${config.siteLogo}`,
       },
-      author: author,
+      "author": author,
       /*"potentialAction": {
         "@type": "SearchAction",
         "target": `https://www.ecosia.org/search?q=site:${config.domain}+{search_term_string}`,
@@ -119,23 +119,23 @@ const SEO = ({
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Books",
-          item: "https://example.com/books",
+          "position": 1,
+          "name": "Books",
+          "item": "https://example.com/books",
         },
         {
           "@type": "ListItem",
-          position: 2,
-          name: "Science Fiction",
-          item: "https://example.com/books/sciencefiction",
+          "position": 2,
+          "name": "Science Fiction",
+          "item": "https://example.com/books/sciencefiction",
         },
         {
           "@type": "ListItem",
-          position: 3,
-          name: "Award Winners",
+          "position": 3,
+          "name": "Award Winners",
         },
       ],
     },
@@ -145,20 +145,20 @@ const SEO = ({
     {
       "@context": "http://schema.org",
       "@type": "ItemList",
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "SiteNavigationElement",
-          position: 1,
-          name: "Home",
-          description: "Homes Desc.",
-          url: "http://www.example.com/",
+          "position": 1,
+          "name": "Home",
+          "description": "Homes Desc.",
+          "url": "http://www.example.com/",
         },
         {
           "@type": "SiteNavigationElement",
-          position: 2,
-          name: "Tours",
-          description: "Tours desc.",
-          url: "http://www.example.com/tours/",
+          "position": 2,
+          "name": "Tours",
+          "description": "Tours desc.",
+          "url": "http://www.example.com/tours/",
         },
       ],
     },
@@ -168,23 +168,23 @@ const SEO = ({
     schemaOrgJSONLD.push({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
-      name: articleData.title,
-      headline: articleData.title,
-      url: slug,
-      image: {
+      "name": articleData.title,
+      "headline": articleData.title,
+      "url": slug,
+      "image": {
         "@type": "ImageObject",
-        url: image,
-        height: 450,
-        width: 1300,
+        "url": image,
+        "height": 450,
+        "width": 1300,
       },
-      description: description,
-      datePublished: articleData.published_at,
-      dateModified: articleData.updated_at,
-      dateCreated: articleData.created_at,
-      keywords: "",
-      author: author,
-      publisher: author,
-      mainEntityOfPage: {
+      "description": description,
+      "datePublished": articleData.published_at,
+      "dateModified": articleData.updated_at,
+      "dateCreated": articleData.created_at,
+      "keywords": "",
+      "author": author,
+      "publisher": author,
+      "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": slug,
       },

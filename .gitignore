@@ -38,8 +38,8 @@ yarn-error.log*
 /public/sitemap.xml
 
 # service worker
-/public/sw*
-/public/workbox*
+#/public/sw*
+#/public/workbox*
 
 /.github
 /.husky

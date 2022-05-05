@@ -3,7 +3,7 @@ export async function fetchStravaAPI(query, { variables } = {}) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Basic " + btoa("login:password"),
+      "Authorization": "Basic " + btoa("login:password"),
     },
     body: JSON.stringify({
       query,

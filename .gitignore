@@ -40,3 +40,6 @@ yarn-error.log*
 # service worker
 /public/sw*
 /public/workbox*
+
+.github
+.husky

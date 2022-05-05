@@ -16,7 +16,6 @@
     "deploy": "git pull && npm run build && pm2 restart mxd-codes-frontend",
     "export": "next export",
     "analyze": "cross-env ANALYZE=true next build",
-    "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py",
     "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",

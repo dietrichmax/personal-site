@@ -12,6 +12,7 @@ import HCard from "src/components/microformats/h-card"
 import NoteTags from "src/components/tags/tags"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
+import Author from "@/components/article/article-author/article-author"
 
 const NoteWrapper = styled.div`
   max-width: var(--width-container);
@@ -101,6 +102,7 @@ export default function Note({ note }) {
             </NotesItem>
 
             <WebActions slug={`/notes/${note.slug}`} />
+            <Author post={note.users_permissions_user} />
             <Meta
               post={note}
               slug={`/notes/${note.slug}`}

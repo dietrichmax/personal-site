@@ -31,6 +31,7 @@ const AuthorImgWrapper = styled.div`
   overflow: hidden;
   height: 50px;
   width: 50px;
+  border-radius: var(--border-radius);
 `
 
 const AuthorSocials = styled.div`

@@ -18,11 +18,9 @@
     "analyze": "cross-env ANALYZE=true next build",
     "generate-manifest": "node ./lib/manifest.js",
     "img-optimize": "py ./utils/resize_images.py",
-    "lint": "eslint --fix .",
     "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send",
-    "test": "npx next lint",
     "prepare": "husky install"
   },
   "dependencies": {

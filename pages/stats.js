@@ -47,7 +47,7 @@ const Container = styled.div`
   padding-right: var(--space);
   padding-left: var(--space);
   ${media.lessThan("medium")`
-        margin-left: var(--space-sm);
+      margin-left: var(--space-sm);
         margin-right: var(--space-sm);
         padding: 0;
   `}

@@ -30,6 +30,7 @@ const AuthorName = styled.span`
 const AuthorImgWrapper = styled.div`
   overflow: hidden;
   height: 50px;
+  width: 50px;
 `
 
 const AuthorSocials = styled.div`

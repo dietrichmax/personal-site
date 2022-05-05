@@ -6,13 +6,15 @@ import media from "styled-media-query"
 
 const CardItemImg = styled(Image)`
   cursor: pointer;
-  width: ${(props) => (props.width ? `${props.width}px` : "350px")};
-  height: ${(props) => (props.height ? `${props.height}px` : "130px")};
+  width: ${(props) => (props.width ? `${props.width}px` : "350px")} !important;
+  height: ${(props) =>
+    props.height ? `${props.height}px` : "130px"} !important;
   object-fit: cover;
   border-top-right-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
   ${media.lessThan("large")`
-    height: 200px;
+    height: ${(props) =>
+      props.height ? `${props.height}px` : "200px"} !important;
     object-fit: cover;
   `}
 `
@@ -20,37 +22,20 @@ const CardItemImg = styled(Image)`
 const PostImg = styled(Image)`
   position: relative;
   object-fit: cover;
-  max-width: 1300px;
-  height: 450px;
+  width: ${(props) => (props.width ? `${props.width}px` : "1300px")} !important;
+  height: ${(props) =>
+    props.height ? `${props.height}px` : "450px"} !important;
   cursor: pointer;
   border-radius: var(--border-radius);
   ${media.lessThan("large")`
-    height: 200px;
+    height: ${(props) =>
+      props.height ? `${props.height}px` : "200px"} !important;
     object-fit: cover;
   `}
 `
 
-const ImagePlaceholder = styled.div`
-  background-color: var(--primary-color);
-  transition: 0.2s;
-  color: #fff;
-  font-family: var(--secondary-font);
-  display: flex;
-  vertical-align: center;
-  justify-content: space-around;
-  cursor: pointer;
-  width: 1300px;
-  height: 450px;
-  border-top-right-radius: var(--border-radius);
-  border-top-left-radius: var(--border-radius);
-  ${media.lessThan("large")`
-    height: 200px;
-    object-fit: cover;
-  `}
-`
-
-export default function PostImage({ preview, previewLarge, postData }) {
-  const { title, slug, coverImage } = postData
+export default function PostImage({ preview, postData }) {
+  const { title, coverImage } = postData
 
   return (
     <>

@@ -350,11 +350,11 @@ export default function Footer() {
             <a title={config.siteTitleAlt}> {config.siteTitleAlt}</a>
           </Link>
           <span> • </span>
-          <Link href="/privacy-policy">
+          <Link href="/privacy-policy" passHref>
             <FooterLink title="Privacy Policy">Privacy Policy</FooterLink>
           </Link>
           <span> • </span>
-          <Link href="/site-notice">
+          <Link href="/site-notice" passHref>
             <FooterLink title="Site Notice">Site Notice</FooterLink>
           </Link>
         </FooterNotice>

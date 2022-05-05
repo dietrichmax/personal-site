@@ -109,7 +109,7 @@ export default function Author(author) {
         <AuthorBio>{bio}</AuthorBio>
         <AuthorSocials>
           <AuthorSocialsContainer>
-            <Link href="/support">
+            <Link href="/support" passHref>
               <Button>
                 <FaGift /> Support
               </Button>

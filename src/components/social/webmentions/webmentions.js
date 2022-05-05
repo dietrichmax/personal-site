@@ -293,6 +293,8 @@ export default function Webmentions({ slug, preview }) {
           className="u-url"
           href={mention.author.url}
           rel="noopener noreferrer nofollow"
+          alt={`Link to profile of ${mention.author.name}`}
+          title={mention.author.name}
         >
           <ImagePlacholder>{mention.author.name}</ImagePlacholder>
         </WebmentionAuthorImgWrapper>

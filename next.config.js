@@ -502,6 +502,11 @@ const redirects = {
         destination: "/articles/first-steps-with-react-leaflet",
         permanent: true,
       },
+      {
+        source: "/dashboard",
+        destination: "/stats",
+        permanent: true,
+      },
 
       /* Social Redirects */
       {

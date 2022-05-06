@@ -38,11 +38,11 @@ const ArticleBackground = styled.div`
   `}
 `
 
-const StickySideBar = styled.div`
-  grid-column: span 1 / span 1;
-  ${media.lessThan("large")`
-    display: none;
-  `}
+const StickySideBar = styled.div``
+
+const DateWrapper = styled.div`
+  text-align: center;
+  font-size: 12px;
 `
 
 const StickySocialShareContainer = styled.div`
@@ -50,7 +50,8 @@ const StickySocialShareContainer = styled.div`
   position: sticky;
   margin-left: var(--space);
   margin-right: var(--space);
-  margin-top: 122px;
+  margin-top: var(--space);
+  grid-column: span 1 / span 1;
   ${media.lessThan("large")`
     display: none;
   `}
@@ -122,11 +123,6 @@ const PostTitleWrapper = styled.div`
 
 const TagsWrapper = styled.div`
   margin: var(--space-sm) 0;
-`
-
-const DateWrapper = styled.div`
-  font-size: 12px;
-  margin-top: var(--space-sm);
 `
 
 const RecommendedPostsContainer = styled.div`
@@ -215,11 +211,17 @@ export default function Post({ post, allPosts }) {
 
             <ArticleBackground>
               <StickySideBar>
+                <DateWrapper className="dt-published">
+                  <a className="u-url" href={`articles/${post.slug}`}>
+                    {format(parseISO(post.published_at), "yyyy-MM-dd")}
+                  </a>
+                </DateWrapper>
                 <StickySocialShareContainer>
                   <WebActions
                     slug={`/articles/${post.slug}`}
                     id={post.id}
                     syndicationLinks={post.syndicationLinks}
+                    post={post}
                   />
                 </StickySocialShareContainer>
               </StickySideBar>
@@ -233,19 +235,6 @@ export default function Post({ post, allPosts }) {
                   <PostWrapper>
                     {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
-
-                    <DateWrapper className="dt-published">
-                      <a className="u-url" href={`articles/${post.slug}`}>
-                        {format(
-                          parseISO(
-                            post.updated_at
-                              ? post.updated_at
-                              : post.published_at
-                          ),
-                          "yyyy-MM-dd"
-                        )}
-                      </a>
-                    </DateWrapper>
 
                     <Content>
                       <PostBody content={post.content} />

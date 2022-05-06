@@ -3,7 +3,14 @@ import config from "src/data/internal/SiteConfig"
 import media from "styled-media-query"
 import Link from "next/link"
 import React, { useState, useEffect } from "react"
-import { FaLink, FaTwitter, FaLinkedin, FaReply, FaHeart } from "react-icons/fa"
+import {
+  FaLink,
+  FaTwitter,
+  FaLinkedin,
+  FaReply,
+  FaHeart,
+  FaEnvelope,
+} from "react-icons/fa"
 import { createNoSubstitutionTemplateLiteral } from "typescript"
 
 const WebActions = styled.ol`
@@ -46,7 +53,7 @@ const LikeCount = styled.span`
   font-size: 0.95rem;
 `
 
-export default function SocialShare({ slug, syndicationLinks, id }) {
+export default function SocialShare({ slug, id, syndicationLinks, post }) {
   const [copied, setCopied] = useState("")
   const [postLike, setPostLike] = useState()
   const [postLikeCount, setPostLikeCount] = useState()
@@ -61,7 +68,7 @@ export default function SocialShare({ slug, syndicationLinks, id }) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-    fetch(`https://api.mxd.codes/likes?postId=${id}`, requestOptions)
+    fetch(`https://api.mxd.codes/likes?postId=${post.id}`, requestOptions)
       .then((response) => response.json())
       .then((data) =>
         data === undefined ? null || null : setPostLike(data[0])
@@ -82,7 +89,7 @@ export default function SocialShare({ slug, syndicationLinks, id }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         count: postLike ? postLike.count++ : 0,
-        postId: id,
+        postId: post.id,
       }),
     }
     fetch(`https://api.mxd.codes/likes`, requestOptions)
@@ -108,8 +115,8 @@ export default function SocialShare({ slug, syndicationLinks, id }) {
     }, 2000)
   }
 
-  syndicationLinks
-    ? syndicationLinks.map((entry) => {
+  post
+    ? post.syndicationLinks.map((entry) => {
         entry.name === "twitter"
           ? (tweetID = entry.slug.replace(
               "https://twitter.com/mxdietrich/status/",
@@ -166,6 +173,21 @@ export default function SocialShare({ slug, syndicationLinks, id }) {
           rel="nofollow noopener"
         >
           <FaLinkedin />
+        </a>
+      </Actions>
+      <Actions do="reply" with={url}>
+        <a
+          className="action mail"
+          title="Mail this post"
+          href={`mailto:?subject=${
+            post ? post.title : null
+          }&body=Check%20out%20this%20article%20on%20${config.domain}:%0A%0A${
+            post
+              ? `${post.excerpt.replace("<p>", "").replace(".</p>", "")}.`
+              : null
+          }%0A%0A${url}`}
+        >
+          <FaEnvelope />
         </a>
       </Actions>
       <Actions

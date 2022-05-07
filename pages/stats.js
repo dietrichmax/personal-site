@@ -16,6 +16,8 @@ import {
   getMatomoSEOStats,
   getMatomoVisitsSummary,
   getMatomoTopPageUrls,
+  getMatomoConsent,
+  getBiggestTrafficSource,
 } from "@/src/data/external/analytics"
 import {
   getPostsCount,
@@ -315,8 +317,27 @@ export default function Dashboard({
   activities,
   liveViews,
   topPosts,
+  consentCount,
+  biggestTrafficSource,
 }) {
   const router = useRouter()
+  const [thanks, setThanks] = useState("-")
+  const [gotData, setGotData] = useState(false)
+
+  async function getCount() {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://api.mxd.codes/thanks", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setThanks(data.thanks))
+    setGotData(true)
+  }
+
+  useEffect(() => {
+    !gotData ? getCount() : null
+  }, [])
 
   const { forkCount } = githubStats.user.repository
   const stars = githubStats.user.repository.stargazers.totalCount
@@ -371,7 +392,7 @@ export default function Dashboard({
   let averageWatts = 0
   let greatestElevationGain = []
   let longestRide = []
-
+  console.log(biggestTrafficSource[0].label)
   activities.map((item) => {
     distance = distance + item.distance
     duration = duration + item.movingDuration
@@ -382,6 +403,12 @@ export default function Dashboard({
     longestRide.push(item.distance)
   })
 
+  const consentTrue = consentCount.find(
+    (element) => element.label === "consent - true"
+  )
+  const consentFalse = consentCount.find(
+    (element) => element.label === "consent - false"
+  )
   return (
     <>
       <Layout>
@@ -463,8 +490,10 @@ export default function Dashboard({
                     </GridStatsDescription>
                   </StatsSmallGrid>
                   <StatsSmallGrid>
-                    <GridStats>{webmentionsCount}</GridStats>
-                    <GridStatsDescription>Webmentions</GridStatsDescription>
+                    <GridStats>{biggestTrafficSource[0].label}</GridStats>
+                    <GridStatsDescription>
+                      Top Traffic source
+                    </GridStatsDescription>
                   </StatsSmallGrid>
                 </StatsGrid>
 
@@ -527,6 +556,28 @@ export default function Dashboard({
                     </StatsSmallGrid>
                   </Link>
                 </StatsGrid>
+              </GeneralStats>
+
+              <GeneralStats>
+                <StatsGridMedium>
+                  <GridMediumTitle>Interactions</GridMediumTitle>
+                  <BottomStatsGrid>
+                    <GridStats>{consentTrue.nb_events}</GridStats>
+                    <GridStatsDescription>Consent given</GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{consentFalse.nb_events}</GridStats>
+                    <GridStatsDescription>Consent denied</GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{thanks}</GridStats>
+                    <GridStatsDescription>Virtual Thanks</GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{webmentionsCount}</GridStats>
+                    <GridStatsDescription>Webmentions</GridStatsDescription>
+                  </BottomStatsGrid>
+                </StatsGridMedium>
               </GeneralStats>
 
               {/*<GeneralStats>
@@ -801,6 +852,8 @@ export async function getStaticProps() {
   const activities = (await getAllActivities()) || []
   const liveViews = (await getMatomoLiveCounter()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
+  const consentCount = (await getMatomoConsent()) || []
+  const biggestTrafficSource = (await getBiggestTrafficSource()) || []
 
   return {
     revalidate: 86400,
@@ -823,6 +876,8 @@ export async function getStaticProps() {
       activities,
       liveViews,
       topPosts,
+      consentCount,
+      biggestTrafficSource,
     },
   }
 }

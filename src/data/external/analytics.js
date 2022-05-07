@@ -196,3 +196,49 @@ export async function getMatomoViewForPage(url) {
   }
   return pageUrl
 }
+
+export async function getMatomoConsent() {
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_MATOMO_URL
+    }?module=API&method=Events.getCategory&idSite=${
+      process.env.NEXT_PUBLIC_MATOMO_SITE_ID
+    }&period=range&date=2018-02-01,${new Date()
+      .toISOString()
+      .slice(
+        0,
+        10
+      )}&filter_limit=10&flat=1&force_api_session=1&format_metrics=1&format=JSON&token_auth=${
+      process.env.NEXT_PUBLIC_MATOMO_API_KEY
+    }`
+  )
+  const pageUrl = await res.json()
+  if (pageUrl.errors) {
+    console.error(pageUrl.errors)
+    throw new Error("Failed to fetch pageUrl")
+  }
+  return pageUrl
+}
+
+export async function getBiggestTrafficSource() {
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_MATOMO_URL
+    }?module=API&method=Referrers.getReferrerType&idSite=${
+      process.env.NEXT_PUBLIC_MATOMO_SITE_ID
+    }&period=range&date=2018-02-01,${new Date()
+      .toISOString()
+      .slice(
+        0,
+        10
+      )}&filter_limit=1&flat=1&force_api_session=1&format_metrics=1&format=JSON&token_auth=${
+      process.env.NEXT_PUBLIC_MATOMO_API_KEY
+    }`
+  )
+  const pageUrl = await res.json()
+  if (pageUrl.errors) {
+    console.error(pageUrl.errors)
+    throw new Error("Failed to fetch pageUrl")
+  }
+  return pageUrl
+}

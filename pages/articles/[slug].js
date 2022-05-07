@@ -43,6 +43,13 @@ const StickySideBar = styled.div``
 const DateWrapper = styled.div`
   text-align: center;
   font-size: 12px;
+  ${media.lessThan("large")`
+    text-align: left;
+    margin-left: var(--space);
+  `}
+  ${media.lessThan("medium")`
+    margin-left: var(--space-sm);
+  `}
 `
 
 const StickySocialShareContainer = styled.div`

@@ -9,8 +9,7 @@ import {
   getAllPhotos,
 } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
-
-//const globby = require('globby');
+import * as fs from "fs"
 
 const createSitemap = (
   posts,
@@ -18,7 +17,8 @@ const createSitemap = (
   pages,
   notes,
   photos,
-  /*morePages,*/ recipes
+  uniquePages,
+  recipes
 ) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
@@ -50,6 +50,18 @@ const createSitemap = (
             `
           })
           .join("")}
+          ${uniquePages
+            .map((page) => {
+              return `
+                  <url>
+                      <loc>${`${config.siteUrl}/${page}`}</loc>
+                      <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
+                      <changefreq>monthly</changefreq>
+                      <priority>0.5</priority>
+                   </url>
+              `
+            })
+            .join("")}
         ${tags
           .map((tag) => {
             return `
@@ -115,16 +127,26 @@ class Sitemap extends React.Component {
     const getNote = (await getAllNotes()) || []
     const getRecipes = (await getAllRecipes()) || []
     const getPhotos = (await getAllPhotos()) || []
-    const morePages = await globby([
-      "pages/**/*{.js,.mdx}",
-      "!pages/**/*[*.js",
-      "!pages/_*.js",
-      "!pages/sitemap.xml.js",
-      "!pages/api",
-      "!pages/404.js",
-      "!pages/feed.xml.js",
-    ])
 
+    const staticPages = fs
+      .readdirSync("pages")
+      .filter((staticPage) => {
+        return ![
+          "api",
+          "_app.js",
+          "_document.js",
+          "404.js",
+          "sitemap.xml.js",
+          "[slug].js",
+          "_error.js",
+          "feed.xml.js",
+          "manifest.json.js",
+        ].includes(staticPage)
+      })
+      .map((staticPagePath) => {
+        return `${staticPagePath.replace(".js", "").replace("index", "")}`
+      })
+    const uniquePages = [...new Set(staticPages)]
     const posts = getPosts
     const pages = getPages
     const tags = getTags
@@ -134,28 +156,10 @@ class Sitemap extends React.Component {
 
     res.setHeader("Content-Type", "text/xml")
     res.write(
-      createSitemap(posts, tags, pages, notes, photos, morePages, recipes)
+      createSitemap(posts, tags, pages, notes, photos, uniquePages, recipes)
     )
     res.end()
   }
 }
 
 export default Sitemap
-
-/*
-${morePages.map((page) => {
-  const path = page
-      .replace('pages', '')
-      .replace('.js', '')
-      .replace('.mdx', '');
-    const route = path === '/index' ? '' : path;
-    return `
-            <url>
-                <loc>${`${config.siteUrl}${route}`}</loc>
-                <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
-                <changefreq>monthly</changefreq>
-                <priority>0.5</priority>
-            </url>
-        `;
-  })
-  .join('')}*/

@@ -217,7 +217,8 @@ class CookieBanner extends Component {
     if (
       !this.state.visible ||
       window.location.href.includes("privacy-policy") ||
-      window.location.href.includes("site-notice")
+      window.location.href.includes("site-notice") ||
+      window.location.href.includes("sitemap")
     ) {
       return null
     }

@@ -19,7 +19,7 @@ const WebMentionsWrapper = styled.section`
   border-top: 0.1rem solid var(--content-bg);
   border-bottom: 0.1rem solid var(--content-bg);
   margin: var(--space) 0;
-  padding: var(--space) 0 var(--space-sm) 0;
+  padding: var(--space) 0 var(--space) 0;
 `
 
 const WebmentionsHeader = styled.div`

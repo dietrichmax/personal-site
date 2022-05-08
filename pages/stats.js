@@ -856,7 +856,7 @@ export async function getStaticProps() {
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
 
   return {
-    revalidate: 86400,
+    revalidate: 3600,
     props: {
       lastViews,
       actions,

@@ -115,15 +115,15 @@ class Sitemap extends React.Component {
     const getNote = (await getAllNotes()) || []
     const getRecipes = (await getAllRecipes()) || []
     const getPhotos = (await getAllPhotos()) || []
-    //const morePages = await globby([
-    //    'pages/**/*{.js,.mdx}',
-    //    '!pages/**/*[*.js',
-    //    '!pages/_*.js',
-    //    '!pages/sitemap.xml.js',
-    //    '!pages/api',
-    //    '!pages/404.js',
-    //    '!pages/feed.xml.js',
-    //]);
+    const morePages = await globby([
+      "pages/**/*{.js,.mdx}",
+      "!pages/**/*[*.js",
+      "!pages/_*.js",
+      "!pages/sitemap.xml.js",
+      "!pages/api",
+      "!pages/404.js",
+      "!pages/feed.xml.js",
+    ])
 
     const posts = getPosts
     const pages = getPages
@@ -134,7 +134,7 @@ class Sitemap extends React.Component {
 
     res.setHeader("Content-Type", "text/xml")
     res.write(
-      createSitemap(posts, tags, pages, notes, photos, /*morePages,*/ recipes)
+      createSitemap(posts, tags, pages, notes, photos, morePages, recipes)
     )
     res.end()
   }

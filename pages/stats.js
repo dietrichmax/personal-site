@@ -427,13 +427,9 @@ export default function Dashboard({
                 <StatsGrid>
                   <Title>Web Analytics</Title>
                   <StatsLargeGrid>
-                    {liveViews[0].visitors > 1 ? (
-                      <GridStats>{liveViews[0].visitors} people</GridStats>
-                    ) : (
-                      <GridStats>You are</GridStats>
-                    )}
+                    <GridStats>{liveViews[0].visitors}</GridStats>
                     <GridStatsDescription>
-                      Visiting right Now!
+                      Visitors in the last 5 minutes
                     </GridStatsDescription>
                   </StatsLargeGrid>
                   <StatsSmallGrid>

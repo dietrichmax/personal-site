@@ -9,7 +9,8 @@ import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
 import { Button } from "@/styles/templates/button"
 import CV from "src/components/cv/cv"
-
+import html2canvas from "html2canvas"
+import { jsPDF } from "jspdf"
 const ResumeWrapper = styled.div`
   max-width: 1200px;
   margin: var(--space) auto var(--space) auto;
@@ -34,10 +35,23 @@ export default function CVPage({ cvData }) {
           <PageTitle>CV</PageTitle>
 
           <ResumeWrapper className="h-resume resume">
-            <CV data={cvData} />
+            <CV id="cv" data={cvData} />
             <Button
               onClick={() => {
-                window.open(`/api/cv`)
+                html2canvas(document.getElementById("cv"), {
+                  scale: 6,
+                }).then(function (canvas) {
+                  const pdf = new jsPDF("portrait", undefined, "a4")
+                  pdf.addImage(
+                    canvas.toDataURL("image/jpeg"),
+                    "JPEG",
+                    0,
+                    0,
+                    210,
+                    297
+                  )
+                  pdf.save("max_dietrich_cv.pdf")
+                })
               }}
             >
               Download CV

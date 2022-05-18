@@ -6,10 +6,12 @@ import { parseISO, format, intervalToDuration } from "date-fns"
 
 const Paper = styled.section`
   width: 210mm;
+  height: 297mm;
   padding: 16px;
   margin-bottom: 28px;
   position: relative;
   background-color: var(--content-bg);
+  overflow: hidden;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
   ${media.lessThan("830px")`

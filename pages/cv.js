@@ -39,7 +39,7 @@ export default function CVPage({ cvData }) {
             <Button
               onClick={() => {
                 html2canvas(document.getElementById("cv"), {
-                  scale: 6,
+                  scale: 8,
                 }).then(function (canvas) {
                   const pdf = new jsPDF("portrait", undefined, "a4")
                   pdf.addImage(

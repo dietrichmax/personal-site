@@ -333,19 +333,19 @@ class CookieBanner extends Component {
               <ButtonContainer>
                 <Button
                   onClick={() => {
-                    this.accept()
-                  }}
-                >
-                  Accept required and optional cookies
-                </Button>
-                <Button
-                  onClick={() => {
                     this.decline()
                   }}
                   backgroundColor="var(--content-bg)"
                   color="#70757a"
                 >
                   Accept required cookies
+                </Button>
+                <Button
+                  onClick={() => {
+                    this.accept()
+                  }}
+                >
+                  Accept required and optional cookies
                 </Button>
               </ButtonContainer>
             </Wrapper>

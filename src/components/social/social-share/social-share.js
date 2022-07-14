@@ -14,6 +14,7 @@ import {
 import { createNoSubstitutionTemplateLiteral } from "typescript"
 
 const WebActions = styled.ol`
+  margin-top: var(--space-sm);
   padding-inline-start: 0;
   ${media.lessThan("large")`
     margin-top: var(--space);

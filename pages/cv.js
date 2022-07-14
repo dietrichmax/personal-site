@@ -24,6 +24,7 @@ const ResumeWrapper = styled.div`
 export default function CVPage({ cvData }) {
   const router = useRouter()
 
+  const MyComponent = ({ children }) => <h1>{children.length}</h1>
   return (
     <Layout>
       {router.isFallback ? (
@@ -33,7 +34,10 @@ export default function CVPage({ cvData }) {
           <SEO title="CV" description="Curriculum Vitae" slug={`cv`} />
 
           <PageTitle>CV</PageTitle>
-
+          <MyComponent>
+            <p>1</p>
+            <p>2</p>
+          </MyComponent>
           <ResumeWrapper className="h-resume resume">
             <CV id="cv" data={cvData} />
             <Button

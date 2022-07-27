@@ -214,7 +214,7 @@ export default function CV({ data }) {
             })}
           </Col1Item>
 
-          <Credit>This CV was coded in ReactJS.</Credit>
+          {/*<Credit>This CV was coded in ReactJS.</Credit>*/}
         </Col1>
         <Col2>
           <ColTitle>Experience</ColTitle>

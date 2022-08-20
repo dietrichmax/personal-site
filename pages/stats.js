@@ -559,11 +559,15 @@ export default function Dashboard({
                   <GridMediumTitle>Interactions</GridMediumTitle>
                   <BottomStatsGrid>
                     <GridStats>{consentTrue.nb_events}</GridStats>
-                    <GridStatsDescription>Consent given</GridStatsDescription>
+                    <GridStatsDescription>
+                      Cookie consent given
+                    </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
                     <GridStats>{consentFalse.nb_events}</GridStats>
-                    <GridStatsDescription>Consent denied</GridStatsDescription>
+                    <GridStatsDescription>
+                      Cookie consent denied
+                    </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
                     <GridStats>{thanks}</GridStats>

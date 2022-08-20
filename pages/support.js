@@ -202,7 +202,7 @@ export default function Support({}) {
 
                 <SupportButtonContainer>
                   <Button onClick={() => sendThanks()}>
-                    {submitted ? "Thank you!" : "Send Virtual Thanks"}
+                    {submitted ? "🎉Thank you!🎉" : "Send Virtual Thanks"}
                   </Button>
                   <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
                 </SupportButtonContainer>

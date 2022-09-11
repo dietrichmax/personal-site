@@ -386,21 +386,21 @@ export default function Dashboard({
 
   let distance = 0
   let duration = 0
-  let averageSpeed = 0
   let maxSpeed = []
-  let elevationGain = 0
-  let averageWatts = 0
+  let maxDistance = []
+  let maxElevationGain = []
+  let totalElevationGain = 0
   let greatestElevationGain = []
-  let longestRide = []
+  let jumpCount = 0
   console.log(biggestTrafficSource[0].label)
   activities.map((item) => {
     distance = distance + item.distance
     duration = duration + item.movingDuration
-    averageSpeed = averageSpeed + item.averageSpeed
     maxSpeed.push(item.maxSpeed)
-    elevationGain = elevationGain + item.elevationGain
-    greatestElevationGain.push(item.elevationGain)
-    longestRide.push(item.distance)
+    maxDistance.push(item.distance)
+    maxElevationGain.push(item.elevationGain)
+    totalElevationGain = totalElevationGain + item.elevationGain
+    jumpCount = jumpCount + item.jumpCount
   })
 
   const consentTrue = consentCount.find(
@@ -805,20 +805,46 @@ export default function Dashboard({
                     </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
-                    <GridStats>{parseInt(duration / 3600)}</GridStats>
-                    <GridStatsDescription>
-                      Total duration [h]
-                    </GridStatsDescription>
-                  </BottomStatsGrid>
-                  <BottomStatsGrid>
                     <GridStats>
-                      {elevationGain
+                      {totalElevationGain
                         .toFixed(0)
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </GridStats>
                     <GridStatsDescription>
                       Total Elevation Gain [m]
+                    </GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{parseInt(duration / 3600)}</GridStats>
+                    <GridStatsDescription>
+                      Total duration [h]
+                    </GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{jumpCount}</GridStats>
+                    <GridStatsDescription>Jump Count</GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>
+                      {parseInt(Math.max(...maxDistance) / 1000)}
+                    </GridStats>
+                    <GridStatsDescription>
+                      Max Distance [km]
+                    </GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>
+                      {parseInt(Math.max(...maxElevationGain))}
+                    </GridStats>
+                    <GridStatsDescription>
+                      Max Elevation Gain [m]
+                    </GridStatsDescription>
+                  </BottomStatsGrid>
+                  <BottomStatsGrid>
+                    <GridStats>{parseInt(Math.max(...maxSpeed))}</GridStats>
+                    <GridStatsDescription>
+                      Max speed [km/h]
                     </GridStatsDescription>
                   </BottomStatsGrid>
                 </StatsGridMedium>

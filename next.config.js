@@ -573,12 +573,6 @@ module.exports = withPlugins(
     redirects,
     withFonts,
     {
-      i18n: {
-        locales: ["en-US"],
-        defaultLocale: "en-US",
-      },
-    },
-    {
       withPWA: {
         pwa: {
           dest: "public",

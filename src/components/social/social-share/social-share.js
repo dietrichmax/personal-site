@@ -11,7 +11,6 @@ import {
   FaHeart,
   FaEnvelope,
 } from "react-icons/fa"
-import { createNoSubstitutionTemplateLiteral } from "typescript"
 
 const WebActions = styled.ol`
   margin-top: var(--space-sm);

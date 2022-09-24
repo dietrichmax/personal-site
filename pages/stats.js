@@ -392,7 +392,7 @@ export default function Dashboard({
   let totalElevationGain = 0
   let greatestElevationGain = []
   let jumpCount = 0
-  console.log(biggestTrafficSource[0].label)
+
   activities.map((item) => {
     distance = distance + item.distance
     duration = duration + item.movingDuration
@@ -618,8 +618,8 @@ export default function Dashboard({
               <TopPageContainer>
                 <Title>Most visited posts of all time</Title>
                 <TopPageList>
-                  {topPosts.map((post) => (
-                    <TopPageListItem>
+                  {topPosts.map((post, i) => (
+                    <TopPageListItem key={i}>
                       <Link href={post.label} passHref>
                         <TopPageListItemLink title={post.label}>
                           {post.label}

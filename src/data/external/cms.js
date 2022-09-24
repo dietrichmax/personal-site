@@ -680,17 +680,6 @@ export async function getNote(slug) {
         color
         slug
       }
-      users_permissions_user {
-        username
-        bio
-        picture {
-          url
-        }
-        socials {
-          plattform
-          link
-        }
-      }
     }
   }
   `,

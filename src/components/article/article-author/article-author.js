@@ -88,19 +88,21 @@ export default function Author(author) {
     <>
       <AuthorTitle>About The Author</AuthorTitle>
       <AuthorWrapper>
-        <AuthorImgWrapper>
-          <Image
-            src={`${
-              picture.url.startsWith("/")
-                ? process.env.NEXT_PUBLIC_STRAPI_API_URL
-                : ""
-            }${picture.url}`}
-            alt={username}
-            title={username}
-            width="50"
-            height="50"
-          />
-        </AuthorImgWrapper>
+        {picture ? (
+          <AuthorImgWrapper>
+            <Image
+              src={`${
+                picture.url.startsWith("/")
+                  ? process.env.NEXT_PUBLIC_STRAPI_API_URL
+                  : ""
+              }${picture.url}`}
+              alt={username}
+              title={username}
+              width="50"
+              height="50"
+            />
+          </AuthorImgWrapper>
+        ) : null}
         <AuthorMeta>
           <AuthorName title="About me">{username} </AuthorName>
           <AuthorSubtitle>{config.siteSubtitle}</AuthorSubtitle>

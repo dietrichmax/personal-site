@@ -108,7 +108,7 @@ export default function Note({ note }) {
             </NotesItem>
 
             <WebActions slug={`/notes/${note.slug}`} />
-            <Author post={note.users_permissions_user} />
+            {/*<Author post={note.users_permissions_user} />*/}
             <Meta
               post={note}
               slug={`/notes/${note.slug}`}

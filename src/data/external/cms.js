@@ -970,10 +970,6 @@ export async function getCV() {
           title
           description
         }
-        profile {
-          url
-          formats
-        }
       }
     }
   `

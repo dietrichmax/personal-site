@@ -582,6 +582,7 @@ module.exports = withPlugins(
     {
       images: {
         domains: [
+          "192.168.2.122",
           "api.mxd.codes",
           "static-maps-api.mxd.codes",
           "api.mapbox.com",

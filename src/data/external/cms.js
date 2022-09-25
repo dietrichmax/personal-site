@@ -406,7 +406,7 @@ export async function getRecipe(slug) {
 }
 
 export async function getLinksCount() {
-  const res = await fetch(`https://api.mxd.codes/links/count`, {
+  const res = await fetch(`http://192.168.2.122:1337/links/count`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -423,7 +423,7 @@ export async function getLinksCount() {
 }
 
 export async function getPostsCount() {
-  const res = await fetch(`https://api.mxd.codes/posts/count`, {
+  const res = await fetch(`http://192.168.2.122:1337/posts/count`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -440,12 +440,15 @@ export async function getPostsCount() {
 }
 
 export async function getTagsCount() {
-  const res = await fetch(`https://api.mxd.codes/tags/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/tags/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -457,12 +460,15 @@ export async function getTagsCount() {
 }
 
 export async function getNotesCount() {
-  const res = await fetch(`https://api.mxd.codes/notes/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/notes/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -474,12 +480,15 @@ export async function getNotesCount() {
 }
 
 export async function getLocationsCount() {
-  const res = await fetch(`https://api.mxd.codes/locations/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -491,12 +500,15 @@ export async function getLocationsCount() {
 }
 
 export async function getRecipesCount() {
-  const res = await fetch(`https://api.mxd.codes/recipes/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/recipes/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -508,12 +520,15 @@ export async function getRecipesCount() {
 }
 
 export async function getRoutesCount() {
-  const res = await fetch(`https://api.mxd.codes/routes/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/routes/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -525,12 +540,15 @@ export async function getRoutesCount() {
 }
 
 export async function getSubscribersCount() {
-  const res = await fetch(`https://api.mxd.codes/subscribers/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -542,12 +560,15 @@ export async function getSubscribersCount() {
 }
 
 export async function getPhotosCount() {
-  const res = await fetch(`https://api.mxd.codes/photos/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/photos/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -559,12 +580,15 @@ export async function getPhotosCount() {
 }
 
 export async function getActivitiesCount() {
-  const res = await fetch(`https://api.mxd.codes/activities/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/activities/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {

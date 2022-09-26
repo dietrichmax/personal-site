@@ -52,7 +52,6 @@
   margin-top: var(--space);
   margin-bottom: 1.5rem;
   font-family: var(--primary-font);
-  color: var(--secondary-color);
 }
 
 .markdown h3 {

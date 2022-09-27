@@ -29,6 +29,7 @@ import {
   getLinksCount,
   getPhotosCount,
   getAllActivities,
+  getThanks,
 } from "@/src/data/external/cms"
 import { fetchWebmentions } from "@/src/data/external/webmentions"
 import { getGitHubStats } from "@/src/data/external/github"
@@ -319,25 +320,9 @@ export default function Dashboard({
   topPosts,
   consentCount,
   biggestTrafficSource,
+  thanks,
 }) {
   const router = useRouter()
-  const [thanks, setThanks] = useState("-")
-  const [gotData, setGotData] = useState(false)
-
-  async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://api.mxd.codes/thanks", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setThanks(data.thanks))
-    setGotData(true)
-  }
-
-  useEffect(() => {
-    !gotData ? getCount() : null
-  }, [])
 
   const { forkCount } = githubStats.user.repository
   const stars = githubStats.user.repository.stargazers.totalCount
@@ -570,7 +555,7 @@ export default function Dashboard({
                     </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
-                    <GridStats>{thanks}</GridStats>
+                    <GridStats>{thanks.thanks}</GridStats>
                     <GridStatsDescription>Virtual Thanks</GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
@@ -880,6 +865,7 @@ export async function getStaticProps() {
   const topPosts = (await getMatomoTopPageUrls()) || []
   const consentCount = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
+  const thanks = (await getThanks()) || []
 
   return {
     revalidate: 3600,
@@ -904,6 +890,7 @@ export async function getStaticProps() {
       topPosts,
       consentCount,
       biggestTrafficSource,
+      thanks,
     },
   }
 }

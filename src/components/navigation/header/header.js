@@ -1,10 +1,7 @@
 import styled from "styled-components"
-import Link from "next/link"
 import media from "styled-media-query"
-import React, { useEffect } from "react"
+import React from "react"
 import Nav from "@/components/navigation/nav"
-import useSWR from "swr"
-import fetcher from "@/src/utils/fetcher"
 import Logo from "@/components/logo/logo"
 
 const HeaderWrapper = styled.header`
@@ -39,13 +36,6 @@ const MainNav = styled.div`
 `
 
 export default function Header({ color }) {
-  const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`,
-    fetcher
-  )
-
-  if (error) return console.log("error")
-
   return (
     <HeaderWrapper color={color}>
       <InnerHeader>

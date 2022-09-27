@@ -406,12 +406,15 @@ export async function getRecipe(slug) {
 }
 
 export async function getLinksCount() {
-  const res = await fetch(`http://192.168.2.122:1337/links/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/links/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -423,12 +426,15 @@ export async function getLinksCount() {
 }
 
 export async function getPostsCount() {
-  const res = await fetch(`http://192.168.2.122:1337/posts/count`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {
@@ -733,6 +739,19 @@ export async function getAllBlogrolls() {
   `
   )
   return data?.blogrolls
+}
+
+export async function getThanks() {
+  const data = await fetchStrapiAPI(
+    `
+    {
+      thank {
+        thanks
+      } 
+    }
+  `
+  )
+  return data?.thank
 }
 
 // links

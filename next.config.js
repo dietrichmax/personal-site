@@ -509,9 +509,14 @@ const redirects = {
       },
       {
         source:
-          "/articles/how-to-create-a-custom-cookie-banner-for-your-react-application",
-        destination:
           "/articles/how-to-create-a-cookie-banner-for-your-react-application",
+        destination:
+          "/articles/how-to-create-a-custom-cookie-banner-for-your-react-application",
+        permanent: true,
+      },
+      {
+        source: "/articles/first-steps-with-react-leaflet",
+        destination: "/articles/first-steps-with-leaflet-and-react",
         permanent: true,
       },
 

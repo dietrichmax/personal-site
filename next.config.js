@@ -498,11 +498,6 @@ const redirects = {
         permanent: true,
       },
       {
-        source: "/articles/first-steps-with-leaflet-and-react",
-        destination: "/articles/first-steps-with-react-leaflet",
-        permanent: true,
-      },
-      {
         source: "/dashboard",
         destination: "/stats",
         permanent: true,

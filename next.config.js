@@ -507,6 +507,13 @@ const redirects = {
         destination: "/stats",
         permanent: true,
       },
+      {
+        source:
+          "/articles/how-to-create-a-custom-cookie-banner-for-your-react-application",
+        destination:
+          "/articles/how-to-create-a-cookie-banner-for-your-react-application",
+        permanent: true,
+      },
 
       /* Social Redirects */
       {

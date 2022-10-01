@@ -343,7 +343,9 @@ export default function Dashboard({
 
   Object.entries(lastViews).forEach(
     (value) => (
-      (recentViews = recentViews + value[1].nb_pageviews),
+      value[1].nb_pageviews
+        ? (recentViews = recentViews + value[1].nb_pageviews)
+        : null,
       pageViews.push({
         date: value[0],
         dateShort: value[0].substring(8),
@@ -362,6 +364,7 @@ export default function Dashboard({
   )
   const normalisedMax = Math.max.apply(Math, normalisedViews)
 
+  //console.log(pageViews)
   const getTimeOnSite = (time) => {
     const minutes = Math.floor(time / 60)
     const seconds = time - minutes * 60

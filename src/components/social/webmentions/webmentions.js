@@ -318,7 +318,11 @@ export default function Webmentions({ slug, preview }) {
           ) : null}
           {webmentions.commentsCount > 0 ? (
             <WebmentionPreviewCount
-              title={`${webmentions.commentsCount} comments`}
+              title={
+                webmentions.commentsCount == 1
+                  ? `${webmentions.commentsCount} reply`
+                  : `${webmentions.commentsCount} replies`
+              }
             >
               <FaRegComment /> {webmentions.commentsCount}{" "}
               <WebmentionPreviewLabel>

@@ -17,6 +17,7 @@ const CardItemWrapper = styled.div`
 
 const CardItemInfo = styled.div`
   position: relative;
+  padding-bottom: var(--space-sm);
   ${media.lessThan("medium")`
    margin: 0;
   `}

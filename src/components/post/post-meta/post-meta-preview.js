@@ -17,7 +17,8 @@ const Meta = styled.div`
   font-size: 11px;
   width: 100%;
   margin-top: var(--space-sm);
-  padding: 0 var(--space) var(--space-sm) var(--space);
+  background-color: var(--content-bg);
+  padding: 0 var(--space) 0 var(--space);
   ${media.lessThan("medium")`
 
   `}

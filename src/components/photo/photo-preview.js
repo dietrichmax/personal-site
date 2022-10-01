@@ -76,6 +76,7 @@ const PhotoWrapper = styled.div`
 export default function PhotoPreview({ photo }) {
   const slug = `/photos/${photo.slug}`
 
+  console.log(photo)
   return (
     <Card className="h-entry">
       <HCard />

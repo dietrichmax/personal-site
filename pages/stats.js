@@ -390,17 +390,15 @@ export default function Dashboard({
     totalElevationGain = totalElevationGain + item.elevationGain
     jumpCount = jumpCount + item.jumpCount
   })
-  let consentTrue = 0
-  let consentFalse = 0
 
   console.log(consentCount)
-  /*const consentTrue = consentCount ? consentCount.find(
-    (element) => element.label === "consent - true"
-  ) : 0
+  const consentTrue = consentCount
+    ? consentCount.find((element) => element.label === "consent - true")
+    : 0
 
-  const consentFalse = consentCount ? consentCount.find(
-    (element) => element.label === "consent - false"
-  ) : 0*/
+  const consentFalse = consentCount
+    ? consentCount.find((element) => element.label === "consent - false")
+    : 0
 
   return (
     <>

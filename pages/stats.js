@@ -364,7 +364,6 @@ export default function Dashboard({
   )
   const normalisedMax = Math.max.apply(Math, normalisedViews)
 
-  //console.log(pageViews)
   const getTimeOnSite = (time) => {
     const minutes = Math.floor(time / 60)
     const seconds = time - minutes * 60
@@ -391,7 +390,6 @@ export default function Dashboard({
     jumpCount = jumpCount + item.jumpCount
   })
 
-  console.log(consentCount)
   const consentTrue = consentCount
     ? consentCount.find((element) => element.label === "consent - true")
     : 0

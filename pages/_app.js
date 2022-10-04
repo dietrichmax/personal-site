@@ -151,7 +151,7 @@ class MyApp extends App {
         </Head>
         <Providers>
           <GlobalStyle />
-          <CookieBanner />
+          {/*<CookieBanner />*/}
           <Component {...pageProps} />
         </Providers>
       </>

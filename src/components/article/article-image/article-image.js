@@ -37,6 +37,7 @@ const PostImg = styled(Image)`
 export default function PostImage({ preview, postData }) {
   const { title, coverImage } = postData
 
+  console.log(process.env.NEXT_PUBLIC_STRAPI_API_URL)
   return (
     <>
       {" "}

@@ -61,7 +61,7 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "remark-slug": "^7.0.1",
-    "sharp": "^0.30.4",
+    "sharp": "^0.31.1",
     "showdown": "^2.1.0",
     "slugify": "^1.6.5",
     "string-similarity": "^4.0.4",

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "next",
-    "start": "next start -p 3001",
+    "start": "next start",
     "build": "next build",
     "deploy": "git pull && npm run build && pm2 restart mxd-codes-frontend",
     "export": "next export",

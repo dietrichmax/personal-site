@@ -17,8 +17,8 @@ import {
   getAllNotes,
   getAllLinks,
   getAllPhotos,
-  getAllRecipes,
-  getAllActivities,
+  //getAllRecipes,
+  //getAllActivities,
   getLocationData,
   getCV,
 } from "src/data/external/cms"
@@ -87,7 +87,7 @@ const HeroFont = styled.span`
 `
 
 const AboutMeLink = styled.a`
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--content-bg);
   cursor: pointer;
   :hover {
     border-bottom: 2px solid transparent;
@@ -223,9 +223,9 @@ export default function Index({ posts, cv }) {
                   <HeroLinksNormal href="/map" title="Location tracking">
                     tracking my location
                   </HeroLinksNormal>{" "}
-                  since 2021.
+                  since 2021.{` `}
                   <Link href="/about" passHref>
-                    <AboutMeLink title="About me"> Read more.</AboutMeLink>
+                    <AboutMeLink title="About me">Read more.</AboutMeLink>
                   </Link>
                 </HeroDescription>
                 {/*<PostTypes>

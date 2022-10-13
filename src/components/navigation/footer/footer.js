@@ -64,10 +64,6 @@ const FooterMainNavItem = styled.li`
   `}
 `
 
-const FooterMainNavLink = styled.a`
-  padding: var(--space-sm) 0;
-`
-
 const FooterColumnWrapper = styled.div`
   grid-column: span 4 / span 4;
   list-style: none;
@@ -82,7 +78,7 @@ const FooterColumnWrapper = styled.div`
   `}
 `
 const FooterColumn = styled.nav`
-  max-width: 25%;
+  max-width: 30%;
   line-height: 1.25rem;
   ${media.lessThan("medium")`  
     margin-bottom: var(--space);
@@ -93,7 +89,7 @@ const FooterColumn = styled.nav`
 `
 
 const FooterColumnPosts = styled.nav`
-  max-width: 30%;
+  max-width: 40%;
   line-height: 1.25rem;
   ${media.lessThan("medium")`  
     margin-bottom: var(--space);
@@ -121,6 +117,7 @@ const List = styled.ol`
 const FooterItem = styled.li`
   margin-bottom: var(--space-sm);
   transition: 0.2s;
+  text-decoration: underline;
   :hover {
     color: var(--secondary-color);
     cursor: pointer;
@@ -128,12 +125,6 @@ const FooterItem = styled.li`
 `
 
 const FooterItemLink = styled(Link)``
-
-const FooterNotice = styled.p`
-  font-size: 0.75rem;
-  grid-column: span 4 / span 4;
-  margin-top: var(--space-sm);
-`
 
 const FooterLink = styled.a`
   color: var(--text-color);
@@ -166,6 +157,36 @@ const AboutMeLink = styled.a`
   cursor: pointer;
   :hover {
     border-bottom: 1px solid transparent;
+  }
+`
+
+const FooterBottomRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--width-container);
+  margin: var(--space) auto 0 auto;
+  padding: var(--space-sm) var(--space) 0 var(--space);
+  border-top: 1px solid var(--content-bg);
+`
+
+const FooterNotice = styled.p`
+  font-size: 0.75rem;
+  grid-column: span 4 / span 4;
+`
+
+const SocialsList = styled.ol`
+  display: flex;
+  list-style: none;
+  padding-inline-start: 0;
+`
+
+const FooterSocialItem = styled.li`
+  transition: 0.2s;
+  margin-left: var(--space);
+  text-decoration: underline;
+  :hover {
+    color: var(--secondary-color);
+    cursor: pointer;
   }
 `
 
@@ -273,51 +294,6 @@ export default function Footer() {
             </FooterColumnDescription>
           </FooterColumn>
 
-          <FooterColumn>
-            <FooterColumnTitle>Elsewhere</FooterColumnTitle>
-            <List>
-              <FooterItem>
-                <a href={config.socials.twitter} title="@mxdietrich on Twitter">
-                  <FaTwitter /> Twitter
-                </a>
-              </FooterItem>
-              <FooterItem>
-                <a
-                  href={config.socials.instagram}
-                  title="_maxdietrich on Instagram"
-                >
-                  <FaInstagram /> Instagram
-                </a>
-              </FooterItem>
-              <FooterItem>
-                <a href={config.socials.github} title="DaTurboD on GitHub">
-                  <FaGithub /> Github
-                </a>
-              </FooterItem>
-              <FooterItem>
-                <a href={config.socials.strava} title="Max Dietrich on Strava">
-                  <SiStrava /> Strava
-                </a>
-              </FooterItem>
-              {/*<FooterItem>
-                <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
-              </FooterItem>*/}
-              <FooterItem>
-                <a href={config.socials.xing} title="Max Dietrich on Xing">
-                  <FaXing /> Xing
-                </a>
-              </FooterItem>
-              <FooterItem>
-                <a
-                  href={config.socials.linkedin}
-                  title="Max Dietrich on Linkedin"
-                >
-                  <FaLinkedin /> Linkedin
-                </a>
-              </FooterItem>
-            </List>
-          </FooterColumn>
-
           <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
@@ -343,7 +319,9 @@ export default function Footer() {
             </List>
           </FooterColumn>
         </FooterColumnWrapper>
+      </FooterInnerContainer>
 
+      <FooterBottomRow>
         <FooterNotice>
           © 2018 – {new Date().getFullYear()}
           <span> • </span>
@@ -359,7 +337,43 @@ export default function Footer() {
             <FooterLink title="Site Notice">Site Notice</FooterLink>
           </Link>
         </FooterNotice>
-      </FooterInnerContainer>
+
+        <SocialsList>
+          <FooterSocialItem>
+            <a href={config.socials.twitter} title="@mxdietrich on Twitter">
+              <FaTwitter />
+            </a>
+          </FooterSocialItem>
+          <FooterSocialItem>
+            <a
+              href={config.socials.instagram}
+              title="_maxdietrich on Instagram"
+            >
+              <FaInstagram />
+            </a>
+          </FooterSocialItem>
+          <FooterSocialItem>
+            <a href={config.socials.github} title="DaTurboD on GitHub">
+              <FaGithub />
+            </a>
+          </FooterSocialItem>
+          <FooterSocialItem>
+            <a href={config.socials.strava} title="Max Dietrich on Strava">
+              <SiStrava />
+            </a>
+          </FooterSocialItem>
+          <FooterSocialItem>
+            <a href={config.socials.xing} title="Max Dietrich on Xing">
+              <FaXing />
+            </a>
+          </FooterSocialItem>
+          <FooterSocialItem>
+            <a href={config.socials.linkedin} title="Max Dietrich on Linkedin">
+              <FaLinkedin />
+            </a>
+          </FooterSocialItem>
+        </SocialsList>
+      </FooterBottomRow>
     </FooterContainer>
   )
 }

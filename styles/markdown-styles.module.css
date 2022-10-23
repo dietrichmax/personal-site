@@ -16,36 +16,40 @@
   border-bottom: 1px solid var(--link-color);
 }
 
-.markdown p,
-.markdown dl,
-.markdown ol,
+.markdown ol {
+  padding-inline-start: 0;
+  counter-reset: ol;
+}
+
 .markdown ul {
   margin-bottom: var(--space);
-}
-
-.markdown ul,
-.markdown ol {
   padding-inline-start: var(--space-sm);
-  list-style: none;
 }
 
-.markdown li {
-  margin-bottom: 0.75rem;
+.markdown ul > li {
+  margin: 1rem 0;
 }
 
-.markdown li ul,
-.markdown li ol {
-  margin-top: 0.75rem;
+.markdown ol > li {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  width: 100%;
+  counter-increment: ol;
 }
 
-.markdown ul li::before,
-.markdown ol li::before {
-  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: var(--secondary-color); /* Change the color */
-  font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1rem; /* Also needed for space (tweak if needed) */
-  margin-left: -1rem; /* Also needed for space (tweak if needed) */
+.markdown ol > li::before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 2.2rem !important;
+  min-height: 2.2rem !important;
+  content: counter(ol);
+  color: var(--text-color);
+  background-color: var(--content-bg);
+  font-weight: 600;
+  border-radius: 50%;
+  margin-right: var(--space-sm);
 }
 
 .markdown h2 {
@@ -60,14 +64,14 @@
   margin-top: 1.75rem;
   margin-bottom: 1.25rem;
   font-family: var(--primary-font);
-  color: var(--secondary-color);
 }
 
+.markdown h2,
+.markdown h3,
 .markdown h4,
 .markdown h5,
 .markdown h6 {
   font-family: var(--primary-font);
-  color: var(--secondary-color);
 }
 
 .markdown code {

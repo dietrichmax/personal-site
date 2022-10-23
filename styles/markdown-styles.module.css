@@ -7,7 +7,8 @@
 }
 
 .markdown a {
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px dotted #bdc3c7;
+  color: var(--secondary-color);
   cursor: pointer;
 }
 

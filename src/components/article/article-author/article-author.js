@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
@@ -63,7 +64,55 @@ const AuthorSocialsContainer = styled.a``
 
 const AuthorDescription = styled.div``
 
+const SupportButtonContainer = styled.div`
+  margin-bottom: var(--space);
+  margin-top: var(--space);
+`
+
+const ButtonText = styled.span`
+  margin: auto var(--space-sm);
+`
+
 export default function Author(author) {
+  const [count, setThanks] = useState(0)
+  const [gotData, setGotData] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  async function getCount() {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://api.mxd.codes/thanks", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setThanks(data.thanks))
+    setGotData(true)
+  }
+
+  useEffect(() => {
+    !gotData ? getCount() : null
+  }, [])
+
+  const sendThanks = () => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ thanks: count + 1 }),
+    }
+    fetch("https://api.mxd.codes/thanks", requestOptions)
+      .then(function (response) {
+        if (!response.ok) {
+          console.log(response.statusText)
+        } else {
+          setSubmitted(true)
+          setThanks(count + 1)
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   const { username, picture, bio, socials } = author.post
 
   const renderSocials = (socials) => {
@@ -111,9 +160,15 @@ export default function Author(author) {
         <AuthorBio>{bio}</AuthorBio>
         <AuthorSocials>
           <AuthorSocialsContainer>
+            <SupportButtonContainer>
+              <Button onClick={() => sendThanks()}>
+                {submitted ? "🎉Thank you!🎉" : "Send Virtual Thanks"}
+              </Button>
+              <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
+            </SupportButtonContainer>
             <Link href="/support">
               <Button>
-                <FaGift /> Support
+                <FaGift /> More Support
               </Button>
             </Link>
           </AuthorSocialsContainer>

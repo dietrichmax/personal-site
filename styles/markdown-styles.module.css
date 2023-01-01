@@ -6,6 +6,10 @@
   padding-bottom: var(--space-sm);
 }
 
+.markdown p {
+  margin-bottom: var(--space-sm);
+}
+
 .markdown a {
   border-bottom: 1px dotted #bdc3c7;
   color: var(--secondary-color);
@@ -14,6 +18,10 @@
 
 .markdown a:hover {
   border-bottom: 1px solid var(--link-color);
+}
+
+.markdown img {
+  margin: var(--space) auto;
 }
 
 .markdown ol {
@@ -27,7 +35,7 @@
 }
 
 .markdown ul > li {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .markdown ol > li {
@@ -81,7 +89,7 @@
 
 .markdown pre {
   overflow: auto;
-  margin-bottom: var(--space);
+  margin: var(--space) auto;
 }
 
 .markdown blockquote {

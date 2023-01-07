@@ -6,6 +6,7 @@ import TableOfContents from "src/components/article/article-toc/table-of-content
 import media from "styled-media-query"
 
 const PostContent = styled.section`
+  position: relative;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: var(--space-sm);
   display: grid;
@@ -29,6 +30,7 @@ const Square = styled.span`
 `
 
 const ContentWrapper = styled.div`
+  position: relative;
   grid-column: span 6 / span 6;
 `
 
@@ -45,6 +47,7 @@ export default function PostBody({ content }) {
             className={markdownStyles["markdown"]}
             children={content}
             components={renderers}
+            style={{ position: "relative" }}
           />
         </ContentWrapper>
         <Sidebar>

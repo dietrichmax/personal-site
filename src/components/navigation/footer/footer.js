@@ -181,10 +181,10 @@ export default function Footer() {
 
   useEffect(() => {
     let isSubscribed = true
-    fetch("https://api.mxd.codes/posts?_sort=date:DESC", requestOptions)
+    fetch("https://cms.mxd.codes/posts?_sort=date:DESC", requestOptions)
       .then((response) => response.json())
       .then((data) => (isSubscribed ? setRecentPosts(data.slice(0, 4)) : null))
-    fetch("https://api.mxd.codes/about", requestOptions)
+    fetch("https://cms.mxd.codes/about", requestOptions)
       .then((response) => response.json())
       .then((data) => (isSubscribed ? setAbout(data) : null))
     return () => (isSubscribed = false)

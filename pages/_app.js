@@ -40,13 +40,8 @@ class MyApp extends App {
           />
           {/* DNS Prefetch*/}
           {/* Preconnect */}
-          <link rel="preconnect" href="https://api.mxd.codes" crossOrigin />,
-          <link
-            rel="preconnect"
-            href="https://static-maps-api.mxd.codes"
-            crossOrigin
-          />
-          ,{/* Preload */}
+          <link rel="preconnect" href="https://cms.mxd.codes" crossOrigin />, ,
+          {/* Preload */}
           {/* IndieCert */}
           <link
             rel="authorization_endpoint"

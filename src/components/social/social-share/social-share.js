@@ -68,7 +68,7 @@ export default function SocialShare({ slug, id, syndicationLinks, post }) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-    fetch(`https://api.mxd.codes/likes?postId=${post.id}`, requestOptions)
+    fetch(`https://cms.mxd.codes/likes?postId=${post.id}`, requestOptions)
       .then((response) => response.json())
       .then((data) =>
         data === undefined ? null || null : setPostLike(data[0])
@@ -92,7 +92,7 @@ export default function SocialShare({ slug, id, syndicationLinks, post }) {
         postId: post.id,
       }),
     }
-    fetch(`https://api.mxd.codes/likes`, requestOptions)
+    fetch(`https://cms.mxd.codes/likes`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

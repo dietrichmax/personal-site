@@ -83,7 +83,7 @@ export default function Author(author) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-    fetch("https://api.mxd.codes/thanks", requestOptions)
+    fetch("https://cms.mxd.codes/thanks", requestOptions)
       .then((response) => response.json())
       .then((data) => setThanks(data.thanks))
     setGotData(true)
@@ -99,7 +99,7 @@ export default function Author(author) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ thanks: count + 1 }),
     }
-    fetch("https://api.mxd.codes/thanks", requestOptions)
+    fetch("https://cms.mxd.codes/thanks", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

@@ -23,7 +23,7 @@ const SEO = ({
 
   useEffect(() => {
     let isSubscribed = true
-    fetch("https://api.mxd.codes/cv", requestOptions)
+    fetch("https://cms.mxd.codes/cv", requestOptions)
       .then((response) => response.json())
       .then((data) => (isSubscribed ? setData(data) : null))
 

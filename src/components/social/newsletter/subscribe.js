@@ -65,7 +65,7 @@ export default function Subscribe({ noLabel, cb }) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-    fetch("https://api.mxd.codes/subscribers/count", requestOptions)
+    fetch("https://cms.mxd.codes/subscribers/count", requestOptions)
       .then((response) => response.json())
       .then((data) => setCount(data))
     setGotData(true)
@@ -82,7 +82,7 @@ export default function Subscribe({ noLabel, cb }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email }),
     }
-    fetch("https://api.mxd.codes/subscribers", requestOptions)
+    fetch("https://cms.mxd.codes/subscribers", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

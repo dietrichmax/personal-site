@@ -2,7 +2,7 @@
   "name": "mxd.codes",
   "description": "Personal Website",
   "author": "Max Dietrich",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "license": "MIT",
   "browser": {
     "fs": false,

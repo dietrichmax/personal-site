@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
     --gap: var(--space-sm);
     --border: var(--thirdy-color);
     --border-radius: 4px;
-    --primary-font: sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --primary-font: "Segoe UI" ,sans-serif, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: ${(props) => props.theme.primaryColor};

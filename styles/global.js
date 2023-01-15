@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
+    letter-spacing: 0.2px;
     color: inherit;
     margin: 0;
     font-size: 100%;

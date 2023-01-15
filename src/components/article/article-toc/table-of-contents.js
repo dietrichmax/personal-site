@@ -1,57 +1,72 @@
-import React from "react"
-//import { useScrollYPosition } from "react-use-scroll-position"
-//import AnchorLink from "react-anchor-link-smooth-scroll"
-import styled from "styled-components"
-import ReactMarkdown from "react-markdown"
-import markdownStyles from "@/styles/markdown-styles.module.css"
+/*import styled from "styled-components"
 
-const TOCWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  font-family: var(--secondary-font);
-  margin-left: var(--space);
-`
+import ReactMarkdown from "react-markdown";
+import { HeadingProps } from "react-markdown/lib/ast-to-react";
 
-const TOCContainer = styled.div``
+const Container = styled.div``
+const Row = styled.div``
+const Col = styled.div``
 
-const TOCTitle = styled.p``
-/*
-export default function MarkdownPage<
-  T extends { title: string } = { title: string }
->({ children, meta }: MarkdownProps<T>) {
-  const anchors = React.Children.toArray(children)
-    .filter(
-      (child: any) =>
-        child.props?.mdxType && ['h2', 'h3'].includes(child.props.mdxType)
-    )
-    .map((child: any) => ({
-      url: '#' + child.props.id,
-      depth:
-        (child.props?.mdxType &&
-          parseInt(child.props.mdxType.replace('h', ''), 0)) ??
-        0,
-      text: child.props.children
-    }));
 
-  return (
-    <>
-      <MDXProvider components={MDXComponents}>{children}</MDXProvider>
-      <Toc anchors={anchors} />
-    </>
-  );
-}*/
+export default function TableOfContents(markdown) {
+  const toc: {
+    level,
+    id,
+    title,
+}[] = [];
+    // Magic.
+    const addToTOC = ({children, ...props}) => {
+        const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
+        if (level && children && typeof children[0] === "string") {
+            const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, "-");
+            toc.push({
+                level,
+                id,
+                title: children[0],
+            });
+            return React.createElement(
+                props.node.tagName, {id}, children
+            )
+        } else {
+            return React.createElement(props.node.tagName, props, children);
+        }
+    };
 
-export default function TableOfContents(content) {
-  //const size = useWindowSize()
-  //const scrollY = useScrollYPosition()
-  //const test = toc(content.content).content
-  //console.log(test)
-  return {
-    /*}
-    <TOCWrapper>
-      <TOCContainer> 
-      <TOCTitle>Table of contents</TOCTitle> 
-      </TOCContainer> 
-  </TOCWrapper>*/
-  }
+    function TOC() {
+        return (
+            <ul className="table-of-contents">
+                {toc.map(({level, id, title}) => (
+                    <li key={id} className={`toc-entry-level-${level}`}>
+                        <a href={`#${id}`}>{title}</a>
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <ReactMarkdown
+                        components={{
+                            h2: addToTOC,
+                            h3: addToTOC,
+                            h4: addToTOC,
+                            h5: addToTOC,
+                            h6: addToTOC,
+                        }}
+                    >
+                        {markdown}
+                    </ReactMarkdown>
+                </Col>
+                <Col>
+                    {/* More magic. 
+                    <TOC />
+                </Col>
+            </Row>
+        </Container>
+    );
 }
+
+*/

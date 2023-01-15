@@ -2,6 +2,7 @@ import markdownStyles from "@/styles/markdown-styles.module.css"
 import styled from "styled-components"
 import ReactMarkdown from "react-markdown"
 import renderers from "src/utils/renderers"
+//
 import TableOfContents from "src/components/article/article-toc/table-of-contents"
 import media from "styled-media-query"
 
@@ -52,7 +53,7 @@ export default function PostBody({ content }) {
         </ContentWrapper>
         <Sidebar>
           {/*<script src="https://cdn.purpleads.io/agent.js?publisherId=070fe3f7e022b7e286f5e80d6a9f7c82:809fd75a0cc95c1d02c5f0fa8b4382c6f8fb9187e1c4523bd06e4a81aee94e13fdfdf1812ef0cad0920e4935b15e21470403c8b90ead36efcd9594f02045bc1c" data-pa-tag async></script>
-           <TableOfContents content={content} />*/}
+           <TableOfContents markdown={content} />*/}
         </Sidebar>
       </PostContent>
       <EndOfPost>

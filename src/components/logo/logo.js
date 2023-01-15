@@ -16,8 +16,11 @@ const LogoWrapper = styled.div`
 `
 const LogoName = styled.span`
   font-weight: 700;
+  letter-spacing: 0.3px;
 `
-const LogoDescription = styled.span``
+const LogoDescription = styled.span`
+  letter-spacing: 0.6px;
+`
 
 export default function Logo({}) {
   return (

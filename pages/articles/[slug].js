@@ -73,7 +73,7 @@ const SocialShareContainer = styled.div`
 
 const ArticleBackgroundColor = styled.div`
   grid-column: span 1;
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto var(--space-sm) 0;
   border-left: 1px solid var(--content-bg);
   ${media.lessThan("large")`
@@ -205,7 +205,7 @@ export default function Post({ post, allPosts }) {
               src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`}
               width="1"
               height="1"
-              alt=""
+              alt="vgwortpixel"
             />
 
             <HCard />

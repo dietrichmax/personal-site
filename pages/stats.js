@@ -11,7 +11,6 @@ import { Button } from "@/styles/templates/button"
 import {
   getMatomoActions,
   getMatomoLiveCounter,
-  getMatomoPageViewsToday,
   getMatomoPageViews,
   getMatomoSumVisitDuration,
   getMatomoSEOStats,
@@ -317,7 +316,7 @@ export default function Dashboard({
   visitsSummary,
   photosCount,
   activities,
-  viewsToday,
+  liveViews,
   topPosts,
   consentCount,
   biggestTrafficSource,
@@ -417,11 +416,9 @@ export default function Dashboard({
                 <StatsGrid>
                   <Title>Web Analytics</Title>
                   <StatsLargeGrid>
-                    <GridStats>
-                      {viewsToday[Object.keys(viewsToday)[0]].nb_pageviews}
-                    </GridStats>
+                    <GridStats>{liveViews[0].visitors}</GridStats>
                     <GridStatsDescription>
-                      Page Views in the last 24 hours
+                      Visitors in the last 5 minutes
                     </GridStatsDescription>
                   </StatsLargeGrid>
                   <StatsSmallGrid>
@@ -868,7 +865,7 @@ export async function getStaticProps() {
   const seoStats = (await getMatomoSEOStats()) || []
   const visitsSummary = (await getMatomoVisitsSummary()) || []
   const activities = (await getAllActivities()) || []
-  const viewsToday = (await getMatomoPageViewsToday()) || []
+  const liveViews = (await getMatomoLiveCounter()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
   const consentCount = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
@@ -893,7 +890,7 @@ export async function getStaticProps() {
       visitsSummary,
       photosCount,
       activities,
-      viewsToday,
+      liveViews,
       topPosts,
       consentCount,
       biggestTrafficSource,

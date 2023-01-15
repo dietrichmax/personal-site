@@ -202,7 +202,7 @@ export default function Index({ posts, cv }) {
                   >
                     Max Dietrich
                   </HeroLinks>
-                  , developer, author and cyclist from{" "}
+                  , developer and cyclist from{" "}
                   <a
                     className="p-locality"
                     href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"

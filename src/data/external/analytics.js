@@ -60,6 +60,19 @@ export async function getMatomoLiveCounter() {
   return liveViews
 }
 
+export async function getMatomoPageViewsToday() {
+  const getViews = encodeURI(
+    `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
+  )
+  const matomoDataLastViews = await fetch(getViews)
+  const lastViews = await matomoDataLastViews.json()
+  if (lastViews.errors) {
+    console.error(lastViews.errors)
+    throw new Error("Failed to fetch MATOMO Views")
+  }
+  return lastViews
+}
+
 export async function getMatomoPageViews() {
   const getViews = encodeURI(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous30&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`

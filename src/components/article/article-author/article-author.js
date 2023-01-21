@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Link from "next/link"
 import config from "src/data/internal/SiteConfig"
 import {
@@ -166,19 +166,19 @@ export default function Author(author) {
               </Button>
               <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
             </SupportButtonContainer>
-            <Link href="/support">
+            <Link href="/support" legacyBehavior>
               <Button>
                 <FaGift /> More Support
               </Button>
             </Link>
           </AuthorSocialsContainer>
           {/*(socials.map((social) => 
-            <AuthorSocialsContainer>
-              <a href={social.link} rel="nofollow noopener" title={social.plattform}>
-                {renderSocials(social)}
-              </a>
-            </AuthorSocialsContainer>
-        )*/}
+          <AuthorSocialsContainer>
+            <a href={social.link} rel="nofollow noopener" title={social.plattform}>
+              {renderSocials(social)}
+            </a>
+          </AuthorSocialsContainer>
+      )*/}
         </AuthorSocials>
       </AuthorDescription>
     </>

@@ -1,43 +1,35 @@
 import React, { useState, useEffect } from "react"
-import Image from "next/image"
+//import Image from "next/legacy/image";
 import Link from "next/link"
 import styled from "styled-components"
 
-const ImageContainer = styled.img`
-  width:100%,
-  height: 100%,
+const ImageContainer = styled.div`
   position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
 `
 
 const renderers = {
-  img: ({ src, alt, title }) => {
-    const name = src.replace("/uploads/", "")
-    const nameParts = name.split("_")
-    nameParts.pop()
-    const newName = `${nameParts.join(" ")}.png`
-
-    //const data = getImage(newName)
-
-    //console.log(data)
-    return src.startsWith("/") ? (
+  img: (props) => {
+    const src = props.src
+    const alt = props.alt
+    const title = props.alt.replace(".png", "").toLowerCase()
+    return props.src.startsWith("/") ? (
       <img
+        {...props}
         src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
-        alt={alt}
-        title={title}
-        href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
-        //width={src.width}
-        //height={src.height}
+        layout="responsive"
+        loading="lazy"
       />
     ) : (
-      <ImageContainer src={src} alt={alt} title={title} />
+      <img src={src} alt={alt} title={title} href={src} loading="lazy" />
     )
   },
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (
-      <Link className="external-link" href={href}>
-        <a title={title} alt={alt}>
-          {children}
-        </a>
+      <Link className="external-link" href={href} title={title} alt={alt}>
+        {children}
       </Link>
     ) : (
       <a

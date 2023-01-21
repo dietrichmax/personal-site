@@ -84,6 +84,7 @@ export default function Recipe({ recipe }) {
               href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${recipe.coverImage.url}`}
               aria-label={recipe.title}
               passHref
+              legacyBehavior
             >
               <RecipeImage>
                 <Image

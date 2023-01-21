@@ -484,7 +484,7 @@ export default function Dashboard({
 
                 <StatsGrid>
                   <Title>Content Stats</Title>
-                  <Link href="/articles" passHref>
+                  <Link href="/articles" passHref legacyBehavior>
                     <StatsLargeGrid title="See all Articles">
                       <GridStats>{postsCount}</GridStats>
                       <GridStatsDescription>
@@ -492,7 +492,7 @@ export default function Dashboard({
                       </GridStatsDescription>
                     </StatsLargeGrid>
                   </Link>
-                  <Link href="/notes" passHref>
+                  <Link href="/notes" passHref legacyBehavior>
                     <StatsSmallGrid title="See all Notes">
                       <GridStats>{notesCount}</GridStats>
                       <GridStatsDescription>
@@ -500,7 +500,7 @@ export default function Dashboard({
                       </GridStatsDescription>
                     </StatsSmallGrid>
                   </Link>
-                  <Link href="/links" passHref>
+                  <Link href="/links" passHref legacyBehavior>
                     <StatsSmallGrid title="See Links">
                       <GridStats>{linksCount}</GridStats>
                       <GridStatsDescription>
@@ -508,13 +508,13 @@ export default function Dashboard({
                       </GridStatsDescription>
                     </StatsSmallGrid>
                   </Link>
-                  <Link href="/photos" passHref>
+                  <Link href="/photos" passHref legacyBehavior>
                     <StatsSmallGrid title="See all Photos">
                       <GridStats>{photosCount}</GridStats>
                       <GridStatsDescription>Photos posted</GridStatsDescription>
                     </StatsSmallGrid>
                   </Link>
-                  <Link href="/topics">
+                  <Link href="/topics" legacyBehavior>
                     <StatsSmallGrid title="See all Topics">
                       <GridStats>{tagsCount}</GridStats>
                       <GridStatsDescription>
@@ -528,7 +528,7 @@ export default function Dashboard({
                       Newsletter Subscribers
                     </GridStatsDescription>
                   </StatsSmallGrid>
-                  <Link href="/map" passHref>
+                  <Link href="/map" passHref legacyBehavior>
                     <StatsSmallGrid>
                       <GridStats>
                         {locationsCount
@@ -570,16 +570,16 @@ export default function Dashboard({
               </GeneralStats>
 
               {/*<GeneralStats>
-                                <StatsGridMedium>
-                                    <GridMediumTitle>SEO Stats</GridMediumTitle>
-                                    {seoStats.map((seo,i) => (
-                                        <BottomStatsGrid key={i}>
-                                            <GridStats>{seo.rank}</GridStats>
-                                            <GridStatsDescription>{seo.label}</GridStatsDescription>
-                                        </BottomStatsGrid>
-                                    ))}
-                                </StatsGridMedium>
-                                    </GeneralStats>*/}
+                              <StatsGridMedium>
+                                  <GridMediumTitle>SEO Stats</GridMediumTitle>
+                                  {seoStats.map((seo,i) => (
+                                      <BottomStatsGrid key={i}>
+                                          <GridStats>{seo.rank}</GridStats>
+                                          <GridStatsDescription>{seo.label}</GridStatsDescription>
+                                      </BottomStatsGrid>
+                                  ))}
+                              </StatsGridMedium>
+                                  </GeneralStats>*/}
 
               <ViewsContainer>
                 <Title>{recentViews} page views in the past 30 days</Title>
@@ -609,7 +609,7 @@ export default function Dashboard({
                 <TopPageList>
                   {topPosts.map((post, i) => (
                     <TopPageListItem key={i}>
-                      <Link href={post.label} passHref>
+                      <Link href={post.label} passHref legacyBehavior>
                         <TopPageListItemLink title={post.label}>
                           {post.label}
                         </TopPageListItemLink>

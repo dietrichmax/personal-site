@@ -136,11 +136,9 @@ export default function Support({}) {
 
               <SupportButtonContainer>
                 <Link href="/pay">
-                  <a>
-                    <Button>
-                      <FaPaypal /> Paypal
-                    </Button>
-                  </a>
+                  <Button>
+                    <FaPaypal /> Paypal
+                  </Button>
                 </Link>
               </SupportButtonContainer>
 

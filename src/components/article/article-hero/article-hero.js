@@ -2,7 +2,7 @@ import Date from "../../date/date"
 import Link from "next/link"
 import styled from "styled-components"
 import media from "styled-media-query"
-import Image from "next/image"
+import Image from "next/legacy/image"
 
 const HeroWrapper = styled.div``
 
@@ -108,7 +108,12 @@ export default function PostHero({ post }) {
 
   return (
     <HeroWrapper>
-      <Link as={`/articles/${slug}`} href="/articles/[slug]" aria-label={title}>
+      <Link
+        as={`/articles/${slug}`}
+        href="/articles/[slug]"
+        aria-label={title}
+        legacyBehavior
+      >
         <HeroImg
           src={imageUrl}
           alt={title}
@@ -121,8 +126,12 @@ export default function PostHero({ post }) {
       <HeroInfo>
         <HeroMeta>
           <HeroTitle>
-            <Link as={`/articles/${slug}`} href="/articles/[slug]">
-              <a title={title}>{title}</a>
+            <Link
+              as={`/articles/${slug}`}
+              href="/articles/[slug]"
+              title={title}
+            >
+              {title}
             </Link>
           </HeroTitle>
 
@@ -132,7 +141,11 @@ export default function PostHero({ post }) {
           <HeroDescription>{excerpt}</HeroDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (
-              <Link key={i} href={`/articles/topics/${tag.slug}`}>
+              <Link
+                key={i}
+                href={`/articles/topics/${tag.slug}`}
+                legacyBehavior
+              >
                 <TagItem color={tag.color} title={tag.name}>
                   {tag.name}
                 </TagItem>

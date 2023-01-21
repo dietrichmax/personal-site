@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/legacy/image"
 import media from "styled-media-query"
 
 const CardItemImg = styled(Image)`
@@ -37,7 +36,6 @@ const PostImg = styled(Image)`
 export default function PostImage({ preview, postData }) {
   const { title, coverImage } = postData
 
-  console.log(process.env.NEXT_PUBLIC_STRAPI_API_URL)
   return (
     <>
       {" "}
@@ -52,6 +50,7 @@ export default function PostImage({ preview, postData }) {
             className="u-photo"
             placeholder="blur"
             blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+            priority
           />
         ) : null
       ) : coverImage ? (
@@ -64,6 +63,7 @@ export default function PostImage({ preview, postData }) {
           height="450"
           placeholder="blur"
           blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+          priority
         />
       ) : null}
     </>

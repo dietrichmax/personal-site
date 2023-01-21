@@ -65,6 +65,7 @@ export default function Photo({ photo }) {
                         <Link
                           href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
                           passHref
+                          legacyBehavior
                         >
                           <Image
                             key={photo.id}

@@ -46,7 +46,7 @@ export default function LinkPreview({ link }) {
       <LinkContainer>
         <HCard />
         <LinksTitle className="p-name">
-          <Link href={slug} title={link.title}>
+          <Link href={slug} title={link.title} legacyBehavior>
             {link.title}
           </Link>
         </LinksTitle>

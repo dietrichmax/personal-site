@@ -96,15 +96,18 @@ export default function Blogroll({ allBlogrolls }) {
                         </BlogrollProfileImgWrapper>
                       ) : null}
 
-                      <Link href={blogroll.websiteUrl} passHref>
-                        <a rel="bookmark" title={blogroll.name}>
-                          <BlogrollProfileName className="p-name">
-                            {blogroll.name}
-                          </BlogrollProfileName>
-                          <BlogrollProfileLink className="u-url">
-                            {blogroll.websiteUrl}
-                          </BlogrollProfileLink>
-                        </a>
+                      <Link
+                        href={blogroll.websiteUrl}
+                        passHref
+                        rel="bookmark"
+                        title={blogroll.name}
+                      >
+                        <BlogrollProfileName className="p-name">
+                          {blogroll.name}
+                        </BlogrollProfileName>
+                        <BlogrollProfileLink className="u-url">
+                          {blogroll.websiteUrl}
+                        </BlogrollProfileLink>
                       </Link>
                     </BlogrollProfile>
                     <BlogrollProfileDesc className="p-summary">

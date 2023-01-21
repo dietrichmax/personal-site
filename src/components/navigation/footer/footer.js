@@ -267,7 +267,7 @@ export default function Footer() {
             <FooterColumnTitle>{about.intro}</FooterColumnTitle>
             <FooterColumnDescription>
               <ReactMarkdown children={about.bioShort} />
-              <Link href="/about" passHref>
+              <Link href="/about" passHref legacyBehavior>
                 <AboutMeLink title="About me">Read more.</AboutMeLink>
               </Link>
             </FooterColumnDescription>
@@ -323,8 +323,11 @@ export default function Footer() {
             <List>
               {recentPosts.map((post, i) => (
                 <FooterItem key={i}>
-                  <FooterItemLink href={`/articles/${post.slug}`} passHref>
-                    <a title={post.title}>{post.title}</a>
+                  <FooterItemLink
+                    href={`/articles/${post.slug}`}
+                    title={post.title}
+                  >
+                    {post.title}
                   </FooterItemLink>
                 </FooterItem>
               ))}
@@ -335,8 +338,8 @@ export default function Footer() {
             <List>
               {footerItems.map((item, i) => (
                 <FooterItem key={i}>
-                  <FooterItemLink href={item.link} passHref>
-                    <a title={item.name}>{item.name}</a>
+                  <FooterItemLink href={item.link} title={item.name}>
+                    {item.name}
                   </FooterItemLink>
                 </FooterItem>
               ))}
@@ -347,15 +350,15 @@ export default function Footer() {
         <FooterNotice>
           © 2018 – {new Date().getFullYear()}
           <span> • </span>
-          <Link href="/">
-            <a title={config.siteTitleAlt}> {config.siteTitleAlt}</a>
+          <Link href="/" title={config.siteTitleAlt}>
+            {config.siteTitleAlt}
           </Link>
           <span> • </span>
-          <Link href="/privacy-policy" passHref>
+          <Link href="/privacy-policy" passHref legacyBehavior>
             <FooterLink title="Privacy Policy">Privacy Policy</FooterLink>
           </Link>
           <span> • </span>
-          <Link href="/site-notice" passHref>
+          <Link href="/site-notice" passHref legacyBehavior>
             <FooterLink title="Site Notice">Site Notice</FooterLink>
           </Link>
         </FooterNotice>

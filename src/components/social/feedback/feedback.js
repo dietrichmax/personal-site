@@ -3,7 +3,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
 import { format, subDays, formatDistance } from "date-fns"
-import Image from "next/image"
+import Image from "next/legacy/image"
 
 const Container = styled.div`
   margin: var(--space-sm) 0;

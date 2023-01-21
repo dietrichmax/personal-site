@@ -25,32 +25,35 @@ export default function NotePreview({ note }) {
   const slug = `/notes/${note.slug}`
   return (
     <Card className="h-entry">
-      <Link href={slug} passHref>
-        <a className="u-url" rel="bookmark" title={note.title}>
-          <Hidden className="webmention meta">
-            <HCard />
-            <div className="webmention type">
-              {note.ofUrl && note.category == "Like" ? (
-                <a className="u-like-of" href={note.ofUrl} />
-              ) : null}
-              {note.ofUrl && note.category == "Reply" ? (
-                <a className="u-in-reply-to" href={note.ofUrl} />
-              ) : null}
-              {note.ofUrl && note.category == "Repost" ? (
-                <a className="u-repost-of" href={note.ofUrl} />
-              ) : null}
-            </div>
-          </Hidden>
-
-          <NotesContent className="e-content">
-            <NoteBodyWrapper>
-              <NoteBodyContainer>
-                <NoteBody content={note.content} components={renderers} />
-              </NoteBodyContainer>
-              <PostMeta post={note} slug={slug} />
-            </NoteBodyWrapper>
-          </NotesContent>
-        </a>
+      <Link
+        href={slug}
+        passHref
+        className="u-url"
+        rel="bookmark"
+        title={note.title}
+      >
+        <Hidden className="webmention meta">
+          <HCard />
+          <div className="webmention type">
+            {note.ofUrl && note.category == "Like" ? (
+              <a className="u-like-of" href={note.ofUrl} />
+            ) : null}
+            {note.ofUrl && note.category == "Reply" ? (
+              <a className="u-in-reply-to" href={note.ofUrl} />
+            ) : null}
+            {note.ofUrl && note.category == "Repost" ? (
+              <a className="u-repost-of" href={note.ofUrl} />
+            ) : null}
+          </div>
+        </Hidden>
+        <NotesContent className="e-content">
+          <NoteBodyWrapper>
+            <NoteBodyContainer>
+              <NoteBody content={note.content} components={renderers} />
+            </NoteBodyContainer>
+            <PostMeta post={note} slug={slug} />
+          </NoteBodyWrapper>
+        </NotesContent>
       </Link>
     </Card>
   )

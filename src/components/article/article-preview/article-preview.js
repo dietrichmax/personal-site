@@ -66,16 +66,20 @@ export default function PostPreview({ postData, preview }) {
         {preview ? <PreviewImage postData={postData} /> : null}
         <CardItemInfo>
           <CardItemTitle>
-            <Link href={slug} passHref>
-              <a className="p-name u-url" rel="bookmark" title={title}>
-                {title}
-              </a>
+            <Link
+              href={slug}
+              passHref
+              className="p-name u-url"
+              rel="bookmark"
+              title={title}
+            >
+              {title}
             </Link>
             <HCard />
           </CardItemTitle>
           <CardItemDescription className="p-summary">
             {excerpt}{" "}
-            <Link href={slug} passHref>
+            <Link href={slug} passHref legacyBehavior>
               <CardReadMoreRead title={title}>
                 Continue reading...
               </CardReadMoreRead>

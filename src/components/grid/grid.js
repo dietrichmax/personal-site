@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import image from "next/image"
+import image from "next/legacy/image"
 
 const GridContainer = styled.div`
   max-width: var(--width-container);

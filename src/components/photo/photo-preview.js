@@ -3,7 +3,7 @@ import PostTags from "src/components/tags/tags"
 import HCard from "src/components/microformats/h-card"
 import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import { Card } from "@/styles/templates/card"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Link from "next/link"
 import media from "styled-media-query"
 
@@ -82,19 +82,17 @@ export default function PhotoPreview({ photo }) {
       <PreviewContainer>
         <PhotoWrapper>
           <Link href={slug} className="u-url" passHref>
-            <a>
-              <Photo
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
-                  photo.photo[0].formats.content
-                    ? photo.photo[0].formats.content.url
-                    : photo.photo[0].url
-                }`}
-                alt={`Photo of ${photo.title}`}
-                title={`Photo of "${photo.title}"`}
-                layout="fill"
-                className="u-photo"
-              />
-            </a>
+            <Photo
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
+                photo.photo[0].formats.content
+                  ? photo.photo[0].formats.content.url
+                  : photo.photo[0].url
+              }`}
+              alt={`Photo of ${photo.title}`}
+              title={`Photo of "${photo.title}"`}
+              layout="fill"
+              className="u-photo"
+            />
           </Link>
         </PhotoWrapper>
         {/*<PhotoContainer>

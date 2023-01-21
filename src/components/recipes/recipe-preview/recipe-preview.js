@@ -1,7 +1,7 @@
 import Link from "next/link"
 import styled from "styled-components"
 import media from "styled-media-query"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import RecipeBody from "src/components/note/note-body/note-body"
 import config from "src/data/internal/SiteConfig"
 import { parseISO, format } from "date-fns"
@@ -47,7 +47,7 @@ const Duration = styled.span`
 export default function RecipePreview({ recipe }) {
   return (
     <Card title={recipe.title} className="h-recipe">
-      <Link href={`/recipes/${recipe.slug}`} passHref>
+      <Link href={`/recipes/${recipe.slug}`} passHref legacyBehavior>
         <RecipeContainer>
           <ImageWrapper>
             {recipe.coverImage ? (

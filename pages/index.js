@@ -224,16 +224,16 @@ export default function Index({ posts, cv }) {
                     tracking my location
                   </HeroLinksNormal>{" "}
                   since 2021.{` `}
-                  <Link href="/about" passHref>
+                  <Link href="/about" passHref legacyBehavior>
                     <AboutMeLink title="About me">Read more.</AboutMeLink>
                   </Link>
                 </HeroDescription>
                 {/*<PostTypes>
-                  <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
-                  <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
-                  <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
-                  <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
-                </PostTypes>*/}
+                <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
+                <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
+                <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
+                <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
+              </PostTypes>*/}
               </Hero>
             </HeroWrapper>
             <IndexPageContainer>
@@ -252,17 +252,17 @@ export default function Index({ posts, cv }) {
               </RecentPosts>
 
               {/*{<SubTitle>Recent Notes</SubTitle>
-              <NotesContainer >
-                {notes.map((note) => (
-                 <NotePreview note={note} />
-                ))}
-                
-              </NotesContainer>
-              <MoreContainer>
-                <Link href={`/notes`} passHref>
-                  <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
-                </Link>
-                </MoreContainer>*/}
+            <NotesContainer >
+              {notes.map((note) => (
+               <NotePreview note={note} />
+              ))}
+              
+            </NotesContainer>
+            <MoreContainer>
+              <Link href={`/notes`} passHref>
+                <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
+              </Link>
+              </MoreContainer>*/}
             </IndexPageContainer>
           </>
         )}

@@ -25,12 +25,16 @@ const LogoDescription = styled.span`
 export default function Logo({}) {
   return (
     <LogoWrapper>
-      <Link rel="home" href="/" passHref>
-        <a className="u-url" rel="me" title={config.siteTitleAlt}>
-          <LogoName className="p-name">{config.siteTitleAlt}</LogoName>
-          <br />
-          <LogoDescription>{config.siteSubtitle}</LogoDescription>
-        </a>
+      <Link
+        rel="home"
+        href="/"
+        passHref
+        className="u-url"
+        title={config.siteTitleAlt}
+      >
+        <LogoName className="p-name">{config.siteTitleAlt}</LogoName>
+        <br />
+        <LogoDescription>{config.siteSubtitle}</LogoDescription>
       </Link>
     </LogoWrapper>
   )

@@ -3,7 +3,7 @@ import Cookie from "js-cookie"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Logo from "@/components/logo/logo"
 import { Button } from "@/styles/templates/button"
 import {
@@ -322,10 +322,10 @@ class CookieBanner extends Component {
                   </p>
                 </Text>
 
-                <Link href="/privacy-policy">
+                <Link href="/privacy-policy" legacyBehavior>
                   <CookieLink>Privacy Policy</CookieLink>
                 </Link>
-                <Link href="/site-notice">
+                <Link href="/site-notice" legacyBehavior>
                   <CookieLink>Site Notice</CookieLink>
                 </Link>
               </CookieBannerText>

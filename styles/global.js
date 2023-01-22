@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-    letter-spacing: 0.2px;
     color: inherit;
     margin: 0;
     font-size: 100%;
@@ -49,7 +48,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: var(--body-bg);
-    line-height: 1.5;
     font-stretch: normal;
     font-family: var(--primary-font);
     -webkit-font-smoothing: antialiased;
@@ -80,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     --gap: var(--space-sm);
     --border: var(--thirdy-color);
     --border-radius: 4px;
-    --primary-font: "Segoe UI" ,sans-serif, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --primary-font: "SF UI Text", "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "sans-serif";
     --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: ${(props) => props.theme.primaryColor};

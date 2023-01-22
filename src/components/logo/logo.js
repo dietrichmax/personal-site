@@ -33,8 +33,6 @@ export default function Logo({}) {
         title={config.siteTitleAlt}
       >
         <LogoName className="p-name">{config.siteTitleAlt}</LogoName>
-        <br />
-        <LogoDescription>{config.siteSubtitle}</LogoDescription>
       </Link>
     </LogoWrapper>
   )

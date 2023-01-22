@@ -11,6 +11,7 @@ import media from "styled-media-query"
 import { useRouter } from "next/router"
 import { getAbout } from "src/data/external/cms"
 import Link from "next/link"
+import Image from "next/image"
 import HCard from "src/components/microformats/h-card"
 import {
   getAllPosts,
@@ -29,17 +30,19 @@ const IndexPageContainer = styled.div`
 `
 
 const HeroWrapper = styled.div`
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 67%,
+    var(--primary-color) 33%
+  );
   width: 100%;
   margin: auto;
-  background-color: var(--primary-color);
-  color: ${(props) =>
-    props.color ? `${props.color}` : "color: var(--content-bg);"};
 `
 const Hero = styled.div`
   display: flex;
   max-width: var(--width-container);
-  padding: calc(3rem + 120px) 0 calc(3rem + 120px) 0;
-  margin: 0 auto;
+  padding: calc(120px + 3rem) var(--space);
+  margin: 0px auto;
   ${media.lessThan("medium")`
     padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
     width: 100%;
@@ -47,19 +50,50 @@ const Hero = styled.div`
   `}
 `
 
-const HeroDescription = styled.h3`
-  margin: 0 var(--space);
-  font-size: calc(0.9rem + 2vw);
-  font-weight: 300;
-  line-height: 1.35;
-  font-family: var(--thirdy-font);
-  ${media.lessThan("small")`
-    font-size: 1.75em;
-    letter-spacing: 0.5px;
-  `}
+const HeroArticle = styled.h1`
+  font-size: 4.4em;
+`
+
+const HeroTitle = styled.div`
+  color: var(--secondary-color);
+  margin-bottom: var(--space);
+  font-weight: 900;
   ${media.lessThan("medium")`
-    margin: 0 var(--space-sm);
+    padding: 0 var(--space-sm);
   `}
+`
+
+const HeroDescription = styled.h3`
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: normal;
+  line-height: 1.6;
+  max-width: var(--content-width);
+  ${media.lessThan("medium")`
+    padding: 0 var(--space-sm);
+  `}
+`
+
+const HeroList = styled.ul`
+  margin-top: var(--space);
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 67%;
+  font-size: 0.965rem;
+  line-height: 1.5;
+  color: var(--secondary-color);
+  padding-inline-start: 0;
+  font-weight: 200;
+`
+
+const HeroListItem = styled.li`
+  margin-right: var(--space);
+  width: 40%;
+`
+
+const HeroImg = styled.figure`
+  margin-right: calc(6em + 4em);
 `
 
 const HeroLinks = styled.a`
@@ -192,50 +226,66 @@ export default function Index({ posts, cv }) {
             <HeroWrapper className="h-card" color="#f2f2f2">
               <Hero>
                 <HCard />
-                <HeroDescription>
-                  <HeroFont>Hi, I'm </HeroFont>
-                  <HeroLinks
-                    className="p-name u-url u-uid"
-                    rel="author me"
-                    href={config.siteUrl}
-                    title={config.siteTitle}
-                  >
-                    Max Dietrich
-                  </HeroLinks>
-                  , developer and cyclist from{" "}
-                  <a
-                    className="p-locality"
-                    href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"
-                    title="Rosenheim, Germany"
-                  >
-                    Rosenheim, Germany.
-                  </a>{" "}
-                  <br />
-                  I' am also a proud member of the{" "}
-                  <HeroLinks
-                    className="p-org h-card"
-                    href="https://indieweb.org/"
-                    title="IndieWeb"
-                  >
-                    IndieWeb
-                  </HeroLinks>{" "}
-                  community. I've been{" "}
-                  <HeroLinksNormal href="/map" title="Location tracking">
-                    tracking my location
-                  </HeroLinksNormal>{" "}
-                  since 2021.{` `}
-                  <Link href="/about" passHref legacyBehavior>
-                    <AboutMeLink title="About me">Read more.</AboutMeLink>
-                  </Link>
-                </HeroDescription>
-                {/*<PostTypes>
-                <PostType><Link href="/articles"><a title={`See ${count.posts} articles`}><PostDD>{count.posts}</PostDD> <PostDT>Articles</PostDT></a></Link></PostType>
-                <PostType><Link href="/notes"><a title={`See ${count.notes} notes`}><PostDD>{count.notes}</PostDD> <PostDT>Notes</PostDT></a></Link></PostType>
-                <PostType><Link href="/activities"><a title={`See ${count.activities} activities`}><PostDD>{count.activities}</PostDD> <PostDT>Activities</PostDT></a></Link></PostType>
-                <PostType><Link href="/links"><a title={`See ${count.links} links`}><PostDD>{count.links}</PostDD> <PostDT>Links</PostDT></a></Link></PostType>
-              </PostTypes>*/}
+                <HeroArticle>
+                  <HeroTitle>
+                    Geospatial
+                    <br />
+                    Developer.
+                  </HeroTitle>
+                  <HeroDescription>
+                    Hi, I'm{" "}
+                    <HeroLinks
+                      className="p-name u-url u-uid"
+                      rel="author me"
+                      href={config.siteUrl}
+                      title={config.siteTitle}
+                    >
+                      Max Dietrich
+                    </HeroLinks>
+                    , developer and cyclist from{" "}
+                    <a
+                      className="p-locality"
+                      href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"
+                      title="Rosenheim, Germany"
+                    >
+                      Rosenheim, Germany.
+                    </a>{" "}
+                    I' am also a proud member of the{" "}
+                    <HeroLinks
+                      className="p-org h-card"
+                      href="https://indieweb.org/"
+                      title="IndieWeb"
+                    >
+                      IndieWeb
+                    </HeroLinks>{" "}
+                    community. I've been{" "}
+                    <HeroLinksNormal href="/map" title="Location tracking">
+                      tracking my location
+                    </HeroLinksNormal>{" "}
+                    since 2021.{` `}
+                    <Link href="/about" passHref legacyBehavior>
+                      <AboutMeLink title="About me">Read more.</AboutMeLink>
+                    </Link>
+                  </HeroDescription>
+                  {/*<HeroList aria-label="Highlights.">
+                  <HeroListItem>Highly skilled at progressive enhancement, design systems &amp; UI Engineering.</HeroListItem>
+                    <HeroListItem>Over a decade of experience building products for clients across several countries.</HeroListItem>
+                  </HeroList>*/}
+                </HeroArticle>
+                <HeroImg>
+                  {/*<Image 
+                src="/logos/windows/windows-squarelogo-210-210.png"
+                width="210"
+                height="210"
+                  aria-label="Photo of Max." 
+                  role="img" 
+                  priority 
+                
+        />*/}
+                </HeroImg>
               </Hero>
             </HeroWrapper>
+
             <IndexPageContainer>
               <RecentPosts>
                 {content.map((post, i) =>

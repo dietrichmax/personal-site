@@ -11,6 +11,7 @@ import CookieBanner from "@/components/cookies/cookie-banner"
 //import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
+import "@/public/fonts/SF-UI/style.css"
 import "@/public/fonts/Clarity-City/style.css"
 //import 'mapbox-gl/dist/mapbox-gl.css';
 

@@ -15,11 +15,13 @@ const Button = styled.button`
   background: ${(props) =>
     props.backgroundColor
       ? `${props.backgroundColor}`
-      : "var(--secondary-color)"};
+      : "var(--primary-color)"};
   cursor: pointer;
   :hover {
     background-color: ${(props) =>
-      props.backgroundColor ? `${props.backgroundColor}` : "#47598C"};
+      props.backgroundColor
+        ? `${props.backgroundColor}`
+        : "var(--secondary-color)"};
   }
   :disabled {
     cursor: not-allowed;

@@ -33,15 +33,18 @@ const HeroWrapper = styled.div`
   background: linear-gradient(
     90deg,
     var(--primary-color) 67%,
-    var(--primary-color) 33%
+    var(--secondary-color) 33%
   );
   width: 100%;
   margin: auto;
+  background-color: #1b2d35;
+  background-image: url("/wallpaper/background-wbg.png");
+  background-blend-mode: color-burn;
 `
 const Hero = styled.div`
   display: flex;
   max-width: var(--width-container);
-  padding: calc(120px + 3rem) var(--space);
+  padding: 180px var(--space) var(--space-lg) var(--space);
   margin: 0px auto;
   ${media.lessThan("medium")`
     padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
@@ -68,7 +71,7 @@ const HeroTitle = styled.div`
 
 const HeroDescription = styled.h3`
   font-size: 1.3rem;
-  color: #fff;
+  color: #f2f2f2;
   font-weight: normal;
   line-height: 1.6;
   ${media.lessThan("medium")`
@@ -77,7 +80,7 @@ const HeroDescription = styled.h3`
 `
 
 const HeroList = styled.ul`
-  margin-top: var(--space);
+  margin-top: calc(var(--space-lg) * 1.5);
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -98,8 +101,31 @@ const HeroListItem = styled.li`
   width: 40%;
 `
 
-const HeroImg = styled.figure`
-  margin-right: calc(6em + 4em);
+const HeroImgContainer = styled.figure`
+  margin: 0;
+  margin-right: 0px;
+  z-index: 1;
+  width: 310px;
+  height: 310px;
+  position: relative;
+  border: 0.115rem solid #fff;
+  ${media.lessThan("medium")`
+    width: 210px;
+    height: 210px;
+    margin: 100px auto 0 auto;
+  `}
+`
+
+const HeroImg = styled(Image)`
+  width: 310px;
+  height: 310px;
+  background-color: var(--secondary-color);
+  margin-top: -2.435rem;
+  margin-left: -2.2rem;
+  ${media.lessThan("medium")`
+  width: 210px;
+  height: 210px; 
+  `}
 `
 
 const HeroLinks = styled.a`
@@ -127,7 +153,7 @@ const HeroFont = styled.span`
 `
 
 const AboutMeLink = styled.a`
-  border-bottom: 2px solid var(--content-bg);
+  border-bottom: 2px solid var(--thirdy-color);
   cursor: pointer;
   :hover {
     border-bottom: 2px solid transparent;
@@ -282,17 +308,16 @@ export default function Index({ posts, cv }) {
                     </HeroListItem>
                   </HeroList>
                 </HeroArticle>
-                <HeroImg>
-                  {/*<Image 
-                src="/logos/windows/windows-squarelogo-210-210.png"
-                width="210"
-                height="210"
-                  aria-label="Photo of Max." 
-                  role="img" 
-                  priority 
-                
-        />*/}
-                </HeroImg>
+                <HeroImgContainer>
+                  <HeroImg
+                    src="/logos/windows/windowsphone-mediumtile-360-360.png"
+                    width="310"
+                    height="310"
+                    aria-label="Photo of Max."
+                    role="img"
+                    priority
+                  />
+                </HeroImgContainer>
               </Hero>
             </HeroWrapper>
 

@@ -17,6 +17,9 @@ const LogoWrapper = styled.div`
 const LogoName = styled.span`
   font-weight: 700;
   letter-spacing: 0.3px;
+  :hover {
+    color: var(--secondary-color);
+  }
 `
 const LogoDescription = styled.span`
   letter-spacing: 0.6px;

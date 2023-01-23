@@ -15,7 +15,6 @@ const NavItems = styled.ul`
 `
 
 const NavItem = styled.li`
-  transition: none;
   color: ${(props) => (props.color ? `${props.color}` : "color: var(--gray);")};
   padding-left: 0;
   :hover {

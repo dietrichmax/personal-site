@@ -33,13 +33,13 @@ const HeroWrapper = styled.div`
   background: linear-gradient(
     90deg,
     var(--primary-color) 67%,
-    var(--secondary-color) 33%
+    var(--primary-color) 33%
   );
   width: 100%;
   margin: auto;
-  background-color: #1b2d35;
-  background-image: url("/wallpaper/background-wbg.png");
-  background-blend-mode: color-burn;
+  //background-color: #1b2d35;
+  //background-image: url("/wallpaper/background-wbg.png");
+  //background-blend-mode: color-burn;
 `
 const Hero = styled.div`
   display: flex;
@@ -313,6 +313,8 @@ export default function Index({ posts, cv }) {
                     src="/logos/windows/windowsphone-mediumtile-360-360.png"
                     width="310"
                     height="310"
+                    title="Photo of Max."
+                    alt="Photo of Max."
                     aria-label="Photo of Max."
                     role="img"
                     priority

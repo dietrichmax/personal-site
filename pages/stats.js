@@ -307,7 +307,6 @@ export default function Dashboard({
   tagsCount,
   subscribersCount,
   githubStats,
-  seoStats,
   allWebmentions,
   notesCount,
   locationsCount,

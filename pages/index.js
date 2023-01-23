@@ -52,6 +52,9 @@ const Hero = styled.div`
 
 const HeroArticle = styled.h1`
   font-size: 4.4em;
+  ${media.lessThan("medium")`
+  font-size: 3.2em;
+  `}
 `
 
 const HeroTitle = styled.div`
@@ -68,7 +71,6 @@ const HeroDescription = styled.h3`
   color: #fff;
   font-weight: normal;
   line-height: 1.6;
-  max-width: var(--content-width);
   ${media.lessThan("medium")`
     padding: 0 var(--space-sm);
   `}
@@ -85,6 +87,10 @@ const HeroList = styled.ul`
   color: var(--secondary-color);
   padding-inline-start: 0;
   font-weight: 200;
+  ${media.lessThan("medium")`
+    padding: 0 var(--space-sm);
+    width: 100%;
+  `}
 `
 
 const HeroListItem = styled.li`
@@ -250,27 +256,31 @@ export default function Index({ posts, cv }) {
                     >
                       Rosenheim, Germany.
                     </a>{" "}
-                    I' am also a proud member of the{" "}
-                    <HeroLinks
-                      className="p-org h-card"
-                      href="https://indieweb.org/"
-                      title="IndieWeb"
-                    >
-                      IndieWeb
-                    </HeroLinks>{" "}
-                    community. I've been{" "}
-                    <HeroLinksNormal href="/map" title="Location tracking">
-                      tracking my location
-                    </HeroLinksNormal>{" "}
-                    since 2021.{` `}
-                    <Link href="/about" passHref legacyBehavior>
-                      <AboutMeLink title="About me">Read more.</AboutMeLink>
-                    </Link>
                   </HeroDescription>
-                  {/*<HeroList aria-label="Highlights.">
-                  <HeroListItem>Highly skilled at progressive enhancement, design systems &amp; UI Engineering.</HeroListItem>
-                    <HeroListItem>Over a decade of experience building products for clients across several countries.</HeroListItem>
-                  </HeroList>*/}
+                  <HeroList aria-label="Highlights.">
+                    <HeroListItem>
+                      {" "}
+                      I' am also a proud member of the{" "}
+                      <HeroLinks
+                        className="p-org h-card"
+                        href="https://indieweb.org/"
+                        title="IndieWeb"
+                      >
+                        IndieWeb
+                      </HeroLinks>{" "}
+                      community.
+                    </HeroListItem>
+                    <HeroListItem>
+                      I've been{" "}
+                      <HeroLinksNormal href="/map" title="Location tracking">
+                        tracking my location
+                      </HeroLinksNormal>{" "}
+                      since 2021.{` `}
+                      <Link href="/about" passHref legacyBehavior>
+                        <AboutMeLink title="About me">Read more.</AboutMeLink>
+                      </Link>
+                    </HeroListItem>
+                  </HeroList>
                 </HeroArticle>
                 <HeroImg>
                   {/*<Image 

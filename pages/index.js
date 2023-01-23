@@ -122,6 +122,7 @@ const HeroImg = styled(Image)`
   background-color: var(--secondary-color);
   margin-top: -2.435rem;
   margin-left: -2.2rem;
+  border-radius: 6px;
   ${media.lessThan("medium")`
   width: 210px;
   height: 210px; 

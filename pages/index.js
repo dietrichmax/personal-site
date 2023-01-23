@@ -108,7 +108,7 @@ const HeroImgContainer = styled.figure`
   width: 310px;
   height: 310px;
   position: relative;
-  border: 0.115rem solid #fff;
+  border: 0.115rem solid #f2f2f2;
   ${media.lessThan("medium")`
     width: 210px;
     height: 210px;

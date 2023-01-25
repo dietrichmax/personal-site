@@ -246,7 +246,6 @@ export default function Index({ posts, cv }) {
   const router = useRouter()
   const content = posts.slice(0, 6)
 
-  console.log(backgroundImageUrl)
   return (
     <>
       <Layout color="#f2f2f2">

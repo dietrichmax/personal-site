@@ -37,9 +37,13 @@ const HeroWrapper = styled.div`
   );
   width: 100%;
   margin: auto;
-  //background-color: #1b2d35;
-  //background-image: url("/wallpaper/background-wbg.png");
-  //background-blend-mode: color-burn;
+  background-color: #1b2d35;
+  background-image: url("${(props) =>
+    props.backgroundImageUrl
+      ? props.backgroundImageUrl
+      : "http://staticmaps.mxd.codes/"}");
+  background-blend-mode: color-burn;
+  background-attachment: fixed;
 `
 const Hero = styled.div`
   display: flex;
@@ -241,10 +245,14 @@ const jsonld = {
   ],
 }
 
-export default function Index({ posts, cv }) {
+export default function Index({ posts, cv, location }) {
   const router = useRouter()
   const content = posts.slice(0, 6)
 
+  const coordinates = [location.lat, location.lon]
+  const backgroundImageUrl = `http://staticmaps.mxd.codes/img.php?basemap=gray&width=1200&height=600&zoom=12&latitude=${coordinates[0]}&longitude=${coordinates[1]}`
+
+  console.log(backgroundImageUrl)
   return (
     <>
       <Layout color="#f2f2f2">
@@ -256,7 +264,11 @@ export default function Index({ posts, cv }) {
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
             />
-            <HeroWrapper className="h-card" color="#f2f2f2">
+            <HeroWrapper
+              className="h-card"
+              color="#f2f2f2"
+              backgroundImageUrl={backgroundImageUrl}
+            >
               <Hero>
                 <HCard />
                 <HeroArticle>

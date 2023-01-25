@@ -44,7 +44,6 @@ export default function Nav({ color }) {
     { name: "Articles", link: "/articles" },
     { name: "Photos", link: "/photos" },
     { name: "Notes", link: "/notes" },
-    { name: "Links", link: "/links" },
     { name: "Maps", link: "https://maps.mxd.codes" },
   ]
 

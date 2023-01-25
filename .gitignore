@@ -43,3 +43,5 @@ yarn-error.log*
 
 /.github
 /.husky
+
+/public/wallpaper/backgroundImage.png

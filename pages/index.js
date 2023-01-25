@@ -42,7 +42,6 @@ const HeroWrapper = styled.div`
   background-blend-mode: color-burn;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
 `
 const Hero = styled.div`
   display: flex;

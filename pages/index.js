@@ -250,7 +250,7 @@ export default function Index({ posts, cv, location }) {
   const content = posts.slice(0, 6)
 
   const coordinates = [location.lat, location.lon]
-  const backgroundImageUrl = `http://staticmaps.mxd.codes/img.php?basemap=gray&width=1200&height=600&zoom=12&latitude=${coordinates[0]}&longitude=${coordinates[1]}`
+  const backgroundImageUrl = `http://staticmaps.mxd.codes/img.php?basemap=gray-background&width=1200&height=600&zoom=12&latitude=${coordinates[0]}&longitude=${coordinates[1]}`
 
   console.log(backgroundImageUrl)
   return (

@@ -38,7 +38,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   margin: auto;
   background-color: #1b2d35;
-  background-image: url("/wallpaper/backgroundImage.png);
+  background-image: url("/wallpaper/backgroundImage.png");
   background-blend-mode: color-burn;
   background-attachment: fixed;
 `

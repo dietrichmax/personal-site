@@ -3,7 +3,6 @@ import styled from "styled-components"
 const Button = styled.button`
   border: none;
   width: auto !important;
-  text-transform: uppercase;
   outline: none;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
@@ -17,6 +16,7 @@ const Button = styled.button`
       ? `${props.backgroundColor}`
       : "var(--primary-color)"};
   cursor: pointer;
+  font-family: var(--primary-font);
   :hover {
     background-color: ${(props) =>
       props.backgroundColor

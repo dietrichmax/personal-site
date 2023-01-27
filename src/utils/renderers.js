@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-//import Image from "next/legacy/image";
+import ModalImage from "react-modal-image"
 import Link from "next/link"
 import styled from "styled-components"
 
@@ -16,14 +16,24 @@ const renderers = {
     const alt = props.alt
     const title = props.alt.replace(".png", "").toLowerCase()
     return props.src.startsWith("/") ? (
-      <img
+      <ModalImage
         {...props}
-        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
+        small={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
+        large={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
         layout="responsive"
         loading="lazy"
+        hideDownload="true"
+        hideZoom="true"
       />
     ) : (
-      <img src={src} alt={alt} title={title} href={src} loading="lazy" />
+      <ModalImage
+        {...props}
+        small={src}
+        large={src}
+        layout="responsive"
+        href={src}
+        loading="lazy"
+      />
     )
   },
   a: ({ children, href, title, alt }) => {

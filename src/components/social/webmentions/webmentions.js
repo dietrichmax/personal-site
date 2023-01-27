@@ -3,6 +3,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
 import { format, subDays, formatDistance } from "date-fns"
+import { Input } from "@/styles/templates/input"
 import Image from "next/legacy/image"
 import {
   FaRegQuestionCircle,
@@ -38,7 +39,6 @@ const WebmentionsTitle = styled.p`
 const WebmentionsInfo = styled.a`
   display: flex;
   align-items: center;
-  font-family: var(--secondary-font);
 `
 
 const WebmentionsInfoIcon = styled.i`
@@ -53,7 +53,6 @@ const WebmentionsContainer = styled.div`
 
 const WebmentionComment = styled.li`
   margin-bottom: var(--space-sm);
-  font-family: var(--secondary-font);
   background-color: var(--content-bg);
   padding: var(--space-sm);
   border-radius: var(--border-radius);
@@ -91,18 +90,15 @@ const WebmentionDate = styled.time`
   `}
 `
 
-const WebmentionContent = styled.p`
-  font-family: var(--secondary-font);
-`
+const WebmentionContent = styled.p``
 
 const SendWebmentions = styled.div`
   margin: var(--space-sm) auto;
-  font-family: var(--secondary-font);
 `
 
 const SendText = styled.p``
 
-const Input = styled.input`
+const WebmentionInput = styled(Input)`
   padding: 0.5rem 1rem;
   margin: var(--space-sm) auto;
   width: 60%;
@@ -372,7 +368,7 @@ export default function Webmentions({ slug, preview }) {
               Have you published a response to this? Send me a webmention by
               letting me know the URL.
             </SendText>
-            <Input
+            <WebmentionInput
               type="webmention"
               name="webmention"
               id="webmention-input"

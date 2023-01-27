@@ -73,6 +73,12 @@ const ButtonText = styled.span`
   margin: auto var(--space-sm);
 `
 
+const AuthorLink = styled(Link)`
+  border-bottom: 1px dotted #bdc3c7;
+  color: var(--primary-color);
+  cursor: pointer;
+`
+
 export default function Author(author) {
   const [count, setThanks] = useState(0)
   const [gotData, setGotData] = useState(false)
@@ -166,11 +172,9 @@ export default function Author(author) {
               </Button>
               <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
             </SupportButtonContainer>
-            <Link href="/support" legacyBehavior>
-              <Button>
-                <FaGift /> More Support
-              </Button>
-            </Link>
+            <AuthorLink href="/support">
+              <FaGift /> More Support
+            </AuthorLink>
           </AuthorSocialsContainer>
           {/*(socials.map((social) => 
           <AuthorSocialsContainer>

@@ -78,8 +78,8 @@ const GlobalStyle = createGlobalStyle`
     --gap: var(--space-sm);
     --border: var(--thirdy-color);
     --border-radius: 4px;
-    --primary-font: "SF UI Text", "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "sans-serif";
-    --secondary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --primary-font: SF UI Text, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "sans-serif";
+    --secondary-font: -apple-system, BlinkMacSystemFont, SF UI Text, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: ${(props) => props.theme.primaryColor};
     --text-color: ${(props) => props.theme.textColor};

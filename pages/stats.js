@@ -63,7 +63,7 @@ const Title = styled.p`
 `
 
 const Stats = styled.span`
-  color: var(--primary-color);
+  color: var(--secondary-color);
 `
 
 const GeneralStats = styled.div`
@@ -97,7 +97,7 @@ const TripleStatsGrid = styled.div`
 const GridStats = styled.p`
   padding-top: var(--space);
   display: block;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-weight: 700;
   font-size: 1.5rem;
   text-transform: capitalize;
@@ -181,12 +181,12 @@ const Column = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   height: ${(props) => (props.height ? `${props.height}px !important` : "0px")};
   border-top-right-radius: calc(var(--space-sm) * 0.5);
   border-top-left-radius: calc(var(--space-sm) * 0.5);
   :hover {
-    background-color: var(--thirdy-color);
+    background-color: var(--primary-color);
   }
 `
 const DateContainer = styled.div`
@@ -289,7 +289,7 @@ const TopPageList = styled.ol`
 const TopPageListItem = styled.li``
 
 const TopPageListItemLink = styled.a`
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-decoration: underline;
   :hover {
     text-decoration: none;

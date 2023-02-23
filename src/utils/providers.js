@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components"
 
 export default function Providers({ children }) {
   const { value } = useDarkMode(false, { storageKey: null, onChange: null })
-  const theme = value ? darkTheme : lightTheme
+  const theme = value ? darkTheme : darkTheme
 
   const [mounted, setMounted] = useState(false)
 

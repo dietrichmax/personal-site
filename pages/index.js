@@ -37,7 +37,7 @@ const HeroWrapper = styled.div`
   );
   width: 100%;
   margin: auto;
-  background-color: #1b2d35;
+  background-color: var(--secondary-color);
   background-image: url("/wallpaper/backgroundImage.png");
   background-blend-mode: color-burn;
   background-attachment: fixed;
@@ -65,7 +65,7 @@ const HeroArticle = styled.h1`
 `
 
 const HeroTitle = styled.div`
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: var(--space);
   font-weight: 900;
   ${media.lessThan("medium")`
@@ -75,7 +75,7 @@ const HeroTitle = styled.div`
 
 const HeroDescription = styled.h3`
   font-size: 1.3rem;
-  color: #f2f2f2;
+  color: #fff;
   font-weight: normal;
   line-height: 1.6;
   ${media.lessThan("medium")`
@@ -91,7 +91,7 @@ const HeroList = styled.ul`
   width: 67%;
   font-size: 0.965rem;
   line-height: 1.5;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   padding-inline-start: 0;
   font-weight: 200;
   ${media.lessThan("medium")`
@@ -137,7 +137,7 @@ const HeroLinks = styled.a`
   font-weight: 600;
   border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
-  color: var(--secondary-color);
+  color: var(--primary-color);
   :hover {
     border-bottom: 2px solid transparent;
   }
@@ -146,7 +146,7 @@ const HeroLinks = styled.a`
 const HeroLinksNormal = styled.a`
   border-bottom: 2px solid var(--thirdy-color);
   font-family: var(--primary-font);
-  color: var(--secondary-color);
+  color: var(--primary-color);
   :hover {
     border-bottom: 2px solid transparent;
   }

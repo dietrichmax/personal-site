@@ -7,8 +7,8 @@ export const lightTheme = {
   textColor: "#1e1d1d",
 }
 export const darkTheme = {
-  primaryColor: "#332FD0",
-  secondaryColor: "#39B5E0",
+  primaryColor: "#39B5E0",
+  secondaryColor: "#332FD0",
   thirdyColor: "#A1B4EC",
   bodyBg: "#0d1117",
   contentBg: "#1b2026",

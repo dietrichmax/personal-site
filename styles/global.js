@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
+    scroll-behavior: smooth;
   }
   ::selection {
     background: var(--text-color);

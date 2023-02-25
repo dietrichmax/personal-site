@@ -1,72 +1,58 @@
-/*import styled from "styled-components"
+import styled from "styled-components"
+import React, { useEffect } from "react"
 
-import ReactMarkdown from "react-markdown";
-import { HeadingProps } from "react-markdown/lib/ast-to-react";
+const ToCWrapper = styled.div`
+  position: sticky;
+  top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  background-color: var(--content-bg);
+  padding: var(--space);
+  border-radius: var(--border-radius);
+`
 
-const Container = styled.div``
-const Row = styled.div``
-const Col = styled.div``
+const ToCTitle = styled.p`
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
+`
 
+const ToCList = styled.ol`
+  padding-inline-start: 0;
+`
+const ToCListItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 1rem;
+  padding-left: calc(var(--space-sm) * 0.5);
+  border-left: 3px solid var(--secondary-color);
+  margin-left: ${(props) => (props.level > 1 ? `${props.level * 10}px` : "0")};
+`
 
-export default function TableOfContents(markdown) {
-  const toc: {
-    level,
-    id,
-    title,
-}[] = [];
-    // Magic.
-    const addToTOC = ({children, ...props}) => {
-        const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
-        if (level && children && typeof children[0] === "string") {
-            const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, "-");
-            toc.push({
-                level,
-                id,
-                title: children[0],
-            });
-            return React.createElement(
-                props.node.tagName, {id}, children
-            )
-        } else {
-            return React.createElement(props.node.tagName, props, children);
-        }
-    };
+const ToCItemTitle = styled.a`
+  transition: 0.2s;
+  :hover {
+    color: var(--secondary-color);
+  }
+`
 
-    function TOC() {
-        return (
-            <ul className="table-of-contents">
-                {toc.map(({level, id, title}) => (
-                    <li key={id} className={`toc-entry-level-${level}`}>
-                        <a href={`#${id}`}>{title}</a>
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
+export default function TableOfContents({ toc }) {
+  function TOC() {
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <ReactMarkdown
-                        components={{
-                            h2: addToTOC,
-                            h3: addToTOC,
-                            h4: addToTOC,
-                            h5: addToTOC,
-                            h6: addToTOC,
-                        }}
-                    >
-                        {markdown}
-                    </ReactMarkdown>
-                </Col>
-                <Col>
-                    {/* More magic. 
-                    <TOC />
-                </Col>
-            </Row>
-        </Container>
-    );
-}
+      <ToCList className="table-of-contents">
+        {toc.map(({ level, id, title, anchor }) => (
+          //console.log(title) &&
+          <ToCListItem key={id} level={level}>
+            <ToCItemTitle href={anchor}>{title}</ToCItemTitle>
+          </ToCListItem>
+        ))}
+      </ToCList>
+    )
+  }
 
-*/
+  return (
+    <>
+      <ToCTitle>Table of contents</ToCTitle>
+      <ToCWrapper>
+        <TOC />
+      </ToCWrapper>
+    </>
+  )
+}

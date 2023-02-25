@@ -12,7 +12,7 @@
 
 .markdown a {
   border-bottom: 1px dotted #bdc3c7;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
 }
 

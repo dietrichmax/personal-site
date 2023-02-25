@@ -7,6 +7,7 @@ import SEO from "src/components/seo/seo"
 import { getAllPosts, getPostAndMorePosts } from "src/data/external/cms"
 import PageTitle from "src/components/title/page-title"
 import markdownToHtml from "src/utils/markdownToHtml"
+import { getToc } from "@/src/utils/getToc"
 import styled from "styled-components"
 import config from "src/data/internal/SiteConfig"
 import ReadingProgress from "src/components/reading-progress/reading-progress.js"
@@ -244,7 +245,7 @@ export default function Post({ post, allPosts }) {
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
 
                     <Content>
-                      <PostBody content={post.content} />
+                      <PostBody content={post.content} toc={post.toc} />
                       {/*<Comments slug={post.slug} />
                       <Feedback /> */}
                       <Meta
@@ -285,11 +286,13 @@ export default function Post({ post, allPosts }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const content = data?.posts[0]?.content || ""
+  const content = (await data?.posts[0]?.content) || ""
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
+  const toc = getToc(content)
   const readingTime = getReadTime(content)
   const allPosts = await getAllPosts()
 
+  //console.log(toc)
   //const morePosts = data?.morePosts || ''
   //console.log(morePosts)
 
@@ -300,6 +303,7 @@ export async function getStaticProps({ params }) {
         readingTime: readingTime,
         content,
         excerpt,
+        toc,
       },
       allPosts,
     },

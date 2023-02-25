@@ -10,6 +10,8 @@ const ImageContainer = styled.div`
   left: 0;
 `
 
+const titleElements = ["h1", "h2", "h3", "h4", "h5", "h6"]
+
 const renderers = {
   img: (props) => {
     const src = props.src
@@ -52,6 +54,26 @@ const renderers = {
         {children}
       </a>
     )
+  },
+  h2: ({ children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
+  },
+  h3: ({ children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
+  },
+  h4: ({ children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
+  },
+  h5: ({ children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
+  },
+  h6: ({ children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
   },
 }
 

@@ -172,9 +172,9 @@ export default function Author(author) {
               </Button>
               <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
             </SupportButtonContainer>
-            <AuthorLink href="/support">
+            {/*<AuthorLink href="/support">
               <FaGift /> More Support
-            </AuthorLink>
+            </AuthorLink>*/}
           </AuthorSocialsContainer>
           {/*(socials.map((social) => 
           <AuthorSocialsContainer>

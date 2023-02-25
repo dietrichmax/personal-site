@@ -25,6 +25,8 @@ const LinksContent = styled.p`
   max-width: 700px;
   font-family: var(--secondary-font);
   font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: var(--secondary-font);
 `
 
 const LinkLink = styled.a`

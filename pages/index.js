@@ -108,7 +108,6 @@ const HeroList = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style: none;
-  width: 67%;
   font-size: 0.965rem;
   line-height: 1.5;
   color: var(--primary-color);

@@ -55,6 +55,7 @@ const PhotosContent = styled.p`
 `
 
 const Photo = styled(Image)`
+  position: relative;
   object-fit: cover;
   object-position: bottom;
   transition: 0.5s;
@@ -64,13 +65,9 @@ const Photo = styled(Image)`
 `
 
 const PhotoWrapper = styled.div`
-  position: relative;
   cursor: pointer;
-  height: 414px;
-  width: 734px;
-  ${media.lessThan("small")`
-   width: 100%
-  `}
+  height: auto;
+  width: 100%;
 `
 
 export default function PhotoPreview({ photo }) {
@@ -80,8 +77,8 @@ export default function PhotoPreview({ photo }) {
     <Card className="h-entry">
       <HCard />
       <PreviewContainer>
-        <PhotoWrapper>
-          <Link href={slug} className="u-url" passHref>
+        <Link href={slug} className="u-url" passHref>
+          <PhotoWrapper>
             <Photo
               src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
                 photo.photo[0].formats.content
@@ -93,8 +90,8 @@ export default function PhotoPreview({ photo }) {
               layout="fill"
               className="u-photo"
             />
-          </Link>
-        </PhotoWrapper>
+          </PhotoWrapper>
+        </Link>
         {/*<PhotoContainer>
           <PhotosTitle>
             <Link href={slug} className="u-url">

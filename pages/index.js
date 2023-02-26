@@ -92,7 +92,7 @@ const HeroTitle = styled.div`
   `}
 `
 
-const HeroDescription = styled.h3`
+const HeroDescription = styled.p`
   margin-top: var(--space-sm);
   font-size: 1.3rem;
   color: #fff;
@@ -148,7 +148,7 @@ const HeroImgContainer = styled.figure`
 
 const HeroImg = styled(Image)`
   width: 310px;
-  height: 310px;
+  height: auto;
   background-color: var(--secondary-color);
   opacity: 0.96;
   margin-top: -2.2rem;
@@ -160,7 +160,7 @@ const HeroImg = styled(Image)`
   }
   ${media.lessThan("medium")`
     width: 210px;
-    height: 210px; 
+    height: auto;
   `}
 `
 

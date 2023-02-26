@@ -41,7 +41,7 @@ const HeroWrapper = styled.div`
   height: 100vh;
   margin: auto;
   background-color: var(--secondary-color);
-  background-image: url("https://mxd.codes/wallpaper/backgroundImage.png");
+  background-image: url("/wallpaper/backgroundImage.webp");
   background-blend-mode: color-burn;
   background-attachment: fixed;
   background-repeat: no-repeat;

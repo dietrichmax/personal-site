@@ -11,7 +11,7 @@ import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
 
 const PageWrapper = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto var(--space) auto;
   padding: 0 var(--space);
   ${media.lessThan("large")`

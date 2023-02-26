@@ -18,6 +18,7 @@ import { Button } from "@/styles/templates/button"
 
 const FooterContainer = styled.footer`
   padding: var(--space-sm) 0;
+  margin: 0 auto;
   ${media.lessThan("medium")`  
     flex-wrap: wrap;
     padding: var(--space-sm);
@@ -29,7 +30,7 @@ const FooterInnerContainer = styled.div`
   display: grid;
   margin: 0px auto;
   padding: var(--space) var(--space) 0 var(--space);
-  max-width: var(--width-container);
+  max-width: 1200px;
   border-top: 1px solid var(--content-bg);
   ${media.lessThan("medium")`
     padding: var(--space) 0 0 0;

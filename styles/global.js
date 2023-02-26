@@ -83,7 +83,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: ${(props) => props.theme.primaryColor};
     --text-color: ${(props) => props.theme.textColor};
-    --width-container: 100%;
+    --width-container: 1200px;
     --content-width: 670px;
     --space: 2rem;
     --space-sm: 1rem;

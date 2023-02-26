@@ -13,7 +13,7 @@ import Title from "src/components/title/page-title"
 import { Button } from "@/styles/templates/button"
 
 const PageWrapper = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: auto;
   padding: 0 var(--space) var(--space-lg) var(--space);
   ${media.lessThan("medium")`

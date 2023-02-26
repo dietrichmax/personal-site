@@ -2,7 +2,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 const Title = styled.p`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space-lg) auto;
   padding-left: var(--space);
   padding-right: var(--space);

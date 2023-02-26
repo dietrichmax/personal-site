@@ -15,7 +15,7 @@ const BlogPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space-lg);
-  max-width: 1200px;
+  max-width: var(--width-container);
 `
 
 const PostsGrid = styled.ol`
@@ -24,7 +24,7 @@ const PostsGrid = styled.ol`
   padding-inline-start: 0;
   display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   ${media.lessThan("medium")`
     padding-left: 0;
     grid-template-columns: repeat(1, minmax(0px, 1fr));

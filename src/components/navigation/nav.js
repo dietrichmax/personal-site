@@ -9,7 +9,7 @@ const NavItems = styled.ul`
   align-items: flex-end;
   padding-inline-start: 0;
   list-style: none;
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     margin-top: var(--space-sm);
   `}
 `

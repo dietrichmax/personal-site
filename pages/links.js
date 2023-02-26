@@ -11,7 +11,7 @@ import LinkPreview from "src/components/link/link-preview/link-preview"
 
 const LinksContainer = styled.div`
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: var(--width-container);
 `
 
 const LinksGrid = styled.ol`

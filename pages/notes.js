@@ -12,7 +12,7 @@ import Grid from "src/components/grid/grid"
 import { FaRss } from "react-icons/fa"
 
 const NotesWrapper = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: auto;
 `
 

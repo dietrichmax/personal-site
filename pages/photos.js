@@ -11,7 +11,7 @@ import PhotosPreview from "src/components/photo/photo-preview"
 
 const PhotosContainer = styled.div`
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: var(--width-container);
 `
 
 export default function Photos({ allPhotos }) {

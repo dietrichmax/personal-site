@@ -12,7 +12,7 @@ import CV from "src/components/cv/cv"
 import html2canvas from "html2canvas"
 import { jsPDF } from "jspdf"
 const ResumeWrapper = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto var(--space) auto;
   padding: 0 var(--space);
   ${media.lessThan("large")`

@@ -20,7 +20,7 @@ import {
 import { SiStrava } from "react-icons/si"
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto;
   padding-left: var(--space);
   padding-right: var(--space);

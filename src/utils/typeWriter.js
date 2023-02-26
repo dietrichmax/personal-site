@@ -9,17 +9,13 @@ const HeroSubTitle = styled.div`
   `}
 `
 
-const TypeWriter = ({ content = "", speed = 1100 }) => {
+const TypeWriter = ({ content = "", speed = 100 }) => {
   const [displayedContent, setDisplayedContent] = useState("")
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const animKey = setInterval(() => {
       setIndex((index) => {
-        /*This setState function will set the index
-          to index+1 if there is more content otherwise
-          it will destory this animation*/
-
         if (index >= content.length - 1) {
           clearInterval(animKey)
           return index

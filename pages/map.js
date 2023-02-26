@@ -10,7 +10,7 @@ const Livemap = dynamic(() => import("src/components/maps/leaflet/livemap"))
 
 const MapContainer = styled.div`
   margin: auto;
-  max-width: 1200px;
+  max-width: var(--width-container);
   height: 600px;
   padding: var(--space);
   ${media.lessThan("medium")`

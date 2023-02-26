@@ -6,7 +6,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto;
   padding-left: var(--space);
   padding-right: var(--space);

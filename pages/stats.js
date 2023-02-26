@@ -45,7 +45,7 @@ const StyledReactTooltip = styled(ReactTooltip)`
 `
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: auto;
   padding-right: var(--space);
   padding-left: var(--space);

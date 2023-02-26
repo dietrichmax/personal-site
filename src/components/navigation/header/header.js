@@ -13,7 +13,7 @@ const HeaderWrapper = styled.header`
 `
 
 const InnerHeader = styled.nav`
-  max-width: var(--width-container);
+  max-width: 100%;
   margin: calc(var(--space-sm) * 0.5) auto var(--space) auto;
   padding: var(--space-sm) var(--space);
   height: 80px;

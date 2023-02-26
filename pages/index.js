@@ -198,7 +198,7 @@ const RecentPosts = styled.ol`
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(280px, 358px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: masonry;
   gap: var(--space);
   list-style: none;
@@ -289,7 +289,7 @@ export default function Index({ posts, cv }) {
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
             />
-            <HeroWrapper className="h-card" color="#f2f2f2" loadImage={"false"}>
+            <HeroWrapper className="h-card" color="#f2f2f2">
               {/*<HeroBackgroundImage>
             <Image
               alt="Mountains"
@@ -312,7 +312,7 @@ export default function Index({ posts, cv }) {
                         Max Dietrich.
                       </span>
                     </HeroTitle>
-                    <TypeWriter content={text} speed={100} />
+                    <TypeWriter content={text} speed={90} />
                     <HeroDescription>
                       I'm a software developer and cyclist from{" "}
                       <a

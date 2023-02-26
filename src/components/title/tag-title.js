@@ -3,7 +3,7 @@ import media from "styled-media-query"
 
 const TitleWrapper = styled.div`
   position: relative;
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: calc(var(--space-lg) * 2.5) auto var(--space-lg) auto;
   padding-left: var(--space);
   ${media.lessThan("medium")`

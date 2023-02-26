@@ -8,7 +8,7 @@ import styled from "styled-components"
 import SubTitle from "@/components/title/sub-title"
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: auto;
   padding-left: var(--space);
   padding-right: var(--space);

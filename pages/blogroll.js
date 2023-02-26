@@ -13,7 +13,7 @@ import TextBody from "src/components/note/note-body/note-body"
 import Grid from "src/components/grid/grid"
 
 const BlogrollContainer = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto var(--space) auto;
   ${media.lessThan("medium")`
     padding: 0;

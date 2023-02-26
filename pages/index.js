@@ -129,13 +129,13 @@ const HeroImgContainer = styled.figure`
   margin-right: 0px;
   z-index: 1;
   min-width: 310px;
-  height: 310px;
+  height: 312px;
   position: relative;
-  border: 0.115rem solid #f2f2f2;
+  border: 1px solid #f2f2f2;
+  border-radius: 6px;
   ${media.lessThan("large")`
     width: 310px;
     height: 310px;
-    margin: 100px auto 0 auto;
   `}
   ${media.lessThan("medium")`
     width: 210px;
@@ -149,9 +149,13 @@ const HeroImg = styled(Image)`
   height: 310px;
   background-color: var(--secondary-color);
   opacity: 0.96;
-  margin-top: -2.435rem;
+  margin-top: -2.2rem;
   margin-left: -2.2rem;
   border-radius: 6px;
+  transition: 0.2s;
+  :hover {
+    margin: 0;
+  }
   ${media.lessThan("medium")`
     width: 210px;
     height: 210px; 

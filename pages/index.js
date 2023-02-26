@@ -125,8 +125,9 @@ const HeroListItem = styled.li`
 `
 
 const HeroImgContainer = styled.figure`
-  margin-left: calc(var(--space-lg) * 2);
-  margin-right: 0px;
+  margin-top: 100px;
+  margin-left: var(--space-lg);
+  margin-right: auto;
   z-index: 1;
   min-width: 310px;
   height: 312px;
@@ -134,6 +135,7 @@ const HeroImgContainer = styled.figure`
   border: 1px solid #f2f2f2;
   border-radius: 6px;
   ${media.lessThan("large")`
+    margin-left: auto;
     width: 310px;
     height: 310px;
   `}

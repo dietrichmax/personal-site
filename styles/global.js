@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
-    scroll-behavior: smooth;
   }
   ::selection {
     background: var(--text-color);
@@ -84,7 +83,7 @@ const GlobalStyle = createGlobalStyle`
     --thirdy-font: Cormorant Garamond, serif;
     --link-color-hover: ${(props) => props.theme.primaryColor};
     --text-color: ${(props) => props.theme.textColor};
-    --width-container: 1200px;
+    --width-container: 100%;
     --content-width: 670px;
     --space: 2rem;
     --space-sm: 1rem;

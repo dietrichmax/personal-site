@@ -1,7 +1,7 @@
 import PostPreview from "src/components/article/article-preview/article-preview"
 import NotePreview from "src/components/note/note-preview/note-preview"
 import LinkPreview from "src/components/link/link-preview/link-preview"
-//import ActivityPreview from "@/components/activity/activity-preview/activity-preview"
+import TypeWriter from "@/src/utils/typeWriter"
 import PhotoPreview from "src/components/photo/photo-preview"
 import Layout from "src/components/layout/layout"
 import config from "src/data/internal/SiteConfig"
@@ -25,33 +25,53 @@ import {
 } from "src/data/external/cms"
 
 const IndexPageContainer = styled.div`
-  max-width: 1200px;
+  max-width: var(--width-container);
   margin: var(--space) auto;
 `
 
 const HeroWrapper = styled.div`
+  display: flex;
+  align-items: center;
   background: linear-gradient(
     90deg,
     var(--primary-color) 67%,
     var(--primary-color) 33%
   );
   width: 100%;
+  height: 100vh;
   margin: auto;
   background-color: var(--secondary-color);
-  background-image: url("/wallpaper/backgroundImage.png");
+  background-image: url("https://mxd.codes/wallpaper/backgroundImage.png");
   background-blend-mode: color-burn;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  ${media.lessThan("medium")`  
+    align-items: flex-start;
+    height: auto;
+  `}
 `
+
+const HeroBackgroundImage = styled.div`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+`
+
+const HeroOffset = styled.div`
+  margin: 0 auto;
+`
+
 const Hero = styled.div`
   display: flex;
   max-width: var(--width-container);
-  padding: 180px var(--space) var(--space-lg) var(--space);
+  padding: 100px var(--space) var(--space-lg) var(--space);
   margin: 0px auto;
-  ${media.lessThan("medium")`
-    padding: calc(1rem + 120px) 0 calc(1rem + 60px) 0;
+  ${media.lessThan("large")`
+    padding: calc(2rem + 120px) 0 calc(1rem + 60px) 0;
     width: 100%;
     display: block;
   `}
@@ -66,19 +86,19 @@ const HeroArticle = styled.h1`
 
 const HeroTitle = styled.div`
   color: var(--primary-color);
-  margin-bottom: var(--space);
   font-weight: 900;
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     padding: 0 var(--space-sm);
   `}
 `
 
 const HeroDescription = styled.h3`
+  margin-top: var(--space-sm);
   font-size: 1.3rem;
   color: #fff;
   font-weight: normal;
   line-height: 1.6;
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     padding: 0 var(--space-sm);
   `}
 `
@@ -94,7 +114,7 @@ const HeroList = styled.ul`
   color: var(--primary-color);
   padding-inline-start: 0;
   font-weight: 200;
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     padding: 0 var(--space-sm);
     width: 100%;
   `}
@@ -106,17 +126,22 @@ const HeroListItem = styled.li`
 `
 
 const HeroImgContainer = styled.figure`
-  margin: 0;
+  margin-left: calc(var(--space-lg) * 2);
   margin-right: 0px;
   z-index: 1;
-  width: 310px;
+  min-width: 310px;
   height: 310px;
   position: relative;
   border: 0.115rem solid #f2f2f2;
+  ${media.lessThan("large")`
+    width: 310px;
+    height: 310px;
+    margin: 100px auto 0 auto;
+  `}
   ${media.lessThan("medium")`
     width: 210px;
+    min-width: 210px;
     height: 210px;
-    margin: 100px auto 0 auto;
   `}
 `
 
@@ -124,12 +149,13 @@ const HeroImg = styled(Image)`
   width: 310px;
   height: 310px;
   background-color: var(--secondary-color);
+  opacity: 0.96;
   margin-top: -2.435rem;
   margin-left: -2.2rem;
   border-radius: 6px;
   ${media.lessThan("medium")`
-  width: 210px;
-  height: 210px; 
+    width: 210px;
+    height: 210px; 
   `}
 `
 
@@ -172,7 +198,8 @@ const RecentPosts = styled.ol`
   padding-left: var(--space);
   padding-right: var(--space);
   margin-bottom: var(--space-lg);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 358px));
+  grid-template-rows: masonry;
   gap: var(--space);
   list-style: none;
   ${media.lessThan("medium")`
@@ -247,7 +274,9 @@ const jsonld = {
 
 export default function Index({ posts, cv }) {
   const router = useRouter()
-  const content = posts.slice(0, 6)
+  const content = posts.slice(0, 12)
+
+  const text = "I build maps for the web."
 
   return (
     <>
@@ -260,72 +289,79 @@ export default function Index({ posts, cv }) {
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
             />
-            <HeroWrapper className="h-card" color="#f2f2f2">
-              <Hero>
-                <HCard />
-                <HeroArticle>
-                  <HeroTitle>
-                    Geospatial
-                    <br />
-                    Developer.
-                  </HeroTitle>
-                  <HeroDescription>
-                    Hi, I'm{" "}
-                    <HeroLinks
-                      className="p-name u-url u-uid"
-                      rel="author me"
-                      href={config.siteUrl}
-                      title={config.siteTitle}
-                    >
-                      Max Dietrich
-                    </HeroLinks>
-                    , developer and cyclist from{" "}
-                    <a
-                      className="p-locality"
-                      href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"
-                      title="Rosenheim, Germany"
-                    >
-                      Rosenheim, Germany.
-                    </a>{" "}
-                  </HeroDescription>
-                  <HeroList aria-label="Highlights.">
-                    <HeroListItem>
-                      {" "}
-                      I' am also a proud member of the{" "}
-                      <HeroLinks
-                        className="p-org h-card"
-                        href="https://indieweb.org/"
-                        title="IndieWeb"
+            <HeroWrapper className="h-card" color="#f2f2f2" loadImage={"false"}>
+              {/*<HeroBackgroundImage>
+            <Image
+              alt="Mountains"
+              src="https://mxd.codes/wallpaper/backgroundImage.png"
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: 'cover',
+              }}
+            />
+            </HeroBackgroundImage>*/}
+              <HeroOffset>
+                <Hero>
+                  <HCard />
+                  <HeroArticle>
+                    <HeroDescription>Hi, my name is</HeroDescription>
+                    <HeroTitle>
+                      <span className="p-name u-url u-uid" rel="author me">
+                        Max Dietrich.
+                      </span>
+                    </HeroTitle>
+                    <TypeWriter content={text} speed={100} />
+                    <HeroDescription>
+                      I'm a software developer and cyclist from{" "}
+                      <a
+                        className="p-locality"
+                        href="https://www.openstreetmap.org/search?query=rosenheim#map=13/47.8481/12.1035"
+                        title="Rosenheim, Germany"
                       >
-                        IndieWeb
-                      </HeroLinks>{" "}
-                      community.
-                    </HeroListItem>
-                    <HeroListItem>
-                      I've been{" "}
-                      <HeroLinksNormal href="/map" title="Location tracking">
-                        tracking my location
-                      </HeroLinksNormal>{" "}
-                      since 2021.{` `}
-                      <Link href="/about" passHref legacyBehavior>
-                        <AboutMeLink title="About me">Read more.</AboutMeLink>
-                      </Link>
-                    </HeroListItem>
-                  </HeroList>
-                </HeroArticle>
-                <HeroImgContainer>
-                  <HeroImg
-                    src="/logos/windows/windowsphone-mediumtile-360-360.png"
-                    width="310"
-                    height="310"
-                    title="Photo of Max."
-                    alt="Photo of Max."
-                    aria-label="Photo of Max."
-                    role="img"
-                    priority
-                  />
-                </HeroImgContainer>
-              </Hero>
+                        Rosenheim, Germany.
+                      </a>{" "}
+                    </HeroDescription>
+                    <HeroList aria-label="Highlights.">
+                      <HeroListItem>
+                        {" "}
+                        I' am also a proud member of the{" "}
+                        <HeroLinks
+                          className="p-org h-card"
+                          href="https://indieweb.org/"
+                          title="IndieWeb"
+                        >
+                          IndieWeb
+                        </HeroLinks>{" "}
+                        community.
+                      </HeroListItem>
+                      <HeroListItem>
+                        I've been{" "}
+                        <HeroLinksNormal href="/map" title="Location tracking">
+                          tracking my location
+                        </HeroLinksNormal>{" "}
+                        since 2021.{` `}
+                        <Link href="/about" passHref legacyBehavior>
+                          <AboutMeLink title="About me">Read more.</AboutMeLink>
+                        </Link>
+                      </HeroListItem>
+                    </HeroList>
+                  </HeroArticle>
+                  <HeroImgContainer>
+                    <HeroImg
+                      src="/logos/windows/windowsphone-mediumtile-360-360.png"
+                      width="310"
+                      height="310"
+                      title="Photo of Max."
+                      alt="Photo of Max."
+                      aria-label="Photo of Max."
+                      role="img"
+                      priority
+                    />
+                  </HeroImgContainer>
+                </Hero>
+              </HeroOffset>
             </HeroWrapper>
 
             <IndexPageContainer>

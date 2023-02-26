@@ -33,6 +33,7 @@ const Square = styled.span`
 const ContentWrapper = styled.div`
   position: relative;
   grid-column: span 6 / span 6;
+  scroll-behavior: smooth;
 `
 
 const Sidebar = styled.div`

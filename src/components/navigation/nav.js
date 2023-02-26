@@ -20,8 +20,8 @@ const NavItem = styled.li`
   :hover {
     text-decoration: none;
     background-image: linear-gradient(
-      var(--secondary-color),
-      var(--secondary-color)
+      var(--primary-color),
+      var(--primary-color)
     );
     background-size: 100% 1px;
     background-position: 0 100%;
@@ -44,7 +44,7 @@ export default function Nav({ color }) {
     { name: "Articles", link: "/articles" },
     { name: "Photos", link: "/photos" },
     { name: "Notes", link: "/notes" },
-    { name: "Maps", link: "https://maps.mxd.codes" },
+    { name: "Links", link: "/links" },
   ]
 
   return (

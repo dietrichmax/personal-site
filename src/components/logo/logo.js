@@ -18,7 +18,7 @@ const LogoName = styled.span`
   font-weight: 700;
   letter-spacing: 0.3px;
   :hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 `
 const LogoDescription = styled.span`
@@ -36,8 +36,6 @@ export default function Logo({}) {
         title={config.siteTitleAlt}
       >
         <LogoName className="p-name">{config.siteTitleAlt}</LogoName>
-        <br />
-        <LogoDescription>{config.siteSubtitle}</LogoDescription>
       </Link>
     </LogoWrapper>
   )

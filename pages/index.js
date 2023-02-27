@@ -95,7 +95,7 @@ const HeroTitle = styled.div`
 const HeroDescription = styled.p`
   margin-top: var(--space-sm);
   font-size: 1.3rem;
-  color: var(--body-bg);
+  color: #f2f2f2;
   font-weight: normal;
   line-height: 1.6;
   ${media.lessThan("large")`

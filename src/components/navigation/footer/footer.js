@@ -278,6 +278,14 @@ export default function Footer() {
             <FooterColumnTitle>Elsewhere</FooterColumnTitle>
             <List>
               <FooterItem>
+                <a
+                  href={config.socials.linkedin}
+                  title="Max Dietrich on Linkedin"
+                >
+                  <FaLinkedin /> Linkedin
+                </a>
+              </FooterItem>
+              <FooterItem>
                 <a href={config.socials.twitter} title="@mxdietrich on Twitter">
                   <FaTwitter /> Twitter
                 </a>
@@ -303,19 +311,6 @@ export default function Footer() {
               {/*<FooterItem>
                 <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
               </FooterItem>*/}
-              <FooterItem>
-                <a href={config.socials.xing} title="Max Dietrich on Xing">
-                  <FaXing /> Xing
-                </a>
-              </FooterItem>
-              <FooterItem>
-                <a
-                  href={config.socials.linkedin}
-                  title="Max Dietrich on Linkedin"
-                >
-                  <FaLinkedin /> Linkedin
-                </a>
-              </FooterItem>
             </List>
           </FooterColumn>
 

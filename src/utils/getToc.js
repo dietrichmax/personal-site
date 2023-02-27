@@ -3,9 +3,11 @@ export function getToc(markdown) {
   const regexReplaceCode = /(```.+?```)/gms
   const regexRemoveLinks = /\[(.*?)\]\(.*?\)/g
 
-  const markdownWithoutCodeBlocks = markdown
-    .replace(regexRemoveLinks, "")
-    .replace(regexReplaceCode, "")
+  const markdownWithoutLinks = markdown.replace(regexRemoveLinks, "")
+  const markdownWithoutCodeBlocks = markdownWithoutLinks.replace(
+    regexReplaceCode,
+    ""
+  )
   const titles = markdownWithoutCodeBlocks.match(regXHeader)
 
   const toc = []

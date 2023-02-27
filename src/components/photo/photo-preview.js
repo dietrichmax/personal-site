@@ -10,7 +10,6 @@ import media from "styled-media-query"
 const PreviewContainer = styled.div`
   display: flex;
   width: 100%;
-  min-height: 400px;
   ${media.lessThan("small")`
     display: block;
   `}
@@ -69,6 +68,7 @@ const PhotoWrapper = styled.div`
   cursor: pointer;
   height: auto;
   width: 100%;
+  min-height: 400px;
 `
 
 export default function PhotoPreview({ photo }) {

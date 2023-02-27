@@ -31,7 +31,9 @@ const PhotoList = styled.ol`
   padding-inline-start: 0;
 `
 
-const PhotoItem = styled.li``
+const PhotoItem = styled.li`
+  margin-bottom: var(--space);
+`
 
 const TagsWrapper = styled.div`
   margin: var(--space-sm) 0;

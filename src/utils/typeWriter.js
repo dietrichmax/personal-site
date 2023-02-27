@@ -5,7 +5,7 @@ import media from "styled-media-query"
 const HeroSubTitle = styled.div`
   font-weight: normal;
   font-size: 60px;
-  color: var(--body-bg);
+  color: #f2f2f2;
   ${media.lessThan("large")`
     padding: 0 var(--space-sm);
   `}

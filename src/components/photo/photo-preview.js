@@ -10,7 +10,7 @@ import media from "styled-media-query"
 const PreviewContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 100%,
+  min-height: 400px;
   ${media.lessThan("small")`
     display: block;
   `}

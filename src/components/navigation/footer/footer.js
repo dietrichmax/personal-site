@@ -349,7 +349,7 @@ export default function Footer() {
         </FooterColumnWrapper>
 
         <FooterNotice>
-          © 2018 – {new Date().getFullYear()}
+          Copyright © 2018 – {new Date().getFullYear()}
           <span> • </span>
           <Link href="/" title={config.siteTitleAlt}>
             {config.siteTitleAlt}

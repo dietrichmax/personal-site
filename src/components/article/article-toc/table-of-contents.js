@@ -8,6 +8,7 @@ const ToCWrapper = styled.div`
   background-color: var(--content-bg);
   padding: var(--space);
   border-radius: var(--border-radius);
+  font-size: 15px;
 `
 
 const ToCTitle = styled.p`

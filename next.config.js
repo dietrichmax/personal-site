@@ -482,6 +482,13 @@ const redirects = {
         permanent: true,
       },
       {
+        source:
+          "/articles/how-to-create-web-maps-with-leaflet-react-and-functional-components-1",
+        destination:
+          "/articles/how-to-create-web-maps-with-leaflet-react-and-functional-components",
+        permanent: true,
+      },
+      {
         source: "/stellenmarkt",
         destination: "/",
         permanent: true,

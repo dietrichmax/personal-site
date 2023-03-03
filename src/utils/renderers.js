@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import ModalImage from "react-modal-image"
+import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
 
@@ -10,34 +10,65 @@ const ImageContainer = styled.div`
   left: 0;
 `
 
-const titleElements = ["h1", "h2", "h3", "h4", "h5", "h6"]
+const PlaceHolderImage = styled.div`
+  padding: 50px 0;
+  width: 670px;
+  background-color: var(--content-bg);
+  text-align: center;
+`
+
+const MarkdownImage = ({ src }) => {
+  const [data, updateData] = useState()
+
+  useEffect(() => {
+    const getData = async () => {
+      const resp = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/upload/files?_url=${src}`
+      )
+      const json = await resp.json()
+      const obj = json[0]
+      const ratio = obj.height / obj.width
+      const contentWidth = 670
+      const title = obj.name.replace(".png", "")
+      const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title
+      const img = {
+        src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${obj.url}`,
+        title: obj.name.replace(".png", ""),
+        alt: alt,
+        height: obj.height,
+        width: obj.width,
+        ratio: ratio,
+        contentWidth: 670,
+        contentHeight: ratio * contentWidth,
+      }
+      console.log(img)
+      updateData(img)
+    }
+    getData()
+  }, [])
+
+  if (data) {
+    return (
+      <a href={data.src} title={data.title} alt={data.alt}>
+        <Image
+          src={data.src}
+          title={data.title}
+          alt={data.alt}
+          width={data.contentWidth}
+          height={data.contentHeight}
+        />
+      </a>
+    )
+  } else {
+    return <PlaceHolderImage>Loading Image...</PlaceHolderImage>
+  }
+}
 
 const renderers = {
   img: (props) => {
-    const src = props.src
-    const alt = props.alt
-    const title = props.alt.replace(".png", "").toLowerCase()
-    return props.src.startsWith("/") ? (
-      <ModalImage
-        {...props}
-        small={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
-        large={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`}
-        layout="responsive"
-        loading="lazy"
-        hideDownload="true"
-        hideZoom="true"
-      />
-    ) : (
-      <ModalImage
-        {...props}
-        small={src}
-        large={src}
-        layout="responsive"
-        href={src}
-        loading="lazy"
-      />
-    )
+    return <MarkdownImage src={props.src} />
   },
+
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (
       <Link className="external-link" href={href} title={title} alt={alt}>

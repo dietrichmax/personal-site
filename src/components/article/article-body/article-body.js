@@ -49,7 +49,7 @@ export default function PostBody({ content, toc }) {
             className={markdownStyles["markdown"]}
             children={content}
             components={renderers}
-            style={{ position: "relative" }}
+            style={{ width: "100%", height: "100%", position: "relative" }}
           />
         </ContentWrapper>
         {toc && toc.length > 0 ? (

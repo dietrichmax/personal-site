@@ -133,7 +133,7 @@ const TagsWrapper = styled.div`
   margin: var(--space-sm) 0;
 `
 
-const RecommendedPostsContainer = styled.div`
+const RecommendedPostsContainer = styled.ol`
   margin-bottom: var(--space);
   grid-column: span 2;
   display: grid;
@@ -141,6 +141,7 @@ const RecommendedPostsContainer = styled.div`
   grid-template-columns: auto auto auto;
   margin-left: var(--space);
   margin-right: var(--space);
+  padding-inline-start: 0;
   ${media.lessThan("large")`
     grid-template-columns: repeat(2, minmax(auto, 1fr));
     grid-gap: var(--space-sm);

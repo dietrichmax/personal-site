@@ -51,7 +51,10 @@ const AuthorSocialIcons = styled.i`
 const AuthorTitle = styled.p`
   margin-top: var(--space);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 600;  
+  border-top: 0.1rem solid var(--content-bg);
+  padding-top: var(--space);
+}
 `
 
 const AuthorSubtitle = styled.p``
@@ -60,7 +63,7 @@ const AuthorBio = styled.p`
   margin-top: var(--space-sm);
 `
 
-const AuthorSocialsContainer = styled.a``
+const AuthorSocialsContainer = styled.div``
 
 const AuthorDescription = styled.div``
 

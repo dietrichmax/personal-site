@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
-`
+import { FaLink } from "react-icons/fa"
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
   width: 670px;
   background-color: var(--content-bg);
   text-align: center;
+`
+
+const PermaLink = styled.span`
+  cursor: pointer;
+  margin-left: var(--space-sm);
+  font-size: 14px;
 `
 
 const MarkdownImage = ({ src }) => {
@@ -88,23 +88,51 @@ const renderers = {
   },
   h2: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
-    return <h2 id={anchor}>{children}</h2>
+    return (
+      <h2 id="h" style={{ cursor: "pointer" }} title={children}>
+        <span id={anchor} />
+        <a href={`#${anchor}`}>{children}</a>
+        <PermaLink>
+          <FaLink />
+        </PermaLink>
+      </h2>
+    )
   },
   h3: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
-    return <h2 id={anchor}>{children}</h2>
+    return (
+      <h3 id="h" style={{ cursor: "pointer" }} title={children}>
+        <span id={anchor} />
+        <a href={`#${anchor}`}>{children}</a>
+        <PermaLink>
+          <FaLink />
+        </PermaLink>
+      </h3>
+    )
   },
   h4: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
-    return <h2 id={anchor}>{children}</h2>
+    return (
+      <h4 id="h" style={{ cursor: "pointer" }} title={children}>
+        <span id={anchor} />
+        <a href={`#${anchor}`}>{children}</a>
+        <PermaLink>
+          <FaLink />
+        </PermaLink>
+      </h4>
+    )
   },
   h5: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
-    return <h2 id={anchor}>{children}</h2>
-  },
-  h6: ({ children }) => {
-    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
-    return <h2 id={anchor}>{children}</h2>
+    return (
+      <h5 id="h" style={{ cursor: "pointer" }} title={children}>
+        <span id={anchor} />
+        <a href={`#${anchor}`}>{children}</a>
+        <PermaLink>
+          <FaLink />
+        </PermaLink>
+      </h5>
+    )
   },
 }
 

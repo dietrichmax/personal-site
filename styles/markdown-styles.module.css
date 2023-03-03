@@ -61,6 +61,7 @@
 }
 
 .markdown h2 {
+  color: var(--text-color);
   font-size: 2rem;
   margin-top: var(--space);
   margin-bottom: 1.5rem;
@@ -74,12 +75,14 @@
   font-family: var(--primary-font);
 }
 
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
+.markdown h2 > a,
+.markdown h3 > a,
+.markdown h4 > a,
+.markdown h5 > a,
+.markdown h6 > a {
+  color: var(--text-color);
   font-family: var(--primary-font);
+  border-bottom: none;
 }
 
 .markdown code {

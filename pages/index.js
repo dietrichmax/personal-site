@@ -154,10 +154,6 @@ const HeroImg = styled(Image)`
   margin-top: -2.2rem;
   margin-left: -2.2rem;
   border-radius: 6px;
-  transition: 0.2s;
-  :hover {
-    margin: 0;
-  }
   ${media.lessThan("medium")`
     width: 210px;
     height: auto;

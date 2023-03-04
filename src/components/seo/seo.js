@@ -16,6 +16,11 @@ const SEO = ({
 }) => {
   const [data, setData] = useState("")
 
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }
+
   useEffect(() => {
     let isSubscribed = true
     fetch("https://cms.mxd.codes/cv", requestOptions)

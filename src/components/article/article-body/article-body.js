@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import renderers from "src/utils/renderers"
 import TableOfContents from "src/components/article/article-toc/table-of-contents"
 import media from "styled-media-query"
+import remarkGfm from "remark-gfm"
 
 const PostContent = styled.section`
   position: relative;
@@ -49,6 +50,7 @@ export default function PostBody({ content, toc }) {
             className={markdownStyles["markdown"]}
             children={content}
             components={renderers}
+            remarkPlugins={[remarkGfm]}
             style={{ width: "100%", height: "100%", position: "relative" }}
           />
         </ContentWrapper>

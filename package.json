@@ -59,6 +59,7 @@
     "react-router-dom": "^6.6.2",
     "react-tooltip": "^4.5.1",
     "remark": "^14.0.2",
+    "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
     "remark-slug": "^7.0.1",
     "sharp": "^0.31.3",

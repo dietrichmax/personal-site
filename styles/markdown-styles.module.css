@@ -106,3 +106,29 @@
 .markdown blockquote p {
   margin-bottom: 0;
 }
+
+.markdown table {
+  width: 100%;
+  text-align: left;
+  margin: var(--space) 0;
+}
+
+.markdown table tbody tr td {
+  border: 1px solid var(--content-bg);
+  padding: 8px 12px;
+}
+
+.markdown table tbody tr:nth-child(even) {
+  background-color: var(--content-bg);
+}
+
+.markdown table tbody tr:hover {
+  background-color: var(--text-color);
+  color: var(--body-bg);
+}
+
+.markdown table thead th {
+  padding: 8px;
+  background-color: var(--secondary-color);
+  color: var(--content-bg);
+}

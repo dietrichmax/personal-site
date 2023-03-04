@@ -49,6 +49,7 @@ export default function PostMeta({ post, slug, syndicationLinks }) {
   return (
     <Meta>
       <DateWrapper className="dt-published">
+        Updated{" "}
         <a className="u-url" title={slug} href={slug}>
           {format(
             parseISO(post.updated_at ? post.updated_at : post.published_at),

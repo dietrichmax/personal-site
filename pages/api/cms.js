@@ -34,7 +34,6 @@ export default async (req, res) => {
         headers: { "Content-Type": "application/json" },
         ...req.body,
       })
-      console.log(postReponse)
       if (postReponse) {
         return res.status(200).json({ ok: true })
       } else {

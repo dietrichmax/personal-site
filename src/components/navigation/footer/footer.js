@@ -8,7 +8,6 @@ import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
-import { fetchGET } from "@/src/utils/fetcher"
 
 // styled components
 
@@ -170,6 +169,11 @@ export default function Footer() {
   const [recentPosts, setRecentPosts] = useState([])
   const [about, setAbout] = useState([])
   const [search, setSearch] = useState("")
+
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  }
 
   useEffect(() => {
     fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC", requestOptions)

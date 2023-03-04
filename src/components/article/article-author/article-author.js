@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { fetchGET, fetchPUT } from "@/src/utils/fetcher"
 import styled from "styled-components"
 import Image from "next/legacy/image"
 import Link from "next/link"

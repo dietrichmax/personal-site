@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Emojione } from "react-emoji-render"
-import { fetchGET, fetchPOST } from "@/src/utils/fetcher"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"

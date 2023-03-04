@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Head from "next/head"
 import config, { dateFormat } from "src/data/internal/SiteConfig"
-import { fetchGET } from "@/src/utils/fetcher"
 
 const SEO = ({
   title,

@@ -18,7 +18,6 @@ import {
   FaXing,
 } from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
-import { fetchGET } from "@/src/utils/fetcher"
 
 const Container = styled.div`
   max-width: var(--width-container);

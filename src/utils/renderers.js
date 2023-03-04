@@ -6,7 +6,7 @@ import { FaLink } from "react-icons/fa"
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
-  height: ${(props) => (props.height ? `${props.height}px` : "300px")};
+  height: 300px;
   width: 670px;
   background-color: var(--content-bg);
   text-align: center;
@@ -61,7 +61,7 @@ const MarkdownImage = ({ src }) => {
     )
   } else {
     return (
-      <PlaceHolderImage height={data.contentHeight}>
+      <PlaceHolderImage>
         {"Sorry, somehow the image is not available :("}
       </PlaceHolderImage>
     )

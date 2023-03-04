@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Head from "next/head"
 import config, { dateFormat } from "src/data/internal/SiteConfig"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const SEO = ({
   title,
@@ -16,16 +17,11 @@ const SEO = ({
 }) => {
   const [data, setData] = useState("")
 
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }
-
   useEffect(() => {
     let isSubscribed = true
-    fetch("https://cms.mxd.codes/cv", requestOptions)
-      .then((response) => response.json())
-      .then((data) => (isSubscribed ? setData(data) : null))
+    fetchGET("/api/cms?_cv").then(
+      (data) => (isSubscribed ? setData(data) : null) && console.log(data)
+    )
 
     return () => (isSubscribed = false)
   }, [])

@@ -55,55 +55,8 @@ const LikeCount = styled.span`
 
 export default function SocialShare({ slug, id, syndicationLinks, post }) {
   const [copied, setCopied] = useState("")
-  const [postLike, setPostLike] = useState()
-  const [postLikeCount, setPostLikeCount] = useState()
-  const [sentPostLike, setSentPostLike] = useState(false)
-  const [gotPostLike, setGotPostLike] = useState(false)
-  const [likeIncremented, setLikeIncremented] = useState(false)
 
   let tweetID
-
-  async function getPostLike() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch(`https://cms.mxd.codes/likes?postId=${post.id}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) =>
-        data === undefined ? null || null : setPostLike(data[0])
-      )
-      .catch(function (error) {
-        console.log(error)
-      })
-    setGotPostLike(true)
-  }
-
-  useEffect(() => {
-    //!gotPostLike ? getPostLike() : null
-  }, [])
-
-  const sendLike = () => {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        count: postLike ? postLike.count++ : 0,
-        postId: post.id,
-      }),
-    }
-    fetch(`https://cms.mxd.codes/likes`, requestOptions)
-      .then(function (response) {
-        if (!response.ok) {
-          console.log(response.statusText)
-        } else {
-          setSentPostLike(true)
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-  }
 
   const url = `${config.siteUrl}${slug}`
 

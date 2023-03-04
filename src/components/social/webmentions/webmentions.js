@@ -13,7 +13,6 @@ import {
   FaHeart,
 } from "react-icons/fa"
 import { BsStar } from "react-icons/bs"
-import Comments from "src/components/comments/comments"
 import { Button } from "@/styles/templates/button"
 
 const WebMentionsWrapper = styled.section`
@@ -498,7 +497,6 @@ export default function Webmentions({ slug, preview }) {
               Found no Webmentions yet. Be the first!
             </WebmentionContent>
           )}
-          <Comments slug={slug} />
         </WebMentionsWrapper>
       )}
     </>

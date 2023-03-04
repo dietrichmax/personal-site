@@ -4,16 +4,12 @@ import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
-import {
-  FaGithub,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaXing,
-} from "react-icons/fa"
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
+import { fetchGET } from "@/src/utils/fetcher"
+
 // styled components
 
 const FooterContainer = styled.footer`
@@ -175,19 +171,14 @@ export default function Footer() {
   const [about, setAbout] = useState([])
   const [search, setSearch] = useState("")
 
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }
-
   useEffect(() => {
     let isSubscribed = true
-    fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC", requestOptions)
-      .then((response) => response.json())
-      .then((data) => (isSubscribed ? setRecentPosts(data.slice(0, 4)) : null))
-    fetch("https://cms.mxd.codes/about", requestOptions)
-      .then((response) => response.json())
-      .then((data) => (isSubscribed ? setAbout(data) : null))
+    fetchGET(`/api/cms?_posts?_sort=published_at:DESC`).then((data) =>
+      isSubscribed ? setRecentPosts(data.slice(0, 4)) : null
+    )
+    fetchGET("/api/cms?_about").then((data) =>
+      isSubscribed ? setAbout(data) : null
+    )
     return () => (isSubscribed = false)
   }, [])
 

@@ -18,6 +18,7 @@ import {
   FaXing,
 } from "react-icons/fa"
 import { SiStrava } from "react-icons/si"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -76,11 +77,7 @@ export default function Support({}) {
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://cms.mxd.codes/thanks", requestOptions)
+    fetch("/api/cms?_thanks")
       .then((response) => response.json())
       .then((data) => setThanks(data.thanks))
     setGotData(true)
@@ -92,11 +89,9 @@ export default function Support({}) {
 
   const sendThanks = () => {
     const requestOptions = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ thanks: count + 1 }),
     }
-    fetch("https://cms.mxd.codes/thanks", requestOptions)
+    fetch("/api/cms?_thanks", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

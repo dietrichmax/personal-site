@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Emojione } from "react-emoji-render"
-import media from "styled-media-query"
+import { fetchGET, fetchPOST } from "@/src/utils/fetcher"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
@@ -61,13 +61,7 @@ export default function Subscribe({ noLabel, cb }) {
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://cms.mxd.codes/subscribers/count", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setCount(data))
+    fetchGET("/api/cms?_subscribers/count").then((data) => setCount(data))
     setGotData(true)
   }
 
@@ -76,13 +70,9 @@ export default function Subscribe({ noLabel, cb }) {
   }, [])
 
   const handleSubmit = () => {
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetchPOST("/api/cms?_subscribers", {
       body: JSON.stringify({ email: email }),
-    }
-    fetch("https://cms.mxd.codes/subscribers", requestOptions)
+    })
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

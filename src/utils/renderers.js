@@ -22,9 +22,7 @@ const MarkdownImage = ({ src }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const resp = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/upload/files?_url=${src}`
-      )
+      const resp = await fetch(`/api/cms?_upload/files?_url=${src}`)
       const json = await resp.json()
       const obj = json[0]
       const ratio = obj.height / obj.width

@@ -521,6 +521,13 @@ const redirects = {
         destination: "/articles/first-steps-with-leaflet-and-react",
         permanent: true,
       },
+      {
+        source:
+          "/articles/how-to-use-next-js-image-component-for-images-in-react-markdown-with-strapi",
+        destination:
+          "/articles/how-to-get-widths-and-heights-of-images-from-strapi-by-the-image-url-for-next-js",
+        permanent: true,
+      },
 
       /* Social Redirects */
       {

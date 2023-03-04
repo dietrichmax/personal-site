@@ -6,6 +6,7 @@ import { FaLink } from "react-icons/fa"
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
+  height: ${(props) => (props.height ? `${props.height}px` : "300px")};
   width: 670px;
   background-color: var(--content-bg);
   text-align: center;
@@ -33,12 +34,12 @@ const MarkdownImage = ({ src }) => {
       const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title
       const img = {
         src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${obj.url}`,
-        title: obj.name.replace(".png", ""),
+        title: title,
         alt: alt,
         height: obj.height,
         width: obj.width,
         ratio: ratio,
-        contentWidth: 670,
+        contentWidth: contentWidth,
         contentHeight: parseInt(ratio * contentWidth),
       }
       updateData(img)
@@ -60,7 +61,7 @@ const MarkdownImage = ({ src }) => {
     )
   } else {
     return (
-      <PlaceHolderImage>
+      <PlaceHolderImage height={data.contentHeight}>
         {"Sorry, somehow the image is not available :("}
       </PlaceHolderImage>
     )

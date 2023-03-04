@@ -59,7 +59,11 @@ const MarkdownImage = ({ src }) => {
       </a>
     )
   } else {
-    return <PlaceHolderImage>Loading Image...</PlaceHolderImage>
+    return (
+      <PlaceHolderImage>
+        {"Sorry, somehow the image is not available :("}
+      </PlaceHolderImage>
+    )
   }
 }
 

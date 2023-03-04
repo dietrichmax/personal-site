@@ -4,8 +4,11 @@ const prism = require("prismjs")
 import Header from "@/components/navigation/header/header"
 import Footer from "@/components/navigation/footer/footer"
 require("prismjs/components/prism-python")
-require("prismjs/plugins/line-numbers/prism-line-numbers.js")
-require("prismjs/plugins/show-language/prism-show-language.js")
+require("prismjs/components/prism-json")
+require("prismjs/components/prism-bash")
+require("prismjs/components/prism-sql")
+//require("prismjs/plugins/line-numbers/prism-line-numbers.js")
+//require("prismjs/plugins/show-language/prism-show-language.js")
 //require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
 const Container = styled.div``

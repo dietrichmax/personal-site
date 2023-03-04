@@ -347,9 +347,12 @@ export default function Index({ posts, cv }) {
                       </HeroListItem>
                       <HeroListItem>
                         I've been{" "}
-                        {/*<HeroLinksNormal href="/map" title="Location tracking">*/}
-                        tracking my location{` `}
-                        {/*</HeroLinksNormal>{" "}*/}
+                        <HeroLinksNormal
+                          href="/articles/constant-location-tracking-with-owntracks-strapi-and-visualizing-data-with-deckgl"
+                          title="How i constantly track my location and display a web-map with all the locations"
+                        >
+                          tracking my location{` `}
+                        </HeroLinksNormal>{" "}
                         since 2021.{` `}
                         <Link href="/about" passHref legacyBehavior>
                           <AboutMeLink title="About me">Read more.</AboutMeLink>

@@ -6,7 +6,7 @@ const ToCWrapper = styled.div`
   top: var(--space-sm);
   margin-bottom: var(--space-sm);
   background-color: var(--content-bg);
-  padding: var(--space);
+  padding: var(--space-sm) var(--space-sm) 1px var(--space);
   border-radius: var(--border-radius);
   font-size: 15px;
 `

@@ -41,7 +41,6 @@ const MarkdownImage = ({ src }) => {
         contentWidth: 670,
         contentHeight: ratio * contentWidth,
       }
-      console.log(img)
       updateData(img)
     }
     getData()
@@ -89,7 +88,7 @@ const renderers = {
   h2: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h2 id="h" style={{ cursor: "pointer" }} title={children}>
+      <h2 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>
@@ -101,7 +100,7 @@ const renderers = {
   h3: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h3 id="h" style={{ cursor: "pointer" }} title={children}>
+      <h3 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>
@@ -113,7 +112,7 @@ const renderers = {
   h4: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h4 id="h" style={{ cursor: "pointer" }} title={children}>
+      <h4 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>
@@ -125,7 +124,7 @@ const renderers = {
   h5: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h5 id="h" style={{ cursor: "pointer" }} title={children}>
+      <h5 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>

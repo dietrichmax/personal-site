@@ -213,6 +213,14 @@ const RecentPosts = styled.ol`
     grid-template-columns: repeat(1, minmax(0px, 1fr));
   `}
 `
+
+const CopyrightNotice = styled.span`
+  position: absolute;
+  font-size: 10px;
+  bottom: 10px;
+  right: var(--space-sm);
+`
+
 const jsonld = {
   "@context": "http://schema.org",
   "@type": "ItemList",
@@ -367,6 +375,16 @@ export default function Index({ posts, cv }) {
                   </HeroImgContainer>
                 </Hero>
               </HeroOffset>
+              <CopyrightNotice>
+                map data ©{" "}
+                <a
+                  href="openstreetmap.org/copyright"
+                  title="OpenStreetMap"
+                  alt="OpenStreetMap"
+                >
+                  OSM
+                </a>
+              </CopyrightNotice>
             </HeroWrapper>
 
             <IndexPageContainer>

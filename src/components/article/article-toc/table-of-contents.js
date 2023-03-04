@@ -16,13 +16,13 @@ const ToCTitle = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-const ToCList = styled.ol`
+const ToCList = styled.ul`
   padding-inline-start: 0;
 `
 const ToCListItem = styled.li`
   list-style-type: none;
   margin-bottom: 1rem;
-  padding-left: calc(var(--space-sm) * 0.5);
+  padding-left: calc(var(--space-sm) * 0.85);
   border-left: 3px solid var(--secondary-color);
   margin-left: ${(props) => (props.level > 1 ? `${props.level * 10}px` : "0")};
 `

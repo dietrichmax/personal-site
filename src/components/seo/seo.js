@@ -19,9 +19,9 @@ const SEO = ({
 
   useEffect(() => {
     let isSubscribed = true
-    fetchGET("/api/cms?_cv").then(
-      (data) => (isSubscribed ? setData(data) : null) && console.log(data)
-    )
+    fetch("https://cms.mxd.codes/cv", requestOptions)
+      .then((response) => response.json())
+      .then((data) => (isSubscribed ? setData(data) : null))
 
     return () => (isSubscribed = false)
   }, [])

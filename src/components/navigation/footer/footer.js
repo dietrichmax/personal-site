@@ -172,13 +172,12 @@ export default function Footer() {
   const [search, setSearch] = useState("")
 
   useEffect(() => {
-    let isSubscribed = true
-    fetchGET(`/api/cms?_posts?_sort=published_at:DESC`).then((data) =>
-      isSubscribed ? setRecentPosts(data.slice(0, 4)) : null
-    )
-    fetchGET("/api/cms?_about").then((data) =>
-      isSubscribed ? setAbout(data) : null
-    )
+    fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC", requestOptions)
+      .then((response) => response.json())
+      .then((data) => (isSubscribed ? setRecentPosts(data.slice(0, 4)) : null))
+    fetch("https://cms.mxd.codes/about", requestOptions)
+      .then((response) => response.json())
+      .then((data) => (isSubscribed ? setAbout(data) : null))
     return () => (isSubscribed = false)
   }, [])
 

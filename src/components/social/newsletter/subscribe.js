@@ -61,7 +61,13 @@ export default function Subscribe({ noLabel, cb }) {
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
-    fetchGET("/api/cms?_subscribers/count").then((data) => setCount(data))
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://cms.mxd.codes/subscribers/count", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setCount(data))
     setGotData(true)
   }
 
@@ -70,9 +76,11 @@ export default function Subscribe({ noLabel, cb }) {
   }, [])
 
   const handleSubmit = () => {
-    fetchPOST("/api/cms?_subscribers", {
-      body: JSON.stringify({ email: email }),
-    })
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://cms.mxd.codes/subscribers", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

@@ -89,9 +89,14 @@ export default function Author(author) {
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
-    fetchGET("/api/cms?_thanks").then(
-      (data) => setThanks(data.thanks) && setGotData(true)
-    )
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+    fetch("https://cms.mxd.codes/thanks", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setThanks(data.thanks))
+    setGotData(true)
   }
 
   useEffect(() => {
@@ -100,9 +105,11 @@ export default function Author(author) {
 
   const sendThanks = () => {
     const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ thanks: count + 1 }),
     }
-    fetchPUT("/api/cms?_thanks", requestOptions)
+    fetch("https://cms.mxd.codes/thanks", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

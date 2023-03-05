@@ -30,6 +30,7 @@ const IndexPageContainer = styled.div`
 `
 
 const HeroWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   background: linear-gradient(
@@ -53,14 +54,6 @@ const HeroWrapper = styled.div`
   `}
 `
 
-const HeroBackgroundImage = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-`
-
 const HeroOffset = styled.div`
   margin: 0 auto;
 `
@@ -71,7 +64,7 @@ const Hero = styled.div`
   padding: 100px var(--space) var(--space-lg) var(--space);
   margin: 0px auto;
   ${media.lessThan("large")`
-    padding: calc(2rem + 120px) 0 calc(1rem + 60px) 0;
+    padding: calc(var(--space-lg)*1.75) 0 calc(1rem + 60px) 0;
     width: 100%;
     display: block;
   `}
@@ -89,6 +82,16 @@ const HeroTitle = styled.div`
   font-weight: 900;
   ${media.lessThan("large")`
     padding: 0 var(--space-sm);
+  `}
+`
+
+const HeroSubTitle = styled.div`
+  font-weight: normal;
+  font-size: 55px;
+  color: #f2f2f2;
+  ${media.lessThan("large")`
+    padding: 0 var(--space-sm);
+    font-size: 45px;
   `}
 `
 
@@ -321,7 +324,9 @@ export default function Index({ posts, cv }) {
                         Max Dietrich.
                       </span>
                     </HeroTitle>
-                    <TypeWriter content={text} speed={90} />
+                    <HeroSubTitle>
+                      <TypeWriter content={text} speed={90} />
+                    </HeroSubTitle>
                     <HeroDescription>
                       I'm a software developer and cyclist from{" "}
                       <a

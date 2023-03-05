@@ -10,6 +10,7 @@ const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   color: ${(props) => (props.color ? `${props.color}` : "var(--text-color)")};
+  z-index: 3;
 `
 
 const InnerHeader = styled.nav`

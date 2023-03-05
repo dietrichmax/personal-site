@@ -2,15 +2,6 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 
-const HeroSubTitle = styled.div`
-  font-weight: normal;
-  font-size: 60px;
-  color: #f2f2f2;
-  ${media.lessThan("large")`
-    padding: 0 var(--space-sm);
-  `}
-`
-
 const TypeWriter = ({ content = "", speed = 100 }) => {
   const [displayedContent, setDisplayedContent] = useState("")
   const [index, setIndex] = useState(0)
@@ -31,7 +22,7 @@ const TypeWriter = ({ content = "", speed = 100 }) => {
     setDisplayedContent((displayedContent) => displayedContent + content[index])
   }, [index])
 
-  return <HeroSubTitle>{displayedContent}</HeroSubTitle>
+  return <>{displayedContent}</>
 }
 
 export default TypeWriter

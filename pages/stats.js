@@ -423,9 +423,7 @@ export default function Dashboard({
                   <StatsSmallGrid>
                     <GridStats>
                       {actions.nb_pageviews
-                        ? actions.nb_pageviews
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        ? actions.nb_pageviews.toLocaleString("en")
                         : "-"}
                     </GridStats>
                     <GridStatsDescription>Page Views</GridStatsDescription>
@@ -433,9 +431,7 @@ export default function Dashboard({
                   <StatsSmallGrid>
                     <GridStats>
                       {visitsSummary.nb_visits
-                        ? visitsSummary.nb_visits
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        ? visitsSummary.nb_visits.toLocaleString("en")
                         : "-"}
                     </GridStats>
                     <GridStatsDescription>Sessions</GridStatsDescription>
@@ -453,9 +449,7 @@ export default function Dashboard({
                   <StatsSmallGrid>
                     <GridStats>
                       {visitsSummary.bounce_rate
-                        ? visitsSummary.bounce_rate
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        ? visitsSummary.bounce_rate.toLocaleString("en")
                         : "-"}
                     </GridStats>
                     <GridStatsDescription>Bounce Rate</GridStatsDescription>
@@ -530,9 +524,7 @@ export default function Dashboard({
                   <Link href="/map" passHref legacyBehavior>
                     <StatsSmallGrid>
                       <GridStats>
-                        {locationsCount
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        {locationsCount.toLocaleString("en")}
                       </GridStats>
                       <GridStatsDescription>
                         Locations tracked

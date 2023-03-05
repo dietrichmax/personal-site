@@ -607,6 +607,9 @@ module.exports = withPlugins(
       },
     },
     {
+      swcMinify: false,
+    },
+    {
       images: {
         domains: [
           "mxd.codes",

@@ -6,7 +6,7 @@ import media from "styled-media-query"
 import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from "next/dynamic"
 import Image from "next/image"
-//const Livemap = dynamic(() => import("src/components/maps/leaflet/livemap"))
+const Livemap = dynamic(() => import("src/components/maps/leaflet/livemap"))
 
 const MapContainer = styled.div`
   position: relative;
@@ -47,13 +47,13 @@ export default function Map({ locations, locationsCount }) {
       <Title>Map</Title>
 
       <MapContainer>
-        {/*<Livemap data={locations} />*/}
-        <Image
+        <Livemap data={locations} />
+        {/*<Image
           src="https://mxd.codes/wallpaper/backgroundImage.webp"
           alt={`Background map`}
           title={`Background map`}
           layout="fill"
-        />
+      />*/}
       </MapContainer>
       <Description></Description>
       <Description>

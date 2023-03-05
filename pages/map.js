@@ -6,8 +6,11 @@ import media from "styled-media-query"
 import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from "next/dynamic"
 
-const LocationsMap = dynamic(() =>
-  import("src/components/maps/leaflet/locationsmap")
+const LocationsMap = dynamic(
+  () => import("src/components/maps/leaflet/locationsmap"),
+  {
+    ssr: false,
+  }
 )
 
 const MapContainer = styled.div`

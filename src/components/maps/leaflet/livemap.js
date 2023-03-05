@@ -15,20 +15,11 @@ function LiveMap({ data }) {
 
   const locations = new TileLayer({
     source: new XYZ({
-      url: "http://192.168.50.121/hot/{z}/{x}/{y}.png",
+      url: "https://maps.mxd.codes/locations/{z}/{x}/{y}.png",
       attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
     }),
     zIndex: 1,
   })
-
-  /*const osm = new TileLayer({
-    source: new XYZ({
-      url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
-      attributions:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    }),
-    zIndex: 0,
-  })*/
 
   const aerial = new TileLayer({
     source: new XYZ({

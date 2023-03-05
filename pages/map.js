@@ -5,16 +5,16 @@ import styled from "styled-components"
 import media from "styled-media-query"
 import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from "next/dynamic"
-import Image from "next/image"
-const Livemap = dynamic(() => import("src/components/maps/leaflet/livemap"))
+
+const LocationsMap = dynamic(() =>
+  import("src/components/maps/leaflet/locationsmap")
+)
 
 const MapContainer = styled.div`
-  position: relative;
   margin: auto;
-  width: 1136px;
+  max-width: 1200px;
   height: 600px;
-  padding: 0 var(--space);
-  margin-bottom: var(--space);
+  padding: var(--space);
   ${media.lessThan("medium")`
     padding: var(--space-sm);
     height: 60vh;
@@ -47,15 +47,13 @@ export default function Map({ locations, locationsCount }) {
       <Title>Map</Title>
 
       <MapContainer>
-        <Livemap data={locations} />
-        {/*<Image
-          src="https://mxd.codes/wallpaper/backgroundImage.webp"
-          alt={`Background map`}
-          title={`Background map`}
-          layout="fill"
-      />*/}
+        <LocationsMap data={locations} />
       </MapContainer>
-      <Description></Description>
+      <Description>
+        Since 2021-03-02 i am tracking my current location. Right now there are{" "}
+        {parseFloat(locationsCount).toLocaleString("en")} locations displayed on
+        the map.
+      </Description>
       <Description>
         If you are curious how that works have a look at the article{" "}
         <InternalLink

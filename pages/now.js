@@ -95,6 +95,8 @@ export default function Now({ weather, address, content, now }) {
     }
   }
 
+  const time = now.timestamp ? now.timestamp : new Date()
+
   return (
     <>
       <Layout>
@@ -146,15 +148,16 @@ export default function Now({ weather, address, content, now }) {
               <TextWrapper>
                 <TextBody className="e-content" content={content} />
               </TextWrapper>
-
-              <Disclaimer>
-                Last updated on{" "}
-                {format(
-                  fromUnixTime(now.timestamp),
-                  "H:mm, dd'th' MMMM yyyy '('O')'"
-                ).replace("-", " ")}
-                .
-              </Disclaimer>
+              {now.timestamp ? (
+                <Disclaimer>
+                  Last updated on{" "}
+                  {format(
+                    fromUnixTime(now.timestamp),
+                    "H:mm, dd'th' MMMM yyyy '('O')'"
+                  ).replace("-", " ")}
+                  .
+                </Disclaimer>
+              ) : null}
             </Container>
           </>
         )}

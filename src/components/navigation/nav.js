@@ -33,7 +33,6 @@ const NavItem = styled.li`
   ${media.lessThan("medium")`
     margin-left: 0;
   `}
-
   ${media.lessThan("small")`
     font-size: 1rem;
   `}

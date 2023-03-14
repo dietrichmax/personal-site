@@ -286,7 +286,7 @@ const jsonld = {
 
 export default function Index({ posts, cv }) {
   const router = useRouter()
-  const content = posts.slice(0, 12)
+  const content = posts.slice(0, 6)
 
   const text = "I build maps for the web."
 

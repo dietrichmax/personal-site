@@ -38,13 +38,15 @@ function LiveMap({ data }) {
     "EPSG:3857"
   )
 
+  console.log([data.slice(-1)[0].lon, data.slice(-1)[0].lat])
+
   useEffect(() => {
     const initialMap = new Map({
       target: mapElement.current,
       layers: [aerial, locData],
       view: new View({
         center: center,
-        zoom: 13,
+        zoom: 11,
         maxZoom: 13,
       }),
     })

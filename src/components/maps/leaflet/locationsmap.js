@@ -47,7 +47,7 @@ function LiveMap({ data }) {
       view: new View({
         center: center,
         zoom: 11,
-        maxZoom: 13,
+        maxZoom: 16,
       }),
     })
     setMap(initialMap)

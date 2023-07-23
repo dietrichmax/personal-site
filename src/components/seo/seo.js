@@ -55,7 +55,7 @@ const SEO = ({
     "gender": "Male",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Rosenheim",
+      "addressLocality": "Wasserburg am Inn",
       "addressRegion": "BY",
       "addressCountry": "Germany",
     },

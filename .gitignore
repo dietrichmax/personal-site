@@ -45,3 +45,5 @@ yarn-error.log*
 /.husky
 
 /public/wallpaper/backgroundImage.png
+.Dockerfile
+.docker-compose.yml

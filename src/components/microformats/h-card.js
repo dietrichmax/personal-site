@@ -46,9 +46,9 @@ export default function hCard() {
             {config.siteTitleAlt}
           </a>
           <time className="dt-btday" dateTime="--08-08" itemProp="birthDate" />
-          <data className="p-locality" value="Rosenheim" />
+          <data className="p-locality" value="Wasserburg am Inn" />
           <data className="p-region" value="Bavaria" />
-          <data className="p-postal-code" value="83026" />
+          <data className="p-postal-code" value="83512" />
           <data className="p-country-name" value="Germany" />
         </div>
       </div>

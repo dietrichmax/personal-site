@@ -87,7 +87,7 @@ const HeroTitle = styled.div`
 
 const HeroSubTitle = styled.div`
   font-weight: normal;
-  font-size: 55px;
+  font-size: 48px;
   color: #f2f2f2;
   ${media.lessThan("large")`
     padding: 0 var(--space-sm);
@@ -107,7 +107,7 @@ const HeroDescription = styled.p`
 `
 
 const HeroList = styled.ul`
-  margin-top: calc(var(--space-lg) * 1.5);
+  margin-top: var(--space-lg);
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -288,7 +288,7 @@ export default function Index({ posts, cv }) {
   const router = useRouter()
   const content = posts.slice(0, 12)
 
-  const text = "I build maps for the web."
+  const text = "Welcome to my digital garden."
 
   return (
     <>
@@ -336,6 +336,9 @@ export default function Index({ posts, cv }) {
                       >
                         Wasserburg am Inn, Germany.
                       </a>{" "}
+                      <br />
+                      On this website I am writing about my learnings in
+                      web-development and creating web-maps.
                     </HeroDescription>
                     <HeroList aria-label="Highlights.">
                       <HeroListItem>

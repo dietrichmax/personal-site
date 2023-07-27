@@ -188,6 +188,10 @@ export default function Footer() {
 
   const footerItems = [
     {
+      name: "Articles",
+      link: "/articles",
+    },
+    {
       name: "Contact",
       link: "/contact",
     },

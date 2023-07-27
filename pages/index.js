@@ -107,7 +107,7 @@ const HeroDescription = styled.p`
 `
 
 const HeroList = styled.ul`
-  margin-top: var(--space-lg);
+  margin-top: var(--space);
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -336,7 +336,8 @@ export default function Index({ posts, cv }) {
                       >
                         Wasserburg am Inn, Germany.
                       </a>{" "}
-                      <br />
+                    </HeroDescription>
+                    <HeroDescription>
                       On this website I am writing about my learnings in
                       web-development and creating web-maps.
                     </HeroDescription>

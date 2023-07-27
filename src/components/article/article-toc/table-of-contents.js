@@ -6,7 +6,7 @@ const ToCWrapper = styled.div`
   top: var(--space-sm);
   margin-bottom: var(--space-sm);
   background-color: var(--content-bg);
-  padding: var(--space-sm) var(--space-sm) 1px var(--space);
+  padding: var(--space-sm) var(--space-sm) 1px var(--space-sm);
   border-radius: var(--border-radius);
   font-size: 15px;
 `
@@ -22,8 +22,8 @@ const ToCList = styled.ul`
 const ToCListItem = styled.li`
   list-style-type: none;
   margin-bottom: 1rem;
-  padding-left: calc(var(--space-sm) * 0.85);
-  border-left: 3px solid var(--secondary-color);
+  padding-left: calc(var(--space-sm) * 1.25);
+  border-left: 1px solid var(--secondary-color);
   margin-left: ${(props) => (props.level > 1 ? `${props.level * 10}px` : "0")};
 `
 

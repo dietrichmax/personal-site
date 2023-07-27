@@ -33,24 +33,26 @@ const CardItemTitle = styled.h2`
 
 const CardItemDescription = styled.div`
   line-height: 1.5;
-  margin: 0.75rem 0;
+  margin: 0.75rem 0 1.5rem 0;
   font-size: 0.875rem;
   font-family: var(--secondary-font);
 `
-
-const TagsWrapper = styled.div``
 
 const CardMeta = styled.div`
   padding-bottom: var(--space-sm);
 `
 
-const CardReadMoreRead = styled.a`
+const CardReadMoreRead = styled.p`
   display: inline-block;
-  color: var(--text-color);
-  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  color: #fff;
+  background: var(--secondary-color);
+  font-family: var(--primary-font);
   :hover {
-    border-bottom: 1px solid transparent;
+    color: var(--text-color);
   }
 `
 
@@ -79,12 +81,12 @@ export default function PostPreview({ postData, preview }) {
           </CardItemTitle>
           <CardItemDescription className="p-summary">
             {excerpt}{" "}
-            <Link href={slug} passHref legacyBehavior>
-              <CardReadMoreRead title={title}>
-                Continue reading...
-              </CardReadMoreRead>
-            </Link>
           </CardItemDescription>
+          <Link href={slug} passHref legacyBehavior>
+            <CardReadMoreRead title={title}>
+              Continue reading...
+            </CardReadMoreRead>
+          </Link>
         </CardItemInfo>
         <CardMeta>
           {/*<TagsWrapper>

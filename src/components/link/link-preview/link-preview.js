@@ -31,12 +31,13 @@ const LinksContent = styled.p`
 
 const LinkLink = styled.a`
   font-size: 14px;
-  border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
   font-family: var(--secondary-font);
-  font-style: italic;
+  text-decoration: none;
+  box-shadow: 0px -3px 0px 0px var(--secondary-color) inset;
+  transition: box-shadow 150ms ease-in-out;
   :hover {
-    border-bottom: none;
+    box-shadow: 0px -16px 0px 0px var(--secondary-color) inset;
   }
 `
 
@@ -60,7 +61,7 @@ export default function LinkPreview({ link }) {
           {link.link}
         </LinkLink>
         <LinksContent className="e-content">{link.description}</LinksContent>
-        <PostTags tags={link.tags} />
+        {/*<PostTags tags={link.tags} />*/}
         <PostMeta post={link} slug={slug} />
       </LinkContainer>
     </Card>

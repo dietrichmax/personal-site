@@ -592,12 +592,6 @@ module.exports = withPlugins(
       }),
     ],
     redirects,
-    {
-      i18n: {
-        locales: ["en"],
-        defaultLocale: "en",
-      },
-    },
     withFonts,
     {
       withPWA: {

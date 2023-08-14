@@ -12,7 +12,7 @@ import CookieBanner from "@/components/cookies/cookie-banner"
 import "@/styles/mapbox-gl.css"
 import "@/styles/prism.css"
 import "@/public/fonts/SF-UI/style.css"
-import "@/public/fonts/Clarity-City/style.css"
+//import "@/public/fonts/Clarity-City/style.css"
 //import 'mapbox-gl/dist/mapbox-gl.css';
 
 class MyApp extends App {

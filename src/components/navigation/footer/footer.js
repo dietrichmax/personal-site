@@ -33,37 +33,6 @@ const FooterInnerContainer = styled.div`
   `}
 `
 
-const FooterMainNav = styled.ul`
-  list-style: none;
-  padding-inline-start: 0;
-  font-size: 1rem;
-  text-align: right;
-  grid-column: span 1 / span 1;
-  display: flex;
-  justify-content: space-around;
-  ${media.lessThan("medium")` 
-    display: flex;
-    justify-content: space-between;
-    margin-top: var(--space-sm);
-  `}
-`
-
-const FooterMainNavItem = styled.li`
-  display: inline-block;
-  transition: 0.2s;
-  :hover {
-    color: var(--thirdy-color);
-    cursor: pointer;
-  }
-  ${media.lessThan("medium")` 
-    margin: 0;
-  `}
-`
-
-const FooterMainNavLink = styled.a`
-  padding: var(--space-sm) 0;
-`
-
 const FooterColumnWrapper = styled.div`
   grid-column: span 4 / span 4;
   list-style: none;

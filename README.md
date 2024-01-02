@@ -1,3 +1,4 @@
+[![Azure Static Web Apps CI/CD](https://github.com/dietrichmax/personal-site/actions/workflows/azure-static-web-apps-agreeable-coast-0a82cf003.yml/badge.svg)](https://github.com/dietrichmax/personal-site/actions/workflows/azure-static-web-apps-agreeable-coast-0a82cf003.yml)
 <div align="center">
   <img alt="Logo" src="https://mxd.codes/profile.png" width="100" style="border-radius:50%;"/>
 </div>

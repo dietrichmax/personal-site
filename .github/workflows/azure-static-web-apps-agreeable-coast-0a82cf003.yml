@@ -1,8 +1,9 @@
 name: Azure Static Web Apps CI/CD
+
 env:
-  NEXT_PUBLIC_MATOMO_SITE_ID: 1
-  NEXT_PUBLIC_MATOMO_URL: https://analytics.mxd.codes
-  NEXT_PUBLIC_PRIVATE_STRAPI_API_URL: https://cms.mxd.codes
+  NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
+  NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
+  NEXT_PUBLIC_PRIVATE_STRAPI_API_URL: ${{secrets.PRIVATE_STRAPI_API_URL}}
   
 on:
   push:

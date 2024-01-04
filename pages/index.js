@@ -8,7 +8,6 @@ import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
-import { useRouter } from "next/router"
 import { getAbout } from "src/data/external/cms"
 import Link from "next/link"
 import Image from "next/image"
@@ -285,7 +284,6 @@ const jsonld = {
 }
 
 export default function Index({ posts, cv }) {
-  const router = useRouter()
   const content = posts.slice(0, 12)
 
   const text = "Welcome to my digital garden."
@@ -293,10 +291,6 @@ export default function Index({ posts, cv }) {
   return (
     <>
       <Layout color="#f2f2f2">
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO
               description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
               jsonld={jsonld}
@@ -422,9 +416,7 @@ export default function Index({ posts, cv }) {
                 <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
               </Link>
               </MoreContainer>*/}
-            </IndexPageContainer>
-          </>
-        )}
+            </IndexPageContainer
       </Layout>
     </>
   )
@@ -476,7 +468,6 @@ export async function getStaticProps() {
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return {
-    revalidate: 86400,
     props: {
       posts: sortedContent,
       //count: stats.posts.count,

@@ -4,6 +4,7 @@ import config from "../src/data/internal/SiteConfig"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
 import styled from "styled-components"
+import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
 import axios from "axios"
@@ -99,6 +100,10 @@ export default function Now({ weather, address, content, now }) {
   return (
     <>
       <Layout>
+        {router.isFallback ? (
+          <PageTitle>{config.loading}</PageTitle>
+        ) : (
+          <>
             <SEO
               title="Now"
               slug="Now"
@@ -154,12 +159,14 @@ export default function Now({ weather, address, content, now }) {
                 </Disclaimer>
               ) : null}
             </Container>
+          </>
+        )}
       </Layout>
     </>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const locationData = (await getLocationData()) || []
   const content = (await getNowData()) || []
 

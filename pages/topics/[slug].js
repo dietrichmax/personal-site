@@ -92,7 +92,7 @@ export async function getStaticProps({ params }) {
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return {
-    revalidate: 86400,
+    //revalidate: 86400,
     props: {
       posts: sortedContent,
       tag: data.tags[0],
@@ -104,6 +104,6 @@ export async function getStaticPaths() {
   const allTags = await getAllTags()
   return {
     paths: allTags?.map((tag) => `/topics/${tag.slug}`) || [],
-    fallback: true,
+    fallback: false,
   }
 }

@@ -3,7 +3,6 @@ import { getAllPosts, getAllTags } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
-import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import Grid from "src/components/grid/grid"
 import SubTitle from "src/components/title/sub-title"
@@ -39,17 +38,12 @@ const Sticky = styled.div`
   top: var(--space);
 `
 export default function Blog({ allPosts, allTags }) {
-  const router = useRouter()
 
   const posts = allPosts
 
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO
               title="Articles"
               description="Tutorials, Guides and thoughts"
@@ -71,8 +65,6 @@ export default function Blog({ allPosts, allTags }) {
                   </TagsGrid>*/}
               </Grid>
             </BlogPageContainer>
-          </>
-        )}
       </Layout>
     </>
   )

@@ -416,7 +416,7 @@ export default function Index({ posts, cv }) {
                 <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
               </Link>
               </MoreContainer>*/}
-            </IndexPageContainer
+            </IndexPageContainer>
       </Layout>
     </>
   )

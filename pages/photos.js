@@ -14,7 +14,6 @@ const PhotosContainer = styled.div`
 `
 
 export default function Photos({ allPhotos }) {
-  const router = useRouter()
 
   return (
     <>

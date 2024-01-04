@@ -159,5 +159,6 @@ export async function getStaticPaths() {
 
   return {
     paths: notes?.map((note) => `/notes/${note.slug}`) || [],
+    fallback: false,
   }
 }

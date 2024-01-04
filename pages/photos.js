@@ -3,7 +3,6 @@ import { getAllPhotos } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
-import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
 import Grid from "src/components/grid/grid"
@@ -20,10 +19,6 @@ export default function Photos({ allPhotos }) {
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO title="Photos" slug="Photos" />
             <PageTitle>Photos</PageTitle>
             <SubTitle>.</SubTitle>
@@ -34,8 +29,6 @@ export default function Photos({ allPhotos }) {
                 ))}
               </Grid>
             </PhotosContainer>
-          </>
-        )}
       </Layout>
     </>
   )
@@ -45,7 +38,6 @@ export async function getStaticProps() {
   const allPhotos = (await getAllPhotos()) || []
 
   return {
-    revalidate: 86400,
     props: { allPhotos },
   }
 }

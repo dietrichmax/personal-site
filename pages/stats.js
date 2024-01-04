@@ -3,7 +3,6 @@ import Layout from "@/components/layout/layout"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "@/components/seo/seo"
-import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
 import ReactTooltip from "react-tooltip"
@@ -321,7 +320,6 @@ export default function Dashboard({
   biggestTrafficSource,
   thanks,
 }) {
-  const router = useRouter()
 
   const { forkCount } = githubStats.user.repository
   const stars = githubStats.user.repository.stargazers.totalCount
@@ -402,10 +400,6 @@ export default function Dashboard({
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO title="Site Stats" slug="stats" />
             <StyledReactTooltip />
             <PageTitle>Site Stats</PageTitle>
@@ -834,8 +828,6 @@ export default function Dashboard({
 
               {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
             </Container>
-          </>
-        )}
       </Layout>
     </>
   )
@@ -865,7 +857,6 @@ export async function getStaticProps() {
   const thanks = (await getThanks()) || []
 
   return {
-    revalidate: 3600,
     props: {
       lastViews,
       actions,

@@ -43,10 +43,6 @@ export default function Tags({ posts, tag }) {
 
   return (
     <Layout>
-      {router.isFallback ? (
-        <PageTitle>{config.loading}</PageTitle>
-      ) : (
-        <>
           <SEO
             title={tag.name}
             description={tag.description}
@@ -73,8 +69,6 @@ export default function Tags({ posts, tag }) {
               </Grid>
             </TagPostsContainer>
           </TagContainer>
-        </>
-      )}
     </Layout>
   )
 }

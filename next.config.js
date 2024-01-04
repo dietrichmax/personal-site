@@ -606,6 +606,7 @@ module.exports = withPlugins(
     },
     {
       images: {
+        unoptimized: true,
         domains: [
           "mxd.codes",
           "cms.mxd.codes",

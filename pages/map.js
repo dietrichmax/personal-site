@@ -77,7 +77,6 @@ export async function getStaticProps() {
   const locations = (await getRecentLocationData()) || []
 
   return {
-    revalidate: 3600,
     props: {
       locations,
       locationsCount,

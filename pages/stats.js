@@ -388,14 +388,14 @@ export default function Dashboard({
     jumpCount = jumpCount + item.jumpCount
   })
 
-  /*const consentTrue = consentCount
+  const consentTrue = consentCount
     ? consentCount.find((element) => element.label === "consent - true")
     : 0
 
   const consentFalse = consentCount
     ? consentCount.find((element) => element.label === "consent - false")
     : 0
-  */
+  
 
   return (
     <>
@@ -534,13 +534,13 @@ export default function Dashboard({
                 <StatsGridMedium>
                   <GridMediumTitle>Interactions</GridMediumTitle>
                   <BottomStatsGrid>
-                    <GridStats>0{/*consentTrue.nb_events*/}</GridStats>
+                    <GridStats>{consentTrue.nb_events}</GridStats>
                     <GridStatsDescription>
                       Cookie consent given
                     </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
-                    <GridStats>0{/*consentFalse.nb_events*/}</GridStats>
+                    <GridStats>{consentFalse.nb_events}</GridStats>
                     <GridStatsDescription>
                       Cookie consent denied
                     </GridStatsDescription>

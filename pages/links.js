@@ -3,7 +3,6 @@ import { getAllLinks } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
-import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
 import Grid from "src/components/grid/grid"
@@ -26,10 +25,6 @@ export default function Links({ allLinks }) {
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO title="Links" slug="links" />
             <PageTitle>Links</PageTitle>
             <SubTitle>Awesome content on the web, in random order.</SubTitle>
@@ -40,8 +35,6 @@ export default function Links({ allLinks }) {
                 ))}
               </Grid>
             </LinksContainer>
-          </>
-        )}
       </Layout>
     </>
   )
@@ -51,7 +44,6 @@ export async function getStaticProps() {
   const allLinks = (await getAllLinks()) || []
 
   return {
-    revalidate: 86400,
     props: { allLinks },
   }
 }

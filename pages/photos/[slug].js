@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import Layout from "src/components/layout/layout"
 import { getPhoto, getAllPhotos } from "src/data/external/cms"
 import styled from "styled-components"
@@ -40,13 +39,9 @@ const TagsWrapper = styled.div`
 `
 
 export default function Photo({ photo }) {
-  const router = useRouter()
 
   return (
     <Layout>
-      {router.isFallback ? (
-        <PageTitle>{config.loading}</PageTitle>
-      ) : (
         <article className="h-entry">
           <SEO
             title={photo.title}
@@ -99,7 +94,6 @@ export default function Photo({ photo }) {
             <Webmentions slug={`/photos/${photo.slug}`} />
           </PageWrapper>
         </article>
-      )}
     </Layout>
   )
 }

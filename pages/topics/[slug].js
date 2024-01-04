@@ -35,11 +35,7 @@ const PostsGrid = styled.ol`
 `
 
 export default function Tags({ posts, tag }) {
-  const router = useRouter()
   const content = posts
-  if (!router.isFallback && !tag?.slug) {
-    return <ErrorPage statusCode={404} />
-  }
 
   return (
     <Layout>

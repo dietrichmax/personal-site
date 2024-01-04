@@ -334,6 +334,7 @@ export default function Dashboard({
 
   const linesOfCode = codeStats.SUM.code
 
+  const visitors = liveViews[0].visitors ? liveViews[0].visitors} : 0
   const α = 0.4
   const B = 700
   let pageViews = []
@@ -416,7 +417,7 @@ export default function Dashboard({
                 <StatsGrid>
                   <Title>Web Analytics</Title>
                   <StatsLargeGrid>
-                    <GridStats>{liveViews[0].visitors}</GridStats>
+                    <GridStats>{visitors}</GridStats>
                     <GridStatsDescription>
                       Visitors in the last 5 minutes
                     </GridStatsDescription>

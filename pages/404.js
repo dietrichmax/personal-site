@@ -40,7 +40,6 @@ export async function getStaticProps() {
   const pages = []
   allPosts.map((post) => pages.push(post.slug))
   return {
-    revalidate: 86400,
     props: { pages },
   }
 }

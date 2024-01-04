@@ -20,7 +20,6 @@ const LinksGrid = styled.ol`
 `
 
 export default function Links({ allLinks }) {
-  const router = useRouter()
 
   return (
     <>

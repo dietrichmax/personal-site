@@ -115,6 +115,6 @@ export async function getStaticPaths() {
 
   return {
     paths: photos?.map((photo) => `/photos/${photo.slug}`) || [],
-    fallback: true,
+    fallback: false,
   }
 }

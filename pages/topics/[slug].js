@@ -1,5 +1,3 @@
-import { useRouter } from "next/router"
-import ErrorPage from "next/error"
 import Grid from "src/components/grid/grid"
 import Layout from "src/components/layout/layout"
 import { getTag, getAllTags } from "src/data/external/cms"

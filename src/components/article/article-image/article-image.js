@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Image from "next/image"
 import media from "styled-media-query"
 
-const CardItemImg = styled(img)`
+const CardItemImg = styled.img`
   cursor: pointer;
   width: ${(props) => (props.width ? `${props.width}px` : "350px")} !important;
   height: ${(props) =>
@@ -18,7 +18,7 @@ const CardItemImg = styled(img)`
   `}
 `
 
-const PostImg = styled(img)`
+const PostImg = styled.img`
   position: relative;
   object-fit: cover;
   width: ${(props) => (props.width ? `${props.width}px` : "1300px")} !important;

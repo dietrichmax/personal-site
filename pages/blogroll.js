@@ -2,10 +2,8 @@ import Layout from "src/components/layout/layout"
 import { getAllBlogrolls } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
-import Image from "next/image"
 import media from "styled-media-query"
 import SEO from "src/components/seo/seo"
-import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
 import Link from "next/link"
@@ -37,7 +35,7 @@ const BlogrollProfileImgWrapper = styled.div`
   margin-right: var(--space);
 `
 
-const BlogRollProfileImg = styled(Image)`
+const BlogRollProfileImg = styled.img`
   flex: none;
   max-width: 70px;
   object-fit: cover;
@@ -62,15 +60,10 @@ const BlogrollProfileDesc = styled.p`
 `
 
 export default function Blogroll({ allBlogrolls }) {
-  const router = useRouter()
 
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO title="Blogroll" slug="blogroll" />
 
             <PageTitle>Blogroll</PageTitle>
@@ -117,8 +110,6 @@ export default function Blogroll({ allBlogrolls }) {
                 ))}
               </Grid>
             </BlogrollContainer>
-          </>
-        )}
       </Layout>
     </>
   )

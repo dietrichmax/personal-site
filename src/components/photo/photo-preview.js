@@ -54,7 +54,7 @@ const PhotosContent = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-const Photo = styled(Image)`
+const Photo = styled(img)`
   position: relative;
   object-fit: cover;
   object-position: bottom;

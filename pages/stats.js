@@ -334,7 +334,7 @@ export default function Dashboard({
 
   const linesOfCode = codeStats.SUM.code
 
-  const visitors = liveViews[0].visitors ? liveViews[0].visitors : 0
+  const visitors = 0 //liveViews ? liveViews[0].visitors : 
   const α = 0.4
   const B = 700
   let pageViews = []

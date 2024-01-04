@@ -332,7 +332,7 @@ export default function Dashboard({
 
   const linesOfCode = codeStats.SUM.code
 
-  const visitors = 0 //liveViews ? liveViews[0].visitors : 
+  const visitors =  liveViews ? liveViews[0].visitors : 0
   const α = 0.4
   const B = 700
   let pageViews = []
@@ -388,14 +388,14 @@ export default function Dashboard({
     jumpCount = jumpCount + item.jumpCount
   })
 
-  const consentTrue = consentCount
+  /*const consentTrue = consentCount
     ? consentCount.find((element) => element.label === "consent - true")
     : 0
 
   const consentFalse = consentCount
     ? consentCount.find((element) => element.label === "consent - false")
     : 0
-  
+  */
 
   return (
     <>
@@ -534,13 +534,13 @@ export default function Dashboard({
                 <StatsGridMedium>
                   <GridMediumTitle>Interactions</GridMediumTitle>
                   <BottomStatsGrid>
-                    <GridStats>{consentTrue.nb_events}</GridStats>
+                    <GridStats>0</GridStats>
                     <GridStatsDescription>
                       Cookie consent given
                     </GridStatsDescription>
                   </BottomStatsGrid>
                   <BottomStatsGrid>
-                    <GridStats>{consentFalse.nb_events}</GridStats>
+                    <GridStats>0</GridStats>
                     <GridStatsDescription>
                       Cookie consent denied
                     </GridStatsDescription>

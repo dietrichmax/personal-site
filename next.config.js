@@ -591,7 +591,7 @@ module.exports = withPlugins(
         // put the rest of config here
       }),
     ],
-    redirects,
+    //redirects,
     withFonts,
     {
       withPWA: {

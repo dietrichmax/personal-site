@@ -3,7 +3,6 @@ import { getAllNotes } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
-import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import NotePreview from "src/components/note/note-preview/note-preview"
 import SubTitle from "src/components/title/sub-title"
@@ -21,15 +20,10 @@ const Feed = styled.span`
 `
 
 export default function Notes({ allNotes }) {
-  const router = useRouter()
 
   return (
     <>
       <Layout>
-        {router.isFallback ? (
-          <PageTitle>{config.loading}</PageTitle>
-        ) : (
-          <>
             <SEO title="Notes" slug="notes" />
             <PageTitle>Notes</PageTitle>
             <SubTitle>Status updates and short notes.</SubTitle>
@@ -40,8 +34,6 @@ export default function Notes({ allNotes }) {
                 ))}
               </Grid>
             </NotesWrapper>
-          </>
-        )}
       </Layout>
     </>
   )
@@ -51,7 +43,6 @@ export async function getStaticProps() {
   const allNotes = (await getAllNotes()) || []
 
   return {
-    revalidate: 86400,
     props: { allNotes },
   }
 }

@@ -602,11 +602,11 @@ module.exports = withPlugins(
     },
     {
       swcMinify: false,
-      output: 'export',
+      //output: 'export',
     },
     {
       images: {
-        unoptimized: true,
+        //unoptimized: true,
         domains: [
           "mxd.codes",
           "cms.mxd.codes",

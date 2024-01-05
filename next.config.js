@@ -602,7 +602,7 @@ module.exports = withPlugins(
     },
     {
       swcMinify: false,
-      //output: 'export',
+      output: 'standalone',
     },
     {
       images: {

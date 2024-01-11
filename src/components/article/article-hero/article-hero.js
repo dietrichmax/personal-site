@@ -2,7 +2,7 @@ import Date from "../../date/date"
 import Link from "next/link"
 import styled from "styled-components"
 import media from "styled-media-query"
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 const HeroWrapper = styled.div``
 

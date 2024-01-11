@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import Link from "next/link"
 import config from "src/data/internal/SiteConfig"
 import {
@@ -149,15 +149,11 @@ export default function Author(author) {
         {picture ? (
           <AuthorImgWrapper>
             <Image
-              src={`${
-                picture.url.startsWith("/")
-                  ? process.env.NEXT_PUBLIC_STRAPI_API_URL
-                  : ""
-              }${picture.url}`}
+              src={picture.url}
               alt={username}
               title={username}
-              width="50"
-              height="50"
+              width={50}
+              height={50}
             />
           </AuthorImgWrapper>
         ) : null}

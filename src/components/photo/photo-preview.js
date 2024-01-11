@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import PostTags from "src/components/tags/tags"
+//import PostTags from "src/components/tags/tags"
 import HCard from "src/components/microformats/h-card"
 import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import { Card } from "@/styles/templates/card"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import Link from "next/link"
 import media from "styled-media-query"
 
@@ -54,7 +54,7 @@ const PhotosContent = styled.p`
   margin-bottom: var(--space-sm);
 `
 
-const Photo = styled.img`
+const Photo = styled(Image)`
   position: relative;
   object-fit: cover;
   object-position: bottom;
@@ -81,7 +81,7 @@ export default function PhotoPreview({ photo }) {
         <Link href={slug} className="u-url" passHref>
           <PhotoWrapper>
             <Photo
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
+              src={`${
                 photo.photo[0].formats.content
                   ? photo.photo[0].formats.content.url
                   : photo.photo[0].url

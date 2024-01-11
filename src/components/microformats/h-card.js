@@ -21,12 +21,6 @@ export default function hCard() {
           href={config.siteUrl}
         >
           {config.siteTitleAlt}
-          <img
-            className="u-photo"
-            itemProp="image"
-            src="/logos/firefox/firefox-general-32-32.png"
-            alt={`Image of ${config.siteTitle}`}
-          />
           <data
             className="p-description"
             itemProp="description"

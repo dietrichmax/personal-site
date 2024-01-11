@@ -4,7 +4,7 @@ import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
 import { format, subDays, formatDistance } from "date-fns"
 import { Input } from "@/styles/templates/input"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import {
   FaRegQuestionCircle,
   FaRetweet,
@@ -264,7 +264,7 @@ export default function Webmentions({ slug, preview }) {
           alt={`Link to profile of ${mention.author.name}`}
           title={mention.author.name}
         >
-          <Image
+          <img
             src={mention.author.photo}
             height="50"
             width="50"

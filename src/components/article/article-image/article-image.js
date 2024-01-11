@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Image from "next/image"
 import media from "styled-media-query"
 
-const CardItemImg = styled.img`
+const CardItemImg = styled(Image)`
   cursor: pointer;
   width: ${(props) => (props.width ? `${props.width}px` : "350px")} !important;
   height: ${(props) =>
@@ -18,7 +18,7 @@ const CardItemImg = styled.img`
   `}
 `
 
-const PostImg = styled.img`
+const PostImg = styled(Image)`
   position: relative;
   object-fit: cover;
   width: ${(props) => (props.width ? `${props.width}px` : "1300px")} !important;
@@ -42,23 +42,23 @@ export default function PostImage({ preview, postData }) {
       {preview ? (
         coverImage ? (
           <CardItemImg
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+            src={$coverImage.url}
             alt={title}
             title={title}
-            width="350"
-            height="130"
+            width={350}
+            height={130}
             className="u-photo"
             priority
           />
         ) : null
       ) : coverImage ? (
         <PostImg
-          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+          src={coverImage.url}
           alt={title}
           title={title}
           className="u-photo"
-          width="1300"
-          height="450"
+          width={1300}
+          height={450}
           priority
         />
       ) : null}

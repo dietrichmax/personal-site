@@ -591,7 +591,7 @@ module.exports = withPlugins(
         // put the rest of config here
       }),
     ],
-    //redirects,
+    redirects,
     withFonts,
     {
       withPWA: {
@@ -602,10 +602,11 @@ module.exports = withPlugins(
     },
     {
       swcMinify: false,
-      output: 'standalone',
     },
     {
       images: {
+        loader: "custom",
+        loaderFile: "./src/utils/loader.js",
         //unoptimized: true,
         domains: [
           "mxd.codes",

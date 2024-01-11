@@ -132,7 +132,7 @@ const HeroImgContainer = styled.figure`
   margin-right: auto;
   z-index: 1;
   min-width: 310px;
-  height: 312px;
+  height: 230px;
   position: relative;
   border: 1px solid #f2f2f2;
   border-radius: 6px;
@@ -149,7 +149,7 @@ const HeroImgContainer = styled.figure`
 `
 
 const HeroImg = styled(Image)`
-  width: 310px;
+  width: 308px;
   height: auto;
   background-color: var(--secondary-color);
   opacity: 0.96;
@@ -286,17 +286,17 @@ const jsonld = {
 export default function Index({ posts, cv }) {
   const content = posts.slice(0, 12)
 
-  const text = "Welcome to my digital garden."
+  const text = "Welcome to my personal website."
 
   return (
     <>
       <Layout color="#f2f2f2">
-            <SEO
-              description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
-              jsonld={jsonld}
-            />
-            <HeroWrapper className="h-card" color="#f2f2f2">
-              {/*<HeroBackgroundImage>
+        <SEO
+          description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
+          jsonld={jsonld}
+        />
+        <HeroWrapper className="h-card" color="#f2f2f2">
+          {/*<HeroBackgroundImage>
             <Image
               alt="Mountains"
               src="https://mxd.codes/wallpaper/backgroundImage.png"
@@ -308,103 +308,103 @@ export default function Index({ posts, cv }) {
               }}
             />
             </HeroBackgroundImage>*/}
-              <HeroOffset>
-                <Hero>
-                  <HCard />
-                  <HeroArticle>
-                    <HeroDescription>Hi, my name is</HeroDescription>
-                    <HeroTitle>
-                      <span className="p-name u-url u-uid" rel="author me">
-                        Max Dietrich.
-                      </span>
-                    </HeroTitle>
-                    <HeroSubTitle>
-                      <TypeWriter content={text} speed={90} />
-                    </HeroSubTitle>
-                    <HeroDescription>
-                      I'm a software developer and cyclist from{" "}
-                      <a
-                        className="p-locality"
-                        href="https://www.openstreetmap.org/search?query=wasserburg%20am%20inn#map=14/48.0499/12.2101"
-                        title="Wasserburg am Inn, Germany"
-                      >
-                        Wasserburg am Inn, Germany.
-                      </a>{" "}
-                    </HeroDescription>
-                    <HeroDescription>
-                      On this website I am writing about my learnings in
-                      web-development and creating web-maps.
-                    </HeroDescription>
-                    <HeroList aria-label="Highlights.">
-                      <HeroListItem>
-                        {" "}
-                        I' am also a proud member of the{" "}
-                        <HeroLinks
-                          className="p-org h-card"
-                          href="https://indieweb.org/"
-                          title="IndieWeb"
-                        >
-                          IndieWeb
-                        </HeroLinks>{" "}
-                        community.
-                      </HeroListItem>
-                      <HeroListItem>
-                        I've been{" "}
-                        <HeroLinksNormal
-                          href="/map"
-                          title="How i constantly track my location and display a web-map with all the locations"
-                        >
-                          tracking my location{` `}
-                        </HeroLinksNormal>{" "}
-                        since 2021.{` `}
-                        <Link href="/about" passHref legacyBehavior>
-                          <AboutMeLink title="About me">Read more.</AboutMeLink>
-                        </Link>
-                      </HeroListItem>
-                    </HeroList>
-                  </HeroArticle>
-                  <HeroImgContainer>
-                    <HeroImg
-                      src="/logos/windows/windowsphone-mediumtile-360-360.png"
-                      width="310"
-                      height="310"
-                      title="Photo of Max."
-                      alt="Photo of Max."
-                      aria-label="Photo of Max."
-                      role="img"
-                      priority
-                    />
-                  </HeroImgContainer>
-                </Hero>
-              </HeroOffset>
-              <CopyrightNotice>
-                map data ©{" "}
-                <a
-                  href="openstreetmap.org/copyright"
-                  title="OpenStreetMap"
-                  alt="OpenStreetMap"
-                >
-                  OSM
-                </a>
-              </CopyrightNotice>
-            </HeroWrapper>
+          <HeroOffset>
+            <Hero>
+              <HCard />
+              <HeroArticle>
+                <HeroDescription>Hi, my name is</HeroDescription>
+                <HeroTitle>
+                  <span className="p-name u-url u-uid" rel="author me">
+                    Max Dietrich.
+                  </span>
+                </HeroTitle>
+                <HeroSubTitle>
+                  <TypeWriter content={text} speed={90} />
+                </HeroSubTitle>
+                <HeroDescription>
+                  I'm a software developer and cyclist from{" "}
+                  <a
+                    className="p-locality"
+                    href="https://www.openstreetmap.org/search?query=wasserburg%20am%20inn#map=14/48.0499/12.2101"
+                    title="Wasserburg am Inn, Germany"
+                  >
+                    Wasserburg am Inn, Germany.
+                  </a>{" "}
+                </HeroDescription>
+                <HeroDescription>
+                  On this website I am sharing my learnings about
+                  web-development and creating web-maps.
+                </HeroDescription>
+                <HeroList aria-label="Highlights.">
+                  <HeroListItem>
+                    {" "}
+                    I' am also a proud member of the{" "}
+                    <HeroLinks
+                      className="p-org h-card"
+                      href="https://indieweb.org/"
+                      title="IndieWeb"
+                    >
+                      IndieWeb
+                    </HeroLinks>{" "}
+                    community.
+                  </HeroListItem>
+                  <HeroListItem>
+                    I've been{" "}
+                    <HeroLinksNormal
+                      href="/map"
+                      title="How i constantly track my location and display a web-map with all the locations"
+                    >
+                      tracking my location{` `}
+                    </HeroLinksNormal>{" "}
+                    since 2021.{` `}
+                    <Link href="/about" passHref legacyBehavior>
+                      <AboutMeLink title="About me">Read more.</AboutMeLink>
+                    </Link>
+                  </HeroListItem>
+                </HeroList>
+              </HeroArticle>
+              <HeroImgContainer>
+                <HeroImg
+                  src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
+                  width={308}
+                  height={308}
+                  title="Photo of Max."
+                  alt="Photo of Max."
+                  aria-label="Photo of Max."
+                  role="img"
+                  priority
+                />
+              </HeroImgContainer>
+            </Hero>
+          </HeroOffset>
+          <CopyrightNotice>
+            map data ©{" "}
+            <a
+              href="openstreetmap.org/copyright"
+              title="OpenStreetMap"
+              alt="OpenStreetMap"
+            >
+              OSM
+            </a>
+          </CopyrightNotice>
+        </HeroWrapper>
 
-            <IndexPageContainer>
-              <RecentPosts>
-                {content.map((post, i) =>
-                  post.type === "article" ? (
-                    <PostPreview key={i} postData={post.post} />
-                  ) : post.type === "note" ? (
-                    <NotePreview key={i} note={post.note} />
-                  ) : post.type === "link" ? (
-                    <LinkPreview key={i} link={post.link} />
-                  ) : post.type === "photo" ? (
-                    <PhotoPreview key={i} photo={post.photo} />
-                  ) : null
-                )}
-              </RecentPosts>
+        <IndexPageContainer>
+          <RecentPosts>
+            {content.map((post, i) =>
+              post.type === "article" ? (
+                <PostPreview key={i} postData={post.post} />
+              ) : post.type === "note" ? (
+                <NotePreview key={i} note={post.note} />
+              ) : post.type === "link" ? (
+                <LinkPreview key={i} link={post.link} />
+              ) : post.type === "photo" ? (
+                <PhotoPreview key={i} photo={post.photo} />
+              ) : null
+            )}
+          </RecentPosts>
 
-              {/*{<SubTitle>Recent Notes</SubTitle>
+          {/*{<SubTitle>Recent Notes</SubTitle>
             <NotesContainer >
               {notes.map((note) => (
                <NotePreview note={note} />
@@ -416,7 +416,7 @@ export default function Index({ posts, cv }) {
                 <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
               </Link>
               </MoreContainer>*/}
-            </IndexPageContainer>
+        </IndexPageContainer>
       </Layout>
     </>
   )

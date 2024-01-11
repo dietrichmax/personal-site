@@ -39,61 +39,58 @@ const TagsWrapper = styled.div`
 `
 
 export default function Photo({ photo }) {
-
   return (
     <Layout>
-        <article className="h-entry">
-          <SEO
-            title={photo.title}
-            description={photo.description}
-            slug={`/photos/${photo.slug}`}
-            date={photo.updated_at ? photo.updated_at : photo.published_at}
-          />
-          <PageTitle className="p-name">{photo.title}</PageTitle>
-          <PageWrapper>
-            <HCard />
-            <PhotoList>
-              {photo.photo
-                ? photo.photo.map((photo, i) => {
-                    return (
-                      <PhotoItem key={i}>
-                        <Link
-                          href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
-                          passHref
-                          legacyBehavior
-                        >
-                          <Image
-                            key={photo.id}
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
-                              photo.formats.content
-                                ? photo.formats.content.url
-                                : photo.url
-                            }`}
-                            alt={photo.title}
-                            width="1136"
-                            height={parseInt(
-                              (1136 / photo.width) * photo.height
-                            )}
-                            className="u-photo"
-                          />
-                        </Link>
-                      </PhotoItem>
-                    )
-                  })
-                : console.log("no images found")}
-            </PhotoList>
-            <PageBody className="e-content" content={photo.description} />
-            {/*<TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> */}
+      <article className="h-entry">
+        <SEO
+          title={photo.title}
+          description={photo.description}
+          slug={`/photos/${photo.slug}`}
+          date={photo.updated_at ? photo.updated_at : photo.published_at}
+        />
+        <PageTitle className="p-name">{photo.title}</PageTitle>
+        <PageWrapper>
+          <HCard />
+          <PhotoList>
+            {photo.photo
+              ? photo.photo.map((photo, i) => {
+                  return (
+                    <PhotoItem key={i}>
+                      <Link
+                        href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.url}`}
+                        passHref
+                        legacyBehavior
+                      >
+                        <Image
+                          key={photo.id}
+                          src={`${
+                            photo.formats.content
+                              ? photo.formats.content.url
+                              : photo.url
+                          }`}
+                          alt={photo.title}
+                          width="1136"
+                          height={parseInt((1136 / photo.width) * photo.height)}
+                          className="u-photo"
+                        />
+                      </Link>
+                    </PhotoItem>
+                  )
+                })
+              : console.log("no images found")}
+          </PhotoList>
+          <PageBody className="e-content" content={photo.description} />
+          {/*<TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> */}
 
-            <WebActions slug={`/photos/${photo.slug}`} />
-            <Meta
-              post={photo}
-              slug={`/photos/${photo.slug}`}
-              syndicationLinks={photo.syndicationLinks}
-            />
-            <Webmentions slug={`/photos/${photo.slug}`} />
-          </PageWrapper>
-        </article>
+          <WebActions slug={`/photos/${photo.slug}`} />
+          <Meta
+            post={photo}
+            slug={`/photos/${photo.slug}`}
+            syndicationLinks={photo.syndicationLinks}
+          />
+          <Webmentions slug={`/photos/${photo.slug}`} />
+        </PageWrapper>
+      </article>
     </Layout>
   )
 }

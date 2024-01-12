@@ -12,10 +12,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm run build
-
-      - name: Build
+      - name: Build site
         run: npm run install
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}

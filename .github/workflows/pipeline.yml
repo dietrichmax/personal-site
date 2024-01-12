@@ -17,7 +17,7 @@ jobs:
           context: .
           tags: personal-website:latest
           outputs: type=local,dest=build
-          secrets: |
+          secrets:
             NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
             NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
             NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}

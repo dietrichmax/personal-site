@@ -1,7 +1,6 @@
 import React from "react"
 import { useRouter } from "next/router"
 import ErrorPage from "next/error"
-import PostBody from "src/components/article/article-body/article-body"
 import Layout from "src/components/layout/layout"
 import SEO from "src/components/seo/seo"
 import { getAllPosts, getPostAndMorePosts } from "src/data/external/cms"
@@ -24,6 +23,11 @@ import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import Author from "@/components/article/article-author/article-author"
+import dynamic from "next/dynamic"
+
+const PostBody = dynamic(() => import("src/components/article/article-body/article-body"), {
+  ssr: false,
+});
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;

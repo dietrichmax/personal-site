@@ -18,6 +18,7 @@ import "@/public/fonts/SF-UI/style.css"
 class MyApp extends App {
   componentDidMount() {
     if (window.location.href.includes(config.domain)) {
+      console.log(process.env)
       init({
         url: process.env.NEXT_PUBLIC_MATOMO_URL,
         siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,

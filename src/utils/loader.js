@@ -5,8 +5,8 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
 
   //const height = src.includes(process.env.NEXT_PUBLIC_STRAPI_API_URL) ? 0 : 450
-  
-  const urlSafeBase64 = (str) => {
+
+  const urlSafeBase64 = str => {
     return Buffer.from(str)
       .toString("base64")
       .replace(/=/g, "")
@@ -14,7 +14,7 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
       .replace(/\//g, "_")
   }
 
-  const hexDecode = (hex) => Buffer.from(hex, "hex")
+  const hexDecode = hex => Buffer.from(hex, "hex")
 
   const sign = (salt, target, secret) => {
     const hmac = createHmac("sha256", hexDecode(secret))
@@ -27,15 +27,12 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
     `/resizing_type:fill` +
     (quality ? `/quality:${quality}` : "") +
     `/sharpen:0.5` +
-    `/plain/${
-      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
-    }` +
+    `/plain/${process.env.NEXT_PUBLIC_STRAPI_API_URL +
+      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")}` +
     `@webp`
 
   const host = process.env.NEXT_PUBLIC_IMGPROXY_URL
   const signature = sign(SALT, path, KEY)
-
   const imgUrl = `${host}/${signature}${path}`
 
   return imgUrl

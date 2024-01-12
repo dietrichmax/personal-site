@@ -605,11 +605,9 @@ module.exports = withPlugins(
         locales: ["en"],
         defaultLocale: "en",
       },
-    },
-    {
       swcMinify: false,
-    },
-    {
+      output: "standalone",
+
       images: {
         loader: "custom",
         loaderFile: "./src/utils/loader.js",
@@ -633,9 +631,7 @@ module.exports = withPlugins(
           "staticmaps.mxd.codes",
         ],
         deviceSizes: [400, 500, 670, 750, 828, 1080, 1200, 1920, 2048, 3840],
-        imageSizes: [
-          1350, 650, 1300,
-        ],
+        imageSizes: [1350, 650, 1300],
       },
     },
   ],

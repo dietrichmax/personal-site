@@ -42,7 +42,7 @@
 
 .markdown ol > li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin: 1rem 0;
   width: 100%;
   counter-increment: ol;

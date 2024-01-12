@@ -58,6 +58,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: none;
+    word-break: auto-phrase;
   }
   img {
     display: block;

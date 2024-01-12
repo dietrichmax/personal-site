@@ -53,7 +53,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--primary-font);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    word-break: break-word;
     letter-spacing: normal;
     hyphens: auto;
     overflow-x: hidden;

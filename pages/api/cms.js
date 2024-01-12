@@ -1,5 +1,5 @@
 export default async (req, res) => {
-  const cmsURL = process.env.NEXT_PUBLIC_PRIVATE_STRAPI_API_URL
+  const cmsURL = process.env.NEXT_PUBLIC_STRAPI_API_URL
   const path = req.url.replace("api/cms?_", "")
   const url = new URL(cmsURL + path)
 

@@ -5,6 +5,9 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
 
+  const sharpen = {0.5}
+  const format = "webp"
+
   const urlSafeBase64 = (str) => {
     return Buffer.from(str)
       .toString("base64")
@@ -29,9 +32,9 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
     `/size:${width ? width : 0}:${height ? height : 0}` +
     `/resizing_type:fill` +
     (quality ? `/quality:${quality}` : "") +
-    `/sharpen:0.5` +
+    `/sharpen:${sharpen}]` +
     `/plain/${url}` +
-    `@webp`
+    `@${format}`
 
   const host = process.env.NEXT_PUBLIC_IMGPROXY_URL
   const signature = sign(SALT, path, KEY)

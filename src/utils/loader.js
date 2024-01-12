@@ -5,7 +5,7 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
 
-  const sharpen = {0.5}
+  const sharpen = "0.5"
   const format = "webp"
 
   const urlSafeBase64 = (str) => {

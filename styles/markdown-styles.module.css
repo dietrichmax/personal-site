@@ -52,8 +52,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 2.2rem !important;
-  min-height: 2.2rem !important;
+  min-width: 3rem !important;
+  min-height: 3rem !important;
   content: counter(ol);
   color: var(--text-color);
   background-color: var(--content-bg);

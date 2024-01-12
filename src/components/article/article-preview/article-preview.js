@@ -1,4 +1,5 @@
 import Link from "next/link"
+import dynamic from 'next/dynamic'
 import styled from "styled-components"
 import media from "styled-media-query"
 import PostTags from "src/components/tags/tags"
@@ -55,6 +56,9 @@ const CardReadMoreRead = styled.p`
     color: var(--text-color);
   }
 `
+const DynamicPostMeta = dynamic(() => import("src/components/post/post-meta/post-meta-preview"), {
+  loading: () => <p>Loading...</p>,
+})
 
 export default function PostPreview({ postData, preview }) {
   const { title, excerpt, tags, dateUpdated, date, published_at, updated_at } =
@@ -94,7 +98,7 @@ export default function PostPreview({ postData, preview }) {
           </TagsWrapper>*/}
         </CardMeta>
       </CardItemWrapper>
-      <PostMeta post={postData} slug={slug} />
+      <DynamicPostMeta post={postData} slug={slug} />
     </Card>
   )
 }

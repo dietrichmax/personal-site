@@ -1,0 +1,16 @@
+name: Build & Publish
+
+on:
+  push:
+    branches: [v2]
+
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install NPM dependencies
+        uses: npm install
+      - name: Buiild and Export
+        uses: npm run build

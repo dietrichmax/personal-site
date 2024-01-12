@@ -10,6 +10,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Install NPM dependencies
+        uses: npm install
+      - name: Build and Export
+        uses: npm run build
+
+  docker-build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
       - name: Login to docker hub
         uses: docker/login-action@v2
         with:

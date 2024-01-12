@@ -5,7 +5,7 @@ import { init } from "@socialgouv/matomo-next"
 import GlobalStyle from "@/styles/global.js"
 import config from "src/data/internal/SiteConfig"
 import Providers from "src/utils/providers"
-import CookieBanner from "@/components/cookies/cookie-banner"
+//import CookieBanner from "@/components/cookies/cookie-banner"
 //import Cookie from "js-cookie"
 //import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
 //import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"

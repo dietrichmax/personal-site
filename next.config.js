@@ -1,7 +1,6 @@
 // next.config.js
 const withPlugins = require("next-compose-plugins")
 const withFonts = require("next-fonts")
-const withPWA = require("next-pwa")
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 })
@@ -594,13 +593,6 @@ module.exports = withPlugins(
     redirects,
     withFonts,
     {
-      withPWA: {
-        pwa: {
-          dest: "public",
-        },
-      },
-    },
-    {
       i18n: {
         locales: ["en"],
         defaultLocale: "en",
@@ -611,7 +603,6 @@ module.exports = withPlugins(
       images: {
         loader: "custom",
         loaderFile: "./src/utils/loader.js",
-        //unoptimized: true,
         domains: [
           "mxd.codes",
           "cms.mxd.codes",
@@ -630,8 +621,8 @@ module.exports = withPlugins(
           "mxb.dev",
           "staticmaps.mxd.codes",
         ],
-        deviceSizes: [400, 500, 670, 750, 828, 1080, 1200, 1920, 2048, 3840],
-        imageSizes: [1350, 650, 1300],
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       },
     },
   ],

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { lightTheme, darkTheme } from "@/styles/themes"
+import useDarkMode from "@/src/utils/darkMode/useDarkMode"
 import { ThemeProvider } from "styled-components"
 
 export default function Providers({ children }) {
-  const isDarkMode = () =>
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  console.log(isDarkMode)
+  const { value } = useDarkMode(false, { storageKey: null, onChange: null })
   const theme = value ? darkTheme : lightTheme
 
   const [mounted, setMounted] = useState(false)

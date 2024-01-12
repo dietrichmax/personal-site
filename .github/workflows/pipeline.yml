@@ -5,12 +5,28 @@ on:
     branches: [v2]
 
 jobs:
-  build-project:
+  next-build:
     runs-on: ubuntu-latest
+    container: node:18
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: npm run install
+
+      - name: Upload Next build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: |
+            .next
+            public
+          retention-days: 7
+
+  docker-push:
+    runs-on: ubuntu-latest
+    steps:
       - name: Build and export
         uses: docker/build-push-action@v3
         with:

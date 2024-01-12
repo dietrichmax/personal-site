@@ -1,7 +1,7 @@
 import styled from "styled-components"
+import dynamic from 'next/dynamic'
 //import PostTags from "src/components/tags/tags"
 import HCard from "src/components/microformats/h-card"
-import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import { Card } from "@/styles/templates/card"
 import Image from "next/image"
 import Link from "next/link"
@@ -71,6 +71,9 @@ const PhotoWrapper = styled.div`
   min-height: 400px;
 `
 
+const DynamicPostMeta = dynamic(() => import("src/components/post/post-meta/post-meta-preview"), {
+  loading: () => <p>Loading...</p>,
+})
 export default function PhotoPreview({ photo }) {
   const slug = `/photos/${photo.slug}`
 
@@ -103,7 +106,7 @@ export default function PhotoPreview({ photo }) {
           <PostTags tags={photo.tags} />
           <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
         </PhotoContainer>*/}
-        <PostMeta post={photo} slug={slug} />
+        <DynamicPostMeta post={photo} slug={slug} />
       </PreviewContainer>
     </Card>
   )

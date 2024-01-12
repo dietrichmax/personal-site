@@ -21,15 +21,16 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
     hmac.update(target)
     return urlSafeBase64(hmac.digest())
   }
+
+  const url = process.env.NEXT_PUBLIC_STRAPI_API_URL + src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
+  const encodedURL = urlSafeBase64(url);
+  
   const path =
     `/size:${width ? width : 0}:${height ? height : 0}` +
     `/resizing_type:fill` +
     (quality ? `/quality:${quality}` : "") +
     `/sharpen:0.5` +
-    `/plain/${
-      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
-    }` +
+    `/plain/${encodedURL}` +
     `@webp`
 
   const host = process.env.NEXT_PUBLIC_IMGPROXY_URL

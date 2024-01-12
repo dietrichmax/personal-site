@@ -593,10 +593,6 @@ module.exports = withPlugins(
     redirects,
     withFonts,
     {
-      i18n: {
-        locales: ["en"],
-        defaultLocale: "en",
-      },
       swcMinify: false,
       output: "standalone",
 

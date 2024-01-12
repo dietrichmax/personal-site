@@ -36,6 +36,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
+          <html lang="en" />
           <meta
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"

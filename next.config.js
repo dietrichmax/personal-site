@@ -603,6 +603,7 @@ module.exports = withPlugins(
     {
       i18n: {
         defaultLocale: "en",
+      },
     },
     {
       swcMinify: false,

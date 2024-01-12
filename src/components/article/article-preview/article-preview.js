@@ -5,7 +5,6 @@ import media from "styled-media-query"
 import PostTags from "src/components/tags/tags"
 import PreviewImage from "src/components/article/article-image/article-image"
 import HCard from "src/components/microformats/h-card"
-import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import { Card } from "@/styles/templates/card"
 
 const CardItemWrapper = styled.div`

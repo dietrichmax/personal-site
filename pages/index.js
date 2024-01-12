@@ -134,17 +134,17 @@ const HeroImgContainer = styled.figure`
   min-width: 310px;
   height: 230px;
   position: relative;
-  border: 1px solid #f2f2f2;
+  border: 2px solid #f2f2f2;
   border-radius: 6px;
   ${media.lessThan("large")`
     margin-left: auto;
     width: 310px;
-    height: 310px;
+    height: 230px;
   `}
   ${media.lessThan("medium")`
     width: 210px;
     min-width: 210px;
-    height: 210px;
+    height: 150px;
   `}
 `
 
@@ -319,7 +319,9 @@ export default function Index({ posts, cv }) {
                   </span>
                 </HeroTitle>
                 <HeroSubTitle>
-                  <h1><TypeWriter content={text} speed={90} /></h1>
+                  <h1>
+                    <TypeWriter content={text} speed={90} />
+                  </h1>
                 </HeroSubTitle>
                 <HeroDescription>
                   I'm a software developer and cyclist from{" "}

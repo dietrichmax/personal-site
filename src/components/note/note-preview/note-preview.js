@@ -1,7 +1,7 @@
 import Link from "next/link"
+import dynamic from 'next/dynamic'
 import styled from "styled-components"
 import NoteBody from "src/components/note/note-body/note-body"
-import PostMeta from "src/components/post/post-meta/post-meta-preview"
 import HCard from "src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
 import renderers from "src/utils/renderers"
@@ -21,6 +21,11 @@ const Hidden = styled.div`
 `
 
 const NoteBodyContainer = styled.div``
+
+const DynamicPostMeta = dynamic(() => import("src/components/post/post-meta/post-meta-preview"), {
+  loading: () => <p>Loading...</p>,
+})
+
 export default function NotePreview({ note }) {
   const slug = `/notes/${note.slug}`
   return (
@@ -51,7 +56,7 @@ export default function NotePreview({ note }) {
             <NoteBodyContainer>
               <NoteBody content={note.content} components={renderers} />
             </NoteBodyContainer>
-            <PostMeta post={note} slug={slug} />
+            <DynamicPostMeta post={note} slug={slug} />
           </NoteBodyWrapper>
         </NotesContent>
       </Link>

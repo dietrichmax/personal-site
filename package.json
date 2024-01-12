@@ -28,7 +28,7 @@
     "@prisma/client": "3.13.0",
     "@remy/webmention": "^1.4.5",
     "@socialgouv/matomo-next": "^1.6.0",
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "cloc": "^2.11.0",

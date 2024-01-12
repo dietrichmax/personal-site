@@ -7,54 +7,19 @@ on:
 jobs:
   build-project:
     runs-on: ubuntu-latest
-    container: node:18
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Install NPM dependencies
-        uses: npm install
-      - name: Build and Export
-        uses: npm run build
-        env:
-          NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
-          NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
-          NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
-          NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
-          NEXT_PUBLIC_MATOMO_API_KEY: ${{secrets.NEXT_PUBLIC_MATOMO_API_KEY}}
-          NEXT_PUBLIC_WEBMENTION_KEY: ${{secrets.NEXT_PUBLIC_WEBMENTION_KEY}}
-          NEXT_PUBLIC_IMGPROXY_URL: ${{secrets.NEXT_PUBLIC_IMGPROXY_URL}}
-          DASHBOARD_GITHUB_PAK: ${{secrets.GITHUB_PAK}}
-          OPENWEATHER_API_KEY: ${{secrets.OPENWEATHER_API_KEY}}
-          NEXT_PUBLIC_IMGPROXY_KEY: ${{secrets.NEXT_PUBLIC_IMGPROXY_KEY}}
-          NEXT_PUBLIC_IMGPROXY_SALT: ${{secrets.NEXT_PUBLIC_IMGPROXY_SALT}}
-      - name: Upload Next build
-        uses: actions/upload-artifact@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Build and export
+        uses: docker/build-push-action@v3
         with:
-          name: build
-          path: |
-            .next
-            public
-          retention-days: 7 # artifact retention duration, can be upto 30 days
-  docker-build-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Download next build # Download the above uploaded artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build
+          context: .
+          tags: personal-website:latest
+          outputs: type=local,dest=build
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/personal-website:0.1

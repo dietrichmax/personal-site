@@ -601,6 +601,10 @@ module.exports = withPlugins(
       },
     },
     {
+      i18n: {
+        defaultLocale: "en",
+    },
+    {
       swcMinify: false,
     },
     {
@@ -628,7 +632,7 @@ module.exports = withPlugins(
         ],
         deviceSizes: [400, 500, 670, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [
-          16, 32, 48, 64, 96, 128, 256, 350, 400, 650, 1136, 1200, 1300,
+          1350, 650, 1300,
         ],
       },
     },

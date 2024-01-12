@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --force
 
       - name: Build site
-        run: npm run install
+        run: npm run build
         env:
           NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
           NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}

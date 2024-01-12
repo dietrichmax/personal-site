@@ -319,7 +319,7 @@ export default function Index({ posts, cv }) {
                   </span>
                 </HeroTitle>
                 <HeroSubTitle>
-                  <TypeWriter content={text} speed={90} />
+                  <h1><TypeWriter content={text} speed={90} /></h1>
                 </HeroSubTitle>
                 <HeroDescription>
                   I'm a software developer and cyclist from{" "}

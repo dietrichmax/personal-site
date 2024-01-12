@@ -159,7 +159,6 @@ export default function Webmentions({ slug, preview }) {
   const [sourceUrl, setSourceUrl] = useState("")
   const [views, setViews] = useState(0)
   const [status, setStatus] = useState({})
-  const [gotData, setGotData] = useState(false)
 
   const url = config.siteUrl + slug
   const pageLimit = 1000
@@ -251,8 +250,8 @@ export default function Webmentions({ slug, preview }) {
   }
 
   useEffect(() => {
-    !gotData ? getData() : null
-  }, [])
+    getData()
+  }, []);
 
   const renderAuthorImg = (mention, i) => {
     return mention.author.photo ? (

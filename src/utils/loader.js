@@ -1,10 +1,10 @@
 const createHmac = require("create-hmac")
 
-export default function imgproxyLoader({ src, width,  quality, blur }) {
+export default function imgproxyLoader({ src, width, height, quality, blur }) {
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
 
-  const height = src.includes(process.env.NEXT_PUBLIC_STRAPI_API_URL) ? 0 : 450
+  //const height = src.includes(process.env.NEXT_PUBLIC_STRAPI_API_URL) ? 0 : 450
   
   const urlSafeBase64 = (str) => {
     return Buffer.from(str)

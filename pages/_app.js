@@ -14,11 +14,15 @@ import "@/styles/prism.css"
 import "@/public/fonts/SF-UI/style.css"
 //import "@/public/fonts/Clarity-City/style.css"
 //import 'mapbox-gl/dist/mapbox-gl.css';
+const prism = require("prismjs")
+require("prismjs/components/prism-python")
+require("prismjs/components/prism-json")
+require("prismjs/components/prism-bash")
+require("prismjs/components/prism-sql")
 
 class MyApp extends App {
   componentDidMount() {
     if (window.location.href.includes(config.domain)) {
-      console.log(process.env)
       init({
         url: process.env.NEXT_PUBLIC_MATOMO_URL,
         siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
@@ -29,6 +33,7 @@ class MyApp extends App {
         //enableGoogleAdsense();
       }*/
     }
+    prism.highlightAll()
   }
 
   render() {

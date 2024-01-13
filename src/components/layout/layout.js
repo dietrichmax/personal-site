@@ -1,8 +1,8 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import styled from "styled-components"
-const prism = require("prismjs")
 import Header from "@/components/navigation/header/header"
 import Footer from "@/components/navigation/footer/footer"
+const prism = require("prismjs")
 require("prismjs/components/prism-python")
 require("prismjs/components/prism-json")
 require("prismjs/components/prism-bash")

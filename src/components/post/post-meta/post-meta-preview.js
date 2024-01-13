@@ -24,7 +24,7 @@ const Meta = styled.div`
   `}
 `
 
-const Date = styled.a`
+const Date = styled.div`
   margin-left: auto;
   :hover {
     text-decoration: underline;
@@ -49,7 +49,7 @@ export default function PostMeta({ post, slug }) {
 
   return (
     <Meta>
-      <Breadcrumb></Breadcrumb>
+      <Breadcrumb />
       <Socials>
         <Webmentions slug={slug} preview />
       </Socials>

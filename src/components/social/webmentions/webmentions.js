@@ -35,7 +35,7 @@ const WebmentionsTitle = styled.p`
   font-weight: 600;
 `
 
-const WebmentionsInfo = styled.a`
+const WebmentionsInfo = styled.div`
   display: flex;
   align-items: center;
 `
@@ -61,7 +61,7 @@ const WebmentionAuthor = styled.div`
   margin-bottom: calc(var(--space-sm) * 0.5);
 `
 
-const WebmentionAuthorImgWrapper = styled.a`
+const WebmentionAuthorImgWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
   width: 50px;

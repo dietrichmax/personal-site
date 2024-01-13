@@ -61,18 +61,35 @@ export default function Photo({ photo }) {
                         passHref
                         legacyBehavior
                       >
+                        {(i === 0 ? (
                         <Image
-                          key={photo.id}
-                          src={`${
-                            photo.formats.content
-                              ? photo.formats.content.url
-                              : photo.url
-                          }`}
-                          alt={photo.title}
-                          width="1136"
-                          height={parseInt((1136 / photo.width) * photo.height)}
-                          className="u-photo"
-                        />
+                        key={photo.id}
+                        src={`${
+                          photo.formats.content
+                            ? photo.formats.content.url
+                            : photo.url
+                        }`}
+                        alt={`Photo ${i}`}
+                        width={photo.width}
+                        height={photo.height}
+                        className="u-photo"
+                        priority
+                      />) : (
+                        <Image
+                        key={photo.id}
+                        src={`${
+                          photo.formats.content
+                            ? photo.formats.content.url
+                            : photo.url
+                        }`}
+                        alt={`Photo ${i}`}
+                        {...i === 0 ? "priority" : ""}
+                        width={photo.width}
+                        height={photo.height}
+                        className="u-photo"
+                      />)
+                        )}
+                        
                       </Link>
                     </PhotoItem>
                   )

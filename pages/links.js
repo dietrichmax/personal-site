@@ -20,20 +20,19 @@ const LinksGrid = styled.ol`
 `
 
 export default function Links({ allLinks }) {
-
   return (
     <>
       <Layout>
-            <SEO title="Links" slug="links" />
-            <PageTitle>Links</PageTitle>
-            <SubTitle>Awesome content on the web, in random order.</SubTitle>
-            <LinksContainer>
-              <Grid>
-                {allLinks.map((link, i) => (
-                  <LinkPreview key={i} link={link} />
-                ))}
-              </Grid>
-            </LinksContainer>
+        <SEO title="Links" slug="links" />
+        <PageTitle>Links</PageTitle>
+        <SubTitle>Awesome content on the web, in random order.</SubTitle>
+        <LinksContainer>
+          <Grid>
+            {allLinks.map((link, i) => (
+              <LinkPreview key={i} link={link} />
+            ))}
+          </Grid>
+        </LinksContainer>
       </Layout>
     </>
   )
@@ -43,6 +42,7 @@ export async function getStaticProps() {
   const allLinks = (await getAllLinks()) || []
 
   return {
+    revalidate: 86400,
     props: { allLinks },
   }
 }

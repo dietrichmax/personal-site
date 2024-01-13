@@ -38,33 +38,32 @@ const Sticky = styled.div`
   top: var(--space);
 `
 export default function Blog({ allPosts, allTags }) {
-
   const posts = allPosts
 
   return (
     <>
       <Layout>
-            <SEO
-              title="Articles"
-              description="Tutorials, Guides and thoughts"
-              slug="articles"
-            />
+        <SEO
+          title="Articles"
+          description="Tutorials, Guides and thoughts"
+          slug="articles"
+        />
 
-            <PageTitle>Articles</PageTitle>
-            <SubTitle>Tutorials, Guides and thoughts</SubTitle>
+        <PageTitle>Articles</PageTitle>
+        <SubTitle>Tutorials, Guides and thoughts</SubTitle>
 
-            <BlogPageContainer>
-              <Grid>
-                {posts.map((post, i) => (
-                  <PostPreview key={i} postData={post} />
-                ))}
-                {/*<TagsGrid>
+        <BlogPageContainer>
+          <Grid>
+            {posts.map((post, i) => (
+              <PostPreview key={i} postData={post} />
+            ))}
+            {/*<TagsGrid>
                   <Sticky>
                     <Tags tags={allTags} block />
                   </Sticky>
                   </TagsGrid>*/}
-              </Grid>
-            </BlogPageContainer>
+          </Grid>
+        </BlogPageContainer>
       </Layout>
     </>
   )
@@ -74,6 +73,7 @@ export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const allTags = (await getAllTags()) || []
   return {
+    revalidate: 86400,
     props: { allPosts, allTags },
   }
 }

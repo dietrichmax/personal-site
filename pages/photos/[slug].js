@@ -61,35 +61,35 @@ export default function Photo({ photo }) {
                         passHref
                         legacyBehavior
                       >
-                        {(i === 0 ? (
-                        <Image
-                        key={photo.id}
-                        src={`${
-                          photo.formats.content
-                            ? photo.formats.content.url
-                            : photo.url
-                        }`}
-                        alt={`Photo ${i}`}
-                        width={photo.width}
-                        height={photo.height}
-                        className="u-photo"
-                        priority
-                      />) : (
-                        <Image
-                        key={photo.id}
-                        src={`${
-                          photo.formats.content
-                            ? photo.formats.content.url
-                            : photo.url
-                        }`}
-                        alt={`Photo ${i}`}
-                        {...i === 0 ? "priority" : ""}
-                        width={photo.width}
-                        height={photo.height}
-                        className="u-photo"
-                      />)
+                        {i === 0 ? (
+                          <Image
+                            key={photo.id}
+                            src={`${
+                              photo.formats.content
+                                ? photo.formats.content.url
+                                : photo.url
+                            }`}
+                            alt={`Photo ${i}`}
+                            width={photo.width}
+                            height={photo.height}
+                            className="u-photo"
+                            priority
+                          />
+                        ) : (
+                          <Image
+                            key={photo.id}
+                            src={`${
+                              photo.formats.content
+                                ? photo.formats.content.url
+                                : photo.url
+                            }`}
+                            alt={`Photo ${i}`}
+                            {...(i === 0 ? "priority" : "")}
+                            width={photo.width}
+                            height={photo.height}
+                            className="u-photo"
+                          />
                         )}
-                        
                       </Link>
                     </PhotoItem>
                   )
@@ -116,6 +116,7 @@ export async function getStaticProps({ params }) {
   const data = await getPhoto(params.slug)
 
   return {
+    revalidate: 86400,
     props: {
       photo: {
         ...data?.photos[0],

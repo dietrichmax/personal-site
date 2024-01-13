@@ -37,32 +37,32 @@ export default function Tags({ posts, tag }) {
 
   return (
     <Layout>
-          <SEO
-            title={tag.name}
-            description={tag.description}
-            slug={`articles/topics/${tag.slug}`}
-          />
-          <PageTitle color={tag.backgroundColor}>{tag.name}</PageTitle>
-          <SubTitle>Posts tagged with {tag.name}</SubTitle>
-          <TagContainer>
-            <TagPostsContainer>
-              <Grid>
-                <PostsGrid>
-                  {content.map((post, i) =>
-                    post.type === "article" ? (
-                      <PostPreview key={i} postData={post.post} />
-                    ) : post.type === "note" ? (
-                      <NotePreview key={i} note={post.note} />
-                    ) : post.type === "link" ? (
-                      <LinkPreview key={i} link={post.link} />
-                    ) : post.type === "photo" ? (
-                      <PhotoPreview key={i} photo={post.photo} />
-                    ) : null
-                  )}
-                </PostsGrid>
-              </Grid>
-            </TagPostsContainer>
-          </TagContainer>
+      <SEO
+        title={tag.name}
+        description={tag.description}
+        slug={`articles/topics/${tag.slug}`}
+      />
+      <PageTitle color={tag.backgroundColor}>{tag.name}</PageTitle>
+      <SubTitle>Posts tagged with {tag.name}</SubTitle>
+      <TagContainer>
+        <TagPostsContainer>
+          <Grid>
+            <PostsGrid>
+              {content.map((post, i) =>
+                post.type === "article" ? (
+                  <PostPreview key={i} postData={post.post} />
+                ) : post.type === "note" ? (
+                  <NotePreview key={i} note={post.note} />
+                ) : post.type === "link" ? (
+                  <LinkPreview key={i} link={post.link} />
+                ) : post.type === "photo" ? (
+                  <PhotoPreview key={i} photo={post.photo} />
+                ) : null
+              )}
+            </PostsGrid>
+          </Grid>
+        </TagPostsContainer>
+      </TagContainer>
     </Layout>
   )
 }
@@ -92,7 +92,7 @@ export async function getStaticProps({ params }) {
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return {
-    //revalidate: 86400,
+    revalidate: 86400,
     props: {
       posts: sortedContent,
       tag: data.tags[0],

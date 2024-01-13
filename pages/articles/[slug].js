@@ -25,9 +25,12 @@ import RecommendedPosts from "@/components/recommended-articles/recommendedArtic
 import Author from "@/components/article/article-author/article-author"
 import dynamic from "next/dynamic"
 
-const PostBody = dynamic(() => import("src/components/article/article-body/article-body"), {
-  ssr: false,
-});
+const PostBody = dynamic(
+  () => import("src/components/article/article-body/article-body"),
+  {
+    ssr: false,
+  }
+)
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -301,6 +304,7 @@ export async function getStaticProps({ params }) {
   //console.log(morePosts)
 
   return {
+    revalidate: 86400,
     props: {
       post: {
         ...data?.posts[0],

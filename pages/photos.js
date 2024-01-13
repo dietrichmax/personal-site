@@ -14,20 +14,19 @@ const PhotosContainer = styled.div`
 `
 
 export default function Photos({ allPhotos }) {
-
   return (
     <>
       <Layout>
-            <SEO title="Photos" slug="Photos" />
-            <PageTitle>Photos</PageTitle>
-            <SubTitle>.</SubTitle>
-            <PhotosContainer>
-              <Grid>
-                {allPhotos.map((photo, i) => (
-                  <PhotosPreview key={i} photo={photo} />
-                ))}
-              </Grid>
-            </PhotosContainer>
+        <SEO title="Photos" slug="Photos" />
+        <PageTitle>Photos</PageTitle>
+        <SubTitle>.</SubTitle>
+        <PhotosContainer>
+          <Grid>
+            {allPhotos.map((photo, i) => (
+              <PhotosPreview key={i} photo={photo} />
+            ))}
+          </Grid>
+        </PhotosContainer>
       </Layout>
     </>
   )
@@ -37,6 +36,7 @@ export async function getStaticProps() {
   const allPhotos = (await getAllPhotos()) || []
 
   return {
+    revalidate: 86400,
     props: { allPhotos },
   }
 }

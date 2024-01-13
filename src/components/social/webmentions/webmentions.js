@@ -109,13 +109,13 @@ const WebmentionInput = styled(Input)`
   }
 `
 
-const WebmentionLike = styled.li`
+const WebmentionLike = styled.div`
   display: inline-block;
 `
 
 const Status = styled.div`
   font-size: 14px;
-  color: ${props => (props.color ? props.color : "var(--text-color)")};
+  color: ${(props) => (props.color ? props.color : "var(--text-color)")};
 `
 
 const WebmentionsCount = styled.ol`
@@ -169,11 +169,11 @@ export default function Webmentions({ slug, preview }) {
     const repostsProperty = ["repost-of"]
     const mentionsProperty = ["mention-of"]
 
-    const hasRequiredFields = entry => {
+    const hasRequiredFields = (entry) => {
       const { author, published, content } = entry
       return author.name && published && content
     }
-    const sanitize = entry => {
+    const sanitize = (entry) => {
       const { content } = entry
       if (content["content-type"] === "text/html") {
         content.value = sanitizeHTML(content.value)
@@ -183,19 +183,19 @@ export default function Webmentions({ slug, preview }) {
 
     const count = webmentions.length
     const comments = webmentions
-      .filter(entry => entry["wm-target"] === url)
-      .filter(entry => commentsProperty.includes(entry["wm-property"]))
+      .filter((entry) => entry["wm-target"] === url)
+      .filter((entry) => commentsProperty.includes(entry["wm-property"]))
       .filter(hasRequiredFields)
       .map(sanitize)
     const likes = webmentions
-      .filter(entry => entry["wm-target"] === url)
-      .filter(entry => likesProperty.includes(entry["wm-property"]))
+      .filter((entry) => entry["wm-target"] === url)
+      .filter((entry) => likesProperty.includes(entry["wm-property"]))
     const reposts = webmentions
-      .filter(entry => entry["wm-target"] === url)
-      .filter(entry => repostsProperty.includes(entry["wm-property"]))
+      .filter((entry) => entry["wm-target"] === url)
+      .filter((entry) => repostsProperty.includes(entry["wm-property"]))
     const mentions = webmentions
-      .filter(entry => entry["wm-target"] === url)
-      .filter(entry => mentionsProperty.includes(entry["wm-property"]))
+      .filter((entry) => entry["wm-target"] === url)
+      .filter((entry) => mentionsProperty.includes(entry["wm-property"]))
 
     return {
       count: count,
@@ -242,8 +242,8 @@ export default function Webmentions({ slug, preview }) {
     fetch(
       `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`
     )
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         setWebmentions(getWebmentionsForUrl(result.children, url))
       })
   }
@@ -371,7 +371,7 @@ export default function Webmentions({ slug, preview }) {
               id="webmention-input"
               label="webmention-input"
               placeholder="URL / permalink of your response"
-              onChange={e => setSourceUrl(e.target.value)}
+              onChange={(e) => setSourceUrl(e.target.value)}
             />
             <Button
               type="button"

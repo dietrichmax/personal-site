@@ -20,20 +20,19 @@ const Feed = styled.span`
 `
 
 export default function Notes({ allNotes }) {
-
   return (
     <>
       <Layout>
-            <SEO title="Notes" slug="notes" />
-            <PageTitle>Notes</PageTitle>
-            <SubTitle>Status updates and short notes.</SubTitle>
-            <NotesWrapper>
-              <Grid>
-                {allNotes.map((note, i) => (
-                  <NotePreview key={i} note={note} />
-                ))}
-              </Grid>
-            </NotesWrapper>
+        <SEO title="Notes" slug="notes" />
+        <PageTitle>Notes</PageTitle>
+        <SubTitle>Status updates and short notes.</SubTitle>
+        <NotesWrapper>
+          <Grid>
+            {allNotes.map((note, i) => (
+              <NotePreview key={i} note={note} />
+            ))}
+          </Grid>
+        </NotesWrapper>
       </Layout>
     </>
   )
@@ -43,6 +42,7 @@ export async function getStaticProps() {
   const allNotes = (await getAllNotes()) || []
 
   return {
+    revalidate: 86400,
     props: { allNotes },
   }
 }

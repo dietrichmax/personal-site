@@ -136,15 +136,16 @@ export async function getStaticProps({ params }) {
     note.publishOnTwitter
       ? endpoints.push(`[](https://brid.gy/publish/twitter)`)
       : note.publishOnInstagram
-      ? endpoints.push(`<a href="https://brid.gy/publish/instagram" />`)
-      : note.publishOnReddit
-      ? endpoints.push(`<a href="https://brid.gy/publish/reddit" />`)
-      : null
+        ? endpoints.push(`<a href="https://brid.gy/publish/instagram" />`)
+        : note.publishOnReddit
+          ? endpoints.push(`<a href="https://brid.gy/publish/reddit" />`)
+          : null
     return endpoints
   }
   const endpoints = publishOn(note)
 
   return {
+    revalidate: 86400,
     props: {
       note: {
         ...data?.notes[0],

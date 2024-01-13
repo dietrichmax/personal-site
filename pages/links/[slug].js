@@ -79,6 +79,7 @@ export async function getStaticProps({ params }) {
   const data = await getLink(params.slug)
 
   return {
+    revalidate: 86400,
     props: {
       link: {
         ...data?.links[0],

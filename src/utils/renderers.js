@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { FaLink } from "react-icons/fa"
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
@@ -78,12 +78,12 @@ const renderers = {
 
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (
-      <Link className="external-link" href={href} title={title} alt={alt}>
+      <Link className="internal-link" href={href} title={title} alt={alt}>
         {children}
       </Link>
     ) : (
       <a
-        className="internal-link"
+        className="external-link"
         href={href}
         title={title}
         alt={alt}

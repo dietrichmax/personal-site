@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import StringSimilarity from "string-similarity"
 import styled from "styled-components"
 import SubTitle from "@/components/title/sub-title"
+import Image from "next/image"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -30,7 +31,13 @@ export default function Custom404({ pages }) {
           ? `You were probably looking for ${goodMatch}`
           : `Seems like you got lost. Sorry for that...`}
       </SubTitle>
-      <Container></Container>
+      <Container>      
+        <Image
+      src="/404.png"
+      width="600"
+      height="600"
+      />
+      </Container>
     </Layout>
   )
 }

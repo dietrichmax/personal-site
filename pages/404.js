@@ -31,12 +31,8 @@ export default function Custom404({ pages }) {
           ? `You were probably looking for ${goodMatch}`
           : `Seems like you got lost. Sorry for that...`}
       </SubTitle>
-      <Container>      
-        <Image
-      src="/404.png"
-      width="600"
-      height="600"
-      />
+      <Container>
+        <Image src="/404.png" width="600" height="600" />
       </Container>
     </Layout>
   )
@@ -45,7 +41,7 @@ export default function Custom404({ pages }) {
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const pages = []
-  allPosts.map((post) => pages.push(post.slug))
+  allPosts.map(post => pages.push(post.slug))
   return {
     props: { pages },
   }

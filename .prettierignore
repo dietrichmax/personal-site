@@ -1,4 +1,5 @@
 .cache
 .next
+public/404.png
 package.json
 package-lock.json

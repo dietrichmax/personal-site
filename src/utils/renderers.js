@@ -4,6 +4,9 @@ import Link from "next/link"
 import styled from "styled-components"
 import { FaLink } from "react-icons/fa"
 
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
   height: 300px;
@@ -136,6 +139,21 @@ const renderers = {
           <FaLink />
         </PermaLink>
       </h5>
+    )
+  },
+  code: ({ node, inline, className, children, ...props }) => {
+    const match = /language-(\w+)/.exec(className || "")
+    return !inline && match ? (
+      <SyntaxHighlighter
+        children={String(children).replace(/\n$/, "")}
+        language={match[1]}
+        style={coldarkDark}
+        {...props}
+      />
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
     )
   },
 }

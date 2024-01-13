@@ -593,7 +593,7 @@ module.exports = withPlugins(
     redirects,
     withFonts,
     {
-      output: "standalone",
+      //output: "standalone",
 
       images: {
         loader: "custom",

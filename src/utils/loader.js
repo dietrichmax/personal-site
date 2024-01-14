@@ -48,7 +48,7 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
 
   const host = process.env.NEXT_PUBLIC_IMGPROXY_URL
   const signature = sign(SALT, path, KEY)
-  const imgUrl = `${host}/insecure${path}`
+  const imgUrl = `${host}/${signature}${path}`
 
   return imgUrl
 }

@@ -22,6 +22,7 @@ import {
   getLocationData,
   getCV,
 } from "src/data/external/cms"
+import StaticMaps from "staticmaps"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -40,8 +41,8 @@ const HeroWrapper = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-color: var(--secondary-color);
   background-image: url("/wallpaper/backgroundImage.webp");
+  background-color: var(--secondary-color);
   background-blend-mode: color-burn;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -469,13 +470,29 @@ export async function getStaticProps() {
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
+  const options = {
+    width: 2000,
+    height: 1000,
+    tileLayers: [
+      {
+        tileUrl:
+          "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      },
+    ],
+  }
+  const map = new StaticMaps(options)
+  const zoom = 13
+  const center = [locationData[0].lon, locationData[0].lat]
+
+  await map.render(center, zoom)
+  await map.image.save("public/wallpaper/backgroundImage.webp")
+
   return {
-    revalidate: 86400,
+    revalidate: 600,
     props: {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
-      location: locationData[0],
       cv,
     },
   }

@@ -1,3 +1,4 @@
+import { startsWith } from "lodash"
 import { useEffect, useState } from "react"
 const createHmac = require("create-hmac")
 
@@ -16,8 +17,7 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
   }, [])
 
   console.log(windowWidth)*/
-
-  const urlSafeBase64 = str => {
+  const urlSafeBase64 = (str) => {
     return Buffer.from(str)
       .toString("base64")
       .replace(/=/g, "")
@@ -25,7 +25,7 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
       .replace(/\//g, "_")
   }
 
-  const hexDecode = hex => Buffer.from(hex, "hex")
+  const hexDecode = (hex) => Buffer.from(hex, "hex")
 
   const sign = (salt, target, secret) => {
     const hmac = createHmac("sha256", hexDecode(secret))
@@ -33,18 +33,24 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
     hmac.update(target)
     return urlSafeBase64(hmac.digest())
   }
+
+  src = src.startsWith("/uploads")
+    ? process.env.NEXT_PUBLIC_STRAPI_API_URL +
+      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
+    : `https://mxd.codes` + src.replace("public/", "")
+
+  console.log(src)
+
   const path =
-    `/size:${width ? width : 0 }:${height ? height : 450}` +
+    `/size:${width ? width : 0}:${height ? height : 450}` +
     `/resizing_type:fit` +
     (quality ? `/quality:${quality}` : "") +
     `/sharpen:0.5` +
-    `/plain/${process.env.NEXT_PUBLIC_STRAPI_API_URL +
-      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")}` +
-    `@webp`
+    `/plain/${src}@webp`
 
   const host = process.env.NEXT_PUBLIC_IMGPROXY_URL
   const signature = sign(SALT, path, KEY)
-  const imgUrl = `${host}/${signature}${path}`
+  const imgUrl = `${host}/insecure${path}`
 
   return imgUrl
 }

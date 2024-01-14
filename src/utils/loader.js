@@ -39,8 +39,6 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
       src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
     : `https://mxd.codes` + src.replace("public/", "")
 
-  console.log(src)
-
   const path =
     `/size:${width ? width : 0}:${height ? height : 450}` +
     `/resizing_type:fit` +

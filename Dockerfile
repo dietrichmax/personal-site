@@ -14,7 +14,7 @@ RUN \
   elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
-RUN npm install sharp
+RUN npm install sharp husky
 
 # Rebuild the source code only when needed
 FROM base AS builder

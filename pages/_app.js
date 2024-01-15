@@ -22,6 +22,7 @@ require("prismjs/components/prism-sql")
 
 class MyApp extends App {
   componentDidMount() {
+    console.log(config.domain)
     if (window.location.href.includes(config.domain)) {
       init({
         url: process.env.NEXT_PUBLIC_MATOMO_URL,

@@ -22,7 +22,7 @@ import {
   getLocationData,
   getCV,
 } from "src/data/external/cms"
-//import StaticMaps from "@/src/utils/staticmaps/staticmaps"
+import StaticMaps from "staticmaps"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -470,7 +470,7 @@ export async function getStaticProps() {
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 
-  /*const options = {
+  const options = {
     width: 2000,
     height: 1000,
     tileLayers: [
@@ -485,7 +485,7 @@ export async function getStaticProps() {
   const center = [locationData[0].lon, locationData[0].lat]
 
   await map.render(center, zoom)
-  await map.image.save("public/wallpaper/backgroundImage.webp")*/
+  await map.image.save("public/wallpaper/backgroundImage.webp")
 
   return {
     revalidate: 600,

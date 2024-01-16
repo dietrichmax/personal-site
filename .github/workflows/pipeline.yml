@@ -8,7 +8,7 @@ jobs:
   next-build:
     name: Build Next.js site
     runs-on: ubuntu-latest
-    container: node:18
+    container: node:20
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3

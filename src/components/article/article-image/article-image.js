@@ -60,7 +60,6 @@ export default function PostImage({ preview, postData }) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  console.log(windowSize.width)
   return (
     <>
       {" "}

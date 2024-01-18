@@ -12,7 +12,7 @@ const ToCWrapper = styled.div`
 `
 
 const ToCTitle = styled.p`
-  font-size: 12px;
+  font-size: 1rem;
   margin-bottom: var(--space-sm);
 `
 

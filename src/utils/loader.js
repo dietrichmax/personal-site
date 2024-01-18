@@ -34,10 +34,10 @@ export default function imgproxyLoader({ src, width, height, quality, blur }) {
     return urlSafeBase64(hmac.digest())
   }
 
-  src = src.startsWith("/uploads")
-    ? process.env.NEXT_PUBLIC_STRAPI_API_URL +
-      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
-    : `https://mxd.codes` + src.replace("public/", "")
+  console.log(src)
+  src =
+    process.env.NEXT_PUBLIC_STRAPI_API_URL +
+    src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
 
   const path =
     `/size:${width ? width : 0}:${height ? height : 450}` +

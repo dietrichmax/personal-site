@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 import media from "styled-media-query"
@@ -21,28 +21,53 @@ const CardItemImg = styled(Image)`
 const PostImg = styled(Image)`
   position: relative;
   object-fit: cover;
-  width: ${(props) => (props.width ? `${props.width}px` : "1300px")} !important;
-  height: ${(props) =>
-    props.height ? `${props.height}px` : "450px"} !important;
+  width: ${(props) => (props.width ? `${props.width}px` : "1300px")};
+  height: ${(props) => (props.height ? `${props.height}px` : "450px")};
   cursor: pointer;
   border-radius: var(--border-radius);
-  ${media.lessThan("large")`
-    height: ${(props) =>
-      props.height ? `${props.height}px` : "200px"} !important;
+  ${media.lessThan("medium")`
+    height: 250px;
+    width: 100%;
     object-fit: cover;
   `}
 `
 
 export default function PostImage({ preview, postData }) {
   const { title, coverImage } = postData
+  const [windowSize, setWindowSize] = useState({
+    width: 1300,
+    height: undefined,
+  })
 
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      const width = window.innerWidth >= 1300 ? 1300 : window.innerWidth
+      setWindowSize({
+        width: width,
+        height: window.innerHeight,
+      })
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize)
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize()
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  console.log(windowSize.width)
   return (
     <>
       {" "}
       {preview ? (
         coverImage ? (
           <CardItemImg
-            src={$coverImage.url}
+            src={coverImage.url}
             alt={title}
             title={title}
             width={350}
@@ -58,7 +83,7 @@ export default function PostImage({ preview, postData }) {
           alt={title}
           title={title}
           className="u-photo"
-          width={1300}
+          width={windowSize.width}
           height={450}
           priority
           postType="ArticleCover"

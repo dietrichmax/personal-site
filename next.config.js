@@ -593,7 +593,7 @@ module.exports = withPlugins(
     redirects,
     withFonts,
     {
-      output: "standalone",
+      //output: "standalone",
 
       images: {
         loader: "custom",
@@ -614,9 +614,8 @@ module.exports = withPlugins(
           "rusingh.com",
           "sld.codes",
           "mxb.dev",
-          "staticmaps.mxd.codes",
         ],
-        deviceSizes: [350, 670, 800, 1300],
+        deviceSizes: [350, 450, 670, 800, 1000, 1300],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       },
     },

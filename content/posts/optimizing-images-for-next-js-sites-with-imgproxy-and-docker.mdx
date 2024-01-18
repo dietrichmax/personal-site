@@ -1,0 +1,368 @@
+---
+title: "Optimizing images for Next.js sites with imgproxy and docker"
+slug: "optimizing-images-for-next-js-sites-with-imgproxy-and-docker"
+excerpt: "How to transform and optimize images with imgproxy hosted with docker for your Next.js application."
+date_published: "2020-02-16"
+date_updated: "2020-02-16"
+author: "Max Dietrich"
+coverImage: "/img/coverImages/daturbod_Serving_optimized_images_with_imgproxy_and_docker_for_bfe706de_1b94_430a_a7d9_9e8e5eb70120_43ac6b669e.png"
+tags: ["React", "Next.js", "Docker"]
+isPublished: true
+layout: Article
+---
+
+[Next.js](https://nextjs.org/ "Next.js") Image Component [next-image](https://nextjs.org/docs/pages/api-reference/components/image "next-image") is a feature introduced in Next.js version 10.0.0 to optimize images and improve the performance of your web-application.
+
+When you use the Next.js Image Component, it automatically optimizes and serves images in modern image formats that improves the performance of your web application. It supports various image sources, such as local images, images from the web, and third-party sources.
+
+However you cannot transform image, e.g. crop images, which is the reason I was looking for a solution which enables my personal website [mxd.codes](https://mxd.codes "mxd.codes") to resize images to my needs.
+
+## imgproxy
+
+[imgproxy](imgproxy "imgproxy") is an open-source image processing server designed to simplify the resizing, cropping, and manipulation of images on the fly. It is often used as part of a web application's infrastructure to ensure efficient delivery of images with optimized sizes and quality.
+
+Key features of imgproxy include:
+
+1. **On-the-Fly Image Processing:** Imgproxy allows you to resize, crop, rotate, and perform other image manipulations on the fly, based on the URL parameters. This enables efficient delivery of images in various sizes and formats without having to store multiple versions of the same image.
+
+2. **Security:** Imgproxy provides security features such as URL signature generation. This helps prevent unauthorized access and abuse of the image manipulation service.
+
+3. **Performance:** Imgproxy is designed to be performant and can efficiently handle high loads of image processing requests.
+
+4. **Integration with Existing Storage:** Imgproxy can be integrated with various storage solutions, including Amazon S3, Google Cloud Storage, and more.
+
+## Deploy imgproxy with Docker Compose
+
+While searching for a way to deploy imgproxy with docker I found a [imgproxy Docker Compose Project on GitHub](https://github.com/shinsenter/docker-imgproxy/blob/main/docker-compose.yml "imgproxy docker compose") where I changed minor things like the volumes and the web-server configuration.
+
+You can copy this `docker-compose.yml`file and paste it into Portainer or save it manually in a folder on your server.
+
+```yaml
+version: "3"
+
+################################################################################
+# Ultra Image Server
+# A production grade image processing server setup powered by imgproxy and nginx
+#
+# Author: Mai Nhut Tan <shin@shin.company>
+# Copyright: 2021-2023 SHIN Company https://code.shin.company/
+# URL: https://shinsenter.github.io/docker-imgproxy/
+################################################################################
+
+networks:
+  ################################################################################
+  default:
+    driver: bridge
+
+services:
+  ################################################################################
+  web:
+    image: nginx:alpine
+    container_name: imgproxy-nginx
+    restart: always
+    volumes:
+      - /data/containers/imgproxy:/var/www/html:ro
+      - /etc/imgproxy/imgproxy-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 8080:80
+    links:
+      - imgproxy:imgproxy
+    environment:
+      NGINX_ENTRYPOINT_QUIET_LOGS: 1
+
+  ################################################################################
+  imgproxy:
+    restart: unless-stopped
+    image: darthsim/imgproxy:${IMGPROXY_TAG:-latest}
+    container_name: imgproxy_app
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /data/containers/imgproxy:/var/www/html:ro
+    expose:
+      - 8080
+    healthcheck:
+      test: ["CMD", "imgproxy", "health"]
+    environment:
+      ### See:
+      ### https://docs.imgproxy.net/configuration/options
+
+      ### log and debug
+      IMGPROXY_LOG_LEVEL: "warn"
+      IMGPROXY_ENABLE_DEBUG_HEADERS: "false"
+      IMGPROXY_DEVELOPMENT_ERRORS_MODE: "false"
+      IMGPROXY_REPORT_DOWNLOADING_ERRORS: "false"
+
+      ### timeouts
+      IMGPROXY_READ_TIMEOUT: 10
+      IMGPROXY_WRITE_TIMEOUT: 10
+      IMGPROXY_DOWNLOAD_TIMEOUT: 10
+      IMGPROXY_KEEP_ALIVE_TIMEOUT: 300
+      IMGPROXY_MAX_SRC_FILE_SIZE: 33554432 # 32MB
+      IMGPROXY_MAX_SRC_RESOLUTION: 48
+
+      ### image source
+      IMGPROXY_TTL: 2592000 # client-side cache time is 30 days
+      IMGPROXY_USE_ETAG: "false"
+      IMGPROXY_SO_REUSEPORT: "true"
+      IMGPROXY_IGNORE_SSL_VERIFICATION: "true"
+      IMGPROXY_LOCAL_FILESYSTEM_ROOT: /home
+      IMGPROXY_SKIP_PROCESSING_FORMATS: "svg,webp,avif"
+
+      ### presets
+      IMGPROXY_AUTO_ROTATE: "true"
+      #IMGPROXY_WATERMARK_PATH: /home/noimage_thumb.jpg
+      IMGPROXY_PRESETS: default=resizing_type:fit/gravity:sm,logo=watermark:0.5:soea:10:10:0.15,center_logo=watermark:0.3:ce:0:0:0.3
+
+      ### compression
+      IMGPROXY_STRIP_METADATA: "true"
+      IMGPROXY_STRIP_COLOR_PROFILE: "true"
+      IMGPROXY_FORMAT_QUALITY: jpeg=80,webp=70,avif=50
+      IMGPROXY_JPEG_PROGRESSIVE: "false"
+      IMGPROXY_PNG_INTERLACED: "false"
+      IMGPROXY_PNG_QUANTIZATION_COLORS: 128
+      IMGPROXY_PNG_QUANTIZE: "false"
+      IMGPROXY_MAX_ANIMATION_FRAMES: 64
+      IMGPROXY_GZIP_COMPRESSION: 0
+      IMGPROXY_AVIF_SPEED: 8
+
+      ### For URL signature
+      IMGPROXY_KEY: IMGPROXY_KEY_KEY
+      IMGPROXY_SALT: IMGPROXY_KEY_SALT
+      IMGPROXY_SIGNATURE_SIZE: 32
+    network_mode: "host"
+```
+
+You will also need a nginx-configuration file for imgproxy which should be saved to `/etc/imgproxy/imgproxy-nginx.conf`. Of course you can also store the file anywhere else but be sure to change the volume in the docker-compose.yml.
+
+```conf
+upstream upstream_imgproxy  {
+    server    imgproxy:8080;
+    keepalive 16;
+}
+
+server {
+        server_name _;
+
+        location / {
+                proxy_pass http://upstream_imgproxy;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+        }
+
+}
+```
+
+Now you can deploy the stack with
+
+```
+docker-compose up -d --build --remove-orphans --force-recreate
+```
+
+or on Portainer.
+
+Your imgproxy instance should be now running on http://localhost:8080 which you already can use.
+
+![Screenshot 2024-01-12 113947.png](/uploads/Screenshot_2024_01_12_113947_ed6e757944.png)
+
+But I wanted to integrate it within my personal site built with Next.js so I also had to modify the nginx-configuration for my personal site. So i used the existing configuration [Nginx reverse proxy with caching for Next.js with imgproxy](https://gist.github.com/hlubek/02955a3f28db168417884b5397ce07c0) and copied it to /etc/nginx/sites-available/default.
+
+```conf
+# Based on https://steveholgado.com/nginx-for-nextjs/
+
+# - /var/cache/nginx sets a directory to store the cached assets
+# - levels=1:2 sets up a two‑level directory hierarchy as file access speed can be reduced when too many files are in a single directory
+# - keys_zone=STATIC:10m defines a shared memory zone for cache keys named “STATIC” and with a size limit of 10MB (which should be more than enough unless you have thousands of files)
+# - inactive=7d is the time that items will remain cached without being accessed (7 days), after which they will be removed
+# - use_temp_path=off tells NGINX to write files directly to the cache directory and avoid unnecessary copying of data to a temporary storage area first
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+
+upstream nextjs_upstream {
+  server localhost:3000;
+}
+
+upstream imgproxy_upstream {
+  server localhost:8080;
+}
+
+server {
+  listen 80 default_server;
+
+  server_name _;
+
+  server_tokens off;
+
+  gzip on;
+  gzip_proxied any;
+  gzip_comp_level 4;
+  gzip_types text/css application/javascript image/svg+xml;
+
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_cache_bypass $http_upgrade;
+
+  # Imgproxy paths can contain multiple slashes (e.g. local:///image/file.jpg)
+  merge_slashes off;
+
+  location /img/ {
+
+    proxy_cache STATIC;
+
+    proxy_pass http://imgproxy_upstream/;
+
+    # For testing cache - remove before deploying to production
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+
+  location /_next/static {
+    proxy_cache STATIC;
+    proxy_pass http://nextjs_upstream;
+
+    # For testing cache - remove before deploying to production
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+
+  location /static {
+    proxy_cache STATIC;
+
+    # Ignore cache control for Next.js assets from /static, re-validate after 60m
+    proxy_ignore_headers Cache-Control;
+    proxy_cache_valid 60m;
+
+    proxy_pass http://nextjs_upstream;
+
+    # For testing cache - remove before deploying to production
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+
+  location / {
+    proxy_pass http://nextjs_upstream;
+  }
+}
+```
+
+With this configuration all requests with the path `/img/` will be redirected to the imgproxy instance and all other paths to my personal-website.
+
+You can test the configuration with `sudo nginx -t` and restart nginx when the test is successfull with `sudo systemctl restart nginx`.
+
+Now when you access [https://mxd.codes/img/](https://mxd.codes/img/ "imgproxy instance link") you will be redirected to the imgroxy instance and when you access [https://mxd.codes](https://mxd.codes "personal website link") you will be redirected to my personal website.
+
+The last missing piece is a custom image loader for the Next.js site.
+
+## Custom image loader for imgproxy
+
+You can configure a custom `loaderFile` in your `next.config.js` like the following:
+
+```js
+images: {
+        loader: "custom",
+        loaderFile: "./src/utils/loader.js",
+}
+```
+
+This must point to a file relative to the root of your Next.js application. The file must export a default function that returns a string:
+
+```js
+export default function imgproxyLoader({ src, width, height, quality }) {
+  const path =
+    `/size:${width ? width : 0}:${height ? height : 0}` +
+    `/resizing_type:fill` +
+    (quality ? `/quality:${quality}` : "") +
+    `/sharpen:0.5` +
+    `/plain/${src}` +
+    `@webp`
+
+  const host = process.env.NEXT_PUBLIC_IMGPROXY_URL
+
+  const imgUrl = `${host}/insecure${path}`
+
+  return imgUrl
+}
+```
+
+Now all images you serve with `"next/image"` will use your custom loader which will be using imgproxy to transform and optimize your images for your Next.js site.
+
+Recently I also started to deploy my personal site with docker so the whole docke-compose.yml now looks like the following, while the nginx configuration file remains the same.:
+
+```yml
+version: "3"
+
+services:
+  nextjs:
+    image: mxdcodes/personal-website:latest
+    container_name: personal-website
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    network_mode: "host"
+
+  imgproxy:
+    restart: unless-stopped
+    image: darthsim/imgproxy:${IMGPROXY_TAG:-latest}
+    container_name: imgproxy_app
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /data/containers/imgproxy/www:/home:cached
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "imgproxy", "health"]
+    environment:
+      ### See:
+      ### https://docs.imgproxy.net/configuration/options
+
+      ### options
+      IMGPROXY_ALLOWED_SOURCES: https://mxd.codes/
+
+      ### log and debug
+      IMGPROXY_LOG_LEVEL: "warn"
+      IMGPROXY_ENABLE_DEBUG_HEADERS: "false"
+      IMGPROXY_DEVELOPMENT_ERRORS_MODE: "false"
+      IMGPROXY_REPORT_DOWNLOADING_ERRORS: "false"
+
+      ### timeouts
+      IMGPROXY_READ_TIMEOUT: 10
+      IMGPROXY_WRITE_TIMEOUT: 10
+      IMGPROXY_DOWNLOAD_TIMEOUT: 10
+      IMGPROXY_KEEP_ALIVE_TIMEOUT: 300
+      IMGPROXY_MAX_SRC_FILE_SIZE: 33554432 # 32MB
+      IMGPROXY_MAX_SRC_RESOLUTION: 48
+
+      ### image source
+      IMGPROXY_TTL: 2592000 # client-side cache time is 30 days
+      IMGPROXY_USE_ETAG: "false"
+      IMGPROXY_SO_REUSEPORT: "true"
+      IMGPROXY_IGNORE_SSL_VERIFICATION: "false"
+      IMGPROXY_LOCAL_FILESYSTEM_ROOT: /home
+      IMGPROXY_SKIP_PROCESSING_FORMATS: "svg,webp,avif"
+
+      ### presets
+      IMGPROXY_AUTO_ROTATE: "true"
+      #IMGPROXY_WATERMARK_PATH: /home/noimage_thumb.jpg
+      IMGPROXY_PRESETS: default=resizing_type:fit/gravity:sm,logo=watermark:0.5:soea:10:10:0.15,center_logo=watermark:0.3:ce:0:0:0.3
+
+      ### compression
+      IMGPROXY_STRIP_METADATA: "true"
+      IMGPROXY_STRIP_COLOR_PROFILE: "true"
+      IMGPROXY_FORMAT_QUALITY: jpeg=80,webp=70,avif=50
+      IMGPROXY_JPEG_PROGRESSIVE: "false"
+      IMGPROXY_PNG_INTERLACED: "false"
+      IMGPROXY_PNG_QUANTIZATION_COLORS: 128
+      IMGPROXY_PNG_QUANTIZE: "false"
+      IMGPROXY_MAX_ANIMATION_FRAMES: 64
+      IMGPROXY_GZIP_COMPRESSION: 0
+      IMGPROXY_AVIF_SPEED: 8
+
+      ### For URL signature
+      IMGPROXY_KEY: KEY
+      IMGPROXY_SALT: SALT
+      IMGPROXY_SIGNATURE_SIZE: 32
+    network_mode: "host"
+```

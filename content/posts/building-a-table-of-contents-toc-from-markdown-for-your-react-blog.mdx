@@ -1,0 +1,154 @@
+---
+title: "Building a Table of Contents (TOC) from markdown for your React blog"
+slug: "building-a-table-of-contents-toc-from-markdown-for-your-react-blog"
+excerpt: "How to create a Table of Contents (TOC) from markdown for your React blog with Javascript without any third party dependencies."
+date_published: "2020-02-16"
+date_updated: "2020-02-16"
+author: "Max Dietrich"
+coverImage: "/img/coverImages/building-a-table-of-contents-toc-from-markdown-for-your-react-blog.png"
+tags: ["React", "Next.js", "Docker"]
+isPublished: false
+layout: Article
+---
+
+Since I store blog posts in a self-hosted version of [strapi](https://strapi.io/ "strapi"), I've been looking for a way to automatically generate a table of contents from Markdown for all posts in my Next.js site.
+
+The idea is that during the build process all captions are extracted from the article content (I use [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) for all articles) and then display them fixed next to the content using a separate component.
+
+## Extracting headers with regex from markdown
+
+After some research and trial and error I decided to use regex to extract the headers from the markdown text using the hash symbol.
+
+Since there are links in the markdown text with anchor elements and codeblocks that also contains hash symbols which will be misinterpreted as headers, these are removed first from the whole text.
+
+````js
+const regexReplaceCode = /(```.+?```)/gms
+const regexRemoveLinks = /\[(.*?)\]\(.*?\)/g
+
+const markdownWithoutLinks = markdown.replace(regexRemoveLinks, "")
+const markdownWithoutCodeBlocks = markdownWithoutLinks.replace(
+  regexReplaceCode,
+  ""
+)
+````
+
+Then, using the hash symbol, the headings `h1` to `h6` are filtered from the text and added to an array named titles.
+
+```js
+const regXHeader = /#{1,6}.+/g
+const titles = markdownWithoutCodeBlocks.match(regXHeader)
+```
+
+Next, using the headings, levels of headings, titles, and anchor links are created and added to an array `toc` so that the headings can later be nested with child headings and anchor links can be added. The anchor links can then be used to jump from the table of contents to a heading.
+
+```js
+let globalID = 0
+titles.map((tempTitle, i) => {
+  const level = tempTitle.match(/#/g).length - 1
+  const title = tempTitle.replace(/#/g, "").trim("")
+  const anchor = `#${title.replace(/ /g, "-").toLowerCase()}`
+  level === 1 ? (globalID += 1) : globalID
+
+  toc.push({
+    level: level,
+    id: globalID,
+    title: title,
+    anchor: anchor,
+  })
+})
+```
+
+The array toc is returned and I pass this for example as `post.toc` to the respective post, where `post.toc` in turn is passed as props to the ToC component.
+
+```js
+export async function getStaticProps({ params }) {
+  const content = (await data?.posts[0]?.content) || ""
+  const toc = getToc(content)
+
+  return {
+    props: {
+      post: {
+        content,
+        toc,
+      },
+    },
+  }
+}
+```
+
+## Rendering the table of contents
+
+Each element from the `toc` array is now added to the table of contents component. The levels variable is used to dynamically create indentation for subordinate headings with margin and the anchor is used for links.
+
+```js
+import styled from "styled-components"
+
+const ToCListItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 1rem;
+  padding-left: calc(var(--space-sm) * 0.5);
+  border-left: 3px solid var(--secondary-color);
+  margin-left: ${(props) => (props.level > 1 ? `${props.level * 10}px` : "0")};
+`
+
+export default function TableOfContents({ toc }) {
+  function TOC() {
+    return (
+      <ol className="table-of-contents">
+        {toc.map(({ level, id, title, anchor }) => (
+          <ToCListItem key={id} level={level}>
+            <a href={anchor}>{title}</a>
+          </ToCListItem>
+        ))}
+      </ol>
+    )
+  }
+
+  return (
+    <>
+      <p>Table of contents</p>
+      <divr>
+        <TOC />
+      </div>
+    </>
+  )
+}
+
+```
+
+However, the anchor links do not work yet, since the corresponding section IDs still have to be added to the titles in Markdown content.
+
+For rendering the actual post content I use [react-markdown](https://github.com/remarkjs/react-markdown "react-markdown"). With the help of custom renderers you can now edit all html elements in react-markdown. To add anchor links to the titles I use custom renderers for `h1` to `h6`.
+
+```js
+const renderers = {
+  h2: { children }) => {
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h2 id={anchor}>{children}</h2>
+  },
+  h3: ({children }) => {.
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h3 id={anchor}>{children}</h2>
+  },
+  h4: ({children }) => {.
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h4 id={anchor}>{children}</h2>
+  },
+  h5: ({children }) => {.
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h5 id={anchor}>{children}</h2>
+  },
+  h6: ({children }) => {.
+    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    return <h6 id={anchor}>{children}</h2>
+  },
+```
+
+Lastly, I added a little scroll effect with the following css-property `scroll-behavior: smooth`;
+
+## Github Links
+
+- [getToc function](https://github.com/dietrichmax/mxd-codes-frontend/blob/v2/src/utils/getToc.js)
+- [toc component](https://github.com/dietrichmax/mxd-codes-frontend/blob/v2/src/components/article/article-toc/table-of-contents.js)
+- [articles page](https://github.com/dietrichmax/mxd-codes-frontend/blob/v2/pages/articles/%5Bslug%5D.js)
+- [renderers](https://github.com/dietrichmax/mxd-codes-frontend/blob/v2/src/utils/renderers.js)

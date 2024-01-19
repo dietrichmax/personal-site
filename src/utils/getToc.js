@@ -1,3 +1,5 @@
+import { renderToString } from "react-dom/server"
+
 export function getToc(markdown) {
   const regXHeader = /#{1,6}.+/g
   const regexReplaceCode = /(```.+?```)/gms
@@ -28,6 +30,5 @@ export function getToc(markdown) {
       })
     })
   }
-
   return toc
 }

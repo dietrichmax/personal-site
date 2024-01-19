@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react"
 import {
   getPostsCount,
   getPhotosCount,
   getTagsCount,
   getSubscribersCount,
-  getNotesCount,
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
@@ -76,7 +74,6 @@ export default async (_, res) => {
   const postsCount = (await getPostsCount()) || []
   const photosCount = (await getPhotosCount()) || []
   const tagsCount = (await getTagsCount()) || []
-  const notesCount = (await getNotesCount()) || []
   const linksCount = (await getLinksCount()) || []
   const locationsCount = (await getLocationsCount()) || []
   const activitiesCount = await getActivitiesCount()
@@ -87,7 +84,6 @@ export default async (_, res) => {
     count: {
       posts: postsCount,
       tags: tagsCount,
-      notes: notesCount,
       photos: photosCount,
       links: linksCount,
       activities: activitiesCount,

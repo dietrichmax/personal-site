@@ -246,7 +246,7 @@ export default function Post({ post, allPosts }) {
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
 
                     <Content>
-                      <PostBody content={post.content} /*toc={post.toc}*/ />
+                      <PostBody content={post.content} toc={post.toc} />
                       {/*<Comments slug={post.slug} />
                       <Feedback /> */}
                       <Meta
@@ -290,11 +290,10 @@ export async function getStaticProps({ params }) {
   const markdownContent = (await data?.posts[0]?.content) || ""
   const content = await serialize(markdownContent)
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
-  //const toc = getToc(content)
-  //const readingTime = getReadTime(content)
+  const toc = getToc(markdownContent)
+  const readingTime = getReadTime(markdownContent)
   const allPosts = await getAllPosts()
 
-  //console.log(toc)
   //const morePosts = data?.morePosts || ''
   //console.log(morePosts)
 
@@ -303,10 +302,10 @@ export async function getStaticProps({ params }) {
     props: {
       post: {
         ...data?.posts[0],
-        //readingTime: readingTime,
+        readingTime: readingTime,
         content,
         excerpt,
-        //toc,
+        toc,
       },
       allPosts,
     },

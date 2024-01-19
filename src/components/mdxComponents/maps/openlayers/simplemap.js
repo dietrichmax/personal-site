@@ -13,7 +13,7 @@ function MapComponent() {
     })
 
     const map = new Map({
-      target: "map",
+      target: "simplemap",
       layers: [osmLayer],
       view: new View({
         center: [0, 0],
@@ -25,7 +25,7 @@ function MapComponent() {
   return (
     <div
       style={{ height: "300px", width: "100%" }}
-      id="map"
+      id="simplemap"
       className="map-container"
     />
   )

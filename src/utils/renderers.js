@@ -31,6 +31,13 @@ const SimpleLeafletDemo = dynamic(
     ssr: false,
   }
 )
+const VectorLayerMapGeojson = dynamic(
+  () =>
+    import("@/components/mdxComponents/maps/openlayers/VectorLayerMapGeojson"),
+  {
+    ssr: false,
+  }
+)
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
@@ -209,6 +216,9 @@ const renderers = {
   },
   SimpleLeafletDemo: ({}) => {
     return <SimpleLeafletDemo />
+  },
+  VectorLayerMapGeojson: ({}) => {
+    return <VectorLayerMapGeojson />
   },
 }
 

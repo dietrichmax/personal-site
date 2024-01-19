@@ -5,6 +5,7 @@ import TileLayer from "ol/layer/Tile"
 import View from "ol/View"
 import XYZ from "ol/source/XYZ"
 import { transform } from "ol/proj"
+import TileWMS from "ol/source/TileWMS.js"
 
 function LiveMap({ data }) {
   const [map, setMap] = useState()
@@ -23,13 +24,21 @@ function LiveMap({ data }) {
     zIndex: 0,
   })
 
-  const locData = new TileLayer({
+  /*const locData = new TileLayer({
     preload: Infinity,
     source: new XYZ({
       url: "https://maps.mxd.codes/locations/{z}/{x}/{y}.png",
       attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
     }),
     zIndex: 1,
+  })*/
+
+  const locData = new TileLayer({
+    source: new TileWMS({
+      url: "https://geoserver.mxd.codes/geoserver/ne/wms",
+      params: { LAYERS: "locations_geom", TILED: true },
+      serverType: "geoserver",
+    }),
   })
 
   const center = transform(
@@ -37,8 +46,6 @@ function LiveMap({ data }) {
     "EPSG:4326",
     "EPSG:3857"
   )
-
-  console.log([data.slice(-1)[0].lon, data.slice(-1)[0].lat])
 
   useEffect(() => {
     const initialMap = new Map({

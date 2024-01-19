@@ -15,8 +15,8 @@ export default function imgproxyLoader({ src, width, height, quality }) {
   useEffect(() => {
     setWindowWidth(getWindowWidth())
   }, [])
+*/
 
-  console.log(windowWidth)*/
   const urlSafeBase64 = (str) => {
     return Buffer.from(str)
       .toString("base64")
@@ -34,9 +34,10 @@ export default function imgproxyLoader({ src, width, height, quality }) {
     return urlSafeBase64(hmac.digest())
   }
 
-  src =
-    process.env.NEXT_PUBLIC_STRAPI_API_URL +
-    src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
+  src = src.startsWith("http")
+    ? src
+    : process.env.NEXT_PUBLIC_STRAPI_API_URL +
+      src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
 
   const path =
     `/size:${width ? width : 0}:${height ? height : 450}` +

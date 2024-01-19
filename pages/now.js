@@ -10,6 +10,7 @@ import SubTitle from "src/components/title/sub-title"
 import axios from "axios"
 import Image from "next/image"
 import { format, fromUnixTime } from "date-fns"
+import Link from "next/link"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -145,7 +146,10 @@ export default function Now({ weather, address, content, now }) {
                 ) : null}
               </LiveDataWrapper>
 
-              <TextWrapper className="e-content">{content}</TextWrapper>
+              <TextWrapper className="e-content">
+                In case you want to know more about me head over to{" "}
+                <Link href="/about">About me</Link>.
+              </TextWrapper>
               {now.timestamp ? (
                 <Disclaimer>
                   Last updated on{" "}

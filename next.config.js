@@ -624,9 +624,6 @@ module.exports = withPlugins(
           "mapbox-gl": "maplibre-gl",
         })
       }
-      /*if (isServer) {
-        require('./lib/utils/generate-sitemap');
-      }*/
       return config
     },
     typescript: {

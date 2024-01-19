@@ -1,26 +1,14 @@
 import {
   getAllPosts,
-  getAllNotes,
   getAllLinks,
-  getAllBlogrolls,
   getAllRecipes,
   getAllActivities,
 } from "src/data/external/cms"
 
 export default async (_, res) => {
   const allPosts = (await getAllPosts()) || []
-  const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
   const allActivities = (await getAllActivities()) || []
-  const allRecipes = (await getAllRecipes()) || []
-
-  const publishOn = (note) => {
-    const endpoints = []
-    note.publishOnTwitter
-      ? endpoints.push(`https://brid.gy/publish/twitter`)
-      : null
-    return endpoints
-  }
 
   const allContent = []
 
@@ -29,16 +17,6 @@ export default async (_, res) => {
       post: post,
       date: post.published_at,
       type: "article",
-    })
-  })
-
-  allNotes.map((note) => {
-    const endpoints = publishOn(note)
-    allContent.push({
-      note: note,
-      date: note.published_at,
-      endpoints: endpoints,
-      type: "note",
     })
   })
 

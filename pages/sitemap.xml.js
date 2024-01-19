@@ -101,7 +101,6 @@ class Sitemap extends React.Component {
     const getPosts = (await getAllPosts()) || []
     const getTags = (await getAllTags()) || []
     const getPages = (await getAllPages()) || []
-    const getNote = (await getAllNotes()) || []
     const getRecipes = (await getAllRecipes()) || []
     const getPhotos = (await getAllPhotos()) || []
 
@@ -127,14 +126,11 @@ class Sitemap extends React.Component {
     const posts = getPosts
     const pages = getPages
     const tags = getTags
-    const notes = getNote
     const recipes = getRecipes
     const photos = getPhotos
 
     res.setHeader("Content-Type", "text/xml")
-    res.write(
-      createSitemap(posts, tags, pages, notes, photos, uniquePages, recipes)
-    )
+    res.write(createSitemap(posts, tags, pages, photos, uniquePages, recipes))
     res.end()
   }
 }

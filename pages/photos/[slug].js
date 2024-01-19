@@ -61,9 +61,9 @@ export default function Photo({ photo }) {
                         legacyBehavior
                       >
                         {i === 0 ? (
-                          <Image
+                          <img
                             key={photo.id}
-                            src={`${
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
                               photo.formats.content
                                 ? photo.formats.content.url
                                 : photo.url
@@ -75,9 +75,9 @@ export default function Photo({ photo }) {
                             priority
                           />
                         ) : (
-                          <Image
+                          <img
                             key={photo.id}
-                            src={`${
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
                               photo.formats.content
                                 ? photo.formats.content.url
                                 : photo.url

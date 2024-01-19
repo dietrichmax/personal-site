@@ -1,5 +1,4 @@
 import Layout from "src/components/layout/layout"
-import { getLocationData, getNowData } from "src/data/external/cms"
 import config from "../src/data/internal/SiteConfig"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
@@ -7,10 +6,6 @@ import styled from "styled-components"
 import { useRouter } from "next/router"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
-import axios from "axios"
-import Image from "next/image"
-import { format, fromUnixTime } from "date-fns"
-import TextBody from "src/components/note/note-body/note-body"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -30,7 +25,9 @@ const FeedsList = styled.ul`
   padding-right: var(--space);
 `
 
-const FeedItem = styled.li``
+const FeedItem = styled.li`
+  margin-bottom: 1rem;
+`
 
 const Link = styled.a`
   color: var(--text-color);
@@ -68,11 +65,6 @@ export default function Feeds({}) {
                 <FeedItem>
                   <Link href="/articles/feed.xml" title="Articles">
                     Articles
-                  </Link>
-                </FeedItem>
-                <FeedItem>
-                  <Link href="/notes/feed.xml" title="Notes">
-                    Notes
                   </Link>
                 </FeedItem>
                 <FeedItem>

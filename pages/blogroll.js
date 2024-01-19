@@ -7,8 +7,8 @@ import SEO from "src/components/seo/seo"
 import PageTitle from "src/components/title/page-title"
 import SubTitle from "src/components/title/sub-title"
 import Link from "next/link"
-import TextBody from "src/components/note/note-body/note-body"
 import Grid from "src/components/grid/grid"
+import PostBody from "@/components/article/article-body/article-body"
 
 const BlogrollContainer = styled.div`
   max-width: var(--width-container);
@@ -60,56 +60,55 @@ const BlogrollProfileDesc = styled.p`
 `
 
 export default function Blogroll({ allBlogrolls }) {
-
   return (
     <>
       <Layout>
-            <SEO title="Blogroll" slug="blogroll" />
+        <SEO title="Blogroll" slug="blogroll" />
 
-            <PageTitle>Blogroll</PageTitle>
-            <SubTitle>
-              List of all personal blogs i am reading in random order.
-            </SubTitle>
+        <PageTitle>Blogroll</PageTitle>
+        <SubTitle>
+          List of all personal blogs i am reading in random order.
+        </SubTitle>
 
-            <BlogrollContainer>
-              <Grid>
-                {allBlogrolls.map((blogroll, i) => (
-                  <BlogrollItem key={i} className="h-entry">
-                    <BlogrollProfile>
-                      {blogroll.profilePictureUrl ? (
-                        <BlogrollProfileImgWrapper>
-                          <BlogRollProfileImg
-                            src={blogroll.profilePictureUrl}
-                            width="70"
-                            height="70"
-                            title={blogroll.name}
-                            alt={blogroll.name}
-                            className="p-photo"
-                          />
-                        </BlogrollProfileImgWrapper>
-                      ) : null}
-
-                      <Link
-                        href={blogroll.websiteUrl}
-                        passHref
-                        rel="bookmark"
+        <BlogrollContainer>
+          <Grid>
+            {allBlogrolls.map((blogroll, i) => (
+              <BlogrollItem key={i} className="h-entry">
+                <BlogrollProfile>
+                  {blogroll.profilePictureUrl ? (
+                    <BlogrollProfileImgWrapper>
+                      <BlogRollProfileImg
+                        src={blogroll.profilePictureUrl}
+                        width="70"
+                        height="70"
                         title={blogroll.name}
-                      >
-                        <BlogrollProfileName className="p-name">
-                          {blogroll.name}
-                        </BlogrollProfileName>
-                        <BlogrollProfileLink className="u-url">
-                          {blogroll.websiteUrl}
-                        </BlogrollProfileLink>
-                      </Link>
-                    </BlogrollProfile>
-                    <BlogrollProfileDesc className="p-summary">
-                      <TextBody content={blogroll.bio} />
-                    </BlogrollProfileDesc>
-                  </BlogrollItem>
-                ))}
-              </Grid>
-            </BlogrollContainer>
+                        alt={blogroll.name}
+                        className="p-photo"
+                      />
+                    </BlogrollProfileImgWrapper>
+                  ) : null}
+
+                  <Link
+                    href={blogroll.websiteUrl}
+                    passHref
+                    rel="bookmark"
+                    title={blogroll.name}
+                  >
+                    <BlogrollProfileName className="p-name">
+                      {blogroll.name}
+                    </BlogrollProfileName>
+                    <BlogrollProfileLink className="u-url">
+                      {blogroll.websiteUrl}
+                    </BlogrollProfileLink>
+                  </Link>
+                </BlogrollProfile>
+                <BlogrollProfileDesc className="p-summary">
+                  <PostBody content={blogroll.bio} />
+                </BlogrollProfileDesc>
+              </BlogrollItem>
+            ))}
+          </Grid>
+        </BlogrollContainer>
       </Layout>
     </>
   )

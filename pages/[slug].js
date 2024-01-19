@@ -9,6 +9,7 @@ import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
 import config from "../src/data/internal/SiteConfig"
+import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
   max-width: 1200px;
@@ -50,7 +51,8 @@ export default function Page({ page }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPage(params.slug)
-  const content = data?.pages[0]?.content || ""
+  const markdown = data?.pages[0]?.content || ""
+  const content = await serialize(markdown)
 
   return {
     props: {

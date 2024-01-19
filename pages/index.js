@@ -1,10 +1,9 @@
 import PostPreview from "src/components/article/article-preview/article-preview"
-import NotePreview from "src/components/note/note-preview/note-preview"
 import LinkPreview from "src/components/link/link-preview/link-preview"
 import TypeWriter from "@/src/utils/typeWriter"
 import PhotoPreview from "src/components/photo/photo-preview"
 import Layout from "src/components/layout/layout"
-import config from "src/data/internal/SiteConfig"
+//import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
@@ -14,7 +13,6 @@ import Image from "next/image"
 import HCard from "src/components/microformats/h-card"
 import {
   getAllPosts,
-  getAllNotes,
   getAllLinks,
   getAllPhotos,
   //getAllRecipes,
@@ -429,7 +427,6 @@ export async function getStaticProps() {
   const locationData = (await getLocationData()) || []
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
-  const allNotes = (await getAllNotes()) || []
   const allLinks = (await getAllLinks()) || []
   const allPhotos = (await getAllPhotos()) || []
   const cv = (await getCV()) || []
@@ -441,14 +438,6 @@ export async function getStaticProps() {
       post: post,
       date: post.published_at,
       type: "article",
-    })
-  })
-
-  allNotes.map((note) => {
-    allContent.push({
-      note: note,
-      date: note.published_at,
-      type: "note",
     })
   })
 

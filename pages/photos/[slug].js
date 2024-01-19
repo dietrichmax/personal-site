@@ -3,7 +3,6 @@ import { getPhoto, getAllPhotos } from "src/data/external/cms"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
-import config from "src/data/internal/SiteConfig"
 import Webmentions from "src/components/social/webmentions/webmentions"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,7 +11,7 @@ import PageBody from "src/components/article/article-body/article-body"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import HCard from "src/components/microformats/h-card"
-import PhotoTags from "src/components/tags/tags"
+import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
   position: relative;
@@ -96,7 +95,7 @@ export default function Photo({ photo }) {
                 })
               : console.log("no images found")}
           </PhotoList>
-          <PageBody className="e-content" content={photo.description} />
+          <PageBody className="e-content" content={photo.content} />
           {/*<TagsWrapper><PhotoTags tags={photo.tags}/></TagsWrapper> */}
 
           <WebActions slug={`/photos/${photo.slug}`} />
@@ -114,12 +113,13 @@ export default function Photo({ photo }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPhoto(params.slug)
-
+  const content = await serialize(data.photos[0].description)
   return {
     revalidate: 86400,
     props: {
       photo: {
         ...data?.photos[0],
+        content,
       },
     },
   }

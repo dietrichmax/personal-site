@@ -235,42 +235,6 @@ export async function getTag(slug) {
           url
         }
       }
-      note {
-        id
-        title
-        created_at
-        updated_at
-        published_at
-        slug
-        lat
-        lon
-        temperature
-        weather_main
-        weather_description
-        weather_icon
-        coverMedium {
-          url
-          name
-          width
-          height
-          formats
-        }
-        content
-        ofUrl
-        category
-        publishOnTwitter
-        publishOnInstagram
-        publishOnReddit
-        syndicationLinks {
-          name
-          slug
-        }
-        tags {
-          name
-          color
-          slug
-        }
-      }
       photo {
         id
         created_at
@@ -465,26 +429,6 @@ export async function getTagsCount() {
   return json
 }
 
-export async function getNotesCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/notes/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
-  }
-
-  return json
-}
-
 export async function getLocationsCount() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations/count`,
@@ -605,48 +549,6 @@ export async function getActivitiesCount() {
   return json
 }
 
-// notes
-
-export async function getAllNotes() {
-  const data = await fetchStrapiAPI(
-    `
-    {
-      notes(sort: "published_at:desc") {
-        id
-        title
-        slug
-        created_at
-        updated_at
-        published_at
-        coverMedium {
-          url
-          name
-          width
-          height
-          formats
-        }
-        category
-        content
-        ofUrl
-        publishOnTwitter
-        publishOnInstagram
-        publishOnReddit      
-        syndicationLinks {
-          name
-          slug
-        }
-        tags {
-          name
-          color
-          slug
-        }
-      }
-    }
-  `
-  )
-  return data?.notes
-}
-
 export async function getComments(slug) {
   const data = await fetchStrapiAPI(
     `
@@ -669,59 +571,6 @@ export async function getComments(slug) {
     }
   )
   return data.comments
-}
-
-export async function getNote(slug) {
-  const data = await fetchStrapiAPI(
-    `
-  query NoteBySlug($where: JSON) {
-    notes(where: $where) {
-      id
-      title
-      created_at
-      updated_at
-      published_at
-      slug
-      lat
-      lon
-      temperature
-      weather_main
-      weather_description
-      weather_icon
-      coverMedium {
-        url
-        name
-        width
-        height
-        formats
-      }
-      content
-      ofUrl
-      category
-      publishOnTwitter
-      publishOnInstagram
-      publishOnReddit
-      syndicationLinks {
-        name
-        slug
-      }
-      tags {
-        name
-        color
-        slug
-      }
-    }
-  }
-  `,
-    {
-      variables: {
-        where: {
-          slug,
-        },
-      },
-    }
-  )
-  return data
 }
 
 export async function getAllBlogrolls() {

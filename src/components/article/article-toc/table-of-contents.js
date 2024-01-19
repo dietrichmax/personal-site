@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import React, { useEffect } from "react"
 
 const ToCWrapper = styled.div`
   position: sticky;

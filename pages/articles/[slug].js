@@ -24,6 +24,7 @@ import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import Author from "@/components/article/article-author/article-author"
+import { serialize } from "next-mdx-remote/serialize"
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -245,7 +246,7 @@ export default function Post({ post, allPosts }) {
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
 
                     <Content>
-                      <PostBody content={post.content} toc={post.toc} />
+                      <PostBody content={post.content} /*toc={post.toc}*/ />
                       {/*<Comments slug={post.slug} />
                       <Feedback /> */}
                       <Meta
@@ -286,10 +287,11 @@ export default function Post({ post, allPosts }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPostAndMorePosts(params.slug)
-  const content = (await data?.posts[0]?.content) || ""
+  const markdownContent = (await data?.posts[0]?.content) || ""
+  const content = await serialize(markdownContent)
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
-  const toc = getToc(content)
-  const readingTime = getReadTime(content)
+  //const toc = getToc(content)
+  //const readingTime = getReadTime(content)
   const allPosts = await getAllPosts()
 
   //console.log(toc)
@@ -301,10 +303,10 @@ export async function getStaticProps({ params }) {
     props: {
       post: {
         ...data?.posts[0],
-        readingTime: readingTime,
+        //readingTime: readingTime,
         content,
         excerpt,
-        toc,
+        //toc,
       },
       allPosts,
     },

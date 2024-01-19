@@ -11,6 +11,7 @@ import PageTitle from "src/components/title/page-title"
 import PageBody from "src/components/article/article-body/article-body"
 import WebActions from "src/components/social/social-share/social-share"
 import HCard from "src/components/microformats/h-card"
+import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -59,7 +60,7 @@ export default function Note({ link }) {
             >
               {link.link}
             </LinksLink>
-            <PageBody className="e-content" content={link.description} />
+            <PageBody className="e-content" content={link.content} />
 
             <WebActions slug={`/links/${link.slug}`} />
             <Meta
@@ -77,12 +78,13 @@ export default function Note({ link }) {
 
 export async function getStaticProps({ params }) {
   const data = await getLink(params.slug)
-
+  const content = await serialize(data.links[0].description)
   return {
     revalidate: 86400,
     props: {
       link: {
         ...data?.links[0],
+        content,
       },
     },
   }

@@ -22,7 +22,6 @@ import {
   getPostsCount,
   getTagsCount,
   getSubscribersCount,
-  getNotesCount,
   getLocationsCount,
   getActivitiesCount,
   getLinksCount,
@@ -325,7 +324,6 @@ export default function Dashboard({
   subscribersCount,
   githubStats,
   allWebmentions,
-  notesCount,
   locationsCount,
   activitiesCount,
   linksCount,
@@ -500,14 +498,6 @@ export default function Dashboard({
                         Articles Written
                       </GridStatsDescription>
                     </StatsLargeGrid>
-                  </Link>
-                  <Link href="/notes" passHref legacyBehavior>
-                    <StatsSmallGrid title="See all Notes">
-                      <GridStats>{notesCount}</GridStats>
-                      <GridStatsDescription>
-                        Notes published
-                      </GridStatsDescription>
-                    </StatsSmallGrid>
                   </Link>
                   <Link href="/links" passHref legacyBehavior>
                     <StatsSmallGrid title="See Links">
@@ -863,7 +853,6 @@ export async function getStaticProps() {
   const postsCount = (await getPostsCount()) || []
   const tagsCount = (await getTagsCount()) || []
   const subscribersCount = (await getSubscribersCount()) || []
-  const notesCount = (await getNotesCount()) || []
   const photosCount = (await getPhotosCount()) || []
   const activitiesCount = await getActivitiesCount()
   const locationsCount = (await getLocationsCount()) || []
@@ -890,7 +879,6 @@ export async function getStaticProps() {
       postsCount,
       tagsCount,
       subscribersCount,
-      notesCount,
       activitiesCount,
       locationsCount,
       linksCount,

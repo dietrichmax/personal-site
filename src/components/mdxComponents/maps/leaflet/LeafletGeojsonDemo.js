@@ -1,56 +1,42 @@
-import React from "react"
-import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet"
-//import "../components/Leaflet/map.scss";
-import hash from "object-hash"
+import React, { useEffect } from "react"
+import L from "leaflet"
+import "leaflet/dist/leaflet.css"
 
-class OnlineKoordinaten extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      markers: [[51.8, 9.0]],
-      center: [51.8, 9.0],
-      zoom: 5,
-      color: "#3f51b5",
-      weight: 5,
-      opacity: 0.65,
+const Map = () => {
+  const mapStyles = {
+    width: "100%",
+    height: "300px",
+  }
+  const layer = L.tileLayer(
+    `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }
+  )
+
+  const mapParams = {
+    center: [52, 4],
+    zoom: 4,
+    layers: [layer],
   }
 
-  render() {
-    const Style = {
-      color: this.state.color,
-      weight: this.state.weight,
-      opacity: this.state.opacity,
-    }
+  // This useEffect hook runs when the component is first mounted,
+  // similar to componentDidMount() lifecycle method of class-based
+  // components:
+  useEffect(() => {
+    const map = L.map("map", mapParams)
+    L.geoJSON(getGeoJson()).addTo(map)
+  }, [])
 
-    return (
-      <div className="react-leaflet-demo-container">
-        {typeof window !== "undefined" && (
-          <Map center={this.state.center} zoom={this.state.zoom}>
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-              url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            />
-            <GeoJSON
-              key={hash(getGeoJson())}
-              data={getGeoJson()}
-              style={Style}
-            />
-            {this.state.markers.map((position) => (
-              <Marker position={position}>
-                <Popup>
-                  <pre>{position}</pre>
-                </Popup>
-              </Marker>
-            ))}
-          </Map>
-        )}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <div id="map" style={mapStyles} />
+    </div>
+  )
 }
 
-export default OnlineKoordinaten
+export default Map
 
 function getGeoJson() {
   return {

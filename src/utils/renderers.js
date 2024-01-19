@@ -3,9 +3,34 @@ import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
 import { FaLink } from "react-icons/fa"
-
+import * as MDX from "@/styles/mdx-styles"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import dynamic from "next/dynamic"
+const MapComponent = dynamic(
+  () => import("@/components/mdxComponents/maps/openlayers/simplemap"),
+  {
+    ssr: false,
+  }
+)
+const MarkerPopupMap = dynamic(
+  () => import("@/components/mdxComponents/maps/openlayers/MarkerPopupMap"),
+  {
+    ssr: false,
+  }
+)
+const LeafletGeojsonDemo = dynamic(
+  () => import("@/components/mdxComponents/maps/leaflet/LeafletGeojsonDemo"),
+  {
+    ssr: false,
+  }
+)
+const SimpleLeafletDemo = dynamic(
+  () => import("@/components/mdxComponents/maps/leaflet/simplemap"),
+  {
+    ssr: false,
+  }
+)
 
 const PlaceHolderImage = styled.div`
   padding: 50px 0;
@@ -72,17 +97,22 @@ const MarkdownImage = ({ src }) => {
 }
 
 const renderers = {
+  p: ({ children }) => {
+    return <MDX.P>{children}</MDX.P>
+  },
   img: (props) => {
     return <MarkdownImage src={props.src} />
   },
 
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (
-      <Link className="internal-link" href={href} title={title} alt={alt}>
-        {children}
-      </Link>
+      <MDX.A>
+        <Link className="internal-link" href={href} title={title} alt={alt}>
+          {children}
+        </Link>
+      </MDX.A>
     ) : (
-      <a
+      <MDX.A
         className="external-link"
         href={href}
         title={title}
@@ -90,31 +120,31 @@ const renderers = {
         rel="nofollow noopener"
       >
         {children}
-      </a>
+      </MDX.A>
     )
   },
   h2: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h2 style={{ cursor: "pointer" }} title={children}>
+      <MDX.H2 title={children} className="mdx-h2">
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>
           <FaLink />
         </PermaLink>
-      </h2>
+      </MDX.H2>
     )
   },
   h3: ({ children }) => {
     const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
     return (
-      <h3 style={{ cursor: "pointer" }} title={children}>
+      <MDX.H3 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
         <a href={`#${anchor}`}>{children}</a>
         <PermaLink>
           <FaLink />
         </PermaLink>
-      </h3>
+      </MDX.H3>
     )
   },
   h4: ({ children }) => {
@@ -155,6 +185,30 @@ const renderers = {
         {children}
       </code>
     )
+  },
+  ul: ({ children }) => {
+    return <MDX.UL>{children}</MDX.UL>
+  },
+  ol: ({ children }) => {
+    return <MDX.OL>{children}</MDX.OL>
+  },
+  pre: ({ children }) => {
+    return <MDX.PRE>{children}</MDX.PRE>
+  },
+  blockquote: ({ children }) => {
+    return <MDX.Blockquote>{children}</MDX.Blockquote>
+  },
+  MapComponent: ({}) => {
+    return <MapComponent />
+  },
+  MarkerPopupMap: ({}) => {
+    return <MarkerPopupMap />
+  },
+  LeafletGeojsonDemo: ({}) => {
+    return <LeafletGeojsonDemo />
+  },
+  SimpleLeafletDemo: ({}) => {
+    return <SimpleLeafletDemo />
   },
 }
 

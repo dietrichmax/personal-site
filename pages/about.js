@@ -9,6 +9,7 @@ import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
+import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -67,11 +68,11 @@ export default function About({ about }) {
   const renderBio = () => {
     switch (selected) {
       case 0:
-        return about.bioShort
+        return about.bio //Short
       case 1:
-        return about.bioMedium
+        return about.bio //bioMedium
       case 2:
-        return about.bioLong
+        return about.bio //.bioLong
     }
   }
   const handleSubmit = () => {}
@@ -92,7 +93,7 @@ export default function About({ about }) {
 
           <ImageWrapper>
             <Image
-              src="/logos/windows10/SplashScreen.scale-100.png"
+              src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
               width="620"
               height="300"
               title={about.title}
@@ -105,7 +106,7 @@ export default function About({ about }) {
             <Title>{about.title}</Title>
             <Intro>{about.intro}</Intro>
             <BioContainer>
-              <Content content={renderBio()} />
+              <Content content={about.bio} />
             </BioContainer>
           </PageWrapper>
         </>
@@ -116,11 +117,13 @@ export default function About({ about }) {
 
 export async function getStaticProps({}) {
   const data = await getAbout()
+  const bio = await serialize(data.about.bioMedium)
 
   return {
     props: {
       about: {
         ...data?.about,
+        bio,
       },
     },
   }

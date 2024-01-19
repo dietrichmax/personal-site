@@ -1,12 +1,7 @@
 import React from "react"
 import { parseISO } from "date-fns"
 import config from "src/data/internal/SiteConfig"
-import {
-  getAllPosts,
-  getAllNotes,
-  getAllLinks,
-  getAllRecipes,
-} from "src/data/external/cms"
+import { getAllPosts, getAllLinks, getAllRecipes } from "src/data/external/cms"
 const showdown = require("showdown"),
   converter = new showdown.Converter()
 
@@ -16,8 +11,8 @@ const createRssFeed = (allContent) =>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${
-    config.siteRss
-  }" rel="self" type="application/atom+xml"/>
+          config.siteRss
+        }" rel="self" type="application/atom+xml"/>
         <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>
         <author>
             <name>Max Dietrich</name>
@@ -45,17 +40,8 @@ const createRssFeed = (allContent) =>
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
     const posts = (await getAllPosts()) || []
-    const notes = (await getAllNotes()) || []
     const links = (await getAllLinks()) || []
     const recipes = (await getAllRecipes()) || []
-
-    const publishOn = (note) => {
-      const endpoints = []
-      note.publishOnTwitter
-        ? endpoints.push(`[](https://brid.gy/publish/twitter)`)
-        : null
-      return endpoints
-    }
 
     const allContent = []
 
@@ -65,16 +51,6 @@ class Rss extends React.Component {
         slug: `${config.siteUrl}/articles/${post.slug}`,
         date: post.dateUpdated ? post.dateUpdated : post.published_at,
         content: converter.makeHtml(post.content),
-      })
-    })
-
-    notes.map((note) => {
-      const endpoints = publishOn(note)
-      allContent.push({
-        title: note.title,
-        slug: `${config.siteUrl}/notes/${note.id}`,
-        date: note.published_at,
-        content: converter.makeHtml(note.content + endpoints),
       })
     })
 

@@ -40,9 +40,9 @@ const NavItem = styled.li`
 
 export default function Nav({ color }) {
   const headerItems = [
+    { name: "Home", link: "/" },
     { name: "Articles", link: "/articles" },
     { name: "Photos", link: "/photos" },
-    { name: "Notes", link: "/notes" },
     { name: "Links", link: "/links" },
   ]
 

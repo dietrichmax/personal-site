@@ -2,7 +2,7 @@ import { startsWith } from "lodash"
 import { useEffect, useState } from "react"
 const createHmac = require("create-hmac")
 
-export default function imgproxyLoader({ src, width, height, quality, blur }) {
+export default function imgproxyLoader({ src, width, height, quality }) {
   //const [windowWidth, setWindowWidth] = useState(width)
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT

@@ -4,22 +4,13 @@ import {
   getAllPosts,
   getAllPages,
   getAllTags,
-  getAllNotes,
   getAllRecipes,
   getAllPhotos,
 } from "src/data/external/cms"
 import config from "src/data/internal/SiteConfig"
 import * as fs from "fs"
 
-const createSitemap = (
-  posts,
-  tags,
-  pages,
-  notes,
-  photos,
-  uniquePages,
-  recipes
-) =>
+const createSitemap = (posts, tags, pages, photos, uniquePages, recipes) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
         ${posts
@@ -74,20 +65,6 @@ const createSitemap = (
             `
           })
           .join("")}
-          ${notes
-            .map((note) => {
-              return `
-                <url>
-                    <loc>${`${config.siteUrl}/notes/${note.slug}`}</loc>
-                    <lastmod>${
-                      note.updated_at ? note.updated_at : note.created_at
-                    }</lastmod>
-                    <changefreq>monthly</changefreq>
-                    <priority>0.5</priority>
-                 </url>
-            `
-            })
-            .join("")}
           ${photos
             .map((photo) => {
               return `

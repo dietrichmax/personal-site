@@ -1,10 +1,7 @@
-import markdownStyles from "@/styles/markdown-styles.module.css"
 import styled from "styled-components"
-import ReactMarkdown from "react-markdown"
-import renderers from "src/utils/renderers"
 import TableOfContents from "src/components/article/article-toc/table-of-contents"
 import media from "styled-media-query"
-import remarkGfm from "remark-gfm"
+import MDXWrapper from "@/components/mdxWrapper"
 
 const PostContent = styled.section`
   position: relative;
@@ -45,14 +42,8 @@ export default function PostBody({ content, toc }) {
   return (
     <>
       <PostContent>
-        <ContentWrapper className="e-content">
-          <ReactMarkdown
-            className={markdownStyles["markdown"]}
-            children={content}
-            components={renderers}
-            remarkPlugins={[remarkGfm]}
-            style={{ width: "100%", height: "100%", position: "relative" }}
-          />
+        <ContentWrapper className="markdown">
+          <MDXWrapper content={content} />
         </ContentWrapper>
         {toc && toc.length > 0 ? (
           <Sidebar>

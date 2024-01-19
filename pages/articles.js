@@ -1,13 +1,13 @@
 import Layout from "src/components/layout/layout"
 import { getAllPosts, getAllTags } from "src/data/external/cms"
-import config from "src/data/internal/SiteConfig"
+//import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import PageTitle from "src/components/title/page-title"
 import Grid from "src/components/grid/grid"
 import SubTitle from "src/components/title/sub-title"
 import PostPreview from "src/components/article/article-preview/article-preview"
-import Tags from "src/components/tags/tags"
+//import Tags from "src/components/tags/tags"
 import media from "styled-media-query"
 
 const BlogPageContainer = styled.div`

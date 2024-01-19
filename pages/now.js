@@ -10,7 +10,6 @@ import SubTitle from "src/components/title/sub-title"
 import axios from "axios"
 import Image from "next/image"
 import { format, fromUnixTime } from "date-fns"
-import TextBody from "src/components/note/note-body/note-body"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -97,6 +96,7 @@ export default function Now({ weather, address, content, now }) {
 
   const time = now.timestamp ? now.timestamp : new Date()
 
+  console.log(content)
   return (
     <>
       <Layout>
@@ -145,9 +145,7 @@ export default function Now({ weather, address, content, now }) {
                 ) : null}
               </LiveDataWrapper>
 
-              <TextWrapper>
-                <TextBody className="e-content" content={content} />
-              </TextWrapper>
+              <TextWrapper className="e-content">{content}</TextWrapper>
               {now.timestamp ? (
                 <Disclaimer>
                   Last updated on{" "}

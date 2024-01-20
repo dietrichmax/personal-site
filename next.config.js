@@ -3,14 +3,14 @@ const withFonts = require("next-fonts")
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
-    default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.mxd.codes;
+    default-src 'self' *.mxd.codes;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.mxd.codes ;
     child-src *.mxd.codes;
     style-src 'self' 'unsafe-inline' *.googleapis.com *.mxd.codes;
     img-src * blob: data: *.mxd.codes;
-    media-src 'none';
-    connect-src *;
-    font-src 'self';
+    media-src 'none' *.mxd.codes;
+    connect-src * *.mxd.codes;
+    font-src 'self' *.mxd.codes;
 `
 
 const securityHeaders = [

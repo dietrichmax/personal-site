@@ -17,17 +17,17 @@ import "@/public/fonts/SF-UI/style.css"
 
 class MyApp extends App {
   componentDidMount() {
-    //if (window.location.href.includes(config.domain)) {
-    init({
-      url: process.env.NEXT_PUBLIC_MATOMO_URL,
-      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-    }),
-      window._paq.push(["enableHeartBeatTimer"])
-    /*if (Cookie.get("consent") === "true") {
+    if (window.location.href.includes(config.domain)) {
+      init({
+        url: process.env.NEXT_PUBLIC_MATOMO_URL,
+        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+      }),
+        window._paq.push(["enableHeartBeatTimer"])
+      /*if (Cookie.get("consent") === "true") {
         //enableGoogleAnalytics();
         //enableGoogleAdsense();
       }*/
-    //}
+    }
   }
 
   render() {
@@ -40,9 +40,18 @@ class MyApp extends App {
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
           />
           {/* DNS Prefetch*/}
+          <link rel="dns-prefetch" href="https://cms.mxd.codes" />
+          <link rel="dns-prefetch" href="https://geodaten.mxd.codes" />
+          <link rel="dns-prefetch" href="https://analytics.mxd.codes/" />
           {/* Preconnect */}
-          <link rel="preconnect" href="https://cms.mxd.codes" crossOrigin />, ,
+          <link rel="preconnect" href="https://cms.mxd.codes" />,
+          <link rel="preconnect" href="https://analytics.mxd.codes/" />
           {/* Preload */}
+          <link
+            rel="preload"
+            href="https://analytics.mxd.codes/matomo.js"
+            as="script"
+          />
           {/* IndieCert */}
           <link
             rel="authorization_endpoint"

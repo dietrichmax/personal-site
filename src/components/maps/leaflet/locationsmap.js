@@ -79,7 +79,7 @@ function LiveMap({ data }) {
       layers: [aerial, locData],
       view: new View({
         center: center,
-        zoom: 11,
+        zoom: 16,
         maxZoom: 16,
       }),
     })

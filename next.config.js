@@ -4,7 +4,7 @@ const withFonts = require("next-fonts")
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     default-src 'self' *.mxd.codes;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.mxd.codes ;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.mxd.codes;
     child-src *.mxd.codes;
     style-src 'self' 'unsafe-inline' *.googleapis.com *.mxd.codes;
     img-src * blob: data: *.mxd.codes;
@@ -14,11 +14,11 @@ const ContentSecurityPolicy = `
 `
 
 const securityHeaders = [
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  /*/ https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\n/g, ""),
-  },
+  },*/
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: "Referrer-Policy",

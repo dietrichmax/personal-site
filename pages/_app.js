@@ -17,17 +17,17 @@ import "@/public/fonts/SF-UI/style.css"
 
 class MyApp extends App {
   componentDidMount() {
-    if (window.location.href.includes(config.domain)) {
-      init({
-        url: process.env.NEXT_PUBLIC_MATOMO_URL,
-        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-      }),
-        window._paq.push(["enableHeartBeatTimer"])
-      /*if (Cookie.get("consent") === "true") {
+    //if (window.location.href.includes(config.domain)) {
+    init({
+      url: process.env.NEXT_PUBLIC_MATOMO_URL,
+      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    }),
+      window._paq.push(["enableHeartBeatTimer"])
+    /*if (Cookie.get("consent") === "true") {
         //enableGoogleAnalytics();
         //enableGoogleAdsense();
       }*/
-    }
+    //}
   }
 
   render() {

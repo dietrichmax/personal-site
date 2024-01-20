@@ -4,8 +4,12 @@ import Map from "ol/Map"
 import TileLayer from "ol/layer/Tile"
 import View from "ol/View"
 import XYZ from "ol/source/XYZ"
-import { transform } from "ol/proj"
+import { transform, get as getProjection } from "ol/proj"
+import WMTSTileGrid from "ol/tilegrid/WMTS.js"
+import WMTS from "ol/source/WMTS.js"
 import TileWMS from "ol/source/TileWMS.js"
+import OSM from "ol/source/OSM.js"
+import { getTopLeft, getWidth } from "ol/extent.js"
 
 function LiveMap({ data }) {
   const [map, setMap] = useState()
@@ -24,20 +28,33 @@ function LiveMap({ data }) {
     zIndex: 0,
   })
 
-  /*const locData = new TileLayer({
-    preload: Infinity,
-    source: new XYZ({
-      url: "https://maps.mxd.codes/locations/{z}/{x}/{y}.png",
-      attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
-    }),
-    zIndex: 1,
-  })*/
+  const projection = getProjection("EPSG:3857")
+  const projectionExtent = projection.getExtent()
+  const size = getWidth(projectionExtent) / 256
+  const resolutions = new Array(19)
+  const matrixIds = new Array(19)
+  for (let z = 0; z < 19; ++z) {
+    // generate resolutions and matrixIds arrays for this WMTS
+    resolutions[z] = size / Math.pow(2, z)
+    matrixIds[z] = z
+  }
 
   const locData = new TileLayer({
-    source: new TileWMS({
-      url: "https://geoserver.mxd.codes/geoserver/ne/wms",
-      params: { LAYERS: "locations_geom", TILED: true },
-      serverType: "geoserver",
+    opacity: 0.9,
+    source: new WMTS({
+      attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
+      url: "https://geodata.mxd.codes/locations/service?",
+      layer: "locations",
+      matrixSet: "webmercator",
+      format: "image/png",
+      projection: projection,
+      tileGrid: new WMTSTileGrid({
+        origin: getTopLeft(projectionExtent),
+        resolutions: resolutions,
+        matrixIds: matrixIds,
+      }),
+      style: "default",
+      wrapX: true,
     }),
   })
 

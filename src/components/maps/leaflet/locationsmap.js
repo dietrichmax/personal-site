@@ -32,7 +32,7 @@ function LiveMap({ data }) {
     opacity: 0.9,
     source: new WMTS({
       attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
-      url: "http://geodata.mxd.codes/locations/service?",
+      url: "https://geodata.mxd.codes/locations/service?",
       layer: "locations",
       matrixSet: "webmercator",
       format: "image/png",
@@ -52,7 +52,7 @@ function LiveMap({ data }) {
     source: new WMTS({
       attributions:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-      url: "http://geodata.mxd.codes/arcgisaerial/service?",
+      url: "https://geodata.mxd.codes/arcgisaerial/service?",
       layer: "arcgisaerial",
       matrixSet: "webmercator",
       format: "image/png",

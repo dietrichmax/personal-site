@@ -17,17 +17,6 @@ function LiveMap({ data }) {
   const mapRef = useRef()
   mapRef.current = map
 
-  const aerial = new TileLayer({
-    source: new XYZ({
-      preload: Infinity,
-      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      attributions:
-        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-      maxZoom: 20,
-    }),
-    zIndex: 0,
-  })
-
   const projection = getProjection("EPSG:3857")
   const projectionExtent = projection.getExtent()
   const size = getWidth(projectionExtent) / 256
@@ -43,8 +32,28 @@ function LiveMap({ data }) {
     opacity: 0.9,
     source: new WMTS({
       attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
-      url: "https://geodata.mxd.codes/locations/service?",
+      url: "http://mapproxy:8080/locations/service?",
       layer: "locations",
+      matrixSet: "webmercator",
+      format: "image/png",
+      projection: projection,
+      tileGrid: new WMTSTileGrid({
+        origin: getTopLeft(projectionExtent),
+        resolutions: resolutions,
+        matrixIds: matrixIds,
+      }),
+      style: "default",
+      wrapX: true,
+    }),
+  })
+
+  const aerial = new TileLayer({
+    opacity: 0.9,
+    source: new WMTS({
+      attributions:
+        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      url: "http://mapproxy:8080/arcgisaerial/service?",
+      layer: "arcgisaerial",
       matrixSet: "webmercator",
       format: "image/png",
       projection: projection,

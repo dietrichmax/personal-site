@@ -242,13 +242,6 @@ const jsonld = {
     },
     {
       "@type": "SiteNavigationElement",
-      "position": 4,
-      "name": "Notes",
-      "description": "Status updates and short notes",
-      "url": "http://www.mxd.codes/notes",
-    },
-    {
-      "@type": "SiteNavigationElement",
       "position": 5,
       "name": "Links",
       "description": "Awesome content on the web, in random order",
@@ -380,8 +373,6 @@ export default function Index({ posts, cv }) {
             {content.map((post, i) =>
               post.type === "article" ? (
                 <PostPreview key={i} postData={post.post} />
-              ) : post.type === "note" ? (
-                <NotePreview key={i} note={post.note} />
               ) : post.type === "link" ? (
                 <LinkPreview key={i} link={post.link} />
               ) : post.type === "photo" ? (

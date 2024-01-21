@@ -32,7 +32,11 @@ export default function Custom404({ pages }) {
           : `Seems like you got lost. Sorry for that...`}
       </SubTitle>
       <Container>
-        <Image src="/404.png" width="600" height="600" />
+        <Image
+          src="/uploads/daturbod_confused_astronaut_lost_in_space_rocket_comic_e6efe5d2_37c0_4186_b0c2_d069fca163cb_5c875628fd.png"
+          width="600"
+          height="600"
+        />
       </Container>
     </Layout>
   )
@@ -41,7 +45,7 @@ export default function Custom404({ pages }) {
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
   const pages = []
-  allPosts.map(post => pages.push(post.slug))
+  allPosts.map((post) => pages.push(post.slug))
   return {
     props: { pages },
   }

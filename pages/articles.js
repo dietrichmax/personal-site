@@ -57,11 +57,6 @@ export default function Blog({ allPosts, allTags }) {
             {posts.map((post, i) => (
               <PostPreview key={i} postData={post} />
             ))}
-            {/*<TagsGrid>
-                  <Sticky>
-                    <Tags tags={allTags} block />
-                  </Sticky>
-                  </TagsGrid>*/}
           </Grid>
         </BlogPageContainer>
       </Layout>

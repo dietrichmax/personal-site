@@ -2,7 +2,6 @@ import Grid from "src/components/grid/grid"
 import Layout from "src/components/layout/layout"
 import { getTag, getAllTags } from "src/data/external/cms"
 import PageTitle from "src/components/title/tag-title"
-import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SubTitle from "src/components/title/sub-title"
 import SEO from "src/components/seo/seo"
@@ -51,8 +50,6 @@ export default function Tags({ posts, tag }) {
               {content.map((post, i) =>
                 post.type === "article" ? (
                   <PostPreview key={i} postData={post.post} />
-                ) : post.type === "note" ? (
-                  <NotePreview key={i} note={post.note} />
                 ) : post.type === "link" ? (
                   <LinkPreview key={i} link={post.link} />
                 ) : post.type === "photo" ? (
@@ -71,9 +68,6 @@ export async function getStaticProps({ params }) {
   const data = await getTag(params.slug)
   const allContent = []
   const posts = data.tags[0].posts
-  const notes = data.tags[0].notes
-  /*const photos = data.tags[0].photos
-  const links = data.tags[0].photos*/
   posts.map((post) => {
     allContent.push({
       post: post,
@@ -81,13 +75,6 @@ export async function getStaticProps({ params }) {
       type: "article",
     })
   })
-  /*notes.map((post) => {
-    allContent.push({
-      post: post,
-      date: post.published_at,
-      type: "note"
-    })
-  })*/
 
   const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
 

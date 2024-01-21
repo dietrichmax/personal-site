@@ -235,18 +235,6 @@ define("./sw.js", ["./workbox-ea903bce"], function (e) {
           revision: "XHXccRZ9PkjIU-r0PpBwU",
         },
         {
-          url: "/_next/static/chunks/pages/notes-2ac968d7b9ba076647fe.js",
-          revision: "XHXccRZ9PkjIU-r0PpBwU",
-        },
-        {
-          url: "/_next/static/chunks/pages/notes/%5Bslug%5D-b66244232b2992d797e8.js",
-          revision: "XHXccRZ9PkjIU-r0PpBwU",
-        },
-        {
-          url: "/_next/static/chunks/pages/notes/feed.xml-72227800ee7518c3f50e.js",
-          revision: "XHXccRZ9PkjIU-r0PpBwU",
-        },
-        {
           url: "/_next/static/chunks/pages/now-b8a134710f0981718bfd.js",
           revision: "XHXccRZ9PkjIU-r0PpBwU",
         },

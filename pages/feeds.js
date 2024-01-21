@@ -47,7 +47,7 @@ export default function Feeds({}) {
             <SEO
               title="Feeds"
               slug="feeds"
-              description="You can subscribe to all content, articles, notes, links photos and activities."
+              description="You can subscribe to all content, articles, links photos and activities."
             />
 
             <PageTitle>Feeds</PageTitle>

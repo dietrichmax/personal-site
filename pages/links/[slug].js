@@ -35,7 +35,7 @@ const LinksLink = styled.a`
   color: var(--text-color);
 `
 
-export default function Note({ link }) {
+export default function Link({ link }) {
   const router = useRouter()
 
   return (
@@ -95,6 +95,6 @@ export async function getStaticPaths() {
 
   return {
     paths: links?.map((link) => `/links/${link.slug}`) || [],
-    fallback: true,
+    fallback: false,
   }
 }

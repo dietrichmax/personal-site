@@ -165,7 +165,7 @@ export default function Now({ weather, address, content, now }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
   })

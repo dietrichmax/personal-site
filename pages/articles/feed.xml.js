@@ -11,8 +11,8 @@ const createRssFeed = (allContent) =>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${
-    config.siteRss
-  }" rel="self" type="application/atom+xml"/>
+          config.siteRss
+        }" rel="self" type="application/atom+xml"/>
         <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>
         <author>
             <name>Max Dietrich</name>
@@ -40,14 +40,6 @@ const createRssFeed = (allContent) =>
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
     const posts = (await getAllPosts()) || []
-
-    const publishOn = (note) => {
-      const endpoints = []
-      note.publishOnTwitter
-        ? endpoints.push(`[](https://brid.gy/publish/twitter)`)
-        : null
-      return endpoints
-    }
 
     const allContent = []
 

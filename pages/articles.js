@@ -1,5 +1,5 @@
 import Layout from "src/components/layout/layout"
-import { getAllPosts, getAllTags } from "src/data/external/cms"
+import { getAllPosts } from "src/data/external/cms"
 //import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
@@ -15,28 +15,6 @@ const BlogPageContainer = styled.div`
   margin: var(--space) auto;
 `
 
-const PostsGrid = styled.ol`
-  list-style: none;
-  padding-inline-start: 0;
-  display: grid;
-  gap: var(--space);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  ${media.lessThan("medium")`
-    padding-left: 0;
-    grid-template-columns: repeat(1, minmax(0px, 1fr));
-`}
-`
-
-const TagsGrid = styled.div`
-  grid-column: span 1 / span 1;
-  position: sticky;
-  padding: var(--space-sm);
-`
-
-const Sticky = styled.div`
-  position: sticky;
-  top: var(--space);
-`
 export default function Blog({ allPosts, allTags }) {
   const posts = allPosts
 
@@ -66,9 +44,8 @@ export default function Blog({ allPosts, allTags }) {
 
 export async function getStaticProps() {
   const allPosts = (await getAllPosts()) || []
-  const allTags = (await getAllTags()) || []
   return {
     revalidate: 86400,
-    props: { allPosts, allTags },
+    props: { allPosts },
   }
 }

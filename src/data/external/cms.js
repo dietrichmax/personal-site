@@ -91,8 +91,6 @@ export async function getAllPosts() {
         }
         tags {
           name
-          color
-          backgroundColor
           slug
         }
         lang
@@ -106,7 +104,28 @@ export async function getAllPosts() {
   return data?.posts
 }
 
-export async function getPostAndMorePosts(slug) {
+// Get related Posts
+
+export async function getRelatedPosts() {
+  const data = await fetchStrapiAPI(
+    `
+    {
+      posts {
+        title
+        slug
+        updated_at
+        excerpt
+        tags {
+          name
+        }
+      }
+    }
+  `
+  )
+  return data?.posts
+}
+
+export async function getPostBySlug(slug) {
   const data = await fetchStrapiAPI(
     `
   query PostBySlug($where: JSON) {

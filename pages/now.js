@@ -96,7 +96,6 @@ export default function Now({ weather, address, content, now }) {
     }
   }
 
-  console.log(content)
   return (
     <>
       <Layout>

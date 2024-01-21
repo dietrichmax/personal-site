@@ -3,7 +3,11 @@ import { useRouter } from "next/router"
 import ErrorPage from "next/error"
 import Layout from "src/components/layout/layout"
 import SEO from "src/components/seo/seo"
-import { getAllPosts, getPostAndMorePosts } from "src/data/external/cms"
+import {
+  getRelatedPosts,
+  getPostBySlug,
+  getAllPosts,
+} from "src/data/external/cms"
 import PostBody from "src/components/article/article-body/article-body"
 import PageTitle from "src/components/title/page-title"
 import markdownToHtml from "src/utils/markdownToHtml"
@@ -22,13 +26,9 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
+import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import Author from "@/components/article/article-author/article-author"
 import { serialize } from "next-mdx-remote/serialize"
-import dynamic from "next/dynamic"
-const RecommendedPosts = dynamic(
-  () => import("@/components/recommended-articles/recommendedArticles"),
-  { ssr: false }
-)
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -130,46 +130,6 @@ const PostTitleWrapper = styled.div`
   `}
   ${media.lessThan("medium")`
     margin: var(--space-sm);
-  `}
-`
-
-const TagsWrapper = styled.div`
-  margin: var(--space-sm) 0;
-`
-
-const RecommendedPostsContainer = styled.ol`
-  margin-bottom: var(--space);
-  grid-column: span 2;
-  display: grid;
-  grid-gap: var(--space);
-  grid-template-columns: auto auto auto;
-  margin-left: var(--space);
-  margin-right: var(--space);
-  padding-inline-start: 0;
-  ${media.lessThan("large")`
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
-    grid-gap: var(--space-sm);
-  `}
-  ${media.lessThan("medium")`
-    grid-template-columns: repeat(1, minmax(auto, 1fr));
-    margin-left: var(--space-sm);
-    margin-right: var(--space-sm);
-  `}
-`
-
-const RecommendedPostTitle = styled.h3`
-  margin-top: var(--space);
-  margin-left: var(--space);
-  padding-left: var(--space-sm);
-  margin-bottom: var(--space-sm);
-  grid-column: span 3;
-  font-size: 1.5rem;
-  font-weight: 600;
-  ${media.lessThan("large")`
-    margin-left: var(--space);
-  `}
-  ${media.lessThan("medium")`
-    margin-left: var(--space-sm);
   `}
 `
 
@@ -276,10 +236,7 @@ export default function Post({ post, allPosts }) {
                   </PostWrapper>
                 </ArticleBackgroundColor>
               </ArticleContainer>
-              <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
-              <RecommendedPostsContainer>
-                <RecommendedPosts post={post} allPosts={allPosts} />
-              </RecommendedPostsContainer>
+              <RecommendedPosts post={post} allPosts={allPosts} />
             </ArticleBackground>
           </article>
         </>
@@ -289,16 +246,13 @@ export default function Post({ post, allPosts }) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getPostAndMorePosts(params.slug)
+  const data = await getPostBySlug(params.slug)
   const markdownContent = (await data?.posts[0]?.content) || ""
   const content = await serialize(markdownContent)
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
-  const allPosts = await getAllPosts()
-
-  //const morePosts = data?.morePosts || ''
-  //console.log(morePosts)
+  const allPosts = await getRelatedPosts()
 
   return {
     revalidate: 86400,

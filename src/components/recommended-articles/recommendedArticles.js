@@ -1,4 +1,42 @@
 import PostPreview from "src/components/article/article-preview/article-preview"
+import styled from "styled-components"
+import media from "styled-media-query"
+
+const RecommendedPostsContainer = styled.ol`
+  margin-bottom: var(--space);
+  grid-column: span 2;
+  display: grid;
+  grid-gap: var(--space);
+  grid-template-columns: auto auto auto;
+  margin-left: var(--space);
+  margin-right: var(--space);
+  padding-inline-start: 0;
+  ${media.lessThan("large")`
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-gap: var(--space-sm);
+  `}
+  ${media.lessThan("medium")`
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
+  `}
+`
+
+const RecommendedPostTitle = styled.h3`
+  margin-top: var(--space);
+  margin-left: var(--space);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  grid-column: span 3;
+  font-size: 1.5rem;
+  font-weight: 600;
+  ${media.lessThan("large")`
+    margin-left: var(--space);
+  `}
+  ${media.lessThan("medium")`
+    margin-left: var(--space-sm);
+  `}
+`
 
 export default function RecommendedPosts({ post, allPosts }) {
   // filter out current post
@@ -29,9 +67,12 @@ export default function RecommendedPosts({ post, allPosts }) {
 
   return (
     <>
-      {sortedPosts.slice(0, maxPosts).map((post, i) => (
-        <PostPreview key={i} postData={post} />
-      ))}
+      <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
+      <RecommendedPostsContainer>
+        {sortedPosts.slice(0, maxPosts).map((post, i) => (
+          <PostPreview key={i} postData={post} />
+        ))}
+      </RecommendedPostsContainer>
     </>
   )
 }

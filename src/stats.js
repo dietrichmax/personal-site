@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Layout from "@/components/layout/layout"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
@@ -7,12 +7,12 @@ import { useRouter } from "next/router"
 import media from "styled-media-query"
 import Link from "next/link"
 import { Button } from "@/styles/templates/button"
+import { Client } from "pg"
 import {
   getMatomoActions,
   getMatomoLiveCounter,
   getMatomoPageViews,
   getMatomoSumVisitDuration,
-  getMatomoSEOStats,
   getMatomoVisitsSummary,
   getMatomoTopPageUrls,
   getMatomoConsent,
@@ -22,7 +22,6 @@ import {
   getPostsCount,
   getTagsCount,
   getSubscribersCount,
-  getLocationsCount,
   getActivitiesCount,
   getLinksCount,
   getPhotosCount,
@@ -855,14 +854,12 @@ export async function getStaticProps() {
   const subscribersCount = (await getSubscribersCount()) || []
   const photosCount = (await getPhotosCount()) || []
   const activitiesCount = await getActivitiesCount()
-  const locationsCount = (await getLocationsCount()) || []
   const linksCount = (await getLinksCount()) || []
   const lastViews = (await getMatomoPageViews()) || []
   const actions = (await getMatomoActions()) || []
   const githubStats = (await getGitHubStats()) || []
   const visitDuration = (await getMatomoSumVisitDuration()) || []
   const allWebmentions = (await fetchWebmentions()) || []
-  const seoStats = (await getMatomoSEOStats()) || []
   const visitsSummary = (await getMatomoVisitsSummary()) || []
   const activities = (await getAllActivities()) || []
   const liveViews = (await getMatomoLiveCounter()) || []
@@ -870,6 +867,13 @@ export async function getStaticProps() {
   const consentCount = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
   const thanks = (await getThanks()) || []
+
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  })
+  await client.connect()
+  const locationsCount = await client.query("SELECT COUNT(*) FROM locations;")
+  await client.end()
 
   return {
     revalidate: 86400,
@@ -880,12 +884,11 @@ export async function getStaticProps() {
       tagsCount,
       subscribersCount,
       activitiesCount,
-      locationsCount,
+      locationsCount: locationsCount.rows[0].count,
       linksCount,
       githubStats,
       visitDuration,
       allWebmentions,
-      seoStats,
       visitsSummary,
       photosCount,
       activities,

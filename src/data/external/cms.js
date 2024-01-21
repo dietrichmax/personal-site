@@ -429,26 +429,6 @@ export async function getTagsCount() {
   return json
 }
 
-export async function getLocationsCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/locations/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
-  }
-
-  return json
-}
-
 export async function getRecipesCount() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/recipes/count`,
@@ -737,53 +717,6 @@ export async function getPhoto(slug) {
     }
   )
   return data
-}
-
-export async function getLocationData() {
-  const data = await fetchStrapiAPI(
-    `
-    {
-      locations(sort: "id:desc") {
-        lat
-        lon
-        acc
-        alt
-        batt
-        bs
-        cog
-        rad
-        t
-        tid
-        vac
-        vel
-        p
-        conn
-        topic
-        inregions
-        ssid
-        bssid
-        tst
-      }
-    }
-  `
-  )
-  return data?.locations
-}
-
-export async function getRecentLocationData() {
-  const data = await fetchStrapiAPI(
-    `
-    {
-      locations(sort: "id:desc", limit: -1) {
-        lat
-        lon
-        alt
-        vel
-      }
-    }
-  `
-  )
-  return data?.locations
 }
 
 export async function getNowData() {

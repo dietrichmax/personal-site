@@ -5,6 +5,7 @@ import styled from "styled-components"
 import media from "styled-media-query"
 import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from "next/dynamic"
+import { Client } from "pg"
 const LocationsMap = dynamic(
   () => import("src/components/maps/leaflet/locationsmap"),
   { ssr: false }
@@ -40,14 +41,14 @@ const InternalLink = styled.a`
   }
 `
 
-export default function Map({ locations, locationsCount }) {
+export default function Map({ location, locationsCount }) {
   return (
     <Layout>
       <SEO title="Map" slug="map" />
       <Title>Map</Title>
 
       <MapContainer>
-        <LocationsMap data={locations} />
+        <LocationsMap data={location} />
       </MapContainer>
       <Description>
         Since 2021-03-02 i am tracking my current location. Right now there are{" "}
@@ -70,13 +71,21 @@ export default function Map({ locations, locationsCount }) {
 }
 
 export async function getStaticProps() {
-  const locationsCount = (await getLocationsCount()) || []
-  const locations = (await getRecentLocationData()) || []
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  })
+  await client.connect()
+  const recentLocation = await client.query(
+    "SELECT lat, lon FROM locations ORDER BY id DESC LIMIT 1;"
+  )
+  const locationsCount = await client.query("SELECT COUNT(*) FROM locations;")
+  await client.end()
 
   return {
+    revalidate: 600,
     props: {
-      locations,
-      locationsCount,
+      location: recentLocation.rows[0],
+      locationsCount: locationsCount.rows[0].count,
     },
   }
 }

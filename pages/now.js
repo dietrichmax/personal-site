@@ -1,5 +1,5 @@
 import Layout from "src/components/layout/layout"
-import { getLocationData, getNowData } from "src/data/external/cms"
+import { getNowData } from "src/data/external/cms"
 import config from "../src/data/internal/SiteConfig"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
@@ -11,7 +11,7 @@ import axios from "axios"
 import Image from "next/image"
 import { format, fromUnixTime } from "date-fns"
 import Link from "next/link"
-import { PrismaClient } from "@prisma/client"
+import { Client } from "pg"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -96,8 +96,6 @@ export default function Now({ weather, address, content, now }) {
     }
   }
 
-  const time = now.timestamp ? now.timestamp : new Date()
-
   console.log(content)
   return (
     <>
@@ -151,16 +149,14 @@ export default function Now({ weather, address, content, now }) {
                 In case you want to know more about me head over to{" "}
                 <Link href="/about">About me</Link>.
               </TextWrapper>
-              {now.timestamp ? (
-                <Disclaimer>
-                  Last updated on{" "}
-                  {format(
-                    fromUnixTime(now.timestamp),
-                    "H:mm, dd'th' MMMM yyyy '('O')'"
-                  ).replace("-", " ")}
-                  .
-                </Disclaimer>
-              ) : null}
+              <Disclaimer>
+                Last updated on{" "}
+                {format(
+                  fromUnixTime(new Date()),
+                  "H:mm, dd'th' MMMM yyyy '('O')'"
+                ).replace("-", " ")}
+                .
+              </Disclaimer>
             </Container>
           </>
         )}
@@ -170,31 +166,34 @@ export default function Now({ weather, address, content, now }) {
 }
 
 export async function getServerSideProps() {
-  const prisma = new PrismaClient()
-  const locationData = await prisma.locations.findMany({
-    orderBy: {
-      id: "desc",
-    },
-    take: 1,
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
   })
+  await client.connect()
+  const recentLocation = await client.query(
+    "SELECT lat, lon, batt, bs, created_at FROM locations ORDER BY id DESC LIMIT 1;"
+  )
+  await client.end()
+
   const content = (await getNowData()) || []
 
   const weather = await axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${recentLocation.rows[0].lat}&lon=${recentLocation.rows[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
   )
   const address = await axios.get(
-    `https://nominatim.openstreetmap.org/reverse?lat=${locationData[0].lat}&lon=${locationData[0].lon}&format=json&zoom=10`
+    `https://nominatim.openstreetmap.org/reverse?lat=${recentLocation.rows[0].lat}&lon=${recentLocation.rows[0].lon}&format=json&zoom=10`
   )
 
   return {
+    revalidate: 300,
     props: {
       weather: weather.data,
       address: address.data,
       content: content.content,
       now: {
-        batt: locationData[0].batt,
-        bs: locationData[0].bs,
-        timestamp: locationData[0].tst,
+        batt: recentLocation.rows[0].batt,
+        bs: recentLocation.rows[0].bs,
+        created_at: JSON.stringify(recentLocation.rows[0].created_at),
       },
     },
   }

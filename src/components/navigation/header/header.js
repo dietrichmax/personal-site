@@ -40,7 +40,7 @@ export default function Header({ color }) {
   return (
     <HeaderWrapper color={color}>
       <InnerHeader>
-        <MainNav itemtype="https://schema.org/SiteNavigationElement">
+        <MainNav>
           <Logo />
 
           <Nav color={color} />

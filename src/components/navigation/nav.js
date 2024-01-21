@@ -47,7 +47,7 @@ export default function Nav({ color }) {
   ]
 
   return (
-    <NavItems itemScope itemType="https://schema.org/SiteNavigationElement">
+    <NavItems itemScope>
       {headerItems.map((item, i) => (
         <NavItem key={i} color={color}>
           <ActiveLink

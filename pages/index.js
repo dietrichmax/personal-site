@@ -17,7 +17,7 @@ import {
   getCV,
 } from "src/data/external/cms"
 import StaticMaps from "staticmaps"
-import { PrismaClient } from "@prisma/client"
+import { Client } from "pg"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -389,19 +389,6 @@ export default function Index({ posts, cv }) {
               ) : null
             )}
           </RecentPosts>
-
-          {/*{<SubTitle>Recent Notes</SubTitle>
-            <NotesContainer >
-              {notes.map((note) => (
-               <NotePreview note={note} />
-              ))}
-              
-            </NotesContainer>
-            <MoreContainer>
-              <Link href={`/notes`} passHref>
-                <MoreArticles title="All Notes">All Notes{' '}</MoreArticles>
-              </Link>
-              </MoreContainer>*/}
         </IndexPageContainer>
       </Layout>
     </>
@@ -409,13 +396,15 @@ export default function Index({ posts, cv }) {
 }
 
 export async function getStaticProps() {
-  const prisma = new PrismaClient()
-  const recentLocation = await prisma.locations.findMany({
-    orderBy: {
-      id: "desc",
-    },
-    take: 1,
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
   })
+  await client.connect()
+  const recentLocation = await client.query(
+    "SELECT lat, lon FROM locations ORDER BY id DESC LIMIT 1;"
+  )
+  await client.end()
+
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allLinks = (await getAllLinks()) || []
@@ -460,9 +449,10 @@ export async function getStaticProps() {
       },
     ],
   }
+
   const map = new StaticMaps(options)
   const zoom = 13
-  const center = [recentLocation[0].lon, recentLocation[0].lat]
+  const center = [recentLocation.rows[0].lon, recentLocation.rows[0].lat]
 
   await map.render(center, zoom)
   await map.image.save("public/wallpaper/backgroundImage.webp")

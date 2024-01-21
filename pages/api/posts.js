@@ -1,7 +1,6 @@
 import {
   getAllPosts,
   getAllLinks,
-  getAllRecipes,
   getAllActivities,
 } from "src/data/external/cms"
 

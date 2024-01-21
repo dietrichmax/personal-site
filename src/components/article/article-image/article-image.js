@@ -73,7 +73,6 @@ export default function PostImage({ preview, postData }) {
             height={130}
             className="u-photo"
             priority
-            postType="ArticlePreviw"
           />
         ) : null
       ) : coverImage ? (
@@ -85,7 +84,6 @@ export default function PostImage({ preview, postData }) {
           width={windowSize.width}
           height={450}
           priority
-          postType="ArticleCover"
         />
       ) : null}
     </>

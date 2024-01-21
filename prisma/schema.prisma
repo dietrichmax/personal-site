@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model locations {
+  id         BigInt    @id @default(autoincrement())
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  lat        Float?
+  lon        Float?
+  acc        Int?
+  alt        Int?
+  batt       Int?
+  bs         Int?
+  cog        Decimal?  @db.Decimal(10, 2)
+  rad        Int?
+  t          String?   @db.VarChar(255)
+  tid        String?   @db.VarChar(255)
+  tst        Int?
+  vac        Int?
+  vel        Int?
+  p          Decimal?  @db.Decimal(10, 2)
+  conn       String?   @db.VarChar(255)
+  topic      String?   @db.VarChar(255)
+  inregions  Json?
+  ssid       String?   @db.VarChar(255)
+  bssid      String?   @db.VarChar(255)
+
+  @@index([alt], map: "alt_idx")
+  @@index([lat], map: "lat_idx")
+  @@index([lon], map: "lon_idx")
+  @@index([vel], map: "vel_idx")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+}

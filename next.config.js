@@ -53,7 +53,7 @@ const securityHeaders = [
 
 module.exports = {
   withFonts,
-  output: "standalone",
+  //output: "standalone",
   images: {
     loader: "custom",
     loaderFile: "./src/utils/loader.js",

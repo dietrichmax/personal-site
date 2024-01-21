@@ -47,6 +47,13 @@ class MyApp extends App {
           <link rel="preconnect" href="https://cms.mxd.codes" />,
           <link rel="preconnect" href="https://analytics.mxd.codes/" />
           {/* Preload */}
+          <link
+            rel="preload"
+            href="https://analytics.mxd.codes/matomo.js"
+            onload="embedTracker()"
+            type="script"
+            crossorigin
+          ></link>
           {/* IndieCert */}
           <link
             rel="authorization_endpoint"

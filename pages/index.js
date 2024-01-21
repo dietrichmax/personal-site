@@ -3,7 +3,6 @@ import LinkPreview from "src/components/link/link-preview/link-preview"
 import TypeWriter from "@/src/utils/typeWriter"
 import PhotoPreview from "src/components/photo/photo-preview"
 import Layout from "src/components/layout/layout"
-//import config from "src/data/internal/SiteConfig"
 import styled from "styled-components"
 import SEO from "src/components/seo/seo"
 import media from "styled-media-query"
@@ -15,12 +14,10 @@ import {
   getAllPosts,
   getAllLinks,
   getAllPhotos,
-  //getAllRecipes,
-  //getAllActivities,
-  getLocationData,
   getCV,
 } from "src/data/external/cms"
 import StaticMaps from "staticmaps"
+import { PrismaClient } from "@prisma/client"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -295,18 +292,6 @@ export default function Index({ posts, cv }) {
           jsonld={jsonld}
         />
         <HeroWrapper className="h-card" color="#f2f2f2">
-          {/*<HeroBackgroundImage>
-            <Image
-              alt="Mountains"
-              src="https://mxd.codes/wallpaper/backgroundImage.png"
-              quality={100}
-              fill
-              sizes="100vw"
-              style={{
-                objectFit: 'cover',
-              }}
-            />
-            </HeroBackgroundImage>*/}
           <HeroOffset>
             <Hero>
               <HCard />
@@ -424,7 +409,13 @@ export default function Index({ posts, cv }) {
 }
 
 export async function getStaticProps() {
-  const locationData = (await getLocationData()) || []
+  const prisma = new PrismaClient()
+  const recentLocation = await prisma.locations.findMany({
+    orderBy: {
+      id: "desc",
+    },
+    take: 1,
+  })
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allLinks = (await getAllLinks()) || []
@@ -471,7 +462,7 @@ export async function getStaticProps() {
   }
   const map = new StaticMaps(options)
   const zoom = 13
-  const center = [locationData[0].lon, locationData[0].lat]
+  const center = [recentLocation[0].lon, recentLocation[0].lat]
 
   await map.render(center, zoom)
   await map.image.save("public/wallpaper/backgroundImage.webp")

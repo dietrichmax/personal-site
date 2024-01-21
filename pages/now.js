@@ -11,6 +11,7 @@ import axios from "axios"
 import Image from "next/image"
 import { format, fromUnixTime } from "date-fns"
 import Link from "next/link"
+import { PrismaClient } from "@prisma/client"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -169,7 +170,13 @@ export default function Now({ weather, address, content, now }) {
 }
 
 export async function getServerSideProps() {
-  const locationData = (await getLocationData()) || []
+  const prisma = new PrismaClient()
+  const locationData = await prisma.locations.findMany({
+    orderBy: {
+      id: "desc",
+    },
+    take: 1,
+  })
   const content = (await getNowData()) || []
 
   const weather = await axios.get(

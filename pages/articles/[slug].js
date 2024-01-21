@@ -22,9 +22,13 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
-import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import Author from "@/components/article/article-author/article-author"
 import { serialize } from "next-mdx-remote/serialize"
+import dynamic from "next/dynamic"
+const RecommendedPosts = dynamic(
+  () => import("@/components/recommended-articles/recommendedArticles"),
+  { ssr: false }
+)
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -272,7 +276,6 @@ export default function Post({ post, allPosts }) {
                   </PostWrapper>
                 </ArticleBackgroundColor>
               </ArticleContainer>
-
               <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
               <RecommendedPostsContainer>
                 <RecommendedPosts post={post} allPosts={allPosts} />

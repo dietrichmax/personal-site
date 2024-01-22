@@ -5,6 +5,7 @@ import media from "styled-media-query"
 import PreviewImage from "src/components/article/article-image/article-image"
 import HCard from "src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
+import Webmentions from "src/components/social/webmentions/webmentions"
 
 const CardItemWrapper = styled.div`
   height: 100%;
@@ -24,7 +25,7 @@ const CardItemInfo = styled.div`
 
 const CardItemTitle = styled.h2`
   font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-sm);
   :hover {
     text-decoration: underline;
   }
@@ -54,6 +55,11 @@ const CardReadMoreRead = styled.p`
     color: var(--text-color);
   }
 `
+
+const Socials = styled.div`
+  font-size: 0.75rem;
+`
+
 const DynamicPostMeta = dynamic(
   () => import("src/components/post/post-meta/post-meta-preview"),
   {
@@ -84,6 +90,9 @@ export default function PostPreview({ postData, preview }) {
             </Link>
             <HCard />
           </CardItemTitle>
+          <Socials>
+            <Webmentions slug={slug} preview />
+          </Socials>
           <CardItemDescription className="p-summary">
             {excerpt}{" "}
           </CardItemDescription>
@@ -98,8 +107,8 @@ export default function PostPreview({ postData, preview }) {
             <PostTags className="p-categories" tags={tags} backgroundColor="red"/>
           </TagsWrapper>*/}
         </CardMeta>
+        <DynamicPostMeta post={postData} slug={slug} />
       </CardItemWrapper>
-      <DynamicPostMeta post={postData} slug={slug} />
     </Card>
   )
 }

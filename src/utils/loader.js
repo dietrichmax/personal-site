@@ -3,19 +3,8 @@ import { useEffect, useState } from "react"
 const createHmac = require("create-hmac")
 
 export default function imgproxyLoader({ src, width, height, quality }) {
-  //const [windowWidth, setWindowWidth] = useState(width)
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
-
-  /*const getWindowWidth = () => {
-    const { innerWidth: width } = window;
-    return width
-  }
-  
-  useEffect(() => {
-    setWindowWidth(getWindowWidth())
-  }, [])
-*/
 
   const urlSafeBase64 = (str) => {
     return Buffer.from(str)

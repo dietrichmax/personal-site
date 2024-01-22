@@ -1,5 +1,4 @@
 // next.config.js
-const withFonts = require("next-fonts")
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
@@ -52,7 +51,6 @@ const securityHeaders = [
 ]
 
 module.exports = {
-  withFonts,
   output: "standalone",
   images: {
     loader: "custom",

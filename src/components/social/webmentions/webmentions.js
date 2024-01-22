@@ -250,7 +250,7 @@ export default function Webmentions({ slug, preview }) {
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [url])
 
   const renderAuthorImg = (mention, i) => {
     return mention.author.photo ? (
@@ -290,50 +290,55 @@ export default function Webmentions({ slug, preview }) {
   return (
     <>
       {preview ? (
-        <WebmentionsPreview>
-          {webmentions.likesCount > 0 ? (
-            <WebmentionPreviewCount title={`${webmentions.likesCount} likes`}>
-              <BsStar /> {webmentions.likesCount}{" "}
-              <WebmentionPreviewLabel>
-                {webmentions.likesCount == 1 ? "like" : "likes"}
-              </WebmentionPreviewLabel>
-            </WebmentionPreviewCount>
-          ) : null}
-          {webmentions.repostsCount > 0 ? (
-            <WebmentionPreviewCount
-              title={`${webmentions.repostsCount} reposts`}
-            >
-              <FaRetweet /> {webmentions.repostsCount}{" "}
-              <WebmentionPreviewLabel>
-                {webmentions.repostsCount == 1 ? "repost" : "reposts"}
-              </WebmentionPreviewLabel>
-            </WebmentionPreviewCount>
-          ) : null}
-          {webmentions.commentsCount > 0 ? (
-            <WebmentionPreviewCount
-              title={
-                webmentions.commentsCount == 1
-                  ? `${webmentions.commentsCount} reply`
-                  : `${webmentions.commentsCount} replies`
-              }
-            >
-              <FaRegComment /> {webmentions.commentsCount}{" "}
-              <WebmentionPreviewLabel>
-                {webmentions.commentsCount == 1 ? "reply" : "replies"}
-              </WebmentionPreviewLabel>
-            </WebmentionPreviewCount>
-          ) : null}
-          {webmentions.mentionsCount > 0 ? (
-            <WebmentionPreviewCount
-              title={`${webmentions.mentionsCount} mentions`}
-            >
-              <FaRegStickyNote /> {webmentions.mentionsCount}{" "}
-              <WebmentionPreviewLabel>
-                {webmentions.mentionsCount == 1 ? "mention" : "mentions"}
-              </WebmentionPreviewLabel>
-            </WebmentionPreviewCount>
-          ) : null}
-        </WebmentionsPreview>
+        webmentions.likesCount > 0 ||
+        webmentions.repostsCount > 0 ||
+        webmentions.commentsCount > 0 ||
+        webmentions.mentionsCount > 0 ? (
+          <WebmentionsPreview>
+            {webmentions.likesCount > 0 ? (
+              <WebmentionPreviewCount title={`${webmentions.likesCount} likes`}>
+                <BsStar /> {webmentions.likesCount}{" "}
+                <WebmentionPreviewLabel>
+                  {webmentions.likesCount == 1 ? "like" : "likes"}
+                </WebmentionPreviewLabel>
+              </WebmentionPreviewCount>
+            ) : null}
+            {webmentions.repostsCount > 0 ? (
+              <WebmentionPreviewCount
+                title={`${webmentions.repostsCount} reposts`}
+              >
+                <FaRetweet /> {webmentions.repostsCount}{" "}
+                <WebmentionPreviewLabel>
+                  {webmentions.repostsCount == 1 ? "repost" : "reposts"}
+                </WebmentionPreviewLabel>
+              </WebmentionPreviewCount>
+            ) : null}
+            {webmentions.commentsCount > 0 ? (
+              <WebmentionPreviewCount
+                title={
+                  webmentions.commentsCount == 1
+                    ? `${webmentions.commentsCount} reply`
+                    : `${webmentions.commentsCount} replies`
+                }
+              >
+                <FaRegComment /> {webmentions.commentsCount}{" "}
+                <WebmentionPreviewLabel>
+                  {webmentions.commentsCount == 1 ? "reply" : "replies"}
+                </WebmentionPreviewLabel>
+              </WebmentionPreviewCount>
+            ) : null}
+            {webmentions.mentionsCount > 0 ? (
+              <WebmentionPreviewCount
+                title={`${webmentions.mentionsCount} mentions`}
+              >
+                <FaRegStickyNote /> {webmentions.mentionsCount}{" "}
+                <WebmentionPreviewLabel>
+                  {webmentions.mentionsCount == 1 ? "mention" : "mentions"}
+                </WebmentionPreviewLabel>
+              </WebmentionPreviewCount>
+            ) : null}
+          </WebmentionsPreview>
+        ) : null
       ) : (
         <WebMentionsWrapper>
           <WebmentionsHeader>

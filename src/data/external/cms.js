@@ -130,7 +130,6 @@ export async function getPostBySlug(slug) {
     `
   query PostBySlug($where: JSON) {
     posts(where: $where) {
-      id
       created_at
       updated_at
       published_at
@@ -140,9 +139,6 @@ export async function getPostBySlug(slug) {
       content
       tags {
         name
-        color
-        slug
-        backgroundColor
       }
       lang
       coverImage {
@@ -235,48 +231,11 @@ export async function getTag(slug) {
       backgroundColor
       slug
       posts(sort: "published_at:desc") {
-        id
-        created_at
         updated_at
         published_at
         title
         slug
-        content
         excerpt
-        tags {
-          name
-          color
-          slug
-          backgroundColor
-        }
-        lang
-        coverImage {
-          url
-        }
-      }
-      photo {
-        id
-        created_at
-        updated_at
-        published_at
-        title
-        description
-        photo {
-          formats
-          width
-          height
-          url
-        }
-        slug
-        tags {
-          name
-          color
-          slug
-        } 
-        syndicationLinks {
-          name
-          slug
-        }
       }
     }
   }

@@ -273,8 +273,6 @@ const jsonld = {
 }
 
 export default function Index({ posts, cv }) {
-  const content = posts.slice(0, 12)
-
   const text = "Welcome to my personal website."
 
   return (
@@ -370,7 +368,7 @@ export default function Index({ posts, cv }) {
 
         <IndexPageContainer>
           <RecentPosts>
-            {content.map((post, i) =>
+            {posts.map((post, i) =>
               post.type === "article" ? (
                 <PostPreview key={i} postData={post.post} />
               ) : post.type === "link" ? (
@@ -428,7 +426,9 @@ export async function getStaticProps() {
     })
   })
 
-  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sortedContent = allContent
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 12)
 
   const options = {
     width: 2000,

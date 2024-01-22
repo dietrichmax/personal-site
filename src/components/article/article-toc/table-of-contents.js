@@ -38,7 +38,6 @@ export default function TableOfContents({ toc }) {
     return (
       <ToCList className="table-of-contents">
         {toc.map(({ level, id, title, anchor }) => (
-          //console.log(title) &&
           <ToCListItem key={id} level={level}>
             <ToCItemTitle href={anchor}>{title}</ToCItemTitle>
           </ToCListItem>

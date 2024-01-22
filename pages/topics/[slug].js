@@ -52,8 +52,6 @@ export default function Tags({ posts, tag }) {
                   <PostPreview key={i} postData={post.post} />
                 ) : post.type === "link" ? (
                   <LinkPreview key={i} link={post.link} />
-                ) : post.type === "photo" ? (
-                  <PhotoPreview key={i} photo={post.photo} />
                 ) : null
               )}
             </PostsGrid>

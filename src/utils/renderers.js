@@ -131,11 +131,12 @@ const renderers = {
     )
   },
   h2: ({ children }) => {
-    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    const anchor = `${children.replaceAll(" ", "-").toLowerCase()}`
     return (
-      <MDX.H2 title={children} className="mdx-h2">
-        <span id={anchor} />
-        <a href={`#${anchor}`}>{children}</a>
+      <MDX.H2 style={{ cursor: "pointer" }} title={children}>
+        <a id={anchor} href={`#${anchor}`}>
+          {children}
+        </a>
         <PermaLink>
           <FaLink />
         </PermaLink>
@@ -143,7 +144,7 @@ const renderers = {
     )
   },
   h3: ({ children }) => {
-    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    const anchor = `${children.replaceAll(/ /g, "-").toLowerCase()}`
     return (
       <MDX.H3 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
@@ -155,7 +156,7 @@ const renderers = {
     )
   },
   h4: ({ children }) => {
-    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    const anchor = `${children.replaceAll(/ /g, "-").toLowerCase()}`
     return (
       <h4 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />
@@ -167,7 +168,7 @@ const renderers = {
     )
   },
   h5: ({ children }) => {
-    const anchor = `${children[0].replace(/ /g, "-").toLowerCase()}`
+    const anchor = `${children.replaceAll(/ /g, "-").toLowerCase()}`
     return (
       <h5 style={{ cursor: "pointer" }} title={children}>
         <span id={anchor} />

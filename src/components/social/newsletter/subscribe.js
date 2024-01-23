@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { Emojione } from "react-emoji-render"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
+
+const NewsletterBox = styled.div`
+  border-top: 0.1rem solid var(--content-bg);
+  padding-top: var(--space-sm);
+`
 
 const NewsletterWrapper = styled.label`
   display: flex;
@@ -16,6 +20,7 @@ const NewsletterWrapper = styled.label`
   margin: 0 auto;
 `
 const DescriptionWrapper = styled.div`
+  margin-top: var(--space-sm);
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 100%;
@@ -45,18 +50,18 @@ const ButtonWrapper = styled.div`
   max-width: 33.33333%;
 `
 
-const Emoji = styled(Emojione)`
-  display: inline-block;
-`
-
 const FeedLink = styled.span`
   border-bottom: 1px solid var(--primary-color);
+`
+
+const NewsletterTitle = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
 `
 
 export default function Subscribe({ noLabel, cb }) {
   const [email, setEmail] = useState("")
   const [count, setCount] = useState("")
-  const [gotData, setGotData] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   async function getCount() {
@@ -67,18 +72,19 @@ export default function Subscribe({ noLabel, cb }) {
     fetch("https://cms.mxd.codes/subscribers/count", requestOptions)
       .then((response) => response.json())
       .then((data) => setCount(data))
-    setGotData(true)
   }
 
   useEffect(() => {
-    !gotData ? getCount() : null
+    getCount()
   }, [])
 
   const handleSubmit = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
     }
+
     fetch("https://cms.mxd.codes/subscribers", requestOptions)
       .then(function (response) {
         if (!response.ok) {
@@ -93,20 +99,17 @@ export default function Subscribe({ noLabel, cb }) {
   }
 
   return (
-    <>
+    <NewsletterBox>
       {submitted ? (
         <NewsletterWrapper>
           <DescriptionWrapper>
-            <h2>
-              <Emoji text={"🎉"} />
-              Awsome, your are signed up!
-              <Emoji text={"🎉"} />
-            </h2>
-            <p>Thank you for your interest in my content.</p>
+            <h2>🎉 Awsome, your are signed up! 🎉</h2>
+            <p>Thank you for your interest in my content!</p>
           </DescriptionWrapper>
         </NewsletterWrapper>
       ) : (
         <NewsletterWrapper>
+          <NewsletterTitle>Newsletter</NewsletterTitle>
           <DescriptionWrapper>
             Do you like my content and want to know when new content is
             published? <br /> Then subscribe to the newsletter as well as{" "}
@@ -116,8 +119,7 @@ export default function Subscribe({ noLabel, cb }) {
                 feed
               </Link>
             </FeedLink>{" "}
-            you like.
-            <Emoji text={"🚀"} />
+            you like. 🚀
           </DescriptionWrapper>
 
           <InputWrapper>
@@ -142,6 +144,6 @@ export default function Subscribe({ noLabel, cb }) {
           </ButtonWrapper>
         </NewsletterWrapper>
       )}
-    </>
+    </NewsletterBox>
   )
 }

@@ -17,13 +17,13 @@ const Button = styled.button`
       : "var(--secondary-color)"};
   cursor: pointer;
   font-family: var(--primary-font);
-  :hover {
+  &:hover {
     background-color: ${(props) =>
       props.backgroundColor
         ? `${props.backgroundColor}`
         : "var(--primary-color)"};
   }
-  :disabled {
+  &:disabled {
     cursor: not-allowed;
     opacity: 0.75;
   }

@@ -52,8 +52,6 @@ const AuthorTitle = styled.p`
   margin-top: var(--space);
   font-size: 1.5rem;
   font-weight: 600;  
-  border-top: 0.1rem solid var(--content-bg);
-  padding-top: var(--space);
 }
 `
 

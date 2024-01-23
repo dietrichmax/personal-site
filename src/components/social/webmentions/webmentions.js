@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
-import { format, subDays, formatDistance } from "date-fns"
+import { formatDistance } from "date-fns"
 import { Input } from "@/styles/templates/input"
-import Image from "next/image"
 import {
   FaRegQuestionCircle,
   FaRetweet,
   FaRegComment,
   FaRegStickyNote,
-  FaHeart,
 } from "react-icons/fa"
 import { BsStar } from "react-icons/bs"
 import { Button } from "@/styles/templates/button"
@@ -118,12 +116,6 @@ const Status = styled.div`
   color: ${(props) => (props.color ? props.color : "var(--text-color)")};
 `
 
-const WebmentionsCount = styled.ol`
-  display: inline-block;
-  padding-inline-start: 0;
-  list-style: none;
-`
-
 const WebmentionsPreview = styled.ol`
   display: inline-block;
   padding-inline-start: 0;
@@ -142,23 +134,80 @@ const WebmentionPreviewLabel = styled.span`
   `}
 `
 
-const ImagePlacholder = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: var(--content-bg);
-  color: var(--text-color);
-`
-
 const WebmentionsList = styled.ol`
   list-style: none;
   padding-inline-start: 0;
 `
 
+// Comments
+
+const CommentWrapper = styled.div`
+  border-top: 0.1rem solid var(--content-bg);
+  border-bottom: 0.1rem solid var(--content-bg);
+  margin: var(--space) 0;
+  padding: var(--space) 0 var(--space) 0;
+  display: flex;
+  flex-direction: column;
+`
+
+const CommentTitle = styled.label`
+  font-size: 1.5rem;
+  font-weight: 600;
+`
+
+const CommentTitleSpan = styled.span`
+  color: #c0392b;
+`
+
+const CommentInput = styled.textarea`
+  padding: calc(var(--space-sm) * 0.5) var(--space-sm);
+  margin-top: var(--space-sm);
+  height: 200px;
+  max-width: var(--content-width);
+  background-color: var(--content-bg);
+  border: none;
+  color: var(--text-color);
+  font-family: var(--secondary-font);
+  line-height: 1.65;
+  margin-bottom: var(--space);
+  &:focus {
+    border: none;
+  }
+`
+
+const CommentAuthorLabel = styled.label``
+
+const CommentAuthorInput = styled.input`
+  padding: calc(var(--space-sm) * 0.5) var(--space-sm);
+  margin-top: var(--space-sm);
+  max-width: var(--content-width);
+  background-color: var(--content-bg);
+  border: none;
+  color: var(--text-color);
+  font-family: var(--secondary-font);
+  line-height: 1.65;
+  margin-bottom: var(--space);
+  &:focus {
+    border: none;
+  }
+`
+
+const Submit = styled(Button)`
+  max-width: var(--content-width);
+`
+
 export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
-  const [views, setViews] = useState(0)
   const [status, setStatus] = useState({})
+  const [count, setCount] = useState(0)
+  const [comments, setComments] = useState([])
+  const [likes, setLikes] = useState([])
+  const [reposts, setReposts] = useState([])
+  const [mentions, setMentions] = useState([])
+  const [commentText, setCommentText] = useState("")
+  const [commentName, setCommentName] = useState("")
+  const [sentComment, setSentComment] = useState(false)
 
   const url = config.siteUrl + slug
   const pageLimit = 1000
@@ -181,33 +230,39 @@ export default function Webmentions({ slug, preview }) {
       return entry
     }
 
-    const count = webmentions.length
-    const comments = webmentions
-      .filter((entry) => entry["wm-target"] === url)
-      .filter((entry) => commentsProperty.includes(entry["wm-property"]))
-      .filter(hasRequiredFields)
-      .map(sanitize)
-    const likes = webmentions
-      .filter((entry) => entry["wm-target"] === url)
-      .filter((entry) => likesProperty.includes(entry["wm-property"]))
-    const reposts = webmentions
-      .filter((entry) => entry["wm-target"] === url)
-      .filter((entry) => repostsProperty.includes(entry["wm-property"]))
-    const mentions = webmentions
-      .filter((entry) => entry["wm-target"] === url)
-      .filter((entry) => mentionsProperty.includes(entry["wm-property"]))
+    setCount({
+      overall: webmentions.length,
+      comments: comments.length,
+      likes: likes.length,
+      reposts: reposts.length,
+      mentions: mentions.length,
+    })
 
-    return {
-      count: count,
-      comments: comments,
-      commentsCount: comments.length,
-      likes: likes,
-      likesCount: likes.length,
-      reposts: reposts,
-      repostsCount: reposts.length,
-      mentions: mentions,
-      mentionsCount: mentions.length,
-    }
+    setComments(
+      webmentions
+        .filter((entry) => entry["wm-target"] === url)
+        .filter((entry) => commentsProperty.includes(entry["wm-property"]))
+        .filter(hasRequiredFields)
+        .map(sanitize)
+    )
+
+    setLikes(
+      webmentions
+        .filter((entry) => entry["wm-target"] === url)
+        .filter((entry) => likesProperty.includes(entry["wm-property"]))
+    )
+
+    setReposts(
+      webmentions
+        .filter((entry) => entry["wm-target"] === url)
+        .filter((entry) => repostsProperty.includes(entry["wm-property"]))
+    )
+
+    setMentions(
+      webmentions
+        .filter((entry) => entry["wm-target"] === url)
+        .filter((entry) => mentionsProperty.includes(entry["wm-property"]))
+    )
   }
 
   const sendWebmention = () => {
@@ -238,7 +293,8 @@ export default function Webmentions({ slug, preview }) {
     sendData()
   }
 
-  async function getData() {
+  async function getWebmentions() {
+    // get webmentions
     fetch(
       `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`
     )
@@ -248,27 +304,100 @@ export default function Webmentions({ slug, preview }) {
       })
   }
 
+  async function GetComments() {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments?slug=${slug}`)
+      .then((response) => response.json())
+      .then((result) => {
+        let strapiComments = []
+        result.map((comment) => {
+          strapiComments.push({
+            "type": "entry",
+            "url": `${url}#1${comment.id}`,
+            "published": comment.published_at,
+            "author": {
+              name: comment.name,
+              photo: "https://cms.mxd.codes/uploads/mm_1559572612.jpg",
+            },
+            "content": {
+              text: comment.text,
+            },
+            "in-reply-to": url,
+          })
+        })
+        setComments([...comments, ...strapiComments])
+      })
+  }
+
+  const sendComment = () => {
+    const newComment = {
+      slug: slug,
+      name: commentName,
+      text: commentText,
+    }
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newComment),
+    }
+
+    fetch("https://cms.mxd.codes/comments", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setSentComment(true)
+        setComments([
+          ...comments,
+          {
+            "type": "entry",
+            "url": `${url}#1${data.id}`,
+            "published": data.published_at,
+            "author": {
+              name: data.name,
+            },
+            "content": {
+              text: data.text,
+            },
+            "in-reply-to": url,
+          },
+        ])
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   useEffect(() => {
-    getData()
+    getWebmentions()
   }, [url])
 
+  useEffect(() => {
+    GetComments()
+  }, [webmentions])
+
   const renderAuthorImg = (mention, i) => {
-    return mention.author.photo ? (
+    return mention && mention.author ? (
       <WebmentionLike key={i}>
         <WebmentionAuthorImgWrapper
           className="u-url"
-          href={mention.author.url}
+          href={
+            mention.author && mention.author.url
+              ? mention.author.url
+              : config.siteUrl
+          }
           rel="noopener noreferrer nofollow"
           alt={`Link to profile of ${mention.author.name}`}
-          title={mention.author.name}
+          title={mention.author ? mention.author.name : "anonym"}
         >
           <img
-            src={mention.author.photo}
+            src={
+              mention.author.photo
+                ? mention.author.photo
+                : "https://cms.mxd.codes/uploads/mm_1559572612.jpg"
+            }
             height="50"
             width="50"
             className="u-photo"
-            alt={`Photo of ${mention.author.name}`}
-            title={mention.author.name}
+            alt={`Image of ${mention.author ? mention.author.name : "anonym"}`}
+            title={mention.author ? mention.author.name : "anonym"}
           />
         </WebmentionAuthorImgWrapper>
       </WebmentionLike>
@@ -276,13 +405,15 @@ export default function Webmentions({ slug, preview }) {
       <WebmentionLike>
         <WebmentionAuthorImgWrapper
           className="u-url"
-          href={mention.author.url}
+          href={
+            mention.author && mention.author.url
+              ? mention.author.url
+              : config.siteUrl
+          }
           rel="noopener noreferrer nofollow"
-          alt={`Link to profile of ${mention.author.name}`}
-          title={`${mention.author.name}`}
-        >
-          <ImagePlacholder>{mention.author.name}</ImagePlacholder>
-        </WebmentionAuthorImgWrapper>
+          alt={`Link to profile of ${mention.author ? mention.author.name : "anonym"}`}
+          title={mention.author ? mention.author.name : "anonym"}
+        ></WebmentionAuthorImgWrapper>
       </WebmentionLike>
     )
   }
@@ -290,50 +421,46 @@ export default function Webmentions({ slug, preview }) {
   return (
     <>
       {preview ? (
-        webmentions.likesCount > 0 ||
-        webmentions.repostsCount > 0 ||
-        webmentions.commentsCount > 0 ||
-        webmentions.mentionsCount > 0 ? (
+        likes.length > 0 ||
+        reposts.length > 0 ||
+        comments.length > 0 ||
+        mentions.length > 0 ? (
           <WebmentionsPreview>
-            {webmentions.likesCount > 0 ? (
-              <WebmentionPreviewCount title={`${webmentions.likesCount} likes`}>
-                <BsStar /> {webmentions.likesCount}{" "}
+            {likes.length > 0 ? (
+              <WebmentionPreviewCount title={`${likes.length} likes`}>
+                <BsStar /> {likes.length}{" "}
                 <WebmentionPreviewLabel>
-                  {webmentions.likesCount == 1 ? "like" : "likes"}
+                  {likes.length == 1 ? "like" : "likes"}
                 </WebmentionPreviewLabel>
               </WebmentionPreviewCount>
             ) : null}
-            {webmentions.repostsCount > 0 ? (
-              <WebmentionPreviewCount
-                title={`${webmentions.repostsCount} reposts`}
-              >
-                <FaRetweet /> {webmentions.repostsCount}{" "}
+            {reposts.length > 0 ? (
+              <WebmentionPreviewCount title={`${reposts.length} reposts`}>
+                <FaRetweet /> {reposts.length}{" "}
                 <WebmentionPreviewLabel>
-                  {webmentions.repostsCount == 1 ? "repost" : "reposts"}
+                  {reposts.length == 1 ? "repost" : "reposts"}
                 </WebmentionPreviewLabel>
               </WebmentionPreviewCount>
             ) : null}
-            {webmentions.commentsCount > 0 ? (
+            {comments.length > 0 ? (
               <WebmentionPreviewCount
                 title={
-                  webmentions.commentsCount == 1
-                    ? `${webmentions.commentsCount} reply`
-                    : `${webmentions.commentsCount} replies`
+                  comments.length == 1
+                    ? `${comments.length} reply`
+                    : `${comments.length} replies`
                 }
               >
-                <FaRegComment /> {webmentions.commentsCount}{" "}
+                <FaRegComment /> {comments.length}{" "}
                 <WebmentionPreviewLabel>
-                  {webmentions.commentsCount == 1 ? "reply" : "replies"}
+                  {comments.length == 1 ? "reply" : "replies"}
                 </WebmentionPreviewLabel>
               </WebmentionPreviewCount>
             ) : null}
-            {webmentions.mentionsCount > 0 ? (
-              <WebmentionPreviewCount
-                title={`${webmentions.mentionsCount} mentions`}
-              >
-                <FaRegStickyNote /> {webmentions.mentionsCount}{" "}
+            {mentions.length > 0 ? (
+              <WebmentionPreviewCount title={`${mentions.length} mentions`}>
+                <FaRegStickyNote /> {mentions.length}{" "}
                 <WebmentionPreviewLabel>
-                  {webmentions.mentionsCount == 1 ? "mention" : "mentions"}
+                  {mentions.length == 1 ? "mention" : "mentions"}
                 </WebmentionPreviewLabel>
               </WebmentionPreviewCount>
             ) : null}
@@ -343,7 +470,7 @@ export default function Webmentions({ slug, preview }) {
         <WebMentionsWrapper>
           <WebmentionsHeader>
             <WebmentionsTitle>
-              {webmentions.count ? webmentions.count : "0"} Webmentions
+              {count.overall ? count.overall : "0"} Webmentions
             </WebmentionsTitle>
             <WebmentionsInfo
               href="/webmention"
@@ -391,21 +518,21 @@ export default function Webmentions({ slug, preview }) {
             <Status color={status.color}>{status.text}</Status>
           </SendWebmentions>
 
-          {webmentions.count > 0 ? (
+          {count.overall > 0 ? (
             <>
               {/* Comments */}
-              {webmentions.comments.length > 0 ? (
+              {comments.length > 0 ? (
                 <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
                     }}
                   >
-                    {webmentions.comments.length}{" "}
-                    {webmentions.comments.length == 1 ? "Reply" : "Replies"}
+                    {comments.length}{" "}
+                    {comments.length == 1 ? "Reply" : "Replies"}
                   </WebmentionsTitle>
                   <WebmentionsList>
-                    {webmentions.comments.map((mention, i) => (
+                    {comments.map((mention, i) => (
                       <WebmentionComment
                         key={i}
                         className="u-comment u-mention h-cite"
@@ -413,7 +540,7 @@ export default function Webmentions({ slug, preview }) {
                         <WebmentionAuthor className="h-card p-author">
                           {renderAuthorImg(mention)}
                           <WebmentionAuthorName className="p-name">
-                            {mention.author.name}
+                            {mention.author ? mention.author.name : "anonym"}
                           </WebmentionAuthorName>
                           <a
                             href={mention.url}
@@ -440,57 +567,50 @@ export default function Webmentions({ slug, preview }) {
               ) : null}
               {/* Likes */}
 
-              {webmentions.likes.length > 0 ? (
+              {likes.length > 0 ? (
                 <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
                     }}
                   >
-                    {webmentions.likes.length}{" "}
-                    {webmentions.likes.length == 1 ? "Like" : "Likes"}
+                    {likes.length} {likes.length == 1 ? "Like" : "Likes"}
                   </WebmentionsTitle>
 
                   <WebmentionsList>
-                    {webmentions.likes.map((mention, i) =>
-                      renderAuthorImg(mention, i)
-                    )}
+                    {likes.map((mention, i) => renderAuthorImg(mention, i))}
                   </WebmentionsList>
                 </WebmentionsContainer>
               ) : null}
               {/* Reposts*/}
-              {webmentions.reposts.length > 0 ? (
+              {reposts.length > 0 ? (
                 <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
                     }}
                   >
-                    {webmentions.reposts.length}{" "}
-                    {webmentions.reposts.length == 1 ? "Repost" : "Reposts"}
+                    {reposts.length}{" "}
+                    {reposts.length == 1 ? "Repost" : "Reposts"}
                   </WebmentionsTitle>
                   <WebmentionsList>
-                    {webmentions.reposts.map((mention, i) =>
-                      renderAuthorImg(mention, i)
-                    )}
+                    {reposts.map((mention, i) => renderAuthorImg(mention, i))}
                   </WebmentionsList>
                 </WebmentionsContainer>
               ) : null}
               {/* Mentions*/}
-              {webmentions.mentions.length > 0 ? (
+              {mentions.length > 0 ? (
                 <WebmentionsContainer>
                   <WebmentionsTitle
                     style={{
                       marginBottom: "var(--space-sm)",
                     }}
                   >
-                    {webmentions.mentions.length}{" "}
-                    {webmentions.mentions.length == 1 ? "Mention" : "Mentions"}
+                    {mentions.length}{" "}
+                    {mentions.length == 1 ? "Mention" : "Mentions"}
                   </WebmentionsTitle>
                   <WebmentionsList>
-                    {webmentions.mentions.map((mention, i) =>
-                      renderAuthorImg(mention, i)
-                    )}
+                    {mentions.map((mention, i) => renderAuthorImg(mention, i))}
                   </WebmentionsList>
                 </WebmentionsContainer>
               ) : null}
@@ -500,6 +620,35 @@ export default function Webmentions({ slug, preview }) {
               Found no Webmentions yet. Be the first!
             </WebmentionContent>
           )}
+          <CommentWrapper>
+            <CommentTitle for="comment">
+              Comment
+              <CommentTitleSpan class="required"> *</CommentTitleSpan>
+            </CommentTitle>
+            <CommentInput
+              id="comment"
+              name="comment"
+              require="required"
+              type="text"
+              placeholder="Hello there"
+              onChange={(e) => setCommentText(e.target.value)}
+            />
+            <CommentAuthorLabel for="author">
+              Name
+              <CommentTitleSpan class="required"> *</CommentTitleSpan>
+            </CommentAuthorLabel>
+            <CommentAuthorInput
+              id="author"
+              name="author"
+              require="required"
+              onChange={(e) => setCommentName(e.target.value)}
+            />
+            {sentComment ? (
+              <div>Comment created!</div>
+            ) : (
+              <Submit onClick={() => sendComment()}>Post comment</Submit>
+            )}
+          </CommentWrapper>
         </WebMentionsWrapper>
       )}
     </>

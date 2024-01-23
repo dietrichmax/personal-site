@@ -26,9 +26,21 @@ import HCard from "src/components/microformats/h-card"
 import WebActions from "src/components/social/social-share/social-share"
 import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
-import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
-import Author from "@/components/article/article-author/article-author"
 import { serialize } from "next-mdx-remote/serialize"
+import dynamic from "next/dynamic"
+
+const Comments = dynamic(
+  () => import("@/components/article/article-comments/article-comments"),
+  { ssr: false }
+)
+const RecommendedPosts = dynamic(
+  () => import("@/components/recommended-articles/recommendedArticles"),
+  { ssr: false }
+)
+const Author = dynamic(
+  () => import("@/components/article/article-author/article-author"),
+  { ssr: false }
+)
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -133,11 +145,6 @@ const PostTitleWrapper = styled.div`
   `}
 `
 
-const NewsletterTitle = styled.p`
-  font-size: 1.5rem;
-  font-weight: 600;
-`
-
 export default function Post({ post, allPosts }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -211,8 +218,7 @@ export default function Post({ post, allPosts }) {
 
                     <Content>
                       <PostBody content={post.content} toc={post.toc} />
-                      {/*<Comments slug={post.slug} />
-                      <Feedback /> */}
+                      {/*<Feedback /> */}
                       <Meta
                         post={post}
                         slug={`/articles/${post.slug}`}
@@ -224,19 +230,18 @@ export default function Post({ post, allPosts }) {
                           syndicationLinks={post.syndicationLinks}
                         />
                       </SocialShareContainer>
-                      <Author post={post.user} />
                       {/*<Likes />*/}
                       <Webmentions slug={`/articles/${post.slug}`} />
+                      <Author post={post.user} />
 
                       <div>
-                        <NewsletterTitle>Newsletter</NewsletterTitle>
                         <Subscribe />
                       </div>
                     </Content>
                   </PostWrapper>
                 </ArticleBackgroundColor>
               </ArticleContainer>
-              <RecommendedPosts post={post} allPosts={allPosts} />
+              {/*<RecommendedPosts post={post} allPosts={allPosts} />*/}
             </ArticleBackground>
           </article>
         </>

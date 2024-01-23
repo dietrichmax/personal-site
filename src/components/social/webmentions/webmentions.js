@@ -14,10 +14,9 @@ import { BsStar } from "react-icons/bs"
 import { Button } from "@/styles/templates/button"
 
 const WebMentionsWrapper = styled.section`
+  margin-top: var(--space);
   border-top: 0.1rem solid var(--content-bg);
-  border-bottom: 0.1rem solid var(--content-bg);
-  margin: var(--space) 0;
-  padding: var(--space) 0 var(--space) 0;
+  padding: var(--space) 0 0 0;
 `
 
 const WebmentionsHeader = styled.div`
@@ -324,7 +323,11 @@ export default function Webmentions({ slug, preview }) {
             "in-reply-to": url,
           })
         })
-        setComments([...comments, ...strapiComments])
+        const allComments = comments.concat(strapiComments)
+        const sortedComments = allComments.sort(function (a, b) {
+          return new Date(b.published) - new Date(a.published)
+        })
+        setComments(sortedComments)
       })
   }
 

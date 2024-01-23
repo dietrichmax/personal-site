@@ -82,7 +82,7 @@ export async function getStaticProps() {
   await client.end()
 
   return {
-    revalidate: 86400,
+    revalidate: 600,
     props: {
       location: recentLocation.rows[0],
       locationsCount: locationsCount.rows[0].count,

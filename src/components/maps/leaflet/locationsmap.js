@@ -30,6 +30,7 @@ function LiveMap({ data }) {
 
   const locData = new TileLayer({
     opacity: 0.9,
+    preload: Infinity,
     source: new WMTS({
       attributions: '&copy; <a href="https://mxd.codes/">Max Dietrich</a>',
       url: "https://geodata.mxd.codes/locations/service?",
@@ -49,6 +50,7 @@ function LiveMap({ data }) {
 
   const aerial = new TileLayer({
     opacity: 0.9,
+    preload: Infinity,
     source: new WMTS({
       attributions:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",

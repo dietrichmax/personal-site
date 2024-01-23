@@ -449,7 +449,7 @@ export async function getStaticProps() {
   await map.image.save("public/wallpaper/backgroundImage.webp")
 
   return {
-    revalidate: 600,
+    revalidate: 300,
     props: {
       posts: sortedContent,
       //count: stats.posts.count,

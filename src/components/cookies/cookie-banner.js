@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Cookie from "js-cookie"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
@@ -13,7 +12,7 @@ import {
   FaLinkedin,
   FaXing,
 } from "react-icons/fa"
-import { enableGoogleAnalytics } from "@/components/google-analytics/google-analytics"
+//import { enableGoogleAnalytics } from "@/components/google-analytics/google-analytics"
 //import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import { SiStrava } from "react-icons/si"
 import config from "src/data/internal/SiteConfig"

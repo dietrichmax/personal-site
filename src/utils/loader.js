@@ -1,5 +1,3 @@
-import { startsWith } from "lodash"
-import { useEffect, useState } from "react"
 const createHmac = require("create-hmac")
 
 export default function imgproxyLoader({ src, width, height, quality }) {

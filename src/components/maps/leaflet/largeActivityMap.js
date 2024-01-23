@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {
   Marker,
   MapContainer,
@@ -7,7 +7,6 @@ import {
   Polyline,
   AttributionControl,
 } from "react-leaflet"
-import { getLocationData } from "src/data/external/cms"
 
 const Map = (data) => {
   const geo = data.data

@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import clsx from 'clsx'
-import { ClipboardIcon, CheckIcon } from '@heroicons/react/20/solid'
+import { useState } from "react"
 
-const buttonClasses = 'flex items-center text-xs font-medium text-white rounded'
+const buttonClasses = "flex items-center text-xs font-medium text-white rounded"
 
 export function CopyButton({ text, className }) {
   const [isCopied, setIsCopied] = useState(false)
@@ -25,8 +23,7 @@ export function CopyButton({ text, className }) {
       className={clsx(buttonClasses, className)}
     >
       <Icon className="mr-1 h-4 w-4" />
-      <span>{isCopied ? 'Copied!' : 'Copy'}</span>
+      <span>{isCopied ? "Copied!" : "Copy"}</span>
     </button>
   )
 }
-

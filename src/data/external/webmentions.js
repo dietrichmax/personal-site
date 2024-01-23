@@ -1,4 +1,4 @@
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 
 const API_URL = "https://webmention.io/api/"
 const pageLimit = 1000

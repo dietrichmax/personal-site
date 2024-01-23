@@ -241,7 +241,7 @@ export default function Post({ post, allPosts }) {
                   </PostWrapper>
                 </ArticleBackgroundColor>
               </ArticleContainer>
-              {/*<RecommendedPosts post={post} allPosts={allPosts} />*/}
+              <RecommendedPosts post={post} allPosts={allPosts} />
             </ArticleBackground>
           </article>
         </>

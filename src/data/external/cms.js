@@ -367,6 +367,26 @@ export async function getLinksCount() {
   return json
 }
 
+export async function getCommentsCount() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments/count`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+
+  const json = await res.json()
+  if (json.errors) {
+    console.error(json.errors)
+    throw new Error("Failed to fetch STRAPI API")
+  }
+
+  return json
+}
+
 export async function getPostsCount() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/count`,

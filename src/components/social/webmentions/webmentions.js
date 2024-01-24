@@ -86,7 +86,9 @@ const WebmentionDate = styled.time`
   `}
 `
 
-const WebmentionContent = styled.p``
+const WebmentionContent = styled.p`
+  line-height: 1.5;
+`
 
 const SendWebmentions = styled.div`
   margin: var(--space-sm) auto;
@@ -199,7 +201,6 @@ export default function Webmentions({ slug, preview }) {
   const [webmentions, setWebmentions] = useState([])
   const [sourceUrl, setSourceUrl] = useState("")
   const [status, setStatus] = useState({})
-  const [count, setCount] = useState(0)
   const [comments, setComments] = useState([])
   const [likes, setLikes] = useState([])
   const [reposts, setReposts] = useState([])
@@ -228,14 +229,6 @@ export default function Webmentions({ slug, preview }) {
       }
       return entry
     }
-
-    setCount({
-      overall: webmentions.length,
-      comments: comments.length,
-      likes: likes.length,
-      reposts: reposts.length,
-      mentions: mentions.length,
-    })
 
     setComments(
       webmentions
@@ -314,8 +307,10 @@ export default function Webmentions({ slug, preview }) {
             "url": `${url}#1${comment.id}`,
             "published": comment.published_at,
             "author": {
-              name: comment.name,
+              name: comment.name || "anonym",
               photo: "https://cms.mxd.codes/uploads/mm_1559572612.jpg",
+              type: "card",
+              url: config.siteUrl,
             },
             "content": {
               text: comment.text,
@@ -347,21 +342,27 @@ export default function Webmentions({ slug, preview }) {
       .then((response) => response.json())
       .then((data) => {
         setSentComment(true)
-        setComments([
-          ...comments,
-          {
-            "type": "entry",
-            "url": `${url}#1${data.id}`,
-            "published": data.published_at,
-            "author": {
-              name: data.name,
-            },
-            "content": {
-              text: data.text,
-            },
-            "in-reply-to": url,
+        comments.push({
+          "type": "entry",
+          "url": `${url}#comment${data.id}`,
+          "published": data.published_at,
+          "author": {
+            name: data.name || "anonym",
+            photo: "https://cms.mxd.codes/uploads/mm_1559572612.jpg",
+            type: "card",
+            url: config.siteUrl,
           },
-        ])
+          "content": {
+            text: data.text,
+          },
+          "in-reply-to": url,
+        })
+        const sortedComments = comments.sort(function (a, b) {
+          return new Date(b.published) - new Date(a.published)
+        })
+        setComments(sortedComments)
+        setCommentName("")
+        setCommentText("")
       })
       .catch(function (error) {
         console.log(error)
@@ -381,14 +382,10 @@ export default function Webmentions({ slug, preview }) {
       <WebmentionLike key={i}>
         <WebmentionAuthorImgWrapper
           className="u-url"
-          href={
-            mention.author && mention.author.url
-              ? mention.author.url
-              : config.siteUrl
-          }
+          href={mention.author.url ? mention.author.url : config.siteUrl}
           rel="noopener noreferrer nofollow"
           alt={`Link to profile of ${mention.author.name}`}
-          title={mention.author ? mention.author.name : "anonym"}
+          title={mention.author.name}
         >
           <img
             src={
@@ -399,8 +396,8 @@ export default function Webmentions({ slug, preview }) {
             height="50"
             width="50"
             className="u-photo"
-            alt={`Image of ${mention.author ? mention.author.name : "anonym"}`}
-            title={mention.author ? mention.author.name : "anonym"}
+            alt={`Image of ${mention.author.name}`}
+            title={mention.author.name}
           />
         </WebmentionAuthorImgWrapper>
       </WebmentionLike>
@@ -408,14 +405,10 @@ export default function Webmentions({ slug, preview }) {
       <WebmentionLike>
         <WebmentionAuthorImgWrapper
           className="u-url"
-          href={
-            mention.author && mention.author.url
-              ? mention.author.url
-              : config.siteUrl
-          }
+          href={mention.author.url}
           rel="noopener noreferrer nofollow"
-          alt={`Link to profile of ${mention.author ? mention.author.name : "anonym"}`}
-          title={mention.author ? mention.author.name : "anonym"}
+          alt={`Link to profile of ${mention.author.name}`}
+          title={mention.author.name}
         ></WebmentionAuthorImgWrapper>
       </WebmentionLike>
     )
@@ -473,7 +466,11 @@ export default function Webmentions({ slug, preview }) {
         <WebMentionsWrapper>
           <WebmentionsHeader>
             <WebmentionsTitle>
-              {count.overall ? count.overall : "0"} Webmentions
+              {likes.length +
+                reposts.length +
+                comments.length +
+                mentions.length}{" "}
+              Webmentions
             </WebmentionsTitle>
             <WebmentionsInfo
               href="/webmention"
@@ -520,8 +517,10 @@ export default function Webmentions({ slug, preview }) {
             </Button>
             <Status color={status.color}>{status.text}</Status>
           </SendWebmentions>
-
-          {count.overall > 0 ? (
+          {likes.length > 0 ||
+          reposts.length > 0 ||
+          comments.length > 0 ||
+          mentions.length > 0 ? (
             <>
               {/* Comments */}
               {comments.length > 0 ? (
@@ -543,7 +542,7 @@ export default function Webmentions({ slug, preview }) {
                         <WebmentionAuthor className="h-card p-author">
                           {renderAuthorImg(mention)}
                           <WebmentionAuthorName className="p-name">
-                            {mention.author ? mention.author.name : "anonym"}
+                            {mention.author.name}
                           </WebmentionAuthorName>
                           <a
                             href={mention.url}
@@ -634,6 +633,7 @@ export default function Webmentions({ slug, preview }) {
               require="required"
               type="text"
               placeholder="Hello there"
+              value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
             />
             <CommentAuthorLabel for="author">
@@ -644,6 +644,7 @@ export default function Webmentions({ slug, preview }) {
               id="author"
               name="author"
               require="required"
+              value={commentName}
               onChange={(e) => setCommentName(e.target.value)}
             />
             {sentComment ? (

@@ -334,6 +334,7 @@ export default function Dashboard({
   consentCount,
   biggestTrafficSource,
   thanks,
+  commentsCount,
 }) {
   const router = useRouter()
 
@@ -536,6 +537,10 @@ export default function Dashboard({
                       </GridStatsDescription>
                     </StatsSmallGrid>
                   </Link>
+                  <StatsSmallGrid>
+                    <GridStats>{commentsCount}</GridStats>
+                    <GridStatsDescription>Comments posted</GridStatsDescription>
+                  </StatsSmallGrid>
                 </StatsGrid>
               </GeneralStats>
 
@@ -855,6 +860,7 @@ export async function getStaticProps() {
   const photosCount = (await getPhotosCount()) || []
   const activitiesCount = await getActivitiesCount()
   const linksCount = (await getLinksCount()) || []
+  const commentsCount = (await getCommentsCount()) || []
   const lastViews = (await getMatomoPageViews()) || []
   const actions = (await getMatomoActions()) || []
   const githubStats = (await getGitHubStats()) || []
@@ -881,6 +887,7 @@ export async function getStaticProps() {
       lastViews,
       actions,
       postsCount,
+      commentsCount,
       tagsCount,
       subscribersCount,
       activitiesCount,

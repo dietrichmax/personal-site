@@ -132,7 +132,7 @@ export default function WebmentionEndpoint({}) {
             <WebmentionContainer>
               <WebmentionForm>
                 <WebmentionFormField>
-                  <WebmentionFormLabel for="source">
+                  <WebmentionFormLabel htmlFor="source">
                     Source URL
                   </WebmentionFormLabel>
                   <Input
@@ -144,7 +144,7 @@ export default function WebmentionEndpoint({}) {
                   />
                 </WebmentionFormField>
                 <WebmentionFormField>
-                  <WebmentionFormLabel for="target">
+                  <WebmentionFormLabel htmlFor="target">
                     Target URL
                   </WebmentionFormLabel>
                   <Input

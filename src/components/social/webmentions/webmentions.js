@@ -58,7 +58,7 @@ const WebmentionAuthor = styled.div`
   margin-bottom: calc(var(--space-sm) * 0.5);
 `
 
-const WebmentionAuthorImgWrapper = styled.div`
+const WebmentionAuthorImgWrapper = styled.a`
   display: inline-block;
   vertical-align: middle;
   width: 50px;
@@ -623,9 +623,9 @@ export default function Webmentions({ slug, preview }) {
             </WebmentionContent>
           )}
           <CommentWrapper>
-            <CommentTitle for="comment">
+            <CommentTitle htmlFor="comment">
               Comment
-              <CommentTitleSpan class="required"> *</CommentTitleSpan>
+              <CommentTitleSpan className="required"> *</CommentTitleSpan>
             </CommentTitle>
             <CommentInput
               id="comment"
@@ -636,9 +636,9 @@ export default function Webmentions({ slug, preview }) {
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
             />
-            <CommentAuthorLabel for="author">
+            <CommentAuthorLabel htmlFor="author">
               Name
-              <CommentTitleSpan class="required"> *</CommentTitleSpan>
+              <CommentTitleSpan className="required"> *</CommentTitleSpan>
             </CommentAuthorLabel>
             <CommentAuthorInput
               id="author"

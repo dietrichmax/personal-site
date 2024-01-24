@@ -7,7 +7,7 @@ const ContentSecurityPolicy = `
     child-src *.mxd.codes;
     style-src 'self' 'unsafe-inline' *.googleapis.com *.mxd.codes;
     img-src * blob: data: *.mxd.codes;
-    media-src 'none' *.mxd.codes;
+    media-src 'self' *.mxd.codes;
     connect-src * *.mxd.codes;
     font-src 'self' *.mxd.codes;
 `

@@ -43,7 +43,7 @@ const VectorLayerMapGeojson = dynamic(
   }
 )
 
-const PlaceHolderImage = styled.div`
+const PlaceHolderImage = styled.span`
   padding: 50px 0;
   height: 300px;
   width: 670px;
@@ -56,6 +56,8 @@ const PermaLink = styled.span`
   margin-left: var(--space-sm);
   font-size: 14px;
 `
+
+const StyledA = styled(MDX.A)``
 
 const MarkdownImage = ({ src }) => {
   const [data, updateData] = useState()
@@ -88,15 +90,13 @@ const MarkdownImage = ({ src }) => {
 
   if (data) {
     return (
-      <a href={data.src} title={data.title} alt={data.alt}>
-        <Image
-          src={data.src}
-          title={data.title}
-          alt={data.alt}
-          width={data.contentWidth}
-          height={data.contentHeight}
-        />
-      </a>
+      <Image
+        src={data.src}
+        title={data.title}
+        alt={data.alt}
+        width={data.contentWidth}
+        height={data.contentHeight}
+      />
     )
   } else {
     return (
@@ -117,11 +117,9 @@ const renderers = {
 
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (
-      <MDX.A>
-        <Link className="internal-link" href={href} title={title} alt={alt}>
-          {children}
-        </Link>
-      </MDX.A>
+      <StyledA className="internal-link" href={href} title={title} alt={alt}>
+        {children}
+      </StyledA>
     ) : (
       <MDX.A
         className="external-link"

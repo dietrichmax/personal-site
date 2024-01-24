@@ -72,8 +72,8 @@ const MarkerPopupMap = () => {
   return (
     <div>
       <div id="markerpopupmap" style={{ width: "100%", height: "400px" }} />
-      <div id="popup" class="ol-popup" style={{ backgroundColor: "#fff" }}>
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup" className="ol-popup" style={{ backgroundColor: "#fff" }}>
+        <a href="#" id="popup-closer" className="ol-popup-closer"></a>
         <div id="popup-content"></div>
       </div>
     </div>

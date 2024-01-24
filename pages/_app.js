@@ -46,13 +46,6 @@ export default function App(props) {
         <link rel="preconnect" href="https://cms.mxd.codes" />,
         <link rel="preconnect" href="https://analytics.mxd.codes/" />
         {/* Preload */}
-        <link
-          rel="preload"
-          href="https://analytics.mxd.codes/matomo.js"
-          onload="embedTracker()"
-          type="script"
-          crossorigin
-        ></link>
         {/* IndieCert */}
         <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
         <link rel="micropub" href="https://mxd.codes/micropub" />

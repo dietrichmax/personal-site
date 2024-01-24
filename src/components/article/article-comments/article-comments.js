@@ -159,9 +159,9 @@ export default function Comments({ slug }) {
         })}
       </CommentsWrapper>
 
-      <CommentTitle for="comment">
+      <CommentTitle htmlFor="comment">
         Comment
-        <CommentTitleSpan class="required"> *</CommentTitleSpan>
+        <CommentTitleSpan className="required"> *</CommentTitleSpan>
       </CommentTitle>
       <CommentInput
         id="comment"
@@ -171,9 +171,9 @@ export default function Comments({ slug }) {
         placeholder="Hello there"
         onChange={(e) => setCommentText(e.target.value)}
       />
-      <CommentAuthorLabel for="author">
+      <CommentAuthorLabel htmlFor="author">
         Name
-        <CommentTitleSpan class="required"> *</CommentTitleSpan>
+        <CommentTitleSpan className="required"> *</CommentTitleSpan>
       </CommentAuthorLabel>
       <CommentAuthorInput
         id="author"

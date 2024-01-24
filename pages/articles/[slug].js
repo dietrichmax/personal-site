@@ -212,8 +212,8 @@ export default function Post({ post, allPosts }) {
                     {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
                     {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
 
+                    <PostBody content={post.content} toc={post.toc} />
                     <Content>
-                      <PostBody content={post.content} toc={post.toc} />
                       {/*<Feedback /> */}
                       <Meta
                         post={post}

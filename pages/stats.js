@@ -25,6 +25,7 @@ import {
   getActivitiesCount,
   getLinksCount,
   getPhotosCount,
+  getCommentsCount,
   getAllActivities,
   getThanks,
 } from "@/src/data/external/cms"

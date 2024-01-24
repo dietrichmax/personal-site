@@ -19,6 +19,10 @@ const MarkerPopupMap = dynamic(
     ssr: false,
   }
 )
+const LiveMap = dynamic(
+  () => import("@/components/mdxComponents/maps/leaflet/liveMap"),
+  { ssr: false }
+)
 const LeafletGeojsonDemo = dynamic(
   () => import("@/components/mdxComponents/maps/leaflet/LeafletGeojsonDemo"),
   {
@@ -220,6 +224,9 @@ const renderers = {
   },
   VectorLayerMapGeojson: ({}) => {
     return <VectorLayerMapGeojson />
+  },
+  LiveMap: ({}) => {
+    return <LiveMap />
   },
 }
 

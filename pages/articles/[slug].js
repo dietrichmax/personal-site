@@ -29,10 +29,6 @@ import Subscribe from "src/components/social/newsletter/subscribe"
 import { serialize } from "next-mdx-remote/serialize"
 import dynamic from "next/dynamic"
 
-const Comments = dynamic(
-  () => import("@/components/article/article-comments/article-comments"),
-  { ssr: false }
-)
 const RecommendedPosts = dynamic(
   () => import("@/components/recommended-articles/recommendedArticles"),
   { ssr: false }

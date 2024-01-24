@@ -531,7 +531,7 @@ export default function Dashboard({
                   <Link href="/map" passHref legacyBehavior>
                     <StatsSmallGrid>
                       <GridStats>
-                        {locationsCount.toLocaleString("en")}
+                        {Number(locationsCount).toLocaleString("en")}
                       </GridStats>
                       <GridStatsDescription>
                         Locations tracked

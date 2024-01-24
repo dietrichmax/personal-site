@@ -69,7 +69,7 @@ function LiveMap() {
     }),
   })
 
-  const center = [48, 12]
+  const center = [12.2311016, 48.0619802]
 
   useEffect(() => {
     const initialMap = new Map({

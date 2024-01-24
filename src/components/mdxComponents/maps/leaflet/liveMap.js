@@ -69,7 +69,7 @@ function LiveMap() {
     }),
   })
 
-  const center = transform([12.2311016, 48.0619802], "EPSG:4326", "EPSG:3857")
+  const center = transform([12.115173, 47.850031], "EPSG:4326", "EPSG:3857")
 
   useEffect(() => {
     const initialMap = new Map({

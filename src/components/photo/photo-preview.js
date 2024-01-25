@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 //import PostTags from "src/components/tags/tags"
 import HCard from "src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
@@ -55,7 +55,7 @@ const PhotosContent = styled.p`
 `
 
 const Photo = styled(Image)`
-  position: relative;
+  position: fixed;
   object-fit: cover;
   object-position: bottom;
   transition: 0.5s;
@@ -65,15 +65,19 @@ const Photo = styled(Image)`
 `
 
 const PhotoWrapper = styled.div`
+  position: initial;
   cursor: pointer;
   height: auto;
   width: 100%;
   min-height: 400px;
 `
 
-const DynamicPostMeta = dynamic(() => import("src/components/post/post-meta/post-meta-preview"), {
-  loading: () => <p>Loading...</p>,
-})
+const DynamicPostMeta = dynamic(
+  () => import("src/components/post/post-meta/post-meta-preview"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+)
 export default function PhotoPreview({ photo }) {
   const slug = `/photos/${photo.slug}`
 
@@ -91,7 +95,8 @@ export default function PhotoPreview({ photo }) {
               }`}
               alt={`Photo of ${photo.title}`}
               title={`Photo of "${photo.title}"`}
-              layout="fill"
+              fill={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="u-photo"
             />
           </PhotoWrapper>

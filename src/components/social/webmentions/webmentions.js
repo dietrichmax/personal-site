@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 import config from "src/data/internal/SiteConfig"
@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa"
 import { BsStar } from "react-icons/bs"
 import { Button } from "@/styles/templates/button"
+import Link from "next/link"
 
 const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
@@ -487,7 +488,9 @@ export default function Webmentions({ slug, preview }) {
                   : null
               }}
             >
-              <FaRegQuestionCircle />
+              <Link href="/webmention" title="What is Webmention?">
+                <FaRegQuestionCircle />
+              </Link>
               {/* What’s this?*/}
             </WebmentionsInfo>
           </WebmentionsHeader>
@@ -630,7 +633,6 @@ export default function Webmentions({ slug, preview }) {
             <CommentInput
               id="comment"
               name="comment"
-              require="required"
               type="text"
               placeholder="Hello there"
               value={commentText}
@@ -643,7 +645,6 @@ export default function Webmentions({ slug, preview }) {
             <CommentAuthorInput
               id="author"
               name="author"
-              require="required"
               value={commentName}
               onChange={(e) => setCommentName(e.target.value)}
             />

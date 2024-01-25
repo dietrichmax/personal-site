@@ -65,7 +65,7 @@ module.exports = {
       "openweathermap.org",
       "aujtzahimq.cloudimg.io",
     ],
-    deviceSizes: [350, 450, 670, 800, 1000, 1300],
+    deviceSizes: [350, 450, 500, 670, 800, 900, 1000, 1300],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   typescript: {

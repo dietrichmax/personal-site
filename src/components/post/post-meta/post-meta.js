@@ -30,7 +30,6 @@ const SyndLi = styled.li`
 
 const SyndItem = styled.a`
   cursor: pointer;
-  margin-right: 0.25rem;
 `
 
 export default function PostMeta({ post, slug, syndicationLinks }) {

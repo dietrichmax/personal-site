@@ -170,13 +170,6 @@ export default function Post({ post, allPosts }) {
             articleData={post}
           />
           <article ref={target} className="h-entry">
-            <img
-              src={`https://vg06.met.vgwort.de/na/${post.vgwortpubliccode}`}
-              width="1"
-              height="1"
-              alt="vgwortpixel"
-            />
-
             <HCard />
 
             <ReadingProgress target={target} />

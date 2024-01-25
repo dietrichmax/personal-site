@@ -93,42 +93,48 @@ export default function SocialShare({ slug, id, syndicationLinks, post }) {
         </ActionsLike>
   </Actions>*/}
       {/*<Separator />*/}
-      <Actions do="share" with={url}>
+      <Actions>
         <a
           className="action share"
           title="Share this post on Twitter"
           target="_blank"
           href={`https://twitter.com/intent/tweet?url=${url}`}
           rel="nofollow noopener"
+          d="share"
+          with={url}
         >
           <FaTwitter />
         </a>
       </Actions>
       {tweetID ? (
-        <Actions do="reply" with={url}>
+        <Actions>
           <a
             className="action reply"
             title="Reply to this post"
             target="_blank"
             href={`https://twitter.com/intent/tweet?in_reply_to=${tweetID}`}
             rel="nofollow noopener"
+            do="reply"
+            with={url}
           >
             <FaReply />
           </a>
         </Actions>
       ) : null}
-      <Actions do="share" with={url}>
+      <Actions>
         <a
           className="action share"
           title="Share this post on Linkedin"
           target="_blank"
           href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
           rel="nofollow noopener"
+          do="share"
+          with={url}
         >
           <FaLinkedin />
         </a>
       </Actions>
-      <Actions do="reply" with={url}>
+      <Actions>
         <a
           className="action mail"
           title="Mail this post"
@@ -139,6 +145,8 @@ export default function SocialShare({ slug, id, syndicationLinks, post }) {
               ? `${post.excerpt.replace("<p>", "").replace(".</p>", "")}.`
               : null
           }%0A%0A${url}`}
+          do="reply"
+          with={url}
         >
           <FaEnvelope />
         </a>

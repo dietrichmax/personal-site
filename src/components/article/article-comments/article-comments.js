@@ -166,7 +166,6 @@ export default function Comments({ slug }) {
       <CommentInput
         id="comment"
         name="comment"
-        require="required"
         type="text"
         placeholder="Hello there"
         onChange={(e) => setCommentText(e.target.value)}
@@ -178,7 +177,6 @@ export default function Comments({ slug }) {
       <CommentAuthorInput
         id="author"
         name="author"
-        require="required"
         onChange={(e) => setCommentName(e.target.value)}
       />
       {sentComment ? (

@@ -66,6 +66,10 @@ const WebmentionTitle = styled.h2`
   margin-bottom: var(--space-sm);
 `
 
+const WebmentionDescriptionContainer = styled.div`
+  margin-bottom: var(--space-sm);
+`
+
 const WebmentionDescription = styled.p`
   margin-bottom: var(--space-sm);
 `
@@ -167,7 +171,7 @@ export default function WebmentionEndpoint({}) {
 
               <WebmentionInfo>
                 <WebmentionTitle>About Webmention</WebmentionTitle>
-                <WebmentionDescription>
+                <WebmentionDescriptionContainer>
                   <WebmentionDescription>
                     Webmention is a modern alternative to pingback.
                   </WebmentionDescription>
@@ -181,19 +185,18 @@ export default function WebmentionEndpoint({}) {
                     be shown at the bottom of the article with a backlink to
                     you.
                   </WebmentionDescription>
-                </WebmentionDescription>
-
-                <WebmentionDescription>
-                  You can read more about Webmention on the
-                  <WebmentionLink
-                    href="https://indieweb.org/Webmention"
-                    title="Webmention"
-                  >
-                    {" "}
-                    IndieWebCamp wiki
-                  </WebmentionLink>
-                  .
-                </WebmentionDescription>
+                  <WebmentionDescription>
+                    You can read more about Webmention on the
+                    <WebmentionLink
+                      href="https://indieweb.org/Webmention"
+                      title="Webmention"
+                    >
+                      {" "}
+                      IndieWebCamp wiki
+                    </WebmentionLink>
+                    .
+                  </WebmentionDescription>
+                </WebmentionDescriptionContainer>
               </WebmentionInfo>
             </WebmentionContainer>
           </PageWrapper>

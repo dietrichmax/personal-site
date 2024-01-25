@@ -21,13 +21,13 @@ const CardItemImg = styled(Image)`
 const PostImg = styled(Image)`
   position: relative;
   object-fit: cover;
-  width: ${(props) => (props.width ? `${props.width}px` : "1300px")};
-  height: ${(props) => (props.height ? `${props.height}px` : "450px")};
+  width: auto;
+  height: auto
   cursor: pointer;
   border-radius: var(--border-radius);
   ${media.lessThan("medium")`
-    height: 250px;
-    width: 100%;
+    height: auto;
+    width: auto;
     object-fit: cover;
   `}
 `

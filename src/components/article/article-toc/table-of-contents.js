@@ -5,7 +5,8 @@ const ToCWrapper = styled.div`
   top: var(--space-sm);
   margin-bottom: var(--space-sm);
   background-color: var(--content-bg);
-  padding: var(--space-sm) var(--space-sm) 1px var(--space-sm);
+  padding: var(--space-sm) var(--space) var(--space-sm)
+    calc(var(--space-sm) * 1.5);
   border-radius: var(--border-radius);
   font-size: 15px;
 `
@@ -23,7 +24,6 @@ const ToCListItem = styled.li`
   margin-bottom: 1rem;
   padding-left: calc(var(--space-sm) * 1.25);
   border-left: 1px solid var(--secondary-color);
-  margin-left: ${(props) => (props.level > 1 ? `${props.level * 10}px` : "0")};
 `
 
 const ToCItemTitle = styled.a`
@@ -38,7 +38,7 @@ export default function TableOfContents({ toc }) {
     return (
       <ToCList className="table-of-contents">
         {toc.map(({ level, id, title, anchor }) => (
-          <ToCListItem key={id} level={level}>
+          <ToCListItem key={id}>
             <ToCItemTitle href={anchor}>{title}</ToCItemTitle>
           </ToCListItem>
         ))}

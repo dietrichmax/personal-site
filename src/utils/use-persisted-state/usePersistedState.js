@@ -28,7 +28,7 @@ const usePersistedState = (initialState, key, { get, set }) => {
   }, [initialState, key])
 
   const persistentSetState = useCallback(
-    newState => {
+    (newState) => {
       const newStateValue =
         typeof newState === "function" ? newState(state) : newState
 

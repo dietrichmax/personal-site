@@ -10,8 +10,8 @@ const createRssFeed = (allContent) =>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${
-    config.siteRss
-  }" rel="self" type="application/atom+xml"/>
+          config.siteRss
+        }" rel="self" type="application/atom+xml"/>
         <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>
         <author>
             <name>Max Dietrich</name>
@@ -28,15 +28,17 @@ const createRssFeed = (allContent) =>
               <id>${content.slug}/</id>
               <content type="html">
                 <![CDATA[${content.content} Photo: ${
-              content.photo
-                ? content.photo.map((photo, i) => {
-                    ;<img
-                      src={process.env.NEXT_PUBLIC_STRAPI_API_URL + photo.url}
-                      alt={photo.title}
-                    />
-                  })
-                : null
-            }
+                  content.photo
+                    ? content.photo.map((photo, i) => {
+                        ;<img
+                          src={
+                            process.env.NEXT_PUBLIC_STRAPI_API_URL + photo.url
+                          }
+                          alt={photo.title}
+                        />
+                      })
+                    : null
+                }
                 ]]>
               </content>
             </entry>

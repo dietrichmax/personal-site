@@ -1,4 +1,3 @@
-import React from "react"
 import Layout from "@/components/layout/layout"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
@@ -10,7 +9,6 @@ import { Button } from "@/styles/templates/button"
 import { Client } from "pg"
 import {
   getMatomoActions,
-  getMatomoLiveCounter,
   getMatomoPageViews,
   getMatomoSumVisitDuration,
   getMatomoVisitsSummary,
@@ -34,9 +32,7 @@ import { getGitHubStats } from "@/src/data/external/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
-//import { formatDistance } from 'date-fns'
-//import { getAllExtensions } from "showdown"
-//import Tooltip from "@/components/tooltip/tooltip"
+import { useEffect, useState } from "react"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -344,14 +340,13 @@ export default function Dashboard({
   const githubUrl = "https://github.com/dietrichmax"
   const forkUrl = `${githubStats.user.repository.url}/fork`
   const starUrl = githubStats.user.repository.url
-  const lastModified = githubStats.user.repository.pushedAt
 
   const webmentionsCount = allWebmentions.length
 
   const linesOfCode = codeStats.SUM.code
 
-  const α = 0.9
-  const B = 1000
+  const α = 0.2
+  const B = 10000
   let pageViews = []
   let normalisedViews = []
   let recentViews = 0
@@ -392,7 +387,6 @@ export default function Dashboard({
   let maxDistance = []
   let maxElevationGain = []
   let totalElevationGain = 0
-  let greatestElevationGain = []
   let jumpCount = 0
 
   activities.map((item) => {
@@ -414,15 +408,8 @@ export default function Dashboard({
     : 0
 
   async function getMatomoLiveCounter() {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
-    )
-    const liveViews = await res.json()
-    if (liveViews.errors) {
-      console.error(liveViews.errors)
-      throw new Error("Failed to fetch Live Views")
-    }
-    setLiveViews(liveViews[0].visitors)
+    const res = await fetch("/api/stats")
+    const stats = await res.json()
   }
 
   useEffect(() => {

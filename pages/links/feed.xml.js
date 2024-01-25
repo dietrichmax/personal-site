@@ -10,8 +10,8 @@ const createRssFeed = (allContent) =>
         <title>${config.siteTitle}</title>
         <subtitle>${config.siteDescription}</subtitle>
         <link href="${config.siteUrl}${
-    config.siteRss
-  }" rel="self" type="application/atom+xml"/>
+          config.siteRss
+        }" rel="self" type="application/atom+xml"/>
         <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>
         <author>
             <name>Max Dietrich</name>

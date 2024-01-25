@@ -1910,8 +1910,8 @@ if (typeof window.Matomo !== "object") {
             var dw = W.XMLHttpRequest
               ? new W.XMLHttpRequest()
               : W.ActiveXObject
-              ? new ActiveXObject("Microsoft.XMLHTTP")
-              : null
+                ? new ActiveXObject("Microsoft.XMLHTTP")
+                : null
             dw.open("POST", aI, true)
             dw.onreadystatechange = function () {
               if (

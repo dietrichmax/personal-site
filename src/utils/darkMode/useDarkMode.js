@@ -20,11 +20,10 @@ const useDarkMode = (
     getDefaultOnChange,
     getInitialValue,
     mediaQueryEventTarget,
-  } = useMemo(() => initialize(storageKey, storageProvider, global), [
-    storageKey,
-    storageProvider,
-    global,
-  ])
+  } = useMemo(
+    () => initialize(storageKey, storageProvider, global),
+    [storageKey, storageProvider, global]
+  )
 
   const [state, setState] = usePersistedDarkModeState(
     getInitialValue(initialValue)
@@ -52,7 +51,7 @@ const useDarkMode = (
     value: state,
     enable: useCallback(() => setState(true), [setState]),
     disable: useCallback(() => setState(false), [setState]),
-    toggle: useCallback(() => setState(current => !current), [setState]),
+    toggle: useCallback(() => setState((current) => !current), [setState]),
   }
 }
 

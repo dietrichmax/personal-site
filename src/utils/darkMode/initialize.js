@@ -28,20 +28,22 @@ const initialize = (storageKey, storageProvider, glbl = global) => {
 
   const isColorSchemeQuerySupported = mql.media === preferDarkQuery
 
-  const getInitialValue = usersInitialState =>
+  const getInitialValue = (usersInitialState) =>
     isColorSchemeQuerySupported ? mql.matches : usersInitialState
 
   // Mock element if SSR else real body element.
   const defaultElement = (glbl.document && glbl.document.body) || mockElement
 
-  const getDefaultOnChange = (
-    element = defaultElement,
-    classNameDark = "dark-mode",
-    classNameLight = "light-mode"
-  ) => val => {
-    element.classList.add(val ? classNameDark : classNameLight)
-    element.classList.remove(val ? classNameLight : classNameDark)
-  }
+  const getDefaultOnChange =
+    (
+      element = defaultElement,
+      classNameDark = "dark-mode",
+      classNameLight = "light-mode"
+    ) =>
+    (val) => {
+      element.classList.add(val ? classNameDark : classNameLight)
+      element.classList.remove(val ? classNameLight : classNameDark)
+    }
 
   return {
     usePersistedDarkModeState,

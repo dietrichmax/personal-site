@@ -1,35 +1,3 @@
-export async function fetchMatomoAPI(params) {
-  const options = {
-    module: params.module || "API",
-    method: params.method || "Actions.getPageUrls",
-    period: params.period || "month",
-    date: params.mdate || "today",
-    idSite: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-    format: "json",
-    token_auth: process.env.NEXT_PUBLIC_MATOMO_API_KEY,
-  }
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_MATOMO_URL}`,
-    null,
-    { params: options },
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
-  }
-
-  return json.data
-}
-
 export async function getMatomoActions() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${
@@ -46,6 +14,18 @@ export async function getMatomoActions() {
     throw new Error("Failed to fetch Matomo Actions")
   }
   return actions
+}
+
+export async function getMatomoLiveCounter() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
+  )
+  const liveViews = await res.json()
+  if (liveViews.errors) {
+    console.error(liveViews.errors)
+    throw new Error("Failed to fetch Matomo Actions")
+  }
+  return liveViews
 }
 
 export async function getMatomoPageViews() {
@@ -149,7 +129,7 @@ export async function getMatomoTopPageUrls() {
   const res = await fetch(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
-    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/articles/&flat=1&idSite=${
+    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/&flat=1&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2018-02-01,${new Date()
       .toISOString()

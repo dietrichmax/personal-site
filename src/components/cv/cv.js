@@ -12,8 +12,16 @@ const Paper = styled.section`
   position: relative;
   background-color: var(--content-bg);
   overflow: hidden;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji;
   ${media.lessThan("830px")`
     max-width: 100%;
     height: 100%;

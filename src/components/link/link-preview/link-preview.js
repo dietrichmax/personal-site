@@ -1,5 +1,5 @@
 import Link from "next/link"
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 import styled from "styled-components"
 import media from "styled-media-query"
 import PostTags from "src/components/tags/tags"
@@ -41,9 +41,12 @@ const LinkLink = styled.a`
   }
 `
 
-const DynamicPostMeta = dynamic(() => import("src/components/post/post-meta/post-meta-preview"), {
-  loading: () => <p>Loading...</p>,
-})
+const DynamicPostMeta = dynamic(
+  () => import("src/components/post/post-meta/post-meta-preview"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+)
 
 export default function LinkPreview({ link }) {
   const slug = `/links/${link.slug}`

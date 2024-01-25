@@ -7,10 +7,10 @@
           "styled-components",
           {
             "ssr": true,
-            "displayName": true
-          }
-        ]
-      ]
+            "displayName": true,
+          },
+        ],
+      ],
     },
     "production": {
       "presets": ["next/babel"],
@@ -19,10 +19,10 @@
           "styled-components",
           {
             "ssr": true,
-            "displayName": false
-          }
-        ]
-      ]
-    }
-  }
+            "displayName": false,
+          },
+        ],
+      ],
+    },
+  },
 }

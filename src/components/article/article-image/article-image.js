@@ -21,12 +21,12 @@ const CardItemImg = styled(Image)`
 const PostImg = styled(Image)`
   position: relative;
   object-fit: cover;
-  width: auto;
-  height: auto
+  width: 1300px;
+  height: 450px;
   cursor: pointer;
   border-radius: var(--border-radius);
   ${media.lessThan("medium")`
-    height: auto;
+    height: 250px;
     width: auto;
     object-fit: cover;
   `}
@@ -81,7 +81,7 @@ export default function PostImage({ preview, postData }) {
           alt={title}
           title={title}
           className="u-photo"
-          width={windowSize.width}
+          width={1300}
           height={450}
           priority
         />

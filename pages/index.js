@@ -145,16 +145,17 @@ const HeroImgContainer = styled.figure`
 `
 
 const HeroImg = styled(Image)`
-  width: 308px;
   height: auto;
   background-color: var(--secondary-color);
   opacity: 0.96;
   margin-top: -2.2rem;
   margin-left: -2.2rem;
   border-radius: 6px;
+  width: 310px;
+  height: 230px;
   ${media.lessThan("medium")`
     width: 210px;
-    height: auto;
+    height: 160px;
   `}
 `
 

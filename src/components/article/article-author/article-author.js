@@ -111,7 +111,6 @@ export default function Author(author) {
         if (!response.ok) {
           console.log(response.statusText)
         } else {
-          console.log(response)
           setSubmitted(true)
           setThanks(count + 1)
         }

@@ -65,7 +65,6 @@ const Photo = styled(Image)`
 `
 
 const PhotoWrapper = styled.div`
-  position: initial;
   cursor: pointer;
   height: auto;
   width: 100%;

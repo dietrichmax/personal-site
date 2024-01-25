@@ -330,13 +330,13 @@ export default function Dashboard({
   visitsSummary,
   photosCount,
   activities,
-  liveViews,
   topPosts,
   consentCount,
   biggestTrafficSource,
   thanks,
   commentsCount,
 }) {
+  const [liveViews, setLiveViews] = useState(0)
   const router = useRouter()
 
   const { forkCount } = githubStats.user.repository
@@ -413,6 +413,22 @@ export default function Dashboard({
     ? consentCount.find((element) => element.label === "consent - false")
     : 0
 
+  async function getMatomoLiveCounter() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
+    )
+    const liveViews = await res.json()
+    if (liveViews.errors) {
+      console.error(liveViews.errors)
+      throw new Error("Failed to fetch Live Views")
+    }
+    setLiveViews(liveViews[0].visitors)
+  }
+
+  useEffect(() => {
+    getMatomoLiveCounter()
+  }, [])
+
   return (
     <>
       <Layout>
@@ -430,7 +446,7 @@ export default function Dashboard({
                 <StatsGrid>
                   <Title>Web Analytics</Title>
                   <StatsLargeGrid>
-                    <GridStats>{liveViews[0].visitors}</GridStats>
+                    <GridStats>{liveViews}</GridStats>
                     <GridStatsDescription>
                       Visitors in the last 5 minutes
                     </GridStatsDescription>
@@ -869,7 +885,6 @@ export async function getStaticProps() {
   const allWebmentions = (await fetchWebmentions()) || []
   const visitsSummary = (await getMatomoVisitsSummary()) || []
   const activities = (await getAllActivities()) || []
-  const liveViews = (await getMatomoLiveCounter()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
   const consentCount = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
@@ -900,7 +915,6 @@ export async function getStaticProps() {
       visitsSummary,
       photosCount,
       activities,
-      liveViews,
       topPosts,
       consentCount,
       biggestTrafficSource,

@@ -195,7 +195,7 @@ export async function getPostById(id) {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Post by ID")
   }
 
   return json
@@ -361,7 +361,7 @@ export async function getLinksCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Links count")
   }
 
   return json
@@ -381,7 +381,7 @@ export async function getCommentsCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch STRAPI Comments count")
   }
 
   return json
@@ -401,7 +401,7 @@ export async function getPostsCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Posts count")
   }
 
   return json
@@ -421,7 +421,7 @@ export async function getTagsCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Tags count")
   }
 
   return json
@@ -441,7 +441,7 @@ export async function getRecipesCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Recipes count")
   }
 
   return json
@@ -461,7 +461,7 @@ export async function getRoutesCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Routes count")
   }
 
   return json
@@ -481,7 +481,7 @@ export async function getSubscribersCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Subscribers count")
   }
 
   return json
@@ -501,7 +501,7 @@ export async function getPhotosCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch Photos count")
   }
 
   return json
@@ -521,7 +521,7 @@ export async function getActivitiesCount() {
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error("Failed to fetch STRAPI API")
+    throw new Error("Failed to fetch activities count")
   }
 
   return json

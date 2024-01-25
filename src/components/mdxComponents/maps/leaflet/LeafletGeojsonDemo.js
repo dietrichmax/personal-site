@@ -25,13 +25,13 @@ const Map = () => {
   // similar to componentDidMount() lifecycle method of class-based
   // components:
   useEffect(() => {
-    const map = L.map("map", mapParams)
+    const map = L.map("map-geojson", mapParams)
     L.geoJSON(getGeoJson()).addTo(map)
   }, [])
 
   return (
     <div>
-      <div id="map" style={mapStyles} />
+      <div id="map-geojson" style={mapStyles} />
     </div>
   )
 }

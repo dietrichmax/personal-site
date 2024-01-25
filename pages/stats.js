@@ -1,4 +1,3 @@
-import React from "react"
 import Layout from "@/components/layout/layout"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
@@ -10,7 +9,6 @@ import { Button } from "@/styles/templates/button"
 import { Client } from "pg"
 import {
   getMatomoActions,
-  getMatomoLiveCounter,
   getMatomoPageViews,
   getMatomoSumVisitDuration,
   getMatomoVisitsSummary,
@@ -34,9 +32,7 @@ import { getGitHubStats } from "@/src/data/external/github"
 import PageTitle from "@/components/title/page-title"
 import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
-//import { formatDistance } from 'date-fns'
-//import { getAllExtensions } from "showdown"
-//import Tooltip from "@/components/tooltip/tooltip"
+import { useEffect, useState } from "react"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -330,13 +326,13 @@ export default function Dashboard({
   visitsSummary,
   photosCount,
   activities,
-  liveViews,
   topPosts,
   consentCount,
   biggestTrafficSource,
   thanks,
   commentsCount,
 }) {
+  const [liveViews, setLiveViews] = useState(0)
   const router = useRouter()
 
   const { forkCount } = githubStats.user.repository
@@ -344,14 +340,13 @@ export default function Dashboard({
   const githubUrl = "https://github.com/dietrichmax"
   const forkUrl = `${githubStats.user.repository.url}/fork`
   const starUrl = githubStats.user.repository.url
-  const lastModified = githubStats.user.repository.pushedAt
 
   const webmentionsCount = allWebmentions.length
 
   const linesOfCode = codeStats.SUM.code
 
-  const α = 0.9
-  const B = 1000
+  const α = 0.2
+  const B = 10000
   let pageViews = []
   let normalisedViews = []
   let recentViews = 0
@@ -392,7 +387,6 @@ export default function Dashboard({
   let maxDistance = []
   let maxElevationGain = []
   let totalElevationGain = 0
-  let greatestElevationGain = []
   let jumpCount = 0
 
   activities.map((item) => {
@@ -413,6 +407,16 @@ export default function Dashboard({
     ? consentCount.find((element) => element.label === "consent - false")
     : 0
 
+  async function getMatomoLiveCounter() {
+    const res = await fetch("/api/stats")
+    const stats = await res.json()
+    setLiveViews(stats.analytics.currentVisitors.visitors)
+  }
+
+  useEffect(() => {
+    getMatomoLiveCounter()
+  }, [])
+
   return (
     <>
       <Layout>
@@ -430,7 +434,7 @@ export default function Dashboard({
                 <StatsGrid>
                   <Title>Web Analytics</Title>
                   <StatsLargeGrid>
-                    <GridStats>{liveViews[0].visitors}</GridStats>
+                    <GridStats>{liveViews}</GridStats>
                     <GridStatsDescription>
                       Visitors in the last 5 minutes
                     </GridStatsDescription>
@@ -869,7 +873,6 @@ export async function getStaticProps() {
   const allWebmentions = (await fetchWebmentions()) || []
   const visitsSummary = (await getMatomoVisitsSummary()) || []
   const activities = (await getAllActivities()) || []
-  const liveViews = (await getMatomoLiveCounter()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
   const consentCount = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
@@ -900,7 +903,6 @@ export async function getStaticProps() {
       visitsSummary,
       photosCount,
       activities,
-      liveViews,
       topPosts,
       consentCount,
       biggestTrafficSource,

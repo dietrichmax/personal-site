@@ -129,7 +129,7 @@ export async function getMatomoTopPageUrls() {
   const res = await fetch(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
-    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/&flat=1&idSite=${
+    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/articles/&flat=1&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2018-02-01,${new Date()
       .toISOString()

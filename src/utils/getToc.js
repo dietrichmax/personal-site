@@ -5,18 +5,19 @@ export function getToc(markdown) {
   const regexReplaceCode = /(```.+?```)/gms
   const regexRemoveLinks = /\[(.*?)\]\(.*?\)/g
 
-  const markdownWithoutLinks = markdown.replace(regexRemoveLinks, "")
-  const markdownWithoutCodeBlocks = markdownWithoutLinks.replace(
+  const markdownWithoutLinks = markdown.replaceAll(regexRemoveLinks, "")
+  const markdownWithoutCodeBlocks = markdownWithoutLinks.replaceAll(
     regexReplaceCode,
     ""
   )
+
   const titles = markdownWithoutCodeBlocks.match(regXHeader)
 
   const toc = []
   let globalID = 0
 
   if (titles) {
-    titles.map((tempTitle, i) => {
+    titles.map((tempTitle) => {
       const level = tempTitle.match(/#/g).length - 1
       const title = tempTitle.replace(/#/g, "").trim("")
       const anchor = `#${title.replace(/ /g, "-").toLowerCase()}`

@@ -231,7 +231,6 @@ export default function Webmentions({ slug, preview }) {
       return entry
     }
 
-    console.log(webmentions)
     setComments(
       webmentions
         .filter((entry) => entry["wm-target"] === url)

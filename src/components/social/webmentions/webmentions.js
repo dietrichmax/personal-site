@@ -231,6 +231,7 @@ export default function Webmentions({ slug, preview }) {
       return entry
     }
 
+    console.log(webmentions)
     setComments(
       webmentions
         .filter((entry) => entry["wm-target"] === url)
@@ -383,7 +384,7 @@ export default function Webmentions({ slug, preview }) {
       <WebmentionLike key={i}>
         <WebmentionAuthorImgWrapper
           className="u-url"
-          href={mention.author.url ? mention.author.url : config.siteUrl}
+          href={mention.url ? mention.url : config.siteUrl}
           rel="noopener noreferrer nofollow"
           alt={`Link to profile of ${mention.author.name}`}
           title={mention.author.name}

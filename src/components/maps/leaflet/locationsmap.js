@@ -49,7 +49,6 @@ function LiveMap({ data }) {
   })
 
   const aerial = new TileLayer({
-    opacity: 0.9,
     preload: Infinity,
     source: new WMTS({
       attributions:

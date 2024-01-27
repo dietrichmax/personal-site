@@ -7,7 +7,7 @@ import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
 import dynamic from "next/dynamic"
 import { Client } from "pg"
 const LocationsMap = dynamic(
-  () => import("src/components/maps/leaflet/locationsmap"),
+  () => import("@/components/maps/openlayers/locationsmap"),
   { ssr: false }
 )
 

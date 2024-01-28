@@ -399,13 +399,13 @@ export default function Dashboard({
     jumpCount = jumpCount + item.jumpCount
   })
 
-  /*const consentTrue = consentCount
+  const consentTrue = consentCount
     ? consentCount.find((element) => element.label === "consent - true")
     : 0
 
   const consentFalse = consentCount
     ? consentCount.find((element) => element.label === "consent - false")
-    : 0*/
+    : 0
 
   async function getMatomoLiveCounter() {
     const res = await fetch("/api/stats")
@@ -552,7 +552,7 @@ export default function Dashboard({
               <GeneralStats>
                 <StatsGridMedium>
                   <GridMediumTitle>Interactions</GridMediumTitle>
-                  {/*<BottomStatsGrid>
+                  <BottomStatsGrid>
                     <GridStats>{consentTrue.nb_events}</GridStats>
                     <GridStatsDescription>
                       Cookie consent given
@@ -563,7 +563,7 @@ export default function Dashboard({
                     <GridStatsDescription>
                       Cookie consent denied
                     </GridStatsDescription>
-                      </BottomStatsGrid>*/}
+                  </BottomStatsGrid>
                   <BottomStatsGrid>
                     <GridStats>{thanks.thanks}</GridStats>
                     <GridStatsDescription>Virtual Thanks</GridStatsDescription>

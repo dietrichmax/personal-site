@@ -28,6 +28,18 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# Build the application
+ARG NEXT_PUBLIC_STRAPI_API_URL
+
+# Print environment variables during build
+RUN echo "NEXT_PUBLIC_STRAPI_API_URL: $NEXT_PUBLIC_STRAPI_API_URL"
+
+# Set environment variables
+ENV NEXT_PUBLIC_STRAPI_API_URL=$NEXT_PUBLIC_STRAPI_API_URL
+
+
+
+
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -38,14 +50,6 @@ ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 
-# Build the application
-ARG NEXT_PUBLIC_STRAPI_API_URL
-
-# Print environment variables during build
-RUN echo "NEXT_PUBLIC_STRAPI_API_URL: $NEXT_PUBLIC_STRAPI_API_URL"
-
-# Set environment variables
-ENV NEXT_PUBLIC_STRAPI_API_URL=$NEXT_PUBLIC_STRAPI_API_URL
 
 
 

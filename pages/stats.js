@@ -335,11 +335,11 @@ export default function Dashboard({
   const [liveViews, setLiveViews] = useState(0)
   const router = useRouter()
 
-  const { forkCount } = githubStats.user.repository
+  /*const { forkCount } = githubStats.user.repository
   const stars = githubStats.user.repository.stargazers.totalCount
   const githubUrl = "https://github.com/dietrichmax"
   const forkUrl = `${githubStats.user.repository.url}/fork`
-  const starUrl = githubStats.user.repository.url
+  const starUrl = githubStats.user.repository.url*/
 
   const webmentionsCount = allWebmentions.length
 
@@ -637,7 +637,7 @@ export default function Dashboard({
                 </TopPageList>
               </TopPageContainer>
               <TripleStatsGrid>
-                <GitHubWrapper>
+                {/*<GitHubWrapper>
                   <Title>GitHub Repository</Title>
                   <GitHubDescription>
                     This site's repository has been starred{" "}
@@ -667,7 +667,7 @@ export default function Dashboard({
                       <Button>Star this repo</Button>
                     </GitHubButtonLink>
                   </GitHubButtonWrapper>
-                </GitHubWrapper>
+                </GitHubWrapper>*/}
               </TripleStatsGrid>
 
               <LanguageContainer>

@@ -28,17 +28,24 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+
+# genenv
+RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
+  --mount=type=secret,id=NEXT_PUBLIC_MATOMO_URL \
+  cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL && \
+  cat /run/secrets/NEXT_PUBLIC_MATOMO_URL && \
+
 # Build the application
 ARG NEXT_PUBLIC_STRAPI_API_URL
+ARG NEXT_PUBLIC_MATOMO_URL
 
 # Print environment variables during build
 RUN echo "NEXT_PUBLIC_STRAPI_API_URL: $NEXT_PUBLIC_STRAPI_API_URL"
+RUN echo "NEXT_PUBLIC_MATOMO_URL: $NEXT_PUBLIC_MATOMO_URL"
 
 # Set environment variables
 ENV NEXT_PUBLIC_STRAPI_API_URL=$NEXT_PUBLIC_STRAPI_API_URL
-
-
-
+ENV NEXT_PUBLIC_MATOMO_URL=$NEXT_PUBLIC_MATOMO_URL
 
 RUN npm run build
 
@@ -48,9 +55,6 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
-
-
-
 
 
 RUN addgroup --system --gid 1001 nodejs

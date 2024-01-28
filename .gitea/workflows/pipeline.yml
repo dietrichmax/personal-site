@@ -4,6 +4,18 @@ on:
   push:
     branches: [v2]
 
+env:
+  NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
+  NEXT_PUBLIC_MATOMO_URL: ${{ secrets.NEXT_PUBLIC_MATOMO_URL }}
+  NEXT_PUBLIC_MATOMO_SITE_ID: ${{ secrets.NEXT_PUBLIC_MATOMO_SITE_ID }}
+  NEXT_PUBLIC_MATOMO_API_KEY: ${{ secrets.NEXT_PUBLIC_MATOMO_API_KEY }}
+  NEXT_PUBLIC_WEBMENTION_KEY: ${{ secrets.NEXT_PUBLIC_WEBMENTION_KEY }}
+  NEXT_PUBLIC_IMGPROXY_URL: ${{ secrets.NEXT_PUBLIC_IMGPROXY_URL }}
+  NEXT_PUBLIC_IMGPROXY_KEY: ${{ secrets.NEXT_PUBLIC_IMGPROXY_KEY }}
+  NEXT_PUBLIC_IMGPROXY_SALT: ${{ secrets.NEXT_PUBLIC_IMGPROXY_SALT }}
+  DASHBOARD_GITHUB_PAK: ${{ secrets.DASHBOARD_GITHUB_PAK }}
+  OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+
 jobs:
   build:
     name: Build Docker
@@ -22,16 +34,6 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME}}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-      - name: Use variables
-        env:
-          NEXT_PUBLIC_STRAPI_API_URL_VAR=${{ vars.NEXT_PUBLIC_STRAPI_API_URL }}
-          NEXT_PUBLIC_STRAPI_API_URL_SECRET=${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
-          NEXT_PUBLIC_STRAPI_API_URL_TEST="test"
-        run: |
-          echo "NEXT_PUBLIC_STRAPI_API_URL_VAR : $NEXT_PUBLIC_STRAPI_API_URL_VAR"
-          echo "NEXT_PUBLIC_STRAPI_API_URL_SECRET : $NEXT_PUBLIC_STRAPI_API_URL_SECRET"
-          echo "NEXT_PUBLIC_STRAPI_API_URL_TEST : $NEXT_PUBLIC_STRAPI_API_URL_TEST"
-        
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -42,13 +44,13 @@ jobs:
             ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:${{ github.sha }}
             ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
           build-args: |
-            NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
-            NEXT_PUBLIC_MATOMO_URL=${{ secrets.NEXT_PUBLIC_MATOMO_URL }}
-            NEXT_PUBLIC_MATOMO_SITE_ID=${{ secrets.NEXT_PUBLIC_MATOMO_SITE_ID }}
-            NEXT_PUBLIC_MATOMO_API_KEY=${{ secrets.NEXT_PUBLIC_MATOMO_API_KEY }}
-            NEXT_PUBLIC_WEBMENTION_KEY=${{ secrets.NEXT_PUBLIC_WEBMENTION_KEY }}
-            NEXT_PUBLIC_IMGPROXY_URL=${{ secrets.NEXT_PUBLIC_IMGPROXY_URL }}
-            DASHBOARD_GITHUB_PAK=${{ secrets.DASHBOARD_GITHUB_PAK }}
-            OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
-            NEXT_PUBLIC_IMGPROXY_KEY=${{ secrets.NEXT_PUBLIC_IMGPROXY_KEY }}
-            NEXT_PUBLIC_IMGPROXY_SALT=${{ secrets.NEXT_PUBLIC_IMGPROXY_SALT }}
+            NEXT_PUBLIC_STRAPI_API_URL=${{ env.NEXT_PUBLIC_STRAPI_API_URL }}
+            NEXT_PUBLIC_MATOMO_URL=${{ env.NEXT_PUBLIC_MATOMO_URL }}
+            NEXT_PUBLIC_MATOMO_SITE_ID=${{ env.NEXT_PUBLIC_MATOMO_SITE_ID }}
+            NEXT_PUBLIC_MATOMO_API_KEY=${{ env.NEXT_PUBLIC_MATOMO_API_KEY }}
+            NEXT_PUBLIC_WEBMENTION_KEY=${{ env.NEXT_PUBLIC_WEBMENTION_KEY }}
+            NEXT_PUBLIC_IMGPROXY_URL=${{ env.NEXT_PUBLIC_IMGPROXY_URL }}
+            DASHBOARD_GITHUB_PAK=${{ env.DASHBOARD_GITHUB_PAK }}
+            OPENWEATHER_API_KEY=${{ env.OPENWEATHER_API_KEY }}
+            NEXT_PUBLIC_IMGPROXY_KEY=${{ env.NEXT_PUBLIC_IMGPROXY_KEY }}
+            NEXT_PUBLIC_IMGPROXY_SALT=${{ env.NEXT_PUBLIC_IMGPROXY_SALT }}

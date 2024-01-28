@@ -24,7 +24,7 @@ jobs:
 
       - name: Use variables
         env:
-          NEXT_PUBLIC_STRAPI_API_URL_VAR: ${{ vars.NEXT_PUBLIC_STRAPI_API_URL }}
+          NEXT_PUBLIC_STRAPI_API_URL_VAR=${{ vars.NEXT_PUBLIC_STRAPI_API_URL }}
           NEXT_PUBLIC_STRAPI_API_URL_SECRET: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
           NEXT_PUBLIC_STRAPI_API_URL_TEST: "test"
         run: |
@@ -32,8 +32,6 @@ jobs:
           echo "NEXT_PUBLIC_STRAPI_API_URL_SECRET : $NEXT_PUBLIC_STRAPI_API_URL_SECRET"
           echo "NEXT_PUBLIC_STRAPI_API_URL_TEST : $NEXT_PUBLIC_STRAPI_API_URL_TEST"
         
-
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -43,8 +41,8 @@ jobs:
           tags: |         
             ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:${{ github.sha }}
             ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
-          secrets: |
-            NEXT_PUBLIC_STRAPI_API_URL=${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
+          build-args: |
+            NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
             NEXT_PUBLIC_MATOMO_URL=${{ secrets.NEXT_PUBLIC_MATOMO_URL }}
             NEXT_PUBLIC_MATOMO_SITE_ID=${{ secrets.NEXT_PUBLIC_MATOMO_SITE_ID }}
             NEXT_PUBLIC_MATOMO_API_KEY=${{ secrets.NEXT_PUBLIC_MATOMO_API_KEY }}

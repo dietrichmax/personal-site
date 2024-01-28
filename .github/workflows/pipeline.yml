@@ -4,57 +4,35 @@ on:
   push:
     branches: [v2]
 
+env:
+  NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
+  NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
+  NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
+  NEXT_PUBLIC_MATOMO_API_KEY: ${{secrets.NEXT_PUBLIC_MATOMO_API_KEY}}
+  NEXT_PUBLIC_WEBMENTION_KEY: ${{secrets.NEXT_PUBLIC_WEBMENTION_KEY}}
+  NEXT_PUBLIC_IMGPROXY_URL: ${{secrets.NEXT_PUBLIC_IMGPROXY_URL}}
+  NEXT_PUBLIC_IMGPROXY_KEY: ${{secrets.NEXT_PUBLIC_IMGPROXY_KEY}}
+  NEXT_PUBLIC_IMGPROXY_SALT: ${{secrets.NEXT_PUBLIC_IMGPROXY_SALT}}
+  DASHBOARD_GITHUB_PAK: ${{secrets.GITHUB_PAK}}
+  OPENWEATHER_API_KEY: ${{secrets.OPENWEATHER_API_KEY}}
+
 jobs:
-  next-build:
-    name: Build Next.js site
-    runs-on: ubuntu-latest
-    container: node:20
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: npm install --omit=dev
-
-      - name: Build site
-        run: npm run build
-        env:
-          NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
-          NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
-          NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
-          NEXT_PUBLIC_MATOMO_API_KEY: ${{secrets.NEXT_PUBLIC_MATOMO_API_KEY}}
-          NEXT_PUBLIC_WEBMENTION_KEY: ${{secrets.NEXT_PUBLIC_WEBMENTION_KEY}}
-          NEXT_PUBLIC_IMGPROXY_URL: ${{secrets.NEXT_PUBLIC_IMGPROXY_URL}}
-          DASHBOARD_GITHUB_PAK: ${{secrets.GITHUB_PAK}}
-          OPENWEATHER_API_KEY: ${{secrets.OPENWEATHER_API_KEY}}
-          NEXT_PUBLIC_IMGPROXY_KEY: ${{secrets.NEXT_PUBLIC_IMGPROXY_KEY}}
-          NEXT_PUBLIC_IMGPROXY_SALT: ${{secrets.NEXT_PUBLIC_IMGPROXY_SALT}}
-
-      - name: Upload Next build
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: |
-            .next
-            public
-          retention-days: 7
-
-  docker-build-push:
-    needs: next-build
+  build:
     name: Build Docker
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME}}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -73,4 +51,4 @@ jobs:
             "DASHBOARD_GITHUB_PAK=${{ secrets.DASHBOARD_GITHUB_PAK }}"
             "OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}"
             "NEXT_PUBLIC_IMGPROXY_KEY=${{ secrets.NEXT_PUBLIC_IMGPROXY_KEY }}"
-            "NEXT_PUBLIC_IMGPROXY_SALT=${{ secrets.NEXT_PUBLIC_IMGPROXY_SALT }}"
+            "NEXT_PUBLIC_IMGPROXY_SALT=${{ secrets.NEXT_PUBLIC_IMGPROXY_SALT }}"            

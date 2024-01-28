@@ -24,7 +24,11 @@ jobs:
 
       - name: Use variables
         run: |
-          echo "NEXT_PUBLIC_STRAPI_API_URL : $NEXT_PUBLIC_STRAPI_API_URL"
+          echo "NEXT_PUBLIC_STRAPI_API_URL_VAR : $NEXT_PUBLIC_STRAPI_API_URL_VAR"
+          echo "NEXT_PUBLIC_STRAPI_API_URL_SECRET : $NEXT_PUBLIC_STRAPI_API_URL_SECRET"
+        env:
+          NEXT_PUBLIC_STRAPI_API_URL_VAR: ${{ vars.NEXT_PUBLIC_STRAPI_API_URL }}
+          NEXT_PUBLIC_STRAPI_API_URL_SECRET: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
 
       - name: Build and push
         uses: docker/build-push-action@v5

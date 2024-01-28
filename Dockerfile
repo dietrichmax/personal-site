@@ -45,7 +45,7 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export NEXT_PUBLIC_STRAPI_API_URL=$(cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL) && \
   export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL) && \
   export NEXT_PUBLIC_MATOMO_SITE_ID=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_SITE_ID) && \
-  export NEXT_NEXT_PUBLIC_MATOMO_API_KEY=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_API_KEY) && \
+  export NEXT_PUBLIC_MATOMO_API_KEY=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_API_KEY) && \
   export NEXT_PUBLIC_WEBMENTION_KEY=$(cat /run/secrets/NEXT_PUBLIC_WEBMENTION_KEY) && \
   export NEXT_PUBLIC_IMGPROXY_URL=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_URL) && \
   export NEXT_PUBLIC_IMGPROXY_KEY=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_KEY) && \

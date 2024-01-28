@@ -54,7 +54,7 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export DASHBOARD_GITHUB_PAK=$(cat /run/secrets/DASHBOARD_GITHUB_PAK) && \
   export OPENWEATHER_API_KEY=$(cat /run/secrets/OPENWEATHER_API_KEY) && \
   export DATABASE_URL=$(cat /run/secrets/DATABASE_URL) && \
-  echo $DASHBOARD_GITHUB_PAK  && \
+  echo "PAK: ${DASHBOARD_GITHUB_PAK}"  && \
   npm run build
 
 # Production image, copy all the files and run next

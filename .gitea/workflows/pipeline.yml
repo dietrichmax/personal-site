@@ -44,3 +44,7 @@ jobs:
             "DASHBOARD_GITHUB_PAK=${{ secrets.DASHBOARD_GITHUB_PAK }}"
             "OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}"
             "DATABASE_URL=${{ secrets.DATABASE_URL }}"
+
+      - name: Trigger Deploy webhook
+        run: |
+          curl -X POST -H 'Content-Type: application/json' -d '{"message": "hello"}' http://localhost:950

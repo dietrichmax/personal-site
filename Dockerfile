@@ -26,14 +26,6 @@ COPY . .
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
- ENV NEXT_TELEMETRY_DISABLED 1
-
-RUN npm run build
-
-# Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /app
-
 ARG NEXT_PUBLIC_STRAPI_API_URL
 ARG NEXT_PUBLIC_MATOMO_URL
 ARG NEXT_PUBLIC_MATOMO_SITE_ID
@@ -66,6 +58,12 @@ ENV NEXT_PUBLIC_MAPPROXY_URL=$NEXT_PUBLIC_MAPPROXY_URL
 ENV GITHUB_PAK=$DASHBOARD_GITHUB_PAK
 ENV OPENWEATHER_API_KEY=$OPENWEATHER_API_KEY
 ENV DATABASE_URL=$DATABASE_URL
+
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs

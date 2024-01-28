@@ -33,8 +33,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   --mount=type=secret,id=NEXT_PUBLIC_MATOMO_URL \
   export NEXT_PUBLIC_STRAPI_API_URL=$(cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL) && \
-  export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL) && \
-  python genenv.py
+  export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL)
 
 # Build the application
 ARG NEXT_PUBLIC_STRAPI_API_URL

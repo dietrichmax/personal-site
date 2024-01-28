@@ -53,7 +53,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script:  |
-            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
-            sudo docker stop personal-website
-            sudo docker system prune -f
-            sudo docker run -d --name=personal-website ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
+            docker login --password ${{ secrets.DOCKER_HUB_USERNAME}} --password ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
+            docker stop personal-website
+            docker system prune -f
+            docker run -d --name=personal-website ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest

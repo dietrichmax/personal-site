@@ -58,3 +58,4 @@ jobs:
             docker stop personal-website
             docker system prune -f
             docker run -d --name=personal-website ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
+            docker logout

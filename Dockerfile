@@ -16,7 +16,6 @@ RUN \
   fi
   
 RUN npm install sharp 
-RUN npm install husky --save-dev
 
 # Rebuild the source code only when needed
 FROM base AS builder

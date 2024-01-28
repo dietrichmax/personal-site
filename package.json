@@ -19,8 +19,7 @@
     "img-optimize": "py ./utils/resize_images.py",
     "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
-    "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send",
-    "prepare": "husky install"
+    "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send"
   },
   "dependencies": {
     "@remy/webmention": "^1.4.5",
@@ -61,7 +60,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
     "lint-staged": "^15.2.0"
   },
   "lint-staged": {

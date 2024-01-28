@@ -45,7 +45,7 @@ jobs:
             "OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}"
             "DATABASE_URL=${{ secrets.DATABASE_URL }}"
 
-      - name: Pulling image and restarting Container 🆕
+      - name: Pulling image and restart Container 🆕
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -53,7 +53,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script:  |
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
-            docker stop personal-website
-            docker system prune -f
-            docker run -d --name=personal-website ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
+            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest
+            sudo docker stop personal-website
+            sudo docker system prune -f
+            sudo docker run -d --name=personal-website ${{ secrets.DOCKER_HUB_USERNAME}}/personal-website:latest

@@ -4,20 +4,33 @@ on:
   push:
     branches: [v2]
 
-env:
-  NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
-  NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
-  NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
-  NEXT_PUBLIC_MATOMO_API_KEY: ${{secrets.NEXT_PUBLIC_MATOMO_API_KEY}}
-  NEXT_PUBLIC_WEBMENTION_KEY: ${{secrets.NEXT_PUBLIC_WEBMENTION_KEY}}
-  NEXT_PUBLIC_IMGPROXY_URL: ${{secrets.NEXT_PUBLIC_IMGPROXY_URL}}
-  NEXT_PUBLIC_IMGPROXY_KEY: ${{secrets.NEXT_PUBLIC_IMGPROXY_KEY}}
-  NEXT_PUBLIC_IMGPROXY_SALT: ${{secrets.NEXT_PUBLIC_IMGPROXY_SALT}}
-  DASHBOARD_GITHUB_PAK: ${{secrets.GITHUB_PAK}}
-  OPENWEATHER_API_KEY: ${{secrets.OPENWEATHER_API_KEY}}
-
 jobs:
-  build:
+  build-project:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Check out repository code 🛎️
+          uses: actions/checkout@v3
+
+        - name: Install NPM dependencies
+          run: npm install
+
+        - name: Build NextJS
+          run: npm run build
+          env:
+            NEXT_PUBLIC_STRAPI_API_URL: ${{secrets.NEXT_PUBLIC_STRAPI_API_URL}}
+            NEXT_PUBLIC_MATOMO_URL: ${{secrets.NEXT_PUBLIC_MATOMO_URL}}
+            NEXT_PUBLIC_MATOMO_SITE_ID: ${{secrets.NEXT_PUBLIC_MATOMO_SITE_ID}}
+            NEXT_PUBLIC_MATOMO_API_KEY: ${{secrets.NEXT_PUBLIC_MATOMO_API_KEY}}
+            NEXT_PUBLIC_WEBMENTION_KEY: ${{secrets.NEXT_PUBLIC_WEBMENTION_KEY}}
+            NEXT_PUBLIC_IMGPROXY_URL: ${{secrets.NEXT_PUBLIC_IMGPROXY_URL}}
+            NEXT_PUBLIC_IMGPROXY_KEY: ${{secrets.NEXT_PUBLIC_IMGPROXY_KEY}}
+            NEXT_PUBLIC_IMGPROXY_SALT: ${{secrets.NEXT_PUBLIC_IMGPROXY_SALT}}
+            DASHBOARD_GITHUB_PAK: ${{secrets.GITHUB_PAK}}
+            OPENWEATHER_API_KEY: ${{secrets.OPENWEATHER_API_KEY}}
+
+  docker-build-push:
+    needs: build-project
     name: Build Docker
     runs-on: ubuntu-latest
 

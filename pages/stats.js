@@ -335,11 +335,11 @@ export default function Dashboard({
   const [liveViews, setLiveViews] = useState(0)
   const router = useRouter()
 
-  /*const { forkCount } = githubStats.user.repository
+  const { forkCount } = githubStats.user.repository
   const stars = githubStats.user.repository.stargazers.totalCount
   const githubUrl = "https://github.com/dietrichmax"
   const forkUrl = `${githubStats.user.repository.url}/fork`
-  const starUrl = githubStats.user.repository.url*/
+  const starUrl = githubStats.user.repository.url
 
   const webmentionsCount = allWebmentions.length
 
@@ -399,13 +399,13 @@ export default function Dashboard({
     jumpCount = jumpCount + item.jumpCount
   })
 
-  const consentTrue = consentCount
+  /*const consentTrue = consentCount
     ? consentCount.find((element) => element.label === "consent - true")
     : 0
 
   const consentFalse = consentCount
     ? consentCount.find((element) => element.label === "consent - false")
-    : 0
+    : 0*/
 
   async function getMatomoLiveCounter() {
     const res = await fetch("/api/stats")
@@ -552,7 +552,7 @@ export default function Dashboard({
               <GeneralStats>
                 <StatsGridMedium>
                   <GridMediumTitle>Interactions</GridMediumTitle>
-                  <BottomStatsGrid>
+                  {/*<BottomStatsGrid>
                     <GridStats>{consentTrue.nb_events}</GridStats>
                     <GridStatsDescription>
                       Cookie consent given
@@ -563,7 +563,7 @@ export default function Dashboard({
                     <GridStatsDescription>
                       Cookie consent denied
                     </GridStatsDescription>
-                  </BottomStatsGrid>
+                      </BottomStatsGrid>*/}
                   <BottomStatsGrid>
                     <GridStats>{thanks.thanks}</GridStats>
                     <GridStatsDescription>Virtual Thanks</GridStatsDescription>
@@ -637,7 +637,7 @@ export default function Dashboard({
                 </TopPageList>
               </TopPageContainer>
               <TripleStatsGrid>
-                {/*<GitHubWrapper>
+                <GitHubWrapper>
                   <Title>GitHub Repository</Title>
                   <GitHubDescription>
                     This site's repository has been starred{" "}
@@ -667,7 +667,7 @@ export default function Dashboard({
                       <Button>Star this repo</Button>
                     </GitHubButtonLink>
                   </GitHubButtonWrapper>
-                </GitHubWrapper>*/}
+                </GitHubWrapper>
               </TripleStatsGrid>
 
               <LanguageContainer>

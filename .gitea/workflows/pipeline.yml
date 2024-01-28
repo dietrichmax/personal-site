@@ -25,7 +25,7 @@ jobs:
       - name: Use variables
         env:
           NEXT_PUBLIC_STRAPI_API_URL_VAR=${{ vars.NEXT_PUBLIC_STRAPI_API_URL }}
-          NEXT_PUBLIC_STRAPI_API_URL_SECRET: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
+          NEXT_PUBLIC_STRAPI_API_URL_SECRET=${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
           NEXT_PUBLIC_STRAPI_API_URL_TEST: "test"
         run: |
           echo "NEXT_PUBLIC_STRAPI_API_URL_VAR : $NEXT_PUBLIC_STRAPI_API_URL_VAR"

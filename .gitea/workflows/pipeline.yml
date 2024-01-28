@@ -22,10 +22,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME}}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-      - name: Dump GitHub context
-        env:
-          NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
-        run: echo "$NEXT_PUBLIC_STRAPI_API_URL"
+      - name: Use variables
+        run: |
+          echo "NEXT_PUBLIC_STRAPI_API_URL : $NEXT_PUBLIC_STRAPI_API_URL"
 
       - name: Build and push
         uses: docker/build-push-action@v5

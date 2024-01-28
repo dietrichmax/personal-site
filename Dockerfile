@@ -35,10 +35,8 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export NEXT_PUBLIC_STRAPI_API_URL=$(cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL) && \
   export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL) && \
   echo "NEXT_PUBLIC_STRAPI_API_URL: $NEXT_PUBLIC_STRAPI_API_URL" && \
-  echo "NEXT_PUBLIC_MATOMO_URL: $NEXT_PUBLIC_MATOMO_URL"
-
-
-RUN npm run build
+  echo "NEXT_PUBLIC_MATOMO_URL: $NEXT_PUBLIC_MATOMO_URL" && \
+  npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner

@@ -8,6 +8,8 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json ./
+
+RUN rm -i package-lock.json
 RUN npm install
   
 RUN npm install sharp 

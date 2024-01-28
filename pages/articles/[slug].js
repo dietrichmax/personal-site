@@ -28,11 +28,8 @@ import Meta from "src/components/post/post-meta/post-meta"
 import Subscribe from "src/components/social/newsletter/subscribe"
 import { serialize } from "next-mdx-remote/serialize"
 import dynamic from "next/dynamic"
+import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 
-const RecommendedPosts = dynamic(
-  () => import("@/components/recommended-articles/recommendedArticles"),
-  { ssr: false }
-)
 const Author = dynamic(
   () => import("@/components/article/article-author/article-author"),
   { ssr: false }

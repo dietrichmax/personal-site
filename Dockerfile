@@ -9,9 +9,7 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 
-RUN npm install  
-RUN npm install sharp 
-RUN npm install husky --save-dev
+RUN npm install
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -22,9 +20,33 @@ COPY . .
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
- ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN npm run build
+RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
+  --mount=type=secret,id=NEXT_PUBLIC_MATOMO_URL \
+  --mount=type=secret,id=NEXT_PUBLIC_MATOMO_SITE_ID \
+  --mount=type=secret,id=NEXT_PUBLIC_MATOMO_API_KEY \
+  --mount=type=secret,id=NEXT_PUBLIC_WEBMENTION_KEY \
+  --mount=type=secret,id=NEXT_PUBLIC_IMGPROXY_URL \
+  --mount=type=secret,id=NEXT_PUBLIC_IMGPROXY_KEY \
+  --mount=type=secret,id=NEXT_PUBLIC_IMGPROXY_SALT \
+  --mount=type=secret,id=NEXT_PUBLIC_MAPPROXY_URL \
+  --mount=type=secret,id=DASHBOARD_GITHUB_PAK \
+  --mount=type=secret,id=OPENWEATHER_API_KEY \
+  --mount=type=secret,id=DATABASE_URL \
+  export NEXT_PUBLIC_STRAPI_API_URL=$(cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL) && \
+  export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL) && \
+  export NEXT_PUBLIC_MATOMO_SITE_ID=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_SITE_ID) && \
+  export NEXT_PUBLIC_MATOMO_API_KEY=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_API_KEY) && \
+  export NEXT_PUBLIC_WEBMENTION_KEY=$(cat /run/secrets/NEXT_PUBLIC_WEBMENTION_KEY) && \
+  export NEXT_PUBLIC_IMGPROXY_URL=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_URL) && \
+  export NEXT_PUBLIC_IMGPROXY_KEY=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_KEY) && \
+  export NEXT_PUBLIC_IMGPROXY_SALT=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_SALT) && \
+  export NEXT_PUBLIC_MAPPROXY_URL=$(cat /run/secrets/NEXT_PUBLIC_MAPPROXY_URL) && \
+  export DASHBOARD_GITHUB_PAK=$(cat /run/secrets/DASHBOARD_GITHUB_PAK) && \
+  export OPENWEATHER_API_KEY=$(cat /run/secrets/OPENWEATHER_API_KEY) && \
+  export DATABASE_URL=$(cat /run/secrets/DATABASE_URL) && \
+  npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner

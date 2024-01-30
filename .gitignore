@@ -46,6 +46,6 @@ yarn-error.log*
 #/.github/
 /.husky/
 
-/public/wallpaper
+/public/wallpaper/backgroundImage.webp
 .Dockerfile
 .docker-compose.yml

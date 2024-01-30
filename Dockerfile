@@ -50,7 +50,7 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export DASHBOARD_GITHUB_PAK=$(cat /run/secrets/DASHBOARD_GITHUB_PAK) && \
   export OPENWEATHER_API_KEY=$(cat /run/secrets/OPENWEATHER_API_KEY) && \
   export PGUSER=$(cat /run/secrets/PGUSER) && \
-  export PGPASSWORD=$(cat /run/secrets/PGASSWORD) && \
+  export PGPASSWORD=$(cat /run/secrets/PGPASSWORD) && \
   export PGHOST=$(cat /run/secrets/PGHOST) && \
   export PGPORT=$(cat /run/secrets/PGPORT) && \
   export PGDATABASE=$(cat /run/secrets/PGDATABASE) && \

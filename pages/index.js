@@ -389,7 +389,8 @@ export async function getStaticProps() {
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
   })
-  await client.connect()
+  console.log()
+  await client.connect(process.env.DATABASE_URL)
   const recentLocation = await client.query(
     "SELECT lat, lon FROM locations ORDER BY id DESC LIMIT 1;"
   )

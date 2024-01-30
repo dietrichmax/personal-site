@@ -33,7 +33,11 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   --mount=type=secret,id=NEXT_PUBLIC_MAPPROXY_URL \
   --mount=type=secret,id=DASHBOARD_GITHUB_PAK \
   --mount=type=secret,id=OPENWEATHER_API_KEY \
-  --mount=type=secret,id=DATABASE_URL \
+  --mount=type=secret,id=PGHOST \
+  --mount=type=secret,id=PGPORT \
+  --mount=type=secret,id=PGUSER \
+  --mount=type=secret,id=PGPASSWORD \
+  --mount=type=secret,id=PGDATABASE \
   export NEXT_PUBLIC_STRAPI_API_URL=$(cat /run/secrets/NEXT_PUBLIC_STRAPI_API_URL) && \
   export NEXT_PUBLIC_MATOMO_URL=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_URL) && \
   export NEXT_PUBLIC_MATOMO_SITE_ID=$(cat /run/secrets/NEXT_PUBLIC_MATOMO_SITE_ID) && \
@@ -45,7 +49,11 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export NEXT_PUBLIC_MAPPROXY_URL=$(cat /run/secrets/NEXT_PUBLIC_MAPPROXY_URL) && \
   export DASHBOARD_GITHUB_PAK=$(cat /run/secrets/DASHBOARD_GITHUB_PAK) && \
   export OPENWEATHER_API_KEY=$(cat /run/secrets/OPENWEATHER_API_KEY) && \
-  export DATABASE_URL=$(cat /run/secrets/DATABASE_URL) && \
+  export PGUSER=$(cat /run/secrets/PGUSER) && \
+  export PGPASSWORD=$(cat /run/secrets/PGASSWORD) && \
+  export PGHOST=$(cat /run/secrets/PGHOST) && \
+  export PGPORT=$(cat /run/secrets/PGPORT) && \
+  export PGDATABASE=$(cat /run/secrets/PGDATABASE) && \
   npm run build
 
 # Production image, copy all the files and run next

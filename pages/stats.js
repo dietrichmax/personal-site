@@ -878,9 +878,7 @@ export async function getStaticProps() {
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
   const thanks = (await getThanks()) || []
 
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-  })
+  const client = new Client()
   await client.connect()
   const locationsCount = await client.query("SELECT COUNT(*) FROM locations;")
   await client.end()

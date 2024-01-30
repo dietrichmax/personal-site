@@ -165,9 +165,7 @@ export default function Now({ weather, address, content, now }) {
 }
 
 export async function getStaticProps() {
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-  })
+  const client = new Client()
   await client.connect()
   const recentLocation = await client.query(
     "SELECT lat, lon, batt, bs, created_at FROM locations ORDER BY id DESC LIMIT 1;"

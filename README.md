@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  [![Build & Publish](https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml/badge.svg)](https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml)
+ <a href="https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml"><img src="https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml/badge.svg" alt="Build & Publish"></a>
 </p>
 
 

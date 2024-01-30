@@ -8,6 +8,11 @@
   mxd.codes is my personal website focussing gis and web-development.
 </h4>
 
+<p align="center">
+  [![Build & Publish](https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml/badge.svg)](https://github.com/dietrichmax/personal-site/actions/workflows/pipeline.yml)
+</p>
+
+
 # 👋 Welcome to mxd.codes's site repo.
 
 You can see the site live here:

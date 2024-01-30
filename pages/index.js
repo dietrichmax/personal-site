@@ -155,7 +155,7 @@ const HeroImg = styled(Image)`
   height: 230px;
   ${media.lessThan("medium")`
     width: 210px;
-    height: 160px;
+    height: 150px;
   `}
 `
 
@@ -343,7 +343,7 @@ export default function Index({ posts, cv }) {
               </HeroArticle>
               <HeroImgContainer>
                 <HeroImg
-                  src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
+                  src="/uploads/IMG_20231229_WA_0005_1925a8f37e_ed04442bf5.webp"
                   width={308}
                   height={308}
                   title="Photo of Max."
@@ -386,7 +386,13 @@ export default function Index({ posts, cv }) {
 }
 
 export async function getStaticProps() {
-  const client = new Client()
+  const client = new Client({
+    host: process.env.PGHOST,
+    port: process.env.PGPORT,
+    database: process.env.PGDATABASE,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+  })
   await client.connect()
   const recentLocation = await client.query(
     "SELECT lat, lon FROM locations ORDER BY id DESC LIMIT 1;"

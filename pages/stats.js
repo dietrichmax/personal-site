@@ -878,7 +878,13 @@ export async function getStaticProps() {
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
   const thanks = (await getThanks()) || []
 
-  const client = new Client()
+  const client = new Client({
+    host: process.env.PGHOST,
+    port: process.env.PGPORT,
+    database: process.env.PGDATABASE,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+  })
   await client.connect()
   const locationsCount = await client.query("SELECT COUNT(*) FROM locations;")
   await client.end()

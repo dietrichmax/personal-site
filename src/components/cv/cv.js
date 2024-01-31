@@ -43,7 +43,7 @@ const SubTitle = styled.h2`
 const SmallBio = styled.p`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--thirdy-color);
+  border-bottom: 2px solid var(--primary-color);
   font-size: 12px;
 `
 
@@ -88,7 +88,7 @@ const Col2 = styled.div`
 const ColTitle = styled.h3`
   font-weight: 600;
   font-size: 12px;
-  color: var(--secondary-color);
+  color: var(--thirdy-color);
   text-transform: uppercase;
   margin-bottom: 4px;
   letter-spacing: 1.25px;
@@ -105,7 +105,7 @@ const SkillGrid = styled.div`
 const TimelineItem = styled.div`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--thirdy-color);
+  border-bottom: 2px solid var(--primary-color);
 `
 
 const TimelineTitle = styled.h4`
@@ -124,14 +124,14 @@ const TimelineLongDescription = styled.div`
 `
 
 const TimelineTags = styled.p`
-  color: var(--secondary-color);
+  color: var(--thirdy-color);
   font-weight: 600;
 `
 
 const Col1Item = styled.div`
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--thirdy-color);
+  border-bottom: 2px solid var(--primary-color);
 `
 
 const Education = styled.div`

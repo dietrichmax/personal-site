@@ -51,7 +51,7 @@ const securityHeaders = [
 ]
 
 module.exports = {
-  output: "standalone",
+  //output: "standalone",
   images: {
     loader: "custom",
     loaderFile: "./src/utils/loader.js",

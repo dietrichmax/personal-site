@@ -96,6 +96,8 @@ export default function Now({ weather, address, content, now }) {
     }
   }
 
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: "numeric", minute: "numeric" };
+  const today = new Date().toLocaleDateString("en-US", options); 
   return (
     <>
       <Layout>
@@ -150,10 +152,7 @@ export default function Now({ weather, address, content, now }) {
               </TextWrapper>
               <Disclaimer>
                 Last updated on{" "}
-                {format(
-                  fromUnixTime(new Date()),
-                  "H:mm, dd'th' MMMM yyyy '('O')'"
-                ).replace("-", " ")}
+                {today}
                 .
               </Disclaimer>
             </Container>

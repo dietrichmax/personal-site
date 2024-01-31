@@ -31,6 +31,7 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   --mount=type=secret,id=NEXT_PUBLIC_IMGPROXY_KEY \
   --mount=type=secret,id=NEXT_PUBLIC_IMGPROXY_SALT \
   --mount=type=secret,id=NEXT_PUBLIC_MAPPROXY_URL \
+  --mount=type=secret,id=NEXT_PUBLIC_STATICMAPS_URL \
   --mount=type=secret,id=DASHBOARD_GITHUB_PAK \
   --mount=type=secret,id=OPENWEATHER_API_KEY \
   --mount=type=secret,id=PGHOST \
@@ -47,6 +48,7 @@ RUN --mount=type=secret,id=NEXT_PUBLIC_STRAPI_API_URL \
   export NEXT_PUBLIC_IMGPROXY_KEY=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_KEY) && \
   export NEXT_PUBLIC_IMGPROXY_SALT=$(cat /run/secrets/NEXT_PUBLIC_IMGPROXY_SALT) && \
   export NEXT_PUBLIC_MAPPROXY_URL=$(cat /run/secrets/NEXT_PUBLIC_MAPPROXY_URL) && \
+  export NEXT_PUBLIC_STATICMAPS_URL=$(cat /run/secrets/NEXT_PUBLIC_STATICMAPS_URL) && \
   export DASHBOARD_GITHUB_PAK=$(cat /run/secrets/DASHBOARD_GITHUB_PAK) && \
   export OPENWEATHER_API_KEY=$(cat /run/secrets/OPENWEATHER_API_KEY) && \
   export PGUSER=$(cat /run/secrets/PGUSER) && \

@@ -34,6 +34,8 @@ import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
 import { useEffect, useState } from "react"
 
+const viewsBarHeight= 200
+
 const Container = styled.div`
   max-width: var(--width-container);
   margin: auto;
@@ -154,7 +156,7 @@ const ViewsContainer = styled.div`
 
 const RecentViewsContainer = styled.div`
   margin: 0 auto;
-  height: 120px;
+  height: ${viewsBarHeight}px;
   justify-content: center;
   display: flex;
 `
@@ -169,7 +171,7 @@ const ColumnWrapper = styled.div`
 
 const ColumnTooltipText = styled.div`
   visibility: hidden;
-  width: 120px;
+  width: 150px;
   padding: 0.5rem;
   background-color: var(--content-bg);
   color: var(--text-color);
@@ -345,8 +347,8 @@ export default function Dashboard({
 
   const linesOfCode = codeStats.SUM.code
 
-  const α = 0.4
-  const B = 500
+  const α = 1.1
+  const B = 100
   let pageViews = []
   let normalisedViews = []
   let recentViews = 0
@@ -597,7 +599,7 @@ export default function Dashboard({
                     <ColumnWrapper key={i}>
                       <Column
                         height={Math.floor(
-                          (item.normalisedViews / normalisedMax) * 120
+                          (item.normalisedViews / normalisedMax) * viewsBarHeight
                         )}
                       >
                         <ColumnTooltipText>{`${item.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Views`}</ColumnTooltipText>

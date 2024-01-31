@@ -392,7 +392,7 @@ export default function Webmentions({ slug, preview }) {
             src={
               mention.author.photo
                 ? mention.author.photo
-                : "https://cms.mxd.codes/uploads/mm_12de3d42ec.jpg"
+                : "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg"
             }
             height="50"
             width="50"

@@ -18,7 +18,7 @@ const InnerHeader = styled.nav`
   margin: calc(var(--space-sm) * 0.5) auto var(--space) auto;
   padding: var(--space-sm) var(--space);
   height: 80px;
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     padding: var(--space-sm);
     margin: 0 auto var(--space) auto;
   `}

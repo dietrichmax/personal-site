@@ -5,7 +5,6 @@ export default function imgproxyLoader({
   width,
   height,
   quality,
-  processOption,
 }) {
   const KEY = process.env.NEXT_PUBLIC_IMGPROXY_KEY
   const SALT = process.env.NEXT_PUBLIC_IMGPROXY_SALT
@@ -27,13 +26,14 @@ export default function imgproxyLoader({
     return urlSafeBase64(hmac.digest())
   }
 
+  console.log(width)
   src = src.startsWith("http")
     ? src
     : process.env.NEXT_PUBLIC_STRAPI_API_URL +
       src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
 
   const path =
-    `/size:${width ? width : 0}:${height ? height : 450}` +
+    `/size:${670}:${height ? height : 450}` +
     `/resizing_type:auto` +
     (quality ? `/quality:${quality}` : "") +
     `/sharpen:0.5` +

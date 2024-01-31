@@ -25,9 +25,9 @@ const PostImg = styled(Image)`
   height: 450px;
   cursor: pointer;
   border-radius: var(--border-radius);
-  ${media.lessThan("medium")`
+  ${media.lessThan("large")`
     height: 250px;
-    width: auto;
+    width: 100%;
     object-fit: cover;
   `}
 `
@@ -81,7 +81,7 @@ export default function PostImage({ preview, postData }) {
           alt={title}
           title={title}
           className="u-photo"
-          width={1300}
+          width={windowSize.width}
           height={450}
           priority
         />

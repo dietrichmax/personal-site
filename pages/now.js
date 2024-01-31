@@ -122,7 +122,7 @@ export default function Now({ weather, address, content, now }) {
             <Container>
               <LiveDataWrapper>
                 <Data>
-                  In {town} it has {weather.main.temp}°C with{" "}
+                  In {town(address.address)} it has {weather.main.temp}°C with{" "}
                   {weather.weather[0].description}.
                   <WeatherImg
                     src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
@@ -130,6 +130,7 @@ export default function Now({ weather, address, content, now }) {
                     alt="Icon displaying weather"
                     width="30"
                     height="30"
+                    priority
                   />
                 </Data>
                 {now.batt ? (

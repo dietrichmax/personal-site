@@ -16,7 +16,6 @@ import {
   getAllPhotos,
   getCV,
 } from "src/data/external/cms"
-import StaticMaps from "staticmaps"
 import { Client } from "pg"
 
 const IndexPageContainer = styled.div`
@@ -36,7 +35,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-image: url("/wallpaper/backgroundImage.webp");
+  background-image: ${(props) => `url(${process.env.NEXT_PUBLIC_STATICMAPS_URL}?width=${props.width}&height=${props.height}&zoom=${props.zoom}&center=${props.center}&tileUrl=${props.tileUrl})`};
   background-color: var(--secondary-color);
   background-blend-mode: color-burn;
   background-attachment: fixed;
@@ -273,7 +272,7 @@ const jsonld = {
   ],
 }
 
-export default function Index({ posts, cv }) {
+export default function Index({ posts, cv, location }) {
   const text = "Welcome to my personal website."
 
   return (
@@ -283,7 +282,7 @@ export default function Index({ posts, cv }) {
           description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
           jsonld={jsonld}
         />
-        <HeroWrapper className="h-card" color="#f2f2f2">
+        <HeroWrapper className="h-card" color="#f2f2f2" height="1000" width="2000" center={`${location.lon},${location.lat}`} zoom="13" tileUrl="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}">
           <HeroOffset>
             <Hero>
               <HCard />
@@ -435,30 +434,13 @@ export async function getStaticProps() {
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, 12)
 
-  const options = {
-    width: 2000,
-    height: 1000,
-    tileLayers: [
-      {
-        tileUrl:
-          "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-      },
-    ],
-  }
-
-  const map = new StaticMaps(options)
-  const zoom = 13
-  const center = [recentLocation.rows[0].lon, recentLocation.rows[0].lat]
-
-  await map.render(center, zoom)
-  await map.image.save("public/wallpaper/backgroundImage.webp")
-
   return {
     revalidate: 300,
     props: {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
+      location: recentLocation.rows[0],
       cv,
     },
   }

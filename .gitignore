@@ -49,4 +49,4 @@ yarn-error.log*
 .Dockerfile
 .docker-compose.yml
 
-public/wallpaper/backgroundImage.webp
+public/wallpaper/*

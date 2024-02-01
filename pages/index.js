@@ -17,6 +17,8 @@ import {
   getCV,
 } from "src/data/external/cms"
 import { Client } from "pg"
+import axios from 'axios';
+import sharp from 'sharp';
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -35,7 +37,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-image: ${(props) => `url(${process.env.NEXT_PUBLIC_STATICMAPS_URL}?width=${props.width}&height=${props.height}&zoom=${props.zoom}&center=${props.center}&tileUrl=${props.tileUrl})`};
+  background-image: url(/wallpaper/backgroundImage.webp);
   background-color: var(--secondary-color);
   background-blend-mode: color-burn;
   background-attachment: fixed;
@@ -272,7 +274,7 @@ const jsonld = {
   ],
 }
 
-export default function Index({ posts, cv, location }) {
+export default function Index({ posts, cv }) {
   const text = "Welcome to my personal website."
 
   return (
@@ -282,7 +284,7 @@ export default function Index({ posts, cv, location }) {
           description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
           jsonld={jsonld}
         />
-        <HeroWrapper className="h-card" color="#f2f2f2" height="1000" width="2000" center={`${location.lon},${location.lat}`} zoom="13" tileUrl="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}">
+        <HeroWrapper className="h-card" color="#f2f2f2">
           <HeroOffset>
             <Hero>
               <HCard />
@@ -385,6 +387,8 @@ export default function Index({ posts, cv, location }) {
 }
 
 export async function getStaticProps() {
+
+  // Get recent location
   const client = new Client({
     host: process.env.PGHOST,
     port: process.env.PGPORT,
@@ -398,6 +402,21 @@ export async function getStaticProps() {
   )
   await client.end()
 
+
+  // Get Background Image
+  const height=1000 
+  const width=2000 
+  const center= `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`
+  const zoom=13 
+  const tileUrl="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+  const backgroundImageUrl = `${process.env.NEXT_PUBLIC_STATICMAPS_URL}?width=${width}&height=${height}&zoom=${zoom}&center=${center}&tileUrl=${tileUrl}`
+  const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
+  const imageResponse = await axios.get(backgroundImageUrl, {
+    responseType: 'arraybuffer',
+  });
+  await sharp(imageResponse.data).toFormat('png').toFile(backgroundImageFilePath)
+
+  // get all content
   const about = await getAbout()
   const allPosts = (await getAllPosts()) || []
   const allLinks = (await getAllLinks()) || []
@@ -430,6 +449,7 @@ export async function getStaticProps() {
     })
   })
 
+  // order all content by date
   const sortedContent = allContent
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, 12)
@@ -440,7 +460,6 @@ export async function getStaticProps() {
       posts: sortedContent,
       //count: stats.posts.count,
       about: about.about,
-      location: recentLocation.rows[0],
       cv,
     },
   }

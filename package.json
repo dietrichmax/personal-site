@@ -48,7 +48,6 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-slug": "^7.0.1",
-    "sharp": "^0.33.2",
     "showdown": "^2.1.0",
     "string-similarity": "^4.0.4",
     "styled-components": "^6.1.8",

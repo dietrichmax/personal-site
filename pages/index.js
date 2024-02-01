@@ -18,7 +18,7 @@ import {
 } from "src/data/external/cms"
 import { Client } from "pg"
 import axios from 'axios';
-import sharp from 'sharp';
+import fs from "fs"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -37,7 +37,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-image: url(/wallpaper/backgroundImage.webp);
+  background-image: url("wallpaper/backgroundImage.webp");
   background-color: var(--secondary-color);
   background-blend-mode: color-burn;
   background-attachment: fixed;
@@ -409,12 +409,12 @@ export async function getStaticProps() {
   const center= `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`
   const zoom=13 
   const tileUrl="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
-  const backgroundImageUrl = `${process.env.NEXT_PUBLIC_STATICMAPS_URL}?width=${width}&height=${height}&zoom=${zoom}&center=${center}&tileUrl=${tileUrl}`
+  const backgroundImageUrl = `${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1?width=${width}&height=${height}&zoom=${zoom}&center=${center}&tileUrl=${tileUrl}`
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
   const imageResponse = await axios.get(backgroundImageUrl, {
     responseType: 'arraybuffer',
   });
-  await sharp(imageResponse.data).toFormat('png').toFile(backgroundImageFilePath)
+  fs.writeFile(backgroundImageFilePath, imageResponse.data, (err) => {if (err) throw err});
 
   // get all content
   const about = await getAbout()

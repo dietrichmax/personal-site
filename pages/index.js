@@ -410,8 +410,9 @@ export async function getStaticProps() {
   const zoom = 13 
   const tileUrl = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
   const format = "webp"
-  const backgroundImageUrl = `${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1?width=${width}&height=${height}&zoom=${zoom}&center=${center}&tileUrl=${tileUrl}format=${format}`
+  const backgroundImageUrl = `${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1?width=${width}&height=${height}&zoom=${zoom}&center=${center}&tileUrl=${tileUrl}&format=${format}`
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
+  console.log(backgroundImageUrl)
   const imageResponse = await axios.get(backgroundImageUrl, {
     responseType: 'arraybuffer',
   });

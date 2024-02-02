@@ -289,64 +289,6 @@ export async function getAllPages() {
   return data?.allPages
 }
 
-// Get Recipes
-
-export async function getAllRecipes() {
-  const data = await fetchStrapiAPI(`
-    {
-      recipes {
-        title
-        subtitle
-        slug
-        duration
-        published_at
-        updated_at
-        description
-        coverImage {
-          url
-          formats
-        }
-      }
-    }
-  `)
-  return data?.recipes
-}
-
-export async function getRecipe(slug) {
-  const data = await fetchStrapiAPI(
-    `
-  query RecipeBySlug($where: JSON) {
-    recipes (where: $where) {
-      title
-      subtitle
-      slug
-      coverImage {
-        url
-        formats
-      }
-      description
-      duration
-      yield
-      ingredients {
-        amount
-        ingredient
-      }
-      published_at
-      updated_at
-    }
-  }
-  `,
-    {
-      variables: {
-        where: {
-          slug,
-        },
-      },
-    }
-  )
-  return data
-}
-
 export async function getLinksCount() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/links/count`,

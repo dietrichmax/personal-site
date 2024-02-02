@@ -1,14 +1,11 @@
-import React, { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import "ol/ol.css"
 import Map from "ol/Map"
 import TileLayer from "ol/layer/Tile"
 import View from "ol/View"
-import XYZ from "ol/source/XYZ"
 import { transform, get as getProjection } from "ol/proj"
 import WMTSTileGrid from "ol/tilegrid/WMTS.js"
 import WMTS from "ol/source/WMTS.js"
-import TileWMS from "ol/source/TileWMS.js"
-import OSM from "ol/source/OSM.js"
 import { getTopLeft, getWidth } from "ol/extent.js"
 
 function LiveMap({ data }) {

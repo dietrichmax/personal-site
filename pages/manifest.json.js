@@ -1,5 +1,5 @@
+import config from "@/src/data/internal/SiteConfig"
 import React from "react"
-import config from "src/data/internal/SiteConfig"
 
 const createManifest = () =>
   `{

@@ -1,4 +1,4 @@
-import PostPreview from "src/components/article/article-preview/article-preview"
+import PostPreview from "@/src/components/article/article-preview/article-preview"
 import styled from "styled-components"
 import media from "styled-media-query"
 

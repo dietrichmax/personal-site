@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import styled from "styled-components"
 import Header from "@/components/navigation/header/header"
 import Footer from "@/components/navigation/footer/footer"

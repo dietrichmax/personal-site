@@ -2,10 +2,10 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import styled from "styled-components"
 import media from "styled-media-query"
-import PreviewImage from "src/components/article/article-image/article-image"
-import HCard from "src/components/microformats/h-card"
+import PreviewImage from "@/src/components/article/article-image/article-image"
+import HCard from "@/src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
-import Webmentions from "src/components/social/webmentions/webmentions"
+import Webmentions from "@/src/components/social/webmentions/webmentions"
 
 const CardItemWrapper = styled.div`
   height: 100%;
@@ -61,7 +61,7 @@ const Socials = styled.div`
 `
 
 const DynamicPostMeta = dynamic(
-  () => import("src/components/post/post-meta/post-meta-preview"),
+  () => import("@/src/components/post/post-meta/post-meta-preview"),
   {
     loading: () => <p>Loading...</p>,
   }

@@ -1,7 +1,10 @@
 import styled from "styled-components"
 import { parseISO, format } from "date-fns"
 import config from "src/data/internal/SiteConfig"
-import { FaTwitter, FaInstagram, FaReddit, FaStrava } from "react-icons/fa"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
+import { FaReddit } from "@react-icons/all-files/fa/FaReddit";
+import { FaStrava } from "@react-icons/all-files/fa/FaStrava";
 
 const Meta = styled.div`
   display: flex;

@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from "react"
-import { useRouter } from "next/router"
+import React, { useState } from "react"
 import Image from "next/image"
-import Content from "src/components/article/article-body/article-body"
-import Layout from "src/components/layout/layout"
-import { getAbout } from "src/data/external/cms"
-import PageTitle from "src/components/title/page-title"
+import Content from "@/src/components/article/article-body/article-body"
+import Layout from "@/src/components/layout/layout"
+import { getAbout } from "@/src/data/external/cms"
+import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
-import SEO from "src/components/seo/seo"
+import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
@@ -62,7 +61,6 @@ const jsonld = {
 }
 
 export default function About({ about }) {
-  const router = useRouter()
   const [selected, setSelected] = useState(2)
 
   const renderBio = () => {
@@ -79,38 +77,32 @@ export default function About({ about }) {
 
   return (
     <Layout>
-      {router.isFallback ? (
-        <PageTitle>{config.loading}</PageTitle>
-      ) : (
-        <>
-          <SEO
-            title={about.title}
-            description=""
-            slug={`about`}
-            aboutSchema
-            jsonld={jsonld}
-          />
+      <SEO
+        title={about.title}
+        description=""
+        slug={`about`}
+        aboutSchema
+        jsonld={jsonld}
+      />
 
-          <ImageWrapper>
-            <Image
-              src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
-              width="620"
-              height="300"
-              title={about.title}
-              alt={about.title}
-              className="profile u-photo"
-            />
-          </ImageWrapper>
+      <ImageWrapper>
+        <Image
+          src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
+          width="620"
+          height="300"
+          title={about.title}
+          alt={about.title}
+          className="profile u-photo"
+        />
+      </ImageWrapper>
 
-          <PageWrapper>
-            <Title>{about.title}</Title>
-            <Intro>{about.intro}</Intro>
-            <BioContainer>
-              <Content content={about.bio} />
-            </BioContainer>
-          </PageWrapper>
-        </>
-      )}
+      <PageWrapper>
+        <Title>{about.title}</Title>
+        <Intro>{about.intro}</Intro>
+        <BioContainer>
+          <Content content={about.bio} />
+        </BioContainer>
+      </PageWrapper>
     </Layout>
   )
 }

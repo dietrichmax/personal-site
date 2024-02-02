@@ -1,11 +1,7 @@
-import Link from "next/link"
 import styled from "styled-components"
 import media from "styled-media-query"
-import PostTags from "src/components/tags/tags"
 import { parseISO, format } from "date-fns"
-import HCard from "src/components/microformats/h-card"
-import config from "src/data/internal/SiteConfig"
-import Webmentions from "src/components/social/webmentions/webmentions"
+import config from "@/src/data/internal/SiteConfig"
 
 const Meta = styled.div`
   font-family: var(--secondary-font);

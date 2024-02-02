@@ -2,10 +2,10 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import styled from "styled-components"
 import media from "styled-media-query"
-import PostTags from "src/components/tags/tags"
-import Date from "src/components/date/date"
-import HCard from "src/components/microformats/h-card"
-import config from "src/data/internal/SiteConfig"
+import PostTags from "@/src/components/tags/tags"
+import Date from "@/src/components/date/date"
+import HCard from "@/src/components/microformats/h-card"
+import config from "@/src/data/internal/SiteConfig"
 import { Card } from "@/styles/templates/card"
 
 const LinkContainer = styled.div`
@@ -42,7 +42,7 @@ const LinkLink = styled.a`
 `
 
 const DynamicPostMeta = dynamic(
-  () => import("src/components/post/post-meta/post-meta-preview"),
+  () => import("@/src/components/post/post-meta/post-meta-preview"),
   {
     loading: () => <p>Loading...</p>,
   }

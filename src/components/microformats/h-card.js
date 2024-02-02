@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 
 const Hidden = styled.div`
   display: none;

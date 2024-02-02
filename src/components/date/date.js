@@ -1,6 +1,6 @@
 import { parseISO, format } from "date-fns"
 import styled from "styled-components"
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 
 const DateContainer = styled.time`
   font-family: var(--secondary-font);

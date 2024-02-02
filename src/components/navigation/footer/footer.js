@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react"
-import config from "src/data/internal/SiteConfig"
+import { useState, useEffect } from "react"
+import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
-import { SiStrava } from "react-icons/si"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
+import { SiStrava } from "@react-icons/all-files/si/SiStrava";
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 

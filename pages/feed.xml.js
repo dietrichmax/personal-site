@@ -1,7 +1,6 @@
 import React from "react"
-import { parseISO } from "date-fns"
-import config from "src/data/internal/SiteConfig"
-import { getAllPosts, getAllLinks, getAllRecipes } from "src/data/external/cms"
+import config from "@/src/data/internal/SiteConfig"
+import { getAllPosts, getAllLinks } from "@/src/data/external/cms"
 const showdown = require("showdown"),
   converter = new showdown.Converter()
 
@@ -41,7 +40,6 @@ class Rss extends React.Component {
   static async getInitialProps({ res }) {
     const posts = (await getAllPosts()) || []
     const links = (await getAllLinks()) || []
-    const recipes = (await getAllRecipes()) || []
 
     const allContent = []
 
@@ -62,15 +60,6 @@ class Rss extends React.Component {
         content: converter.makeHtml(link.description),
       })
     })
-
-    /*recipes.map((recipe) => {
-      allContent.push({
-        title: recipe.title,
-        slug: `${config.siteUrl}/recipes/${recipe.slug}`,
-        date: recipe.created_at,
-        content: converter.makeHtml(recipe.description)
-      })
-    })*/
 
     res.setHeader("Content-Type", "text/xml")
     res.write(createRssFeed(allContent))

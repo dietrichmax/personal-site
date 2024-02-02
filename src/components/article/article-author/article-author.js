@@ -2,15 +2,14 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
-import config from "src/data/internal/SiteConfig"
-import {
-  FaGithub,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaXing,
-  FaGift,
-} from "react-icons/fa"
+import config from "@/src/data/internal/SiteConfig"
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
+import { FaXing } from "@react-icons/all-files/fa/FaXing";
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
+//import { FaGift } from "@react-icons/all-files/fa/FaGift";
+
 import { Button } from "@/styles/templates/button"
 
 const AuthorWrapper = styled.div`
@@ -52,7 +51,6 @@ const AuthorTitle = styled.p`
   margin-top: var(--space);
   font-size: 1.5rem;
   font-weight: 600;  
-}
 `
 
 const AuthorSubtitle = styled.p``

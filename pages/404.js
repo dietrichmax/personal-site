@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/layout"
 import SEO from "@/components/seo/seo"
 import Title from "@/components/title/page-title"
-import { getAllPosts } from "src/data/external/cms"
+import { getAllPosts } from "@/src/data/external/cms"
 import { useRouter } from "next/router"
-import StringSimilarity from "string-similarity"
+import { findBestMatch } from "@/src/utils/stringSimilarity"
 import styled from "styled-components"
 import SubTitle from "@/components/title/sub-title"
 import Image from "next/image"
@@ -19,7 +19,7 @@ export default function Custom404({ pages }) {
   const router = useRouter()
 
   const pathname = router.pathname
-  const result = StringSimilarity.findBestMatch(pathname, pages).bestMatch
+  const result = findBestMatch(pathname, pages).bestMatch
   const goodMatch = result.rating > 0.7
 
   return (

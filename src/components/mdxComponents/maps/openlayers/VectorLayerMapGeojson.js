@@ -1,5 +1,5 @@
 // VectorLayerMap.js
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import "ol/ol.css"
 import Map from "ol/Map"
 import View from "ol/View"

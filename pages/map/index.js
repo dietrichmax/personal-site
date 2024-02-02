@@ -1,9 +1,9 @@
-import Layout from "src/components/layout/layout"
-import SEO from "src/components/seo/seo"
-import Title from "src/components/title/page-title"
+import Layout from "@/src/components/layout/layout"
+import SEO from "@/src/components/seo/seo"
+import Title from "@/src/components/title/page-title"
 import styled from "styled-components"
 import media from "styled-media-query"
-import { getLocationsCount, getRecentLocationData } from "src/data/external/cms"
+import { getLocationsCount, getRecentLocationData } from "@/src/data/external/cms"
 import dynamic from "next/dynamic"
 import { Client } from "pg"
 const LocationsMap = dynamic(

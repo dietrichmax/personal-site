@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import renderers from "src/utils/renderers"
+import renderers from "@/src/utils/renderers"
 import { MDXRemote } from "next-mdx-remote"
 
 const ContentWrapper = styled.div`

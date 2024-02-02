@@ -1,5 +1,7 @@
 export async function getGitHubStats() {
-  const headers = { Authorization: `bearer ${process.env.DASHBOARD_GITHUB_PAK}` }
+  const headers = {
+    Authorization: `bearer ${process.env.DASHBOARD_GITHUB_PAK}`,
+  }
   const body = {
     query: `query {
                 user(login: "dietrichmax") {

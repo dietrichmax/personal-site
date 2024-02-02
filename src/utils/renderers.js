@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import styled from "styled-components"
-import { FaLink } from "react-icons/fa"
+import { FaLink } from "@react-icons/all-files/fa/FaLink";
 import * as MDX from "@/styles/mdx-styles"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter/dist/cjs"
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
 import dynamic from "next/dynamic"
 const MapComponent = dynamic(

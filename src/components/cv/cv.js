@@ -1,8 +1,7 @@
-import React from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 import ReactMarkdown from "react-markdown"
-import { parseISO, format, intervalToDuration } from "date-fns"
+import { parseISO, format } from "date-fns"
 
 const Paper = styled.section`
   width: 210mm;

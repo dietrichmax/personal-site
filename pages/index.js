@@ -1,23 +1,22 @@
-import PostPreview from "src/components/article/article-preview/article-preview"
-import LinkPreview from "src/components/link/link-preview/link-preview"
+import PostPreview from "@/src/components/article/article-preview/article-preview"
+import LinkPreview from "@/src/components/link/link-preview/link-preview"
 import TypeWriter from "@/src/utils/typeWriter"
-import PhotoPreview from "src/components/photo/photo-preview"
-import Layout from "src/components/layout/layout"
+import PhotoPreview from "@/src/components/photo/photo-preview"
+import Layout from "@/src/components/layout/layout"
 import styled from "styled-components"
-import SEO from "src/components/seo/seo"
+import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import { getAbout } from "src/data/external/cms"
+import { getAbout } from "@/src/data/external/cms"
 import Link from "next/link"
 import Image from "next/image"
-import HCard from "src/components/microformats/h-card"
+import HCard from "@/src/components/microformats/h-card"
 import {
   getAllPosts,
   getAllLinks,
   getAllPhotos,
   getCV,
-} from "src/data/external/cms"
+} from "@/src/data/external/cms"
 import { Client } from "pg"
-import axios from 'axios';
 import fs from "fs"
 
 const IndexPageContainer = styled.div`
@@ -387,7 +386,6 @@ export default function Index({ posts, cv }) {
 }
 
 export async function getStaticProps() {
-
   // Get recent location
   const client = new Client({
     host: process.env.PGHOST,
@@ -402,7 +400,6 @@ export async function getStaticProps() {
   )
   await client.end()
 
-
   // Get Background Image
   const backgroundImageUrl = new URL(`${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1`);
   backgroundImageUrl.searchParams.append("width", 2000 )
@@ -412,10 +409,15 @@ export async function getStaticProps() {
   backgroundImageUrl.searchParams.append("style", "gray-background")
   backgroundImageUrl.searchParams.append("format", "webp")
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
-  const imageResponse = await axios.get(backgroundImageUrl, {
-    responseType: 'arraybuffer',
-  });
-  fs.writeFile(backgroundImageFilePath, imageResponse.data, (err) => {if (err) throw err});
+  const imageResponse = await fetch(backgroundImageUrl, {
+    method: "GET",
+    responseType: "arraybuffer"
+  })    
+  const imageArrayBuffer = await imageResponse.arrayBuffer();
+  const imageBuffer = Buffer.from(imageArrayBuffer);
+  fs.writeFile(backgroundImageFilePath, imageBuffer, (err) => {
+    if (err) throw err
+  })
 
   // get all content
   const about = await getAbout()

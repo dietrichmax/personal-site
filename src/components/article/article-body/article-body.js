@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import TableOfContents from "src/components/article/article-toc/table-of-contents"
+import TableOfContents from "@/src/components/article/article-toc/table-of-contents"
 import media from "styled-media-query"
 import MDXWrapper from "@/components/mdxWrapper"
 

@@ -1,31 +1,28 @@
 import React from "react"
-import { useRouter } from "next/router"
 import ErrorPage from "next/error"
-import Layout from "src/components/layout/layout"
-import SEO from "src/components/seo/seo"
+import Layout from "@/src/components/layout/layout"
+import SEO from "@/src/components/seo/seo"
 import {
   getRelatedPosts,
   getPostBySlug,
   getAllPosts,
-} from "src/data/external/cms"
-import PostBody from "src/components/article/article-body/article-body"
-import PageTitle from "src/components/title/page-title"
-import markdownToHtml from "src/utils/markdownToHtml"
+} from "@/src/data/external/cms"
+import PostBody from "@/src/components/article/article-body/article-body"
+import markdownToHtml from "@/src/utils/markdownToHtml"
 import { getToc } from "@/src/utils/getToc"
 import styled from "styled-components"
-import config from "src/data/internal/SiteConfig"
-import ReadingProgress from "src/components/reading-progress/reading-progress.js"
+import ReadingProgress from "@/src/components/reading-progress/reading-progress.js"
 import media from "styled-media-query"
-import Webmentions from "src/components/social/webmentions/webmentions"
-import getReadTime from "src/utils/read-time"
-import PostImage from "src/components/article/article-image/article-image"
-import PostTitle from "src/components/title/post-title"
+import Webmentions from "@/src/components/social/webmentions/webmentions"
+import getReadTime from "@/src/utils/read-time"
+import PostImage from "@/src/components/article/article-image/article-image"
+import PostTitle from "@/src/components/title/post-title"
 //import PostTags from 'src/components/tags/tags'
 import { parseISO, format } from "date-fns"
-import HCard from "src/components/microformats/h-card"
-import WebActions from "src/components/social/social-share/social-share"
-import Meta from "src/components/post/post-meta/post-meta"
-import Subscribe from "src/components/social/newsletter/subscribe"
+import HCard from "@/src/components/microformats/h-card"
+import WebActions from "@/src/components/social/social-share/social-share"
+import Meta from "@/src/components/post/post-meta/post-meta"
+import Subscribe from "@/src/components/social/newsletter/subscribe"
 import { serialize } from "next-mdx-remote/serialize"
 import dynamic from "next/dynamic"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
@@ -139,99 +136,88 @@ const PostTitleWrapper = styled.div`
 `
 
 export default function Post({ post, allPosts }) {
-  const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
-  }
-
   const target = React.createRef()
 
   return (
     <Layout>
-      {router.isFallback ? (
-        <PageTitle>{config.loading}</PageTitle>
-      ) : (
-        <>
-          <SEO
-            title={post.title}
-            description={post.excerpt}
-            image={
-              post.coverImage
-                ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.url}`
-                : ""
-            }
-            slug={`articles/${post.slug}`}
-            date={post.updated_at ? post.updated_at : post.published_at}
-            ogType="article"
-            articleSchema
-            articleData={post}
-          />
-          <article ref={target} className="h-entry">
-            <HCard />
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        image={
+          post.coverImage
+            ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.url}`
+            : ""
+        }
+        slug={`articles/${post.slug}`}
+        date={post.updated_at ? post.updated_at : post.published_at}
+        ogType="article"
+        articleSchema
+        articleData={post}
+      />
+      <article ref={target} className="h-entry">
+        <HCard />
 
-            <ReadingProgress target={target} />
+        <ReadingProgress target={target} />
 
-            <PostImgWrapper>
-              <PostImage postData={post} />
-            </PostImgWrapper>
+        <PostImgWrapper>
+          <PostImage postData={post} />
+        </PostImgWrapper>
 
-            <ArticleBackground>
-              <StickySideBar>
-                <DateWrapper className="dt-published">
-                  <a className="u-url" href={`articles/${post.slug}`}>
-                    {format(parseISO(post.published_at), "yyyy-MM-dd")}
-                  </a>
-                </DateWrapper>
-                <StickySocialShareContainer>
-                  <WebActions
-                    slug={`/articles/${post.slug}`}
-                    id={post.id}
-                    syndicationLinks={post.syndicationLinks}
+        <ArticleBackground>
+          <StickySideBar>
+            <DateWrapper className="dt-published">
+              <a className="u-url" href={`articles/${post.slug}`}>
+                {format(parseISO(post.published_at), "yyyy-MM-dd")}
+              </a>
+            </DateWrapper>
+            <StickySocialShareContainer>
+              <WebActions
+                slug={`/articles/${post.slug}`}
+                id={post.id}
+                syndicationLinks={post.syndicationLinks}
+                post={post}
+              />
+            </StickySocialShareContainer>
+          </StickySideBar>
+
+          <ArticleContainer>
+            <PostTitleWrapper className="p-name">
+              <PostTitle>{post.title}</PostTitle>
+            </PostTitleWrapper>
+
+            <ArticleBackgroundColor>
+              <PostWrapper>
+                {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
+                {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
+
+                <PostBody content={post.content} toc={post.toc} />
+                <Content>
+                  {/*<Feedback /> */}
+                  <Meta
                     post={post}
+                    slug={`/articles/${post.slug}`}
+                    syndicationLinks={post.syndicationLinks}
                   />
-                </StickySocialShareContainer>
-              </StickySideBar>
+                  <SocialShareContainer>
+                    <WebActions
+                      slug={`/articles/${post.slug}`}
+                      syndicationLinks={post.syndicationLinks}
+                    />
+                  </SocialShareContainer>
+                  {/*<Likes />*/}
+                  <Webmentions slug={`/articles/${post.slug}`} />
+                  <Author post={post.user} />
 
-              <ArticleContainer>
-                <PostTitleWrapper className="p-name">
-                  <PostTitle>{post.title}</PostTitle>
-                </PostTitleWrapper>
-
-                <ArticleBackgroundColor>
-                  <PostWrapper>
-                    {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
-                    {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
-
-                    <PostBody content={post.content} toc={post.toc} />
-                    <Content>
-                      {/*<Feedback /> */}
-                      <Meta
-                        post={post}
-                        slug={`/articles/${post.slug}`}
-                        syndicationLinks={post.syndicationLinks}
-                      />
-                      <SocialShareContainer>
-                        <WebActions
-                          slug={`/articles/${post.slug}`}
-                          syndicationLinks={post.syndicationLinks}
-                        />
-                      </SocialShareContainer>
-                      {/*<Likes />*/}
-                      <Webmentions slug={`/articles/${post.slug}`} />
-                      <Author post={post.user} />
-
-                      <div>
-                        <Subscribe />
-                      </div>
-                    </Content>
-                  </PostWrapper>
-                </ArticleBackgroundColor>
-              </ArticleContainer>
-              <RecommendedPosts post={post} allPosts={allPosts} />
-            </ArticleBackground>
-          </article>
-        </>
-      )}
+                  <div>
+                    <Subscribe />
+                  </div>
+                </Content>
+              </PostWrapper>
+            </ArticleBackgroundColor>
+          </ArticleContainer>
+          <RecommendedPosts post={post} allPosts={allPosts} />
+        </ArticleBackground>
+      </article>
     </Layout>
   )
 }

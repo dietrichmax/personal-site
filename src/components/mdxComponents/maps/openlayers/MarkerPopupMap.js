@@ -1,5 +1,5 @@
 // MarkerPopupMap.js
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import Point from "ol/geom/Point.js"
 import "ol/ol.css"
 import Map from "ol/Map"

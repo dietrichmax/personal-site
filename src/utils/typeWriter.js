@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react"
-import styled from "styled-components"
-import media from "styled-media-query"
 
 const TypeWriter = ({ content = "", speed = 100 }) => {
   const [displayedContent, setDisplayedContent] = useState("")

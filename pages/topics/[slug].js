@@ -1,12 +1,12 @@
-import Grid from "src/components/grid/grid"
-import Layout from "src/components/layout/layout"
-import { getTag, getAllTags } from "src/data/external/cms"
-import PageTitle from "src/components/title/tag-title"
+import Grid from "@/src/components/grid/grid"
+import Layout from "@/src/components/layout/layout"
+import { getTag, getAllTags } from "@/src/data/external/cms"
+import PageTitle from "@/src/components/title/tag-title"
 import styled from "styled-components"
-import SubTitle from "src/components/title/sub-title"
-import SEO from "src/components/seo/seo"
+import SubTitle from "@/src/components/title/sub-title"
+import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import PostPreview from "src/components/article/article-preview/article-preview"
+import PostPreview from "@/src/components/article/article-preview/article-preview"
 
 const TagContainer = styled.div`
   max-width: 1200px;

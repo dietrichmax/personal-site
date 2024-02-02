@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import image from "next/image"
 
 const GridContainer = styled.div`
   display: grid;

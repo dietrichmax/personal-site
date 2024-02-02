@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import ActiveLink from "src/components/navigation/active-link"
+import ActiveLink from "@/src/components/navigation/active-link"
 
 const NavItems = styled.ul`
   grid-column: span 1 / span 1;

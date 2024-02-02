@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 import { formatDistance } from "date-fns"
 import { Input } from "@/styles/templates/input"
-import {
-  FaRegQuestionCircle,
-  FaRetweet,
-  FaRegComment,
-  FaRegStickyNote,
-} from "react-icons/fa"
-import { BsStar } from "react-icons/bs"
+import { FaRegQuestionCircle } from "@react-icons/all-files/fa/FaRegQuestionCircle";
+import { FaRetweet } from "@react-icons/all-files/fa/FaRetweet";
+import { FaRegComment } from "@react-icons/all-files/fa/FaRegComment";
+import { FaRegStickyNote } from "@react-icons/all-files/fa/FaRegStickyNote";
+import { BsStar } from "@react-icons/all-files/bs/BsStar";
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
 

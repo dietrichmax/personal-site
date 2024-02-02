@@ -1,9 +1,7 @@
-import React from "react"
 import {
   Marker,
   MapContainer,
   TileLayer,
-  LayersControl,
   Polyline,
   AttributionControl,
 } from "react-leaflet"

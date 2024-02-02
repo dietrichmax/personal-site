@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Head from "next/head"
-import config, { dateFormat } from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 
 const SEO = ({
   title,

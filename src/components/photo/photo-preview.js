@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import dynamic from "next/dynamic"
-//import PostTags from "src/components/tags/tags"
-import HCard from "src/components/microformats/h-card"
+import HCard from "@/src/components/microformats/h-card"
 import { Card } from "@/styles/templates/card"
 import Image from "next/image"
 import Link from "next/link"
@@ -72,7 +71,7 @@ const PhotoWrapper = styled.div`
 `
 
 const DynamicPostMeta = dynamic(
-  () => import("src/components/post/post-meta/post-meta-preview"),
+  () => import("@/src/components/post/post-meta/post-meta-preview"),
   {
     loading: () => <p>Loading...</p>,
   }

@@ -15,7 +15,7 @@ import {
 //import { enableGoogleAnalytics } from "@/components/google-analytics/google-analytics"
 //import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
 import { SiStrava } from "react-icons/si"
-import config from "src/data/internal/SiteConfig"
+import config from "@/src/data/internal/SiteConfig"
 import { push } from "@socialgouv/matomo-next"
 
 const Background = styled.div`

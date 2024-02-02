@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react"
+import { useEffect, useState, Fragment } from "react"
 import styled from "styled-components"
 
 export const ReadingProgressBar = styled.div`

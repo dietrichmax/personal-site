@@ -10,6 +10,7 @@ WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 
 RUN npm install
+RUN npm install sharp
 
 # Rebuild the source code only when needed
 FROM base AS builder

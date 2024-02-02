@@ -405,8 +405,8 @@ export async function getStaticProps() {
 
   // Get Background Image
   const backgroundImageUrl = new URL(`${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1`);
-  backgroundImageUrl.searchParams.append("width", 1000 )
-  backgroundImageUrl.searchParams.append("height", 2000 )
+  backgroundImageUrl.searchParams.append("width", 2000 )
+  backgroundImageUrl.searchParams.append("height", 1000 )
   backgroundImageUrl.searchParams.append("zoom", 13 )
   backgroundImageUrl.searchParams.append("center", `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`)
   backgroundImageUrl.searchParams.append("style", "gray-background")

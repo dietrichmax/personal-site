@@ -55,7 +55,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 })
 
 const nextConfig = {
-  output: "standalone",
+  //output: "standalone",
   images: {
     //loader: "custom",
     //loaderFile: "./src/utils/loader.js",

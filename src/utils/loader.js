@@ -27,7 +27,7 @@ export default function imgproxyLoader({ src, width, height, quality }) {
       src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
 
   const path =
-    `/size:${width ? width : 0}:${height ? height : 450}` +
+    `/size:${width ? width : 1300}:${height ? height : 450}` +
     `/resizing_type:auto` +
     (quality ? `/quality:${quality}` : "") +
     `/sharpen:0.5` +

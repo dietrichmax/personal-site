@@ -84,7 +84,7 @@ const MarkdownImage = ({ src }) => {
 
   if (data) {
     return (
-      <Image
+      <img
         src={data.src}
         title={data.title}
         alt={data.alt}

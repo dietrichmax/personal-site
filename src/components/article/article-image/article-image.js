@@ -77,7 +77,7 @@ export default function PostImage({ preview, postData }) {
         ) : null
       ) : coverImage ? (
         <PostImg
-        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
+        src={`${coverImage.url}`}
           alt={title}
           title={title}
           className="u-photo"

@@ -1,4 +1,3 @@
-import Head from "next/head"
 import { useEffect } from "react"
 import { init } from "@socialgouv/matomo-next"
 import GlobalStyle from "@/styles/global.js"
@@ -32,8 +31,8 @@ export default function App(props) {
   }, [])
 
   return (
-    <>
-      <Head>
+    <html lang="en">
+      <head>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
@@ -129,12 +128,12 @@ export default function App(props) {
         {/*<link rel='mask-icon' href='/static/icons/safari-pinned-tab.svg' color='#5bbad5' />*/}
         {/*Manifest.json  */}
         <link href="/manifest.json" rel="manifest" />
-      </Head>
+      </head>
       <Providers>
         <GlobalStyle />
         {/*<CookieBanner />*/}
         <Component {...pageProps} />
       </Providers>
-    </>
+    </html>
   )
 }

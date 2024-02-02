@@ -57,8 +57,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   output: "standalone",
   images: {
-    loader: "custom",
-    loaderFile: "./src/utils/loader.js",
+    //loader: "custom",
+    //loaderFile: "./src/utils/loader.js",
     remotePatterns: [
       {
         protocol: 'https',
@@ -86,8 +86,8 @@ const nextConfig = {
         port: '',
       },
     ],
-    deviceSizes: [350, 450, 500, 670, 800, 900, 1000, 1300],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [350, 400, 500, 670, 800, 900, 1000, 1300],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 420],
   },
   typescript: {
     ignoreBuildErrors: true,

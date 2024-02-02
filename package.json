@@ -13,8 +13,6 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "deploy": "git pull && npm run build && pm2 restart mxd-codes-frontend",
-    "export": "next export",
     "analyze": "cross-env ANALYZE=true next build",
     "img-optimize": "py ./utils/resize_images.py",
     "format": "prettier --write .",
@@ -49,7 +47,6 @@
     "remark-html": "^16.0.1",
     "remark-slug": "^7.0.1",
     "showdown": "^2.1.0",
-    "string-similarity": "^4.0.4",
     "styled-components": "^6.1.8",
     "styled-media-query": "^2.1.2"
   },

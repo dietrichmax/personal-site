@@ -68,8 +68,6 @@ const MarkdownImage = ({ src }) => {
       )
       const json = await resp.json()
       const obj = json[0]
-      const ratio = obj.height / obj.width
-      const contentWidth = 670
       const title = obj.name.replace(".png", "")
       const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title
       const img = {
@@ -78,9 +76,6 @@ const MarkdownImage = ({ src }) => {
         alt: alt,
         height: obj.height,
         width: obj.width,
-        ratio: ratio,
-        contentWidth: contentWidth,
-        contentHeight: parseInt(ratio * contentWidth),
       }
       updateData(img)
     }
@@ -93,8 +88,8 @@ const MarkdownImage = ({ src }) => {
         src={data.src}
         title={data.title}
         alt={data.alt}
-        width={data.contentWidth}
-        height={data.contentHeight}
+        width={data.width}
+        height={data.height}
       />
     )
   } else {

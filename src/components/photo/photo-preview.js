@@ -86,7 +86,7 @@ export default function PhotoPreview({ photo }) {
         <Link href={slug} className="u-url" passHref>
           <PhotoWrapper>
             <Photo
-              src={`${
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
                 photo.photo[0].formats.content
                   ? photo.photo[0].formats.content.url
                   : photo.photo[0].url

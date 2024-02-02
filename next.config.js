@@ -57,17 +57,34 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   output: "standalone",
   images: {
-    loader: "custom",
-    loaderFile: "./src/utils/loader.js",
-    domains: [
-      "mxd.codes",
-      "cms.mxd.codes",
-      "static-maps-cms.mxd.codes",
-      "api.mapbox.com",
-      "source.unsplash.com",
-      "webmention.io",
-      "openweathermap.org",
-      "aujtzahimq.cloudimg.io",
+    //loader: "custom",
+    //loaderFile: "./src/utils/loader.js",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**mxd.codes',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: '**unsplash.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: '**webmention.io',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: '**openweathermap.org',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: '**cloudimg.io',
+        port: '',
+      },
     ],
     deviceSizes: [350, 450, 500, 670, 800, 900, 1000, 1300],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

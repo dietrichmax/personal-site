@@ -343,7 +343,7 @@ export default function Index({ posts, cv }) {
               </HeroArticle>
               <HeroImgContainer>
                 <HeroImg
-                  src="/uploads/IMG_20231229_WA_0005_1925a8f37e_ed04442bf5.webp"
+                  src="/images/IMG_20231229_WA_0005_1925a8f37e.webp"
                   width={308}
                   height={308}
                   title="Photo of Max."

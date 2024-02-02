@@ -8,8 +8,7 @@ import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaXing } from "@react-icons/all-files/fa/FaXing";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-//import { FaGift } from "@react-icons/all-files/fa/FaGift";
-
+import { FaGift } from "@react-icons/all-files/fa/FaGift";
 import { Button } from "@/styles/templates/button"
 
 const AuthorWrapper = styled.div`
@@ -144,7 +143,7 @@ export default function Author(author) {
         {picture ? (
           <AuthorImgWrapper>
             <Image
-              src={picture.url}
+              src="/images/IMG_20231229_WA_0005_1925a8f37e50x50.webp"
               alt={username}
               title={username}
               width={50}
@@ -166,18 +165,13 @@ export default function Author(author) {
                 {submitted ? "🎉Thank you!🎉" : "Send Virtual Thanks"}
               </Button>
               <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
+            <Link href="/support" passHref>
+            <Button>
+              <FaGift />{" "}Support
+              </Button>
+            </Link>
             </SupportButtonContainer>
-            {/*<AuthorLink href="/support">
-              <FaGift /> More Support
-            </AuthorLink>*/}
           </AuthorSocialsContainer>
-          {/*(socials.map((social) => 
-          <AuthorSocialsContainer>
-            <a href={social.link} rel="nofollow noopener" title={social.plattform}>
-              {renderSocials(social)}
-            </a>
-          </AuthorSocialsContainer>
-      )*/}
         </AuthorSocials>
       </AuthorDescription>
     </>

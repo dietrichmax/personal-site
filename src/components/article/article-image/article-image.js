@@ -66,7 +66,7 @@ export default function PostImage({ preview, postData }) {
       {preview ? (
         coverImage ? (
           <CardItemImg
-            src={coverImage.url}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
             alt={title}
             title={title}
             width={350}
@@ -77,7 +77,7 @@ export default function PostImage({ preview, postData }) {
         ) : null
       ) : coverImage ? (
         <PostImg
-          src={coverImage.url}
+        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${coverImage.url}`}
           alt={title}
           title={title}
           className="u-photo"

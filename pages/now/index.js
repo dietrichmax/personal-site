@@ -122,7 +122,7 @@ export default function Now({ weather, address, content, now }) {
             In {town(address.address)} it has {weather.main.temp}°C with{" "}
             {weather.weather[0].description}.
             <WeatherImg
-              src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
               title={weather.weather[0].description}
               alt="Icon displaying weather"
               width="30"

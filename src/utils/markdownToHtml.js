@@ -1,9 +1,7 @@
-import { remark } from "remark"
-import html from "remark-html"
-import slug from "remark-slug"
+const showdown = require("showdown")
 
 export default async function markdownToHtml(markdown) {
-  const result = await remark().use(slug).use(html).process(markdown)
+  const converter = new showdown.Converter()
 
-  return result.toString()
+  return converter.makeHtml(markdown);
 }

@@ -14,7 +14,6 @@
     "start": "next start",
     "build": "next build",
     "analyze": "cross-env ANALYZE=true next build",
-    "img-optimize": "py ./utils/resize_images.py",
     "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send"
@@ -43,9 +42,7 @@
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.21.3",
     "react-syntax-highlighter": "^15.5.0",
-    "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "remark-slug": "^7.0.1",
     "showdown": "^2.1.0",
     "styled-components": "^6.1.8",
     "styled-media-query": "^2.1.2"

@@ -51,7 +51,14 @@ const ButtonWrapper = styled.div`
 `
 
 const FeedLink = styled.span`
-  border-bottom: 1px solid var(--primary-color);
+  text-decoration: none;
+  box-shadow: 0px -3px 0px 0px var(--secondary-color) inset;
+  transition: box-shadow 150ms ease-in-out;
+  color: var(--text-color);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px -18px 0px 0px var(--secondary-color) inset;
+  }
 `
 
 const NewsletterTitle = styled.p`

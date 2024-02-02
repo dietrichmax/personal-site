@@ -41,7 +41,8 @@ export const OL = styled.ol`
     font-weight: 600;
     border-radius: 50%;
     margin-right: var(--space-sm);
-  `
+  }
+`
 
 export const UL = styled.ul`
   margin-bottom: var(--space);

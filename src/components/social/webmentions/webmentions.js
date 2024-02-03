@@ -11,6 +11,7 @@ import { FaRegStickyNote } from "@react-icons/all-files/fa/FaRegStickyNote";
 import { BsStar } from "@react-icons/all-files/bs/BsStar";
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
@@ -386,7 +387,7 @@ export default function Webmentions({ slug, preview }) {
           alt={`Link to profile of ${mention.author.name}`}
           title={mention.author.name}
         >
-          <img
+          <Image
             src={
               mention.author.photo
                 ? mention.author.photo

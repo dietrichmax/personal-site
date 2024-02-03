@@ -13,7 +13,7 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "analyze": "cross-env ANALYZE=true next build",
+    "analyze": "--env ANALYZE=true next build",
     "format": "prettier --write .",
     "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send"
@@ -24,6 +24,7 @@
     "@remy/webmention": "^1.5.0",
     "@socialgouv/matomo-next": "^1.6.0",
     "@use-it/event-listener": "^0.1.7",
+    "@vercel/analytics": "^1.1.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "cloc": "^1.98.0-cloc",

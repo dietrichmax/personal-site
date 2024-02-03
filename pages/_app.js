@@ -5,6 +5,7 @@ import config from "@/src/data/internal/SiteConfig"
 import Providers from "@/src/utils/providers"
 import Head from "next/head"
 import "@/public/fonts/SF-UI/style.css"
+import "@/styles/prism.css"
 
 export default function App(props) {
   const { Component, pageProps } = props

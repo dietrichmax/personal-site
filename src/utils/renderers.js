@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import Image from "next/image"
+//import Image from "next/image"
 import styled from "styled-components"
 import { FaLink } from "@react-icons/all-files/fa/FaLink";
 import * as MDX from "@/styles/mdx-styles"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter/dist/cjs"
-import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import SyntaxHighlighter from "@/src/utils/SyntaxHighlighter";
 import dynamic from "next/dynamic"
+
 const MapComponent = dynamic(
   () => import("@/components/mdxComponents/maps/openlayers/simplemap"),
   {
@@ -175,21 +175,19 @@ const renderers = {
       </h5>
     )
   },
-  /*code: ({ node, inline, className, children, ...props }) => {
+  code: ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || "")
     return !inline && match ? (
       <SyntaxHighlighter
-        children={String(children).replace(/\n$/, "")}
         language={match[1]}
-        style={coldarkDark}
-        {...props}
+        code={children}
       />
     ) : (
       <code className={className} {...props}>
         {children}
       </code>
     )
-  },*/
+  },
   ul: ({ children }) => {
     return <MDX.UL>{children}</MDX.UL>
   },

@@ -12,5 +12,5 @@ export const darkTheme = {
   thirdyColor: "#A1B4EC",
   bodyBg: "#0d1117",
   contentBg: "#1b2026",
-  textColor: "#c9d1d9",
+  textColor: "#d2d9df",
 }

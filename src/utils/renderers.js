@@ -58,6 +58,14 @@ const PermaLink = styled.span`
 
 const StyledA = styled(MDX.A)``
 
+const DefaultCode = styled.code`
+  padding: 5px;
+  background-color: #111b27;
+  color: #e3eaf2;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+`
+
+
 const MarkdownImage = ({ src }) => {
   const [data, updateData] = useState()
 
@@ -181,9 +189,9 @@ const renderers = {
     return !inline && match ? (
       <SyntaxHighlighter language={match[1]} code={children} />
     ) : (
-      <code className={className} {...props}>
+      <DefaultCode className={className} {...props}>
         {children}
-      </code>
+      </DefaultCode>
     )
   },
   ul: ({ children }) => {

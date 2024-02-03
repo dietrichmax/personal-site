@@ -55,7 +55,7 @@ const SyntaxHighlighter = ({
   return (
     <div ref={ref}>
       <pre
-        className={`line-numbers:${showlineNumbers}`}
+        //className={`line-numbers:${showlineNumbers}`}
         data-line={lineHighlights?.join(",")}
       >
         <code className={`language-${language}`}>{code.trim()}</code>

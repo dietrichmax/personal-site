@@ -7,7 +7,6 @@ const SEO = ({
   description,
   image,
   slug,
-  date,
   ogType,
   articleSchema,
   aboutSchema,
@@ -202,8 +201,8 @@ const SEO = ({
       {/* General tags */}
       <title>
         {title
-          ? `${title} • Max Dietrich - Geospatial Developer`
-          : `Max Dietrich - Geospatial Developer`}
+          ? `${title} • ${config.siteTitleAlt}`
+          : config.siteTitleAlt}
       </title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />

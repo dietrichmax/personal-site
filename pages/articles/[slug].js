@@ -23,23 +23,10 @@ import WebActions from "@/src/components/social/social-share/social-share"
 import { serialize } from "next-mdx-remote/serialize"
 import dynamic from "next/dynamic"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
-const DynamicMeta = dynamic(
-  () => import("@/src/components/post/post-meta/post-meta"),
-  { ssr: false }
-)
-const DynamicSubscribe = dynamic(
-  () => import("@/src/components/social/newsletter/subscribe"),
-  { ssr: false }
-)
-const DynamicWebmentions = dynamic(
-  () => import("/src/components/social/webmentions/webmentions"),
-  { ssr: false }
-)
-
-const DynamicAuthor = dynamic(
-  () => import("@/components/article/article-author/article-author"),
-  { ssr: false }
-)
+import DynamicMeta from "@/src/components/post/post-meta/post-meta"
+import DynamicSubscribe from "@/src/components/social/newsletter/subscribe"
+import DynamicWebmentions from "/src/components/social/webmentions/webmentions"
+import DynamicAuthor from "@/components/article/article-author/article-author"
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -169,7 +156,7 @@ export default function Post({ post, allPosts }) {
         <ReadingProgress target={target} />
 
         <PostImgWrapper>
-          {/*<PostImage postData={post} />*/}
+          <PostImage postData={post} />
         </PostImgWrapper>
 
         <ArticleBackground>
@@ -232,18 +219,25 @@ export async function getStaticProps({ params }) {
   const data = await getPostBySlug(params.slug)
   const markdownContent = (await data?.posts[0]?.content) || ""
   const content = await serialize(markdownContent)
-  const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
 
+  console.log(data.posts[0].excerpt)
   return {
     revalidate: 86400,
     props: {
       post: {
-        ...data?.posts[0],
+        updated_at: data.posts[0].updated_at,
+        published_at: data.posts[0].published_at,
+        title: data.posts[0].title,
+        slug: data.posts[0].slug,
+        excerpt: data.posts[0].excerpt,
+        tags: data.posts[0].tags,
+        coverImage: data.posts[0].coverImage,
+        syndicationLinks: data.posts[0].syndicationLinks,
+        user: data.posts[0].user,
         readingTime: readingTime,
         content,
-        excerpt,
         toc,
       }
     },

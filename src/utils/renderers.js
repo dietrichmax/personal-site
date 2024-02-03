@@ -90,6 +90,7 @@ const MarkdownImage = ({ src }) => {
         alt={data.alt}
         width={data.width}
         height={data.height}
+        loading="lazy"
       />
     )
   } else {

@@ -28,9 +28,9 @@ const MainNav = styled.div`
   text-align: justify;
   list-style-type: none;
   padding-inline-start: 0;
-  grid-template-columns: repeat(3, minmax(0px, 1fr));
   gap: var(--space-sm);
-  display: grid;
+  display: flex;  
+  justify-content: space-between;
   ${media.lessThan("900px")`
     display: block;
   `}
@@ -41,7 +41,7 @@ export default function Header({ color }) {
     <HeaderWrapper color={color}>
       <InnerHeader>
         <MainNav>
-          <Logo />
+          <Logo/>
 
           <Nav color={color} />
         </MainNav>

@@ -63,7 +63,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #B3C5D1;
+  color: #A1B4EC;
 }
 
 .token.punctuation {
@@ -206,7 +206,7 @@ pre[class*="language-"] {
 .token.token.cr:before,
 .token.token.lf:before,
 .token.token.space:before {
-  color: #B3C5D1;
+  color: #A1B4EC;
 }
 
 /* overrides color-values for the Toolbar plugin
@@ -231,7 +231,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > span,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
   color: #111b27;
-  background: #B3C5D1;
+  background: #A1B4EC;
 }
 
 /* overrides color-values for the Line Highlight plugin
@@ -244,7 +244,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
 
 .line-highlight.line-highlight:before,
 .line-highlight.line-highlight[data-end]:after {
-  background-color: #B3C5D1;
+  background-color: #A1B4EC;
   color: #111b27;
   box-shadow: 0 1px #3c526d;
 }

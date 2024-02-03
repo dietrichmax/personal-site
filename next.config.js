@@ -58,6 +58,7 @@ const nextConfig = {
   output: "standalone",
   compiler: {
     styledComponents: true,
+    removeConsole: true,
   },
   images: {
     //loader: "custom",

@@ -108,7 +108,7 @@ const WebmentionInput = styled(Input)`
   }
 `
 
-const WebmentionLike = styled.div`
+const WebmentionLike = styled.li`
   display: inline-block;
 `
 

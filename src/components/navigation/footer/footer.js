@@ -142,20 +142,13 @@ export default function Footer() {
   const [about, setAbout] = useState([])
   const [search, setSearch] = useState("")
 
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }
-
   useEffect(() => {
-    let isSubscribed = true
-    fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC", requestOptions)
+    fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4")
       .then((response) => response.json())
-      .then((data) => (isSubscribed ? setRecentPosts(data.slice(0, 4)) : null))
-    fetch("https://cms.mxd.codes/about", requestOptions)
+      .then((data) => setRecentPosts(data.slice(0, 4)))
+    fetch("https://cms.mxd.codes/about")
       .then((response) => response.json())
-      .then((data) => (isSubscribed ? setAbout(data) : null))
-    return () => (isSubscribed = false)
+      .then((data) => setAbout(data))
   }, [])
 
   const footerItems = [
@@ -222,12 +215,6 @@ export default function Footer() {
               Search
             </Button>
           </SearchWrapper>
-
-          {/*<FooterMainNav>
-            {headerItems.map((item, i) => (
-              <FooterMainNavLink key={i}href={item.link} passHref><a title={item.name}>{item.name}</a></FooterMainNavLink >
-            ))}
-            </FooterMainNav>*/}
         </FooterBar>
 
         <FooterColumnWrapper>
@@ -275,9 +262,6 @@ export default function Footer() {
                   <SiStrava /> Strava
                 </a>
               </FooterItem>
-              {/*<FooterItem>
-                <a href={config.socials.steam} title="Max Dietrich on Steam"><FaSteam/> Steam/</a>
-              </FooterItem>*/}
             </List>
           </FooterColumn>
 

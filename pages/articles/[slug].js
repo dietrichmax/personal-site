@@ -13,7 +13,6 @@ import { getToc } from "@/src/utils/getToc"
 import styled from "styled-components"
 import ReadingProgress from "@/src/components/reading-progress/reading-progress.js"
 import media from "styled-media-query"
-import Webmentions from "@/src/components/social/webmentions/webmentions"
 import getReadTime from "@/src/utils/read-time"
 import PostImage from "@/src/components/article/article-image/article-image"
 import PostTitle from "@/src/components/title/post-title"
@@ -21,13 +20,23 @@ import PostTitle from "@/src/components/title/post-title"
 import { parseISO, format } from "date-fns"
 import HCard from "@/src/components/microformats/h-card"
 import WebActions from "@/src/components/social/social-share/social-share"
-import Meta from "@/src/components/post/post-meta/post-meta"
-import Subscribe from "@/src/components/social/newsletter/subscribe"
 import { serialize } from "next-mdx-remote/serialize"
 import dynamic from "next/dynamic"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
+const DynamicMeta = dynamic(
+  () => import("@/src/components/post/post-meta/post-meta"),
+  { ssr: false }
+)
+const DynamicSubscribe = dynamic(
+  () => import("@/src/components/social/newsletter/subscribe"),
+  { ssr: false }
+)
+const DynamicWebmentions = dynamic(
+  () => import("/src/components/social/webmentions/webmentions"),
+  { ssr: false }
+)
 
-const Author = dynamic(
+const DynamicAuthor = dynamic(
   () => import("@/components/article/article-author/article-author"),
   { ssr: false }
 )
@@ -193,7 +202,7 @@ export default function Post({ post, allPosts }) {
                 <PostBody content={post.content} toc={post.toc} />
                 <Content>
                   {/*<Feedback /> */}
-                  <Meta
+                  <DynamicMeta
                     post={post}
                     slug={`/articles/${post.slug}`}
                     syndicationLinks={post.syndicationLinks}
@@ -205,17 +214,14 @@ export default function Post({ post, allPosts }) {
                     />
                   </SocialShareContainer>
                   {/*<Likes />*/}
-                  <Webmentions slug={`/articles/${post.slug}`} />
-                  <Author post={post.user} />
-
-                  <div>
-                    <Subscribe />
-                  </div>
+                  <DynamicWebmentions slug={`/articles/${post.slug}`} />
+                  <DynamicAuthor post={post.user} />
+                  <DynamicSubscribe />
                 </Content>
               </PostWrapper>
             </ArticleBackgroundColor>
           </ArticleContainer>
-          <RecommendedPosts post={post} allPosts={allPosts} />
+          <RecommendedPosts post={post} />
         </ArticleBackground>
       </article>
     </Layout>
@@ -229,7 +235,6 @@ export async function getStaticProps({ params }) {
   const excerpt = await markdownToHtml(data?.posts[0]?.excerpt || "")
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
-  const allPosts = await getRelatedPosts()
 
   return {
     revalidate: 86400,
@@ -240,8 +245,7 @@ export async function getStaticProps({ params }) {
         content,
         excerpt,
         toc,
-      },
-      allPosts,
+      }
     },
   }
 }

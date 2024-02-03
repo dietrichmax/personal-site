@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react"
 import PostPreview from "@/src/components/article/article-preview/article-preview"
 import styled from "styled-components"
 import media from "styled-media-query"
+import { getRelatedPosts } from "@/src/data/external/cms"
 
 const RecommendedPostsContainer = styled.ol`
   margin-bottom: var(--space);
@@ -38,41 +40,58 @@ const RecommendedPostTitle = styled.h3`
   `}
 `
 
-export default function RecommendedPosts({ post, allPosts }) {
-  // filter out current post
-  let posts = allPosts.filter((aPost) => aPost.slug !== post.slug)
-
+export default function RecommendedPosts({ post }) {
+  const [sortedPosts, setSortedPosts] = useState()
+  
   // define maxPosts to display
   const maxPosts = 3
+  
+  function getRecommendedPosts(post, allPosts) {
+    // filter out current post
+    let posts = allPosts.filter((aPost) => aPost.slug !== post.slug)
 
-  // get tags of current posts
-  const currentTags = post.tags.map((tag) => {
-    return tag.name
-  })
 
-  // rate posts depending on tags
-  posts.forEach((post) => {
-    post.relevance = 0
-    post.tags.forEach((tag) => {
-      if (currentTags.includes(tag.name)) {
-        post.relevance++
-      }
+
+    // get tags of current posts
+    const currentTags = post.tags.map((tag) => {
+      return tag.name
     })
-  })
 
-  // sort posts by relevance
-  const sortedPosts = posts.sort(function (a, b) {
-    return b.relevance - a.relevance
-  })
+    // rate posts depending on tags
+    posts.forEach((post) => {
+      post.relevance = 0
+      post.tags.forEach((tag) => {
+        if (currentTags.includes(tag.name)) {
+          post.relevance++
+        }
+      })
+    })
 
-  return (
+    // sort posts by relevance
+    const sortedPosts = posts.sort(function (a, b) {
+      return b.relevance - a.relevance
+    })
+    return sortedPosts
+  }
+
+  useEffect(() => {
+    getRelatedPosts()
+      .then((data) => setSortedPosts(getRecommendedPosts(post, data)))
+  }, [])
+
+  if (sortedPosts) {
+    return (
+      <>
+        <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
+        <RecommendedPostsContainer>
+          {sortedPosts.slice(0, maxPosts).map((post, i) => (
+            <PostPreview key={i} postData={post} />
+          ))}
+        </RecommendedPostsContainer>
+      </>
+  )} else return (
     <>
-      <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
-      <RecommendedPostsContainer>
-        {sortedPosts.slice(0, maxPosts).map((post, i) => (
-          <PostPreview key={i} postData={post} />
-        ))}
-      </RecommendedPostsContainer>
-    </>
+    <RecommendedPostTitle>Loading Recommended Posts...</RecommendedPostTitle>
+      </>
   )
 }

@@ -65,10 +65,6 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
-  img[src*=base64\\,] {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-  }
   body { 
     --primary-color: ${(props) => props.theme.primaryColor};
     --secondary-color: ${(props) => props.theme.secondaryColor};

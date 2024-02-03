@@ -22,7 +22,7 @@ You can see the site live here:
 - **CMS**: [Strapi](https://strapi.io/)
 - **Database**: [Postgres](https://www.postgresql.org/)
 - **Deployment**: [Netcup VPS](https://www.netcup.de/)
-- **Styling**: [Styled](<[https://tailwindcss.com](https://styled-components.com/)>)
+- **Styling**: [Styled Components](https://styled-components.com/)
 - **Analytics**: [Matomo](https://matomo.org/)
 
 ## Licensed under the [MIT License](https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/LICENSE "MIT License")

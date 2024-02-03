@@ -6,7 +6,7 @@
   font-weight: 400;
   src:
     local("SF UI Text Regular"),
-    url("SFUIText-Regular.woff") format("woff");
+    url("SFUIText-Regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -16,7 +16,7 @@
   font-weight: 400;
   src:
     local("SF UI Text Italic"),
-    url("SFUIText-RegularItalic.woff") format("woff");
+    url("SFUIText-RegularItalic.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -26,7 +26,7 @@
   font-weight: 100;
   src:
     local("SF UI Text Light"),
-    url("SFUIText-Light.woff") format("woff");
+    url("SFUIText-Light.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -36,7 +36,7 @@
   font-weight: 100;
   src:
     local("SF UI Text Light Italic"),
-    url("SFUIText-LightItalic.woff") format("woff");
+    url("SFUIText-LightItalic.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -46,7 +46,7 @@
   font-weight: 500;
   src:
     local("SF UI Text Medium"),
-    url("SFUIText-Medium.woff") format("woff");
+    url("SFUIText-Medium.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -56,7 +56,7 @@
   font-weight: 500;
   src:
     local("SF UI Text Medium Italic"),
-    url("SFUIText-MediumItalic.woff") format("woff");
+    url("SFUIText-MediumItalic.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -66,7 +66,7 @@
   font-weight: 600;
   src:
     local("SF UI Text Semibold"),
-    url("SFUIText-Semibold.woff") format("woff");
+    url("SFUIText-Semibold.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -76,7 +76,7 @@
   font-weight: 600;
   src:
     local("SF UI Text Semibold Italic"),
-    url("SFUIText-SemiboldItalic.woff") format("woff");
+    url("SFUIText-SemiboldItalic.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -86,7 +86,7 @@
   font-weight: 700;
   src:
     local("SF UI Text Bold"),
-    url("SFUIText-Bold.woff") format("woff");
+    url("SFUIText-Bold.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -96,7 +96,7 @@
   font-weight: 700;
   src:
     local("SF UI Text Bold Italic"),
-    url("SFUIText-BoldItalic.woff") format("woff");
+    url("SFUIText-BoldItalic.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -106,7 +106,7 @@
   font-weight: 900;
   src:
     local("SF UI Text Heavy"),
-    url("SFUIText-Heavy.woff") format("woff");
+    url("SFUIText-Heavy.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -116,6 +116,6 @@
   font-weight: 900;
   src:
     local("SF UI Text Heavy Italic"),
-    url("SFUIText-HeavyItalic.woff") format("woff");
+    url("SFUIText-HeavyItalic.woff2") format("woff2");
   font-display: swap;
 }

@@ -3,6 +3,12 @@ import Prism from "prismjs";
 
 import "prismjs/components/prism-jsx";
 
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-markdown'; 
+import 'prismjs/components/prism-bash'; 
+import 'prismjs/components/prism-sql'; 
+import 'prismjs/components/prism-python'; 
+
 // include line numbers and line highlights plugin,
 //import "prismjs/plugins/line-numbers/prism-line-numbers";
 //import "prismjs/plugins/line-highlight/prism-line-highlight";
@@ -50,9 +56,7 @@ const SyntaxHighlighter = ({
   return (
     <div ref={ref}>
       <pre
-        className={`
-            line-numbers:${showlineNumbers},
-        `}
+        className={`line-numbers:${showlineNumbers}`}
         data-line={lineHighlights?.join(",")}
       >
         <code className={`language-${language}`}>{code.trim()}</code>

@@ -169,7 +169,7 @@ export default function Post({ post, allPosts }) {
         <ReadingProgress target={target} />
 
         <PostImgWrapper>
-          <PostImage postData={post} />
+          {/*<PostImage postData={post} />*/}
         </PostImgWrapper>
 
         <ArticleBackground>

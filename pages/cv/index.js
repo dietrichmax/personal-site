@@ -4,11 +4,8 @@ import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import config from "@/src/data/internal/SiteConfig"
 import { Button } from "@/styles/templates/button"
 import CV from "@/src/components/cv/cv"
-import html2canvas from "html2canvas"
-import { jsPDF } from "jspdf"
 
 const ResumeWrapper = styled.div`
   max-width: var(--width-container);
@@ -29,26 +26,6 @@ export default function CVPage({ cvData }) {
 
       <ResumeWrapper className="h-resume resume">
         <CV id="cv" data={cvData} />
-        <Button
-          onClick={() => {
-            html2canvas(document.getElementById("cv"), {
-              scale: 8,
-            }).then(function (canvas) {
-              const pdf = new jsPDF("portrait", undefined, "a4")
-              pdf.addImage(
-                canvas.toDataURL("image/jpeg"),
-                "JPEG",
-                0,
-                0,
-                210,
-                297
-              )
-              pdf.save("max_dietrich_cv.pdf")
-            })
-          }}
-        >
-          Download CV
-        </Button>{" "}
       </ResumeWrapper>
     </Layout>
   )

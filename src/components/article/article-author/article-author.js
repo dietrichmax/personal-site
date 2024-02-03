@@ -3,13 +3,14 @@ import styled from "styled-components"
 import Image from "next/image"
 import Link from "next/link"
 import config from "@/src/data/internal/SiteConfig"
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
-import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
-import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
-import { FaXing } from "@react-icons/all-files/fa/FaXing";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaGift } from "@react-icons/all-files/fa/FaGift";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
+import { FaXing } from "@react-icons/all-files/fa/FaXing"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+import { FaGift } from "@react-icons/all-files/fa/FaGift"
 import { Button } from "@/styles/templates/button"
+import media from "styled-media-query"
 
 const AuthorWrapper = styled.div`
   display: flex;
@@ -35,21 +36,10 @@ const AuthorImgWrapper = styled.div`
 const AuthorSocials = styled.div`
   margin-top: var(--space-sm);
 `
-
-const AuthorSocialIcons = styled.i`
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  vertical-align: middle;
-  margin: var(--space-sm);
-  color: var(--thirdy-color);
-`
-
 const AuthorTitle = styled.p`
   margin-top: var(--space);
   font-size: 1.5rem;
-  font-weight: 600;  
+  font-weight: 600;
 `
 
 const AuthorSubtitle = styled.p``
@@ -69,13 +59,20 @@ const SupportButtonContainer = styled.div`
 
 const ButtonText = styled.span`
   margin: auto var(--space-sm);
+  ${media.lessThan("medium")`  
+    margin-top: var(--space-sm);
+  `}
 `
 
 const AuthorLink = styled(Link)`
-  border-bottom: 1px dotted #bdc3c7;
-  color: var(--primary-color);
+  padding-top: 1rem;
+  text-decoration: none;
+  box-shadow: 0px -3px 0px 0px var(--secondary-color) inset;
+  transition: box-shadow 150ms ease-in-out;
+  color: var(--text-color);
   cursor: pointer;
 `
+
 
 export default function Author(author) {
   const [count, setThanks] = useState(0)
@@ -157,7 +154,8 @@ export default function Author(author) {
         </AuthorMeta>
       </AuthorWrapper>
       <AuthorDescription>
-        <AuthorBio>{bio}</AuthorBio>
+        <AuthorBio>{bio}{" "}<AuthorLink href="/support">Support me</AuthorLink></AuthorBio>
+        
         <AuthorSocials>
           <AuthorSocialsContainer>
             <SupportButtonContainer>
@@ -165,11 +163,6 @@ export default function Author(author) {
                 {submitted ? "🎉Thank you!🎉" : "Send Virtual Thanks"}
               </Button>
               <ButtonText>{count} Virtual Thanks Sent.</ButtonText>
-            <Link href="/support" passHref>
-            <Button>
-              <FaGift />{" "}Support
-              </Button>
-            </Link>
             </SupportButtonContainer>
           </AuthorSocialsContainer>
         </AuthorSocials>

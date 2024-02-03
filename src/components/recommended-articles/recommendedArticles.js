@@ -42,15 +42,13 @@ const RecommendedPostTitle = styled.h3`
 
 export default function RecommendedPosts({ post }) {
   const [sortedPosts, setSortedPosts] = useState()
-  
+
   // define maxPosts to display
   const maxPosts = 3
-  
+
   function getRecommendedPosts(post, allPosts) {
     // filter out current post
     let posts = allPosts.filter((aPost) => aPost.slug !== post.slug)
-
-
 
     // get tags of current posts
     const currentTags = post.tags.map((tag) => {
@@ -74,10 +72,10 @@ export default function RecommendedPosts({ post }) {
     return sortedPosts
   }
 
-  
   useEffect(() => {
-    getRelatedPosts()
-      .then((data) => setSortedPosts(getRecommendedPosts(post, data)))
+    getRelatedPosts().then((data) =>
+      setSortedPosts(getRecommendedPosts(post, data))
+    )
   }, [])
 
   if (sortedPosts) {
@@ -90,9 +88,13 @@ export default function RecommendedPosts({ post }) {
           ))}
         </RecommendedPostsContainer>
       </>
-  )} else return (
-    <>
-    <RecommendedPostTitle>Loading Recommended Posts...</RecommendedPostTitle>
+    )
+  } else
+    return (
+      <>
+        <RecommendedPostTitle>
+          Loading Recommended Posts...
+        </RecommendedPostTitle>
       </>
-  )
+    )
 }

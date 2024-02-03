@@ -2,7 +2,7 @@ import React from "react"
 import config from "@/src/data/internal/SiteConfig"
 import { getAllPosts, getAllLinks } from "@/src/data/external/cms"
 const showdown = require("showdown"),
-converter = new showdown.Converter()
+  converter = new showdown.Converter()
 
 const createRssFeed = (allContent) =>
   `<?xml version="1.0" encoding="UTF-8"?>

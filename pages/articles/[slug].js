@@ -237,7 +237,7 @@ export async function getStaticProps({ params }) {
         readingTime: readingTime,
         content,
         toc,
-      }
+      },
     },
   }
 }

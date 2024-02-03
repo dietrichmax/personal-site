@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import Link from "next/link"
-const _ = require("lodash")
 
 const TagsWrapper = styled.div`
   display: block;

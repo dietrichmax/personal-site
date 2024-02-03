@@ -87,7 +87,7 @@ export default function About({ about }) {
 
       <ImageWrapper>
         <Image
-          src="/uploads/IMG_20231229_WA_0005_1925a8f37e.jpg"
+          src="/images/IMG_20231229_WA_0005_1925a8f37e.jpg"
           width="620"
           height="300"
           title={about.title}
@@ -109,7 +109,7 @@ export default function About({ about }) {
 
 export async function getStaticProps({}) {
   const data = await getAbout()
-  const bio = await serialize(data.about.bioMedium)
+  const bio = await serialize(data.about.bioLong)
 
   return {
     props: {

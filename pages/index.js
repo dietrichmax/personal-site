@@ -401,20 +401,25 @@ export async function getStaticProps() {
   await client.end()
 
   // Get Background Image
-  const backgroundImageUrl = new URL(`${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1`);
-  backgroundImageUrl.searchParams.append("width", 2000 )
-  backgroundImageUrl.searchParams.append("height", 1000 )
-  backgroundImageUrl.searchParams.append("zoom", 13 )
-  backgroundImageUrl.searchParams.append("center", `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`)
+  const backgroundImageUrl = new URL(
+    `${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1`
+  )
+  backgroundImageUrl.searchParams.append("width", 2000)
+  backgroundImageUrl.searchParams.append("height", 1000)
+  backgroundImageUrl.searchParams.append("zoom", 13)
+  backgroundImageUrl.searchParams.append(
+    "center",
+    `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`
+  )
   backgroundImageUrl.searchParams.append("style", "gray-background")
   backgroundImageUrl.searchParams.append("format", "webp")
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
   const imageResponse = await fetch(backgroundImageUrl, {
     method: "GET",
-    responseType: "arraybuffer"
-  })    
-  const imageArrayBuffer = await imageResponse.arrayBuffer();
-  const imageBuffer = Buffer.from(imageArrayBuffer);
+    responseType: "arraybuffer",
+  })
+  const imageArrayBuffer = await imageResponse.arrayBuffer()
+  const imageBuffer = Buffer.from(imageArrayBuffer)
   fs.writeFile(backgroundImageFilePath, imageBuffer, (err) => {
     if (err) throw err
   })

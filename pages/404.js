@@ -27,9 +27,7 @@ export default function Custom404({ pages }) {
     <Layout>
       <SEO title="404 - Page Not Found" slug="" />
       <Title>404 - Page Not Found</Title>
-      <SubTitle>
-        { `Seems like you got lost. Sorry for that...`}
-      </SubTitle>
+      <SubTitle>{`Seems like you got lost. Sorry for that...`}</SubTitle>
       <Container>
         <Image
           src="/uploads/daturbod_confused_astronaut_lost_in_space_rocket_comic_e6efe5d2_37c0_4186_b0c2_d069fca163cb_5c875628fd.png"

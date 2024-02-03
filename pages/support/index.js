@@ -8,13 +8,13 @@ import PageTitle from "@/src/components/title/page-title"
 import SubTitle from "@/src/components/title/sub-title"
 import Link from "next/link"
 import { Button } from "@/styles/templates/button"
-import { FaPaypal } from "@react-icons/all-files/fa/FaPaypal";
-import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
-import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
-import { FaXing } from "@react-icons/all-files/fa/FaXing";
-import { SiStrava } from "@react-icons/all-files/si/SiStrava";
+import { FaPaypal } from "@react-icons/all-files/fa/FaPaypal"
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
+import { FaXing } from "@react-icons/all-files/fa/FaXing"
+import { SiStrava } from "@react-icons/all-files/si/SiStrava"
 
 const Container = styled.div`
   max-width: var(--width-container);

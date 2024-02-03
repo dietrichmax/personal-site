@@ -167,7 +167,7 @@ export async function getStaticProps() {
   await client.end()
 
   const content = (await getNowData()) || []
- 
+
   const weather = await fetchGET(
     `https://api.openweathermap.org/data/2.5/weather?lat=${recentLocation.rows[0].lat}&lon=${recentLocation.rows[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
   )

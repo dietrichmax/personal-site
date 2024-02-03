@@ -200,9 +200,7 @@ const SEO = ({
       {/* META TAGS */}
       {/* General tags */}
       <title>
-        {title
-          ? `${title} • ${config.siteTitleAlt}`
-          : config.siteTitleAlt}
+        {title ? `${title} • ${config.siteTitleAlt}` : config.siteTitleAlt}
       </title>
       <link rel="canonical" href={slug} />
       <meta name="description" content={description} />

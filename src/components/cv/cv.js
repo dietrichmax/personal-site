@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import ReactMarkdown from "react-markdown"
 import { parseISO, format } from "date-fns"
+import { MDXRemote } from "next-mdx-remote"
 
 const Paper = styled.section`
   width: 210mm;
@@ -241,10 +241,7 @@ export default function CV({ data }) {
                     : "Present"}
                 </TimelineDate>
                 <TimelineLongDescription>
-                  <ReactMarkdown
-                    className={markdownCSS["markdown"]}
-                    children={role.longDescription}
-                  />
+                  <div>{role.longDescription}</div>
                 </TimelineLongDescription>
                 <TimelineTags>{role.tags}</TimelineTags>
               </TimelineItem>

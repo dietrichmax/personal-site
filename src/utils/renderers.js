@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 //import Image from "next/image"
 import styled from "styled-components"
-import { FaLink } from "@react-icons/all-files/fa/FaLink";
+import { FaLink } from "@react-icons/all-files/fa/FaLink"
 import * as MDX from "@/styles/mdx-styles"
-import SyntaxHighlighter from "@/src/utils/SyntaxHighlighter";
+import SyntaxHighlighter from "@/src/utils/SyntaxHighlighter"
 import dynamic from "next/dynamic"
 
 const MapComponent = dynamic(
@@ -179,10 +179,7 @@ const renderers = {
   code: ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || "")
     return !inline && match ? (
-      <SyntaxHighlighter
-        language={match[1]}
-        code={children}
-      />
+      <SyntaxHighlighter language={match[1]} code={children} />
     ) : (
       <code className={className} {...props}>
         {children}

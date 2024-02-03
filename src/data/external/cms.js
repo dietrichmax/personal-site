@@ -180,14 +180,14 @@ export async function getPostBySlug(slug) {
 
 export async function getPostById(id) {
   const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   const json = await res.json()
   if (json.errors) {

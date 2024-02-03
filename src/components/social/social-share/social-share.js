@@ -2,12 +2,12 @@ import styled from "styled-components"
 import config from "@/src/data/internal/SiteConfig"
 import media from "styled-media-query"
 import { useState } from "react"
-import { FaLink } from "@react-icons/all-files/fa/FaLink";
-import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
-import { FaReply } from "@react-icons/all-files/fa/FaReply";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
+import { FaLink } from "@react-icons/all-files/fa/FaLink"
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin"
+import { FaReply } from "@react-icons/all-files/fa/FaReply"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
 //import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
-import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
+import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope"
 
 const WebActions = styled.ol`
   margin-top: var(--space-sm);

@@ -3,15 +3,14 @@ import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
 import Link from "next/link"
 import media from "styled-media-query"
-import ReactMarkdown from "react-markdown"
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
-import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
-import { SiStrava } from "@react-icons/all-files/si/SiStrava";
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin"
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+import { SiStrava } from "@react-icons/all-files/si/SiStrava"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
-import useSWR from 'swr'
+import useSWR from "swr"
 import { fetchGET } from "@/src/utils/fetcher"
 // styled components
 
@@ -141,7 +140,10 @@ const AboutMeLink = styled.a`
 export default function Footer() {
   const [search, setSearch] = useState("")
 
-  const { data: recentPosts } = useSWR("https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4", fetchGET)
+  const { data: recentPosts } = useSWR(
+    "https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4",
+    fetchGET
+  )
   const { data: about } = useSWR("https://cms.mxd.codes/about", fetchGET)
 
   const footerItems = [
@@ -214,14 +216,14 @@ export default function Footer() {
           <FooterColumn>
             {about ? (
               <>
-            <FooterColumnTitle>{about.intro}</FooterColumnTitle>
-            <FooterColumnDescription>
-              <ReactMarkdown children={about.bioShort} />
-              <Link href="/about" passHref legacyBehavior>
-                <AboutMeLink title="About me">Read more.</AboutMeLink>
-              </Link>
-            </FooterColumnDescription>
-            </>
+                <FooterColumnTitle>{about.intro}</FooterColumnTitle>
+                <FooterColumnDescription>
+                  <div children={about.bioShort} />
+                  <Link href="/about" passHref legacyBehavior>
+                    <AboutMeLink title="About me">Read more.</AboutMeLink>
+                  </Link>
+                </FooterColumnDescription>
+              </>
             ) : null}
           </FooterColumn>
 
@@ -265,16 +267,18 @@ export default function Footer() {
           <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
-              {recentPosts ? recentPosts.map((post, i) => (
-                <FooterItem key={i}>
-                  <FooterItemLink
-                    href={`/articles/${post.slug}`}
-                    title={post.title}
-                  >
-                    {post.title}
-                  </FooterItemLink>
-                </FooterItem>
-              )) : null}
+              {recentPosts
+                ? recentPosts.map((post, i) => (
+                    <FooterItem key={i}>
+                      <FooterItemLink
+                        href={`/articles/${post.slug}`}
+                        title={post.title}
+                      >
+                        {post.title}
+                      </FooterItemLink>
+                    </FooterItem>
+                  ))
+                : null}
             </List>
           </FooterColumnPosts>
 

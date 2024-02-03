@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
 import Link from "next/link"
@@ -11,7 +11,8 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { SiStrava } from "@react-icons/all-files/si/SiStrava";
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
-
+import useSWR from 'swr'
+import { fetchGET } from "@/src/utils/fetcher"
 // styled components
 
 const FooterContainer = styled.footer`
@@ -138,18 +139,10 @@ const AboutMeLink = styled.a`
 `
 
 export default function Footer() {
-  const [recentPosts, setRecentPosts] = useState([])
-  const [about, setAbout] = useState([])
   const [search, setSearch] = useState("")
 
-  useEffect(() => {
-    fetch("https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4")
-      .then((response) => response.json())
-      .then((data) => setRecentPosts(data.slice(0, 4)))
-    fetch("https://cms.mxd.codes/about")
-      .then((response) => response.json())
-      .then((data) => setAbout(data))
-  }, [])
+  const { data: recentPosts } = useSWR("https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4", fetchGET)
+  const { data: about } = useSWR("https://cms.mxd.codes/about", fetchGET)
 
   const footerItems = [
     {
@@ -219,6 +212,8 @@ export default function Footer() {
 
         <FooterColumnWrapper>
           <FooterColumn>
+            {about ? (
+              <>
             <FooterColumnTitle>{about.intro}</FooterColumnTitle>
             <FooterColumnDescription>
               <ReactMarkdown children={about.bioShort} />
@@ -226,6 +221,8 @@ export default function Footer() {
                 <AboutMeLink title="About me">Read more.</AboutMeLink>
               </Link>
             </FooterColumnDescription>
+            </>
+            ) : null}
           </FooterColumn>
 
           <FooterColumn>
@@ -268,7 +265,7 @@ export default function Footer() {
           <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
-              {recentPosts.map((post, i) => (
+              {recentPosts ? recentPosts.map((post, i) => (
                 <FooterItem key={i}>
                   <FooterItemLink
                     href={`/articles/${post.slug}`}
@@ -277,7 +274,7 @@ export default function Footer() {
                     {post.title}
                   </FooterItemLink>
                 </FooterItem>
-              ))}
+              )) : null}
             </List>
           </FooterColumnPosts>
 

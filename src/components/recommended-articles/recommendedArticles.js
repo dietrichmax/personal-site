@@ -74,6 +74,7 @@ export default function RecommendedPosts({ post }) {
     return sortedPosts
   }
 
+  
   useEffect(() => {
     getRelatedPosts()
       .then((data) => setSortedPosts(getRecommendedPosts(post, data)))

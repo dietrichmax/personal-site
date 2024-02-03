@@ -45,7 +45,8 @@
     "remark-html": "^16.0.1",
     "showdown": "^2.1.0",
     "styled-components": "^6.1.8",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "eslint": "^8.0.0",

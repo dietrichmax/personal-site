@@ -4,15 +4,7 @@ import GlobalStyle from "@/styles/global.js"
 import config from "@/src/data/internal/SiteConfig"
 import Providers from "@/src/utils/providers"
 import Head from "next/head"
-//import CookieBanner from "@/components/cookies/cookie-banner"
-//import Cookie from "js-cookie"
-//import { enableGoogleAnalytics } from '@/components/google-analytics/google-analytics';
-//import { enableGoogleAdsense } from "@/components/google-adsense/google-adsense"
-import "@/styles/mapbox-gl.css"
-import "@/styles/prism.css"
 import "@/public/fonts/SF-UI/style.css"
-//import "@/public/fonts/Clarity-City/style.css"
-//import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function App(props) {
   const { Component, pageProps } = props

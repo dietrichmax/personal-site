@@ -179,9 +179,7 @@ export async function getPostBySlug(slug) {
 }
 
 export async function getPostById(id) {
-  const data = false
-  while ((data = false)) {
-    const res = await fetch(
+  const res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${id}`,
       {
         method: "GET",
@@ -190,7 +188,6 @@ export async function getPostById(id) {
         },
       }
     )
-  }
 
   const json = await res.json()
   if (json.errors) {

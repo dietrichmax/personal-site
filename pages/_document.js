@@ -1,8 +1,6 @@
 
 import { ServerStyleSheet } from "styled-components"
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -37,8 +35,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <Analytics />
-          <SpeedInsights />
         </body>
       </Html>
     );

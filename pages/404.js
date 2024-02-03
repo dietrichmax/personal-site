@@ -19,17 +19,16 @@ export default function Custom404({ pages }) {
   const router = useRouter()
 
   const pathname = router.pathname
-  const result = findBestMatch(pathname, pages).bestMatch
-  const goodMatch = result.rating > 0.7
+  console.log(pathname)
+  //const result = findBestMatch(pathname, pages).bestMatch
+  //const goodMatch = result.rating > 0.7
 
   return (
     <Layout>
       <SEO title="404 - Page Not Found" slug="" />
       <Title>404 - Page Not Found</Title>
       <SubTitle>
-        {goodMatch
-          ? `You were probably looking for ${goodMatch}`
-          : `Seems like you got lost. Sorry for that...`}
+        { `Seems like you got lost. Sorry for that...`}
       </SubTitle>
       <Container>
         <Image

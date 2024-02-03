@@ -175,7 +175,7 @@ const renderers = {
       </h5>
     )
   },
-  code: ({ node, inline, className, children, ...props }) => {
+  /*code: ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || "")
     return !inline && match ? (
       <SyntaxHighlighter
@@ -189,7 +189,7 @@ const renderers = {
         {children}
       </code>
     )
-  },
+  },*/
   ul: ({ children }) => {
     return <MDX.UL>{children}</MDX.UL>
   },

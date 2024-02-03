@@ -221,8 +221,6 @@ export async function getStaticProps({ params }) {
   const content = await serialize(markdownContent)
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
-
-  console.log(data.posts[0].excerpt)
   return {
     revalidate: 86400,
     props: {

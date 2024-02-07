@@ -16,11 +16,6 @@ const SEO = ({
 }) => {
   const [data, setData] = useState("")
 
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }
-
   useEffect(() => {
     const fetchCV = async () => {
       const cv = await fetchGET("https://cms.mxd.codes/cv")

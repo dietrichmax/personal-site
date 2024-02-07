@@ -110,6 +110,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/articles/ci-cd-for-nextjs-with-github-actions",
+        destination: "/articles/docker-ci-cd-for-nextjs-with-github-actions",
+        permanent: true,
+      },
+      {
         source: "/software/gis-software/liste-gis-software",
         destination:
           "/articles/gis-software-options-free-open-source-and-proprietary",

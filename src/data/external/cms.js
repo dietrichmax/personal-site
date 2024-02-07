@@ -291,7 +291,7 @@ export async function getLinksCount() {
 }
 
 export async function getCommentsCount() {
-  const json = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments/count`)
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch STRAPI Comments count")
@@ -361,7 +361,7 @@ export async function getPhotosCount() {
 }
 
 export async function getActivitiesCount() {
-  const json = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/activities/count`)
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/activities/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch activities count")

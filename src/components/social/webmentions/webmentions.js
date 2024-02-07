@@ -287,13 +287,9 @@ export default function Webmentions({ slug, preview }) {
 
   async function getWebmentions() {
     // get webmentions
-    fetch(
-      `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`, {cache: 'force-cache'}
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        setWebmentions(getWebmentionsForUrl(result.children, url))
-      })
+    const res = await fetch(`https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`, {cache: "force-cache"})
+    const data = await res.json()
+    setWebmentions(getWebmentionsForUrl(data.children, url))
   }
 
   async function GetComments() {

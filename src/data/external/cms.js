@@ -1,3 +1,5 @@
+import { fetchGET } from "@/src/utils/fetcher"
+
 export async function fetchStrapiAPI(query, { variables } = {}) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: "POST",
@@ -180,17 +182,8 @@ export async function getPostBySlug(slug) {
 }
 
 export async function getPostById(id) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/${id}`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Post by ID")
@@ -288,17 +281,7 @@ export async function getAllPages() {
 }
 
 export async function getLinksCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/links/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/links/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Links count")
@@ -308,17 +291,7 @@ export async function getLinksCount() {
 }
 
 export async function getCommentsCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch STRAPI Comments count")
@@ -328,17 +301,7 @@ export async function getCommentsCount() {
 }
 
 export async function getPostsCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/posts/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Posts count")
@@ -348,17 +311,7 @@ export async function getPostsCount() {
 }
 
 export async function getTagsCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/tags/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/tags/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Tags count")
@@ -368,17 +321,7 @@ export async function getTagsCount() {
 }
 
 export async function getRecipesCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/recipes/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/recipes/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Recipes count")
@@ -388,17 +331,7 @@ export async function getRecipesCount() {
 }
 
 export async function getRoutesCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/routes/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/routes/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Routes count")
@@ -408,17 +341,7 @@ export async function getRoutesCount() {
 }
 
 export async function getSubscribersCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Subscribers count")
@@ -428,17 +351,7 @@ export async function getSubscribersCount() {
 }
 
 export async function getPhotosCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/photos/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/photos/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch Photos count")
@@ -448,17 +361,7 @@ export async function getPhotosCount() {
 }
 
 export async function getActivitiesCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/activities/count`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-
-  const json = await res.json()
+  const json = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/activities/count`)
   if (json.errors) {
     console.error(json.errors)
     throw new Error("Failed to fetch activities count")

@@ -1,5 +1,7 @@
+import { fetchGET } from "@/src/utils/fetcher"
+
 export async function getMatomoActions() {
-  const res = await fetch(
+  const actions = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2018-02-01,${new Date()
@@ -8,7 +10,6 @@ export async function getMatomoActions() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const actions = await res.json()
   if (actions.errors) {
     console.error(actions.errors)
     throw new Error("Failed to fetch Matomo Actions")
@@ -17,10 +18,9 @@ export async function getMatomoActions() {
 }
 
 export async function getMatomoLiveCounter() {
-  const res = await fetch(
+  const liveViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
-  const liveViews = await res.json()
   if (liveViews.errors) {
     console.error(liveViews.errors)
     throw new Error("Failed to fetch Matomo Actions")
@@ -29,11 +29,9 @@ export async function getMatomoLiveCounter() {
 }
 
 export async function getMatomoPageViews() {
-  const getViews = encodeURI(
+  const lastViews  = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&period=day&date=previous30&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
-  const matomoDataLastViews = await fetch(getViews)
-  const lastViews = await matomoDataLastViews.json()
   if (lastViews.errors) {
     console.error(lastViews.errors)
     throw new Error("Failed to fetch MATOMO Views")
@@ -42,7 +40,7 @@ export async function getMatomoPageViews() {
 }
 
 export async function getMatomoVisitsSummary() {
-  const getViews = encodeURI(
+  const lastViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=VisitsSummary.get&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2011-01-01,${new Date()
@@ -51,8 +49,6 @@ export async function getMatomoVisitsSummary() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const matomoDataLastViews = await fetch(getViews)
-  const lastViews = await matomoDataLastViews.json()
   if (lastViews.errors) {
     console.error(lastViews.errors)
     throw new Error("Failed to fetch MATOMO Views")
@@ -61,7 +57,7 @@ export async function getMatomoVisitsSummary() {
 }
 
 export async function getMatomoSumVisitDuration() {
-  const getViews = encodeURI(
+  const lastViews = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?method=VisitsSummary.getSumVisitsLength&idSite=${
@@ -72,8 +68,6 @@ export async function getMatomoSumVisitDuration() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const matomoDataLastViews = await fetch(getViews)
-  const lastViews = await matomoDataLastViews.json()
   if (lastViews.errors) {
     console.error(lastViews.errors)
     throw new Error("Failed to fetch MATOMO most viewed pages")
@@ -82,7 +76,7 @@ export async function getMatomoSumVisitDuration() {
 }
 
 export async function getMatomoCountryVisits() {
-  const res = await fetch(
+  const liveViews = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?method=UserCountry.getCountry&idSite=${
@@ -93,7 +87,6 @@ export async function getMatomoCountryVisits() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const liveViews = await res.json()
   if (liveViews.errors) {
     console.error(liveViews.errors)
     throw new Error("Failed to fetch Matomo Actions")
@@ -102,10 +95,9 @@ export async function getMatomoCountryVisits() {
 }
 
 export async function getMatomoConsentEvent() {
-  const res = await fetch(
+  const consentEvent = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=SEO.getRank&url=https://mxd.codes/&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
-  const consentEvent = await res.json()
   if (consentEvent.errors) {
     console.error(consentEvent.errors)
     throw new Error("Failed to fetch Matomo Actions")
@@ -114,10 +106,9 @@ export async function getMatomoConsentEvent() {
 }
 
 export async function getMatomoSEOStats() {
-  const res = await fetch(
+  const liveViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=SEO.getRank&url=https://mxd.codes/&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
-  const liveViews = await res.json()
   if (liveViews.errors) {
     console.error(liveViews.errors)
     throw new Error("Failed to fetch Matomo Actions")
@@ -126,7 +117,7 @@ export async function getMatomoSEOStats() {
 }
 
 export async function getMatomoTopPageUrls() {
-  const res = await fetch(
+  const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/articles/&flat=1&idSite=${
@@ -137,7 +128,6 @@ export async function getMatomoTopPageUrls() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const pageUrl = await res.json()
   if (pageUrl.errors) {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")
@@ -146,7 +136,7 @@ export async function getMatomoTopPageUrls() {
 }
 
 export async function getMatomoViewForPage(url) {
-  const res = await fetch(
+  const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?module=API&method=Actions.get&segment=pageUrl=@${url}&idSite=${
@@ -157,7 +147,6 @@ export async function getMatomoViewForPage(url) {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const pageUrl = await res.json()
   if (pageUrl.errors) {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")
@@ -166,7 +155,7 @@ export async function getMatomoViewForPage(url) {
 }
 
 export async function getMatomoConsent() {
-  const res = await fetch(
+  const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?module=API&method=Events.getCategory&idSite=${
@@ -180,7 +169,6 @@ export async function getMatomoConsent() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const pageUrl = await res.json()
   if (pageUrl.errors) {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")
@@ -189,7 +177,7 @@ export async function getMatomoConsent() {
 }
 
 export async function getBiggestTrafficSource() {
-  const res = await fetch(
+  const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
     }?module=API&method=Referrers.getReferrerType&idSite=${
@@ -203,7 +191,6 @@ export async function getBiggestTrafficSource() {
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
-  const pageUrl = await res.json()
   if (pageUrl.errors) {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")

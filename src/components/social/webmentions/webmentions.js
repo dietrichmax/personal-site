@@ -11,6 +11,7 @@ import { BsStar } from "@react-icons/all-files/bs/BsStar"
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
 import Image from "next/image"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
@@ -122,7 +123,7 @@ const WebmentionsPreview = styled.ol`
   list-style: none;
 `
 
-const WebmentionPreviewCount = styled.div`
+const WebmentionPreviewCount = styled.li`
   display: inline-block;
   margin-right: 0.5rem;
 `
@@ -287,7 +288,7 @@ export default function Webmentions({ slug, preview }) {
   async function getWebmentions() {
     // get webmentions
     fetch(
-      `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`
+      `https://webmention.io/api/mentions.jf2?target=${url}&per-page=${pageLimit}&page=0`, {cache: 'force-cache'}
     )
       .then((response) => response.json())
       .then((result) => {
@@ -296,33 +297,30 @@ export default function Webmentions({ slug, preview }) {
   }
 
   async function GetComments() {
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments?slug=${slug}`)
-      .then((response) => response.json())
-      .then((result) => {
-        let strapiComments = []
-        result.map((comment) => {
-          strapiComments.push({
-            "type": "entry",
-            "url": `${url}#1${comment.id}`,
-            "published": comment.published_at,
-            "author": {
-              name: comment.name || "anonym",
-              photo: "https://cms.mxd.codes/uploads/mm_1559572612.jpg",
-              type: "card",
-              url: config.siteUrl,
-            },
-            "content": {
-              text: comment.text,
-            },
-            "in-reply-to": url,
-          })
-        })
-        const allComments = comments.concat(strapiComments)
-        const sortedComments = allComments.sort(function (a, b) {
-          return new Date(b.published) - new Date(a.published)
-        })
-        setComments(sortedComments)
+    const data = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments?slug=${slug}`)
+    let strapiComments = []
+    data.map((comment) => {
+      strapiComments.push({
+        "type": "entry",
+        "url": `${url}#1${comment.id}`,
+        "published": comment.published_at,
+        "author": {
+          name: comment.name || "anonym",
+          photo: "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg",
+          type: "card",
+          url: config.siteUrl,
+        },
+        "content": {
+          text: comment.text,
+        },
+        "in-reply-to": url,
       })
+    })
+    const allComments = comments.concat(strapiComments)
+    const sortedComments = allComments.sort(function (a, b) {
+      return new Date(b.published) - new Date(a.published)
+    })
+    setComments(sortedComments)
   }
 
   const sendComment = () => {

@@ -31,6 +31,7 @@ import PageTitle from "@/components/title/page-title"
 import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
 import { useEffect, useState } from "react"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const viewsBarHeight = 200
 
@@ -407,9 +408,8 @@ export default function Dashboard({
     : 0
 
   async function getMatomoLiveCounter() {
-    const res = await fetch("/api/stats")
-    const stats = await res.json()
-    setLiveViews(stats.analytics.currentVisitors.visitors)
+    const res = await fetchGET("/api/stats")
+    setLiveViews(res.analytics.currentVisitors.visitors)
   }
 
   useEffect(() => {

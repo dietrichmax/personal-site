@@ -5,6 +5,7 @@ export async function fetchStravaAPI(query, { variables } = {}) {
       "Content-Type": "application/json",
       "Authorization": "Basic " + btoa("login:password"),
     },
+    cache: 'force-cache',
     body: JSON.stringify({
       query,
       variables,

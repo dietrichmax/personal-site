@@ -24,9 +24,8 @@ export async function getGitHubStats() {
     method: "POST",
     body: JSON.stringify(body),
     headers: headers,
+    cache: 'force-cache'
   })
   const data = await response.json()
-  const { forkCount } = data.data.user.repository
-  const stars = data.data.user.repository.stargazers.totalCount
   return data.data
 }

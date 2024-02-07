@@ -8,7 +8,7 @@ import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin"
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
 import { FaXing } from "@react-icons/all-files/fa/FaXing"
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
-import { FaGift } from "@react-icons/all-files/fa/FaGift"
+import { fetchGET } from "@/src/utils/fetcher"
 import { Button } from "@/styles/templates/button"
 import media from "styled-media-query"
 
@@ -75,23 +75,15 @@ const AuthorLink = styled(Link)`
 
 export default function Author(author) {
   const [count, setThanks] = useState(0)
-  const [gotData, setGotData] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://cms.mxd.codes/thanks", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setThanks(data.thanks))
-    setGotData(true)
-  }
-
   useEffect(() => {
-    !gotData ? getCount() : null
-  }, [])
+    const fetchData = async () => {
+      const data = await fetchGET("https://cms.mxd.codes/thanks")
+      setThanks(data.thanks)
+    };
+    fetchData();
+  }, []);
 
   const sendThanks = () => {
     const requestOptions = {

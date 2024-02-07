@@ -5,6 +5,7 @@ export async function fetchGET(url) {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "force-cache"
     })
     return res.json()
   } catch (error) {

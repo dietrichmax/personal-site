@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-//import Image from "next/image"
+import { fetchGET } from "./fetcher"
 import styled from "styled-components"
 import { FaLink } from "@react-icons/all-files/fa/FaLink"
 import * as MDX from "@/styles/mdx-styles"
@@ -70,10 +70,9 @@ const MarkdownImage = ({ src }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const resp = await fetch(
+      const json = await fetchGET(
         `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/upload/files?_url=${src}`
       )
-      const json = await resp.json()
       const obj = json[0]
       const title = obj.name.replace(".png", "")
       const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title

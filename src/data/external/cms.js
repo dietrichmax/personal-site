@@ -4,6 +4,7 @@ export async function fetchStrapiAPI(query, { variables } = {}) {
     headers: {
       "Content-Type": "application/json",
     },
+    cache: 'force-cache',
     body: JSON.stringify({
       query,
       variables,

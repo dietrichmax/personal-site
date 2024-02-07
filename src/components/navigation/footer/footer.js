@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import config from "@/src/data/internal/SiteConfig"
 import styled from "styled-components"
 import Link from "next/link"
@@ -10,7 +10,6 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
 import { SiStrava } from "@react-icons/all-files/si/SiStrava"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
-import useSWR from "swr"
 import { fetchGET } from "@/src/utils/fetcher"
 // styled components
 
@@ -138,13 +137,22 @@ const AboutMeLink = styled.a`
 `
 
 export default function Footer() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("")  
+  const [data, setData] = useState({ hits: [] });
 
-  const { data: recentPosts } = useSWR(
-    "https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4",
-    fetchGET
-  )
-  const { data: about } = useSWR("https://cms.mxd.codes/about", fetchGET)
+  useEffect(() => {
+    const fetchData = async () => {
+      const postsResult = await fetchGET("https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4")
+      const aboutResult = await fetchGET("https://cms.mxd.codes/about")
+
+      setData({
+        recentPosts: postsResult,
+        about: aboutResult
+      });
+    };
+
+    fetchData();
+  }, []);
 
   const footerItems = [
     {
@@ -214,11 +222,11 @@ export default function Footer() {
 
         <FooterColumnWrapper>
           <FooterColumn>
-            {about ? (
+            {data.about ? (
               <>
-                <FooterColumnTitle>{about.intro}</FooterColumnTitle>
+                <FooterColumnTitle>{data.about.intro}</FooterColumnTitle>
                 <FooterColumnDescription>
-                  <div children={about.bioShort} />
+                  <div children={data.about.bioShort} />
                   <Link href="/about" passHref legacyBehavior>
                     <AboutMeLink title="About me">Read more.</AboutMeLink>
                   </Link>
@@ -267,8 +275,8 @@ export default function Footer() {
           <FooterColumnPosts>
             <FooterColumnTitle>Recent Articles</FooterColumnTitle>
             <List>
-              {recentPosts
-                ? recentPosts.map((post, i) => (
+              {data.recentPosts
+                ? data.recentPosts.map((post, i) => (
                     <FooterItem key={i}>
                       <FooterItemLink
                         href={`/articles/${post.slug}`}

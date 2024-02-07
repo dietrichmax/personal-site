@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Input } from "@/styles/templates/input"
 import { Button } from "@/styles/templates/button"
 import Link from "next/link"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const NewsletterBox = styled.div`
   border-top: 0.1rem solid var(--content-bg);
@@ -71,19 +72,13 @@ export default function Subscribe({ noLabel, cb }) {
   const [count, setCount] = useState("")
   const [submitted, setSubmitted] = useState(false)
 
-  async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://cms.mxd.codes/subscribers/count", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setCount(data))
-  }
-
   useEffect(() => {
-    getCount()
-  }, [])
+    const getCount = async () => {
+      const data = await fetchGET("https://cms.mxd.codes/subscribers/count")
+      setCount(data)
+    };
+    getCount();
+  }, []);
 
   const handleSubmit = () => {
     const requestOptions = {

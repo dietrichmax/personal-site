@@ -15,6 +15,7 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
 import { FaXing } from "@react-icons/all-files/fa/FaXing"
 import { SiStrava } from "@react-icons/all-files/si/SiStrava"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -27,7 +28,7 @@ const Container = styled.div`
   `}
 `
 
-const SupportText = styled.p`
+const SupportText = styled.div`
   max-width: 900px;
 `
 
@@ -43,7 +44,7 @@ const SupportButtonContainer = styled.div`
   margin-top: var(--space);
 `
 
-const Heading = styled.p`
+const Heading = styled.div`
   font-weight: 600;
   line-height: 1.4;
   color: var(--text-color);
@@ -68,23 +69,16 @@ const Socialtem = styled.li`
 
 export default function Support({}) {
   const [count, setThanks] = useState(0)
-  const [gotData, setGotData] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  async function getCount() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-    fetch("https://cms.mxd.codes/thanks", requestOptions)
-      .then((response) => response.json())
-      .then((data) => setThanks(data.thanks))
-    setGotData(true)
-  }
 
   useEffect(() => {
-    !gotData ? getCount() : null
-  }, [])
+    const fetchData = async () => {
+      const data = await fetchGET("https://cms.mxd.codes/thanks")
+      setThanks(data.thanks)
+    };
+    fetchData();
+  }, []);
 
   const sendThanks = () => {
     const requestOptions = {

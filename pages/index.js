@@ -417,6 +417,7 @@ export async function getStaticProps() {
   const imageResponse = await fetch(backgroundImageUrl, {
     method: "GET",
     responseType: "arraybuffer",
+    cache: "force-cache"
   })
   const imageArrayBuffer = await imageResponse.arrayBuffer()
   const imageBuffer = Buffer.from(imageArrayBuffer)

@@ -1,14 +1,8 @@
 import React from "react"
-import ErrorPage from "next/error"
 import Layout from "@/src/components/layout/layout"
 import SEO from "@/src/components/seo/seo"
-import {
-  getRelatedPosts,
-  getPostBySlug,
-  getAllPosts,
-} from "@/src/data/external/cms"
+import { getPostBySlug, getAllPosts } from "@/src/data/external/cms"
 import PostBody from "@/src/components/article/article-body/article-body"
-import markdownToHtml from "@/src/utils/markdownToHtml"
 import { getToc } from "@/src/utils/getToc"
 import styled from "styled-components"
 import ReadingProgress from "@/src/components/reading-progress/reading-progress.js"
@@ -17,11 +11,9 @@ import getReadTime from "@/src/utils/read-time"
 import PostImage from "@/src/components/article/article-image/article-image"
 import PostTitle from "@/src/components/title/post-title"
 //import PostTags from 'src/components/tags/tags'
-import { parseISO, format } from "date-fns"
 import HCard from "@/src/components/microformats/h-card"
 import WebActions from "@/src/components/social/social-share/social-share"
 import { serialize } from "next-mdx-remote/serialize"
-import dynamic from "next/dynamic"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
 import DynamicMeta from "@/src/components/post/post-meta/post-meta"
 import DynamicSubscribe from "@/src/components/social/newsletter/subscribe"
@@ -163,7 +155,13 @@ export default function Post({ post, allPosts }) {
           <StickySideBar>
             <DateWrapper className="dt-published">
               <a className="u-url" href={`articles/${post.slug}`}>
-                {format(parseISO(post.published_at), "yyyy-MM-dd")}
+                {new Date(
+                  post.updated_at ? post.updated_at : post.published_at
+                ).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </a>
             </DateWrapper>
             <StickySocialShareContainer>
@@ -221,12 +219,17 @@ export async function getStaticProps({ params }) {
   const content = await serialize(markdownContent)
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
+
   return {
     revalidate: 86400,
     props: {
       post: {
-        updated_at: data.posts[0].updated_at,
-        published_at: data.posts[0].published_at,
+        updated_at: new Date(data.posts[0].updated_at).toLocaleDateString(
+          "en-US"
+        ),
+        published_at: new Date(data.posts[0].published_at).toLocaleDateString(
+          "en-US"
+        ),
         title: data.posts[0].title,
         slug: data.posts[0].slug,
         excerpt: data.posts[0].excerpt,

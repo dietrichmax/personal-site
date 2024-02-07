@@ -1,5 +1,4 @@
 import React from "react"
-import { format } from "date-fns"
 import {
   getAllPosts,
   getAllPages,
@@ -9,6 +8,7 @@ import {
 import config from "@/src/data/internal/SiteConfig"
 import * as fs from "fs"
 
+const dateOptions = { year: "numeric", month: "numeric", day: "numeric" }
 const createSitemap = (posts, tags, pages, photos, uniquePages) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
@@ -16,68 +16,68 @@ const createSitemap = (posts, tags, pages, photos, uniquePages) =>
           .map((post) => {
             return `
               <url>
-                  <loc>${`${config.siteUrl}/articles/${post.slug}`}</loc>
-                  <lastmod>${
-                    post.updated_at ? post.updated_at : post.published_at
-                  }</lastmod>
-                  <changefreq>monthly</changefreq>
-                  <priority>0.5</priority>
-               </url>
+                <loc>${`${config.siteUrl}/articles/${post.slug}`}</loc>
+                <lastmod>${(post.updated_at
+                  ? post.updated_at
+                  : post.published_at
+                ).slice(0, 10)}</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+              </url>
           `
           })
           .join("")}
         ${pages
           .map((page) => {
             return `
-                <url>
-                    <loc>${`${config.siteUrl}/${page.slug}`}</loc>
-                    <lastmod>${
-                      page.updated_at ? page.updated_at : page.created_at
-                    }</lastmod>
-                    <changefreq>monthly</changefreq>
-                    <priority>0.5</priority>
-                 </url>
+              <url>
+                <loc>${`${config.siteUrl}/${page.slug}`}</loc>
+                <lastmod>${page.updated_at ? page.updated_at : page.created_at}</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+              </url>
             `
           })
           .join("")}
-          ${uniquePages
-            .map((page) => {
-              return `
-                  <url>
-                      <loc>${`${config.siteUrl}/${page}`}</loc>
-                      <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
-                      <changefreq>monthly</changefreq>
-                      <priority>0.5</priority>
-                   </url>
+        ${uniquePages
+          .map((page) => {
+            return `
+              <url>
+                <loc>${`${config.siteUrl}/${page}`}</loc>
+                  <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+                  <changefreq>monthly</changefreq>
+                  <priority>0.5</priority>
+                </url>
               `
-            })
-            .join("")}
+          })
+          .join("")}
         ${tags
           .map((tag) => {
             return `
-                <url>
-                    <loc>${`${config.siteUrl}/topics/${tag.slug}`}</loc>
-                    <lastmod>${format(new Date(), "yyyy-MM-dd")}</lastmod>
-                    <changefreq>monthly</changefreq>
-                    <priority>0.5</priority>
-                 </url>
+              <url>
+                <loc>${`${config.siteUrl}/topics/${tag.slug}`}</loc>
+                <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+              </url>
             `
           })
           .join("")}
-          ${photos
-            .map((photo) => {
-              return `
-                <url>
-                    <loc>${`${config.siteUrl}/photos/${photo.slug}`}</loc>
-                    <lastmod>${
-                      photo.updated_at ? photo.updated_at : photo.created_at
-                    }</lastmod>
-                    <changefreq>monthly</changefreq>
-                    <priority>0.5</priority>
-                 </url>
+        ${photos
+          .map((photo) => {
+            return `
+              <url>
+                <loc>${`${config.siteUrl}/photos/${photo.slug}`}</loc>
+                <lastmod>${(photo.updated_at
+                  ? photo.updated_at
+                  : photo.created_at
+                ).slice(0, 10)}</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+              </url>
             `
-            })
-            .join("")}
+          })
+          .join("")}
     </urlset>
     `
 

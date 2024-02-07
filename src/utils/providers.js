@@ -4,19 +4,20 @@ import { ThemeProvider } from "styled-components"
 
 export default function Providers({ children }) {
   const [mounted, setMounted] = useState(false)
-  const [ darkMode, setDarkMode ] = useState(true)
-  const preferDarkQuery = '(prefers-color-scheme: dark)';
+  const [darkMode, setDarkMode] = useState(true)
+  const preferDarkQuery = "(prefers-color-scheme: dark)"
 
   useEffect(() => {
     setMounted(true)
     // Add listener to update styles
-    window.matchMedia(preferDarkQuery).addEventListener('change', e => setDarkMode(e.matches));
+    window
+      .matchMedia(preferDarkQuery)
+      .addEventListener("change", (e) => setDarkMode(e.matches))
     // Setup dark/light mode for the first time
-   setDarkMode(global.matchMedia(preferDarkQuery).matches)
+    setDarkMode(global.matchMedia(preferDarkQuery).matches)
     // Remove listener
     return () => {
-      window.matchMedia(preferDarkQuery ).removeEventListener('change', () => {
-      });
+      window.matchMedia(preferDarkQuery).removeEventListener("change", () => {})
     }
   }, [])
 

@@ -1,4 +1,3 @@
-import Date from "../../date/date"
 import Link from "next/link"
 import styled from "styled-components"
 import media from "styled-media-query"
@@ -135,9 +134,6 @@ export default function PostHero({ post }) {
             </Link>
           </HeroTitle>
 
-          <HeroDate>
-            <Date dateString={date} />
-          </HeroDate>
           <HeroDescription>{excerpt}</HeroDescription>
           <TagsWrapper>
             {tags.map((tag, i) => (

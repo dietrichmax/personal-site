@@ -29,7 +29,7 @@ const MainNav = styled.div`
   list-style-type: none;
   padding-inline-start: 0;
   gap: var(--space-sm);
-  display: flex;  
+  display: flex;
   justify-content: space-between;
   ${media.lessThan("900px")`
     display: block;
@@ -41,7 +41,7 @@ export default function Header({ color }) {
     <HeaderWrapper color={color}>
       <InnerHeader>
         <MainNav>
-          <Logo/>
+          <Logo />
 
           <Nav color={color} />
         </MainNav>

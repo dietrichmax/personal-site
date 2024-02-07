@@ -63,7 +63,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #A1B4EC;
+  color: #a1b4ec;
 }
 
 .token.punctuation {
@@ -92,7 +92,7 @@ pre[class*="language-"] {
 .token.property,
 .token.property-access,
 .token.variable {
-  color: #39B5E0;
+  color: #39b5e0;
 }
 
 .token.attr-value,
@@ -135,7 +135,7 @@ pre[class*="language-"] {
 
 .token.keyword-this,
 .token.this {
-  color: #39B5E0;
+  color: #39b5e0;
 }
 
 .token.important,
@@ -159,7 +159,7 @@ pre[class*="language-"] {
 
 .language-markdown .token.title,
 .language-markdown .token.title .token.punctuation {
-  color: #39B5E0;
+  color: #39b5e0;
   font-weight: bold;
 }
 
@@ -172,7 +172,7 @@ pre[class*="language-"] {
 }
 
 .language-markdown .token.hr.punctuation {
-  color: #39B5E0;
+  color: #39b5e0;
 }
 
 .language-markdown .token.url .token.content {
@@ -206,7 +206,7 @@ pre[class*="language-"] {
 .token.token.cr:before,
 .token.token.lf:before,
 .token.token.space:before {
-  color: #A1B4EC;
+  color: #a1b4ec;
 }
 
 /* overrides color-values for the Toolbar plugin
@@ -215,7 +215,7 @@ pre[class*="language-"] {
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > button {
   color: #111b27;
-  background: #39B5E0;
+  background: #39b5e0;
 }
 
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
@@ -231,7 +231,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > span,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
   color: #111b27;
-  background: #A1B4EC;
+  background: #a1b4ec;
 }
 
 /* overrides color-values for the Line Highlight plugin
@@ -244,7 +244,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
 
 .line-highlight.line-highlight:before,
 .line-highlight.line-highlight[data-end]:after {
-  background-color: #A1B4EC;
+  background-color: #a1b4ec;
   color: #111b27;
   box-shadow: 0 1px #3c526d;
 }
@@ -285,7 +285,7 @@ pre[id].linkable-line-numbers.linkable-line-numbers
 .rainbow-braces .token.token.punctuation.brace-level-3,
 .rainbow-braces .token.token.punctuation.brace-level-7,
 .rainbow-braces .token.token.punctuation.brace-level-11 {
-  color: #39B5E0;
+  color: #39b5e0;
 }
 
 .rainbow-braces .token.token.punctuation.brace-level-4,

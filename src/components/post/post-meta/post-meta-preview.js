@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import { parseISO, format } from "date-fns"
 import config from "@/src/data/internal/SiteConfig"
 
 const Meta = styled.div`
@@ -18,7 +17,7 @@ const Meta = styled.div`
   `}
 `
 
-const Date = styled.div`
+const DateWrapper = styled.div`
   :hover {
     text-decoration: underline;
   }
@@ -28,23 +27,32 @@ const Socials = styled.div``
 
 export default function PostMeta({ post, slug }) {
   const env = process.env.NODE_ENV
-  const date = post.updated_at
-    ? post.updated_at
-    : post.published_at
-      ? post.published_at
-      : post.created_at
+  const postDate = new Date(post.updated_at)
   const permaUrl =
     env == "development"
       ? `http://localhost:3000${slug}`
       : `${config.siteUrl}${slug}`
 
+  const dateOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    timeZoneName: "short",
+  }
   return (
     <Meta>
-      <Date title={permaUrl} href={permaUrl} className="u-url" rel="bookmark">
-        <time className="dt-published" dateTime={date}>
-          {format(parseISO(date), config.dateFormat)}
+      <DateWrapper
+        title={permaUrl}
+        href={permaUrl}
+        className="u-url"
+        rel="bookmark"
+      >
+        <time className="dt-published" dateTime={post.updated_at}>
+          {postDate.toLocaleDateString("en-US", dateOptions)}
         </time>
-      </Date>
+      </DateWrapper>
     </Meta>
   )
 }

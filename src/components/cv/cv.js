@@ -1,7 +1,5 @@
 import styled from "styled-components"
 import media from "styled-media-query"
-import { parseISO, format } from "date-fns"
-import { MDXRemote } from "next-mdx-remote"
 
 const Paper = styled.section`
   width: 210mm;
@@ -235,9 +233,16 @@ export default function CV({ data }) {
                   {role.company} | {role.description}
                 </TimelineCompany>
                 <TimelineDate>
-                  {format(parseISO(role.startDate), "yyyy/MM")} -{" "}
+                  {new Date(role.startDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "numeric",
+                  })}{" "}
+                  -{" "}
                   {role.endDate
-                    ? format(parseISO(role.endDate), "yyyy/MM")
+                    ? new Date(role.endDate).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "numeric",
+                      })
                     : "Present"}
                 </TimelineDate>
                 <TimelineLongDescription>

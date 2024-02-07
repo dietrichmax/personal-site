@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import { parseISO, format } from "date-fns"
-import config from "src/data/internal/SiteConfig"
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram"
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
 import { FaReddit } from "@react-icons/all-files/fa/FaReddit"
@@ -29,6 +27,7 @@ const SyndList = styled.ol`
 
 const SyndLi = styled.li`
   display: inline-block;
+  margin-left: 5px;
 `
 
 const SyndItem = styled.a`
@@ -48,15 +47,16 @@ export default function PostMeta({ post, slug, syndicationLinks }) {
     }
   }
 
+  const dateOptions = { year: "numeric", month: "long", day: "numeric" }
+
   return (
     <Meta>
       <DateWrapper className="dt-published">
-        Updated{" "}
+        First published{" "}
         <a className="u-url" title={slug} href={slug}>
-          {format(
-            parseISO(post.updated_at ? post.updated_at : post.published_at),
-            config.dateFormat
-          )}
+          {new Date(
+            post.published_at ? post.published_at : post.published_at
+          ).toLocaleDateString("en-US", dateOptions)}
         </a>
       </DateWrapper>
       <SyndList className="syndications">

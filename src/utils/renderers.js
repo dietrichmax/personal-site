@@ -65,7 +65,6 @@ const DefaultCode = styled.code`
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 `
 
-
 const MarkdownImage = ({ src }) => {
   const [data, updateData] = useState()
 

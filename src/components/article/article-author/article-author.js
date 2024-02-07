@@ -73,7 +73,6 @@ const AuthorLink = styled(Link)`
   cursor: pointer;
 `
 
-
 export default function Author(author) {
   const [count, setThanks] = useState(0)
   const [gotData, setGotData] = useState(false)
@@ -154,8 +153,10 @@ export default function Author(author) {
         </AuthorMeta>
       </AuthorWrapper>
       <AuthorDescription>
-        <AuthorBio>{bio}{" "}<AuthorLink href="/support">Support me</AuthorLink></AuthorBio>
-        
+        <AuthorBio>
+          {bio} <AuthorLink href="/support">Support me</AuthorLink>
+        </AuthorBio>
+
         <AuthorSocials>
           <AuthorSocialsContainer>
             <SupportButtonContainer>

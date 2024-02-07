@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Button } from "@/styles/templates/button"
 import styled from "styled-components"
 import media from "styled-media-query"
-import { formatDistance } from "date-fns"
 
 const CommentWrapper = styled.div`
   border-top: 0.1rem solid var(--content-bg);
@@ -130,6 +129,7 @@ export default function Comments({ slug }) {
         console.log(error)
       })
   }
+
   return (
     <CommentWrapper>
       <CommentsWrapper>
@@ -145,10 +145,16 @@ export default function Comments({ slug }) {
                 >
                   <CommentDate className="dt-published">
                     {comment.updated_at
-                      ? `${formatDistance(
-                          new Date(comment.updated_at),
-                          new Date()
-                        )} ago`
+                      ? new Date(comment.updated_at).toLocaleDateString(
+                          "en-US",
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "numeric",
+                          }
+                        )
                       : null}
                   </CommentDate>
                 </a>

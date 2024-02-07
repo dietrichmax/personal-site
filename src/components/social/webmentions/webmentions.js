@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import media from "styled-media-query"
 import config from "@/src/data/internal/SiteConfig"
-import { formatDistance } from "date-fns"
 import { Input } from "@/styles/templates/input"
 import { FaRegQuestionCircle } from "@react-icons/all-files/fa/FaRegQuestionCircle"
 import { FaRetweet } from "@react-icons/all-files/fa/FaRetweet"
@@ -47,7 +46,7 @@ const WebmentionsContainer = styled.div`
   margin-bottom: var(--space-sm);
 `
 
-const WebmentionComment = styled.li`
+const WebmentionComment = styled.div`
   margin-bottom: var(--space-sm);
   background-color: var(--content-bg);
   padding: var(--space-sm);
@@ -108,7 +107,7 @@ const WebmentionInput = styled(Input)`
   }
 `
 
-const WebmentionLike = styled.li`
+const WebmentionLike = styled.div`
   display: inline-block;
 `
 
@@ -123,7 +122,7 @@ const WebmentionsPreview = styled.ol`
   list-style: none;
 `
 
-const WebmentionPreviewCount = styled.li`
+const WebmentionPreviewCount = styled.div`
   display: inline-block;
   margin-right: 0.5rem;
 `
@@ -348,7 +347,7 @@ export default function Webmentions({ slug, preview }) {
           "published": data.published_at,
           "author": {
             name: data.name || "anonym",
-            photo: "https://cms.mxd.codes/uploads/mm_1559572612.jpg",
+            photo: "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg",
             type: "card",
             url: config.siteUrl,
           },
@@ -553,10 +552,15 @@ export default function Webmentions({ slug, preview }) {
                           >
                             <WebmentionDate className="dt-published">
                               {mention.published
-                                ? `${formatDistance(
-                                    new Date(mention.published),
-                                    new Date()
-                                  )} ago`
+                                ? new Date(
+                                    mention.published
+                                  ).toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                  })
                                 : null}
                             </WebmentionDate>
                           </a>

@@ -6,7 +6,7 @@
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"],
-      "@/src/*": ["src/*"],
-    },
-  },
+      "@/src/*": ["src/*"]
+    }
+  }
 }

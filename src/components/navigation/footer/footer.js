@@ -94,15 +94,13 @@ const FooterItem = styled.li`
   }
 `
 
-const FooterItemLink = styled(Link)``
-
 const FooterNotice = styled.p`
   font-size: 0.75rem;
   grid-column: span 4 / span 4;
   margin-top: var(--space-sm);
 `
 
-const FooterLink = styled.a`
+const FooterLink = styled(Link)`
   color: var(--text-color);
   border-bottom: 1px solid var(--secondary-color);
   cursor: pointer;
@@ -278,12 +276,12 @@ export default function Footer() {
               {data.recentPosts
                 ? data.recentPosts.map((post, i) => (
                     <FooterItem key={i}>
-                      <FooterItemLink
+                      <Link
                         href={`/articles/${post.slug}`}
                         title={post.title}
                       >
                         {post.title}
-                      </FooterItemLink>
+                      </Link>
                     </FooterItem>
                   ))
                 : null}
@@ -294,9 +292,9 @@ export default function Footer() {
             <List>
               {footerItems.map((item, i) => (
                 <FooterItem key={i}>
-                  <FooterItemLink href={item.link} title={item.name}>
+                  <Link href={item.link} title={item.name}>
                     {item.name}
-                  </FooterItemLink>
+                  </Link>
                 </FooterItem>
               ))}
             </List>
@@ -310,13 +308,9 @@ export default function Footer() {
             {config.siteTitleAlt}
           </Link>
           <span> • </span>
-          <Link href="/privacy-policy" passHref legacyBehavior>
-            <FooterLink title="Privacy Policy">Privacy Policy</FooterLink>
-          </Link>
+          <FooterLink href="/privacy-policy" title="Privacy Policy">Privacy Policy</FooterLink>
           <span> • </span>
-          <Link href="/site-notice" passHref legacyBehavior>
-            <FooterLink title="Site Notice">Site Notice</FooterLink>
-          </Link>
+          <FooterLink href="/site-notice" title="Site Notice">Site Notice</FooterLink>
         </FooterNotice>
       </FooterInnerContainer>
     </FooterContainer>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from "next/head"
 import config from "@/src/data/internal/SiteConfig"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const SEO = ({
   title,
@@ -21,13 +22,12 @@ const SEO = ({
   }
 
   useEffect(() => {
-    let isSubscribed = true
-    fetch("https://cms.mxd.codes/cv", requestOptions)
-      .then((response) => response.json())
-      .then((data) => (isSubscribed ? setData(data) : null))
-
-    return () => (isSubscribed = false)
-  }, [])
+    const fetchCV = async () => {
+      const cv = await fetchGET("https://cms.mxd.codes/cv")
+      setData(cv);
+    };
+    fetchCV();
+  }, []);
 
   description = description
     ? description.replace(/(<([^>]+)>)/gi, "")

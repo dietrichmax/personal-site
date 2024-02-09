@@ -38,6 +38,7 @@ export default function App(props) {
 
   const trackPageviewMatomo = () => {
     if (window.location.href.includes(config.domain)) {
+      _paq.push(['setSiteId', process.env.NEXT_PUBLIC_MATOMO_SITE_ID]);
       _paq.push(["setCustomUrl", pathname]);
       _paq.push(['setDocumentTitle', document.title]);
       _paq.push(['trackPageView']);

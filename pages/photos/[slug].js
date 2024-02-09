@@ -71,7 +71,7 @@ export default function Photo({ photo }) {
                             width={photo.width}
                             height={photo.height}
                             className="u-photo"
-                            priority={true}
+                            priority="true"
                           />
                         ) : (
                           <img

@@ -1,28 +1,58 @@
 import { useEffect } from "react"
-import { init } from "@socialgouv/matomo-next"
 import GlobalStyle from "@/styles/global.js"
 import config from "@/src/data/internal/SiteConfig"
 import Providers from "@/src/utils/providers"
 import Head from "next/head"
 import "@/public/fonts/SF-UI/style.css"
 import "@/styles/prism.css"
+import { usePathname } from 'next/navigation';
+
+
 
 export default function App(props) {
   const { Component, pageProps } = props
+  const pathname = usePathname();
+
+  const initializeMatomo = () => {
+    if (window.location.href.includes(config.domain)) {
+      const scriptElement = document.createElement("script");
+      const refElement = document.getElementsByTagName("script")[0];
+
+      const _paq = window._paq = window._paq || [];
+      _paq.push(["disableCookies"]);
+
+      _paq.push(["setCustomUrl", pathname]);
+      _paq.push(['setDocumentTitle', document.title]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+
+      _paq.push(['setSiteId', process.env.NEXT_PUBLIC_MATOMO_SITE_ID]);
+      _paq.push(["setTrackerUrl", `${process.env.NEXT_PUBLIC_MATOMO_URL}/matomo.php`]);
+      _paq.push(["enableHeartBeatTimer"])
+      scriptElement.type = "text/javascript";
+      scriptElement.async = true;
+      scriptElement.defer = true;
+      const fullUrl = `${process.env.NEXT_PUBLIC_MATOMO_URL}/matomo.js`;
+      scriptElement.src = fullUrl;
+      if (refElement.parentNode) {
+        refElement.parentNode.insertBefore(scriptElement, refElement);
+      }
+    }
+  };
+
+  const trackPageviewMatomo = () => {
+    _paq.push(["setCustomUrl", pathname]);
+    _paq.push(['setDocumentTitle', document.title]);
+    _paq.push(['trackPageView']);
+  }
 
   useEffect(() => {
-    if (window.location.href.includes(config.domain)) {
-      init({
-        url: process.env.NEXT_PUBLIC_MATOMO_URL,
-        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
-      })
-      window._paq.push(["enableHeartBeatTimer"])
-      /*if (Cookie.get("consent") === "true") {
-        //enableGoogleAnalytics();
-        //enableGoogleAdsense();
-      }*/
-    }
+      initializeMatomo()
   }, [])
+
+  useEffect(() => {
+    trackPageviewMatomo()
+  }, [pathname]);
 
   return (
     <>

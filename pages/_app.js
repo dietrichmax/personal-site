@@ -41,9 +41,11 @@ export default function App(props) {
   };
 
   const trackPageviewMatomo = () => {
-    _paq.push(["setCustomUrl", pathname]);
-    _paq.push(['setDocumentTitle', document.title]);
-    _paq.push(['trackPageView']);
+    if (window.location.href.includes(config.domain)) {
+      _paq.push(["setCustomUrl", pathname]);
+      _paq.push(['setDocumentTitle', document.title]);
+      _paq.push(['trackPageView']);
+    }
   }
 
   useEffect(() => {

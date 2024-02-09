@@ -20,10 +20,6 @@ export default function App(props) {
 
       const _paq = window._paq = window._paq || [];
       _paq.push(["disableCookies"]);
-
-      _paq.push(["setCustomUrl", pathname]);
-      _paq.push(['setDocumentTitle', document.title]);
-      _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
 
       _paq.push(['setSiteId', process.env.NEXT_PUBLIC_MATOMO_SITE_ID]);

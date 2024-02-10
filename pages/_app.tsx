@@ -5,9 +5,9 @@ import Providers from "@/src/utils/providers"
 import Head from "next/head"
 import "@/public/fonts/SF-UI/style.css"
 import "@/styles/prism.css"
-import { usePathname } from "next/navigation"
 import type { AppProps } from "next/app"
 import { config } from "@/src/data/internal/SiteConfig"
+import init from "@/src/utils/matomo"
 
 declare global {
   interface Window {
@@ -16,51 +16,16 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-  const pathname = usePathname()
-
-  const initializeMatomo = () => {
-    if (window.location.href.includes(config.domain)) {
-      const scriptElement = document.createElement("script")
-      const refElement = document.getElementsByTagName("script")[0]
-
-      const _paq = (window._paq = window._paq || [])
-      _paq.push(["disableCookies"])
-      _paq.push(["enableLinkTracking"])
-
-      _paq.push(["setSiteId", process.env.NEXT_PUBLIC_MATOMO_SITE_ID])
-      _paq.push([
-        "setTrackerUrl",
-        `${process.env.NEXT_PUBLIC_MATOMO_URL}/matomo.php`,
-      ])
-      _paq.push(["enableHeartBeatTimer"])
-      scriptElement.type = "text/javascript"
-      scriptElement.async = true
-      scriptElement.defer = true
-      const fullUrl = `${process.env.NEXT_PUBLIC_MATOMO_URL}/matomo.js`
-      scriptElement.src = fullUrl
-      if (refElement.parentNode) {
-        refElement.parentNode.insertBefore(scriptElement, refElement)
-      }
-    }
-  }
-
-  const trackPageviewMatomo = () => {
-    if (window.location.href.includes(config.domain)) {
-      const _paq = (window._paq = window._paq || [])
-      _paq.push(["setSiteId", process.env.NEXT_PUBLIC_MATOMO_SITE_ID])
-      _paq.push(["setCustomUrl", pathname])
-      _paq.push(["setDocumentTitle", document.title])
-      _paq.push(["trackPageView"])
-    }
-  }
 
   useEffect(() => {
-    initializeMatomo()
+    //if (window.location.href.includes(config.domain)) {
+      init({ 
+        url: process.env.NEXT_PUBLIC_MATOMO_URL, 
+        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID 
+      });
+      window._paq.push(["enableHeartBeatTimer"])
+    //}
   }, [])
-
-  useEffect(() => {
-    trackPageviewMatomo()
-  }, [pathname])
 
   return (
     <>

@@ -43,7 +43,18 @@ const WeatherImg = styled(Image)`
   display: inline-block;
 `
 
-export default function Now({ weather, address, content, now }) {
+interface Now {
+  weather: unknown,
+  address: unknown,
+  now: {
+    batt: number,
+    bs: number,
+    created_at: string,
+  }
+}
+
+export default function Now({ weather, address, now }: Now) {
+
   const batteryStatus = (bs: number) => {
     switch (bs) {
       case 0:

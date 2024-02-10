@@ -21,6 +21,7 @@
     "@next/bundle-analyzer": "^14.1.0",
     "@react-icons/all-files": "^4.1.0",
     "@remy/webmention": "^1.5.0",
+    "@types/node": "^20.11.17",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "leaflet": "^1.9.4",
@@ -43,7 +44,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "lint-staged": "^15.2.0"
+    "lint-staged": "^15.2.0",
+    "typescript": "5.3.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

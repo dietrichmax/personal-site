@@ -54,7 +54,7 @@ export default function Nav({ color }) {
       {headerItems.map((item, i) => (
         <NavItem key={i} color={color}>
           <ActiveLink
-            activeClassName={`active`}
+            activeClassName="active"
             itemProp="url"
             href={item.link}
             passHref

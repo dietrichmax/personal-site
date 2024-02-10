@@ -18,13 +18,13 @@ declare global {
 export default function App({ Component, pageProps }: AppProps): ReactElement {
 
   useEffect(() => {
-    //if (window.location.href.includes(config.domain)) {
+    if (window.location.href.includes(config.domain)) {
       init({ 
         url: process.env.NEXT_PUBLIC_MATOMO_URL, 
         siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID 
       });
       window._paq.push(["enableHeartBeatTimer"])
-    //}
+    }
   }, [])
 
   return (

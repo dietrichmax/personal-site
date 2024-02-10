@@ -7,7 +7,7 @@ import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import config from "@/src/data/internal/SiteConfig"
+import { config } from "@/src/data/internal/SiteConfig"
 import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`
@@ -61,7 +61,7 @@ const jsonld = {
 }
 
 export default function About({ about }) {
-  const [selected, setSelected] = useState(2)
+  const [selected, setSelected] = useState<number>(2)
 
   const renderBio = () => {
     switch (selected) {

@@ -11,8 +11,8 @@ const LogoWrapper = styled.div`
   margin: 0;
   display: flex;
   ${media.lessThan("small")`
-  font-size: 1rem;
-`}
+    font-size: 1rem;
+  `}
 `
 const LogoName = styled.span`
   font-weight: 700;

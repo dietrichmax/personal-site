@@ -60,6 +60,7 @@ const Hero = styled.div`
   margin: 0px auto;
   ${media.lessThan("large")`
     padding: calc(var(--space-lg)*1.75) 0 calc(1rem + 60px) 0;
+    margin: auto var(--space-sm) auto var(--space-sm);
     width: 100%;
     display: block;
   `}

@@ -16,6 +16,7 @@ const PageWrapper = styled.div`
   ${media.lessThan("large")`
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+    margin-left: var(--space-sm);
   `}
 `
 

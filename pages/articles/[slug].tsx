@@ -95,11 +95,8 @@ const PostWrapper = styled.div`
 
 const PostImgWrapper = styled.div`
   max-width: 1300px;
-  margin: calc(var(--space-lg) * 2.5) auto var(--space-sm) auto;
+  margin: calc(var(--space-lg) * 1.75) auto var(--space-sm) auto;
   position: relative;
-  ${media.lessThan("small")`
-    margin: calc(var(--space-lg) * 1.75) auto var(--space-sm) auto;
-  `}
 `
 
 const Content = styled.div`

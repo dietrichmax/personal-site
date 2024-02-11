@@ -280,6 +280,8 @@ export default function Index({ posts, cv }) {
     <>
       <Layout color="#f2f2f2">
         <SEO
+          title="Max Dietrich"
+          slug="/"
           description={`Hi, I'm Max Dietrich. I currently work as ${cv.timeline[0].role} at ${cv.timeline[0].company}. Beside that I ride my mountain bike in the alps, code and design my website and publish new content whenever i can.`}
           jsonld={jsonld}
         />

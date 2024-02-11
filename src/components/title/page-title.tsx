@@ -15,6 +15,9 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   text-transform: capitalize;
+  ${media.lessThan("large")`
+    font-size: 2rem;
+  `}
 `
 
 interface PageTitle {

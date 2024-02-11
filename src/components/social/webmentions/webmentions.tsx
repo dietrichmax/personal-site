@@ -131,7 +131,7 @@ const WebmentionPreviewLabel = styled.span`
   `}
 `
 
-const WebmentionsList = styled.ol`
+const WebmentionsList = styled.div`
   list-style: none;
   padding-inline-start: 0;
 `
@@ -475,13 +475,11 @@ export default function Webmentions({ slug, preview }) {
               rel="noopener noreferrer nofollow"
               title="What's this?"
               onClick={() => {
-                !process.env.NODE_ENV === "development"
-                  ? window._paq.push([
+                  window._paq.push([
                       "trackEvent",
                       "WebMentionsInfo",
                       "Click on Info",
                     ])
-                  : null
               }}
             >
               <Link href="/webmention" title="What is Webmention?">

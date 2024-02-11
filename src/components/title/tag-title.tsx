@@ -17,6 +17,9 @@ const Title = styled.h1`
   color: ${(props) => (props.color ? props.color : "var(--text-color")};
   font-size: 3rem;
   text-transform: capitalize;
+  ${media.lessThan("large")`
+    font-size: 2rem;
+  `}
 `
 
 const Dots = styled.div`

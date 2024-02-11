@@ -13,6 +13,7 @@ const Title = styled.p`
   ${media.lessThan("medium")`
     margin: var(--space) var(--space-sm);
     padding: 0;
+    font-size: 1.5rem;
   `}
 `
 

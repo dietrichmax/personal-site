@@ -7,7 +7,8 @@ export async function fetchGET(url: string) {
       },
       cache: "force-cache",
     })
-    return res.json()
+    const json = await res.json()
+    return json
   } catch (error) {
     console.error(error)
   }
@@ -20,7 +21,8 @@ export async function fetchPOST(url: string, body: JSON) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
-    return res.json()
+    const json = await res.json()
+    return json
   } catch (error) {
     console.error(error)
   }

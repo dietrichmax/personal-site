@@ -57,7 +57,7 @@ const SyntaxHighlighter = ({ language, code }: SyntaxHighlighter) => {
 
   return (
     <div ref={ref}>
-      <pre>
+      <pre className={`language-${language}`} tabIndex={0}>
         <code className={`language-${language}`}>{code.trim()}</code>
       </pre>
     </div>

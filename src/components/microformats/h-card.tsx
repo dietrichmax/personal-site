@@ -31,14 +31,6 @@ export default function hCard() {
             itemProp="url"
             value={config.siteUrl}
           />
-          <a
-            className="p-name u-url"
-            rel="author"
-            itemProp="name"
-            href={config.siteUrl}
-          >
-            {config.siteTitleAlt}
-          </a>
           <time className="dt-btday" dateTime="--08-08" itemProp="birthDate" />
           <data className="p-locality" value="Wasserburg am Inn" />
           <data className="p-region" value="Bavaria" />

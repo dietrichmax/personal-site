@@ -185,7 +185,11 @@ const ColumnTooltipText = styled.div`
   `}
 `
 
-const Column = styled.div`
+interface ColumnProps {
+  height: number,
+}
+
+const Column = styled.div<ColumnProps>`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -273,7 +277,13 @@ const LanguageBar = styled.div`
   display: flex;
   margin-bottom: var(--space);
 `
-const LanguageBarChild = styled.div`
+
+interface LanguageBarChildProps {
+  color: string,
+  width: string
+}
+
+const LanguageBarChild = styled.div<LanguageBarChildProps>`
   background-color: ${(props) =>
     props.color ? `${props.color}` : "var(--gray)"};
   height: 1.5rem;
@@ -305,6 +315,37 @@ const TopPageListItemCount = styled.span`
   font-style: italic;
 `
 
+interface Dashboard {
+  lastViews: unknown
+  actions: any,
+  postsCount: number,
+  tagsCount: number,
+  subscribersCount: number,
+  githubStats: any,
+  allWebmentions: Array<object>,
+  locationsCount: number,
+  activitiesCount: number,
+  linksCount: number,
+  visitsSummary: any,
+  photosCount: number,
+  activities: [{
+    distance: number,
+    duration: number,
+    maxSpeed: number,
+    maxDistance: number,
+    maxElevationGain: number,
+    totalElevationGain: number,
+    jumpCount: number,
+    elevationGain: number,
+    movingDuration: number,
+  }],
+  topPosts: any,
+  consentCount: any,
+  biggestTrafficSource: any,
+  thanks: any,
+  commentsCount: number,
+}
+
 export default function Dashboard({
   lastViews,
   actions,
@@ -324,7 +365,7 @@ export default function Dashboard({
   biggestTrafficSource,
   thanks,
   commentsCount,
-}) {
+}: Dashboard) {
   const [liveViews, setLiveViews] = useState<number>(0)
 
   const { forkCount } = githubStats.user.repository
@@ -345,9 +386,6 @@ export default function Dashboard({
 
   Object.entries(lastViews).forEach(
     (value) => (
-      value[1].nb_pageviews
-        ? (recentViews = recentViews + value[1].nb_pageviews)
-        : null,
       pageViews.push({
         date: value[0],
         dateShort: value[0].substring(8),
@@ -365,8 +403,8 @@ export default function Dashboard({
     )
   )
   const normalisedMax = Math.max.apply(Math, normalisedViews)
-
-  const getTimeOnSite = (time) => {
+  
+  const getTimeOnSite = (time: number) => {
     const minutes: number = Math.floor(time / 60)
     const seconds: number = time - minutes * 60
     const timeOnSite: string = `${minutes} min ${seconds} s`
@@ -392,16 +430,16 @@ export default function Dashboard({
   })
 
   const consentTrue = consentCount
-    ? consentCount.find((element) => element.label === "consent - true")
+    ? consentCount.find((element: any) => element.label === "consent - true")
     : 0
 
   const consentFalse = consentCount
-    ? consentCount.find((element) => element.label === "consent - false")
+    ? consentCount.find((element: any) => element.label === "consent - false")
     : 0
 
   async function getMatomoLiveCounter() {
     const res = await fetchGET("/api/stats")
-    setLiveViews(res.analytics.currentVisitors.visitors)
+    res ? setLiveViews(res.analytics.currentVisitors.visitors) : setLiveViews(0)
   }
 
   useEffect(() => {
@@ -545,18 +583,6 @@ export default function Dashboard({
           </StatsGridMedium>
         </GeneralStats>
 
-        {/*<GeneralStats>
-                              <StatsGridMedium>
-                                  <GridMediumTitle>SEO Stats</GridMediumTitle>
-                                  {seoStats.map((seo,i) => (
-                                      <BottomStatsGrid key={i}>
-                                          <GridStats>{seo.rank}</GridStats>
-                                          <GridStatsDescription>{seo.label}</GridStatsDescription>
-                                      </BottomStatsGrid>
-                                  ))}
-                              </StatsGridMedium>
-                                  </GeneralStats>*/}
-
         <ViewsContainer>
           <Title>
             {recentViews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} page
@@ -631,11 +657,11 @@ export default function Dashboard({
           <Title>Project Breakdown by Language</Title>
           <LanguageBar>
             <LanguageBarChild
-              width={parseFloat(
+              width={(
                 (codeStats.JavaScript.code / linesOfCode) * 100
               ).toFixed(2)}
               color="#f0db4f"
-              data-tip={`${parseFloat(
+              data-tip={`${(
                 (codeStats.JavaScript.code / linesOfCode) * 100
               ).toFixed(2)}% JavaScript`}
               style={{
@@ -644,29 +670,29 @@ export default function Dashboard({
               }}
             />
             <LanguageBarChild
-              width={parseFloat(
+              width={(
                 (codeStats.JSON.code / linesOfCode) * 100
               ).toFixed(2)}
               color="brown"
-              data-tip={`${parseFloat(
+              data-tip={`${(
                 (codeStats.JSON.code / linesOfCode) * 100
               ).toFixed(2)}% JSON`}
             />
             <LanguageBarChild
-              width={parseFloat(
+              width={(
                 (codeStats.CSS.code / linesOfCode) * 100
               ).toFixed(2)}
               color="pink"
-              data-tip={`${parseFloat(
+              data-tip={`${(
                 (codeStats.CSS.code / linesOfCode) * 100
               ).toFixed(2)}% CSS`}
             />
             <LanguageBarChild
-              width={parseFloat(
+              width={(
                 (codeStats.Markdown.code / linesOfCode) * 100
               ).toFixed(2)}
               color="var(--gray)"
-              data-tip={`${parseFloat(
+              data-tip={`${(
                 (codeStats.Markdown.code / linesOfCode) * 100
               ).toFixed(2)}% Markdown`}
               style={{
@@ -679,7 +705,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="#f0db4f" />
-                {parseFloat(
+                {(
                   (codeStats.JavaScript.code / linesOfCode) * 100
                 ).toFixed(2)}
                 % Javascript
@@ -697,7 +723,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="brown" />
-                {parseFloat((codeStats.JSON.code / linesOfCode) * 100).toFixed(
+                {((codeStats.JSON.code / linesOfCode) * 100).toFixed(
                   2
                 )}
                 % JSON
@@ -715,7 +741,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="pink" />
-                {parseFloat((codeStats.CSS.code / linesOfCode) * 100).toFixed(
+                {((codeStats.CSS.code / linesOfCode) * 100).toFixed(
                   2
                 )}
                 % CSS
@@ -726,7 +752,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="var(--gray)" />
-                {parseFloat(
+                {(
                   (codeStats.Markdown.code / linesOfCode) * 100
                 ).toFixed(2)}
                 % Markdown
@@ -749,7 +775,7 @@ export default function Dashboard({
               <GridStatsDescription>Activities tracked</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{distance / 1000}</GridStats>
+              <GridStats>{(distance / 1000).toFixed(0)}</GridStats>
               <GridStatsDescription>Total distance [km]</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
@@ -764,7 +790,7 @@ export default function Dashboard({
               </GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{duration / 3600}</GridStats>
+              <GridStats>{(duration / 3600).toFixed(0)}</GridStats>
               <GridStatsDescription>Total duration [h]</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
@@ -772,17 +798,17 @@ export default function Dashboard({
               <GridStatsDescription>Jump Count</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{Math.max(...maxDistance) / 1000}</GridStats>
+              <GridStats>{(Math.max(...maxDistance) / 1000).toFixed(0)}</GridStats>
               <GridStatsDescription>Max Distance [km]</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{Math.max(...maxElevationGain)}</GridStats>
+              <GridStats>{(Math.max(...maxElevationGain)).toFixed(0)}</GridStats>
               <GridStatsDescription>
                 Max Elevation Gain [m]
               </GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{Math.max(...maxSpeed)}</GridStats>
+              <GridStats>{(Math.max(...maxSpeed)).toFixed(0)}</GridStats>
               <GridStatsDescription>Max speed [km/h]</GridStatsDescription>
             </BottomStatsGrid>
           </StatsGridMedium>
@@ -802,7 +828,7 @@ export async function getStaticProps() {
   const activitiesCount = await getActivitiesCount()
   const linksCount = (await getLinksCount()) || []
   const commentsCount = (await getCommentsCount()) || []
-  const lastViews = (await getMatomoPageViews()) || []
+  const lastViews: unknown = (await getMatomoPageViews()) || []
   const actions = (await getMatomoActions()) || []
   const githubStats = (await getGitHubStats()) || []
   const visitDuration = (await getMatomoSumVisitDuration()) || []
@@ -810,7 +836,7 @@ export async function getStaticProps() {
   const visitsSummary = (await getMatomoVisitsSummary()) || []
   const activities = (await getAllActivities()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
-  const consentCount = (await getMatomoConsent()) || []
+  const consentCount: number = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
   const thanks: number = (await getThanks()) || []
 

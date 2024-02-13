@@ -469,19 +469,7 @@ export default function Webmentions({ slug, preview }) {
                 mentions.length}{" "}
               Webmentions
             </WebmentionsTitle>
-            <WebmentionsInfo
-              href="/webmention"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              title="What's this?"
-              onClick={() => {
-                  window._paq.push([
-                      "trackEvent",
-                      "WebMentionsInfo",
-                      "Click on Info",
-                    ])
-              }}
-            >
+            <WebmentionsInfo>
               <Link href="/webmention" title="What is Webmention?">
                 <FaRegQuestionCircle />
               </Link>
@@ -498,7 +486,6 @@ export default function Webmentions({ slug, preview }) {
               type="webmention"
               name="webmention"
               id="webmention-input"
-              label="webmention-input"
               placeholder="URL / permalink of your response"
               onChange={(e) => setSourceUrl(e.target.value)}
             />

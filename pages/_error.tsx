@@ -5,7 +5,7 @@ import Title from "@/src/components/title/page-title"
 export default function Error({ statusCode }) {
   return (
     <Layout>
-      <SEO title="500 - Error" slug="" />
+      <SEO title="500 - Error" slug="" description="An error occurred" />
       <Title>
         {statusCode
           ? `An error ${statusCode} occurred on server`

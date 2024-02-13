@@ -23,7 +23,7 @@ export default function Custom404({ pages }) {
 
   return (
     <Layout>
-      <SEO title="404 - Page Not Found" slug="" />
+      <SEO title="404 - Page Not Found" slug="404" description="Seems like you got lost. Sorry for that..."/>
       <Title>404 - Page Not Found</Title>
       <SubTitle>{`Seems like you got lost. Sorry for that...`}</SubTitle>
       <Container>

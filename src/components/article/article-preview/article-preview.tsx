@@ -51,7 +51,9 @@ const CardReadMoreRead = styled.p`
   color: #fff;
   background: var(--secondary-color);
   font-family: var(--primary-font);
-  :hover {
+  transition: 0.2s;
+  &:hover {
+    background-color: var(--body-bg);
     color: var(--text-color);
   }
 `
@@ -60,12 +62,7 @@ const Socials = styled.div`
   font-size: 0.75rem;
 `
 
-const DynamicPostMeta = dynamic(
-  () => import("@/src/components/post/post-meta/post-meta-preview"),
-  {
-    loading: () => <p>Loading...</p>,
-  }
-)
+const DynamicPostMeta = dynamic(() => import("@/src/components/post/post-meta/post-meta-preview"))
 
 interface PostPreview {
   postData: {
@@ -101,11 +98,11 @@ export default function PostPreview({ postData }) {
           <CardItemDescription className="p-summary">
             {excerpt}{" "}
           </CardItemDescription>
-          <Link href={slug} passHref legacyBehavior>
-            <CardReadMoreRead title={title}>
+            <CardReadMoreRead >
+          <Link href={slug} title={title}>
               Continue reading...
-            </CardReadMoreRead>
           </Link>
+            </CardReadMoreRead>
         </CardItemInfo>
         <CardMeta>
           {/*<TagsWrapper>

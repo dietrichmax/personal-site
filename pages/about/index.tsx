@@ -3,11 +3,9 @@ import Image from "next/image"
 import Content from "@/src/components/article/article-body/article-body"
 import Layout from "@/src/components/layout/layout"
 import { getAbout } from "@/src/data/external/cms"
-import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import { config } from "@/src/data/internal/SiteConfig"
 import { serialize } from "next-mdx-remote/serialize"
 
 const PageWrapper = styled.div`

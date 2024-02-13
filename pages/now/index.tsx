@@ -44,8 +44,20 @@ const WeatherImg = styled(Image)`
 `
 
 interface Now {
-  weather: unknown,
-  address: unknown,
+  weather: {
+    main: {
+      temp: string,
+    },
+    weather: {
+      description: string
+    }
+  },
+  address: {
+    address: {
+      state: string,
+      country: string
+    }
+  },
   now: {
     batt: number,
     bs: number,
@@ -102,15 +114,15 @@ export default function Now({ weather, address, now }: Now) {
     }
   }
 
-  const options = {
+  const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "numeric",
-    minute: "numeric",
-  }
-  const today = new Date().toLocaleDateString("en-US", options)
+    minute: "numeric"
+  })
+
   return (
     <Layout>
       <SEO

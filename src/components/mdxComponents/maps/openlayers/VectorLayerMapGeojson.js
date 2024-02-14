@@ -32,6 +32,8 @@ const VectorLayerMap = () => {
         zoom: 2,
       }),
     })
+
+    return () => map.setTarget(null)
   }, [])
 
   return (

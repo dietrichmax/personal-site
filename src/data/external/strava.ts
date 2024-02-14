@@ -1,4 +1,4 @@
-export async function fetchStravaAPI(query, { variables } = {}) {
+export async function fetchStravaAPI(query: string, { variables } = {}) {
   const res = await fetch(`https://www.strava.com/api/v3/`, {
     method: "GET",
     headers: {

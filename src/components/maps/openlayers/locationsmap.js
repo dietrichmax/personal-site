@@ -79,11 +79,7 @@ function LiveMap({ data }) {
     })
     setMap(initialMap)
 
-    return () => {
-      if (mapElement.current) {
-        mapElement.current.setTarget(null);
-      }
-    };
+    return () => map.setTarget(null)
   }, [])
 
   return (

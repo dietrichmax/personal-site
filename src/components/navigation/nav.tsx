@@ -18,7 +18,7 @@ const NavItem = styled.li`
   color: ${(props) => (props.color ? `${props.color}` : "color: var(--gray);")};
   padding-left: 0;
   margin-left: var(--space);
-  :hover {
+  &:hover {
     text-decoration: none;
     background-image: linear-gradient(
       var(--primary-color),
@@ -55,9 +55,7 @@ export default function Nav({ color }) {
         <NavItem key={i} color={color}>
           <ActiveLink
             activeClassName="active"
-            itemProp="url"
             href={item.link}
-            passHref
           >
             <a title={item.name} itemProp="name">
               {item.name}

@@ -22,15 +22,7 @@ interface CVData {
       company: string
     },
   ]
-  skills: [
-    {
-      skillName: [
-        {
-          name: string
-        },
-      ]
-    },
-  ]
+  skills: any
 }
 const SEO = ({
   title,

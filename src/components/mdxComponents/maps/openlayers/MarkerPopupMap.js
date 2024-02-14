@@ -12,40 +12,41 @@ import { toStringHDMS } from "ol/coordinate.js"
 import Feature from "ol/Feature.js"
 
 const MarkerPopupMap = () => {
-  useEffect(() => {
-    const iconFeature = new Feature({
-      geometry: new Point([0, 0]),
-      name: "Null Island",
-      population: 4000,
-      rainfall: 500,
-    })
 
-    const vectorSource = new VectorSource({
-      features: [iconFeature],
-    })
+  const iconFeature = new Feature({
+    geometry: new Point([0, 0]),
+    name: "Null Island",
+    population: 4000,
+    rainfall: 500,
+  })
 
-    const vectorLayer = new VectorLayer({
-      source: vectorSource,
-    })
+  const vectorSource = new VectorSource({
+    features: [iconFeature],
+  })
 
-    const rasterLayer = new TileLayer({
-      source: new OGCMapTile({
-        url: "https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:raster:HYP_HR_SR_OB_DR/map/tiles/WebMercatorQuad",
-        crossOrigin: "",
-      }),
-    })
+  const vectorLayer = new VectorLayer({
+    source: vectorSource,
+  })
 
-    const container = document.getElementById("popup")
-    const content = document.getElementById("popup-content")
-    const closer = document.getElementById("popup-closer")
-    const overlay = new Overlay({
-      element: container,
-      autoPan: {
-        animation: {
-          duration: 250,
-        },
+  const rasterLayer = new TileLayer({
+    source: new OGCMapTile({
+      url: "https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:raster:HYP_HR_SR_OB_DR/map/tiles/WebMercatorQuad",
+      crossOrigin: "",
+    }),
+  })
+
+  const container = document.getElementById("popup")
+  const content = document.getElementById("popup-content")
+  const overlay = new Overlay({
+    element: container,
+    autoPan: {
+      animation: {
+        duration: 250,
       },
-    })
+    },
+  })
+
+  useEffect(() => {
 
     const map = new Map({
       layers: [rasterLayer, vectorLayer],
@@ -67,13 +68,14 @@ const MarkerPopupMap = () => {
       content.innerHTML = "<p>You clicked here:</p><code>" + hdms + "</code>"
       overlay.setPosition(coordinate)
     })
+
+    return () => map.setTarget(null)
   }, [])
 
   return (
     <div>
       <div id="markerpopupmap" style={{ width: "100%", height: "400px" }} />
       <div id="popup" className="ol-popup" style={{ backgroundColor: "#fff" }}>
-        <a href="#" id="popup-closer" className="ol-popup-closer"></a>
         <div id="popup-content"></div>
       </div>
     </div>

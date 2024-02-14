@@ -6,11 +6,13 @@ import OSM from "ol/source/OSM"
 import "ol/ol.css"
 
 function MapComponent() {
+
+  const osmLayer = new TileLayer({
+    preload: Infinity,
+    source: new OSM(),
+  })
+
   useEffect(() => {
-    const osmLayer = new TileLayer({
-      preload: Infinity,
-      source: new OSM(),
-    })
 
     const map = new Map({
       target: "simplemap",
@@ -20,6 +22,8 @@ function MapComponent() {
         zoom: 0,
       }),
     })
+
+    return () => map.setTarget(null)
   }, [])
 
   return (

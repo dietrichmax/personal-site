@@ -1,6 +1,6 @@
 import { fetchGET } from "@/src/utils/fetcher"
 
-export async function fetchStrapiAPI(query, { variables } = {}) {
+export async function fetchStrapiAPI(query: string, { variables } = {}) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: "POST",
     headers: {

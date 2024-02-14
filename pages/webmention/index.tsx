@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import Content from "@/src/components/article/article-body/article-body"
+import React, { useState } from "react"
 import Layout from "@/src/components/layout/layout"
-import { getAbout } from "@/src/data/external/cms"
-import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import config from "@/src/data/internal/SiteConfig"
 import Title from "@/src/components/title/page-title"
 import { Button } from "@/styles/templates/button"
 
@@ -88,9 +83,9 @@ const Status = styled.div`
 `
 
 export default function WebmentionEndpoint({}) {
-  const [sourceUrl, setSourceUrl] = useState("")
-  const [targetUrl, setTargetUrl] = useState("")
-  const [status, setStatus] = useState({})
+  const [sourceUrl, setSourceUrl] = useState<string>("")
+  const [targetUrl, setTargetUrl] = useState<string>("")
+  const [status, setStatus] = useState<any>({})
 
   const sendWebmention = () => {
     const endpoint = "https://webmention.io/mxd.codes/webmention"
@@ -122,7 +117,7 @@ export default function WebmentionEndpoint({}) {
 
   return (
     <Layout>
-      <SEO title="Webmention Endpoint" description="" slug="webmention" />
+      <SEO title="Webmention Endpoint" description="Webmention Endpoint" slug="webmention" />
 
       <Title>Webmention Endpoint</Title>
 

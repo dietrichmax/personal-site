@@ -72,12 +72,14 @@ export default function Subscribe() {
   const [count, setCount] = useState<number>(0)
   const [submitted, setSubmitted] = useState<boolean>(false)
 
+
+  async function getSubscriberCount() {
+    const data = await fetchGET("/api/stats")
+    setCount(data.cms.subscriberCount)
+  }
+
   useEffect(() => {
-    const getCount = async () => {
-      const data = await fetchGET("https://cms.mxd.codes/subscribers/count")
-      setCount(data)
-    }
-    getCount()
+    getSubscriberCount()
   }, [])
 
   const handleSubmit = () => {
@@ -87,7 +89,7 @@ export default function Subscribe() {
       body: JSON.stringify({ email }),
     }
 
-    fetch("https://cms.mxd.codes/subscribers", requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

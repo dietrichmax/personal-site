@@ -39,7 +39,7 @@ const SEO = ({
 
   useEffect(() => {
     const fetchCV = async () => {
-      const cv = await fetchGET("https://cms.mxd.codes/cv")
+      const cv = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`)
       setData({
         timeline: cv.timeline,
         skills: cv.skills,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Layout from "@/src/components/layout/layout"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"

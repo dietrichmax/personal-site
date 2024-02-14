@@ -19,7 +19,7 @@ export default function Shop() {
         id: 1,
         name: "Cup",
         description: "Personalize your cup",
-        image: "https://cms.mxd.codes/uploads/samantha_ram_Ha5_Jc_Y_Arf0_unsplash_7d627ef41c.jpg?",
+        image: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/samantha_ram_Ha5_Jc_Y_Arf0_unsplash_7d627ef41c.jpg?`,
         colors: ["red", "blue"],
         sizes: ["medium"],
         ratings: [],

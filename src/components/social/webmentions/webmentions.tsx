@@ -307,7 +307,7 @@ export default function Webmentions({ slug, preview }) {
         "published": comment.published_at,
         "author": {
           name: comment.name || "anonym",
-          photo: "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg",
+          photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`,
           type: "card",
           url: config.siteUrl,
         },
@@ -336,7 +336,7 @@ export default function Webmentions({ slug, preview }) {
       body: JSON.stringify(newComment),
     }
 
-    fetch("https://cms.mxd.codes/comments", requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setSentComment(true)
@@ -346,7 +346,7 @@ export default function Webmentions({ slug, preview }) {
           "published": data.published_at,
           "author": {
             name: data.name || "anonym",
-            photo: "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg",
+            photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`,
             type: "card",
             url: config.siteUrl,
           },
@@ -388,7 +388,7 @@ export default function Webmentions({ slug, preview }) {
             src={
               mention.author.photo
                 ? mention.author.photo
-                : "https://cms.mxd.codes/uploads/xmm8_553245a18b.jpg"
+                : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`
             }
             height="50"
             width="50"

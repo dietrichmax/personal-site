@@ -141,20 +141,16 @@ export default function Footer() {
     about: {},
   })
 
+  async function getRecentPosts() {
+    const data = await fetchGET("/api/cms")
+    setData({
+      recentPosts: data.recentPosts,
+      about: data.about
+    })
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const postsResult = await fetchGET(
-        "https://cms.mxd.codes/posts?_sort=published_at:DESC&_limit=4"
-      )
-      const aboutResult = await fetchGET("https://cms.mxd.codes/about")
-
-      setData({
-        recentPosts: postsResult,
-        about: aboutResult,
-      })
-    }
-
-    fetchData()
+    getRecentPosts()
   }, [])
 
   const footerItems = [
@@ -280,7 +276,7 @@ export default function Footer() {
               {data.recentPosts
                 ? data.recentPosts.map((post, i) => (
                     <FooterItem key={i}>
-                      <Link href={`/articles/${post.slug}`} title={post.title}>
+                      <Link href={post.slug} title={post.title}>
                         {post.title}
                       </Link>
                     </FooterItem>

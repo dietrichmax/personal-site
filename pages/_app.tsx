@@ -35,23 +35,23 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
         {/* DNS Prefetch*/}
-        <link rel="dns-prefetch" href="https://cms.mxd.codes" />
-        <link rel="dns-prefetch" href="https://geodaten.mxd.codes" />
-        <link rel="dns-prefetch" href="https://analytics.mxd.codes/" />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_STRAPI_API_URL} />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_MAPPROXY_URL} />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_MATOMO_URL} />
         {/* Preconnect */}
-        <link rel="preconnect" href="https://cms.mxd.codes" />,
-        <link rel="preconnect" href="https://analytics.mxd.codes/" />
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_STRAPI_API_URL} />,
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_MATOMO_URL} />
         {/* Preload */}
         {/* IndieCert */}
         <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
-        <link rel="micropub" href="https://mxd.codes/micropub" />
-        <link rel="token_endpoint" href="https://mxd.codes/token" />
+        <link rel="micropub" href={`${config.siteUrl}/micropub`} />
+        <link rel="token_endpoint" href={`${config.siteUrl}/token"`} />
         <link
           rel="webmention"
-          href="https://webmention.io/mxd.codes/webmention"
+          href={`https://webmention.io/${config.siteTitleShort}/webmention`}
         />
         ,
-        <link rel="pingback" href="https://webmention.io/mxd.codes/xmlrpc" />,
+        <link rel="pingback" href={`https://webmention.io/${config.siteTitleShort}/xmlrpc`} />,
         {/* Me */}
         <link rel="me" href={config.socials.mail} />
         <link rel="me" href={config.socials.github} />

@@ -9,7 +9,10 @@ export default async function handler(
   const liveViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
+  const thanks = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/thanks`)
 
+
+  const subscriberCount = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers/count`)
   /*const overallPageViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
@@ -102,6 +105,9 @@ export default async function handler(
       biggestTrafficSource: biggestTrafficSource,
       countryVisits: countryVisits,*/
     },
-    cms: {},
+    cms: {
+      thanks: thanks.thanks,
+      subscriberCount: subscriberCount
+    },
   })
 }

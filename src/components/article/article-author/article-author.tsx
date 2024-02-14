@@ -82,12 +82,13 @@ export default function Author({ post }: Author) {
 
   const { username, picture, bio } = post
 
+  async function getThanks() {
+    const data = await fetchGET("/api/stats")
+    setThanks(data.cms.thanks)
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchGET("https://cms.mxd.codes/thanks")
-      setThanks(data.thanks)
-    }
-    fetchData()
+    getThanks()
   }, [])
 
   const sendThanks = () => {
@@ -96,7 +97,7 @@ export default function Author({ post }: Author) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ thanks: count + 1 }),
     }
-    fetch("https://cms.mxd.codes/thanks", requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/thanks`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

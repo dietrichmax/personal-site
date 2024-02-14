@@ -442,7 +442,7 @@ export default function Dashboard({
 
   async function getMatomoLiveCounter() {
     const res = await fetchGET("/api/stats")
-    res ? setLiveViews(res.analytics.currentVisitors.visitors) : setLiveViews(0)
+    setLiveViews(res.analytics.currentVisitors.visitors)
   }
 
   useEffect(() => {

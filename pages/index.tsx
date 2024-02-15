@@ -400,7 +400,7 @@ export async function getStaticProps() {
 
   // Get Background Image
   const backgroundImageUrl = new URL(
-    `${process.env.NEXT_PUBLIC_STATICMAPS_URL}v1`
+    `${process.env.NEXT_PUBLIC_GEODATA_URL}/staticmaps`
   )
   backgroundImageUrl.searchParams.append("width", "2000")
   backgroundImageUrl.searchParams.append("height", "1000")
@@ -412,6 +412,7 @@ export async function getStaticProps() {
   backgroundImageUrl.searchParams.append("style", "gray-background")
   backgroundImageUrl.searchParams.append("format", "webp")
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
+  console.log(backgroundImageUrl)
   const imageResponse = await fetch(backgroundImageUrl, {
     method: "GET",
     cache: "force-cache",

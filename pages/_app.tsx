@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
         />
         {/* DNS Prefetch*/}
         <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_STRAPI_API_URL} />
-        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_MAPPROXY_URL} />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_GEODATA_URL} />
         <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_MATOMO_URL} />
         {/* Preconnect */}
         <link rel="preconnect" href={process.env.NEXT_PUBLIC_STRAPI_API_URL} />,

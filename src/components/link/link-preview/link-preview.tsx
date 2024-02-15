@@ -26,13 +26,14 @@ const LinksContent = styled.p`
 `
 
 const LinkLink = styled.a`
+  word-break: all;
   font-size: 14px;
   cursor: pointer;
   font-family: var(--secondary-font);
   text-decoration: none;
   box-shadow: 0px -3px 0px 0px var(--secondary-color) inset;
   transition: box-shadow 150ms ease-in-out;
-  :hover {
+  &:hover {
     box-shadow: 0px -16px 0px 0px var(--secondary-color) inset;
   }
 `

@@ -412,7 +412,6 @@ export async function getStaticProps() {
   backgroundImageUrl.searchParams.append("style", "gray-background")
   backgroundImageUrl.searchParams.append("format", "webp")
   const backgroundImageFilePath = "public/wallpaper/backgroundImage.webp"
-  console.log(backgroundImageUrl)
   const imageResponse = await fetch(backgroundImageUrl, {
     method: "GET",
     cache: "force-cache",

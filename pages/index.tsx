@@ -362,13 +362,13 @@ export default function Index({ posts, cv }) {
 
         <IndexPageContainer>
           <RecentPosts>
-            {posts.map((post) =>
+            {posts.map((post, i) =>
               post.type === "article" ? (
-                <PostPreview key={post.id} postData={post.post} />
+                <PostPreview key={i} postData={post.post} />
               ) : post.type === "link" ? (
-                <LinkPreview key={post.id} link={post.link} />
+                <LinkPreview key={i} link={post.link} />
               ) : post.type === "photo" ? (
-                <PhotoPreview key={post.id} photo={post.photo} />
+                <PhotoPreview key={i} photo={post.photo} />
               ) : null
             )}
           </RecentPosts>
@@ -434,14 +434,14 @@ export async function getStaticProps() {
   posts.map((post) => {
     allContent.push({
       post: post.attributes,
-      date: post.attributes.publishedAt,
+      date: post.attributes.createdAt,
       type: "article",
     })
   })
   links.map((link) => {
     allContent.push({
       link: link.attributes,
-      date: link.attributes.publishedAt,
+      date: link.attributes.createdAt,
       type: "link",
     })
   })
@@ -449,7 +449,7 @@ export async function getStaticProps() {
   photos.map((photo) => {
     allContent.push({
       photo: photo.attributes,
-      date: photo.attributes.publishedAt,
+      date: photo.attributes.createdAt,
       type: "photo",
     })
   })

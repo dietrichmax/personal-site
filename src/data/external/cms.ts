@@ -21,6 +21,7 @@ export async function fetchStrapiAPI(query: object, endpoint: string) {
   const res: Res = await fetchGET(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/${endpoint}?${qs.stringify(query)}`
   )
+  //console.log(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/${endpoint}?${qs.stringify(query)}`)
   if (res.error) {
     console.log(res.error.details)
     throw new Error(

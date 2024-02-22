@@ -6,6 +6,8 @@ import * as MDX from "@/styles/mdx-styles"
 import SyntaxHighlighter from "@/src/utils/SyntaxHighlighter"
 import dynamic from "next/dynamic"
 import { fetchStrapiAPI } from "../data/external/cms"
+import * as qs from "qs"
+import Image from "next/image"
 
 const MapComponent = dynamic(
   () => import("@/components/mdxComponents/maps/openlayers/simplemap"),
@@ -73,29 +75,32 @@ const MarkdownImage = ({ src }) => {
   const [data, updateData] = useState<any>()
 
   useEffect(() => {
+    const filteredSrc = src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
+
     const getData = async () => {
-      const test = await fetchStrapiAPI(
-        {
-          filters: {
-            url: {
-              $eq: src.replace("", ""),
-            },
+      const query =
+      {
+        filters: {
+          url: {
+            $containsi: filteredSrc,
           },
-          populate: "*",
         },
-        "upload/files"
-      )
-      console.log(test)
-      const obj = json[0]
-      const title = obj.name.replace(".png", "")
-      const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title
-      const img = {
-        src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`,
-        title: "title",
-        alt: "alt",
-        height: 100,
-        width: 100,
+        populate: "*",
       }
+      const imageData = await fetchGET(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/upload/files?${qs.stringify(query)}`
+      )
+      const obj = imageData[0]
+      const title = obj.name.replace(".png", "")
+      const alt = obj.alternativeText === null ? title : obj.alternativeText
+      const img = {
+        src: src,
+        title: title,
+        alt: alt,
+        height: obj.width,
+        width: obj.height,
+      }
+      console.log(img)
       updateData(img)
     }
     getData()
@@ -109,7 +114,6 @@ const MarkdownImage = ({ src }) => {
         alt={data.alt}
         width={data.width}
         height={data.height}
-        loading="lazy"
       />
     )
   } else {

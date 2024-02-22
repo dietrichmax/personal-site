@@ -19,7 +19,7 @@ You can see the site live here:
 [`mxd.codes`](https://mxd.codes)
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **CMS**: [Strapi](https://strapi.io/)
+- **CMS**: [Strapi](https://strapi.io/) / [Repository](https://github.com/dietrichmax/personal-website-cms)
 - **Database**: [Postgres](https://www.postgresql.org/)
 - **Deployment**: [Netcup VPS](https://www.netcup.de/)
 - **Styling**: [Styled Components](https://styled-components.com/)

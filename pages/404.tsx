@@ -1,11 +1,12 @@
 import Layout from "@/components/layout/layout"
 import SEO from "@/components/seo/seo"
 import Title from "@/components/title/page-title"
-import { getAllPosts } from "@/src/data/external/cms"
 //import { useRouter } from "next/router"
 import styled from "styled-components"
 import SubTitle from "@/components/title/sub-title"
 import Image from "next/image"
+import * as qs from "qs"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const Container = styled.div`
   max-width: var(--width-container);
@@ -23,7 +24,11 @@ export default function Custom404({ pages }) {
 
   return (
     <Layout>
-      <SEO title="404 - Page Not Found" slug="404" description="Seems like you got lost. Sorry for that..."/>
+      <SEO
+        title="404 - Page Not Found"
+        slug="404"
+        description="Seems like you got lost. Sorry for that..."
+      />
       <Title>404 - Page Not Found</Title>
       <SubTitle>{`Seems like you got lost. Sorry for that...`}</SubTitle>
       <Container>
@@ -39,9 +44,15 @@ export default function Custom404({ pages }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = (await getAllPosts()) || []
+  const postQuery = qs.stringify({
+    fields: ["title", "slug"],
+  })
+  const posts = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/posts?${postQuery}`
+  )
+
   const pages = []
-  allPosts.map((post) => pages.push(post.slug))
+  posts.data.map((post) => pages.push(post.attributes.slug))
   return {
     props: { pages },
   }

@@ -12,19 +12,19 @@ const LinksContainer = styled.div`
   max-width: var(--width-container);
 `
 
-
 export default function Shop() {
-
-    const products = [{
-        id: 1,
-        name: "Cup",
-        description: "Personalize your cup",
-        image: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/samantha_ram_Ha5_Jc_Y_Arf0_unsplash_7d627ef41c.jpg?`,
-        colors: ["red", "blue"],
-        sizes: ["medium"],
-        ratings: [],
-        price: 1.99
-    }]
+  const products = [
+    {
+      id: 1,
+      name: "Cup",
+      description: "Personalize your cup",
+      image: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/samantha_ram_Ha5_Jc_Y_Arf0_unsplash_7d627ef41c.jpg?`,
+      colors: ["red", "blue"],
+      sizes: ["medium"],
+      ratings: [],
+      price: 1.99,
+    },
+  ]
 
   return (
     <>
@@ -34,14 +34,12 @@ export default function Shop() {
         <SubTitle>Shop Subtitle</SubTitle>
         <LinksContainer>
           <Grid>
-            {products.map((product) =>
-                <ProductPreview product={product} />
-            )}
+            {products.map((product) => (
+              <ProductPreview product={product} />
+            ))}
           </Grid>
         </LinksContainer>
       </Layout>
     </>
   )
 }
-
-

@@ -7,8 +7,11 @@ const TitleWrapper = styled.div`
   padding-left: var(--space);
   padding-right: var(--space);
   ${media.lessThan("large")`
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space);
     margin: calc(var(--space-lg)*2.5) auto var(--space-sm) auto;
+  `}
+  ${media.lessThan("medium")`
+    padding: 0 var(--space-sm);
   `}
 `
 

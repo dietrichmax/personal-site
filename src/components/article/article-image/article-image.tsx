@@ -34,16 +34,18 @@ const PostImg = styled(Image)`
 
 interface PostImage {
   preview?: boolean
-  postData: {
-    title: string
-    coverImage: {
-      url: string
+  post: {
+    attributes: {
+      title: string
+      coverImage: {
+        url: string
+      }
     }
   }
 }
 
-export default function PostImage({ preview, postData }: PostImage) {
-  const { title, coverImage } = postData
+export default function PostImage({ preview, post }: PostImage) {
+  const { title, coverImage } = post.attributes
   const [windowSize, setWindowSize] = useState({
     width: 1300,
     height: undefined,

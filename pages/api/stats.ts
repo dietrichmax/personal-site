@@ -1,18 +1,32 @@
 import { fetchGET } from "@/src/utils/fetcher"
-import type { NextApiRequest, NextApiResponse } from 'next'
- 
+import type { NextApiRequest, NextApiResponse } from "next"
+import { getAllPostSlugs, getAllLinkSlugs, getAllPageSlugs, getAllPhotoSlugs, getAllTagSlugs, getAllSubscribers } from "@/src/data/external/cms"
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-
   const liveViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Live.getCounters&idSite=${process.env.NEXT_PUBLIC_MATOMO_SITE_ID}&lastMinutes=5&module=API&format=JSON&token_auth=${process.env.NEXT_PUBLIC_MATOMO_API_KEY}`
   )
-  const thanks = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/thanks`)
 
+  const thanks = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/thank`
+  )
 
-  const subscriberCount = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers/count`)
+  const pages = await getAllPageSlugs()
+  const posts = await getAllPostSlugs()
+  const photos = await getAllPhotoSlugs()
+  const links = await getAllLinkSlugs()
+  const topics = await getAllTagSlugs()
+  const subscribers = await getAllSubscribers()
+  const comments = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/comments`
+  )
+  
+  const activities = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/activities`
+  )
+
   /*const overallPageViews = await fetchGET(
     `${process.env.NEXT_PUBLIC_MATOMO_URL}?method=Actions.get&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
@@ -93,9 +107,10 @@ export default async function handler(
     }`
   )
 */
+
   res.status(200).json({
     analytics: {
-      currentVisitors: liveViews[0],
+      currentVisitors: liveViews[0].visitors,
       /*overallPageViews: overallPageViews.nb_pageviews,
       recentPageViews: recentPageViews,
       allTimeStats: allTimeStats,
@@ -106,8 +121,15 @@ export default async function handler(
       countryVisits: countryVisits,*/
     },
     cms: {
-      thanks: thanks.thanks,
-      subscriberCount: subscriberCount
+      thanks: thanks.data.attributes.thanks,
+      subscribersCount: subscribers.length,
+      pagesCount: pages.length,
+      postsCount: posts.length,
+      linksCount: links.length,
+      photosCount: photos.length,
+      commentsCount: comments.data.length,
+      topicsCount: topics.length,
+      activitiesCount: activities.data.length || 0,
     },
   })
 }

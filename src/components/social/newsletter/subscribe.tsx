@@ -72,10 +72,10 @@ export default function Subscribe() {
   const [count, setCount] = useState<number>(0)
   const [submitted, setSubmitted] = useState<boolean>(false)
 
-
   async function getSubscriberCount() {
-    const data = await fetchGET("/api/stats")
-    setCount(data.cms.subscriberCount)
+    const res = await fetch("/api/stats")
+    const json = await res.json()
+    setCount(json.cms.subscribersCount)
   }
 
   useEffect(() => {
@@ -86,10 +86,12 @@ export default function Subscribe() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ data: { email: email } }),
     }
-
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/subscribers`, requestOptions)
+    fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/subscribers`,
+      requestOptions
+    )
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

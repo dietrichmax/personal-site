@@ -25,7 +25,7 @@ const DateWrapper = styled.div`
 
 export default function PostMeta({ post, slug }) {
   const env = process.env.NODE_ENV
-  const postDate = new Date(post.updated_at)
+  const postDate = new Date(post.updatedAt)
   const permaUrl =
     env == "development"
       ? `http://localhost:3000${slug}`

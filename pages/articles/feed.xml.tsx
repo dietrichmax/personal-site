@@ -1,10 +1,22 @@
 import React from "react"
 import { config } from "@/src/data/internal/SiteConfig"
-import { getAllPosts } from "@/src/data/external/cms"
+import { fetchStrapiAPI } from "@/src/data/external/cms"
+
 const showdown = require("showdown"),
   converter = new showdown.Converter()
 
-const createRssFeed = (allContent) =>
+interface Post {
+  id: number
+  attributes: {
+    title: string
+    slug: string
+    content: string
+    updatedAt: string
+    publishedAt: string
+  }
+}
+
+const createRssFeed = (posts: Post[]) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">   
         <title>${config.siteTitle}</title>
@@ -18,16 +30,16 @@ const createRssFeed = (allContent) =>
         </author>
         <updated>${new Date().toISOString()}</updated>
         <id>${config.siteUrl}/</id>
-        ${allContent
-          .map((content) => {
+        ${posts
+          .map((post) => {
             return `
             <entry>
-              <title>${content.title}</title>
-              <link href="${content.slug}"/>
-              <updated>${content.date}</updated>
-              <id>${content.slug}/</id>
+              <title>${post.attributes.title}</title>
+              <link href="${config.siteUrl}/articles/${post.attributes.slug}"/>
+              <updated>${post.attributes.updatedAt ? post.attributes.updatedAt : post.attributes.publishedAt}</updated>
+              <id>${config.siteUrl}/articles/${post.attributes.slug}</id>
               <content type="html">
-                <![CDATA[${content.content}]]>
+                <![CDATA[${post.attributes.content}]]>
               </content>
             </entry>
           `
@@ -38,21 +50,21 @@ const createRssFeed = (allContent) =>
 
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
-    const posts = (await getAllPosts()) || []
-
-    const allContent = []
-
-    posts.map((post) => {
-      allContent.push({
-        title: post.title,
-        slug: `${config.siteUrl}/articles/${post.slug}`,
-        date: post.dateUpdated ? post.dateUpdated : post.published_at,
-        content: converter.makeHtml(post.content),
-      })
-    })
+    const posts: any = await fetchStrapiAPI(
+      {
+        sort: ["publishedAt:desc"],
+        populate: {
+          photo: {
+            poulate: ["formats"],
+          },
+        },
+        fields: ["title", "slug", "updatedAt", "publishedAt", "content"],
+      },
+      "posts"
+    )
 
     res.setHeader("Content-Type", "text/xml")
-    res.write(createRssFeed(allContent))
+    res.write(createRssFeed(posts))
     res.end()
   }
 }

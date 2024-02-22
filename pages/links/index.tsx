@@ -13,13 +13,16 @@ const LinksContainer = styled.div`
 `
 
 interface Link {
-  title: string
-  description: string
-  content: string
-  link: string
-  slug: string
-  date: any
-  syndicationLinks: any
+  id: number
+  attributes: {
+    title: string
+    description: string
+    content: string
+    link: string
+    slug: string
+    date: any
+    syndicationLinks: any
+  }
 }
 
 export default function Links({ allLinks }) {
@@ -33,8 +36,8 @@ export default function Links({ allLinks }) {
         <SubTitle>{description}</SubTitle>
         <LinksContainer>
           <Grid>
-            {allLinks.map((link: Link, i: number) => (
-              <LinkPreview key={i} link={link} />
+            {allLinks.map((link: Link) => (
+              <LinkPreview key={link.id} link={link.attributes} />
             ))}
           </Grid>
         </LinksContainer>
@@ -44,7 +47,7 @@ export default function Links({ allLinks }) {
 }
 
 export async function getStaticProps() {
-  const allLinks: JSON = (await getAllLinks()) || []
+  const allLinks = await getAllLinks()
 
   return {
     revalidate: 86400,

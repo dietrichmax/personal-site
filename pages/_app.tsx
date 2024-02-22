@@ -16,13 +16,12 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-
   useEffect(() => {
     if (window.location.href.includes(config.domain)) {
-      init({ 
-        url: process.env.NEXT_PUBLIC_MATOMO_URL, 
-        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID 
-      });
+      init({
+        url: process.env.NEXT_PUBLIC_MATOMO_URL,
+        siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+      })
       window._paq.push(["enableHeartBeatTimer"])
     }
   }, [])
@@ -35,7 +34,10 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
         {/* DNS Prefetch*/}
-        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_STRAPI_API_URL} />
+        <link
+          rel="dns-prefetch"
+          href={process.env.NEXT_PUBLIC_STRAPI_API_URL}
+        />
         <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_GEODATA_URL} />
         <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_MATOMO_URL} />
         {/* Preconnect */}
@@ -51,8 +53,11 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
           href={`https://webmention.io/${config.siteTitleShort}/webmention`}
         />
         ,
-        <link rel="pingback" href={`https://webmention.io/${config.siteTitleShort}/xmlrpc`} />,
-        {/* Me */}
+        <link
+          rel="pingback"
+          href={`https://webmention.io/${config.siteTitleShort}/xmlrpc`}
+        />
+        ,{/* Me */}
         <link rel="me" href={config.socials.mail} />
         <link rel="me" href={config.socials.github} />
         <link rel="me" href={config.socials.twitter} />

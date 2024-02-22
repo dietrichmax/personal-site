@@ -12,6 +12,7 @@ import { Button } from "@/styles/templates/button"
 import Link from "next/link"
 import Image from "next/image"
 import { fetchGET } from "@/src/utils/fetcher"
+const qs = require("qs")
 
 const WebMentionsWrapper = styled.section`
   margin-top: var(--space);
@@ -296,30 +297,38 @@ export default function Webmentions({ slug, preview }) {
   }
 
   async function GetComments() {
-    const data = await fetchGET(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments?slug=${slug}`
+    const commentsQuery = qs.stringify({
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    })
+
+    const commentsStrapi = await fetchGET(
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/comments?${commentsQuery}`
     )
     let strapiComments = []
-    data.map((comment) => {
+    commentsStrapi.data.map((comment) => {
       strapiComments.push({
         "type": "entry",
-        "url": `${url}#1${comment.id}`,
-        "published": comment.published_at,
+        "url": `${url}#1${comment.attributes.id}`,
+        "published": comment.attributes.publishedAt,
         "author": {
-          name: comment.name || "anonym",
-          photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`,
+          name: comment.attributes.name || "anonym",
+          photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
           type: "card",
           url: config.siteUrl,
         },
         "content": {
-          text: comment.text,
+          text: comment.attributes.text,
         },
         "in-reply-to": url,
       })
     })
     const allComments = comments.concat(strapiComments)
     const sortedComments = allComments.sort(function (a, b) {
-      return new Date(b.published) - new Date(a.published)
+      return new Date(b.publishedAt) - new Date(a.publishedAt)
     })
     setComments(sortedComments)
   }
@@ -333,30 +342,36 @@ export default function Webmentions({ slug, preview }) {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newComment),
+      body: JSON.stringify({ data: newComment }),
     }
 
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/comments`, requestOptions)
+    fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/comments`,
+      requestOptions
+    )
       .then((response) => response.json())
-      .then((data) => {
+      .then((comment) => {
         setSentComment(true)
         comments.push({
           "type": "entry",
-          "url": `${url}#comment${data.id}`,
-          "published": data.published_at,
+          "url": `${url}#comment${comment.data.id}`,
+          "published": comment.data.attributes.publishedAt,
           "author": {
-            name: data.name || "anonym",
-            photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`,
+            name: comment.data.attributes.name || "anonym",
+            photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
             type: "card",
             url: config.siteUrl,
           },
           "content": {
-            text: data.text,
+            text: comment.data.attributes.text,
           },
           "in-reply-to": url,
         })
         const sortedComments = comments.sort(function (a, b) {
-          return new Date(b.published) - new Date(a.published)
+          return (
+            new Date(b.attributes.publishedAt) -
+            new Date(a.attributes.publishedAt)
+          )
         })
         setComments(sortedComments)
         setCommentName("")
@@ -388,7 +403,7 @@ export default function Webmentions({ slug, preview }) {
             src={
               mention.author.photo
                 ? mention.author.photo
-                : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/xmm8_553245a18b.jpg`
+                : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`
             }
             height="50"
             width="50"

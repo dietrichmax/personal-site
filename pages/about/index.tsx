@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
+import MDXWrapper from "@/components/mdxWrapper"
 import Content from "@/src/components/article/article-body/article-body"
 import Layout from "@/src/components/layout/layout"
 import { getAbout } from "@/src/data/external/cms"
@@ -7,6 +8,7 @@ import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
 import { serialize } from "next-mdx-remote/serialize"
+import { MDXRemote } from "next-mdx-remote"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -64,20 +66,19 @@ export default function About({ about }) {
   const renderBio = () => {
     switch (selected) {
       case 0:
-        return about.bio //Short
+        return about.bioShort //Short
       case 1:
-        return about.bio //bioMedium
+        return about.bioMedium //bioMedium
       case 2:
-        return about.bio //.bioLong
+        return about.bioLong //.bioLong
     }
   }
-  const handleSubmit = () => {}
 
   return (
     <Layout>
       <SEO
-        title={about.title}
-        description=""
+        title={about.attributes.title}
+        description={about.attributes.intro}
         slug={`about`}
         aboutSchema
         jsonld={jsonld}
@@ -88,17 +89,26 @@ export default function About({ about }) {
           src="/images/IMG_20231229_WA_0005_1925a8f37e.jpg"
           width="620"
           height="300"
-          title={about.title}
-          alt={about.title}
+          title={about.attributes.title}
+          alt={about.attributes.title}
           className="profile u-photo"
         />
       </ImageWrapper>
 
       <PageWrapper>
-        <Title>{about.title}</Title>
-        <Intro>{about.intro}</Intro>
+        <Title>{about.attributes.title}</Title>
+        <Intro>{about.attributes.intro}</Intro>
         <BioContainer>
-          <Content content={about.bio} />
+          <MDXRemote
+            {...about.attributes.bioLong}
+            className="e-content"
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "relative",
+            }}
+          />
+          <Content content={about.attributes.bioLong} />
         </BioContainer>
       </PageWrapper>
     </Layout>
@@ -106,14 +116,22 @@ export default function About({ about }) {
 }
 
 export async function getStaticProps({}) {
-  const data = await getAbout()
-  const bio = await serialize(data.about.bioLong)
+  const about: any = await getAbout()
+  const bioLong = await serialize(about.attributes.bioLong)
+  const bioMedium = await serialize(about.attributes.bioMedium)
+  const bioShort = await serialize(about.attributes.bioShort)
 
   return {
     props: {
       about: {
-        ...data?.about,
-        bio,
+        id: about.id,
+        attributes: {
+          title: about.attributes.title,
+          intro: about.attributes.intro,
+          bioLong,
+          bioMedium,
+          bioShort,
+        },
       },
     },
   }

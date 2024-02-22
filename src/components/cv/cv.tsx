@@ -142,7 +142,7 @@ const Interests = styled.div``
 interface CV {
   data: {
     title: string
-    subtitle: string
+    subTitle: string
     smallBio: string
     skills: [
       {
@@ -187,7 +187,7 @@ export default function CV({ data }: CV) {
       <CVHeader>
         <CVTitle>
           <Title>{data.title}</Title>
-          <SubTitle>{data.subtitle}</SubTitle>
+          <SubTitle>{data.subTitle}</SubTitle>
           <SmallBio>{data.smallBio}</SmallBio>
         </CVTitle>
       </CVHeader>

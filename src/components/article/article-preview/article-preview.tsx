@@ -62,17 +62,19 @@ const Socials = styled.div`
   font-size: 0.75rem;
 `
 
-const DynamicPostMeta = dynamic(() => import("@/src/components/post/post-meta/post-meta-preview"))
+const DynamicPostMeta = dynamic(
+  () => import("@/src/components/post/post-meta/post-meta-preview")
+)
 
 interface PostPreview {
   postData: {
     title: string
-    excerpt: string
+    description: string
   }
 }
 
 export default function PostPreview({ postData }) {
-  const { title, excerpt } = postData
+  const { title, description } = postData
 
   const slug = `/articles/${postData.slug}`
 
@@ -96,13 +98,13 @@ export default function PostPreview({ postData }) {
             <Webmentions slug={slug} preview />
           </Socials>
           <CardItemDescription className="p-summary">
-            {excerpt}{" "}
+            {description}{" "}
           </CardItemDescription>
-            <CardReadMoreRead >
-          <Link href={slug} title={title}>
+          <CardReadMoreRead>
+            <Link href={slug} title={title}>
               Continue reading...
-          </Link>
-            </CardReadMoreRead>
+            </Link>
+          </CardReadMoreRead>
         </CardItemInfo>
         <CardMeta>
           {/*<TagsWrapper>

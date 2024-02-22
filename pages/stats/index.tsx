@@ -14,17 +14,6 @@ import {
   getMatomoConsent,
   getBiggestTrafficSource,
 } from "@/src/data/external/analytics"
-import {
-  getPostsCount,
-  getTagsCount,
-  getSubscribersCount,
-  getActivitiesCount,
-  getLinksCount,
-  getPhotosCount,
-  getCommentsCount,
-  getAllActivities,
-  getThanks,
-} from "@/src/data/external/cms"
 import { fetchWebmentions } from "@/src/data/external/webmentions"
 import { getGitHubStats } from "@/src/data/external/github"
 import PageTitle from "@/components/title/page-title"
@@ -186,7 +175,7 @@ const ColumnTooltipText = styled.div`
 `
 
 interface ColumnProps {
-  height: number,
+  height: number
 }
 
 const Column = styled.div<ColumnProps>`
@@ -279,7 +268,7 @@ const LanguageBar = styled.div`
 `
 
 interface LanguageBarChildProps {
-  color: string,
+  color: string
   width: string
 }
 
@@ -299,74 +288,90 @@ const LanguageDot = styled.span`
   margin-right: var(--space-sm);
 `
 
-const TopPageList = styled.ol`
-  padding-inline-start: var(--space);
+const TopPageList = styled.ul`
+  padding-inline-start: var(--space-sm);
 `
 
 const TopPageListItemLink = styled.a`
-  color: var(--secondary-color);
-  text-decoration: underline;
-  :hover {
-    text-decoration: none;
+  text-decoration: none;
+  box-shadow: 0px -3px 0px 0px var(--secondary-color) inset;
+  transition: box-shadow 150ms ease-in-out;
+  color: var(--text-color);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px -18px 0px 0px var(--secondary-color) inset;
   }
-`
-
-const TopPageListItemCount = styled.span`
-  font-style: italic;
 `
 
 interface Dashboard {
   lastViews: unknown
-  actions: any,
-  postsCount: number,
-  tagsCount: number,
-  subscribersCount: number,
-  githubStats: any,
-  allWebmentions: Array<object>,
-  locationsCount: number,
-  activitiesCount: number,
-  linksCount: number,
-  visitsSummary: any,
-  photosCount: number,
-  activities: [{
-    distance: number,
-    duration: number,
-    maxSpeed: number,
-    maxDistance: number,
-    maxElevationGain: number,
-    totalElevationGain: number,
-    jumpCount: number,
-    elevationGain: number,
-    movingDuration: number,
-  }],
-  topPosts: any,
-  consentCount: any,
-  biggestTrafficSource: any,
-  thanks: any,
-  commentsCount: number,
+  actions: any
+  githubStats: any
+  allWebmentions: Array<object>
+  locationsCount: number
+  visitsSummary: any
+  activities: [
+    {
+      distance: number
+      duration: number
+      maxSpeed: number
+      maxDistance: number
+      maxElevationGain: number
+      totalElevationGain: number
+      jumpCount: number
+      elevationGain: number
+      movingDuration: number
+    },
+  ]
+  topPosts: any
+  consentCount: any
+  biggestTrafficSource: any
+}
+
+interface Stats {
+  cms: {
+    thanks: number
+    subscribersCount: number
+    pagesCount: number
+    postsCount: number
+    linksCount: number
+    photosCount: number
+    commentsCount: number
+    topicsCount: number
+    activitiesCount: number
+  }
+  analytics: {
+    currentVisitors: number
+  }
 }
 
 export default function Dashboard({
   lastViews,
   actions,
-  postsCount,
-  tagsCount,
-  subscribersCount,
   githubStats,
   allWebmentions,
   locationsCount,
-  activitiesCount,
-  linksCount,
   visitsSummary,
-  photosCount,
-  activities,
   topPosts,
   consentCount,
   biggestTrafficSource,
-  thanks,
-  commentsCount,
 }: Dashboard) {
-  const [liveViews, setLiveViews] = useState<number>(0)
+  const [stats, setStats] = useState<Stats>({
+    cms: {
+      thanks: 0,
+      subscribersCount: 0,
+      pagesCount: 0,
+      postsCount: 0,
+      linksCount: 0,
+      photosCount: 0,
+      commentsCount: 0,
+      topicsCount: 0,
+      activitiesCount: 0,
+    },
+    analytics: {
+      currentVisitors: 0,
+    },
+  })
 
   const { forkCount } = githubStats.user.repository
   const stars: number = githubStats.user.repository.stargazers.totalCount
@@ -406,7 +411,7 @@ export default function Dashboard({
     )
   )
   const normalisedMax = Math.max.apply(Math, normalisedViews)
-  
+
   const getTimeOnSite = (time: number) => {
     const minutes: number = Math.floor(time / 60)
     const seconds: number = time - minutes * 60
@@ -422,7 +427,7 @@ export default function Dashboard({
   let totalElevationGain: number = 0
   let jumpCount: number = 0
 
-  activities.map((item) => {
+  /*activities.map((item) => {
     distance = distance + item.distance
     duration = duration + item.movingDuration
     maxSpeed.push(item.maxSpeed)
@@ -430,7 +435,7 @@ export default function Dashboard({
     maxElevationGain.push(item.elevationGain)
     totalElevationGain = totalElevationGain + item.elevationGain
     jumpCount = jumpCount + item.jumpCount
-  })
+  })*/
 
   const consentTrue = consentCount
     ? consentCount.find((element: any) => element.label === "consent - true")
@@ -440,13 +445,13 @@ export default function Dashboard({
     ? consentCount.find((element: any) => element.label === "consent - false")
     : 0
 
-  async function getMatomoLiveCounter() {
+  async function getStats() {
     const res = await fetchGET("/api/stats")
-    setLiveViews(res.analytics.currentVisitors.visitors)
+    setStats(res)
   }
 
   useEffect(() => {
-    getMatomoLiveCounter()
+    getStats()
   }, [])
 
   return (
@@ -463,7 +468,7 @@ export default function Dashboard({
           <StatsGrid>
             <Title>Web Analytics</Title>
             <StatsLargeGrid>
-              <GridStats>{liveViews}</GridStats>
+              <GridStats>{stats.analytics.currentVisitors}</GridStats>
               <GridStatsDescription>
                 Visitors in the last 5 minutes
               </GridStatsDescription>
@@ -521,30 +526,30 @@ export default function Dashboard({
             <Title>Content Stats</Title>
             <Link href="/articles" passHref legacyBehavior>
               <StatsLargeGrid title="See all Articles">
-                <GridStats>{postsCount}</GridStats>
+                <GridStats>{stats.cms.postsCount}</GridStats>
                 <GridStatsDescription>Articles Written</GridStatsDescription>
               </StatsLargeGrid>
             </Link>
             <Link href="/links" passHref legacyBehavior>
               <StatsSmallGrid title="See Links">
-                <GridStats>{linksCount}</GridStats>
+                <GridStats>{stats.cms.linksCount}</GridStats>
                 <GridStatsDescription>Links bookmarked</GridStatsDescription>
               </StatsSmallGrid>
             </Link>
             <Link href="/photos" passHref legacyBehavior>
               <StatsSmallGrid title="See all Photos">
-                <GridStats>{photosCount}</GridStats>
+                <GridStats>{stats.cms.photosCount}</GridStats>
                 <GridStatsDescription>Photos posted</GridStatsDescription>
               </StatsSmallGrid>
             </Link>
             <Link href="/topics" legacyBehavior>
               <StatsSmallGrid title="See all Topics">
-                <GridStats>{tagsCount}</GridStats>
+                <GridStats>{stats.cms.topicsCount}</GridStats>
                 <GridStatsDescription>Different Topics</GridStatsDescription>
               </StatsSmallGrid>
             </Link>
             <StatsSmallGrid>
-              <GridStats>{subscribersCount}</GridStats>
+              <GridStats>{stats.cms.subscribersCount}</GridStats>
               <GridStatsDescription>
                 Newsletter Subscribers
               </GridStatsDescription>
@@ -558,7 +563,7 @@ export default function Dashboard({
               </StatsSmallGrid>
             </Link>
             <StatsSmallGrid>
-              <GridStats>{commentsCount}</GridStats>
+              <GridStats>{stats.cms.commentsCount}</GridStats>
               <GridStatsDescription>Comments posted</GridStatsDescription>
             </StatsSmallGrid>
           </StatsGrid>
@@ -576,7 +581,7 @@ export default function Dashboard({
               <GridStatsDescription>Cookie consent denied</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
-              <GridStats>{thanks.thanks}</GridStats>
+              <GridStats>{stats.cms.thanks}</GridStats>
               <GridStatsDescription>Virtual Thanks</GridStatsDescription>
             </BottomStatsGrid>
             <BottomStatsGrid>
@@ -618,19 +623,17 @@ export default function Dashboard({
           <TopPageList>
             {topPosts.map((post, i: number) => (
               <li key={i}>
+                <span>
+                  {post.nb_hits
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  views:{" "}
+                </span>
                 <Link href={post.label} passHref legacyBehavior>
                   <TopPageListItemLink title={post.label}>
                     {post.label}
                   </TopPageListItemLink>
                 </Link>
-                <TopPageListItemCount>
-                  {" "}
-                  (
-                  {post.nb_hits
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-                  views)
-                </TopPageListItemCount>
               </li>
             ))}
           </TopPageList>
@@ -660,12 +663,13 @@ export default function Dashboard({
           <Title>Project Breakdown by Language</Title>
           <LanguageBar>
             <LanguageBarChild
-              width={(
-                (codeStats.JavaScript.code / linesOfCode) * 100
-              ).toFixed(2)}
+              width={((codeStats.JavaScript.code / linesOfCode) * 100).toFixed(
+                2
+              )}
               color="#f0db4f"
               data-tip={`${(
-                (codeStats.JavaScript.code / linesOfCode) * 100
+                (codeStats.JavaScript.code / linesOfCode) *
+                100
               ).toFixed(2)}% JavaScript`}
               style={{
                 borderTopLeftRadius: "5px",
@@ -673,30 +677,25 @@ export default function Dashboard({
               }}
             />
             <LanguageBarChild
-              width={(
-                (codeStats.JSON.code / linesOfCode) * 100
-              ).toFixed(2)}
+              width={((codeStats.JSON.code / linesOfCode) * 100).toFixed(2)}
               color="brown"
-              data-tip={`${(
-                (codeStats.JSON.code / linesOfCode) * 100
-              ).toFixed(2)}% JSON`}
+              data-tip={`${((codeStats.JSON.code / linesOfCode) * 100).toFixed(
+                2
+              )}% JSON`}
             />
             <LanguageBarChild
-              width={(
-                (codeStats.CSS.code / linesOfCode) * 100
-              ).toFixed(2)}
+              width={((codeStats.CSS.code / linesOfCode) * 100).toFixed(2)}
               color="pink"
-              data-tip={`${(
-                (codeStats.CSS.code / linesOfCode) * 100
-              ).toFixed(2)}% CSS`}
+              data-tip={`${((codeStats.CSS.code / linesOfCode) * 100).toFixed(
+                2
+              )}% CSS`}
             />
             <LanguageBarChild
-              width={(
-                (codeStats.Markdown.code / linesOfCode) * 100
-              ).toFixed(2)}
+              width={((codeStats.Markdown.code / linesOfCode) * 100).toFixed(2)}
               color="var(--gray)"
               data-tip={`${(
-                (codeStats.Markdown.code / linesOfCode) * 100
+                (codeStats.Markdown.code / linesOfCode) *
+                100
               ).toFixed(2)}% Markdown`}
               style={{
                 borderTopRightRadius: "5px",
@@ -708,10 +707,8 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="#f0db4f" />
-                {(
-                  (codeStats.JavaScript.code / linesOfCode) * 100
-                ).toFixed(2)}
-                % Javascript
+                {((codeStats.JavaScript.code / linesOfCode) * 100).toFixed(2)}%
+                Javascript
               </LanguageTitle>
               <LanguageMoreStats>
                 {codeStats.JavaScript.nFiles} files
@@ -726,10 +723,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="brown" />
-                {((codeStats.JSON.code / linesOfCode) * 100).toFixed(
-                  2
-                )}
-                % JSON
+                {((codeStats.JSON.code / linesOfCode) * 100).toFixed(2)}% JSON
               </LanguageTitle>
               <LanguageMoreStats>
                 {codeStats.JSON.nFiles} files
@@ -744,10 +738,7 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="pink" />
-                {((codeStats.CSS.code / linesOfCode) * 100).toFixed(
-                  2
-                )}
-                % CSS
+                {((codeStats.CSS.code / linesOfCode) * 100).toFixed(2)}% CSS
               </LanguageTitle>
               <LanguageMoreStats>{codeStats.CSS.nFiles} file</LanguageMoreStats>
               <LanguageMoreStats>{codeStats.CSS.code} lines</LanguageMoreStats>
@@ -755,10 +746,8 @@ export default function Dashboard({
             <LanguageColumn>
               <LanguageTitle>
                 <LanguageDot color="var(--gray)" />
-                {(
-                  (codeStats.Markdown.code / linesOfCode) * 100
-                ).toFixed(2)}
-                % Markdown
+                {((codeStats.Markdown.code / linesOfCode) * 100).toFixed(2)}%
+                Markdown
               </LanguageTitle>
               <LanguageMoreStats>
                 {codeStats.Markdown.nFiles} file
@@ -770,7 +759,7 @@ export default function Dashboard({
           </LanguageWrapper>
         </LanguageContainer>
 
-        <GeneralStats>
+        {/*<GeneralStats>
           <StatsGridMedium>
             <GridMediumTitle>Activity Stats</GridMediumTitle>
             <BottomStatsGrid title="See all Activities">
@@ -815,7 +804,7 @@ export default function Dashboard({
               <GridStatsDescription>Max speed [km/h]</GridStatsDescription>
             </BottomStatsGrid>
           </StatsGridMedium>
-        </GeneralStats>
+                </GeneralStats>*/}
 
         {/*Check out how this site is built: <a href="https://github.com/DaTurboD/mxd-codes-frontend/blob/v2/pages/site-stats.js">site-stats.js</a>*/}
       </Container>
@@ -824,24 +813,15 @@ export default function Dashboard({
 }
 
 export async function getStaticProps() {
-  const postsCount = (await getPostsCount()) || []
-  const tagsCount = (await getTagsCount()) || []
-  const subscribersCount = (await getSubscribersCount()) || []
-  const photosCount = (await getPhotosCount()) || []
-  const activitiesCount = await getActivitiesCount()
-  const linksCount = (await getLinksCount()) || []
-  const commentsCount = (await getCommentsCount()) || []
   const lastViews: unknown = (await getMatomoPageViews()) || []
   const actions = (await getMatomoActions()) || []
   const githubStats = (await getGitHubStats()) || []
   const visitDuration = (await getMatomoSumVisitDuration()) || []
   const allWebmentions = (await fetchWebmentions()) || []
   const visitsSummary = (await getMatomoVisitsSummary()) || []
-  const activities = (await getAllActivities()) || []
   const topPosts = (await getMatomoTopPageUrls()) || []
   const consentCount: number = (await getMatomoConsent()) || []
   const biggestTrafficSource = (await getBiggestTrafficSource()) || []
-  const thanks: number = (await getThanks()) || []
 
   const client = new Client({
     host: process.env.PGHOST,
@@ -859,23 +839,14 @@ export async function getStaticProps() {
     props: {
       lastViews,
       actions,
-      postsCount,
-      commentsCount,
-      tagsCount,
-      subscribersCount,
-      activitiesCount,
       locationsCount: locationsCount.rows[0].count,
-      linksCount,
       githubStats,
       visitDuration,
       allWebmentions,
       visitsSummary,
-      photosCount,
-      activities,
       topPosts,
       consentCount,
       biggestTrafficSource,
-      thanks,
     },
   }
 }

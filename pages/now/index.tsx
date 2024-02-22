@@ -1,5 +1,4 @@
 import Layout from "@/src/components/layout/layout"
-import { getNowData } from "@/src/data/external/cms"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
 import styled from "styled-components"
@@ -46,27 +45,26 @@ const WeatherImg = styled(Image)`
 interface Now {
   weather: {
     main: {
-      temp: string,
-    },
+      temp: string
+    }
     weather: {
       description: string
     }
-  },
+  }
   address: {
     address: {
-      state: string,
+      state: string
       country: string
     }
-  },
+  }
   now: {
-    batt: number,
-    bs: number,
-    created_at: string,
+    batt: number
+    bs: number
+    created_at: string
   }
 }
 
 export default function Now({ weather, address, now }: Now) {
-
   const batteryStatus = (bs: number) => {
     switch (bs) {
       case 0:
@@ -120,7 +118,7 @@ export default function Now({ weather, address, now }: Now) {
     month: "long",
     day: "numeric",
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   })
 
   return (
@@ -189,8 +187,6 @@ export async function getStaticProps() {
   )
   await client.end()
 
-  const content = (await getNowData()) || []
-
   const weather = await fetchGET(
     `https://api.openweathermap.org/data/2.5/weather?lat=${recentLocation.rows[0].lat}&lon=${recentLocation.rows[0].lon}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
   )
@@ -203,7 +199,6 @@ export async function getStaticProps() {
     props: {
       weather: weather,
       address: address,
-      content: content.content,
       now: {
         batt: recentLocation.rows[0].batt,
         bs: recentLocation.rows[0].bs,

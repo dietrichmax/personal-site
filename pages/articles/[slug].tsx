@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "@/src/components/layout/layout"
 import SEO from "@/src/components/seo/seo"
-import { getPostBySlug, getAllPosts } from "@/src/data/external/cms"
+import { getAllPostSlugs, getPostBySlug } from "@/src/data/external/cms"
 import PostBody from "@/src/components/article/article-body/article-body"
 import { getToc } from "@/src/utils/getToc"
 import styled from "styled-components"
@@ -15,10 +15,10 @@ import HCard from "@/src/components/microformats/h-card"
 import WebActions from "@/src/components/social/social-share/social-share"
 import { serialize } from "next-mdx-remote/serialize"
 import RecommendedPosts from "@/components/recommended-articles/recommendedArticles"
-import DynamicMeta from "@/src/components/post/post-meta/post-meta"
-import DynamicSubscribe from "@/src/components/social/newsletter/subscribe"
-import DynamicWebmentions from "@/src/components/social/webmentions/webmentions"
-import DynamicAuthor from "@/components/article/article-author/article-author"
+import Meta from "@/src/components/post/post-meta/post-meta"
+import Subscribe from "@/src/components/social/newsletter/subscribe"
+import Webmentions from "@/src/components/social/webmentions/webmentions"
+import Author from "@/components/article/article-author/article-author"
 
 const ArticleBackground = styled.div`
   margin: auto auto var(--space-sm) auto;
@@ -29,8 +29,6 @@ const ArticleBackground = styled.div`
     display: block;
   `}
 `
-
-const StickySideBar = styled.div``
 
 const DateWrapper = styled.div`
   text-align: center;
@@ -121,38 +119,33 @@ const PostTitleWrapper = styled.div`
 `
 
 interface Post {
-  post: {
-    id: number
+  id: number
+  attributes: {
     title: string
     slug: string
-    excerpt: string
+    description: string
     coverImage: {
       url: string
     }
     content: string
     toc: string
     date: any
-    updated_at: string
-    published_at: string
+    updatedAt: string
+    publishedAt: string
     syndicationLinks: any
-    user: object
+    author: object
   }
 }
 
-export default function Post({ post }: Post) {
+export default function Post(post: Post) {
   const target = React.createRef<HTMLInputElement>()
 
   return (
     <Layout>
       <SEO
-        title={post.title}
-        description={post.excerpt}
-        image={
-          post.coverImage
-            ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${post.coverImage.url}`
-            : ""
-        }
-        slug={`articles/${post.slug}`}
+        title={post.attributes.title}
+        description={post.attributes.description}
+        slug={`articles/${post.attributes.slug}`}
         ogType="article"
         articleSchema={true}
         articleData={post}
@@ -163,15 +156,17 @@ export default function Post({ post }: Post) {
         <ReadingProgress target={target} />
 
         <PostImgWrapper>
-          <PostImage postData={post} />
+          <PostImage post={post} />
         </PostImgWrapper>
 
         <ArticleBackground>
-          <StickySideBar>
+          <div>
             <DateWrapper className="dt-published">
-              <a className="u-url" href={`articles/${post.slug}`}>
+              <a className="u-url" href={`articles/${post.attributes.slug}`}>
                 {new Date(
-                  post.updated_at ? post.updated_at : post.published_at
+                  post.attributes.updatedAt
+                    ? post.attributes.updatedAt
+                    : post.attributes.publishedAt
                 ).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -181,17 +176,17 @@ export default function Post({ post }: Post) {
             </DateWrapper>
             <StickySocialShareContainer>
               <WebActions
-                slug={`/articles/${post.slug}`}
-                syndicationLinks={post.syndicationLinks}
-                title={post.title}
-                excerpt={post.excerpt}
+                slug={`/articles/${post.attributes.slug}`}
+                syndicationLinks={post.attributes.syndicationLinks}
+                title={post.attributes.title}
+                excerpt={post.attributes.description}
               />
             </StickySocialShareContainer>
-          </StickySideBar>
+          </div>
 
           <ArticleContainer>
             <PostTitleWrapper className="p-name">
-              <PostTitle>{post.title}</PostTitle>
+              <PostTitle>{post.attributes.title}</PostTitle>
             </PostTitleWrapper>
 
             <ArticleBackgroundColor>
@@ -199,29 +194,30 @@ export default function Post({ post }: Post) {
                 {/*<TagsWrapper><PostTags tags={post.tags} /></TagsWrapper>*/}
                 {/*<GoogleAdsenseContainer client={process.env.NEXT_PUBLIC_ADSENSE_ID} slot="4628674793"></GoogleAdsenseContainer>*/}
 
-                <PostBody content={post.content} toc={post.toc} />
+                <PostBody
+                  content={post.attributes.content}
+                  toc={post.attributes.toc}
+                />
                 <Content>
-                  {/*<Feedback /> */}
-                  <DynamicMeta
+                  <Meta
                     post={post}
-                    slug={`/articles/${post.slug}`}
-                    syndicationLinks={post.syndicationLinks}
+                    slug={`/articles/${post.attributes.slug}`}
+                    syndicationLinks={post.attributes.syndicationLinks}
                   />
                   <SocialShareContainer>
                     <WebActions
-                      slug={`/articles/${post.slug}`}
-                      syndicationLinks={post.syndicationLinks}
-                      title={post.title}
-                      excerpt={post.excerpt}
+                      slug={`/articles/${post.attributes.slug}`}
+                      syndicationLinks={post.attributes.syndicationLinks}
+                      title={post.attributes.title}
+                      excerpt={post.attributes.description}
                     />
                   </SocialShareContainer>
-                  {/*<Likes />*/}
-                  <DynamicWebmentions
-                    slug={`/articles/${post.slug}`}
+                  <Webmentions
+                    slug={`/articles/${post.attributes.slug}`}
                     preview={false}
                   />
-                  <DynamicAuthor post={post.user} />
-                  <DynamicSubscribe />
+                  <Author post={post.attributes.author} />
+                  <Subscribe />
                 </Content>
               </PostWrapper>
             </ArticleBackgroundColor>
@@ -234,8 +230,8 @@ export default function Post({ post }: Post) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getPostBySlug(params.slug)
-  const markdownContent = (await data?.posts[0]?.content) || ""
+  const post = await getPostBySlug(params.slug)
+  const markdownContent = await post[0].attributes.content
   const content = await serialize(markdownContent)
   const toc = getToc(markdownContent)
   const readingTime = getReadTime(markdownContent)
@@ -243,20 +239,21 @@ export async function getStaticProps({ params }) {
   return {
     revalidate: 86400,
     props: {
-      post: {
-        updated_at: new Date(data.posts[0].updated_at).toLocaleDateString(
+      id: post[0].id,
+      attributes: {
+        updatedAt: new Date(post[0].attributes.updatedAt).toLocaleDateString(
           "en-US"
         ),
-        published_at: new Date(data.posts[0].published_at).toLocaleDateString(
-          "en-US"
-        ),
-        title: data.posts[0].title,
-        slug: data.posts[0].slug,
-        excerpt: data.posts[0].excerpt,
-        tags: data.posts[0].tags,
-        coverImage: data.posts[0].coverImage,
-        syndicationLinks: data.posts[0].syndicationLinks,
-        user: data.posts[0].user,
+        publishedAt: new Date(
+          post[0].attributes.publishedAt
+        ).toLocaleDateString("en-US"),
+        title: post[0].attributes.title,
+        slug: post[0].attributes.slug,
+        description: post[0].attributes.description,
+        tags: post[0].attributes.tags.data,
+        coverImage: post[0].attributes.coverImage.data.attributes,
+        syndicationLinks: post[0].attributes.syndicationLinks,
+        author: post[0].attributes.author.data.attributes,
         readingTime: readingTime,
         content,
         toc,
@@ -266,10 +263,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPosts()
+  const posts = await getAllPostSlugs()
 
   return {
-    paths: allPosts.map(post => `/articles/${post.slug}`),
+    paths: posts.map((post) => `/articles/${post.attributes.slug}`),
     fallback: false,
   }
 }

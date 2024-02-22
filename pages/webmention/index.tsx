@@ -117,7 +117,11 @@ export default function WebmentionEndpoint({}) {
 
   return (
     <Layout>
-      <SEO title="Webmention Endpoint" description="Webmention Endpoint" slug="webmention" />
+      <SEO
+        title="Webmention Endpoint"
+        description="Webmention Endpoint"
+        slug="webmention"
+      />
 
       <Title>Webmention Endpoint</Title>
 

@@ -12,7 +12,6 @@ import { toStringHDMS } from "ol/coordinate.js"
 import Feature from "ol/Feature.js"
 
 const MarkerPopupMap = () => {
-
   const iconFeature = new Feature({
     geometry: new Point([0, 0]),
     name: "Null Island",
@@ -47,7 +46,6 @@ const MarkerPopupMap = () => {
   })
 
   useEffect(() => {
-
     const map = new Map({
       layers: [rasterLayer, vectorLayer],
       target: "markerpopupmap",

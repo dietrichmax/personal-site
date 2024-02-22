@@ -6,18 +6,13 @@ import Layout from "@/src/components/layout/layout"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
-import { getAbout } from "@/src/data/external/cms"
 import Link from "next/link"
 import Image from "next/image"
 import HCard from "@/src/components/microformats/h-card"
-import {
-  getAllPosts,
-  getAllLinks,
-  getAllPhotos,
-  getCV,
-} from "@/src/data/external/cms"
 import { Client } from "pg"
 import fs from "fs"
+import { fetchGET } from "@/src/utils/fetcher"
+import { getAllPosts, getAllLinks, getAllPhotos } from "@/src/data/external/cms"
 
 const IndexPageContainer = styled.div`
   max-width: var(--width-container);
@@ -367,13 +362,13 @@ export default function Index({ posts, cv }) {
 
         <IndexPageContainer>
           <RecentPosts>
-            {posts.map((post, i) =>
+            {posts.map((post) =>
               post.type === "article" ? (
-                <PostPreview key={i} postData={post.post} />
+                <PostPreview key={post.id} postData={post.post} />
               ) : post.type === "link" ? (
-                <LinkPreview key={i} link={post.link} />
+                <LinkPreview key={post.id} link={post.link} />
               ) : post.type === "photo" ? (
-                <PhotoPreview key={i} photo={post.photo} />
+                <PhotoPreview key={post.id} photo={post.photo} />
               ) : null
             )}
           </RecentPosts>
@@ -423,34 +418,38 @@ export async function getStaticProps() {
   })
 
   // get all content
-  const about = await getAbout()
-  const allPosts = (await getAllPosts()) || []
-  const allLinks = (await getAllLinks()) || []
-  const allPhotos = (await getAllPhotos()) || []
-  const cv = (await getCV()) || []
+  const about = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about`
+  )
+  const cv = await fetchGET(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/cv?populate=*`
+  )
+
+  const posts = await getAllPosts()
+  const photos = await getAllPhotos()
+  const links = await getAllLinks()
 
   const allContent = []
 
-  allPosts.map((post) => {
+  posts.map((post) => {
     allContent.push({
-      post: post,
-      date: post.published_at,
+      post: post.attributes,
+      date: post.attributes.publishedAt,
       type: "article",
     })
   })
-
-  allLinks.map((link) => {
+  links.map((link) => {
     allContent.push({
-      link: link,
-      date: link.published_at,
+      link: link.attributes,
+      date: link.attributes.publishedAt,
       type: "link",
     })
   })
 
-  allPhotos.map((photo) => {
+  photos.map((photo) => {
     allContent.push({
-      photo: photo,
-      date: photo.published_at,
+      photo: photo.attributes,
+      date: photo.attributes.publishedAt,
       type: "photo",
     })
   })
@@ -458,15 +457,14 @@ export async function getStaticProps() {
   // order all content by date
   const sortedContent = allContent
     .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .slice(0, 12)
+    .slice(0, 9)
 
   return {
     revalidate: 300,
     props: {
       posts: sortedContent,
-      //count: stats.posts.count,
-      about: about.about,
-      cv,
+      about: about.data.attributes,
+      cv: cv.data.attributes,
     },
   }
 }

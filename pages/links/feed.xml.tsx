@@ -4,17 +4,17 @@ import { getAllLinks } from "@/src/data/external/cms"
 const showdown = require("showdown"),
   converter = new showdown.Converter()
 
-interface Content {
-  title?: string
-  link?: string
-  description?: string
-  published_at?: string
-  slug?: string
-  date?: string
-  content?: string
+interface Link {
+  attributes: {
+    title: string
+    link: string
+    description: string
+    publishedAt: string
+    slug: string
+  }
 }
 
-const createRssFeed = (allContent: Array<Content>) =>
+const createRssFeed = (links: Link[]) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">   
         <title>${config.siteTitle}</title>
@@ -28,16 +28,16 @@ const createRssFeed = (allContent: Array<Content>) =>
         </author>
         <updated>${new Date().toISOString()}</updated>
         <id>${config.siteUrl}/</id>
-        ${allContent
-          .map((content: Content) => {
+        ${links
+          .map((link) => {
             return `
             <entry>
-              <title>${content.title}</title>
-              <link href="${content.slug}"/>
-              <updated>${content.date}</updated>
-              <id>${content.slug}/</id>
+              <title>${link.attributes.title}</title>
+              <link href="${config.siteUrl}/links/${link.attributes.slug}"/>
+              <updated>${link.attributes.publishedAt}</updated>
+              <id>${link.attributes.slug}/</id>
               <content type="html">
-                <![CDATA[${content.content} Link: <a href=${content.link}>${content.link}</a>]]>
+                <![CDATA[${converter.makeHtml(link.attributes.description)} Link: <a href=${link.attributes.link}>${link.attributes.link}</a>]]>
               </content>
             </entry>
           `
@@ -48,22 +48,10 @@ const createRssFeed = (allContent: Array<Content>) =>
 
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
-    const links: Array<Content> = (await getAllLinks()) || []
-
-    const allContent: Array<object> = []
-
-    links.map((link) => {
-      allContent.push({
-        title: link.title,
-        slug: `${config.siteUrl}/links/${link.link}`,
-        date: link.published_at,
-        content: converter.makeHtml(link.description),
-        link: link.link,
-      })
-    })
+    const links = await getAllLinks()
 
     res.setHeader("Content-Type", "text/xml")
-    res.write(createRssFeed(allContent))
+    res.write(createRssFeed(links))
     res.end()
   }
 }

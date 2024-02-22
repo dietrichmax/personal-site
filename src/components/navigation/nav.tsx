@@ -53,10 +53,7 @@ export default function Nav({ color }) {
     <NavItems itemScope>
       {headerItems.map((item, i) => (
         <NavItem key={i} color={color}>
-          <ActiveLink
-            activeClassName="active"
-            href={item.link}
-          >
+          <ActiveLink activeClassName="active" href={item.link}>
             <a title={item.name} itemProp="name">
               {item.name}
             </a>

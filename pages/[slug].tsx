@@ -1,13 +1,11 @@
 import PageBody from "@/src/components/article/article-body/article-body"
 import Layout from "@/src/components/layout/layout"
-import { useRouter } from "next/router"
-import { getAllPages, getPage } from "@/src/data/external/cms"
+import { getAllPageSlugs, getPageBySlug } from "@/src/data/external/cms"
 import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
 import { serialize } from "next-mdx-remote/serialize"
-import { config } from "@/src/data/internal/SiteConfig"
 
 const PageWrapper = styled.div`
   max-width: 1200px;
@@ -20,7 +18,8 @@ const PageWrapper = styled.div`
 `
 
 interface Page {
-  page: {
+  id: number
+  attributes: {
     title: string
     description: string
     slug: string
@@ -29,41 +28,36 @@ interface Page {
   }
 }
 
-export default function Page({ page }: Page) {
-  const router = useRouter()
-
+export default function Page(page: Page) {
   return (
     <Layout>
-      {router.isFallback ? (
-        <PageTitle>{config.loading}</PageTitle>
-      ) : (
-        <article className="h-entry">
-          <SEO
-            title={page.title}
-            description={page.description}
-            slug={page.slug}
-          />
-          <PageTitle>{page.title}</PageTitle>
-          <PageWrapper>
-            <PageBody content={page.content} />
-          </PageWrapper>
-        </article>
-      )}
+      <article className="h-entry">
+        <SEO
+          title={page.attributes.title}
+          description={page.attributes.description}
+          slug={page.attributes.slug}
+        />
+        <PageTitle>{page.attributes.title}</PageTitle>
+        <PageWrapper>
+          <PageBody content={page.attributes.content} />
+        </PageWrapper>
+      </article>
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getPage(params.slug)
-  const markdown = data?.pages[0]?.content || ""
+  const page = await getPageBySlug(params.slug)
+  const markdown = page[0].attributes.content
   const content = await serialize(markdown)
 
   return {
     props: {
-      page: {
-        title: data?.pages[0].title,
-        description: data?.pages[0].description,
-        slug: data?.pages[0].slug,
+      id: page[0].id,
+      attributes: {
+        title: page[0].attributes.title,
+        description: page[0].attributes.description,
+        slug: page[0].attributes.slug,
         content,
       },
     },
@@ -71,9 +65,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const allPages = await getAllPages()
+  const pages = await getAllPageSlugs()
   return {
-    paths: allPages?.map((page) => `/${page.slug}`) || [],
-    fallback: true,
+    paths: pages.map((page) => `/${page.attributes.slug}`),
+    fallback: false,
   }
 }

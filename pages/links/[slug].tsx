@@ -1,5 +1,5 @@
 import Layout from "@/src/components/layout/layout"
-import { getAllLinks, getLink } from "@/src/data/external/cms"
+import { getAllLinkSlugs, getLinkBySlug } from "@/src/data/external/cms"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
@@ -10,6 +10,8 @@ import PageBody from "@/src/components/article/article-body/article-body"
 import WebActions from "@/src/components/social/social-share/social-share"
 import HCard from "@/src/components/microformats/h-card"
 import { serialize } from "next-mdx-remote/serialize"
+import Author from "@/components/article/article-author/article-author"
+import Subscribe from "@/src/components/social/newsletter/subscribe"
 
 const PageWrapper = styled.div`
   max-width: var(--width-container);
@@ -34,7 +36,7 @@ const LinksLink = styled.a`
 `
 
 interface Link {
-  link: {
+  attributes: {
     title: string
     description: string
     content: string
@@ -42,42 +44,48 @@ interface Link {
     slug: string
     date: any
     syndicationLinks: any
+    author: any
   }
 }
 
-export default function Link({ link }: Link) {
+export default function Link(link: Link) {
   return (
     <Layout>
       <article className="h-entry">
         <SEO
-          title={link.title}
-          description={link.description}
-          slug={`/links/${link.slug}`}
+          title={link.attributes.title}
+          description={link.attributes.description}
+          slug={`/links/${link.attributes.slug}`}
         />
-        <PageTitle>{link.title}</PageTitle>
+        <PageTitle>{link.attributes.title}</PageTitle>
         <HCard />
         <PageWrapper>
           <LinksLink
-            href={link.link}
-            title={link.title}
+            href={link.attributes.link}
+            title={link.attributes.title}
             className="u-bookmark-of h-cite"
           >
-            {link.link}
+            {link.attributes.link}
           </LinksLink>
-          <PageBody content={link.content} />
+          <PageBody content={link.attributes.content} />
 
           <WebActions
-            slug={`/links/${link.slug}`}
-            title={link.title}
-            excerpt={link.description}
-            syndicationLinks={link.syndicationLinks}
+            slug={`/links/${link.attributes.slug}`}
+            title={link.attributes.title}
+            excerpt={link.attributes.description}
+            syndicationLinks={link.attributes.syndicationLinks}
           />
           <Meta
             post={link}
-            slug={`/links/${link.slug}`}
-            syndicationLinks={link.syndicationLinks}
+            slug={`/links/${link.attributes.slug}`}
+            syndicationLinks={link.attributes.syndicationLinks}
           />
-          <Webmentions slug={`/links/${link.slug}`} preview={false} />
+          <Webmentions
+            slug={`/links/${link.attributes.slug}`}
+            preview={false}
+          />
+          <Author post={link.attributes.author.data.attributes} />
+          <Subscribe />
         </PageWrapper>
       </article>
     </Layout>
@@ -85,24 +93,30 @@ export default function Link({ link }: Link) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getLink(params.slug)
-  const content = await serialize(data.links[0].description)
+  const link = await getLinkBySlug(params.slug)
+  const content = await serialize(link[0].attributes.description)
   return {
     revalidate: 86400,
     props: {
-      link: {
-        ...data?.links[0],
+      id: link[0].id,
+      attributes: {
+        title: link[0].attributes.title,
+        link: link[0].attributes.link,
+        updatedAt: link[0].attributes.updatedAt,
+        publishedAt: link[0].attributes.publishedAt,
+        description: link[0].attributes.description,
         content,
+        author: link[0].attributes.author,
       },
     },
   }
 }
 
 export async function getStaticPaths() {
-  const links = (await getAllLinks()) || []
+  const links = await getAllLinkSlugs()
 
   return {
-    paths: links?.map((link) => `/links/${link.slug}`) || [],
+    paths: links.map((link) => `/links/${link.attributes.slug}`) || [],
     fallback: false,
   }
 }

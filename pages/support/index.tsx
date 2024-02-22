@@ -72,8 +72,9 @@ export default function Support({}) {
   const [submitted, setSubmitted] = useState<boolean>(false)
 
   async function getThanks() {
-    const data = await fetchGET("/api/stats")
-    setThanks(data.cms.thanks)
+    const res = await fetch("/api/stats")
+    const json = await res.json()
+    setThanks(json.cms.thanks)
   }
 
   useEffect(() => {
@@ -84,9 +85,9 @@ export default function Support({}) {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ thanks: count + 1 }),
+      body: JSON.stringify({ data: { thanks: count + 1 } }),
     }
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/thanks`, requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/thank`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)

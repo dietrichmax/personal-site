@@ -43,25 +43,21 @@ interface PhotoPreview {
 }
 
 export default function PhotoPreview({ photo }) {
-  const slug = `/photos/${photo.slug}`
-
   return (
     <Card className="h-entry">
       <HCard />
       <PreviewContainer>
-        <Link href={slug} className="u-url" passHref>
+        <Link href={`/photos/${photo.slug}`} className="u-url" passHref>
           <PhotoWrapper>
             <Photo
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${
-                photo.photo[0].formats.content
-                  ? photo.photo[0].formats.content.url
-                  : photo.photo[0].url
-              }`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${photo.photo.data[0].attributes.url}`}
               alt={`Photo of ${photo.title}`}
               title={`Photo of "${photo.title}"`}
               fill={true}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="u-photo"
+              blurDataURL={photo.photo.data[0].attributes.blurhash}
+              placeholder="blur"
             />
           </PhotoWrapper>
         </Link>
@@ -75,7 +71,7 @@ export default function PhotoPreview({ photo }) {
           <PostTags tags={photo.tags} />
           <PostMeta post={photo} slug={`/photos/${photo.slug}`}/>
         </PhotoContainer>*/}
-        <DynamicPostMeta post={photo} slug={slug} />
+        <DynamicPostMeta post={photo} slug={photo.slug} />
       </PreviewContainer>
     </Card>
   )

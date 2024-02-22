@@ -6,14 +6,12 @@ import OSM from "ol/source/OSM"
 import "ol/ol.css"
 
 function MapComponent() {
-
   const osmLayer = new TileLayer({
     preload: Infinity,
     source: new OSM(),
   })
 
   useEffect(() => {
-
     const map = new Map({
       target: "simplemap",
       layers: [osmLayer],

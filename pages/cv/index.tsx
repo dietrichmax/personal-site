@@ -1,10 +1,10 @@
 import Layout from "@/src/components/layout/layout"
-import { getCV } from "@/src/data/external/cms"
 import PageTitle from "@/src/components/title/page-title"
 import styled from "styled-components"
 import SEO from "@/src/components/seo/seo"
 import media from "styled-media-query"
 import CV from "@/src/components/cv/cv"
+import { getCV } from "@/src/data/external/cms"
 
 const ResumeWrapper = styled.div`
   max-width: var(--width-container);
@@ -16,7 +16,7 @@ const ResumeWrapper = styled.div`
   `}
 `
 
-export default function CVPage({ cvData }) {
+export default function CVPage({ cv }) {
   return (
     <Layout>
       <SEO title="CV" description="Curriculum Vitae" slug={`cv`} />
@@ -24,18 +24,17 @@ export default function CVPage({ cvData }) {
       <PageTitle>CV</PageTitle>
 
       <ResumeWrapper className="h-resume resume">
-        <CV data={cvData} />
+        <CV data={cv.attributes} />
       </ResumeWrapper>
     </Layout>
   )
 }
 
 export async function getStaticProps({}) {
-  const cvData = await getCV()
-
+  const cv = await getCV()
   return {
     props: {
-      cvData,
+      cv,
     },
   }
 }

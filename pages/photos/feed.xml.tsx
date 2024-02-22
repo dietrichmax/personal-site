@@ -1,27 +1,21 @@
 import React from "react"
 import { config } from "@/src/data/internal/SiteConfig"
-import { getAllPhotos } from "@/src/data/external/cms"
+import { fetchStrapiAPI } from "@/src/data/external/cms"
+
 const showdown = require("showdown"),
   converter = new showdown.Converter()
 
-interface Content {
-  title: string
-  description: string
-  content: string
-  link: string
-  slug: string
-  date: any
-  syndicationLinks: any
-  published_at: string
-  photo: [
-    {
-      title: string
-      url: string
-    },
-  ]
+interface Photo {
+  attributes: {
+    title: string
+    slug: string
+    publishedAt: string
+    description: string
+    photo: any
+  }
 }
 
-const createRssFeed = (allContent: Array<Content>) =>
+const createRssFeed = (photos: Photo[]) =>
   `<?xml version="1.0" encoding="UTF-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">   
         <title>${config.siteTitle}</title>
@@ -35,27 +29,23 @@ const createRssFeed = (allContent: Array<Content>) =>
         </author>
         <updated>${new Date().toISOString()}</updated>
         <id>${config.siteUrl}/</id>
-        ${allContent
-          .map((content: Content) => {
+        ${photos
+          .map((photo) => {
             return `
             <entry>
-              <title>${content.title}</title>
-              <link href="${content.slug}"/>
-              <updated>${content.date}</updated>
-              <id>${content.slug}/</id>
+              <title>${photo.attributes.title}</title>
+              <link href="${photo.attributes.slug}"/>
+              <updated>${photo.attributes.publishedAt}</updated>
+              <id>${config.siteUrl}/photos/${photo.attributes.slug}/</id>
               <content type="html">
-                <![CDATA[${content.content} Photo: ${
-                  content.photo
-                    ? content.photo.map((photo, i) => {
-                        ;<img
-                          src={
-                            process.env.NEXT_PUBLIC_STRAPI_API_URL + photo.url
-                          }
-                          alt={photo.title}
-                        />
-                      })
-                    : null
-                }
+                <![CDATA[${converter.makeHtml(photo.attributes.description)} Photo: ${photo.attributes.photo.data.map(
+                  (photo) => {
+                    return `<img
+                        src=${process.env.NEXT_PUBLIC_STRAPI_API_URL + photo.attributes.url}
+                        alt=${photo.attributes.title}
+                      />`
+                  }
+                )}
                 ]]>
               </content>
             </entry>
@@ -67,22 +57,21 @@ const createRssFeed = (allContent: Array<Content>) =>
 
 class Rss extends React.Component {
   static async getInitialProps({ res }) {
-    const photos = (await getAllPhotos()) || []
-
-    const allContent = []
-
-    photos.map((photo: Content) => {
-      allContent.push({
-        title: photo.title,
-        slug: `${config.siteUrl}/photos/${photo.slug}`,
-        date: photo.published_at,
-        content: converter.makeHtml(photo.description),
-        photo: photo.photo,
-      })
-    })
+    const photos: any = await fetchStrapiAPI(
+      {
+        sort: ["publishedAt:desc"],
+        populate: {
+          photo: {
+            poulate: ["formats"],
+          },
+        },
+        fields: ["title", "slug", "updatedAt", "publishedAt", "description"],
+      },
+      "photos"
+    )
 
     res.setHeader("Content-Type", "text/xml")
-    res.write(createRssFeed(allContent))
+    res.write(createRssFeed(photos))
     res.end()
   }
 }

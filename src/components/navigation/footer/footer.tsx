@@ -145,7 +145,7 @@ export default function Footer() {
     const data = await fetchGET("/api/cms")
     setData({
       recentPosts: data.recentPosts,
-      about: data.about
+      about: data.about,
     })
   }
 

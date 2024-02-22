@@ -15,15 +15,6 @@ interface SEO {
   jsonld?: any
 }
 
-interface CVData {
-  timeline: [
-    {
-      role: string
-      company: string
-    },
-  ]
-  skills: any
-}
 const SEO = ({
   title,
   description,
@@ -35,19 +26,6 @@ const SEO = ({
   articleData,
   jsonld,
 }: SEO) => {
-  const [data, setData] = useState<CVData>()
-
-  useEffect(() => {
-    const fetchCV = async () => {
-      const cv = await fetchGET(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cv`)
-      setData({
-        timeline: cv.timeline,
-        skills: cv.skills,
-      })
-    }
-    fetchCV()
-  }, [])
-
   description = description
     ? description.replace(/(<([^>]+)>)/gi, "")
     : config.siteDescription
@@ -84,31 +62,12 @@ const SEO = ({
         "sameAs": "https://en.wikipedia.org/wiki/University_of_Salzburg",
       },
     ],
-    "jobTitle": !data ? "loading" : data.timeline[0].role,
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": !data ? "loading" : data.timeline[0].company,
-      },
-    ],
     "sameAs": [
       config.socials.twitter,
       config.socials.linkedin,
       config.socials.github,
       config.socials.instagram,
       config.socials.mail,
-    ],
-    "knowsAbout": [
-      !data
-        ? "loading"
-        : data.skills[0].skillName.map((skill) => {
-            skill.name
-          }),
-      !data
-        ? "loading"
-        : data.skills[1].skillName.map((skill) => {
-            skill.name
-          }),
     ],
   }
 

@@ -1,6 +1,6 @@
 import Grid from "@/src/components/grid/grid"
 import Layout from "@/src/components/layout/layout"
-import { getTag, getAllTags } from "@/src/data/external/cms"
+import { getTagBySlug, getAllTagSlugs } from "@/src/data/external/cms"
 import PageTitle from "@/src/components/title/tag-title"
 import styled from "styled-components"
 import SubTitle from "@/src/components/title/sub-title"
@@ -33,16 +33,22 @@ const PostsGrid = styled.ol`
 `
 
 interface Tag {
-  posts: Array<any>
-  tag: any
-  type: string
-  post: any
-  link: any
+  posts: [
+    {
+      id: number
+      attributes: any
+      type: string
+    },
+  ]
+  tag: {
+    name: string
+    description: string
+    slug: string
+    backgroundColor: string
+  }
 }
 
 export default function Tags({ posts, tag }: Tag) {
-  const content = posts
-
   return (
     <Layout>
       <SEO
@@ -56,11 +62,11 @@ export default function Tags({ posts, tag }: Tag) {
         <TagPostsContainer>
           <Grid>
             <PostsGrid>
-              {content.map((post: Tag, i: number) =>
+              {posts.map((post) =>
                 post.type === "article" ? (
-                  <PostPreview key={i} postData={post.post} />
+                  <PostPreview key={post.id} postData={post.attributes} />
                 ) : post.type === "link" ? (
-                  <LinkPreview key={i} link={post.link} />
+                  <LinkPreview key={post.id} link={post.attributes} />
                 ) : null
               )}
             </PostsGrid>
@@ -72,32 +78,42 @@ export default function Tags({ posts, tag }: Tag) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getTag(params.slug)
-  const allContent = []
-  const posts = data.tags[0].posts
-  posts.map((post) => {
-    allContent.push({
-      post: post,
-      date: post.published_at,
+  const tag = await getTagBySlug(params.slug)
+  const allPosts = []
+
+  tag[0].attributes.posts.data.map((post) => {
+    allPosts.push({
+      id: post.id,
+      attributes: post.attributes,
+      date: post.attributes.publishedAt,
       type: "article",
     })
   })
 
-  const sortedContent = allContent.sort((a, b) => (a.date < b.date ? 1 : -1))
+  tag[0].attributes.links.data.map((post) => {
+    allPosts.push({
+      id: post.id,
+      attributes: post.attributes,
+      date: post.attributes.publishedAt,
+      type: "link",
+    })
+  })
+
+  const sortedContent = allPosts.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return {
     revalidate: 86400,
     props: {
       posts: sortedContent,
-      tag: data.tags[0],
+      tag: tag[0],
     },
   }
 }
 
 export async function getStaticPaths() {
-  const allTags = await getAllTags()
+  const tags = await getAllTagSlugs()
   return {
-    paths: allTags?.map((tag) => `/topics/${tag.slug}`) || [],
+    paths: tags.map((tag) => `/topics/${tag.attributes.slug}`) || [],
     fallback: false,
   }
 }

@@ -5,6 +5,7 @@ import { FaLink } from "@react-icons/all-files/fa/FaLink"
 import * as MDX from "@/styles/mdx-styles"
 import SyntaxHighlighter from "@/src/utils/SyntaxHighlighter"
 import dynamic from "next/dynamic"
+import { fetchStrapiAPI } from "../data/external/cms"
 
 const MapComponent = dynamic(
   () => import("@/components/mdxComponents/maps/openlayers/simplemap"),
@@ -42,10 +43,9 @@ const VectorLayerMapGeojson = dynamic(
   }
 )
 
-const PlaceHolderImage = styled.span`
+const PlaceHolderImage = styled.div`
+  position: relative;
   padding: 50px 0;
-  height: 300px;
-  width: 670px;
   background-color: var(--content-bg);
   text-align: center;
 `
@@ -69,23 +69,32 @@ interface MarkdownImage {
   src: any
 }
 
-const MarkdownImage = ({ src }) => {
+const MarkdownImage = ({src}) => {
   const [data, updateData] = useState<any>()
 
   useEffect(() => {
     const getData = async () => {
-      const json = await fetchGET(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/upload/files?_url=${src}`
+      const test = await fetchStrapiAPI(
+        {
+          filters: {
+            url: {
+              $eq: src.replace("",""),
+            },
+          },
+          populate: "*"
+        },
+        "upload/files"
       )
+      console.log(test)
       const obj = json[0]
       const title = obj.name.replace(".png", "")
       const alt = obj.alternativeText.length > 0 ? obj.alternativeText : title
       const img = {
-        src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${obj.url}`,
-        title: title,
-        alt: alt,
-        height: obj.height,
-        width: obj.width,
+        src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`,
+        title: "title",
+        alt: "alt",
+        height: 100,
+        width: 100,
       }
       updateData(img)
     }
@@ -116,9 +125,9 @@ const renderers = {
   p: ({ children }) => {
     return <MDX.P>{children}</MDX.P>
   },
-  img: (props) => {
+  /*img: (props) => {
     return <MarkdownImage src={props.src} />
-  },
+  },*/
 
   a: ({ children, href, title, alt }) => {
     return href.startsWith("/") ? (

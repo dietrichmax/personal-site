@@ -54,8 +54,10 @@ const SupportButtonContainer = styled.div`
 
 const ButtonText = styled.span`
   margin: auto var(--space-sm);
-  ${media.lessThan("medium")`  
+  ${media.lessThan("small")`  
+    display: block;
     margin-top: var(--space-sm);
+    margin-left: 0;
   `}
 `
 
@@ -80,11 +82,13 @@ export default function Author({ post }: Author) {
   const [count, setThanks] = useState<number>(0)
   const [submitted, setSubmitted] = useState<boolean>(false)
 
-  const { username, picture, bio } = post
+  const { username, bio } = post
+  const picture = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/thumbnail_cover_IMG_20231229_WA_0005_1925a8f37e_4685ff9911.jpg`
 
   async function getThanks() {
-    const data = await fetchGET("/api/stats")
-    setThanks(data.cms.thanks)
+    const res = await fetch("/api/stats")
+    const json = await res.json()
+    setThanks(json.cms.thanks)
   }
 
   useEffect(() => {
@@ -95,9 +99,9 @@ export default function Author({ post }: Author) {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ thanks: count + 1 }),
+      body: JSON.stringify({ data: { thanks: count + 1 } }),
     }
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/thanks`, requestOptions)
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/thank`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.statusText)
@@ -111,7 +115,7 @@ export default function Author({ post }: Author) {
       })
   }
 
-  if (post === undefined) {
+  if (post === undefined || !post) {
     return null
   }
   return (

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import PostPreview from "@/src/components/article/article-preview/article-preview"
 import styled from "styled-components"
 import media from "styled-media-query"
-import { getRelatedPosts } from "@/src/data/external/cms"
+import * as qs from "qs"
+import { fetchGET } from "@/src/utils/fetcher"
 
 const RecommendedPostsContainer = styled.ol`
   margin-bottom: var(--space);
@@ -40,11 +41,7 @@ const RecommendedPostTitle = styled.h3`
   `}
 `
 
-interface RecommendedPosts {
-  post: object
-}
-
-export default function RecommendedPosts({ post }: RecommendedPosts) {
+export default function RecommendedPosts({ post }) {
   const [sortedPosts, setSortedPosts] = useState([])
 
   // define maxPosts to display
@@ -52,18 +49,20 @@ export default function RecommendedPosts({ post }: RecommendedPosts) {
 
   function getRecommendedPosts(post, allPosts) {
     // filter out current post
-    let posts = allPosts.filter((aPost) => aPost.slug !== post.slug)
+    let posts = allPosts.filter(
+      (aPost) => aPost.attributes.slug !== post.attributes.slug
+    )
 
     // get tags of current posts
-    const currentTags = post.tags.map((tag) => {
-      return tag.name
+    const currentTags = post.attributes.tags.map((tag) => {
+      return tag.attributes.name
     })
 
     // rate posts depending on tags
     posts.forEach((post) => {
       post.relevance = 0
-      post.tags.forEach((tag) => {
-        if (currentTags.includes(tag.name)) {
+      post.attributes.tags.data.forEach((tag) => {
+        if (currentTags.includes(tag.attributes.name)) {
           post.relevance++
         }
       })
@@ -77,6 +76,18 @@ export default function RecommendedPosts({ post }: RecommendedPosts) {
   }
 
   useEffect(() => {
+    const postQuery = qs.stringify({
+      populate: {
+        tags: "*",
+      },
+      fields: ["title", "slug", "description", "updatedAt"],
+    })
+    const getRelatedPosts = async () => {
+      const posts = await fetchGET(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/posts?${postQuery}`
+      )
+      return posts.data
+    }
     getRelatedPosts().then((data) =>
       setSortedPosts(getRecommendedPosts(post, data))
     )
@@ -88,7 +99,7 @@ export default function RecommendedPosts({ post }: RecommendedPosts) {
         <RecommendedPostTitle>Continue Reading</RecommendedPostTitle>
         <RecommendedPostsContainer>
           {sortedPosts.slice(0, maxPosts).map((post, i) => (
-            <PostPreview key={i} postData={post} />
+            <PostPreview key={i} postData={post.attributes} />
           ))}
         </RecommendedPostsContainer>
       </>

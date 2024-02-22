@@ -69,7 +69,7 @@ interface MarkdownImage {
   src: any
 }
 
-const MarkdownImage = ({src}) => {
+const MarkdownImage = ({ src }) => {
   const [data, updateData] = useState<any>()
 
   useEffect(() => {
@@ -78,10 +78,10 @@ const MarkdownImage = ({src}) => {
         {
           filters: {
             url: {
-              $eq: src.replace("",""),
+              $eq: src.replace("", ""),
             },
           },
-          populate: "*"
+          populate: "*",
         },
         "upload/files"
       )

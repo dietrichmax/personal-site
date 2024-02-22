@@ -1,6 +1,13 @@
 import { fetchGET } from "@/src/utils/fetcher"
 import type { NextApiRequest, NextApiResponse } from "next"
-import { getAllPostSlugs, getAllLinkSlugs, getAllPageSlugs, getAllPhotoSlugs, getAllTagSlugs, getAllSubscribers } from "@/src/data/external/cms"
+import {
+  getAllPostSlugs,
+  getAllLinkSlugs,
+  getAllPageSlugs,
+  getAllPhotoSlugs,
+  getAllTagSlugs,
+  getAllSubscribers,
+} from "@/src/data/external/cms"
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -22,7 +29,7 @@ export default async function handler(
   const comments = await fetchGET(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/comments`
   )
-  
+
   const activities = await fetchGET(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/activities`
   )

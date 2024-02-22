@@ -34,7 +34,14 @@ export async function getAllPosts() {
   const data = fetchStrapiAPI(
     {
       sort: ["createdAt:desc"],
-      fields: ["title", "slug", "updatedAt", "publishedAt", "createdAt", "description"],
+      fields: [
+        "title",
+        "slug",
+        "updatedAt",
+        "publishedAt",
+        "createdAt",
+        "description",
+      ],
       pagination: {
         page: 1,
         pageSize: 100,
@@ -289,10 +296,7 @@ export async function getAbout() {
 export async function getAllSubscribers() {
   const data = fetchStrapiAPI(
     {
-      fields: [
-        "name",
-        "email"
-      ],
+      fields: ["name", "email"],
       pagination: {
         page: 1,
         pageSize: 10000,

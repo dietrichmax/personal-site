@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const recentPostQuery = qs.stringify({
-    sort: ["publishedAt:desc"],
+    sort: ["createdAt:desc"],
     fields: ["title", "slug"],
   })
 

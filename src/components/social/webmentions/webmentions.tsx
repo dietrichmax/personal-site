@@ -12,6 +12,7 @@ import { Button } from "@/styles/templates/button"
 import Link from "next/link"
 import Image from "next/image"
 import { fetchGET } from "@/src/utils/fetcher"
+import { fetchStrapiAPI } from "@/src/data/external/cms"
 const qs = require("qs")
 
 const WebMentionsWrapper = styled.section`
@@ -297,26 +298,31 @@ export default function Webmentions({ slug, preview }) {
   }
 
   async function GetComments() {
-    const commentsQuery = qs.stringify({
-      filters: {
-        slug: {
-          $eq: slug,
+    const commentsStrapi = await fetchStrapiAPI(
+      {
+        filters: {
+          slug: {
+            $eq: slug,
+          },
         },
+        populate: {
+          users_permissions_user: {
+            poulate: ["*"],
+          },
+        },
+        fields: ["name", "slug", "text", "publishedAt"],
       },
-    })
-
-    const commentsStrapi = await fetchGET(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/comments?${commentsQuery}`
+      "comments"
     )
     let strapiComments = []
-    commentsStrapi.data.map((comment) => {
+    commentsStrapi.map((comment) => {
       strapiComments.push({
         "type": "entry",
-        "url": `${url}#1${comment.attributes.id}`,
+        "url": `${url}#${comment.id}`,
         "published": comment.attributes.publishedAt,
         "author": {
-          name: comment.attributes.name || "anonym",
-          photo: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
+          name: comment.attributes.users_permissions_user.data ? comment.attributes.users_permissions_user.data.attributes.username : comment.attributes.name || "anonym",
+          photo: comment.attributes.users_permissions_user.data ? "/images/IMG_20231229_WA_0005_1925a8f37e50x50.webp" : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
           type: "card",
           url: config.siteUrl,
         },
@@ -328,7 +334,7 @@ export default function Webmentions({ slug, preview }) {
     })
     const allComments = comments.concat(strapiComments)
     const sortedComments = allComments.sort(function (a, b) {
-      return new Date(b.publishedAt) - new Date(a.publishedAt)
+      return new Date(a.createdAt) - new Date(b.createdAt) 
     })
     setComments(sortedComments)
   }

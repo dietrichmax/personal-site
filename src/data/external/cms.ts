@@ -220,6 +220,24 @@ export async function getTagBySlug(slug: string) {
   return data
 }
 
+export async function getAllTags() {
+  const data = fetchStrapiAPI(
+    {
+      populate: "*",
+      fields: [
+        "name",
+        "description",
+        "color",
+        "slug",
+        "updatedAt",
+        "createdAt",
+      ],
+    },
+    "tags"
+  )
+  return data
+}
+
 export async function getAllPageSlugs() {
   const data = fetchStrapiAPI(
     {
@@ -238,6 +256,23 @@ export async function getPageBySlug(slug: string) {
           $eq: slug,
         },
       },
+      fields: [
+        "title",
+        "description",
+        "content",
+        "slug",
+        "updatedAt",
+        "publishedAt",
+      ],
+    },
+    "pages"
+  )
+  return data
+}
+
+export async function getAllPages() {
+  const data = fetchStrapiAPI(
+    {
       fields: [
         "title",
         "description",

@@ -2,8 +2,8 @@ import React from "react"
 import { config } from "@/src/data/internal/SiteConfig"
 import { fetchStrapiAPI } from "@/src/data/external/cms"
 
-const showdown = require("showdown"),
-  converter = new showdown.Converter()
+const showdown = require("showdown")
+const converter = new showdown.Converter()
 
 interface Photo {
   attributes: {

@@ -339,9 +339,8 @@ export default function Webmentions({ slug, preview }) {
     })
     const allComments = comments.concat(strapiComments)
     const sortedComments = allComments.sort(function (a, b) {
-      return new Date(b.publishedAt) - new Date(a.publishedAt)
+      return new Date(b.published) - new Date(a.published)
     })
-    console.log(allComments)
     setComments(sortedComments)
   }
 

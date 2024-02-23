@@ -78,8 +78,7 @@ const MarkdownImage = ({ src }) => {
     const filteredSrc = src.replace(process.env.NEXT_PUBLIC_STRAPI_API_URL, "")
 
     const getData = async () => {
-      const query =
-      {
+      const query = {
         filters: {
           url: {
             $containsi: filteredSrc,

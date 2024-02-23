@@ -137,6 +137,7 @@ export async function getPostBySlug(slug: string) {
         "description",
         "updatedAt",
         "createdAt",
+        "publishedAt",
         "content",
       ],
     },

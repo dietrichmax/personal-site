@@ -4,7 +4,7 @@ import {
   getAllPages,
   getAllPhotos,
   getAllLinks,
-  getAllTags
+  getAllTags,
 } from "@/src/data/external/cms"
 import { config } from "@/src/data/internal/SiteConfig"
 import * as fs from "fs"

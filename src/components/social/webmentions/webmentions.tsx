@@ -321,8 +321,12 @@ export default function Webmentions({ slug, preview }) {
         "url": `${url}#${comment.id}`,
         "published": comment.attributes.publishedAt,
         "author": {
-          name: comment.attributes.users_permissions_user.data ? comment.attributes.users_permissions_user.data.attributes.username : comment.attributes.name || "anonym",
-          photo: comment.attributes.users_permissions_user.data ? "/images/IMG_20231229_WA_0005_1925a8f37e50x50.webp" : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
+          name: comment.attributes.users_permissions_user.data
+            ? comment.attributes.users_permissions_user.data.attributes.username
+            : comment.attributes.name || "anonym",
+          photo: comment.attributes.users_permissions_user.data
+            ? "/images/IMG_20231229_WA_0005_1925a8f37e50x50.webp"
+            : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/uploads/mm_b619c41da0_990e14278f.jpg`,
           type: "card",
           url: config.siteUrl,
         },
@@ -334,7 +338,7 @@ export default function Webmentions({ slug, preview }) {
     })
     const allComments = comments.concat(strapiComments)
     const sortedComments = allComments.sort(function (a, b) {
-      return new Date(a.createdAt) - new Date(b.createdAt) 
+      return new Date(a.createdAt) - new Date(b.createdAt)
     })
     setComments(sortedComments)
   }

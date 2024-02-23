@@ -49,13 +49,16 @@ export default function PostMeta({ post, slug, syndicationLinks }) {
 
   const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
+  //console.log(post)
   return (
     <Meta>
       <DateWrapper className="dt-published">
         First published{" "}
         <a className="u-url" title={slug} href={slug}>
           {new Date(
-            post.published_at ? post.published_at : post.published_at
+            post.attributes.publishedAt
+              ? post.attributes.publishedAt
+              : post.attributes.createdAt
           ).toLocaleDateString("en-US", dateOptions)}
         </a>
       </DateWrapper>

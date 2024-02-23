@@ -14,12 +14,11 @@ export function getToc(markdown: string) {
   const toc = []
   let globalID = 0
 
-  
   if (titles) {
     titles.map((tempTitle) => {
       const level = tempTitle.match(/#/g).length - 1
       const title = tempTitle.replace(/#/g, "")
-      const anchor = `#${title.replace(/ /g, "-").replaceAll(":","").replaceAll(",","").substring(1).toLowerCase()}`
+      const anchor = `#${title.replace(/ /g, "-").replaceAll(":", "").replaceAll(",", "").substring(1).toLowerCase()}`
       level === 1 ? (globalID += 1) : globalID
 
       toc.push({

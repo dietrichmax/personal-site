@@ -47,7 +47,7 @@ export default function PostMeta({ post, slug }) {
         className="u-url"
         rel="bookmark"
       >
-        <time className="dt-published" dateTime={post.updated_at}>
+        <time className="dt-published" dateTime={post.updatedAt}>
           {postDate.toLocaleDateString("en-US", dateOptions)}
         </time>
       </DateWrapper>

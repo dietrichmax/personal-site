@@ -1,4 +1,21 @@
-export async function fetchStravaAPI(query: string, { variables } = {}) {
+import strava from "strava-v3"
+
+strava.config({
+  access_token: process.env.STRAVA_ACCESS_TOKEN, //"Your apps access token (Required for Quickstart)",
+  client_id: process.env.STRAVA_CLIENT_ID, //"Your apps Client ID (Required for oauth)",
+  client_secret: process.env.STRAVA_CLIENT_SECRET, //"Your apps Client Secret (Required for oauth)",
+  redirect_uri: process.env.STRAVA_REDIRECT_URI, //"Your apps Authorization Redirection URI (Required for oauth)",
+})
+
+export async function getStravaData() {
+  const payload = await strava.athlete.listActivities({
+    access_token: process.env.STRAVA_ACCESS_TOKEN,
+  })
+  console.log(payload)
+  return payload
+}
+
+/*export async function fetchStravaAPI(query: string, { constiables } = {}) {
   const res = await fetch(`https://www.strava.com/api/v3/`, {
     method: "GET",
     headers: {
@@ -8,7 +25,7 @@ export async function fetchStravaAPI(query: string, { variables } = {}) {
     cache: "force-cache",
     body: JSON.stringify({
       query,
-      variables,
+      constiables,
     }),
   })
 
@@ -19,4 +36,4 @@ export async function fetchStravaAPI(query: string, { variables } = {}) {
   }
 
   return json.data
-}
+}*/

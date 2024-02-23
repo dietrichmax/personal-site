@@ -1,4 +1,5 @@
 import { fetchGET } from "@/src/utils/fetcher"
+import { config } from "../internal/SiteConfig"
 
 export async function getMatomoActions() {
   const actions = await fetchGET(
@@ -117,22 +118,43 @@ export async function getMatomoSEOStats() {
 }
 
 export async function getMatomoTopPageUrls() {
+  let topPages = []
   const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
-    }?module=API&method=Actions.getPageUrls&segment=pageUrl=@/articles/&flat=1&idSite=${
+    }?module=API&method=Actions.getPageUrls&flat=1&filter_column=label&filter_pattern=%5E%2Farticles%2F&idSite=${
       process.env.NEXT_PUBLIC_MATOMO_SITE_ID
     }&period=range&date=2018-02-01,${new Date()
       .toISOString()
-      .slice(0, 10)}&format=JSON&filter_limit=5&token_auth=${
+      .slice(0, 10)}&filter_limit=-1&format=JSON&token_auth=${
       process.env.NEXT_PUBLIC_MATOMO_API_KEY
     }`
   )
   if (pageUrl.errors) {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")
+  } else {
+    pageUrl.map((page) => {
+      if (page.url != undefined) {
+        if (!page.url.includes("?")) {
+          topPages.push({
+            label: page.label,
+            nb_hits: page.nb_hits,
+          })
+        } else {
+          const uniquePage = page.url.split("?")[0].replace(config.siteUrl, "")
+          const topPagesIndex = topPages.findIndex(
+            (obj) => obj.label === uniquePage
+          )
+          topPages[topPagesIndex].nb_hits += page.nb_hits
+        }
+      }
+    })
   }
-  return pageUrl
+  const sortedTopPages = topPages.sort((a, b) => b.nb_hits - a.nb_hits)
+  const slicedSortedTopPages = sortedTopPages.slice(0, 7)
+
+  return slicedSortedTopPages
 }
 
 export async function getMatomoViewForPage(url) {

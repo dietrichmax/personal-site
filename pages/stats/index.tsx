@@ -21,6 +21,8 @@ import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
 import { useEffect, useState } from "react"
 import { fetchGET } from "@/src/utils/fetcher"
+import { fetchStrapiAPI } from "@/src/data/external/cms"
+import PostPreview from "@/components/article/article-preview/article-preview"
 
 const viewsBarHeight: number = 200
 
@@ -378,6 +380,35 @@ export default function Dashboard({
   const githubUrl: string = "https://github.com/dietrichmax"
   const forkUrl: string = `${githubStats.user.repository.url}/fork`
   const starUrl: string = githubStats.user.repository.url
+
+  /*const mostViewedPosts = []
+  function getMostViewedPosts(topPosts) {
+    async function getPostAttributes(post) {
+      const postAttributes = await fetchStrapiAPI(
+        {
+          filters: {
+            slug: {
+              $eq: post.label.replace("/articles/",""),
+            },
+          },
+          fields: [
+            "title",
+            "slug",
+            "updatedAt",
+            "createdAt",
+            "description",
+          ],
+        },
+        "posts"
+      )
+    return postAttributes[0]
+  }
+    topPosts.map(post => {
+      const attributes = getPostAttributes(post)
+      mostViewedPosts.push(attributes)
+    })
+      
+  }*/
 
   const webmentionsCount: number = allWebmentions.length
 

@@ -136,7 +136,7 @@ export default async function handler(
       photosCount: photos.length,
       commentsCount: comments.data.length,
       topicsCount: topics.length,
-      activitiesCount: activities.data.length || 0,
+      activitiesCount: 0,
     },
   })
 }

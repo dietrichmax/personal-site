@@ -19,16 +19,12 @@ export const config = {
   fallbackImg: "https://source.unsplash.com/1300x450/?web,tech",
   socials: {
     // socials
-    github: "/github",
-    twitter: "/twitter",
-    linkedin: "/linkedin",
-    slack: "/slack",
-    instagram: "/instagram",
+    github: "https://github.com/dietrichmax",
+    twitter: "https://twitter.com/mxdietrich",
+    linkedin: "https://www.linkedin.com/in/maxdiet/",
+    instagram: "https://www.instagram.com/_maxdietrich/",
     strava: "/strava",
-    //komoot: "/komoot",
-    //mastodon: "https://fosstodon.org/@mxd",
-    xing: "/xing",
-    //reddit: "https://www.reddit.com/user/DaTurboD",
+    xing: "https://www.xing.com/profile/Max_Dietrich7",
     mail: "mailto:mail@mxd.codes",
   },
 }

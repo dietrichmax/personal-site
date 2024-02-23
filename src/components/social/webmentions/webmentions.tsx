@@ -305,6 +305,7 @@ export default function Webmentions({ slug, preview }) {
             $eq: slug,
           },
         },
+        sort: ["publishedAt:desc"],
         populate: {
           users_permissions_user: {
             poulate: ["*"],
@@ -338,8 +339,9 @@ export default function Webmentions({ slug, preview }) {
     })
     const allComments = comments.concat(strapiComments)
     const sortedComments = allComments.sort(function (a, b) {
-      return new Date(a.createdAt) - new Date(b.createdAt)
+      return new Date(b.publishedAt) - new Date(a.publishedAt)
     })
+    console.log(allComments)
     setComments(sortedComments)
   }
 

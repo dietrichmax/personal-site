@@ -118,7 +118,7 @@ export async function getMatomoSEOStats() {
 }
 
 export async function getMatomoTopPageUrls() {
-  let topPages = []
+  let topPages: Array<any> = []
   const pageUrl = await fetchGET(
     `${
       process.env.NEXT_PUBLIC_MATOMO_URL
@@ -134,7 +134,7 @@ export async function getMatomoTopPageUrls() {
     console.error(pageUrl.errors)
     throw new Error("Failed to fetch pageUrl")
   } else {
-    pageUrl.map((page) => {
+    pageUrl.map((page: any) => {
       if (page.url != undefined) {
         if (!page.url.includes("?")) {
           topPages.push({

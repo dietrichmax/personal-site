@@ -380,8 +380,8 @@ export default function Webmentions({ slug, preview }) {
         })
         const sortedComments = comments.sort(function (a, b) {
           return (
-            new Date(b.attributes.publishedAt) -
-            new Date(a.attributes.publishedAt)
+            new Date(b.published) -
+            new Date(a.published)
           )
         })
         setComments(sortedComments)

@@ -17,12 +17,9 @@ import {
 import { fetchWebmentions } from "@/src/data/external/webmentions"
 import { getGitHubStats } from "@/src/data/external/github"
 import PageTitle from "@/components/title/page-title"
-import codeStats from "@/src/data/internal/count_total.json"
 import SubTitle from "@/components/title/sub-title"
 import { useEffect, useState } from "react"
 import { fetchGET } from "@/src/utils/fetcher"
-import { fetchStrapiAPI } from "@/src/data/external/cms"
-import PostPreview from "@/components/article/article-preview/article-preview"
 
 const viewsBarHeight: number = 200
 
@@ -412,8 +409,6 @@ export default function Dashboard({
 
   const webmentionsCount: number = allWebmentions.length
 
-  const linesOfCode: number = codeStats.SUM.code
-
   const α: number = 1.1
   const B: number = 100
   let pageViews = []
@@ -689,106 +684,6 @@ export default function Dashboard({
             </GitHubButtonWrapper>
           </GitHubWrapper>
         </TripleStatsGrid>
-
-        <LanguageContainer>
-          <Title>Project Breakdown by Language</Title>
-          <LanguageBar>
-            <LanguageBarChild
-              width={((codeStats.JavaScript.code / linesOfCode) * 100).toFixed(
-                2
-              )}
-              color="#f0db4f"
-              data-tip={`${(
-                (codeStats.JavaScript.code / linesOfCode) *
-                100
-              ).toFixed(2)}% JavaScript`}
-              style={{
-                borderTopLeftRadius: "5px",
-                borderBottomLeftRadius: "5px",
-              }}
-            />
-            <LanguageBarChild
-              width={((codeStats.JSON.code / linesOfCode) * 100).toFixed(2)}
-              color="brown"
-              data-tip={`${((codeStats.JSON.code / linesOfCode) * 100).toFixed(
-                2
-              )}% JSON`}
-            />
-            <LanguageBarChild
-              width={((codeStats.CSS.code / linesOfCode) * 100).toFixed(2)}
-              color="pink"
-              data-tip={`${((codeStats.CSS.code / linesOfCode) * 100).toFixed(
-                2
-              )}% CSS`}
-            />
-            <LanguageBarChild
-              width={((codeStats.Markdown.code / linesOfCode) * 100).toFixed(2)}
-              color="var(--gray)"
-              data-tip={`${(
-                (codeStats.Markdown.code / linesOfCode) *
-                100
-              ).toFixed(2)}% Markdown`}
-              style={{
-                borderTopRightRadius: "5px",
-                borderBottomRightRadius: "5px",
-              }}
-            />
-          </LanguageBar>
-          <LanguageWrapper>
-            <LanguageColumn>
-              <LanguageTitle>
-                <LanguageDot color="#f0db4f" />
-                {((codeStats.JavaScript.code / linesOfCode) * 100).toFixed(2)}%
-                Javascript
-              </LanguageTitle>
-              <LanguageMoreStats>
-                {codeStats.JavaScript.nFiles} files
-              </LanguageMoreStats>
-              <LanguageMoreStats>
-                {codeStats.JavaScript.code
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-                lines
-              </LanguageMoreStats>
-            </LanguageColumn>
-            <LanguageColumn>
-              <LanguageTitle>
-                <LanguageDot color="brown" />
-                {((codeStats.JSON.code / linesOfCode) * 100).toFixed(2)}% JSON
-              </LanguageTitle>
-              <LanguageMoreStats>
-                {codeStats.JSON.nFiles} files
-              </LanguageMoreStats>
-              <LanguageMoreStats>
-                {codeStats.JSON.code
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-                lines
-              </LanguageMoreStats>
-            </LanguageColumn>
-            <LanguageColumn>
-              <LanguageTitle>
-                <LanguageDot color="pink" />
-                {((codeStats.CSS.code / linesOfCode) * 100).toFixed(2)}% CSS
-              </LanguageTitle>
-              <LanguageMoreStats>{codeStats.CSS.nFiles} file</LanguageMoreStats>
-              <LanguageMoreStats>{codeStats.CSS.code} lines</LanguageMoreStats>
-            </LanguageColumn>
-            <LanguageColumn>
-              <LanguageTitle>
-                <LanguageDot color="var(--gray)" />
-                {((codeStats.Markdown.code / linesOfCode) * 100).toFixed(2)}%
-                Markdown
-              </LanguageTitle>
-              <LanguageMoreStats>
-                {codeStats.Markdown.nFiles} file
-              </LanguageMoreStats>
-              <LanguageMoreStats>
-                {codeStats.Markdown.code} lines
-              </LanguageMoreStats>
-            </LanguageColumn>
-          </LanguageWrapper>
-        </LanguageContainer>
 
         {/*<GeneralStats>
           <StatsGridMedium>

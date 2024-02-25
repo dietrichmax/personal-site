@@ -14,7 +14,7 @@
     "start": "next start",
     "build": "next build",
     "format": "prettier --write .",
-    "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/count_total.json",
+    "count": "cloc --exclude-ext=svg --exclude-dir=node_modules,.next --json src/ pages/ styles/ public/ . > src/data/internal/count_total.json",
     "webmention": "webmention https://mxd.codes/feed.xml --limit 0 --send"
   },
   "dependencies": {

@@ -379,10 +379,7 @@ export default function Webmentions({ slug, preview }) {
           "in-reply-to": url,
         })
         const sortedComments = comments.sort(function (a, b) {
-          return (
-            new Date(b.published) -
-            new Date(a.published)
-          )
+          return new Date(b.published) - new Date(a.published)
         })
         setComments(sortedComments)
         setCommentName("")

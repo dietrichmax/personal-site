@@ -114,6 +114,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/articles/constant-location-tracking-with-owntracks-strapi-and-visualizing-data-with-deckgl",
+        destination: "/articles/a-guide-to-location-tracking-and-visualization-with-own-tracks-node-js-postgre-sql-geo-server-map-proxy-nginx-and-open-layers",
+        permanent: true,
+      },
+      {
         source: "/articles/ci-cd-for-nextjs-with-github-actions",
         destination: "/articles/docker-ci-cd-for-nextjs-with-github-actions",
         permanent: true,

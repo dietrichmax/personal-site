@@ -6,7 +6,7 @@ export async function getGitHubStats() {
     query: `query {
                 user(login: "dietrichmax") {
                   name
-                  repository(name: "mxd-codes-frontend") {
+                  repository(name: "personal-site") {
                         id
                         createdAt
                         url

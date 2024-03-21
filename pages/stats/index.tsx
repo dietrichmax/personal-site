@@ -209,7 +209,7 @@ const DateWrapper = styled.div`
   margin-right: calc(var(--space-sm) * 0.3);
 `
 
-const Date = styled.p`
+const DateContent = styled.p`
   font-size: 0.625rem;
   display: block;
   width: 100%;
@@ -377,7 +377,10 @@ export default function Dashboard({
   const githubUrl: string = "https://github.com/dietrichmax"
   const forkUrl: string = `${githubStats.user.repository.url}/fork`
   const starUrl: string = githubStats.user.repository.url
+  const repositoryCreatedAt: string = new Date(githubStats.user.repository.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+  const repositoryPushedAt: string = new Date(githubStats.user.repository.pushedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })
 
+  //.toLocaleDateString("en-US")
   /*const mostViewedPosts = []
   function getMostViewedPosts(topPosts) {
     async function getPostAttributes(post) {
@@ -638,7 +641,7 @@ export default function Dashboard({
           <DateContainer>
             {pageViews.map((item, i) => (
               <DateWrapper key={i}>
-                <Date title={item.date}>{item.dateShort}</Date>
+                <DateContent title={item.date}>{item.dateShort}</DateContent >
               </DateWrapper>
             ))}
           </DateContainer>
@@ -669,7 +672,7 @@ export default function Dashboard({
             <Title>GitHub Repository</Title>
             <p>
               This site's repository has been starred <Stats>{stars}</Stats>{" "}
-              times and forked <Stats>{forkCount}</Stats> times.
+              times and forked <Stats>{forkCount}</Stats> times since {repositoryCreatedAt}. <br/> The last push is from {repositoryPushedAt}.
             </p>
             <GitHubButtonWrapper>
               <GitHubButtonLink href={githubUrl} title="GitHub - DaTurboD">

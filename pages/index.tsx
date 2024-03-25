@@ -399,7 +399,7 @@ export async function getStaticProps() {
   )
   backgroundImageUrl.searchParams.append("width", "2000")
   backgroundImageUrl.searchParams.append("height", "1000")
-  backgroundImageUrl.searchParams.append("zoom", "13")
+  backgroundImageUrl.searchParams.append("zoom", "11")
   backgroundImageUrl.searchParams.append(
     "center",
     `${recentLocation.rows[0].lon},${recentLocation.rows[0].lat}`
@@ -460,7 +460,7 @@ export async function getStaticProps() {
     .slice(0, 9)
 
   return {
-    revalidate: 300,
+    revalidate: 3600,
     props: {
       posts: sortedContent,
       about: about.data.attributes,

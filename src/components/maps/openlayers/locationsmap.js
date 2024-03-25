@@ -65,7 +65,8 @@ function LiveMap({ data }) {
     }),
   })
 
-  const center = transform([data.lon, data.lat], "EPSG:4326", "EPSG:3857")
+  const center = transform([12.115173, 47.850031], "EPSG:4326", "EPSG:3857")
+  //const center = transform([data.lon, data.lat], "EPSG:4326", "EPSG:3857")
 
   useEffect(() => {
     const initialMap = new Map({
@@ -73,7 +74,7 @@ function LiveMap({ data }) {
       layers: [aerial, locData],
       view: new View({
         center: center,
-        zoom: 16,
+        zoom: 13,
         maxZoom: 16,
       }),
     })

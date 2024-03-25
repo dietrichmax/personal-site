@@ -131,10 +131,8 @@ export default function Now({ weather, address, now }: Now) {
 
       <PageTitle>Now</PageTitle>
       <SubTitle>
-        Right now i am in{" "}
-        {`${town(address.address)}, ${address.address.state}, ${
-          address.address.country
-        }`}
+        Right now i am in{" "} {address.address.state}, {address.address.country}.
+        {/*`${town(address.address)},*/}
       </SubTitle>
 
       <Container>

@@ -137,7 +137,7 @@ export default function Now({ weather, address, now }: Now) {
 
       <Container>
         <LiveDataWrapper>
-          <Data>
+          {/*<Data>
             In {town(address.address)} it has {weather.main.temp}°C with{" "}
             {weather.weather[0].description}.
             <WeatherImg
@@ -148,7 +148,7 @@ export default function Now({ weather, address, now }: Now) {
               height="30"
               priority
             />
-          </Data>
+          </Data>*/}
           {now.batt ? (
             <Data>
               My phone's battery level is {now.batt}%{" "}
